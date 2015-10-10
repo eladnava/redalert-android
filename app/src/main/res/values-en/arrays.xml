@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="regionNames">
+        <item>Select All</item>
+        <item>Dan - Tel Aviv Area</item>
+        <item>Jerusalem</item>
+        <item>Haifa</item>
+        <item>Lahish - Ashdod</item>
+        <item>Krayot</item>
+        <item>Shfela</item>
+        <item>Carmel</item>
+        <item>Negev</item>
+        <item>Eilat</item>
+        <item>Golan</item>
+        <item>Galil</item>
+        <item>Beit Shemes</item>
+        <item>Gaza Perimeter</item>
+        <item>Confrontation Line</item>
+        <item>Dead Sea</item>
+        <item>Ma\'ale Adumim</item>
+        <item>Bikah</item>
+        <item>Jezreel Valley</item>
+        <item>Beit She\'an</item>
+        <item>Hefer</item>
+        <item>Judea</item>
+        <item>Samaria</item>
+        <item>Yarkon</item>
+        <item>Menashe</item>
+        <item>Arabah</item>
+        <item>Iron</item>
+        <item>Patzan</item>
+        <item>Katzrin</item>
+        <item>Sharon</item>
+        <item>Tabor</item>
+        <item>Vadi Ara</item>
+    </string-array>
+</resources>

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Title -->
+    <string name="appName">צבע אדום</string>
+
+    <!-- Loading Dialog -->
+    <string name="loading">אנא המתן...</string>
+
+    <!-- Registration Dialog -->
+    <string name="signing_up">נרשם לשירות עדכוני צבע אדום...</string>
+
+    <!-- Dialog Buttons -->
+    <string name="okay">אוקי</string>
+    <string name="error">שגיאה</string>
+
+    <!-- Update Dialog -->
+    <string name="update">עדכון גרסה</string>
+    <string name="updateDesc">יצאה גרסה חדשה יותר של האפליקציה (%s), מומלץ לעדכן.</string>
+    <string name="updatePositive">עדכן</string>
+    <string name="notNow">לא עכשיו</string>
+
+    <!-- Recent Alerts -->
+    <string name="noAlerts">אין התרעות\nמהיום האחרון</string>
+    <string name="recentAlerts">התרעות אחרונות</string>
+
+    <!-- Settings -->
+    <string name="settings">הגדרות</string>
+    <string name="advanced">אפשרויות</string>
+    <string name="advancedSettings">הגדרות מתקדמות</string>
+    <string name="advancedSettingsTitle">הגדרות מתקדמות</string>
+    <string name="advancedSettingsDesc">לחץ כאן כדי לערוך הגדרות מתקדמות.</string>
+
+    <!-- Enable/Disable Notifications -->
+    <string name="notifications">התרעות בזמן אמת</string>
+    <string name="notificationsDesc">קבל התרעות צבע אדום בזמן אמת.</string>
+
+    <!-- Area Selection -->
+    <string name="alerts">התרעות</string>
+    <string name="search">הקלד מילות חיפוש...</string>
+    <string name="allString">הכל</string>
+    <string name="noneString">כבוי</string>
+
+    <!-- Secondary Alerts -->
+    <string name="secondaryAlerts">התרעות משנה</string>
+    <string name="secondaryAlertsTitle">התרעות משנה</string>
+    <string name="secondaryAlertsDesc">לחץ כאן להגדרת התרעות משנה כדי להתעדכן על אזורים אחרים במקביל.</string>
+
+    <!-- Enable Secondary Alerts -->
+    <string name="receiveSecondaryAlerts">התרעות משנה</string>
+    <string name="receiveSecondaryAlertsDesc">קבל התרעות משנה בזמן אמת.</string>
+
+    <!-- Secondary Sound -->
+    <string name="secondarySoundSelection">צליל משנה</string>
+    <string name="secondarySoundSelectionDesc">בחר צליל שיושמע כשיתקבלו התרעות משנה.</string>
+
+    <!-- Secondary Cities -->
+    <string name="selectedSecondaryCities">יישובי משנה</string>
+    <string name="selectedSecondaryCitiesDesc">בחר יישובים עבורם יתקבלו התרעות משנה.</string>
+
+    <!-- Region Selection -->
+    <string name="selectedRegions">מרחבים שלמים</string>
+    <string name="regionsDesc">בחר מרחבים שלמים עבורם תופעל האזעקה.</string>
+
+    <!-- City Selection -->
+    <string name="selectedCities">יישובים נוספים</string>
+    <string name="cityDesc">בחר יישובים  עבורם תופעל האזעקה, בנוסף למרחבים שנבחרו.</string>
+
+    <!-- Self-test -->
+    <string name="test">בדיקה עצמית</string>
+    <string name="testDesc">שלח אלי התרעה המדמה אזעקת צבע אדום.</string>
+    <string name="testSent">אנא המתן לקבלת עדכון הדחיפה</string>
+    <string name="verification">אמינות</string>
+    <string name="testSuccessful">הבדיקה העצמית הסתיימה בהצלחה!</string>
+    <string name="testSuccessfulLong">הבדיקה העצמית הסתיימה בהצלחה! התקבלו התרעות בדיקה משתי שירותי דחיפה שונים.</string>
+
+    <!-- Sound Selection -->
+    <string name="sounds">צלילים</string>
+    <string name="soundSelection">צליל אזעקת אמת</string>
+    <string name="soundSelectionDesc">בחר צליל שיושמע כאשר תופעל האזעקה.</string>
+    <string name="testSound">בדיקת צליל התרעה - לחץ כאן לביטול</string>
+    <string name="siren1">סירנה 1</string>
+    <string name="siren2">סירנה 2</string>
+    <string name="siren3">סירנה 3</string>
+    <string name="siren4">סירנה 4</string>
+    <string name="siren5">סירנה 5</string>
+    <string name="tiny">קצר 1</string>
+    <string name="calm">רגוע 1</string>
+    <string name="funny">מצחיק</string>
+    <string name="calm2">רגוע 2</string>
+    <string name="calm3">רגוע 3</string>
+    <string name="calm4">רגוע 4</string>
+    <string name="calm5">רגוע 5</string>
+    <string name="tiny2">קצר 2</string>
+    <string name="tiny3">קצר 3</string>
+    <string name="tiny4">קצר 4</string>
+    <string name="tiny5">קצר 5</string>
+    <string name="tiny6">קצר 6</string>
+    <string name="noSound">שקט</string>
+
+    <!-- Vibration Mode -->
+    <string name="vibrate">הפעל רטט</string>
+    <string name="vibrateDesc">כאשר תישמע אזעקת אמת המכשיר ירטוט.</string>
+
+    <!-- Secondary Vibration Mode -->
+    <string name="secondaryVibrate">הפעל רטט</string>
+    <string name="secondaryVibrateDesc">כאשר תתקבל התרעת משנה המכשיר ירטוט.</string>
+
+    <!-- Silent Mode Override -->
+    <string name="silentOverride">עקוף מצב שקט</string>
+    <string name="silentOverrideDesc">כאשר תתקבל אזעקת אמת, מצב שקט לא יחסום אותה.</string>
+
+    <!-- Silent Mode Override -->
+    <string name="secondarySilentOverride">עקוף מצב שקט</string>
+    <string name="secondarySilentOverrideDesc">כאשר תתקבל התרעת משנה, מצב שקט לא יחסום אותה.</string>
+
+    <!-- I'm Safe -->
+    <string name="safe">שלח \"אני במרחב מוגן\" </string>
+    <string name="safeCategory">\"אני במרחב מוגן\"</string>
+    <string name="imSafeMessage">אני במרחב מוגן - נשלח באמצעות צבע אדום באנדרואיד - https://redalert.me</string>
+    <string name="imSafeDesc">שלח \"אני במרחב מוגן\"</string>
+
+    <!-- I'm Safe - WhatsApp Integration -->
+    <string name="safeWhatsApp">שלח באמצעות WhatsApp</string>
+    <string name="safeWhatsAppDesc">לחיצה על כפתור הדיווח תוביל ישירות לבחירת אנשי הקשר.</string>
+    <string name="whatsAppNotInstalled">WhatsApp אינו מותקן!</string>
+
+    <!-- Languages -->
+    <string name="automatic">אוטומטי</string>
+
+    <!-- Language Selection -->
+    <string name="language">שפה</string>
+    <string name="langSelection">בחירת שפה (Language)</string>
+    <string name="langSelectionDesc">בחר שפה עבור ממשק האפליקציה.</string>
+    <string name="langSelectionSuccess">יש להפעיל מחדש את האפליקציה</string>
+
+    <!-- Contact -->
+    <string name="contact">צור קשר</string>
+    <string name="sentVia">נשלח באמצעות</string>
+    <string name="problemDesc">תיאור התקלה: </string>
+    <string name="debugInfo">מיעד נוסף</string>
+    <string name="contactDesc">לחץ כאן כדי ליצור איתנו קשר.</string>
+    <string name="reportProblem">דווח על תקלה</string>
+    <string name="manualContact">צור קשר בכתובת https://redalert.me</string>
+
+    <!-- Rate the App -->
+    <string name="rateApp">דרג את האפליקציה</string>
+    <string name="rateAppDesc">לחץ כאן כדי לדרג את האפליקציה.</string>
+
+    <!-- Volume -->
+    <string name="volume">עוצמת צליל</string>
+    <string name="volumeDesc">בחר עוצמת צליל לאזעקות אמת.</string>
+
+    <!-- Secondary Volume -->
+    <string name="secondaryVolume">עוצמת צליל</string>
+    <string name="secondaryVolumeDesc">בחר עוצמת צליל להתרעות משנה.</string>
+
+    <!-- Website -->
+    <string name="website">בקר באתר שלנו</string>
+    <string name="websiteDesc">בקר באתר הרשמי של האפליקציה.</string>
+
+    <!-- Share the Application -->
+    <string name="share">שיתוף</string>
+    <string name="shareDesc">שתף את האפליקציה</string>
+    <string name="shareMessage">אני משתמש באפליקציית \"צבע אדום\" באנדרואיד כדי לקבל התרעות על אזעקות צבע אדום  - https://redalert.me</string>
+
+    <!-- Self Test Result Dialogs -->
+    <string name="testingGCM">שולח התרעת בדיקה... (1/2)</string>
+    <string name="testingPushy">שולח התרעת בדיקה... (2/2)</string>
+    <string name="testFailed">הבדיקה העצמית נכשלה לחלוטין. לא התקבלה התרעת בדיקה מאף שירות התרעות. בדוק את החיבור לאינטרנט ונסה מאוחר יותר, וצור איתנו קשר אם התקלה אינה חולפת.</string>
+    <string name="gcmTestFailed">הבדיקה העצמית נכשלה חלקית. לא התקבלה התרעה דרך שרת ההתרעות של גוגל, אך כן התקבלה התרעה דרך שרת ההתרעות המשני. נסה שוב מאוחר יותר.</string>
+    <string name="pushyTestFailed">הבדיקה העצמית נכשלה חלקית. לא התקבלה התרעה דרך שרת ההתרעות המשני, אך כן התקבלה התרעה דרך שרת ההתרעות של גוגל. נסה שוב מאוחר יותר.</string>
+
+    <!-- Error Messages -->
+    <string name="notifyError">ארעה שגיאה בהצגת ההתרעה, מומלץ להפעיל מחדש את הטלפון.</string>
+    <string name="jsonFailed">ארעה שגיאה בטעינת נתונים מהשרת.</string>
+    <string name="noGooglePlayServices">הטלפון שלך אינו מכיל גרסה עדכנית של Google Play Services.</string>
+    <string name="pushRegistrationFailed">ארעה שגיאה בהרשמה לשירות עדכוני הדחיפה של האפליקציה. ננסה לרשום אותך שוב מאוחר יותר.</string>
+    <string name="apiRequestFailed">ארעה שגיאת תקשורת בטעינת נתונים מהשרת. בדוק את החיבור לאינטרנט ונסה שנית.</string>
+    <string name="registrationFailed">ההרשמה לשירות העדכונים נכשלה. אנא נסה מאוחר יותר.</string>
+
+    <!-- Success Messages -->
+    <string name="registrationID">קוד הרשמה</string>
+    <string name="pushRegistrationSuccess">ההרשמה הסתיימה בהצלחה</string>
+    <string name="pushRegistrationSuccessDesc">הינך רשום לשירות העדכונים של צבע אדום.\n\nעליך לבחור מרחבים ויישובים להתרעה כדי לקבל התרעות בזמן אמת.</string>
+
+    <!-- GPS -->
+    <string name="locationAlerts">התרעות לפי מיקום</string>
+    <string name="locationAlertsDesc">לחץ כאן להגדרת התרעות מבוססות מיקום כדי לקבל התרעה לפי המיקום הנוכחי שלך.</string>
+    <string name="gpsEnabled">התרעות לפי מיקום</string>
+    <string name="gpsEnabledDesc">קבל התרעות לפי מיקומך בזמן אמת.</string>
+    <string name="maxDistance">מרחק מקסימלי</string>
+    <string name="maxDistanceDesc">בחר את המרחק המקסימלי שלך מכל יישוב שמופעלת בו אזעקת צבע אדום.</string>
+    <string name="kilometer">ק\"מ</string>
+    <string name="nearbyCities">יישובים בקרבתי</string>
+    <string name="noLocation">ארעה שגיאה בקבלת מיקומך האחרון.</string>
+    <string name="noNearbyCities">אין יישובים בקרבתך, נסה להגדיל את המרחק המקסימלי.</string>
+
+    <!-- GPS Frequency -->
+    <string name="gpsFrequency">קצב דגימה</string>
+    <string name="gpsFrequencyDesc">הגדר את הקצב שבו האפליקציה תאכן את מיקומך דרך אנטנות סלולריות.</string>
+    <string name="every">כל</string>
+    <string name="minutes">דקות</string>
+
+    <!-- GPS Notification -->
+    <string name="enableGPSDesc">יש להפעיל את חיישן ה-GPS כדי לקבל התרעות לפי מיקום.</string>
+    <string name="enable">הפעל</string>
+
+    <!-- Alert Share -->
+    <string name="shareAlert">שתף את האזעקה</string>
+    <string name="alertSoundedAt">אזעקת צבע אדום נשמעה במרחב</string>
+    <string name="atTime">בשעה</string>
+    <string name="alertSentVia">- נשלח באמצעות צבע אדום באנדרואיד -
+        https://redalert.me
+    </string>
+
+    <!-- Alert Popup -->
+    <string name="open">פתח</string>
+    <string name="silence">השתק</string>
+    <string name="showPopup">הצג פופאפ</string>
+    <string name="showPopupDesc">כאשר תתקבל אזעקת אמת, יוצג פופאפ עם מידע על האזעקה.</string>
+
+    <!-- Do not translate from here on down -->
+
+    <!-- Static Language Identifiers -->
+    <string translatable="false" name="english">English</string>
+    <string translatable="false" name="spanish">Español</string>
+    <string translatable="false" name="russian">Pусский</string>
+    <string translatable="false" name="hebrew">עברית</string>
+
+    <!-- Preference Keys -->
+    <string translatable="false" name="selfTestPref">test</string>
+    <string translatable="false" name="langPref">lang</string>
+    <string translatable="false" name="soundPref">sound</string>
+    <string translatable="false" name="websitePref">website</string>
+    <string translatable="false" name="gcmTokenPref">gcm_registration_token</string>
+    <string translatable="false" name="pushyTokenPref">pushy_registration_token</string>
+    <string translatable="false" name="tutorialPref">tutorial_1_0_5</string>
+    <string translatable="false" name="ratePref">rating</string>
+    <string translatable="false" name="contactPref">contact</string>
+    <string translatable="false" name="advancedPref">advanced</string>
+    <string translatable="false" name="enabledPref">enabled</string>
+    <string translatable="false" name="lastAlertPref">last_alert</string>
+    <string translatable="false" name="lastSecondaryAlertPref">last_secondary_alert</string>
+    <string translatable="false" name="vibratePref">vibrate</string>
+    <string translatable="false" name="locationAlertsPref">gps</string>
+    <string translatable="false" name="gpsFrequencyPref">gps_frequency</string>
+    <string translatable="false" name="latitudePref">latitude</string>
+    <string translatable="false" name="longitudePref">longitude</string>
+    <string translatable="false" name="maxDistancePref">max_distance</string>
+    <string translatable="false" name="secondaryVibratePref">secondary_vibrate</string>
+    <string translatable="false" name="volumePref">volume</string>
+    <string translatable="false" name="locationPref">location</string>
+    <string translatable="false" name="nearbyCitiesPref">nearby_cities</string>
+    <string translatable="false" name="secondaryVolumePref">secondary_volume</string>
+    <string translatable="false" name="alertPopupPref">alert_popup</string>
+    <string translatable="false" name="silentOverridePref">override</string>
+    <string translatable="false" name="selectedRegionsPref">areas</string>
+    <string translatable="false" name="mainCategoryPref">main_category</string>
+    <string translatable="false" name="selectedCitiesPref">sub_areas</string>
+    <string translatable="false" name="secondaryPref">secondary</string>
+    <string translatable="false" name="imSafeWhatsAppPref">safe_whatsapp</string>
+    <string translatable="false" name="secondarySilentOverridePref">secondary_override</string>
+    <string translatable="false" name="secondaryEnabledPref">secondary_alerts</string>
+    <string translatable="false" name="secondarySoundPref">secondary_sound</string>
+    <string translatable="false" name="selectedSecondaryCitiesPref">secondary_sub_areas</string>
+
+    <!-- Default Volume -->
+    <string name="defaultAlertVolume" translatable="false">1.0</string>
+
+    <!-- Default GPS Values -->
+    <string translatable="false" name="defaultMaxDistance">0.1</string>
+    <string translatable="false" name="defaultGPSPollingFrequency">0.02</string>
+
+    <!-- MultiSelectSearchableListPreference Special Values -->
+    <string translatable="false" name="all">all</string>
+    <string translatable="false" name="none">none</string>
+    <string translatable="false" name="nullString">null</string>
+
+    <!-- Layout Designer -->
+    <string translatable="false" name="placeHolder">Placeholder</string>
+
+    <!-- Locale Codes -->
+    <string translatable="false" name="hebrewCode">iw</string>
+    <string translatable="false" name="englishCode">en</string>
+    <string translatable="false" name="spanishCode">es</string>
+    <string translatable="false" name="russianCode">ru</string>
+    <string translatable="false" name="hebrewCode2">he</string>
+
+    <!-- Sounds -->
+    <string translatable="false" name="defaultSound">alarm1</string>
+    <string translatable="false" name="defaultSecondarySound">tiny</string>
+</resources>

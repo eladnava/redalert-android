@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="RightJustifyTextView" parent="@android:style/Widget.TextView">
+        <item name="android:gravity">right|center_vertical</item>
+    </style>
+
+    <style name="RightJustifyDialogWindowTitle" parent="@android:style/TextAppearance.DialogWindowTitle">
+        <item name="android:gravity">right|center_vertical</item>
+    </style>
+
+    <style name="RightJustifyTheme">
+        <item name="android:textViewStyle">@style/RightJustifyTextView</item>
+        <item name="android:windowTitleStyle">@style/RightJustifyDialogWindowTitle</item>
+    </style>
+
+    <style name="IndeterminateProgressBar">
+        <item name="colorAccent">#fff0f0f0</item>
+    </style>
+
+    <style name="AppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="PopupDialog" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:backgroundDimAmount">0.7</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="AlertDialog" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- Note that we use the base animation style here (that is no
+             animations) because we really have no idea how this kind of
+             activity will be used. -->
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+    </style>
+
+    <!-- Default progress theme -->
+    <style name="ProgressDialogCompat">
+        <item name="android:textColor">#fff</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+</resources>

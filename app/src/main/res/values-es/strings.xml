@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App Title -->
+    <string name="appName">Tzeva Adom</string>
+
+    <!-- Registration Dialog -->
+    <string name="signing_up">Registrándose al servicio de notificaciones de Tzeva Adom…</string>
+
+    <!-- Dialog Buttons -->
+    <string name="okay">Ok</string>
+    <string name="error">Error</string>
+
+    <!-- Update Dialog -->
+    <string name="update">Actualizar versión</string>
+    <string name="updateDesc">Hay una nueva versión de la aplicación (%s), se recomienda actualizar.</string>
+    <string name="updatePositive">Actualizar</string>
+    <string name="notNow">No ahora</string>
+
+    <!-- Recent Alerts -->
+    <string name="noAlerts">No hay alarmas\ndesde el último día</string>
+    <string name="recentAlerts">Últimas alarmas</string>
+
+    <!-- Settings -->
+    <string name="settings">Configuración</string>
+    <string name="advanced">Opciones</string>
+    <string name="advancedSettings">Configuración avanzada</string>
+    <string name="advancedSettingsTitle">Configuración avanzada</string>
+    <string name="advancedSettingsDesc">Editar opciones de configuración avanzadas.</string>
+
+    <!-- Enable/Disable Notifications -->
+    <string name="notifications">Notificación en tiempo-real</string>
+    <string name="notificationsDesc">Recibir notificaciones en tiempo-real.</string>
+
+    <!-- Area Selection -->
+    <string name="alerts">Notificaciones</string>
+    <string name="search">Buscar…</string>
+    <string name="allString">Todo</string>
+    <string name="noneString">Desactivado</string>
+
+    <!-- Secondary Alerts -->
+    <string name="secondaryAlerts">Notificaciones secundarias</string>
+    <string name="secondaryAlertsTitle">Notificaciones secundarias</string>
+    <string name="secondaryAlertsDesc">Configurar notificaciones de alarmas en otras zonas del país.</string>
+
+    <!-- Enable Secondary Alerts -->
+    <string name="receiveSecondaryAlerts">Notificaciones secundarias</string>
+    <string name="receiveSecondaryAlertsDesc">Recibir notificaciones secundarias en tiempo-real.</string>
+
+    <!-- Secondary Sound -->
+    <string name="secondarySoundSelection">Sonido secundario</string>
+    <string name="secondarySoundSelectionDesc">Elegir el sonido de las notificaciones secundarias.</string>
+
+    <!-- Secondary Cities -->
+    <string name="selectedSecondaryCities">Localidades secundarias</string>
+    <string name="selectedSecondaryCitiesDesc">Seleccionar localidades para las cuales desea recibir notificaciones secundarias.</string>
+
+    <!-- Region Selection -->
+    <string name="selectedRegions">Zonas</string>
+    <string name="regionsDesc">Seleccionar zonas para las cuales se activará la notificación de alarma.</string>
+
+    <!-- City Selection -->
+    <string name="selectedCities">Localidades adicionales</string>
+    <string name="cityDesc">Seleccionar localidades adicionales para las cuales se activará la notificación de alarma (además de las zonas seleccionadas).</string>
+
+    <!-- Self-test -->
+    <string name="test">Prueba</string>
+    <string name="testDesc">Enviarme una notificación que simula una alarma \(Tzeva Adom\).</string>
+    <string name="testFailed">La auto-prueba ha fallado por completo. Sin alerta fue recibida de cualquier pasarela de empuje. Compruebe su conexión a Internet y vuelva a intentarlo más tarde, y ponerse en contacto con nosotros si el problema persiste.</string>
+    <string name="testSent">Por favor, espere a recibir la notificación de prueba</string>
+    <string name="verification">Fiabilidad</string>
+    <string name="testSuccessfulLong">El auto-test ha completado con éxito! Se recibieron alertas de prueba de ambas puertas de enlace de notificación push.</string>
+
+    <!-- Sound Selection -->
+    <string name="sounds">Sonidos</string>
+    <string name="soundSelection">Sonido de alarma Tzeva Adom</string>
+    <string name="soundSelectionDesc">Seleccionar el sonido de la notificación de alarma.</string>
+    <string name="testSound">Probar el sonido de notificación - oprima para cancelar</string>
+    <string name="siren1">Sirena 1</string>
+    <string name="siren2">Sirena 2</string>
+    <string name="siren3">Sirena 3</string>
+    <string name="siren4">Sirena 4</string>
+    <string name="siren5">Sirena 5</string>
+    <string name="tiny">Corto 1</string>
+    <string name="calm">Tranquilo 1</string>
+    <string name="funny">Gracioso</string>
+    <string name="calm2">Tranquilo 2</string>
+    <string name="calm3">Tranquilo 3</string>
+    <string name="calm4">Tranquilo 4</string>
+    <string name="calm5">Tranquilo 5</string>
+    <string name="tiny2">Corto 2</string>
+    <string name="tiny3">Corto 3</string>
+    <string name="tiny4">Corto 4</string>
+    <string name="tiny5">Corto 5</string>
+    <string name="tiny6">Corto 6</string>
+    <string name="noSound">Silencio</string>
+
+    <!-- Vibration Mode -->
+    <string name="vibrate">Activar vibración</string>
+    <string name="vibrateDesc">Hacer vibrar el dispositivo cuando suena la alarma Tzeva Adom.</string>
+
+    <!-- Secondary Vibration Mode -->
+    <string name="secondaryVibrate">Activar vibración</string>
+    <string name="secondaryVibrateDesc">Hacer vibrar el dispositivo cuando se recibe una notificación secundaria.</string>
+
+    <!-- Silent Mode Override -->
+    <string name="silentOverride">Cancelar modo silencioso</string>
+    <string name="silentOverrideDesc">Cancelar el modo silencioso cuando suena la alarma Tzeva Adom.</string>
+
+    <!-- Silent Mode Override -->
+    <string name="secondarySilentOverride">Cancelar modo silencioso</string>
+    <string name="secondarySilentOverrideDesc">Cancelar el modo silencioso cuando se recibe una notificación secundaria.</string>
+
+    <!-- I'm Safe -->
+    <string name="safe">Enviar  \"Estoy en el área protegida\"</string>
+    <string name="safeCategory">\"Estoy en el área protegida\"</string>
+    <string name="imSafeMessage">Estoy en el área protegida - Enviado desde Tzeva Adom en Android - https://redalert.me</string>
+    <string name="imSafeDesc">Enviar \"Estoy en el área protegida\"</string>
+
+    <!-- I'm Safe - WhatsApp Integration -->
+    <string name="safeWhatsApp">Enviar mediante WhatsApp</string>
+    <string name="safeWhatsAppDesc">Elegir contactos a los que desea enviar el mensaje</string>
+    <string name="whatsAppNotInstalled">¡WhatsApp no está instalado!</string>
+
+    <!-- Languages -->
+    <string name="automatic">Automatic</string>
+    <string name="language">Language</string>
+    <string name="langSelection">App language</string>
+    <string name="langSelectionDesc">Change the application\'s language.</string>
+    <string name="langSelectionSuccess">Please restart the application</string>
+
+    <!-- Contact -->
+    <string name="contact">Contacto</string>
+    <string name="sentVia">Enviado mediante</string>
+    <string name="problemDesc">Descripción del error:</string>
+    <string name="contactDesc">Enviar un email al autor de la aplicación.</string>
+    <string name="reportProblem">Reportar un error o problema</string>
+    <string name="manualContact">Contactar al autor de la aplicación: support@redalert.me</string>
+
+    <!-- Rate the App -->
+    <string name="rateApp">Califique la aplicación</string>
+    <string name="rateAppDesc">Califique la aplicación en Google Play.</string>
+
+    <!-- Volume -->
+    <string name="volume">Intensidad de sonido</string>
+    <string name="volumeDesc">Seleccione la intensidad del sonido de las notificaciones de alarma.</string>
+
+    <!-- Secondary Volume -->
+    <string name="secondaryVolume">Intensidad de sonido</string>
+    <string name="secondaryVolumeDesc">Seleccione la intensidad del sonido de las notificaciones secundarias.</string>
+
+    <!-- Website -->
+    <string name="website">Visite nuestro sitio</string>
+    <string name="websiteDesc">Haga clic aquí para visitar nuestra página web oficial.</string>
+
+    <!-- Share the Application -->
+    <string name="share">Compartir</string>
+    <string name="shareDesc">Comparta la aplicación</string>
+    <string name="shareMessage">Yo uso la aplicación \"Tzeva Adom\" en Android para recibir notificaciones en tiempo-real de alarmas Tzeva Adom - https://redalert.me</string>
+
+    <!-- Error Messages -->
+    <string name="notifyError">Se ha producido un error al mostrar la alerta, es posible que desee para reiniciar el teléfono.</string>
+    <string name="jsonFailed">Se produjo un error al intentar cargar los datos del servidor.</string>
+    <string name="noGooglePlayServices">El teléfono no tiene una versión actualizada de Google Play Servicios instalados.</string>
+    <string name="pushRegistrationFailed">Se produjo un error al firmar para arriba para las notificaciones de cohetes de empuje. Vamos a tratar de firmar para arriba de nuevo en el futuro.</string>
+    <string name="apiRequestFailed">Una solicitud para recuperar información de nuestros servidores fallaron. Por favor, compruebe su conexión a Internet y vuelva a intentarlo.</string>
+    <string name="registrationFailed">El registro al servicio de notificaciones no tuvo éxito. Por favor, intente más tarde.</string>
+
+    <!-- Success Messages -->
+    <string name="registrationID">Código de registro</string>
+    <string name="pushRegistrationSuccess">El registro ha finalizado con éxito</string>
+    <string name="pushRegistrationSuccessDesc">Has registrado correctamente para cohetes notificaciones de alerta a través de RedAlert.\n\nPor favor seleccione sus regiones y ciudades de alerta preferidos para recibir alertas de cohetes.</string>
+
+    <!-- GPS -->
+    <string name="locationAlerts">Ubicación alertas</string>
+    <string name="locationAlertsDesc">Haga clic aquí para configurar alertas basadas en la localización y recibirás un email con cohetes en su área de forma automática.</string>
+    <string name="gpsEnabled">Ubicación alertas</string>
+    <string name="gpsEnabledDesc">Recibe alertas basadas en la localización en tiempo real.</string>
+    <string name="maxDistance">Distancia máxima</string>
+    <string name="maxDistanceDesc">Deslice para seleccionar la distancia máxima de cada ciudad que recibe una alerta de cohetes.</string>
+    <string name="kilometer">km</string>
+    <string name="nearbyCities">Ciudades cercanas</string>
+    <string name="noLocation">No se pudo determinar la última ubicación conocida.</string>
+    <string name="noNearbyCities">No hay ciudades cercanas, intente cambiar la distancia máxima.</string>
+
+    <!-- GPS Frequency -->
+    <string name="gpsFrequency">Intervalo de actualización</string>
+    <string name="gpsFrequencyDesc">Deslice para seleccionar el intervalo de tiempo, en minutos, para actualizaciones de ubicación.</string>
+    <string name="every">Cada</string>
+    <string name="minutes">minutos</string>
+
+    <!-- GPS Notification -->
+    <string name="enableGPSDesc">Por favor, activa el GPS para recibir alertas basadas en la localización.</string>
+    <string name="enable">Habilitar</string>
+
+    <!-- Alert Share -->
+    <string name="shareAlert">Comparte la alerta</string>
+    <string name="alertSoundedAt">Una alerta de código rojo sonaba apagado en</string>
+    <string name="atTime">en</string>
+    <string name="alertSentVia">- Enviado desde Tzeva Adom en Android -
+        https://redalert.me
+    </string>
+
+    <!-- Alert Popup -->
+    <string name="open">Abierta</string>
+    <string name="silence">Silencio</string>
+    <string name="showPopup">Mostrar popup</string>
+    <string name="showPopupDesc">Alertas se mostrarán en una ventana emergente.</string>
+    <string name="loading">Cargando...</string>
+    <string name="testingGCM">Prueba de impulso de puerta de enlace... (1/2)</string>
+    <string name="testingPushy">Prueba de impulso de puerta de enlace... (2/2)</string>
+    <string name="gcmTestFailed">La auto-prueba ha fallado parcialmente. Sin alerta se recibió el impulso de puerta de enlace de Google, pero una alerta fue recibida con éxito a través de la puerta de entrada de empuje secundaria. Por favor, inténtelo de nuevo más tarde.</string>
+    <string name="pushyTestFailed">La auto-prueba ha fallado parcialmente. Sin alerta se recibió de la puerta de entrada de empuje secundaria, pero una alerta fue recibida con éxito a través de la puerta de enlace de empuje de Google. Por favor, inténtelo de nuevo más tarde.</string>
+    <string name="debugInfo">Información adicional:</string>
+    <string name="testSuccessful">El auto-test ha completado con éxito! </string>
+</resources>

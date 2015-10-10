@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SearchableMultiSelectPreference">
+        <attr format="string" name="checkAll"/>
+        <attr format="string" name="separator"/>
+    </declare-styleable>
+
+    <!-- Copyright 2012 Jay Weisskopf Licensed under the MIT License (see LICENSE.txt) -->
+    <declare-styleable name="SliderPreference">
+        <attr name="android:summary" />
+    </declare-styleable>
+</resources>

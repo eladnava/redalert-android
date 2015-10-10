@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.red.alert"
+          android:installLocation="internalOnly">
+
+    <!-- Permission Declarations -->
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <!-- Google Cloud Messaging -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+
+    <!-- GCM App-Specific Declaration -->
+    <permission
+        android:name="com.red.alert.permission.C2D_MESSAGE"
+        android:protectionLevel="signature"/>
+
+    <!-- Google Play Services Feature Declarations -->
+    <uses-feature
+        android:name="android.hardware.location"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.location.network"
+        android:required="false"/>
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true"/>
+
+    <!-- RedAlert -->
+    <application
+        android:supportsRtl="true"
+        android:label="@string/appName"
+        android:icon="@drawable/ic_launcher">
+
+        <!-- Google Maps v2 Public API Key -->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyCoL_3SJ4Vlp7lP777Kp9pc1LIchdGM3og"/>
+
+        <!-- Main Activity -->
+        <activity
+            android:name=".activities.Main"
+            android:label="@string/appName"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Alert View -->
+        <activity
+            android:name=".activities.AlertView"
+            android:label="@string/appName"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
+
+        <!-- Alert Popup -->
+        <activity
+            android:name=".activities.AlertPopup"
+            android:label="@string/appName"
+            android:launchMode="singleInstance"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:theme="@style/PopupDialog"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
+
+        <!-- Settings -->
+        <activity
+            android:name=".activities.settings.General"
+            android:label="@string/settings"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
+
+        <!-- Advanced Settings -->
+        <activity
+            android:name=".activities.settings.Advanced"
+            android:label="@string/advancedSettings"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
+
+        <!-- Secondary Alerts Settings -->
+        <activity
+            android:name=".activities.settings.alerts.SecondaryAlerts"
+            android:label="@string/secondaryAlerts"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
+
+        <!-- Location Alerts Settings -->
+        <activity
+            android:name=".activities.settings.alerts.LocationAlerts"
+            android:label="@string/secondaryAlerts"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
+
+        <!-- Sound Picker Activity -->
+        <activity
+            android:name=".ui.activities.SoundPickerActivity"
+            android:theme="@style/AlertDialog"
+            android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.RINGTONE_PICKER"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Phone Boot Receiver -->
+        <receiver android:name=".receivers.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- Notification Deleted Event Receiver -->
+        <receiver android:name=".receivers.NotificationDeletedReceiver">
+            <intent-filter>
+                <action android:name="NOTIFICATION_DELETED"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- App Updated Receiver -->
+        <receiver android:name=".receivers.UpdateReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REPLACED"/>
+                <data android:path="com.red.alert" android:scheme="package"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- Sound Services -->
+        <service android:name=".services.sound.PlaySoundService"/>
+        <service android:name=".services.sound.StopSoundService"/>
+
+        <!-- Location Polling Service -->
+        <service android:name=".services.location.LocationService"/>
+
+        <!-- GCM Declarations -->
+
+        <!-- Internal GCM Receiver -->
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
+                <category android:name="com.red.alert"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- GCM Push Receiver -->
+        <service
+            android:name=".services.gcm.GCMPushReceiverService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+        </service>
+
+        <!-- GCM InstanceID Service -->
+        <service
+            android:name=".services.gcm.GCMInstanceIDService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID"/>
+            </intent-filter>
+        </service>
+
+        <!-- GCM Registration Service -->
+        <service android:name=".services.gcm.GCMRegistrationService" android:exported="false"></service>
+
+        <!-- End GCM Declarations -->
+
+        <!-- Pushy Declarations -->
+
+        <!-- Pushy Notification Receiver -->
+        <!-- Incoming pushes will be redirected to the following BroadcastReceiver class -->
+        <receiver android:name=".receivers.pushy.PushyPushReceiver" >
+            <intent-filter>
+                <!-- Do not modify this -->
+                <action android:name="pushy.me" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Pushy Update Receiver -->
+        <!-- Do not modify - internal BroadcastReceiver that restarts the listener service -->
+        <receiver android:name="me.pushy.sdk.receivers.PushyUpdateReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Pushy Boot Receiver -->
+        <!-- Do not modify - internal BroadcastReceiver that restarts the listener service -->
+        <receiver android:name="me.pushy.sdk.receivers.PushyBootReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- Pushy Socket Service -->
+        <!-- Do not modify - internal socket background service -->
+        <service android:name="me.pushy.sdk.services.PushySocketService"/>
+
+        <!-- End Pushy Declarations -->
+    </application>
+</manifest>

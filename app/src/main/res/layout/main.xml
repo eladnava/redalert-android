@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#e9e9e9"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ListView
+        android:id="@+id/alerts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomContainer"
+        android:cacheColorHint="@android:color/transparent"/>
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:indeterminate="true"
+        android:layout_centerInParent="true"/>
+
+    <LinearLayout
+        android:gravity="center"
+        android:visibility="gone"
+        android:id="@+id/noAlerts"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:src="@drawable/ic_redalert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:textSize="17sp"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:lineSpacingExtra="1dp"
+            android:text="@string/noAlerts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottomContainer"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/safe"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:text="@string/safe"
+            android:background="#ff4032"
+            android:layout_height="50dp"
+            android:layout_width="fill_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"/>
+    </LinearLayout>
+</RelativeLayout>
+

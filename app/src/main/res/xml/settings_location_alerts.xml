@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/locationAlerts">
+    <PreferenceCategory
+        android:title="@string/settings">
+        <CheckBoxPreference
+            android:textDirection="rtl"
+            android:key="@string/locationAlertsPref"
+            android:title="@string/gpsEnabled"
+            android:summary="@string/gpsEnabledDesc"
+            android:defaultValue="false"/>
+        <com.red.alert.ui.elements.SliderPreference
+            android:key="@string/gpsFrequencyPref"
+            android:title="@string/gpsFrequency"
+            android:summary="@string/gpsFrequencyDesc"
+            android:defaultValue="@string/defaultGPSPollingFrequency"
+            android:dialogMessage="@string/gpsFrequencyDesc"
+            android:dependency="@string/locationAlertsPref"/>
+        <com.red.alert.ui.elements.SliderPreference
+            android:key="@string/maxDistancePref"
+            android:title="@string/maxDistance"
+            android:summary="@string/maxDistanceDesc"
+            android:defaultValue="@string/defaultMaxDistance"
+            android:dialogMessage="@string/maxDistanceDesc"
+            android:dependency="@string/locationAlertsPref"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/verification">
+        <Preference
+            android:key="@string/nearbyCitiesPref"
+            android:title="@string/nearbyCities"/>
+    </PreferenceCategory>
+</PreferenceScreen>
