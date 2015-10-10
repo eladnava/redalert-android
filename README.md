@@ -1,4 +1,4 @@
-<h1> <a href="https://redalert.me/" target="_blank"><img src="https://redalert.me/images/logo.png" align="right" height="40"></a> RedAlert for Android</h1>
+<h1> <a href="https://redalert.me/" target="_blank"><img src="https://redalert.me/images/logo_big.png" align="right" height="40"></a> RedAlert for Android</h1>
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/eladnava/redalert-android?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 
