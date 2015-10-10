@@ -431,14 +431,14 @@ public class General extends AppCompatPreferenceActivity
         // Add debug info
         body += getString(R.string.debugInfo) + ": ";
 
-        // Add GCM registration info
+        // Add setting values & push notification device information
         body += "primary.enabled=" + AppPreferences.getNotificationsEnabled(this) + ", ";
         body += "secondary.enabled=" + AppPreferences.getNotificationsEnabled(this) + ", ";
         body += "location.enabled=" + AppPreferences.getLocationAlertsEnabled(this) + ", ";
         body += "volume.primary=" + AppPreferences.getPrimaryAlertVolume(this, -1) + ", ";
         body += "volume.secondary=" + AppPreferences.getSecondaryAlertVolume(this, -1) + ", ";
         body += "gcm=" + GCMRegistration.isRegistered(this) + ", ";
-        body += "gcm.token=" + GCMRegistration.getRegistrationToken(this);
+        body += "gcm.token=" + GCMRegistration.getRegistrationToken(this) + ", ";
         body += "pushy=" + PushyRegistration.isRegistered(this) + ", ";
         body += "pushy.token=" + PushyRegistration.getRegistrationToken(this);
 
