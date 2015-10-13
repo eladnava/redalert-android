@@ -1,8 +1,6 @@
 <h1> <a href="https://redalert.me/" target="_blank"><img src="https://redalert.me/images/logo_big.png" align="right" height="40"></a> RedAlert for Android</h1>
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/eladnava/redalert-android?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-
-
 RedAlert was developed by volunteers to provide real-time rocket alerts for Israeli citizens.
 
 * [Official Site](https://redalert.me)
@@ -13,6 +11,14 @@ The app utilizes real-time alert data provided by the Home Front Command (Pikud 
 # Screenshots
 
 <img src="http://redalert.me/images/screenshot1.png" width="250"> <img src="http://redalert.me/images/screenshot2.png" width="250">
+
+# Achievements
+* **4.7**/5.0 star rating
+* **450,000+** downloads
+* Published by **Geektime** as [the fastest rocket alert app](http://www.geektime.co.il/push-notifications-at-protective-edge/)
+* Featured by the Israeli government on their [Google+ page](https://plus.google.com/+Israel/posts/U3juWS1YPK4)
+* Ranked **1st place** on **Google Play's Top Free** in Israel for 4 weeks during Operation Protective Edge
+* Won **2nd place** in the [Ford SYNC AppLink TLV](https://www.getinthecartlv.com/) hackathon for integrating the app with Ford cars
 
 # Features
 
