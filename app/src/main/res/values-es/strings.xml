@@ -193,6 +193,13 @@
     <string name="enableGPSDesc">Por favor, activa el GPS para recibir alertas basadas en la localización.</string>
     <string name="enable">Habilitar</string>
 
+    <!-- Disconnected Notification -->
+    <string name="disconnectedNotification">Indicarme cuando esté desconectado</string>
+    <string name="disconnectedNotificationDesc">Cuando falla la conexión con el servidor de alerta, una notificación le avisará y le impide confiar en la aplicación.</string>
+    <string name="connected">Conectado con el servidor de alerta de cohetes</string>
+    <string name="connecting">Conexión con el servidor de alerta de cohetes...</string>
+    <string name="notConnected">No está conectado al servidor de alerta cohete</string>
+
     <!-- Alert Share -->
     <string name="shareAlert">Comparte la alerta</string>
     <string name="alertSoundedAt">Una alerta de código rojo sonaba apagado en</string>

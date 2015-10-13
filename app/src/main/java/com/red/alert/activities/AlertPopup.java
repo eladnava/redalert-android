@@ -335,7 +335,7 @@ public class AlertPopup extends AppCompatActivity
     public static void showAlertPopup(String alertType, String zone, Context context)
     {
         // User disabled this feature?
-        if (!AppPreferences.isPopupEnabled(context))
+        if (!AppPreferences.getPopupEnabled(context))
         {
             // Stop execution
             return;

@@ -3,25 +3,24 @@ package com.red.alert.activities.settings;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.Handler;
-import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.view.MenuItem;
 
 import com.red.alert.R;
 import com.red.alert.activities.settings.alerts.LocationAlerts;
 import com.red.alert.activities.settings.alerts.SecondaryAlerts;
-import com.red.alert.logic.services.ServiceManager;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.ui.activities.AppCompatPreferenceActivity;
 import com.red.alert.ui.elements.SliderPreference;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.utils.feedback.Volume;
+import com.red.alert.utils.networking.Connectivity;
 
 public class Advanced extends AppCompatPreferenceActivity
 {
     Preference mLocationAlerts;
     Preference mSecondaryAlerts;
+    Preference mDisconnectedNotification;
 
     SliderPreference mVolumeSelection;
 
@@ -66,6 +65,7 @@ public class Advanced extends AppCompatPreferenceActivity
         // Cache resource IDs
         mLocationAlerts = findPreference(getString(R.string.locationPref));
         mSecondaryAlerts = findPreference(getString(R.string.secondaryPref));
+        mDisconnectedNotification = findPreference(getString(R.string.disconnectedNotificationPref));
         mVolumeSelection = (SliderPreference) findPreference(getString(R.string.volumePref));
 
         // Set up listeners
@@ -102,6 +102,20 @@ public class Advanced extends AppCompatPreferenceActivity
 
                 // Show settings
                 startActivity(locationAlerts);
+
+                // Consume event
+                return true;
+            }
+        });
+
+        // Set up disconnected notification click listener
+        mDisconnectedNotification.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
+        {
+            @Override
+            public boolean onPreferenceClick(Preference preference)
+            {
+                // Refresh the disconnection notification
+                Connectivity.refreshConnectionNotification(Advanced.this);
 
                 // Consume event
                 return true;

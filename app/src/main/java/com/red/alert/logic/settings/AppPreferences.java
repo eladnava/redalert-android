@@ -7,16 +7,22 @@ import com.red.alert.utils.caching.Singleton;
 
 public class AppPreferences
 {
+    public static boolean getNotificationsEnabled(Context context)
+    {
+        // Get saved preference
+        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.enabledPref), true);
+    }
+
     public static boolean getLocationAlertsEnabled(Context context)
     {
         // Get saved preference
         return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.locationAlertsPref), false);
     }
 
-    public static boolean getNotificationsEnabled(Context context)
+    public static boolean getDisconnectedNotificationEnabled(Context context)
     {
         // Get saved preference
-        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.enabledPref), true);
+        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.disconnectedNotificationPref), false);
     }
 
     public static boolean getSecondaryNotificationsEnabled(Context context)
@@ -31,17 +37,18 @@ public class AppPreferences
         return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.tutorialPref), false);
     }
 
+    public static boolean getPopupEnabled(Context context)
+    {
+        // Get saved preference
+        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.alertPopupPref), true);
+    }
+
     public static void setTutorialDisplayed(Context context)
     {
         // Update stored value
         Singleton.getSharedPreferences(context).edit().putBoolean(context.getString(R.string.tutorialPref), true).commit();
     }
 
-    public static boolean isPopupEnabled(Context context)
-    {
-        // Get saved preference
-        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.alertPopupPref), true);
-    }
 
     public static float getPrimaryAlertVolume(Context context, float overrideValue)
     {
