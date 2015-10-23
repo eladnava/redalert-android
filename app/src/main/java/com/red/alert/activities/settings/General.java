@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -440,7 +441,11 @@ public class General extends AppCompatPreferenceActivity
         body += "gcm=" + GCMRegistration.isRegistered(this) + ", ";
         body += "gcm.token=" + GCMRegistration.getRegistrationToken(this) + ", ";
         body += "pushy=" + PushyRegistration.isRegistered(this) + ", ";
-        body += "pushy.token=" + PushyRegistration.getRegistrationToken(this);
+        body += "pushy.token=" + PushyRegistration.getRegistrationToken(this) + ", ";
+        body += "android.sdk=" + Build.VERSION.SDK_INT + ", ";
+        body += "android.version=" + Build.VERSION.RELEASE + ", ";
+        body += "phone.manufacturer=" + Build.MANUFACTURER + ", ";
+        body += "phone.model=" + Build.MODEL;
 
         // Break 2 lines
         body += "\r\n\r\n";
