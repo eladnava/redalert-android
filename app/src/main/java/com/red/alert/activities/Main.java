@@ -49,6 +49,7 @@ import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.compatibility.DozeCompatibility;
 import com.red.alert.utils.feedback.Volume;
 import com.red.alert.utils.formatting.StringUtils;
+import com.red.alert.utils.integration.GooglePlayServices;
 import com.red.alert.utils.integration.WhatsApp;
 import com.red.alert.utils.metadata.AppVersion;
 import com.red.alert.utils.metadata.LocationData;
@@ -629,22 +630,36 @@ public class Main extends AppCompatActivity
         @Override
         protected Exception doInBackground(Integer... Parameter)
         {
+            // Store exception from registration attempts
+            Exception error = null;
+
             try
             {
-                // Register for GCM push notifications
-                GCMRegistration.registerForPushNotifications(Main.this);
-
                 // Register for Pushy push notifications
                 PushyRegistration.registerForPushNotifications(Main.this);
             }
             catch (Exception exc)
             {
                 // Return exception to onPostExecute
-                return exc;
+                error = exc;
             }
 
-            // We're good!
-            return null;
+            // Make sure we have Google Play Services installed
+            if (GooglePlayServices.isAvailable(Main.this))
+            {
+                try
+                {
+                    // Register for GCM push notifications
+                    GCMRegistration.registerForPushNotifications(Main.this);
+                }
+                catch (Exception exc)
+                {
+                    error = exc;
+                }
+            }
+
+            // Return exc (if any)
+            return error;
         }
 
         @Override
