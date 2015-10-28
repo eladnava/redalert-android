@@ -87,9 +87,6 @@ public class Main extends AppCompatActivity
         // Initialize app UI
         initializeUI();
 
-        // Got any dialogs to display?
-        showImportantDialogs();
-
         // Start polling for recent alerts
         pollRecentAlerts();
 
@@ -98,6 +95,9 @@ public class Main extends AppCompatActivity
 
         // Start the app services
         ServiceManager.startAppServices(this);
+
+        // Got any dialogs to display?
+        showImportantDialogs();
     }
 
     void initializeUpdateChecker()

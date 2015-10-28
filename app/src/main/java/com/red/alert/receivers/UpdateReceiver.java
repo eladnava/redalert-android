@@ -14,15 +14,15 @@ public class UpdateReceiver extends WakefulBroadcastReceiver
     @Override
     public void onReceive(Context context, Intent intent)
     {
-        // Log it
-        Log.d(Logging.TAG, "App updated");
-
         // Got package replaced event?
         if (intent.ACTION_PACKAGE_REPLACED.equals(intent.getAction()))
         {
             // Is it this package?
             if (intent.getData().getSchemeSpecificPart().equals(context.getPackageName()))
             {
+                // Log it
+                Log.d(Logging.TAG, "App updated");
+
                 // Call the intent service to re-register the device
                 Intent gcmIntent = new Intent(context, GCMRegistrationService.class);
 
