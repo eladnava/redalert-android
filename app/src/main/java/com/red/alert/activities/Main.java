@@ -38,7 +38,6 @@ import com.red.alert.model.res.VersionInfo;
 import com.red.alert.ui.adapters.AlertAdapter;
 import com.red.alert.ui.compatibility.ProgressDialogCompat;
 import com.red.alert.ui.dialogs.AlertDialogBuilder;
-import com.red.alert.ui.dialogs.custom.CompatibilityDialogs;
 import com.red.alert.ui.dialogs.custom.LocationDialogs;
 import com.red.alert.ui.dialogs.custom.UpdateDialogs;
 import com.red.alert.ui.localization.rtl.RTLSupport;
@@ -46,7 +45,6 @@ import com.red.alert.ui.notifications.AppNotifications;
 import com.red.alert.utils.bugtracking.SplunkMINT;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.communication.Broadcasts;
-import com.red.alert.utils.compatibility.DozeCompatibility;
 import com.red.alert.utils.feedback.Volume;
 import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.integration.GooglePlayServices;
@@ -88,6 +86,9 @@ public class Main extends AppCompatActivity
 
         // Initialize app UI
         initializeUI();
+
+        // Got any dialogs to display?
+        showImportantDialogs();
 
         // Start polling for recent alerts
         pollRecentAlerts();
@@ -254,9 +255,6 @@ public class Main extends AppCompatActivity
         // Reload alerts manually
         reloadRecentAlerts();
 
-        // Got any dialogs to display?
-        showImportantDialogs();
-
         // Support for RTL languages
         RTLSupport.mirrorActionBar(this);
 
@@ -303,17 +301,7 @@ public class Main extends AppCompatActivity
             // Register async
             new RegisterPushAsync().execute();
 
-            // Avoid other checks (to avoid duplicate dialogs)
-            return;
-        }
-
-        // Compatibility with Doze and App Standby (Android 6.0+)
-        if (DozeCompatibility.shouldDisableBatteryOptimizations(this))
-        {
-            // Tell user about Doze mode what to do next
-            CompatibilityDialogs.showDozeDialog(this);
-
-            // Avoid other checks (to avoid duplicate dialogs)
+            // Avoid checking for updates now (to avoid duplicate dialog)
             return;
         }
 

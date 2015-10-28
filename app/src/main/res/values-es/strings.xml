@@ -220,6 +220,4 @@
     <string name="pushyTestFailed">La auto-prueba ha fallado parcialmente. Sin alerta se recibió de la puerta de entrada de empuje secundaria, pero una alerta fue recibida con éxito a través de la puerta de enlace de empuje de Google. Por favor, inténtelo de nuevo más tarde.</string>
     <string name="debugInfo">Información adicional:</string>
     <string name="testSuccessful">El auto-test ha completado con éxito! </string>
-    <string name="dozeDesc">Su dispositivo utiliza una función de ahorro de energía (Doze) que pueden impedir la aplicación de recibir alertas de cohetes en tiempo real cuando la pantalla está apagada y el teléfono está desconectado.\n\nDebe permitir RedAlert para omitir este modo de ahorro de energía pulsando "Sí" en la siguiente pantalla.</string>
-    <string name="doze">Ahorro de energía Activado</string>
 </resources>

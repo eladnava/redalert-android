@@ -175,6 +175,4 @@
     <string name="pushyTestFailed">The self-test failed partially. No alert was received from the secondary push gateway, but an alert was successfully received via Google\'s push gateway. Please try again later.</string>
     <string name="debugInfo">Additional Info: </string>
     <string name="testSuccessful">The self-test has completed successfully!</string>
-    <string name="dozeDesc">Your device utilizes a power saving feature (Doze) that may prevent the app from receiving rocket alerts in real-time when the screen is off and the phone is unplugged.\n\nYou must allow RedAlert to bypass this power-saving mode by pressing "Yes" in the next screen.</string>
-    <string name="doze">Power Saving Enabled</string>
 </resources>

@@ -19,10 +19,6 @@
     <string name="updatePositive">עדכן</string>
     <string name="notNow">לא עכשיו</string>
 
-    <!-- Doze Dialog -->
-    <string name="doze">מצב חסכון בסוללה מופעל</string>
-    <string name="dozeDesc">במכשירך מותקן מצב חסכון בסוללה (Doze) העלול למנוע מהאפליקציה לקבל התרעות בזמן אמת כאשר מסך הטלפון כבוי.\n\nעליך לאפשר לצבע אדום לעקוף מצב זה על-ידי לחיצה על "כן" במסך הבא.</string>
-
     <!-- Recent Alerts -->
     <string name="noAlerts">אין התרעות\nמהיום האחרון</string>
     <string name="recentAlerts">התרעות אחרונות</string>
