@@ -34,7 +34,7 @@ public class AppPreferences
     public static boolean getMiBandIntegrationEnabled(Context context)
     {
         // Get saved preference
-        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.miBandPref), true);
+        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.miBandPref), false);
     }
 
     public static boolean getTutorialDisplayed(Context context)

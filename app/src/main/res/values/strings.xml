@@ -89,8 +89,11 @@
     <string name="miBandIntegrationDesc">התרעות בזמן אמת יפעילו את הרטט ותאורת ה-LED בצמיד.</string>
 
     <!-- Integrations Test -->
+    <string name="connecting">מתחבר...</string>
     <string name="integrationsTest">בדיקת אינטגרציות</string>
     <string name="integrationsTestDesc">בדוק את תקינות החיבור למכשירים החיצוניים.</string>
+    <string name="integrationsTestSuccess">בדיקת תקינות החיבור למכשירים החיצוניים הסתיימה בהצלחה.\n\nוודא שהמכשירים הגיבו לבדיקה.</string>
+    <string name="miBandTestFailed">ארעה תקלה בהתחברות לצמיד Mi Band. נסה למחוק כל אפליקציה אחרת המתממשקת עם הצמיד (כולל Mi Fit) במידה וקיימת. בנוסף, נסה לגעת בחלק המתכתי של הצמיד (יש לו חיישן) כדי לעורר אותו ולגרום לו להתחבר עם הטלפון.\n\nצור קשר אם אינך מצליח להתחבר לצמיד לאחר כמה ניסיונות.</string>
 
     <!-- Enable Bluetooth Dialog -->
     <string name="enableBluetooth">הפעל Bluetooth</string>
@@ -240,9 +243,8 @@
         https://redalert.me
     </string>
 
-    <!-- Disconnection Notification -->>
+    <!-- Disconnection Notification -->
     <string name="connected">מחובר לשרת ההתרעות</string>
-    <string name="connecting">מתחבר לשרת ההתרעות...</string>
     <string name="notConnected">לא מחובר לשרת ההתרעות, בדוק את החיבור</string>
     <string name="disconnectedNotification">הצג התרעה כאשר אין חיבור</string>
     <string name="disconnectedNotificationDesc">כאשר החיבור לשרת ההתרעות מתנתק, תוצג התרעה כדי למנוע תלות באפליקציה.</string>

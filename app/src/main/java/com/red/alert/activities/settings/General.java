@@ -513,7 +513,7 @@ public class General extends AppCompatPreferenceActivity
     boolean didPassGcmTest()
     {
         // Calculate the max timestamp
-        long maxTimestamp = System.currentTimeMillis() + Testing.TEST_TIMEOUT_SECONDS * 1000;
+        long maxTimestamp = System.currentTimeMillis() + Testing.PUSH_GATEWAY_TIMEOUT_SECONDS * 1000;
 
         // Wait until boolean value changes or enough time passes
         while (!mGcmTestPassed && System.currentTimeMillis() < maxTimestamp)
@@ -533,7 +533,7 @@ public class General extends AppCompatPreferenceActivity
     boolean didPassPushyTest()
     {
         // Calculate the max timestamp
-        long maxTimestamp = System.currentTimeMillis() + Testing.TEST_TIMEOUT_SECONDS * 1000;
+        long maxTimestamp = System.currentTimeMillis() + Testing.PUSH_GATEWAY_TIMEOUT_SECONDS * 1000;
 
         // Wait until boolean value changes or enough time passes
         while (!mPushyTestPassed && System.currentTimeMillis() < maxTimestamp)
@@ -676,7 +676,7 @@ public class General extends AppCompatPreferenceActivity
         @Override
         protected void onPostExecute(Integer result)
         {
-            // No longer reloading
+            // No longer testing
             mIsTesting = false;
 
             // Activity dead?

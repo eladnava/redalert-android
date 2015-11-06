@@ -197,7 +197,7 @@
     <string name="disconnectedNotification">Indicarme cuando esté desconectado</string>
     <string name="disconnectedNotificationDesc">Cuando falla la conexión con el servidor de alerta, una notificación le avisará y le impide confiar en la aplicación.</string>
     <string name="connected">Conectado con el servidor de alerta de cohetes</string>
-    <string name="connecting">Conexión con el servidor de alerta de cohetes...</string>
+    <string name="connecting">Conectando...</string>
     <string name="notConnected">No está conectado al servidor de alerta cohete</string>
 
     <!-- Alert Share -->
@@ -223,6 +223,6 @@
     <string name="alerts">Alertas</string>
     <string name="advancedAlerts">Alertas Avanzadas</string>
     <string name="integrations">Integraciones</string>
-    <string name="integrationsTitle">Ajustes de Integración</string>
+    <string name="integrationsTitle">Ajustes de integración</string>
     <string name="integrationsDesc">Haga clic aquí para configurar la integración de alerta con dispositivos externos.</string>
 </resources>

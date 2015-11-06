@@ -29,7 +29,7 @@ import java.util.List;
 
 public class MiBand {
 
-    private static final String TAG = "miband-android";
+    private static final String TAG = "RedAlert-MiBand";
     private static Context context;
     private static BTCommandManager io;
     private static MiBand instance;
@@ -107,9 +107,11 @@ public class MiBand {
      *
      * @param callback
      */
-    public void connect(final ActionCallback callback) {
+    public void connect(final ActionCallback callback)
+    {
+        connectionCallback = callback;
+
         if (!isConnected()) {
-            connectionCallback = callback;
             btConnectionManager.connect();
         } else {
             connectionCallback.onSuccess(null);

@@ -3,59 +3,23 @@ package com.red.alert.logic.integration;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.util.Log;
+import android.os.Build;
 
-import com.betomaluje.miband.ActionCallback;
-import com.betomaluje.miband.MiBand;
-import com.red.alert.config.Logging;
-import com.red.alert.logic.settings.AppPreferences;
+import com.red.alert.logic.integration.devices.MiBandIntegration;
 
 public class BluetoothIntegration
 {
-    public static void notifyDevices(String alertType, String zone, Context context)
+    public static void notifyDevices(Context context)
     {
-        // Xiaomi Mi Band integration enabled?
-        if (AppPreferences.getMiBandIntegrationEnabled(context))
+        // Check for BLE support + enabled Bluetooth controller
+        if ( ! isBLESupported(context) || ! isBluetoothEnabled() )
         {
-            // Vibrate + LED for Mi Band (if enabled)
-            notifyMiBand(context);
+            // Stop execution
+            return;
         }
-    }
 
-    private static void notifyMiBand(Context context)
-    {
-        // Get an instance of the Mi Band library
-        final MiBand miBand = MiBand.getInstance(context);
-
-        // Attempt to connect to it
-        miBand.connect(new ActionCallback()
-        {
-            @Override
-            public void onSuccess(Object data)
-            {
-                // Log it
-                Log.d(Logging.TAG, "Connected to Mi Band");
-
-                // Set red LED color (determined via MiBandExample color picker)
-                int ledColor = -64746;
-
-                // Repeat the vibration + color
-                int repeatTimes = 3;
-
-                // Sleep in between each notification
-                int sleepInterval = 2000;
-
-                // Send the notification commands repeatedly
-                miBand.notifyBandRepeated(ledColor, repeatTimes, sleepInterval);
-            }
-
-            @Override
-            public void onFail(int errorCode, String msg)
-            {
-                // Log fail
-                Log.d(Logging.TAG, "Failed to connect to Mi Band: " + msg);
-            }
-        });
+        // Vibrate + LED for Mi Band (if enabled)
+        MiBandIntegration.notifyMiBand(context);
     }
 
     public static boolean isBLESupported(Context context)
@@ -74,6 +38,12 @@ public class BluetoothIntegration
         if (!context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE))
         {
             // No BLE support
+            return false;
+        }
+
+        // Check Android version (BluetoothGatt requires API Level 18+)
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2)
+        {
             return false;
         }
 
