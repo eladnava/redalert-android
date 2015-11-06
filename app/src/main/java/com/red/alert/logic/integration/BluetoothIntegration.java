@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 
 import com.red.alert.logic.integration.devices.MiBandIntegration;
+import com.red.alert.logic.settings.AppPreferences;
 
 public class BluetoothIntegration
 {
@@ -20,6 +21,12 @@ public class BluetoothIntegration
 
         // Vibrate + LED for Mi Band (if enabled)
         MiBandIntegration.notifyMiBand(context);
+    }
+
+    public static boolean isIntegrationEnabled(Context context)
+    {
+        // Check if Mi Band integration is enabled (and add more devices in the future)
+        return AppPreferences.getMiBandIntegrationEnabled(context);
     }
 
     public static boolean isBLESupported(Context context)

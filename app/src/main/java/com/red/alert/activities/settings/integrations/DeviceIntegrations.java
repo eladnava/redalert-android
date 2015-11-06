@@ -129,9 +129,6 @@ public class DeviceIntegrations extends AppCompatPreferenceActivity
                     new PerformIntegrationsTestAsync().execute();
                 }
 
-                // Test it out
-                BluetoothIntegration.notifyDevices(DeviceIntegrations.this);
-
                 // Consume event
                 return true;
             }
