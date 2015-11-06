@@ -225,4 +225,13 @@
     <string name="integrations">Интеграция</string>
     <string name="integrationsTitle">Настройки интеграции</string>
     <string name="integrationsDesc">Нажмите здесь, чтобы установить интеграцию оповещения с внешними устройствами.</string>
+    <string name="bleNotSupported">Нет BLE Поддержка</string>
+    <string name="bleNotSupportedDesc">К сожалению, ваш телефон не поддерживает Bluetooth Low Energy. Обновите версию Android 4.3+ и попробуйте еще раз.</string>
+    <string name="enableBluetooth">Включить Bluetooth</string>
+    <string name="enableBluetoothDesc">Debe habilitar Bluetooth en la configuración del teléfono y dejarlo activado en todo momento para recibir las alertas a través de dispositivos integrados.</string>
+    <string name="integrationsTest">Интеграция tест</string>
+    <string name="integrationsTestDesc">Проверьте подключение и надежность интегрированных устройств.</string>
+    <string name="integrationsTestSuccess">Тест подключения завершена успешно.\n\nУбедитесь, что устройства ответили соответственно.</string>
+    <string name="miBandIntegrationDesc">В режиме реального времени оповещения ракетные вызовет группа вибрировать и светиться.</string>
+    <string name="miBandTestFailed">Произошла ошибка при подключении к Ми Band. Попробуйте удалить все другие приложения, которые интегрируются с группой (в том числе Ми Fit), если таковые установлены. Кроме того, попробуйте прикосновения к металлической поверхности полосы (это датчик), чтобы разбудить его.\n\nСвязаться с нами, если вы все еще не можете подключиться к группе после попытки несколько раз.</string>
 </resources>

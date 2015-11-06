@@ -238,7 +238,7 @@ public class DeviceIntegrations extends AppCompatPreferenceActivity
                 waitForMiBandConnectivityResult();
 
                 // Mi Band connection failed?
-                if ( mMiBandTestPassed )
+                if ( ! mMiBandTestPassed )
                 {
                     // Return error
                     return R.string.miBandTestFailed;
