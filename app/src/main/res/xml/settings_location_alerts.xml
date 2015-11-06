@@ -26,7 +26,7 @@
             android:dependency="@string/locationAlertsPref"/>
     </PreferenceCategory>
     <PreferenceCategory
-        android:title="@string/verification">
+        android:title="@string/reliability">
         <Preference
             android:key="@string/nearbyCitiesPref"
             android:title="@string/nearbyCities"/>

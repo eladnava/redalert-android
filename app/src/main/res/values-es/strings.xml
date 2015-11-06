@@ -33,7 +33,7 @@
     <string name="notificationsDesc">Recibir notificaciones en tiempo-real.</string>
 
     <!-- Area Selection -->
-    <string name="alerts">Notificaciones</string>
+    <string name="areas">Areas</string>
     <string name="search">Buscar…</string>
     <string name="allString">Todo</string>
     <string name="noneString">Desactivado</string>
@@ -68,7 +68,7 @@
     <string name="testDesc">Enviarme una notificación que simula una alarma \(Tzeva Adom\).</string>
     <string name="testFailed">La auto-prueba ha fallado por completo. Sin alerta fue recibida de cualquier pasarela de empuje. Compruebe su conexión a Internet y vuelva a intentarlo más tarde, y ponerse en contacto con nosotros si el problema persiste.</string>
     <string name="testSent">Por favor, espere a recibir la notificación de prueba</string>
-    <string name="verification">Fiabilidad</string>
+    <string name="reliability">Fiabilidad</string>
     <string name="testSuccessfulLong">El auto-test ha completado con éxito! Se recibieron alertas de prueba de ambas puertas de enlace de notificación push.</string>
 
     <!-- Sound Selection -->
@@ -220,4 +220,9 @@
     <string name="pushyTestFailed">La auto-prueba ha fallado parcialmente. Sin alerta se recibió de la puerta de entrada de empuje secundaria, pero una alerta fue recibida con éxito a través de la puerta de enlace de empuje de Google. Por favor, inténtelo de nuevo más tarde.</string>
     <string name="debugInfo">Información adicional:</string>
     <string name="testSuccessful">El auto-test ha completado con éxito! </string>
+    <string name="alerts">Alertas</string>
+    <string name="advancedAlerts">Alertas Avanzadas</string>
+    <string name="integrations">Integraciones</string>
+    <string name="integrationsTitle">Ajustes de Integración</string>
+    <string name="integrationsDesc">Haga clic aquí para configurar la integración de alerta con dispositivos externos.</string>
 </resources>

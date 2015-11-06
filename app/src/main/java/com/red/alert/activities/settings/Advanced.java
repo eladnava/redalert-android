@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import com.red.alert.R;
 import com.red.alert.activities.settings.alerts.LocationAlerts;
 import com.red.alert.activities.settings.alerts.SecondaryAlerts;
+import com.red.alert.activities.settings.integrations.DeviceIntegrations;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.ui.activities.AppCompatPreferenceActivity;
 import com.red.alert.ui.elements.SliderPreference;
@@ -19,6 +20,7 @@ import com.red.alert.utils.networking.Connectivity;
 public class Advanced extends AppCompatPreferenceActivity
 {
     Preference mLocationAlerts;
+    Preference mIntergations;
     Preference mSecondaryAlerts;
     Preference mDisconnectedNotification;
 
@@ -63,6 +65,7 @@ public class Advanced extends AppCompatPreferenceActivity
         addPreferencesFromResource(R.xml.settings_advanced);
 
         // Cache resource IDs
+        mIntergations = findPreference(getString(R.string.integrationsPref));
         mLocationAlerts = findPreference(getString(R.string.locationPref));
         mSecondaryAlerts = findPreference(getString(R.string.secondaryPref));
         mDisconnectedNotification = findPreference(getString(R.string.disconnectedNotificationPref));
@@ -85,26 +88,6 @@ public class Advanced extends AppCompatPreferenceActivity
 
                 // Generate summary
                 return getString(R.string.volumeDesc) + "\r\n(" + percent + "%)";
-            }
-        });
-
-        // Set up location alerts click listener
-        mLocationAlerts.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
-        {
-            @Override
-            public boolean onPreferenceClick(Preference preference)
-            {
-                // Prepare new intent
-                Intent locationAlerts = new Intent();
-
-                // Set class
-                locationAlerts.setClass(Advanced.this, LocationAlerts.class);
-
-                // Show settings
-                startActivity(locationAlerts);
-
-                // Consume event
-                return true;
             }
         });
 
@@ -136,6 +119,46 @@ public class Advanced extends AppCompatPreferenceActivity
 
                 // Show settings
                 startActivity(secondaryAlerts);
+
+                // Consume event
+                return true;
+            }
+        });
+
+        // Set up location alerts click listener
+        mLocationAlerts.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
+        {
+            @Override
+            public boolean onPreferenceClick(Preference preference)
+            {
+                // Prepare new intent
+                Intent locationAlerts = new Intent();
+
+                // Set class
+                locationAlerts.setClass(Advanced.this, LocationAlerts.class);
+
+                // Show settings
+                startActivity(locationAlerts);
+
+                // Consume event
+                return true;
+            }
+        });
+
+        // Set up integrations click listener
+        mIntergations.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
+        {
+            @Override
+            public boolean onPreferenceClick(Preference preference)
+            {
+                // Prepare new intent
+                Intent integrations = new Intent();
+
+                // Set class
+                integrations.setClass(Advanced.this, DeviceIntegrations.class);
+
+                // Show settings
+                startActivity(integrations);
 
                 // Consume event
                 return true;

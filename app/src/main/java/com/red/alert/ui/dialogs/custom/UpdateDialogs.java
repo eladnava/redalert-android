@@ -37,10 +37,10 @@ public class UpdateDialogs
         builder.setNegativeButton(R.string.notNow, new DialogInterface.OnClickListener()
         {
             @Override
-            public void onClick(DialogInterface Dialog, int i)
+            public void onClick(DialogInterface dialogInterface, int i)
             {
                 // Close dialog
-                Dialog.dismiss();
+                dialogInterface.dismiss();
             }
         });
 

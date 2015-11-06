@@ -111,6 +111,13 @@
             android:theme="@style/AppTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
 
+        <!-- Integration Settings -->
+        <activity
+            android:name=".activities.settings.integrations.DeviceIntegrations"
+            android:label="@string/integrations"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
+
         <!-- Sound Picker Activity -->
         <activity
             android:name=".ui.activities.SoundPickerActivity"

@@ -36,7 +36,7 @@
     <string name="testDesc">Send me a test rocket alert to verify connectivity.</string>
     <string name="testFailed">The self-test failed completely. No alert was received from any push notification gateway. Check your Internet connection and try again later, and contact us if the problem persists.</string>
     <string name="testSent">Please wait for the test notification</string>
-    <string name="verification">Reliability</string>
+    <string name="reliability">Reliability</string>
     <string name="noAlerts">No alerts\nin the past day</string>
     <string name="recentAlerts">Recent Alerts</string>
     <string name="testSound">Sound test - click here to cancel</string>
@@ -62,7 +62,7 @@
     <string name="cityDesc">Select cities to receive alerts about, in addition to the selected regions.</string>
     <string name="website">Visit our website</string>
     <string name="websiteDesc">Click here to visit our official website.</string>
-    <string name="alerts">Alerts</string>
+    <string name="areas">Areas</string>
     <string name="receiveSecondaryAlerts">Secondary alerts</string>
     <string name="receiveSecondaryAlertsDesc">Receive secondary rocket alerts in real-time.</string>
     <string name="sounds">Sounds</string>
@@ -175,4 +175,9 @@
     <string name="pushyTestFailed">The self-test failed partially. No alert was received from the secondary push gateway, but an alert was successfully received via Google\'s push gateway. Please try again later.</string>
     <string name="debugInfo">Additional Info: </string>
     <string name="testSuccessful">The self-test has completed successfully!</string>
+    <string name="alerts">Alerts</string>
+    <string name="advancedAlerts">Advanced Alerts</string>
+    <string name="integrations">Integrations</string>
+    <string name="integrationsTitle">Integration Settings</string>
+    <string name="integrationsDesc">Click here to set up alert integration with external devices.</string>
 </resources>
