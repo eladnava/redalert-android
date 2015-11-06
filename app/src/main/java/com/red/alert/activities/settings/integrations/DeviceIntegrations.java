@@ -273,7 +273,7 @@ public class DeviceIntegrations extends AppCompatPreferenceActivity
             if ( errorStringResource == 0 )
             {
                 // Build the success dialog
-                AlertDialogBuilder.showGenericDialog(getString(R.string.integrationsTest), getString(R.string.integrationsTestSuccess), DeviceIntegrations.this, null);
+                AlertDialogBuilder.showGenericDialog(getString(R.string.testSuccessful), getString(R.string.integrationsTestSuccess), DeviceIntegrations.this, null);
             }
             else
             {
