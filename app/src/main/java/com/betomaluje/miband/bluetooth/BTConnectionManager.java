@@ -297,13 +297,17 @@ public class BTConnectionManager {
 
             BTConnectionManager.this.gatt = gatt;
 
-            if (status == BluetoothGatt.GATT_SUCCESS && newState == BluetoothProfile.STATE_CONNECTED) {
+            if (status == BluetoothGatt.GATT_SUCCESS && newState == BluetoothProfile.STATE_CONNECTED)
+            {
                 gatt.discoverServices();
-            } else if (status == BluetoothGatt.GATT_SUCCESS && newState == BluetoothProfile.STATE_DISCONNECTED) {
-                //Log.e(TAG, "onConnectionStateChange disconnect: " + newState);
-                //toggleNotifications(false);
-                //disconnect();
-            } else if (status != BluetoothGatt.GATT_SUCCESS) {
+            }
+            else if (status == BluetoothGatt.GATT_SUCCESS && newState == BluetoothProfile.STATE_DISCONNECTED)
+            {
+                Log.e(TAG, "onConnectionStateChange disconnect: " + newState);
+                disconnect();
+            }
+            else if (status != BluetoothGatt.GATT_SUCCESS)
+            {
                 gatt.disconnect();
             }
         }
