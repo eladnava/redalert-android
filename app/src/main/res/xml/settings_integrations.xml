@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/integrations">
     <PreferenceCategory
-        android:title="@string/integrationsTitle">
+        android:title="@string/devices">
         <CheckBoxPreference
             android:textDirection="rtl"
             android:key="@string/miBandPref"

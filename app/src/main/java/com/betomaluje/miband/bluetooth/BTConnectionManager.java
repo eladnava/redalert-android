@@ -1,5 +1,6 @@
 package com.betomaluje.miband.bluetooth;
 
+import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -11,6 +12,7 @@ import android.bluetooth.BluetoothProfile;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -29,6 +31,7 @@ import java.util.UUID;
 /**
  * Created by betomaluje on 6/26/15.
  */
+@TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
 public class BTConnectionManager {
 
     public interface DataRead {
@@ -334,7 +337,7 @@ public class BTConnectionManager {
                 BTConnectionManager.this.gatt = gatt;
 
                 //toggleNotifications(true);
-                connectionCallback.onSuccess(isAlreadyPaired());
+                connectionCallback.onSuccess(true);
             } else {
                 //disconnect();
             }

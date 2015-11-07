@@ -234,4 +234,5 @@
     <string name="integrationsTestSuccess">La prueba de conectividad completada con éxito.\n\nCompruebe que los dispositivos respondió en consecuencia.</string>
     <string name="miBandIntegrationDesc">Alertas de cohetes en tiempo real hará que la banda vibre y se encienden.</string>
     <string name="miBandTestFailed">Se produjo un error al conectar con tu Mi Band. Trate de eliminar todas las demás aplicaciones que se integran con la banda (incluyendo Mi Fit), en su caso están instalados. Además, trate de tocar la superficie de metal de la banda (es un sensor) para despertarlo.\n\nContacte con nosotros si usted todavía no puede conectarse a la banda después de probar un par de veces.</string>
+    <string name="devices">Dispositivos</string>
 </resources>

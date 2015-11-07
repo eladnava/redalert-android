@@ -1,9 +1,11 @@
 package com.betomaluje.miband;
 
+import android.annotation.TargetApi;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.util.Log;
 
 import com.betomaluje.miband.bluetooth.BLEAction;
@@ -27,6 +29,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+@TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
 public class MiBand {
 
     private static final String TAG = "RedAlert-MiBand";
@@ -156,7 +159,7 @@ public class MiBand {
                         connectionCallback.onSuccess(null);
                 } else {
                     if (connectionCallback != null)
-                        connectionCallback.onFail(-1, "failed to pair with Mi Band");
+                        connectionCallback.onFail(-1, "Failed to pair with Mi Band");
                 }
             }
 
@@ -522,6 +525,9 @@ public class MiBand {
 
         final List<BLEAction> list = new ArrayList<>();
         list.add(new WriteAction(Profile.UUID_CHAR_USER_INFO, userInfo.getData()));
+
+        // Wait 200 seconds before processing other commands (give the band some time to process the data)
+        list.add(new WaitAction(100));
 
         queue(list);
     }

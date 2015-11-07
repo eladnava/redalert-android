@@ -51,6 +51,7 @@
     <string name="secondaryAlertsDesc">לחץ כאן להגדרת התרעות משנה כדי להתעדכן על אזורים אחרים במקביל.</string>
 
     <!-- Integrations -->
+    <string name="devices">מכשירים</string>
     <string name="integrationsTitle">הגדרת אינטגרציות</string>
     <string name="integrationsDesc">לחץ כאן להגדיר אינטגרציות עם מכשירי התרעה חיצוניים.</string>
 
@@ -80,9 +81,6 @@
     <string name="testSent">אנא המתן לקבלת עדכון הדחיפה</string>
     <string name="reliability">אמינות</string>
     <string name="testSuccessfulLong">הבדיקה העצמית הסתיימה בהצלחה! התקבלו התרעות בדיקה משתי שירותי דחיפה שונים.</string>
-
-    <!-- Integration Device Names -->
-    <string name="miBand" translatable="false">Xiaomi Mi Band</string>
 
     <!-- Mi Band Integration -->
     <string name="miBandIntegrationDesc">התרעות בזמן אמת יפעילו את הרטט ותאורת ה-LED בצמיד.</string>
@@ -255,6 +253,9 @@
     <string name="showPopupDesc">כאשר תתקבל אזעקת אמת, יוצג פופאפ עם מידע על האזעקה.</string>
 
     <!-- Do not translate from here on down -->
+
+    <!-- Integration Device Names -->
+    <string name="miBand" translatable="false">Xiaomi Mi Band</string>
 
     <!-- Static Language Identifiers -->
     <string translatable="false" name="english">English</string>
