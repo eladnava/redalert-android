@@ -5,22 +5,27 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 
+import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.integration.devices.MiBandIntegration;
 import com.red.alert.logic.settings.AppPreferences;
 
 public class BluetoothIntegration
 {
-    public static void notifyDevices(Context context)
+    public static void notifyDevices(String alertType, Context context)
     {
-        // Check for BLE support + enabled Bluetooth controller
-        if ( ! isBLESupported(context) || ! isBluetoothEnabled() )
+        // Type must be an "alert" or "test"
+        if (alertType.equals(AlertTypes.PRIMARY) || alertType.equals(AlertTypes.TEST))
         {
-            // Stop execution
-            return;
-        }
+            // Check for BLE support + enabled Bluetooth controller
+            if (!isBLESupported(context) || !isBluetoothEnabled())
+            {
+                // Stop execution
+                return;
+            }
 
-        // Vibrate + LED for Mi Band (if enabled)
-        MiBandIntegration.notifyMiBand(context);
+            // Vibrate + LED for Mi Band (if enabled)
+            MiBandIntegration.notifyMiBand(context);
+        }
     }
 
     public static boolean isIntegrationEnabled(Context context)

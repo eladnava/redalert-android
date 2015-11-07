@@ -85,7 +85,7 @@ public class RocketNotifications
         AlertPopup.showAlertPopup(alertType, alertZone, context);
 
         // Notify BLE devices (if applicable)
-        BluetoothIntegration.notifyDevices(context);
+        BluetoothIntegration.notifyDevices(alertType, context);
 
         // Reload recent alerts (if main activity is open)
         Broadcasts.publish(context, MainActivityParameters.RELOAD_RECENT_ALERTS);
