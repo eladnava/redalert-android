@@ -19,7 +19,7 @@ public class MiBandIntegration
             return;
         }
 
-        // Get an instance of the Mi Band library
+        // Get an instance of the Mi Band SDK
         MiBand miBand = MiBand.getInstance(context);
 
         // Attempt to connect to it
@@ -46,7 +46,7 @@ public class MiBandIntegration
 
     public static void sendNotificationCommands(Context context)
     {
-        // Get an instance of the Mi Band library
+        // Get an instance of the Mi Band SDK
         MiBand miBand = MiBand.getInstance(context);
 
         // Not connected for some reason?

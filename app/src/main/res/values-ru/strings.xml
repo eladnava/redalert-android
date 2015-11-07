@@ -229,7 +229,7 @@
     <string name="bleNotSupportedDesc">К сожалению, ваш телефон не поддерживает Bluetooth Low Energy. Обновите версию Android 4.3+ и попробуйте еще раз.</string>
     <string name="enableBluetooth">Включить Bluetooth</string>
     <string name="enableBluetoothDesc">Debe habilitar Bluetooth en la configuración del teléfono y dejarlo activado en todo momento para recibir las alertas a través de dispositivos integrados.</string>
-    <string name="integrationsTest">Интеграция tест</string>
+    <string name="integrationsTest">Тестирование интеграции</string>
     <string name="integrationsTestDesc">Проверьте подключение и надежность интегрированных устройств.</string>
     <string name="integrationsTestSuccess">Тест подключения завершена успешно.\n\nУбедитесь, что устройства ответили соответственно.</string>
     <string name="miBandIntegrationDesc">В режиме реального времени оповещения ракетные вызовет группа вибрировать и светиться.</string>

@@ -149,7 +149,7 @@ public class DeviceIntegrations extends AppCompatPreferenceActivity
         // Reset test result
         mMiBandTestPassed = false;
 
-        // Get an instance of the Mi Band library
+        // Get an instance of the Mi Band SDK
         final MiBand miBand = MiBand.getInstance(this);
 
         // Attempt to connect to it

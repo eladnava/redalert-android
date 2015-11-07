@@ -229,7 +229,7 @@
     <string name="bleNotSupportedDesc">Por desgracia, el teléfono no es compatible con Bluetooth de baja energía. Actualice su versión de Android a 4.3+ y vuelva a intentarlo.</string>
     <string name="enableBluetooth">Activar Bluetooth</string>
     <string name="enableBluetoothDesc">Вы должны включить Bluetooth в настройках телефона и оставить это позволило в любое время получать уведомления с помощью интегрированных устройств.</string>
-    <string name="integrationsTest">Integraciones de prueba</string>
+    <string name="integrationsTest">Prueba las integraciones</string>
     <string name="integrationsTestDesc">Prueba de la conectividad y la fiabilidad de los dispositivos integrados.</string>
     <string name="integrationsTestSuccess">La prueba de conectividad completada con éxito.\n\nCompruebe que los dispositivos respondió en consecuencia.</string>
     <string name="miBandIntegrationDesc">Alertas de cohetes en tiempo real hará que la banda vibre y se encienden.</string>

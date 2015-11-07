@@ -184,7 +184,7 @@
     <string name="bleNotSupportedDesc">Unfortunately, your phone does not support Bluetooth Low Energy. Update your Android version to 4.3+ and try again.</string>
     <string name="enableBluetooth">Enable Bluetooth</string>
     <string name="enableBluetoothDesc">You must enable Bluetooth in your phone settings and leave it enabled at all times to receive alerts via integrated devices.</string>
-    <string name="integrationsTest">Integrations test</string>
+    <string name="integrationsTest">Test integrations</string>
     <string name="integrationsTestDesc">Test the connectivity and reliability of integrated devices.</string>
     <string name="integrationsTestSuccess">The connectivity test completed successfully.\n\nVerify that the devices responded accordingly.</string>
     <string name="miBandIntegrationDesc">Real-time rocket alerts will cause the band to vibrate and light up.</string>
