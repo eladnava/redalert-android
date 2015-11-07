@@ -13,7 +13,7 @@ import com.red.alert.ui.localization.rtl.RTLSupport;
 
 public class LocationDialogs
 {
-    public static AlertDialog mLocationServicesDialog;
+    private static AlertDialog mLocationServicesDialog;
 
     public static void requestEnableLocationServices(final Context context)
     {

@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/advancedSettingsTitle">
     <PreferenceCategory
-        android:title="@string/verification">
+        android:title="@string/reliability">
         <CheckBoxPreference
             android:textDirection="rtl"
             android:key="@string/disconnectedNotificationPref"
@@ -39,7 +39,7 @@
             android:defaultValue="true"/>
     </PreferenceCategory>
     <PreferenceCategory
-        android:title="@string/alerts">
+        android:title="@string/advancedAlerts">
         <Preference
             android:key="@string/secondaryPref"
             android:title="@string/secondaryAlerts"
@@ -48,6 +48,13 @@
             android:key="@string/locationPref"
             android:title="@string/locationAlerts"
             android:summary="@string/locationAlertsDesc"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/integrations">
+        <Preference
+            android:key="@string/integrationsPref"
+            android:title="@string/integrationsTitle"
+            android:summary="@string/integrationsDesc"/>
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/safeCategory">

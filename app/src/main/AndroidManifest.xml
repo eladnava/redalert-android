@@ -14,6 +14,12 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
+    <!-- BLE Integration -->
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="false" />
+
     <!-- Google Cloud Messaging -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
 
@@ -102,6 +108,13 @@
         <activity
             android:name=".activities.settings.alerts.LocationAlerts"
             android:label="@string/secondaryAlerts"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
+
+        <!-- Integration Settings -->
+        <activity
+            android:name=".activities.settings.integrations.DeviceIntegrations"
+            android:label="@string/integrations"
             android:theme="@style/AppTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
 

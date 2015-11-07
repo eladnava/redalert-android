@@ -29,12 +29,14 @@ import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.communication.broadcasts.LocationSelectionEvents;
 import com.red.alert.logic.communication.broadcasts.SelfTestEvents;
 import com.red.alert.logic.communication.broadcasts.SettingsEvents;
+import com.red.alert.logic.integration.BluetoothIntegration;
 import com.red.alert.logic.push.GCMRegistration;
 import com.red.alert.logic.push.PushyRegistration;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.model.req.SelfTestRequest;
 import com.red.alert.ui.activities.AppCompatPreferenceActivity;
 import com.red.alert.ui.compatibility.ProgressDialogCompat;
+import com.red.alert.ui.dialogs.custom.BluetoothDialogs;
 import com.red.alert.ui.elements.SearchableMultiSelectPreference;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.ui.notifications.AppNotifications;
@@ -296,6 +298,16 @@ public class General extends AppCompatPreferenceActivity
             @Override
             public boolean onPreferenceClick(Preference preference)
             {
+                // Did we enable a device integration but Bluetooth is disabled?
+                if ( BluetoothIntegration.isIntegrationEnabled(General.this) && !BluetoothIntegration.isBluetoothEnabled() )
+                {
+                    // Ask user politely to enable Bluetooth
+                    BluetoothDialogs.showEnableBluetoothDialog(General.this);
+
+                    // Don't run the test yet
+                    return false;
+                }
+
                 // Not already testing?
                 if (!mIsTesting)
                 {
@@ -513,7 +525,7 @@ public class General extends AppCompatPreferenceActivity
     boolean didPassGcmTest()
     {
         // Calculate the max timestamp
-        long maxTimestamp = System.currentTimeMillis() + Testing.TEST_TIMEOUT_SECONDS * 1000;
+        long maxTimestamp = System.currentTimeMillis() + Testing.PUSH_GATEWAY_TIMEOUT_SECONDS * 1000;
 
         // Wait until boolean value changes or enough time passes
         while (!mGcmTestPassed && System.currentTimeMillis() < maxTimestamp)
@@ -533,7 +545,7 @@ public class General extends AppCompatPreferenceActivity
     boolean didPassPushyTest()
     {
         // Calculate the max timestamp
-        long maxTimestamp = System.currentTimeMillis() + Testing.TEST_TIMEOUT_SECONDS * 1000;
+        long maxTimestamp = System.currentTimeMillis() + Testing.PUSH_GATEWAY_TIMEOUT_SECONDS * 1000;
 
         // Wait until boolean value changes or enough time passes
         while (!mPushyTestPassed && System.currentTimeMillis() < maxTimestamp)
@@ -676,7 +688,7 @@ public class General extends AppCompatPreferenceActivity
         @Override
         protected void onPostExecute(Integer result)
         {
-            // No longer reloading
+            // No longer testing
             mIsTesting = false;
 
             // Activity dead?

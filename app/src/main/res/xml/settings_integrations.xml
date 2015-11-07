@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/integrations">
+    <PreferenceCategory
+        android:title="@string/devices">
+        <CheckBoxPreference
+            android:textDirection="rtl"
+            android:key="@string/miBandPref"
+            android:title="@string/miBand"
+            android:summary="@string/miBandIntegrationDesc"
+            android:defaultValue="false"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/reliability">
+        <Preference
+            android:key="@string/integrationsTestPref"
+            android:title="@string/integrationsTest"
+            android:summary="@string/integrationsTestDesc"
+            android:dependency="@string/miBandPref"/>
+    </PreferenceCategory>
+</PreferenceScreen>

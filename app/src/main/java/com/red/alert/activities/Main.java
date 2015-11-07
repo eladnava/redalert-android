@@ -29,6 +29,7 @@ import com.red.alert.config.Logging;
 import com.red.alert.logic.communication.broadcasts.SettingsEvents;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
 import com.red.alert.logic.communication.intents.MainActivityParameters;
+import com.red.alert.logic.integration.BluetoothIntegration;
 import com.red.alert.logic.push.GCMRegistration;
 import com.red.alert.logic.push.PushyRegistration;
 import com.red.alert.logic.services.ServiceManager;
@@ -38,6 +39,7 @@ import com.red.alert.model.res.VersionInfo;
 import com.red.alert.ui.adapters.AlertAdapter;
 import com.red.alert.ui.compatibility.ProgressDialogCompat;
 import com.red.alert.ui.dialogs.AlertDialogBuilder;
+import com.red.alert.ui.dialogs.custom.BluetoothDialogs;
 import com.red.alert.ui.dialogs.custom.LocationDialogs;
 import com.red.alert.ui.dialogs.custom.UpdateDialogs;
 import com.red.alert.ui.localization.rtl.RTLSupport;
@@ -301,7 +303,17 @@ public class Main extends AppCompatActivity
             // Register async
             new RegisterPushAsync().execute();
 
-            // Avoid checking for updates now (to avoid duplicate dialog)
+            // Avoid duplicate dialogs
+            return;
+        }
+
+        // Did we enable a device integration but Bluetooth is disabled?
+        if ( BluetoothIntegration.isIntegrationEnabled(this) && !BluetoothIntegration.isBluetoothEnabled() )
+        {
+            // Ask user politely to enable Bluetooth
+            BluetoothDialogs.showEnableBluetoothDialog(this);
+
+            // Avoid duplicate dialogs
             return;
         }
 

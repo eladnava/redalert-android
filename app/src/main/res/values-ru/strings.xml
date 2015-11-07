@@ -33,7 +33,7 @@
     <string name="notificationsDesc">Получать оповещения в режиме реального времени.</string>
 
     <!-- Area Selection -->
-    <string name="alerts">Оповещения</string>
+    <string name="areas">области</string>
     <string name="search">Введите слово...</string>
     <string name="allString">Все</string>
     <string name="noneString">Выкл</string>
@@ -64,7 +64,7 @@
     <string name="testDesc">Отправить мне уведомление, имитирующее Цева Адом.</string>
     <string name="testFailed">Самодиагностика удалось полностью. Оповещение не было получено от любого толчка шлюза. Проверьте подключение к Интернету и повторите попытку позже, и, свяжитесь с нами, если проблема все еще существует.</string>
     <string name="testSent">Пожалуйста, подождите уведомления.</string>
-    <string name="verification">Проверка</string>
+    <string name="reliability">Проверка</string>
     <string name="testSuccessfulLong">Самодиагностика успешно завершила! Оповещения испытаний были получены от обеих толчок уведомление шлюзов.</string>
 
     <!-- Volume -->
@@ -205,7 +205,7 @@
     <string name="disconnectedNotification">Сообщите, когда отключен</string>
     <string name="disconnectedNotificationDesc">Если при подключении к серверу не удается оповещения, уведомление об этом и помешать вам, опираясь на приложения.</string>
     <string name="connected">Подключено к оповещения сервера</string>
-    <string name="connecting">Подключение к оповещения сервера...</string>
+    <string name="connecting">Подключение...</string>
     <string name="notConnected">Не подключен к оповещения сервера</string>
 
     <!-- Alert Popup -->
@@ -220,4 +220,19 @@
     <string name="pushyTestFailed">Самодиагностика удалось частично. Оповещение не было получено из вторичного толчок шлюза, но тревога была успешно получены через Google, толчок шлюза. Пожалуйста, повторите попытку позже.</string>
     <string name="debugInfo">Дополнительная информация:</string>
     <string name="testSuccessful">Самодиагностика успешно завершила!</string>
+    <string name="alerts">Оповещения</string>
+    <string name="advancedAlerts">Расширенный агент</string>
+    <string name="integrations">Интеграция</string>
+    <string name="integrationsTitle">Настройки интеграции</string>
+    <string name="integrationsDesc">Нажмите здесь, чтобы установить интеграцию оповещения с внешними устройствами.</string>
+    <string name="bleNotSupported">Нет BLE Поддержка</string>
+    <string name="bleNotSupportedDesc">К сожалению, ваш телефон не поддерживает Bluetooth Low Energy. Обновите версию Android 4.3+ и попробуйте еще раз.</string>
+    <string name="enableBluetooth">Включить Bluetooth</string>
+    <string name="enableBluetoothDesc">Debe habilitar Bluetooth en la configuración del teléfono y dejarlo activado en todo momento para recibir las alertas a través de dispositivos integrados.</string>
+    <string name="integrationsTest">Тестирование интеграции</string>
+    <string name="integrationsTestDesc">Проверьте подключение и надежность интегрированных устройств.</string>
+    <string name="integrationsTestSuccess">Тест подключения завершена успешно.\n\nУбедитесь, что устройства ответили соответственно.</string>
+    <string name="miBandIntegrationDesc">В режиме реального времени оповещения ракетные вызовет группа вибрировать и светиться.</string>
+    <string name="miBandTestFailed">Произошла ошибка при подключении к Ми Band. Попробуйте удалить все другие приложения, которые интегрируются с группой (в том числе Ми Fit), если таковые установлены. Кроме того, попробуйте прикосновения к металлической поверхности полосы (это датчик), чтобы разбудить его.\n\nСвязаться с нами, если вы все еще не можете подключиться к группе после попытки несколько раз.</string>
+    <string name="devices">Приборы</string>
 </resources>
