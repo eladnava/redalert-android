@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.os.Looper;
 
 import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.integration.devices.MiBandIntegration;
@@ -36,11 +37,8 @@ public class BluetoothIntegration
 
     public static boolean isBLESupported(Context context)
     {
-        // Get bluetooth adapter
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-
-        // Null means device doesn't support Bluetooth (even without BLE)
-        if (bluetoothAdapter == null)
+        // Check whether Bluetooth is supported on the device
+        if (!context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH))
         {
             // No Bluetooth support
             return false;
@@ -65,6 +63,15 @@ public class BluetoothIntegration
 
     public static boolean isBluetoothEnabled()
     {
+        // Must call Looper.prepare() due to ICS bug
+        // And we can't call the function from UI thread when we receive a push notification)
+        // http://stackoverflow.com/questions/5920578/bluetoothadapter-getdefault-throwing-runtimeexception-while-not-in-activity
+
+        if (Looper.myLooper() == null)
+        {
+            Looper.prepare();
+        }
+
         // Get bluetooth adapter
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
