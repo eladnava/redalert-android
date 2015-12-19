@@ -28,7 +28,7 @@ public class AppPreferences
     public static boolean getSecondaryNotificationsEnabled(Context context)
     {
         // Get saved preference
-        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.secondaryEnabledPref), true);
+        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.secondaryEnabledPref), false);
     }
 
     public static boolean getMiBandIntegrationEnabled(Context context)

@@ -10,7 +10,7 @@
             android:key="@string/secondaryEnabledPref"
             android:title="@string/receiveSecondaryAlerts"
             android:summary="@string/receiveSecondaryAlertsDesc"
-            android:defaultValue="true"/>
+            android:defaultValue="false"/>
         <com.red.alert.ui.elements.SearchableMultiSelectPreference
             redalert:checkAll="@string/all"
             redalert:separator=","
