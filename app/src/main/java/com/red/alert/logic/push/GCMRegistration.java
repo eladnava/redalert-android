@@ -9,7 +9,7 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
 import com.red.alert.R;
 import com.red.alert.config.API;
-import com.red.alert.config.GCM;
+import com.red.alert.config.push.GCMGateway;
 import com.red.alert.config.Logging;
 import com.red.alert.model.req.RegistrationRequest;
 import com.red.alert.utils.caching.Singleton;
@@ -31,7 +31,7 @@ public class GCMRegistration
         InstanceID instanceID = InstanceID.getInstance(context);
 
         // Get a GCM registration token
-        String token = instanceID.getToken(GCM.SENDER_ID, GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
+        String token = instanceID.getToken(GCMGateway.SENDER_ID, GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
 
         // Log to logcat
         Log.d(Logging.TAG, "GCM registration success: " + token);
@@ -41,10 +41,10 @@ public class GCMRegistration
 
         // Subscribe to alerts topic
         // (limited to 1M subscriptions app-wide - think about how to scale this when the time comes)
-        pubSub.subscribe(token, GCM.ALERTS_TOPIC, null);
+        pubSub.subscribe(token, GCMGateway.ALERTS_TOPIC, null);
 
         // Log it
-        Log.d(Logging.TAG, "GCM subscription success: " + GCM.ALERTS_TOPIC);
+        Log.d(Logging.TAG, "GCM subscription success: " + GCMGateway.ALERTS_TOPIC);
 
         // Prepare an object to store and send the registration token to our API
         RegistrationRequest register = new RegistrationRequest(token, API.PLATFORM_IDENTIFIER);

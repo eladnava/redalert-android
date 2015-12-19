@@ -3,6 +3,7 @@ package com.red.alert.logic.services;
 import android.content.Context;
 import android.content.Intent;
 
+import com.red.alert.config.push.PushyGateway;
 import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.services.location.LocationService;
 
@@ -33,6 +34,9 @@ public class ServiceManager
 
     public static void startPushyService(Context context)
     {
+        // Set custom heartbeat interval before calling Pushy.listen()
+        Pushy.setHeartbeatInterval(PushyGateway.SOCKET_HEARTBEAT_INTERVAL, context);
+
         // Start external service
         Pushy.listen(context);
     }
