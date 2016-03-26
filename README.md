@@ -52,7 +52,7 @@ Over **450,000 downloads** and a **4.7 star rating** to prove it. The only rocke
 * Write detailed commit messages, in-line with the project's commit naming conventions
 * Make sure your code conventions are in-line with the project
 
-## Support our cause
+## Donations
 
 The application was developed to protect Israeli citizens. 
 It costs money to run the servers, your donation is greatly appreciated.
