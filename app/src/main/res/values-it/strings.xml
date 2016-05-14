@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="appName">RedAlert</string>
+    <string name="signing_up">Mi sto collegando per ricevere le notifiche push...</string>
+    <string name="okay">OK</string>
+    <string name="error">Errore</string>
+    <string name="noGooglePlayServices">Il tuo smartphone non ha installata una versione aggiornata di Google Play Services.</string>
+    <string name="pushRegistrationFailed">L\'applicazione ha riscontrato un errore durante il collegamento per ricevere le notifiche push. Proveremo a collegarti nuovamente in futuro.</string>
+    <string name="apiRequestFailed">Una richiesta di ricezione delle informazioni dai nostri server è fallita. Controlla che la connesione a internet sia funzionante e ritenta.</string>
+    <string name="registrationFailed">Registrazione fallita, prova nuovamente più tardi.</string>
+    <string name="settings">Impostazioni</string>
+    <string name="advanced">Avanzate</string>
+    <string name="advancedSettings">Impostazioni Avanzate</string>
+    <string name="advancedSettingsTitle">Impostazioni Avanzate</string>
+    <string name="advancedSettingsDesc">Tocca qui per modificare le impostazioni avanzate.</string>
+    <string name="notifications">Ricevi le allerte</string>
+    <string name="notificationsDesc">Ricevi le allerte in tempo reale.</string>
+    <string name="contact">Contatti</string>
+    <string name="contactDesc">Tocca qui per contattare lo sviluppatore dell\'applicazione</string>
+    <string name="reportProblem">Riporta un problema</string>
+    <string name="manualContact">Contattami tramite e-mail a support@redalert.me</string>
+    <string name="jsonFailed">L\'applicazione ha riscontrato un errore nel tentativo di ricevere dati dal nostro server.</string>
+    <string name="notifyError">L\'applicazione ha riscontrato un errore nel tentativo di mostrare una notifica, per risolvere prova a riavviare il dispositivo.</string>
+    <string name="safeCategory">\"Sono salvo\"</string>
+    <string name="safe">Invia \"Sono salvo\"</string>
+    <string name="imSafeMessage">Sono salvo - Inviato tramite RedAlert per Android - https://redalert.me</string>
+    <string name="imSafeDesc">Manda il messaggio \"Sono salvo\"</string>
+    <string name="pushRegistrationSuccess">Successo!</string>
+    <string name="pushRegistrationSuccessDesc">Ti sei collegato con successo tramite RedAlert, riceverai notifiche qualora vi siano attacchi.\n\n Seleziona le città e le aree di interesse per ricevere notifiche personalizzate.</string>
+    <string name="safeWhatsApp">Manda con WhatsApp</string>
+    <string name="safeWhatsAppDesc">Toccando il bottone \"Sono salvo\" verrà automaticamente mandato un messaggio tramite WhatsApp.</string>
+    <string name="whatsAppNotInstalled">WhatsApp non è installato!</string>
+    <string name="soundSelection">Suono notifica di attacco</string>
+    <string name="soundSelectionDesc">Seleziona un suono per le allerte in caso di attacco.</string>
+    <string name="test">Test</string>
+    <string name="testDesc">Mandami un allarme per verificare la connettività.</string>
+    <string name="testFailed">Il test è fallito completamente. Nessun allarme è stato ricevuto da nessun gateway per notifiche push. Controlla la tua connessione a internet e prova nuovamente più tardi; Contattaci qualora il problema persista.</string>
+    <string name="testSent"> Si attenda per la notifica di test.</string>
+    <string name="reliability">Affidabilità</string>
+    <string name="noAlerts">Nessuna allerta\nnegli scorsi giorni</string>
+    <string name="recentAlerts">Allerte recenti</string>
+    <string name="testSound">Suono di prova - tocca qui per cancellare</string>
+    <string name="siren1">Sirena 1</string>
+    <string name="siren2">Sirena 2</string>
+    <string name="siren3">Sirena 3</string>
+    <string name="siren4">Sirena 4</string>
+    <string name="siren5">Sirena 5</string>
+    <string name="tiny">Breve 1</string>
+    <string name="calm">Rilassante 1</string>
+    <string name="funny">Divertente</string>
+
+    <!-- Languages -->
+    <string name="automatic">Automatic</string>
+    <string name="language">Language</string>
+    <string name="langSelection">App language</string>
+    <string name="langSelectionDesc">Change the application\'s language.</string>
+    <string name="langSelectionSuccess">Please restart the application</string>
+
+    <string name="selectedRegions">Regioni</string>
+    <string name="regionsDesc">Seleziona le regioni di interesse.</string>
+    <string name="silentOverride">Prevali sulla Modalità Silenziosa </string>
+    <string name="silentOverrideDesc">Le allerte disabiliteranno la modalità silenziosa.</string>
+    <string name="selectedCities">Città addizionali</string>
+    <string name="testSuccessfulLong">Il test è stato completato con successo! Le allerte saranno ricevuto tramite entrambi i gateway per le notifiche push.</string>
+    <string name="cityDesc">Seleziona le città delle quali si vogliono ricevere le allerte oltre alle regioni selezionate.</string>
+    <string name="website">Visita il nostro sito</string>
+    <string name="websiteDesc">Tocca qui per visita il nostro sito ufficiale.</string>
+    <string name="areas">Aree</string>
+    <string name="receiveSecondaryAlerts">Allerte secondarie</string>
+    <string name="receiveSecondaryAlertsDesc">Ricevi le allerte secondarie in tempo reale.</string>
+    <string name="sounds">Suoni</string>
+    <string name="share">Condividi</string>
+    <string name="shareDesc">Condividi l\'applicazione</string>
+    <string name="shareMessage">Sto utilizzando Redalert su Android per avere allerte riguardanti gli attacchi in tempo reale - https://redalert.me</string>
+    <string name="vibrate">Abilita vibrazione</string>
+    <string name="vibrateDesc">Le allerte faranno vibrare il tuo smartphone.</string>
+    <string name="sentVia">Invito utilizzando</string>
+    <string name="problemDesc">Descrizione del problema: </string>
+    <string name="noSound">Nessun suono</string>
+    <string name="search">Cerca...</string>
+    <string name="allString">Tutte</string>
+    <string name="noneString">Nessuna</string>
+    <string name="registrationID">ID di registrazione</string>
+    <string name="calm2">Rilassante 2</string>
+    <string name="calm3">Rilassante 3</string>
+    <string name="calm4">Rilassante 4</string>
+    <string name="calm5">Rilassante 5</string>
+    <string name="tiny2">Breve 2</string>
+    <string name="tiny3">Breve 3</string>
+    <string name="tiny4">Breve 4</string>
+    <string name="tiny5">Breve 5</string>
+    <string name="tiny6">Breve 6</string>
+
+    <!-- Secondary Alerts -->
+    <string name="secondaryAlerts">Allerte secondarie</string>
+    <string name="secondaryAlertsTitle">Allerte secondarie</string>
+    <string name="secondaryAlertsDesc">Tocca qui per configurare le allerte secondarie per rimanere aggiornato riguardo attacchi in altre zone.</string>
+
+    <!-- Secondary Sound -->
+    <string name="secondarySoundSelection">Suoni Secondari</string>
+    <string name="secondarySoundSelectionDesc">Seleziona un suono per le allerte secondarie.</string>
+
+    <!-- Secondary Vibration Mode -->
+    <string name="secondaryVibrate">Abilita vibrazione</string>
+    <string name="secondaryVibrateDesc">Le allerte secondarie faranno vibrare il tuo telefono.</string>
+
+    <!-- Secondary Silent Mode Override -->
+    <string name="secondarySilentOverride">Override silent mode</string>
+    <string name="secondarySilentDesc">Le allerte secondarie disabiliteranno la modalità silenziosa.</string>
+
+    <!-- Rate the App -->
+    <string name="rateApp">Vota l\'app</string>
+    <string name="rateAppDesc">Clicca qui per votare l\'applicazione sul Google Play.</string>
+
+    <string name="update">Aggiornamento disponibile</string>
+    <string name="updateDesc">Una versione più recente di questa applicazione è disponibile (%s), E\' consigliato l\'aggiornamento..</string>
+    <string name="updatePositive">Aggiorna</string>
+    <string name="notNow">Non ora</string>
+
+    <!-- Volume -->
+    <string name="volume">Livello del Volume</string>
+    <string name="volumeDesc">Scorri per selezionare il volume desiderato per le allerte.</string>
+
+    <!-- Secondary Volume -->
+    <string name="secondaryVolume">Livello del Volume</string>
+    <string name="secondaryVolumeDesc">Scorri per selezionare il volume desiderato per le allerte secondarie.</string>
+
+    <!-- Secondary Cities -->
+    <string name="selectedSecondaryCities">Città secondarie</string>
+    <string name="selectedSecondaryCitiesDesc">Seleziona le altre città riguardo le quali si vogliono riceve le allerte secondarie.</string>
+
+    <!-- GPS -->
+    <string name="locationAlerts">Allerte basate sulla posizione</string>
+    <string name="locationAlertsDesc">Tocca qui per configurare le allerte basate sulla posizione per ricevere automaticamente quelle nella tua area.</string>
+    <string name="gpsEnabled">Allerte basate sulla posizione</string>
+    <string name="gpsEnabledDesc">Ricevi allerte in tempo reale basate sulla posizione.</string>
+    <string name="maxDistance">Distanza massima</string>
+    <string name="maxDistanceDesc"> Scorri per selezionare la distanza massima da ogni città entro cui si vuole ricevere l\'allerta.</string>
+    <string name="kilometer">km</string>
+    <string name="nearbyCities">Città vicine</string>
+    <string name="noLocation">Tentativo di determinare la tua ultima posizione fallito.</string>
+    <string name="noNearbyCities">Nessuna città in prossimità, prova ad aumentare la distanza.</string>
+
+    <!-- GPS Frequency -->
+    <string name="gpsFrequency">Aggiorna intervallo</string>
+    <string name="gpsFrequencyDesc"> Scorri per decidere l\'intervallo, in minuti, per l\'aggiornamento della posizione.</string>
+    <string name="every">Ogni</string>
+    <string name="minutes">minuti</string>
+
+    <!-- GPS Notification -->
+    <string name="enableGPSDesc">Abilita il GPS per ricevere allerte basate sulla posizione.</string>
+    <string name="enable">Abilitato</string>
+
+    <!-- Alert Share -->
+    <string name="shareAlert">Condividi l\'allerta</string>
+    <string name="alertSoundedAt"> Un codice di allarme rosso  è suonato a</string>
+    <string name="atTime">alle</string>
+    <string name="alertSentVia">- Inviato tramite RedAlert per Android -
+        https://redalert.me
+    </string>
+
+    <!-- Disconnected Notification -->
+    <string name="disconnectedNotification">Notifica quando sconnesso</string>
+    <string name="disconnectedNotificationDesc">Quando la tua connessione con  il server fallisce una notifica ti informerà di non basare la tua sicurezza sulla applicazione.</string>
+    <string name="connected">Connesso al server delle allerte</string>
+    <string name="connecting">Connettendo...</string>
+    <string name="notConnected">Non connesso al server</string>
+
+    <!-- Alert Popup -->
+    <string name="open">Aperto</string>
+    <string name="silence">Silenzio</string>
+    <string name="showPopup">Mostra popup</string>
+    <string name="showPopupDesc">Le allerte verrano mostrate in un pop-up.</string>
+    <string name="loading">Caricamento..</string>
+    <string name="testingGCM">Testando il gateway delle notifiche... (1/2)</string>
+    <string name="testingPushy">Testando il gateway delle notifiche... (2/2)</string>
+    <string name="gcmTestFailed">Il test è fallito parzialmente. Nessuna allerta è stata ricevuta dal gateway delle notifiche di Google, ma un allerta è stata ricevuta con successo tramite il gateway secondario delle notifiche. Riprova più tardi.</string>
+    <string name="pushyTestFailed">Il test è fallito parzialmente. Nessuna allerta è stata ricevuta dal gateway secondario delle notifiche, ma un allerta è stata ricevuta con successo tramite il gateway secondario delle notifiche. Riprova più tardi.</string>
+    <string name="debugInfo">Informazioni addizionali: </string>
+    <string name="testSuccessful">Il test è stato completato con successo!</string>
+    <string name="alerts">Allerte</string>
+    <string name="advancedAlerts"> Allerte Avanzate</string>
+    <string name="integrations">Interazioni</string>
+    <string name="integrationsTitle">Impostazioni per le interazioni</string>
+    <string name="integrationsDesc">Tocca qui per impostare l\'interazione delle allerte con device esterni.</string>
+    <string name="bleNotSupported"> BLE Non supportato</string>
+    <string name="bleNotSupportedDesc"> Sfortunatamente, il tuo telefono non supporta il Bluetooth a bassa energia. Aggiorna il sistema ad Android 4.3 o superiore e prova nuovamente.</string>
+    <string name="enableBluetooth">Abilita Bluetooth</string>
+    <string name="enableBluetoothDesc">Devi abiltiare il Bluetooth nelle impostazioni del tuo telefono e lasciarlo abilitato sempre per ricevere le allerte attravero i dispositivi che interagiscono.</string>
+    <string name="integrationsTest">Testa le integrazioni</string>
+    <string name="integrationsTestDesc">Testa la connetività e la disponibilità dei dispositivi integrati.</string>
+    <string name="integrationsTestSuccess">Il test per la connettività è stato completato con successo.\n\n Verifica che il dispositivo risponda.</string>
+    <string name="miBandIntegrationDesc">Le allerte in tempo reale causeranno la vibrazione e l\'illuminazione del bracciale.</string>
+    <string name="miBandTestFailed">Un errore c\'è stato un errore durante la connesione con la Mi Band. Prova a cancellare le altre App che interagiscono con il bracciale (Incluso Mi Fit) qualora siano installate. Inoltre, prova a toccare la superificie di metallo della banda (E\' un sensore)  per svegliarla.\n\n Contattaci qualora nonostante ciò non sia possibile connettersi con il dispositivo dopo numerosi tentativi.</string>
+    <string name="devices">Dispositivi</string>
+</resources>
