@@ -59,6 +59,13 @@ It costs money to run the servers, your donation is greatly appreciated.
 
 * [Donate via Paypal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PG2VVX7GQ4KZE)
 
+## Special Thanks
+
+* Thanks to Ilana Badner for the Russian translation
+* Thanks to Matteo Villosio for the Italian translation
+* Thanks to Nathan Allenberg for the Spanish translation
+* Thanks to Eden Glant for the "Siren 1" and "Siren 2" sounds
+
 ## License
 
 Apache 2.0
