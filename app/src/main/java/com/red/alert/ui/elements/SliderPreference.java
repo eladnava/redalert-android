@@ -19,14 +19,14 @@ import com.red.alert.R;
 /**
  * @author Jay Weisskopf
  */
-public class SliderPreference extends DialogPreference
-{
+public class SliderPreference extends DialogPreference {
 
     protected final static int SEEKBAR_RESOLUTION = 10000;
 
     protected float mValue;
     protected int mSeekBarValue;
     protected CharSequence[] mSummaries;
+    onSeekBarChangedListener seekBarChangedListener;
 
     /**
      * @param context
@@ -52,7 +52,8 @@ public class SliderPreference extends DialogPreference
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SliderPreference);
         try {
             setSummary(a.getTextArray(R.styleable.SliderPreference_android_summary));
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             // Do nothing
         }
         a.recycle();
@@ -74,8 +75,19 @@ public class SliderPreference extends DialogPreference
             int index = (int) (mValue * mSummaries.length);
             index = Math.min(index, mSummaries.length - 1);
             return mSummaries[index];
-        } else {
+        }
+        else {
             return super.getSummary();
+        }
+    }
+
+    @Override
+    public void setSummary(int summaryResId) {
+        try {
+            setSummary(getContext().getResources().getStringArray(summaryResId));
+        }
+        catch (Exception e) {
+            super.setSummary(summaryResId);
         }
     }
 
@@ -87,15 +99,6 @@ public class SliderPreference extends DialogPreference
     public void setSummary(CharSequence summary) {
         super.setSummary(summary);
         mSummaries = null;
-    }
-
-    @Override
-    public void setSummary(int summaryResId) {
-        try {
-            setSummary(getContext().getResources().getStringArray(summaryResId));
-        } catch (Exception e) {
-            super.setSummary(summaryResId);
-        }
     }
 
     public float getValue() {
@@ -113,27 +116,16 @@ public class SliderPreference extends DialogPreference
         }
     }
 
-    public interface onSeekBarChangedListener
-    {
-        String getDialogMessage(float value);
-    }
-
-    onSeekBarChangedListener seekBarChangedListener;
-
-    onSeekBarChangedListener getSeekBarChangedListener()
-    {
+    onSeekBarChangedListener getSeekBarChangedListener() {
         return seekBarChangedListener;
     }
 
-    public void setSeekBarChangedListener(onSeekBarChangedListener listener)
-    {
+    public void setSeekBarChangedListener(onSeekBarChangedListener listener) {
         seekBarChangedListener = listener;
     }
 
-    public String getDialogMessage(float value)
-    {
-        if ( getSeekBarChangedListener() == null )
-        {
+    public String getDialogMessage(float value) {
+        if (getSeekBarChangedListener() == null) {
             return "?";
         }
 
@@ -145,7 +137,7 @@ public class SliderPreference extends DialogPreference
         mSeekBarValue = (int) (mValue * SEEKBAR_RESOLUTION);
         View view = super.onCreateDialogView();
 
-        final TextView message = (TextView)view.findViewById(android.R.id.message);
+        final TextView message = (TextView) view.findViewById(android.R.id.message);
         final SeekBar seekbar = (SeekBar) view.findViewById(R.id.slider_preference_seekbar);
 
         seekbar.setMax(SEEKBAR_RESOLUTION);
@@ -176,8 +168,7 @@ public class SliderPreference extends DialogPreference
         return view;
     }
 
-    void reloadDialogSummary(TextView message)
-    {
+    void reloadDialogSummary(TextView message) {
         float newValue = (float) mSeekBarValue / SEEKBAR_RESOLUTION;
 
         String newMessage = getDialogMessage(newValue);
@@ -193,6 +184,10 @@ public class SliderPreference extends DialogPreference
             setValue(newValue);
         }
         super.onDialogClosed(positiveResult);
+    }
+
+    public interface onSeekBarChangedListener {
+        String getDialogMessage(float value);
     }
 
     // TODO: Save and restore preference state.

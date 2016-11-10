@@ -1,7 +1,6 @@
 package com.red.alert.config;
 
-public class Alerts
-{
+public class Alerts {
     // Date format for recent alerts display
     public static final String DATE_FORMAT = "HH:mm:ss (dd/MM/yy)";
 

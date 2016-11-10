@@ -16,14 +16,12 @@ import com.red.alert.logic.feedback.sound.SoundLogic;
 import com.red.alert.logic.feedback.sound.VolumeLogic;
 import com.red.alert.utils.feedback.Vibration;
 
-public class PlaySoundService extends Service
-{
+public class PlaySoundService extends Service {
     MediaPlayer mPlayer;
     IBinder mServiceBinder;
 
     @Override
-    public void onCreate()
-    {
+    public void onCreate() {
         super.onCreate();
 
         // Initialize binder
@@ -34,11 +32,9 @@ public class PlaySoundService extends Service
     }
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId)
-    {
+    public int onStartCommand(Intent intent, int flags, int startId) {
         // Only if we have an intent
-        if (intent != null)
-        {
+        if (intent != null) {
             // Actually play the sound
             handleIntent(intent);
         }
@@ -47,15 +43,13 @@ public class PlaySoundService extends Service
         return START_NOT_STICKY;
     }
 
-    void handleIntent(Intent Intent)
-    {
+    void handleIntent(Intent Intent) {
         // Get alert type as extra
         String alertType = Intent.getStringExtra(SoundServiceParameters.ALERT_TYPE);
         String soundResource = Intent.getStringExtra(SoundServiceParameters.ALERT_SOUND);
 
         // Avoid secondary override
-        if (SoundLogic.isSoundCurrentlyPlaying(alertType, this))
-        {
+        if (SoundLogic.isSoundCurrentlyPlaying(alertType, this)) {
             return;
         }
 
@@ -66,17 +60,14 @@ public class PlaySoundService extends Service
         Vibration.issueVibration(alertType, this);
     }
 
-    void playSound(String Type, String Sound)
-    {
+    void playSound(String Type, String Sound) {
         // Should we play it?
-        if (SoundLogic.shouldPlayAlertSound(Type, this))
-        {
+        if (SoundLogic.shouldPlayAlertSound(Type, this)) {
             // Get path to resource
             Uri alarmSoundURI = SoundLogic.getAlertSound(Type, Sound, this);
 
             // Invalid sound URI?
-            if (alarmSoundURI == null)
-            {
+            if (alarmSoundURI == null) {
                 return;
             }
 
@@ -88,11 +79,9 @@ public class PlaySoundService extends Service
         }
     }
 
-    void playSoundURI(Uri alarmSoundURI)
-    {
+    void playSoundURI(Uri alarmSoundURI) {
         // No URI?
-        if (alarmSoundURI == null)
-        {
+        if (alarmSoundURI == null) {
             return;
         }
 
@@ -108,16 +97,14 @@ public class PlaySoundService extends Service
         // Set stream type
         mPlayer.setAudioStreamType(SoundLogic.getSoundStreamType(this));
 
-        try
-        {
+        try {
             // Set URI data source
             mPlayer.setDataSource(this, alarmSoundURI);
 
             // Prepare media player
             mPlayer.prepare();
         }
-        catch (Exception exc)
-        {
+        catch (Exception exc) {
             // Log it
             Log.e(Logging.TAG, "Media player preparation failed", exc);
 
@@ -129,14 +116,11 @@ public class PlaySoundService extends Service
         mPlayer.start();
     }
 
-    public void resetMediaPlayer()
-    {
+    public void resetMediaPlayer() {
         // Got a player?
-        if (mPlayer != null)
-        {
+        if (mPlayer != null) {
             // Still playing?
-            if (mPlayer.isPlaying())
-            {
+            if (mPlayer.isPlaying()) {
                 // Stop playing
                 mPlayer.stop();
 
@@ -150,11 +134,9 @@ public class PlaySoundService extends Service
     }
 
     @Override
-    public void onDestroy()
-    {
+    public void onDestroy() {
         // Release media player
-        if (mPlayer != null)
-        {
+        if (mPlayer != null) {
             mPlayer.release();
         }
 
@@ -163,16 +145,13 @@ public class PlaySoundService extends Service
     }
 
     @Override
-    public IBinder onBind(Intent arg0)
-    {
+    public IBinder onBind(Intent arg0) {
         // Provide service binder
         return mServiceBinder;
     }
 
-    public class LocalBinder extends Binder
-    {
-        public PlaySoundService getService()
-        {
+    public class LocalBinder extends Binder {
+        public PlaySoundService getService() {
             // Return the instance
             return PlaySoundService.this;
         }

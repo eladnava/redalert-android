@@ -9,10 +9,8 @@ import com.red.alert.R;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.utils.marketing.GooglePlay;
 
-public class UpdateDialogs
-{
-    public static void showUpdateDialog(final Context context, String newVersion)
-    {
+public class UpdateDialogs {
+    public static void showUpdateDialog(final Context context, String newVersion) {
         // Use builder to create dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
@@ -23,29 +21,24 @@ public class UpdateDialogs
         builder.setTitle(context.getString(R.string.update)).setMessage(message);
 
         // Set positive button
-        builder.setPositiveButton(R.string.updatePositive, new DialogInterface.OnClickListener()
-        {
+        builder.setPositiveButton(R.string.updatePositive, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i)
-            {
+            public void onClick(DialogInterface dialogInterface, int i) {
                 // Open app page
                 GooglePlay.openAppListingPage(context);
             }
         });
 
         // Set negative button
-        builder.setNegativeButton(R.string.notNow, new DialogInterface.OnClickListener()
-        {
+        builder.setNegativeButton(R.string.notNow, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i)
-            {
+            public void onClick(DialogInterface dialogInterface, int i) {
                 // Close dialog
                 dialogInterface.dismiss();
             }
         });
 
-        try
-        {
+        try {
             // Create the dialog
             AlertDialog dialog = builder.create();
 
@@ -55,8 +48,7 @@ public class UpdateDialogs
             // Support for RTL languages
             RTLSupport.mirrorDialog(dialog, context);
         }
-        catch (Exception exc)
-        {
+        catch (Exception exc) {
             // Show toast instead
             Toast.makeText(context, message, Toast.LENGTH_LONG).show();
         }

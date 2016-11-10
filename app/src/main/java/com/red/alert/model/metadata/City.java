@@ -4,8 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-public class City
-{
+public class City {
     @JsonProperty("lat")
     public double latitude;
 
@@ -37,8 +36,7 @@ public class City
     public int countdown;
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return value;
     }
 }

@@ -2,8 +2,7 @@ package com.red.alert.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Alert
-{
+public class Alert {
     @JsonProperty("date")
     public long date;
 
@@ -15,8 +14,7 @@ public class Alert
     public String dateString;
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return zone;
     }
 }

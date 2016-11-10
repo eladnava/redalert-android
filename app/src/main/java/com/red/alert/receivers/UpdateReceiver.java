@@ -6,20 +6,15 @@ import android.support.v4.content.WakefulBroadcastReceiver;
 import android.util.Log;
 
 import com.red.alert.config.Logging;
-import com.red.alert.logic.services.ServiceManager;
 import com.red.alert.services.gcm.GCMRegistrationService;
 
-public class UpdateReceiver extends WakefulBroadcastReceiver
-{
+public class UpdateReceiver extends WakefulBroadcastReceiver {
     @Override
-    public void onReceive(Context context, Intent intent)
-    {
+    public void onReceive(Context context, Intent intent) {
         // Got package replaced event?
-        if (intent.ACTION_PACKAGE_REPLACED.equals(intent.getAction()))
-        {
+        if (intent.ACTION_PACKAGE_REPLACED.equals(intent.getAction())) {
             // Is it this package?
-            if (intent.getData().getSchemeSpecificPart().equals(context.getPackageName()))
-            {
+            if (intent.getData().getSchemeSpecificPart().equals(context.getPackageName())) {
                 // Log it
                 Log.d(Logging.TAG, "App updated");
 

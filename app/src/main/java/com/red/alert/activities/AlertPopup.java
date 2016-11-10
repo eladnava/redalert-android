@@ -30,8 +30,7 @@ import com.red.alert.utils.ui.DensityUtil;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class AlertPopup extends AppCompatActivity
-{
+public class AlertPopup extends AppCompatActivity {
     boolean mIsDestroyed;
 
     TextView mCities;
@@ -40,9 +39,39 @@ public class AlertPopup extends AppCompatActivity
     Button mOpen;
     Button mSilence;
 
+    public static void showAlertPopup(String alertType, String zone, Context context) {
+        // User disabled this feature?
+        if (!AppPreferences.getPopupEnabled(context)) {
+            // Stop execution
+            return;
+        }
+
+        // Type must be an "alert"
+        if (!alertType.equals(AlertTypes.PRIMARY)) {
+            // Stop execution
+            return;
+        }
+
+        // Create new popup intent
+        Intent popupIntent = new Intent();
+
+        // Set class to popup activity
+        popupIntent.setClass(context, AlertPopup.class);
+
+        // Pass on zone
+        popupIntent.putExtra(AlertPopupParameters.ALERT_ZONE, zone);
+
+        // Clear top, set as new task
+        popupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        popupIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        popupIntent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+
+        // Display popup activity
+        context.startActivity(popupIntent);
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Load UI elements
@@ -55,8 +84,7 @@ public class AlertPopup extends AppCompatActivity
         Volume.setVolumeKeysAction(this);
     }
 
-    void initializeUI()
-    {
+    void initializeUI() {
         // RTL action bar hack
         RTLSupport.mirrorActionBar(this);
 
@@ -73,14 +101,11 @@ public class AlertPopup extends AppCompatActivity
         initializeListeners();
     }
 
-    void initializeListeners()
-    {
+    void initializeListeners() {
         // Open button clicked
-        mOpen.setOnClickListener(new View.OnClickListener()
-        {
+        mOpen.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 // Open main activity
                 startActivity(new Intent().setClass(AlertPopup.this, Main.class));
 
@@ -90,25 +115,21 @@ public class AlertPopup extends AppCompatActivity
         });
 
         // Silence button clicked
-        mSilence.setOnClickListener(new View.OnClickListener()
-        {
+        mSilence.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 // Stop the media service
                 StopSoundService.stopSoundService(AlertPopup.this);
             }
         });
     }
 
-    void initializeAlert()
-    {
+    void initializeAlert() {
         // Get region code
         String zone = getIntent().getStringExtra(AlertPopupParameters.ALERT_ZONE);
 
         // None given?
-        if (StringUtils.stringIsNullOrEmpty(zone))
-        {
+        if (StringUtils.stringIsNullOrEmpty(zone)) {
             return;
         }
 
@@ -119,8 +140,7 @@ public class AlertPopup extends AppCompatActivity
         String zoneCities = LocationData.getCityNamesByZone(zone, this);
 
         // No cities, unknown region
-        if (StringUtils.stringIsNullOrEmpty(zoneCities))
-        {
+        if (StringUtils.stringIsNullOrEmpty(zoneCities)) {
             // No cities, unknown region
             return;
         }
@@ -136,19 +156,16 @@ public class AlertPopup extends AppCompatActivity
     }
 
     @Override
-    protected void onUserLeaveHint()
-    {
+    protected void onUserLeaveHint() {
         super.onUserLeaveHint();
 
         // End activity
-        if (!isFinishing())
-        {
+        if (!isFinishing()) {
             finish();
         }
     }
 
-    void scheduleRocketCountdown(int Seconds)
-    {
+    void scheduleRocketCountdown(int Seconds) {
         // Offset impact to account for delivery delay
         // Seconds = Seconds - Main.IMPACT_COUNTDOWN_OFFSET;
 
@@ -156,19 +173,14 @@ public class AlertPopup extends AppCompatActivity
         final long impactTimestamp = System.currentTimeMillis() + (Seconds * 1000);
 
         // Schedule a new timer
-        new Timer().scheduleAtFixedRate(new TimerTask()
-        {
+        new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
-            public void run()
-            {
-                runOnUiThread(new Runnable()
-                {
+            public void run() {
+                runOnUiThread(new Runnable() {
                     @Override
-                    public void run()
-                    {
+                    public void run() {
                         // Activity died?
-                        if (isFinishing() || mIsDestroyed)
-                        {
+                        if (isFinishing() || mIsDestroyed) {
                             return;
                         }
 
@@ -181,16 +193,14 @@ public class AlertPopup extends AppCompatActivity
     }
 
     @Override
-    protected void onDestroy()
-    {
+    protected void onDestroy() {
         super.onDestroy();
 
         // Avoid hiding invalid dialogs
         mIsDestroyed = true;
     }
 
-    void updateCountdownTimer(long impactTimestamp)
-    {
+    void updateCountdownTimer(long impactTimestamp) {
         // Get current time
         long currentTimestamp = System.currentTimeMillis();
 
@@ -198,26 +208,22 @@ public class AlertPopup extends AppCompatActivity
         int seconds = (int) Math.abs((impactTimestamp - currentTimestamp) / 1000);
 
         // Did rocket already impact?
-        if (currentTimestamp <= impactTimestamp)
-        {
+        if (currentTimestamp <= impactTimestamp) {
             // Convert it
             updateCountdownTimerText(seconds, R.color.countdown_pre_impact);
 
         }
-        else if (currentTimestamp > impactTimestamp)
-        {
+        else if (currentTimestamp > impactTimestamp) {
             // Number of seconds to wait after impact
             int postImpactSeconds = (Safety.POST_IMPACT_WAIT_MINUTES * 60);
 
             // Stop counting after X minutes
-            if (seconds >= postImpactSeconds)
-            {
+            if (seconds >= postImpactSeconds) {
                 // Show green counter
                 updateCountdownTimerText(postImpactSeconds, R.color.countdown_post_impact_safe);
 
                 // Shut down activity after post impact + X seconds (padding)
-                if ( seconds >= postImpactSeconds + Alerts.ALERT_POPUP_DONE_PADDING )
-                {
+                if (seconds >= postImpactSeconds + Alerts.ALERT_POPUP_DONE_PADDING) {
                     // Done with activity (shuts down screen as well)
                     finish();
                 }
@@ -231,8 +237,7 @@ public class AlertPopup extends AppCompatActivity
         }
     }
 
-    void updateCountdownTimerText(int seconds, int color)
-    {
+    void updateCountdownTimerText(int seconds, int color) {
         // Get human-readable minutes
         int minutes = seconds / 60;
 
@@ -247,8 +252,7 @@ public class AlertPopup extends AppCompatActivity
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig)
-    {
+    public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
         // Support for RTL languages
@@ -256,16 +260,14 @@ public class AlertPopup extends AppCompatActivity
     }
 
     @Override
-    protected void onPause()
-    {
+    protected void onPause() {
         super.onPause();
 
         // Fade out gradually
         overridePendingTransition(0, R.anim.fade_out);
     }
 
-    void centerPopupInParent(Window Window)
-    {
+    void centerPopupInParent(Window Window) {
         // Fade out
         FrameLayout rootView = (FrameLayout) Window.getDecorView();
 
@@ -301,8 +303,7 @@ public class AlertPopup extends AppCompatActivity
     }
 
     @Override
-    public void onAttachedToWindow()
-    {
+    public void onAttachedToWindow() {
         super.onAttachedToWindow();
 
         // Get window object
@@ -319,50 +320,14 @@ public class AlertPopup extends AppCompatActivity
         centerPopupInParent(window);
     }
 
-    public boolean onOptionsItemSelected(final MenuItem Item)
-    {
+    public boolean onOptionsItemSelected(final MenuItem Item) {
         // Check item ID
-        switch (Item.getItemId())
-        {
+        switch (Item.getItemId()) {
             // Home button?
             case android.R.id.home:
                 onBackPressed();
         }
 
         return super.onOptionsItemSelected(Item);
-    }
-
-    public static void showAlertPopup(String alertType, String zone, Context context)
-    {
-        // User disabled this feature?
-        if (!AppPreferences.getPopupEnabled(context))
-        {
-            // Stop execution
-            return;
-        }
-
-        // Type must be an "alert"
-        if (!alertType.equals(AlertTypes.PRIMARY))
-        {
-            // Stop execution
-            return;
-        }
-
-        // Create new popup intent
-        Intent popupIntent = new Intent();
-
-        // Set class to popup activity
-        popupIntent.setClass(context, AlertPopup.class);
-
-        // Pass on zone
-        popupIntent.putExtra(AlertPopupParameters.ALERT_ZONE, zone);
-
-        // Clear top, set as new task
-        popupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        popupIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        popupIntent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-
-        // Display popup activity
-        context.startActivity(popupIntent);
     }
 }

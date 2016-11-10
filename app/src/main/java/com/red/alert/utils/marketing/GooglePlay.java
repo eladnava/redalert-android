@@ -4,34 +4,26 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.red.alert.R;
 import com.red.alert.config.Logging;
 
-public class GooglePlay
-{
-    public static void openAppListingPage(Context context)
-    {
+public class GooglePlay {
+    public static void openAppListingPage(Context context) {
         // Initialize Google Play intent
         Intent rateAppIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + context.getApplicationContext().getPackageName()));
 
         // Is Google Play installed?
-        if (context.getPackageManager().queryIntentActivities(rateAppIntent, 0).size() > 0)
-        {
-            try
-            {
+        if (context.getPackageManager().queryIntentActivities(rateAppIntent, 0).size() > 0) {
+            try {
                 // Try to open Google Play and navigate to app page
                 context.startActivity(rateAppIntent);
             }
-            catch( Exception exc )
-            {
+            catch (Exception exc) {
                 // Log it
                 Log.e(Logging.TAG, "Rate activity launch failed", exc);
             }
         }
-        else
-        {
+        else {
             // Log it
             Log.e(Logging.TAG, "Can't rate. Google Play app not installed");
         }

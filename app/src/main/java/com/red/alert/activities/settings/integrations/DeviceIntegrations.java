@@ -1,7 +1,6 @@
 package com.red.alert.activities.settings.integrations;
 
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
@@ -25,8 +24,7 @@ import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.utils.feedback.Volume;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
 
-public class DeviceIntegrations extends AppCompatPreferenceActivity
-{
+public class DeviceIntegrations extends AppCompatPreferenceActivity {
     boolean mIsTesting;
     boolean mMiBandTestPassed;
 
@@ -36,8 +34,7 @@ public class DeviceIntegrations extends AppCompatPreferenceActivity
     Preference mTestIntegrations;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Load UI elements
@@ -47,11 +44,9 @@ public class DeviceIntegrations extends AppCompatPreferenceActivity
         Volume.setVolumeKeysAction(this);
     }
 
-    private void showImportantDialogs()
-    {
+    private void showImportantDialogs() {
         // No Bluetooth connectivity in device?
-        if ( ! BluetoothIntegration.isBLESupported(this) )
-        {
+        if (!BluetoothIntegration.isBLESupported(this)) {
             // Show fatal dialog
             BluetoothDialogs.showBLENotSupportedDialog(this);
 
@@ -60,16 +55,14 @@ public class DeviceIntegrations extends AppCompatPreferenceActivity
         }
 
         // Bluetooth disabled?
-        if ( ! BluetoothIntegration.isBluetoothEnabled() )
-        {
+        if (!BluetoothIntegration.isBluetoothEnabled()) {
             // Ask user to enable bluetooth politely
             BluetoothDialogs.showEnableBluetoothDialog(this);
         }
     }
 
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
 
         // Any dialogs to display?
@@ -80,16 +73,14 @@ public class DeviceIntegrations extends AppCompatPreferenceActivity
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig)
-    {
+    public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
         // Support for RTL languages
         RTLSupport.mirrorActionBar(this);
     }
 
-    private void initializeUI()
-    {
+    private void initializeUI() {
         // Allow click on home button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -104,17 +95,13 @@ public class DeviceIntegrations extends AppCompatPreferenceActivity
         initializeListeners();
     }
 
-    private void initializeListeners()
-    {
+    private void initializeListeners() {
         // Test integrations on click listener
-        mTestIntegrations.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
-        {
+        mTestIntegrations.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
-            public boolean onPreferenceClick(Preference preference)
-            {
+            public boolean onPreferenceClick(Preference preference) {
                 // Bluetooth disabled?
-                if (!BluetoothIntegration.isBluetoothEnabled())
-                {
+                if (!BluetoothIntegration.isBluetoothEnabled()) {
                     // Ask user to enable bluetooth politely
                     BluetoothDialogs.showEnableBluetoothDialog(DeviceIntegrations.this);
 
@@ -123,8 +110,7 @@ public class DeviceIntegrations extends AppCompatPreferenceActivity
                 }
 
                 // Not already testing?
-                if (!mIsTesting)
-                {
+                if (!mIsTesting) {
                     // Test out the integrations
                     new PerformIntegrationsTestAsync().execute();
                 }
@@ -136,16 +122,14 @@ public class DeviceIntegrations extends AppCompatPreferenceActivity
     }
 
     @Override
-    protected void onDestroy()
-    {
+    protected void onDestroy() {
         super.onDestroy();
 
         // Avoid hiding invalid dialogs
         mIsDestroyed = true;
     }
 
-    private void testMiBandConnectivity()
-    {
+    private void testMiBandConnectivity() {
         // Reset test result
         mMiBandTestPassed = false;
 
@@ -153,47 +137,51 @@ public class DeviceIntegrations extends AppCompatPreferenceActivity
         final MiBand miBand = MiBand.getInstance(this);
 
         // Attempt to connect to it
-        miBand.connect(new ActionCallback()
-        {
+        miBand.connect(new ActionCallback() {
             @Override
-            public void onSuccess(Object data)
-            {
+            public void onSuccess(Object data) {
                 // Set passed boolean
                 mMiBandTestPassed = true;
             }
 
             @Override
-            public void onFail(int errorCode, String msg)
-            {
+            public void onFail(int errorCode, String msg) {
                 // Failed, log it
                 Log.d(Logging.TAG, "Failed to connect to Mi Band: " + msg);
             }
         });
     }
 
-    private void waitForMiBandConnectivityResult()
-    {
+    private void waitForMiBandConnectivityResult() {
         // Calculate the max timestamp
         long maxTimestamp = System.currentTimeMillis() + Testing.DEVICE_CONNECTION_TIMEOUT_SECONDS * 1000;
 
         // Wait until boolean value changes or enough time passes
-        while (!mMiBandTestPassed && System.currentTimeMillis() < maxTimestamp)
-        {
-            try
-            {
+        while (!mMiBandTestPassed && System.currentTimeMillis() < maxTimestamp) {
+            try {
                 // Sleep to relieve the thread
                 Thread.sleep(100);
             }
-            catch (Exception exc){}
+            catch (Exception exc) {
+            }
         }
     }
 
-    public class PerformIntegrationsTestAsync extends AsyncTaskAdapter<Integer, String, Integer>
-    {
+    public boolean onOptionsItemSelected(final MenuItem Item) {
+        // Check item ID
+        switch (Item.getItemId()) {
+            // Home button?
+            case android.R.id.home:
+                onBackPressed();
+        }
+
+        return super.onOptionsItemSelected(Item);
+    }
+
+    public class PerformIntegrationsTestAsync extends AsyncTaskAdapter<Integer, String, Integer> {
         ProgressDialog mLoading;
 
-        public PerformIntegrationsTestAsync()
-        {
+        public PerformIntegrationsTestAsync() {
             // Prevent concurrent testing
             mIsTesting = true;
 
@@ -211,8 +199,7 @@ public class DeviceIntegrations extends AppCompatPreferenceActivity
         }
 
         @Override
-        protected void onProgressUpdate(String... value)
-        {
+        protected void onProgressUpdate(String... value) {
             super.onProgressUpdate(value);
 
             // Update progress dialog
@@ -220,14 +207,12 @@ public class DeviceIntegrations extends AppCompatPreferenceActivity
         }
 
         @Override
-        protected Integer doInBackground(Integer... Parameter)
-        {
+        protected Integer doInBackground(Integer... Parameter) {
             // Set progress dialog status text
             publishProgress(getString(R.string.connecting));
 
             // Xiaomi Mi Band integration enabled?
-            if (AppPreferences.getMiBandIntegrationEnabled(DeviceIntegrations.this))
-            {
+            if (AppPreferences.getMiBandIntegrationEnabled(DeviceIntegrations.this)) {
                 // Try to connect (async)
                 testMiBandConnectivity();
 
@@ -235,13 +220,11 @@ public class DeviceIntegrations extends AppCompatPreferenceActivity
                 waitForMiBandConnectivityResult();
 
                 // Mi Band connection failed?
-                if ( ! mMiBandTestPassed )
-                {
+                if (!mMiBandTestPassed) {
                     // Return error
                     return R.string.miBandTestFailed;
                 }
-                else
-                {
+                else {
                     // Send Vibration + LED colors
                     MiBandIntegration.sendNotificationCommands(DeviceIntegrations.this);
                 }
@@ -252,47 +235,29 @@ public class DeviceIntegrations extends AppCompatPreferenceActivity
         }
 
         @Override
-        protected void onPostExecute(Integer errorStringResource)
-        {
+        protected void onPostExecute(Integer errorStringResource) {
             // No longer testing
             mIsTesting = false;
 
             // Activity dead?
-            if (isFinishing() || mIsDestroyed)
-            {
+            if (isFinishing() || mIsDestroyed) {
                 return;
             }
 
             // Hide progress dialog
-            if (mLoading.isShowing())
-            {
+            if (mLoading.isShowing()) {
                 mLoading.dismiss();
             }
 
             // Success?
-            if ( errorStringResource == 0 )
-            {
+            if (errorStringResource == 0) {
                 // Build the success dialog
                 AlertDialogBuilder.showGenericDialog(getString(R.string.testSuccessful), getString(R.string.integrationsTestSuccess), DeviceIntegrations.this, null);
             }
-            else
-            {
+            else {
                 // Build the error dialog
                 AlertDialogBuilder.showGenericDialog(getString(R.string.error), getString(errorStringResource), DeviceIntegrations.this, null);
             }
         }
-    }
-
-    public boolean onOptionsItemSelected(final MenuItem Item)
-    {
-        // Check item ID
-        switch (Item.getItemId())
-        {
-            // Home button?
-            case android.R.id.home:
-                onBackPressed();
-        }
-
-        return super.onOptionsItemSelected(Item);
     }
 }

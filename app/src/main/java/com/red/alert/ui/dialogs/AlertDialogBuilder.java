@@ -8,10 +8,8 @@ import android.widget.Toast;
 import com.red.alert.R;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 
-public class AlertDialogBuilder
-{
-    public static final void showGenericDialog(String title, String message, Context context, DialogInterface.OnClickListener clickListener)
-    {
+public class AlertDialogBuilder {
+    public static final void showGenericDialog(String title, String message, Context context, DialogInterface.OnClickListener clickListener) {
         // Use builder to create dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
@@ -21,8 +19,7 @@ public class AlertDialogBuilder
         // Prevent cancellation
         builder.setCancelable(false);
 
-        try
-        {
+        try {
             // Build it
             AlertDialog dialog = builder.create();
 
@@ -32,8 +29,7 @@ public class AlertDialogBuilder
             // Support for RTL languages
             RTLSupport.mirrorDialog(dialog, context);
         }
-        catch (Exception exc)
-        {
+        catch (Exception exc) {
             // Show toast instead
             Toast.makeText(context, title + " - " + message, Toast.LENGTH_LONG).show();
         }

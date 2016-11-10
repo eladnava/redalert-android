@@ -11,22 +11,17 @@ import android.widget.Toast;
 import com.red.alert.R;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 
-public class BluetoothDialogs
-{
+public class BluetoothDialogs {
     private static AlertDialog mEnableBluetoothDialog;
 
-    public static void showEnableBluetoothDialog(final Context context)
-    {
+    public static void showEnableBluetoothDialog(final Context context) {
         // Already have a historical dialog?
-        if ( mEnableBluetoothDialog != null )
-        {
-            try
-            {
+        if (mEnableBluetoothDialog != null) {
+            try {
                 // Try to dismiss it
                 mEnableBluetoothDialog.hide();
             }
-            catch (Exception exc)
-            {
+            catch (Exception exc) {
                 // The dialog is probably no longer valid
                 mEnableBluetoothDialog = null;
             }
@@ -39,29 +34,24 @@ public class BluetoothDialogs
         builder.setTitle(context.getString(R.string.enableBluetooth)).setMessage(context.getString(R.string.enableBluetoothDesc));
 
         // Set positive button
-        builder.setPositiveButton(R.string.enable, new DialogInterface.OnClickListener()
-        {
+        builder.setPositiveButton(R.string.enable, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i)
-            {
+            public void onClick(DialogInterface dialogInterface, int i) {
                 // Ask user to enable it via built-in Android dialog
                 context.startActivity(new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE));
             }
         });
 
         // Set negative button
-        builder.setNegativeButton(R.string.notNow, new DialogInterface.OnClickListener()
-        {
+        builder.setNegativeButton(R.string.notNow, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int i)
-            {
+            public void onClick(DialogInterface dialog, int i) {
                 // Hide dialog
                 dialog.dismiss();
             }
         });
 
-        try
-        {
+        try {
             // Create the dialog
             mEnableBluetoothDialog = builder.create();
 
@@ -72,15 +62,13 @@ public class BluetoothDialogs
             RTLSupport.mirrorDialog(mEnableBluetoothDialog, context);
 
         }
-        catch (Exception exc)
-        {
+        catch (Exception exc) {
             // Show toast instead
             Toast.makeText(context, context.getString(R.string.enableBluetoothDesc), Toast.LENGTH_LONG).show();
         }
     }
 
-    public static void showBLENotSupportedDialog(final Activity activity)
-    {
+    public static void showBLENotSupportedDialog(final Activity activity) {
         // Use builder to create dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
@@ -88,25 +76,21 @@ public class BluetoothDialogs
         builder.setTitle(activity.getString(R.string.bleNotSupported)).setCancelable(false).setMessage(activity.getString(R.string.bleNotSupportedDesc));
 
         // Set positive button
-        builder.setPositiveButton(R.string.okay, new DialogInterface.OnClickListener()
-        {
+        builder.setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i)
-            {
+            public void onClick(DialogInterface dialogInterface, int i) {
                 // Dismiss dialog
                 dialogInterface.dismiss();
 
                 // Still alive?
-                if (!activity.isFinishing())
-                {
+                if (!activity.isFinishing()) {
                     // Close the activity
                     activity.finish();
                 }
             }
         });
 
-        try
-        {
+        try {
             // Create the dialog
             AlertDialog dialog = builder.create();
 
@@ -117,8 +101,7 @@ public class BluetoothDialogs
             RTLSupport.mirrorDialog(dialog, activity);
 
         }
-        catch (Exception exc)
-        {
+        catch (Exception exc) {
             // Show toast instead
             Toast.makeText(activity, activity.getString(R.string.bleNotSupportedDesc), Toast.LENGTH_LONG).show();
         }

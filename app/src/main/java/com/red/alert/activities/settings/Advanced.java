@@ -17,8 +17,7 @@ import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.utils.feedback.Volume;
 import com.red.alert.utils.networking.Connectivity;
 
-public class Advanced extends AppCompatPreferenceActivity
-{
+public class Advanced extends AppCompatPreferenceActivity {
     Preference mLocationAlerts;
     Preference mIntergations;
     Preference mSecondaryAlerts;
@@ -27,8 +26,7 @@ public class Advanced extends AppCompatPreferenceActivity
     SliderPreference mVolumeSelection;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Load UI elements
@@ -39,8 +37,7 @@ public class Advanced extends AppCompatPreferenceActivity
     }
 
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
 
         // Support for RTL languages
@@ -48,16 +45,14 @@ public class Advanced extends AppCompatPreferenceActivity
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig)
-    {
+    public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
         // Support for RTL languages
         RTLSupport.mirrorActionBar(this);
     }
 
-    void initializeUI()
-    {
+    void initializeUI() {
         // Allow click on home button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -75,14 +70,11 @@ public class Advanced extends AppCompatPreferenceActivity
         initializeListeners();
     }
 
-    void initializeListeners()
-    {
+    void initializeListeners() {
         // Volume selection
-        mVolumeSelection.setSeekBarChangedListener(new SliderPreference.onSeekBarChangedListener()
-        {
+        mVolumeSelection.setSeekBarChangedListener(new SliderPreference.onSeekBarChangedListener() {
             @Override
-            public String getDialogMessage(float Value)
-            {
+            public String getDialogMessage(float Value) {
                 // Get slider percent
                 int percent = (int) (AppPreferences.getPrimaryAlertVolume(Advanced.this, Value) * 100);
 
@@ -92,11 +84,9 @@ public class Advanced extends AppCompatPreferenceActivity
         });
 
         // Set up disconnected notification click listener
-        mDisconnectedNotification.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
-        {
+        mDisconnectedNotification.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
-            public boolean onPreferenceClick(Preference preference)
-            {
+            public boolean onPreferenceClick(Preference preference) {
                 // Refresh the disconnection notification
                 Connectivity.refreshConnectionNotification(Advanced.this);
 
@@ -106,11 +96,9 @@ public class Advanced extends AppCompatPreferenceActivity
         });
 
         // Set up secondary alerts click listener
-        mSecondaryAlerts.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
-        {
+        mSecondaryAlerts.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
-            public boolean onPreferenceClick(Preference preference)
-            {
+            public boolean onPreferenceClick(Preference preference) {
                 // Prepare new intent
                 Intent secondaryAlerts = new Intent();
 
@@ -126,11 +114,9 @@ public class Advanced extends AppCompatPreferenceActivity
         });
 
         // Set up location alerts click listener
-        mLocationAlerts.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
-        {
+        mLocationAlerts.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
-            public boolean onPreferenceClick(Preference preference)
-            {
+            public boolean onPreferenceClick(Preference preference) {
                 // Prepare new intent
                 Intent locationAlerts = new Intent();
 
@@ -146,11 +132,9 @@ public class Advanced extends AppCompatPreferenceActivity
         });
 
         // Set up integrations click listener
-        mIntergations.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
-        {
+        mIntergations.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
-            public boolean onPreferenceClick(Preference preference)
-            {
+            public boolean onPreferenceClick(Preference preference) {
                 // Prepare new intent
                 Intent integrations = new Intent();
 
@@ -166,11 +150,9 @@ public class Advanced extends AppCompatPreferenceActivity
         });
     }
 
-    public boolean onOptionsItemSelected(final MenuItem Item)
-    {
+    public boolean onOptionsItemSelected(final MenuItem Item) {
         // Check item ID
-        switch (Item.getItemId())
-        {
+        switch (Item.getItemId()) {
             // Home button?
             case android.R.id.home:
                 onBackPressed();

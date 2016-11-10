@@ -1,7 +1,6 @@
 package com.red.alert.config.push;
 
-public class GCMGateway
-{
+public class GCMGateway {
     // GCM Sender ID for registration
     public static String SENDER_ID = "23150228579";
 

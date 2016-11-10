@@ -11,10 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class Localization
-{
-    public static boolean isEnglishLocale(Context context)
-    {
+public class Localization {
+    public static boolean isEnglishLocale(Context context) {
         // Override locale, if chosen
         overridePhoneLocale(context);
 
@@ -40,8 +38,7 @@ public class Localization
         return false;
     }
 
-    public static boolean isHebrewLocale(Context context)
-    {
+    public static boolean isHebrewLocale(Context context) {
         // Override locale, if chosen
         overridePhoneLocale(context);
 
@@ -52,8 +49,7 @@ public class Localization
         return languageCode.equals(context.getString(R.string.hebrewCode)) || languageCode.equals(context.getString(R.string.hebrewCode2));
     }
 
-    public static void overridePhoneLocale(Context context)
-    {
+    public static void overridePhoneLocale(Context context) {
         // Create new configuration
         Configuration configuration = context.getResources().getConfiguration();
 
@@ -61,13 +57,11 @@ public class Localization
         String overrideLocale = Singleton.getSharedPreferences(context).getString(context.getString(R.string.langPref), "");
 
         // Chosen a new locale?
-        if (!StringUtils.stringIsNullOrEmpty(overrideLocale))
-        {
+        if (!StringUtils.stringIsNullOrEmpty(overrideLocale)) {
             // Set it
             configuration.locale = new Locale(overrideLocale);
         }
-        else
-        {
+        else {
             // Use default locale
             configuration.locale = Locale.getDefault();
         }

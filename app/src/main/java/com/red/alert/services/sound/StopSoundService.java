@@ -7,33 +7,12 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 
-public class StopSoundService extends Service
-{
-    @Override
-    public int onStartCommand(Intent Intent, int Flags, int StartId)
-    {
-        // Stop currently playing sounds
-        stopSoundService(this);
-
-        // Don't restart this service
-        return START_NOT_STICKY;
-    }
-
-    @Override
-    public IBinder onBind(Intent arg0)
-    {
-        // Provide service binder
-        return null;
-    }
-
-    public static void stopSoundService(final Context context)
-    {
+public class StopSoundService extends Service {
+    public static void stopSoundService(final Context context) {
         // Bind to the sound service
-        context.bindService(new Intent(context, PlaySoundService.class), new ServiceConnection()
-        {
+        context.bindService(new Intent(context, PlaySoundService.class), new ServiceConnection() {
             @Override
-            public void onServiceConnected(ComponentName componentName, IBinder binder)
-            {
+            public void onServiceConnected(ComponentName componentName, IBinder binder) {
                 // Convert binder to LocalBinder
                 PlaySoundService.LocalBinder localBinder = (PlaySoundService.LocalBinder) binder;
 
@@ -48,10 +27,24 @@ public class StopSoundService extends Service
             }
 
             @Override
-            public void onServiceDisconnected(ComponentName componentName)
-            {
+            public void onServiceDisconnected(ComponentName componentName) {
                 // Do nothing
             }
         }, context.BIND_AUTO_CREATE);
+    }
+
+    @Override
+    public int onStartCommand(Intent Intent, int Flags, int StartId) {
+        // Stop currently playing sounds
+        stopSoundService(this);
+
+        // Don't restart this service
+        return START_NOT_STICKY;
+    }
+
+    @Override
+    public IBinder onBind(Intent arg0) {
+        // Provide service binder
+        return null;
     }
 }

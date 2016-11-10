@@ -49,8 +49,7 @@ import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.networking.HTTP;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
 
-public class General extends AppCompatPreferenceActivity
-{
+public class General extends AppCompatPreferenceActivity {
     boolean mIsTesting;
     boolean mIsDestroyed;
     boolean mGcmTestPassed;
@@ -69,10 +68,28 @@ public class General extends AppCompatPreferenceActivity
 
     SearchableMultiSelectPreference mCitySelection;
     SearchableMultiSelectPreference mRegionSelection;
+    SharedPreferences.OnSharedPreferenceChangeListener mBroadcastListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences Preferences, String Key) {
+            // Asked for reload?
+            if (Key.equalsIgnoreCase(LocationSelectionEvents.REFRESH_AREA_VALUES)) {
+                refreshAreaValues();
+            }
+
+            // GCM test passed?
+            if (Key.equalsIgnoreCase(SelfTestEvents.GCM_TEST_PASSED)) {
+                mGcmTestPassed = true;
+            }
+
+            // Pushy test passed?
+            if (Key.equalsIgnoreCase(SelfTestEvents.PUSHY_TEST_PASSED)) {
+                mPushyTestPassed = true;
+            }
+        }
+    };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Load UI elements
@@ -85,14 +102,12 @@ public class General extends AppCompatPreferenceActivity
         Volume.setVolumeKeysAction(this);
     }
 
-    void handleIntentExtras()
-    {
+    void handleIntentExtras() {
         // Get extras
         Bundle extras = getIntent().getExtras();
 
         // None sent?
-        if (extras == null)
-        {
+        if (extras == null) {
             return;
         }
 
@@ -100,15 +115,13 @@ public class General extends AppCompatPreferenceActivity
         boolean showRegionSelection = extras.getBoolean(SettingsEvents.SHOW_REGION_SELECTION);
 
         // Show selection?
-        if (showRegionSelection)
-        {
+        if (showRegionSelection) {
             mRegionSelection.showDialog();
         }
     }
 
     @Override
-    protected void onPause()
-    {
+    protected void onPause() {
         super.onPause();
 
         // Unregister for broadcasts
@@ -116,8 +129,7 @@ public class General extends AppCompatPreferenceActivity
     }
 
     @Override
-    protected void onDestroy()
-    {
+    protected void onDestroy() {
         super.onDestroy();
 
         // Avoid hiding invalid dialogs
@@ -125,8 +137,7 @@ public class General extends AppCompatPreferenceActivity
     }
 
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
 
         // Support for RTL languages
@@ -139,42 +150,14 @@ public class General extends AppCompatPreferenceActivity
         Broadcasts.subscribe(this, mBroadcastListener);
     }
 
-    SharedPreferences.OnSharedPreferenceChangeListener mBroadcastListener = new SharedPreferences.OnSharedPreferenceChangeListener()
-    {
-        @Override
-        public void onSharedPreferenceChanged(SharedPreferences Preferences, String Key)
-        {
-            // Asked for reload?
-            if (Key.equalsIgnoreCase(LocationSelectionEvents.REFRESH_AREA_VALUES))
-            {
-                refreshAreaValues();
-            }
-
-            // GCM test passed?
-            if (Key.equalsIgnoreCase(SelfTestEvents.GCM_TEST_PASSED))
-            {
-                mGcmTestPassed = true;
-            }
-
-            // Pushy test passed?
-            if (Key.equalsIgnoreCase(SelfTestEvents.PUSHY_TEST_PASSED))
-            {
-                mPushyTestPassed = true;
-            }
-        }
-    };
-
-    void selfTestCompleted(int result)
-    {
+    void selfTestCompleted(int result) {
         // Use builder to create dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         // Use builder to create dialog
-        builder.setTitle(getString(R.string.test)).setMessage(getString(result)).setPositiveButton(R.string.okay, new DialogInterface.OnClickListener()
-        {
+        builder.setTitle(getString(R.string.test)).setMessage(getString(result)).setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int id)
-            {
+            public void onClick(DialogInterface dialogInterface, int id) {
                 // Stop siren (and clear notifications)
                 AppNotifications.clearAll(General.this);
 
@@ -184,18 +167,15 @@ public class General extends AppCompatPreferenceActivity
         });
 
         // Avoid cancellation
-        builder.setOnCancelListener(new DialogInterface.OnCancelListener()
-        {
+        builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
-            public void onCancel(DialogInterface Dialog)
-            {
+            public void onCancel(DialogInterface Dialog) {
                 // Stop siren (and clear notifications)
                 AppNotifications.clearAll(General.this);
             }
         });
 
-        try
-        {
+        try {
             // Build it
             Dialog dialog = builder.create();
 
@@ -205,24 +185,21 @@ public class General extends AppCompatPreferenceActivity
             // Support for RTL languages
             RTLSupport.mirrorDialog(dialog, this);
         }
-        catch (Exception exc)
-        {
+        catch (Exception exc) {
             // Show toast instead
             Toast.makeText(this, getString(result), Toast.LENGTH_LONG).show();
         }
     }
 
     @Override
-    public void onConfigurationChanged(android.content.res.Configuration newConfig)
-    {
+    public void onConfigurationChanged(android.content.res.Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
         // Support for RTL languages
         RTLSupport.mirrorActionBar(this);
     }
 
-    void initializeUI()
-    {
+    void initializeUI() {
         // Allow click on home button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -247,8 +224,7 @@ public class General extends AppCompatPreferenceActivity
         initializeListeners();
     }
 
-    void initializeSettings()
-    {
+    void initializeSettings() {
         // Set entries & values
         mRegionSelection.setEntries(getResources().getStringArray(R.array.regionNames));
         mRegionSelection.setEntryValues(getResources().getStringArray(R.array.regionValues));
@@ -261,8 +237,7 @@ public class General extends AppCompatPreferenceActivity
         refreshAreaValues();
     }
 
-    void refreshAreaValues()
-    {
+    void refreshAreaValues() {
         // Get selected cities
         String selectedCities = Singleton.getSharedPreferences(this).getString(getString(R.string.selectedCitiesPref), getString(R.string.none));
 
@@ -276,14 +251,11 @@ public class General extends AppCompatPreferenceActivity
         mRegionSelection.setSummary(getString(R.string.regionsDesc) + "\r\n(" + LocationData.getSelectedCityNamesByValues(this, selectedRegions, mRegionSelection.getEntries(), mRegionSelection.getEntryValues()) + ")");
     }
 
-    void initializeListeners()
-    {
+    void initializeListeners() {
         // Language preference select
-        mLanguageSelection.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
-        {
+        mLanguageSelection.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
-            public boolean onPreferenceChange(Preference preference, Object o)
-            {
+            public boolean onPreferenceChange(Preference preference, Object o) {
                 // Show instructions toast
                 Toast.makeText(General.this, R.string.langSelectionSuccess, Toast.LENGTH_LONG).show();
 
@@ -293,14 +265,11 @@ public class General extends AppCompatPreferenceActivity
         });
 
         // Test push
-        mTestAlert.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
-        {
+        mTestAlert.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
-            public boolean onPreferenceClick(Preference preference)
-            {
+            public boolean onPreferenceClick(Preference preference) {
                 // Did we enable a device integration but Bluetooth is disabled?
-                if ( BluetoothIntegration.isIntegrationEnabled(General.this) && !BluetoothIntegration.isBluetoothEnabled() )
-                {
+                if (BluetoothIntegration.isIntegrationEnabled(General.this) && !BluetoothIntegration.isBluetoothEnabled()) {
                     // Ask user politely to enable Bluetooth
                     BluetoothDialogs.showEnableBluetoothDialog(General.this);
 
@@ -309,8 +278,7 @@ public class General extends AppCompatPreferenceActivity
                 }
 
                 // Not already testing?
-                if (!mIsTesting)
-                {
+                if (!mIsTesting) {
                     // Send a test push
                     new PerformSelfTestAsync().execute();
                 }
@@ -321,21 +289,17 @@ public class General extends AppCompatPreferenceActivity
         });
 
         // Website button
-        mWebsite.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
-        {
+        mWebsite.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
-            public boolean onPreferenceClick(Preference preference)
-            {
+            public boolean onPreferenceClick(Preference preference) {
                 // Initialize browser intent
                 Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse(Support.WEBSITE_LINK));
 
                 // Open browser
-                try
-                {
+                try {
                     startActivity(browser);
                 }
-                catch (ActivityNotFoundException ex)
-                {
+                catch (ActivityNotFoundException ex) {
                     // Do nothing
                 }
 
@@ -345,11 +309,9 @@ public class General extends AppCompatPreferenceActivity
         });
 
         // Rate button
-        mRate.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
-        {
+        mRate.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
-            public boolean onPreferenceClick(Preference preference)
-            {
+            public boolean onPreferenceClick(Preference preference) {
                 // Open app page
                 GooglePlay.openAppListingPage(General.this);
 
@@ -359,11 +321,9 @@ public class General extends AppCompatPreferenceActivity
         });
 
         // Set up contact click listener
-        mContact.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
-        {
+        mContact.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
-            public boolean onPreferenceClick(Preference preference)
-            {
+            public boolean onPreferenceClick(Preference preference) {
                 // Set up contact click listener
                 Intent contactIntent = new Intent(Intent.ACTION_SEND);
 
@@ -378,13 +338,11 @@ public class General extends AppCompatPreferenceActivity
                 contactIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.appName));
                 contactIntent.putExtra(Intent.EXTRA_TEXT, body);
 
-                try
-                {
+                try {
                     // Try sending via an e-mail app
                     startActivity(Intent.createChooser(contactIntent, getString(R.string.contact)));
                 }
-                catch (ActivityNotFoundException exc)
-                {
+                catch (ActivityNotFoundException exc) {
                     // Show a toast instead
                     Toast.makeText(General.this, R.string.manualContact, Toast.LENGTH_LONG).show();
                 }
@@ -395,11 +353,9 @@ public class General extends AppCompatPreferenceActivity
         });
 
         // Set up advanced settings listener
-        mAdvanced.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
-        {
+        mAdvanced.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
-            public boolean onPreferenceClick(Preference preference)
-            {
+            public boolean onPreferenceClick(Preference preference) {
                 // Prepare new intent
                 Intent advanced = new Intent();
 
@@ -415,8 +371,7 @@ public class General extends AppCompatPreferenceActivity
         });
     }
 
-    String getContactEmailBody()
-    {
+    String getContactEmailBody() {
         // Add default problem description text
         String body = getString(R.string.problemDesc);
 
@@ -466,8 +421,7 @@ public class General extends AppCompatPreferenceActivity
         return body;
     }
 
-    void sendTestPushViaPushy() throws Exception
-    {
+    void sendTestPushViaPushy() throws Exception {
         // Log to logcat
         Log.d(Logging.TAG, "Testing Pushy...");
 
@@ -475,8 +429,7 @@ public class General extends AppCompatPreferenceActivity
         mPushyTestPassed = false;
 
         // Not registered?
-        if (!PushyRegistration.isRegistered(this))
-        {
+        if (!PushyRegistration.isRegistered(this)) {
             // No need for localization - only shows up in logcat for now
             throw new Exception("The device is not registered for push notifications via Pushy.");
         }
@@ -494,8 +447,7 @@ public class General extends AppCompatPreferenceActivity
         HTTP.post(API.API_ENDPOINT + "/test", Singleton.getJackson().writeValueAsString(test));
     }
 
-    void sendTestPushViaGcm() throws Exception
-    {
+    void sendTestPushViaGcm() throws Exception {
         // Log to logcat
         Log.d(Logging.TAG, "Testing GCM...");
 
@@ -503,8 +455,7 @@ public class General extends AppCompatPreferenceActivity
         mGcmTestPassed = false;
 
         // Not registered?
-        if (!GCMRegistration.isRegistered(this))
-        {
+        if (!GCMRegistration.isRegistered(this)) {
             // No need for localization - only shows up in logcat for now
             throw new Exception("The device is not registered for push notifications via GCM.");
         }
@@ -522,206 +473,50 @@ public class General extends AppCompatPreferenceActivity
         HTTP.post(API.API_ENDPOINT + "/test", Singleton.getJackson().writeValueAsString(test));
     }
 
-    boolean didPassGcmTest()
-    {
+    boolean didPassGcmTest() {
         // Calculate the max timestamp
         long maxTimestamp = System.currentTimeMillis() + Testing.PUSH_GATEWAY_TIMEOUT_SECONDS * 1000;
 
         // Wait until boolean value changes or enough time passes
-        while (!mGcmTestPassed && System.currentTimeMillis() < maxTimestamp)
-        {
+        while (!mGcmTestPassed && System.currentTimeMillis() < maxTimestamp) {
             // Sleep to relieve the thread
-            try
-            {
+            try {
                 Thread.sleep(100);
             }
-            catch (Exception exc){}
+            catch (Exception exc) {
+            }
         }
 
         // Return the outcome of the test
         return mGcmTestPassed;
     }
 
-    boolean didPassPushyTest()
-    {
+    boolean didPassPushyTest() {
         // Calculate the max timestamp
         long maxTimestamp = System.currentTimeMillis() + Testing.PUSH_GATEWAY_TIMEOUT_SECONDS * 1000;
 
         // Wait until boolean value changes or enough time passes
-        while (!mPushyTestPassed && System.currentTimeMillis() < maxTimestamp)
-        {
+        while (!mPushyTestPassed && System.currentTimeMillis() < maxTimestamp) {
             // Sleep to relieve the thread
-            try
-            {
+            try {
                 Thread.sleep(100);
             }
-            catch (Exception exc){}
+            catch (Exception exc) {
+            }
         }
 
         // Return the outcome of the test
         return mPushyTestPassed;
     }
 
-    public class PerformSelfTestAsync extends AsyncTaskAdapter<Integer, String, Integer>
-    {
-        ProgressDialog mLoading;
-
-        public PerformSelfTestAsync()
-        {
-            // Prevent concurrent testing
-            mIsTesting = true;
-
-            // Fix progress dialog appearance on old devices
-            mLoading = ProgressDialogCompat.getStyledProgressDialog(General.this);
-
-            // Prevent cancel
-            mLoading.setCancelable(false);
-
-            // Set default message
-            mLoading.setMessage(getString(R.string.loading));
-
-            // Show the progress dialog
-            mLoading.show();
-        }
-
-        @Override
-        protected void onProgressUpdate(String... value)
-        {
-            super.onProgressUpdate(value);
-
-            // Update progress dialog
-            mLoading.setMessage(value[0]);
-        }
-
-        @Override
-        protected Integer doInBackground(Integer... Parameter)
-        {
-            // Test results
-            boolean gcmFailed = false, pushyFailed = false;
-
-            // IsTesting GCM
-            publishProgress(getString(R.string.testingGCM));
-
-            try
-            {
-                // Send a test push
-                sendTestPushViaGcm();
-            }
-            catch (Exception exc)
-            {
-                // GCM test is done
-                gcmFailed = true;
-
-                // Log to console
-                Log.e(Logging.TAG, "GCM test failed", exc);
-            }
-
-            // Wait for test push to arrive
-            if (!gcmFailed)
-            {
-                if (!didPassGcmTest())
-                {
-                    gcmFailed = true;
-                }
-            }
-
-            // Done with GCM, testing Pushy
-            publishProgress(getString(R.string.testingPushy));
-
-            try
-            {
-                // Send a test push
-                sendTestPushViaPushy();
-            }
-            catch (Exception exc)
-            {
-                // We failed
-                pushyFailed = true;
-
-                // Log to console
-                Log.e(Logging.TAG, "Pushy test failed", exc);
-            }
-
-            // Wait for test push to arrive
-            if (!pushyFailed)
-            {
-                if (!didPassPushyTest())
-                {
-                    pushyFailed = true;
-                }
-            }
-
-            // At least one passed?
-            if ( ! gcmFailed || ! pushyFailed )
-            {
-                // Display "successful test" message
-                AlertLogic.processIncomingAlert(getString(R.string.testSuccessful), AlertTypes.TEST, General.this);
-            }
-
-            // Both succeeded?
-            if (!gcmFailed && !pushyFailed)
-            {
-                return R.string.testSuccessfulLong;
-            }
-
-            // Both failed?
-            else if (gcmFailed && pushyFailed)
-            {
-                return R.string.testFailed;
-            }
-
-            // Only GCM failed?
-            else if (gcmFailed)
-            {
-                return R.string.gcmTestFailed;
-            }
-
-            // Only Pushy failed?
-            else if (pushyFailed)
-            {
-                return R.string.pushyTestFailed;
-            }
-
-            return 0;
-        }
-
-        @Override
-        protected void onPostExecute(Integer result)
-        {
-            // No longer testing
-            mIsTesting = false;
-
-            // Activity dead?
-            if (isFinishing() || mIsDestroyed)
-            {
-                return;
-            }
-
-            // Hide progress dialog
-            if (mLoading.isShowing())
-            {
-                mLoading.dismiss();
-            }
-
-            // Hide loading indicator
-            toggleProgressBarVisibility(false);
-
-            // Show result dialog
-            selfTestCompleted(result);
-        }
-    }
-
-    void toggleProgressBarVisibility(boolean visibility)
-    {
+    void toggleProgressBarVisibility(boolean visibility) {
         // Set loading visibility
-        if (mLoadingItem != null)
-        {
+        if (mLoadingItem != null) {
             mLoadingItem.setVisible(visibility);
         }
     }
 
-    void initializeLoadingIndicator(Menu OptionsMenu)
-    {
+    void initializeLoadingIndicator(Menu OptionsMenu) {
         // Add refresh in Action Bar
         mLoadingItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.signing_up));
 
@@ -736,8 +531,7 @@ public class General extends AppCompatPreferenceActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu OptionsMenu)
-    {
+    public boolean onCreateOptionsMenu(Menu OptionsMenu) {
         // Add loading indicator
         initializeLoadingIndicator(OptionsMenu);
 
@@ -748,8 +542,7 @@ public class General extends AppCompatPreferenceActivity
         return true;
     }
 
-    void initializeShareButton(Menu OptionsMenu)
-    {
+    void initializeShareButton(Menu OptionsMenu) {
         // Add share button
         MenuItem shareItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.share));
 
@@ -760,11 +553,9 @@ public class General extends AppCompatPreferenceActivity
         MenuItemCompat.setShowAsAction(shareItem, MenuItem.SHOW_AS_ACTION_ALWAYS);
 
         // On click, open share
-        shareItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener()
-        {
+        shareItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
-            public boolean onMenuItemClick(MenuItem item)
-            {
+            public boolean onMenuItemClick(MenuItem item) {
                 // Prepare share intent
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
 
@@ -783,16 +574,143 @@ public class General extends AppCompatPreferenceActivity
         });
     }
 
-    public boolean onOptionsItemSelected(final MenuItem Item)
-    {
+    public boolean onOptionsItemSelected(final MenuItem Item) {
         // Check item ID
-        switch (Item.getItemId())
-        {
+        switch (Item.getItemId()) {
             // Home button?
             case android.R.id.home:
                 onBackPressed();
         }
 
         return super.onOptionsItemSelected(Item);
+    }
+
+    public class PerformSelfTestAsync extends AsyncTaskAdapter<Integer, String, Integer> {
+        ProgressDialog mLoading;
+
+        public PerformSelfTestAsync() {
+            // Prevent concurrent testing
+            mIsTesting = true;
+
+            // Fix progress dialog appearance on old devices
+            mLoading = ProgressDialogCompat.getStyledProgressDialog(General.this);
+
+            // Prevent cancel
+            mLoading.setCancelable(false);
+
+            // Set default message
+            mLoading.setMessage(getString(R.string.loading));
+
+            // Show the progress dialog
+            mLoading.show();
+        }
+
+        @Override
+        protected void onProgressUpdate(String... value) {
+            super.onProgressUpdate(value);
+
+            // Update progress dialog
+            mLoading.setMessage(value[0]);
+        }
+
+        @Override
+        protected Integer doInBackground(Integer... Parameter) {
+            // Test results
+            boolean gcmFailed = false, pushyFailed = false;
+
+            // IsTesting GCM
+            publishProgress(getString(R.string.testingGCM));
+
+            try {
+                // Send a test push
+                sendTestPushViaGcm();
+            }
+            catch (Exception exc) {
+                // GCM test is done
+                gcmFailed = true;
+
+                // Log to console
+                Log.e(Logging.TAG, "GCM test failed", exc);
+            }
+
+            // Wait for test push to arrive
+            if (!gcmFailed) {
+                if (!didPassGcmTest()) {
+                    gcmFailed = true;
+                }
+            }
+
+            // Done with GCM, testing Pushy
+            publishProgress(getString(R.string.testingPushy));
+
+            try {
+                // Send a test push
+                sendTestPushViaPushy();
+            }
+            catch (Exception exc) {
+                // We failed
+                pushyFailed = true;
+
+                // Log to console
+                Log.e(Logging.TAG, "Pushy test failed", exc);
+            }
+
+            // Wait for test push to arrive
+            if (!pushyFailed) {
+                if (!didPassPushyTest()) {
+                    pushyFailed = true;
+                }
+            }
+
+            // At least one passed?
+            if (!gcmFailed || !pushyFailed) {
+                // Display "successful test" message
+                AlertLogic.processIncomingAlert(getString(R.string.testSuccessful), AlertTypes.TEST, General.this);
+            }
+
+            // Both succeeded?
+            if (!gcmFailed && !pushyFailed) {
+                return R.string.testSuccessfulLong;
+            }
+
+            // Both failed?
+            else if (gcmFailed && pushyFailed) {
+                return R.string.testFailed;
+            }
+
+            // Only GCM failed?
+            else if (gcmFailed) {
+                return R.string.gcmTestFailed;
+            }
+
+            // Only Pushy failed?
+            else if (pushyFailed) {
+                return R.string.pushyTestFailed;
+            }
+
+            return 0;
+        }
+
+        @Override
+        protected void onPostExecute(Integer result) {
+            // No longer testing
+            mIsTesting = false;
+
+            // Activity dead?
+            if (isFinishing() || mIsDestroyed) {
+                return;
+            }
+
+            // Hide progress dialog
+            if (mLoading.isShowing()) {
+                mLoading.dismiss();
+            }
+
+            // Hide loading indicator
+            toggleProgressBarVisibility(false);
+
+            // Show result dialog
+            selfTestCompleted(result);
+        }
     }
 }

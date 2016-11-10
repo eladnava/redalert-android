@@ -13,13 +13,11 @@ import com.red.alert.model.Alert;
 
 import java.util.List;
 
-public class AlertAdapter extends ArrayAdapter<Alert>
-{
+public class AlertAdapter extends ArrayAdapter<Alert> {
     Activity mActivity;
     List<Alert> mAlerts;
 
-    public AlertAdapter(Activity activity, List<Alert> alerts)
-    {
+    public AlertAdapter(Activity activity, List<Alert> alerts) {
         // Call super function with the item layout and initial alerts
         super(activity, R.layout.alert, alerts);
 
@@ -29,14 +27,12 @@ public class AlertAdapter extends ArrayAdapter<Alert>
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent)
-    {
+    public View getView(int position, View convertView, ViewGroup parent) {
         // Prepare view holder
         ViewHolder viewHolder;
 
         // Don't have a cached view?
-        if (convertView == null)
-        {
+        if (convertView == null) {
             // Get inflater service
             LayoutInflater layoutInflater = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -54,8 +50,7 @@ public class AlertAdapter extends ArrayAdapter<Alert>
             // Store it in tag
             convertView.setTag(viewHolder);
         }
-        else
-        {
+        else {
             // Get cached convert view
             viewHolder = (ViewHolder) convertView.getTag();
         }
@@ -64,8 +59,7 @@ public class AlertAdapter extends ArrayAdapter<Alert>
         Alert alert = mAlerts.get(position);
 
         // Got an alert?
-        if (alert != null)
-        {
+        if (alert != null) {
             // Set area localized zone
             viewHolder.areaCode.setText(alert.localizedZone);
 
@@ -80,14 +74,12 @@ public class AlertAdapter extends ArrayAdapter<Alert>
         return convertView;
     }
 
-    public boolean hasStableIds()
-    {
+    public boolean hasStableIds() {
         // IDs are unique
         return true;
     }
 
-    public static class ViewHolder
-    {
+    public static class ViewHolder {
         public TextView time;
         public TextView areaCode;
         public TextView areaNames;

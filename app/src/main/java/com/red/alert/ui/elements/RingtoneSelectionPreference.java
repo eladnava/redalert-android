@@ -12,34 +12,28 @@ import com.red.alert.config.Logging;
 
 import java.lang.reflect.Field;
 
-public class RingtoneSelectionPreference extends RingtonePreference
-{
+public class RingtoneSelectionPreference extends RingtonePreference {
     static final int REQUEST_CODE_FAILED = -1000;
 
-    public RingtoneSelectionPreference(Context context, AttributeSet attrs, int defStyle)
-    {
+    public RingtoneSelectionPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
-    public RingtoneSelectionPreference(Context context, AttributeSet attrs)
-    {
+    public RingtoneSelectionPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public RingtoneSelectionPreference(Context context)
-    {
+    public RingtoneSelectionPreference(Context context) {
         super(context);
     }
 
     @Override
-    protected void onClick()
-    {
+    protected void onClick() {
         // Attempt to get request code
         int requestCode = getRequestCodeViaReflection();
 
         // Failed? Execute default onClick()
-        if (requestCode == REQUEST_CODE_FAILED)
-        {
+        if (requestCode == REQUEST_CODE_FAILED) {
             // Just show our own sounds (don't allow selection from other apps)
             super.onClick();
 
@@ -60,10 +54,8 @@ public class RingtoneSelectionPreference extends RingtonePreference
         ((Activity) getContext()).startActivityForResult(intent, requestCode);
     }
 
-    private int getRequestCodeViaReflection()
-    {
-        try
-        {
+    private int getRequestCodeViaReflection() {
+        try {
             // Get request code field by reflection
             Field field = android.preference.RingtonePreference.class.getDeclaredField("mRequestCode");
 
@@ -73,8 +65,7 @@ public class RingtoneSelectionPreference extends RingtonePreference
             // Return it
             return (Integer) field.get(this);
         }
-        catch (Exception exc)
-        {
+        catch (Exception exc) {
             // Log it
             Log.e(Logging.TAG, "Request code reflection failed", exc);
 

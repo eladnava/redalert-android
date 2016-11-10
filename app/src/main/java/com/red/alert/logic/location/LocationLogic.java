@@ -10,16 +10,13 @@ import com.red.alert.config.LocationAlerts;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.integration.GooglePlayServices;
 
-public class LocationLogic
-{
-    public static int getUpdateIntervalMinutes(Context context, float overrideSetting)
-    {
+public class LocationLogic {
+    public static int getUpdateIntervalMinutes(Context context, float overrideSetting) {
         // Get stored value
         float sliderValue = Singleton.getSharedPreferences(context).getFloat(context.getString(R.string.gpsFrequencyPref), 0.02f);
 
         // Override it?
-        if (overrideSetting != -1)
-        {
+        if (overrideSetting != -1) {
             sliderValue = overrideSetting;
         }
 
@@ -30,14 +27,12 @@ public class LocationLogic
         return frequencyMin;
     }
 
-    public static int getMaxDistanceKilometers(Context context, float overrideSetting)
-    {
+    public static int getMaxDistanceKilometers(Context context, float overrideSetting) {
         // Get stored value
         float sliderValue = Singleton.getSharedPreferences(context).getFloat(context.getString(R.string.maxDistancePref), 0.1f);
 
         // Override it?
-        if (overrideSetting != -1)
-        {
+        if (overrideSetting != -1) {
             sliderValue = overrideSetting;
         }
 
@@ -48,17 +43,14 @@ public class LocationLogic
         return maxDistance;
     }
 
-    public static long getUpdateIntervalMilliseconds(Context context)
-    {
+    public static long getUpdateIntervalMilliseconds(Context context) {
         // Convert to milliseconds
         return getUpdateIntervalMinutes(context, -1) * 60 * 1000;
     }
 
-    public static boolean shouldRequestLocationUpdates(Context context)
-    {
+    public static boolean shouldRequestLocationUpdates(Context context) {
         // Must have Google Play Services
-        if (!GooglePlayServices.isAvailable(context))
-        {
+        if (!GooglePlayServices.isAvailable(context)) {
             return false;
         }
 
@@ -66,14 +58,12 @@ public class LocationLogic
         boolean locationAlerts = Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.locationAlertsPref), false);
 
         // Is it enabled?
-        if (!locationAlerts)
-        {
+        if (!locationAlerts) {
             return false;
         }
 
         // Interval set to 0?
-        if (getUpdateIntervalMilliseconds(context) == 0)
-        {
+        if (getUpdateIntervalMilliseconds(context) == 0) {
             return false;
         }
 
@@ -81,8 +71,7 @@ public class LocationLogic
         return true;
     }
 
-    public static void saveLastKnownLocation(Context context, float latitude, float longitude)
-    {
+    public static void saveLastKnownLocation(Context context, float latitude, float longitude) {
         // Get shared preferences
         android.content.SharedPreferences preferences = Singleton.getSharedPreferences(context);
 
@@ -97,8 +86,7 @@ public class LocationLogic
         editor.commit();
     }
 
-    public static Location getLocation(Context context)
-    {
+    public static Location getLocation(Context context) {
         // Get shared preferences
         android.content.SharedPreferences preferences = Singleton.getSharedPreferences(context);
 
@@ -107,8 +95,7 @@ public class LocationLogic
         double longitude = preferences.getFloat(context.getString(R.string.longitudePref), 0);
 
         // No location stored?
-        if (latitude == 0)
-        {
+        if (latitude == 0) {
             return GetLastKnownLocation(context);
         }
 
@@ -123,8 +110,7 @@ public class LocationLogic
         return location;
     }
 
-    public static Location GetLastKnownLocation(Context context)
-    {
+    public static Location GetLastKnownLocation(Context context) {
         // Get location manager
         LocationManager locationManager = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
 
@@ -138,8 +124,7 @@ public class LocationLogic
         String bestProvider = locationManager.getBestProvider(criteria, false);
 
         // No provider?
-        if (bestProvider == null)
-        {
+        if (bestProvider == null) {
             // Return null
             return null;
         }

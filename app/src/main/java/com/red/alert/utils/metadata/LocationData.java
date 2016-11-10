@@ -10,9 +10,9 @@ import com.red.alert.R;
 import com.red.alert.config.Logging;
 import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.model.metadata.City;
-import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.formatting.StringUtils;
+import com.red.alert.utils.localization.Localization;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -23,8 +23,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class LocationData
-{
+public class LocationData {
     private static List<City> mCities;
 
     /*
@@ -34,8 +33,7 @@ public class LocationData
     // City Countdown = 15 שניות
      */
 
-    public static String[] getAllCityNames(Context context)
-    {
+    public static String[] getAllCityNames(Context context) {
         // Check for english locale
         boolean isEnglish = Localization.isEnglishLocale(context);
 
@@ -46,16 +44,13 @@ public class LocationData
         List<String> names = new ArrayList<>();
 
         // Loop over cities
-        for (City city : cities)
-        {
+        for (City city : cities) {
             // English?
-            if (!isEnglish)
-            {
+            if (!isEnglish) {
                 // Add to list
                 names.add(city.name);
             }
-            else
-            {
+            else {
                 // Add english name to list
                 names.add(city.nameEnglish);
             }
@@ -65,8 +60,7 @@ public class LocationData
         return names.toArray(new String[names.size()]);
     }
 
-    public static String[] getAllCityValues(Context context)
-    {
+    public static String[] getAllCityValues(Context context) {
         // Prepare cities array
         List<City> cities = getAllCities(context);
 
@@ -74,8 +68,7 @@ public class LocationData
         List<String> values = new ArrayList<String>();
 
         // Loop over cities
-        for (City city : cities)
-        {
+        for (City city : cities) {
             // Add to list
             values.add(city.value);
         }
@@ -84,8 +77,7 @@ public class LocationData
         return values.toArray(new String[values.size()]);
     }
 
-    public static String[] getAllCityZones(Context context)
-    {
+    public static String[] getAllCityZones(Context context) {
         // Get user's locale
         boolean isEnglish = Localization.isEnglishLocale(context);
 
@@ -96,16 +88,13 @@ public class LocationData
         List<String> values = new ArrayList<String>();
 
         // Loop over cities
-        for (City city : cities)
-        {
+        for (City city : cities) {
             // English?
-            if (!isEnglish)
-            {
+            if (!isEnglish) {
                 // Add to list
                 values.add(city.zone);
             }
-            else
-            {
+            else {
                 // Add to list
                 values.add(city.zoneEnglish);
             }
@@ -115,19 +104,16 @@ public class LocationData
         return values.toArray(new String[values.size()]);
     }
 
-    public static List<City> getAllCities(Context context)
-    {
+    public static List<City> getAllCities(Context context) {
         // Got it in cache?
-        if (mCities != null)
-        {
+        if (mCities != null) {
             return mCities;
         }
 
         // Initialize the list
         mCities = new ArrayList<>();
 
-        try
-        {
+        try {
             // Open the cities.json for reading
             InputStream stream = context.getResources().openRawResource(R.raw.cities);
 
@@ -141,8 +127,7 @@ public class LocationData
             String currentLine;
 
             // Read all lines
-            while ((currentLine = reader.readLine()) != null)
-            {
+            while ((currentLine = reader.readLine()) != null) {
                 // Append to builder
                 builder.append(currentLine);
             }
@@ -151,10 +136,10 @@ public class LocationData
             String json = builder.toString();
 
             // Convert to city objects
-            mCities = Singleton.getJackson().readValue(json, new TypeReference<List<City>>(){});
+            mCities = Singleton.getJackson().readValue(json, new TypeReference<List<City>>() {
+            });
         }
-        catch ( Exception exc )
-        {
+        catch (Exception exc) {
             // Log it
             Log.e(Logging.TAG, "Failed to load cities.json", exc);
         }
@@ -163,17 +148,14 @@ public class LocationData
         return mCities;
     }
 
-    public static String getSelectedCityNamesByValues(Context context, String selection, CharSequence[] names, CharSequence[] values)
-    {
+    public static String getSelectedCityNamesByValues(Context context, String selection, CharSequence[] names, CharSequence[] values) {
         // No value? All cities are selected
-        if (StringUtils.stringIsNullOrEmpty(selection) || selection.equals(context.getString(R.string.all)))
-        {
+        if (StringUtils.stringIsNullOrEmpty(selection) || selection.equals(context.getString(R.string.all))) {
             return context.getString(R.string.allString);
         }
 
         // Value equals none | null?
-        else if (selection.equals(context.getString(R.string.none)) || selection.equals(context.getString(R.string.nullString)))
-        {
+        else if (selection.equals(context.getString(R.string.none)) || selection.equals(context.getString(R.string.nullString))) {
             return context.getString(R.string.noneString);
         }
 
@@ -184,14 +166,11 @@ public class LocationData
         String[] selectedValues = selection.split(",");
 
         // Loop over values
-        for (String selectedValue : selectedValues)
-        {
+        for (String selectedValue : selectedValues) {
             // Loop over values
-            for (int i = 0; i < values.length; i++)
-            {
+            for (int i = 0; i < values.length; i++) {
                 // Got the value?
-                if (values[i].equals(selectedValue))
-                {
+                if (values[i].equals(selectedValue)) {
                     // Add the name to list
                     selectedCityNames.add(names[i].toString());
                 }
@@ -199,8 +178,7 @@ public class LocationData
         }
 
         // Failed to find cities?
-        if (selectedCityNames.size() == 0)
-        {
+        if (selectedCityNames.size() == 0) {
             // Return "none"
             return context.getString(R.string.noneString);
         }
@@ -209,8 +187,7 @@ public class LocationData
         String displayText = StringUtils.implode(", ", selectedCityNames);
 
         // Truncate if too long
-        if (displayText.length() > 120)
-        {
+        if (displayText.length() > 120) {
             displayText = displayText.substring(0, 120) + "...";
         }
 
@@ -218,8 +195,7 @@ public class LocationData
         return displayText;
     }
 
-    public static String getLocalizedZoneWithCountdown(String zone, Context context)
-    {
+    public static String getLocalizedZoneWithCountdown(String zone, Context context) {
         // Get user's locale
         boolean isEnglish = Localization.isEnglishLocale(context);
 
@@ -230,19 +206,15 @@ public class LocationData
         String zoneCode = getZoneCode(zone);
 
         // Loop over cities
-        for (City city : cities)
-        {
+        for (City city : cities) {
             // Got a match?
-            if (city.codes.contains(zoneCode))
-            {
+            if (city.codes.contains(zoneCode)) {
                 // Hebrew?
-                if (!isEnglish)
-                {
+                if (!isEnglish) {
                     // Return area countdown
                     return zone + " (" + city.time + ")";
                 }
-                else
-                {
+                else {
                     // Return area without countdown but in English
                     return city.zoneEnglish;
                 }
@@ -253,8 +225,7 @@ public class LocationData
         return zone;
     }
 
-    public static int getZoneCountdown(String zone, Context context)
-    {
+    public static int getZoneCountdown(String zone, Context context) {
         // Prepare cities array
         List<City> cities = getAllCities(context);
 
@@ -262,11 +233,9 @@ public class LocationData
         String zoneCode = getZoneCode(zone);
 
         // Loop over cities
-        for (City city : cities)
-        {
+        for (City city : cities) {
             // Got a match?
-            if (city.codes.contains(zoneCode))
-            {
+            if (city.codes.contains(zoneCode)) {
                 // Return countdown
                 return city.countdown;
             }
@@ -276,14 +245,12 @@ public class LocationData
         return 0;
     }
 
-    public static String getLocalizedZone(String zone, Context context)
-    {
+    public static String getLocalizedZone(String zone, Context context) {
         // Get user's locale
         boolean isEnglish = Localization.isEnglishLocale(context);
 
         // Hebrew?
-        if (!isEnglish)
-        {
+        if (!isEnglish) {
             return zone;
         }
 
@@ -294,11 +261,9 @@ public class LocationData
         String zoneCode = getZoneCode(zone);
 
         // Loop over cities
-        for (City city : cities)
-        {
+        for (City city : cities) {
             // Got a match?
-            if (city.codes.contains(zoneCode))
-            {
+            if (city.codes.contains(zoneCode)) {
                 // Return english code
                 return city.zoneEnglish;
             }
@@ -308,8 +273,7 @@ public class LocationData
         return zone;
     }
 
-    public static String getCityNamesByZone(String Zone, Context context)
-    {
+    public static String getCityNamesByZone(String Zone, Context context) {
         // Get user's locale
         boolean isEnglish = Localization.isEnglishLocale(context);
 
@@ -323,19 +287,15 @@ public class LocationData
         String zoneCode = getZoneCode(Zone);
 
         // Loop over cities
-        for (City city : cities)
-        {
+        for (City city : cities) {
             // Got a match?
-            if (city.codes.contains(zoneCode))
-            {
+            if (city.codes.contains(zoneCode)) {
                 // English?
-                if (!isEnglish)
-                {
+                if (!isEnglish) {
                     // Add to list
                     cityNames.add(city.name);
                 }
-                else
-                {
+                else {
                     // Add to list
                     cityNames.add(city.nameEnglish);
                 }
@@ -346,8 +306,7 @@ public class LocationData
         return StringUtils.implode(", ", cityNames);
     }
 
-    public static String getNearbyCityNames(Location myLocation, Context context)
-    {
+    public static String getNearbyCityNames(Location myLocation, Context context) {
         // Get user's locale
         boolean isEnglish = Localization.isEnglishLocale(context);
 
@@ -361,8 +320,7 @@ public class LocationData
         double maxDistance = LocationLogic.getMaxDistanceKilometers(context, -1);
 
         // String is not empty
-        for (City city : cities)
-        {
+        for (City city : cities) {
             // Prepare new location
             Location location = new Location("");
 
@@ -374,16 +332,13 @@ public class LocationData
             float distance = location.distanceTo(myLocation) / 1000;
 
             // Distance is less than max?
-            if (distance <= maxDistance)
-            {
+            if (distance <= maxDistance) {
                 // English?
-                if (!isEnglish)
-                {
+                if (!isEnglish) {
                     // Add to list
                     cityNames.add(city.name);
                 }
-                else
-                {
+                else {
                     // Add to list
                     cityNames.add(city.nameEnglish);
                 }
@@ -394,8 +349,7 @@ public class LocationData
         return StringUtils.implode(", ", cityNames);
     }
 
-    public static List<Location> getCityLocationsByZone(String zone, Context context)
-    {
+    public static List<Location> getCityLocationsByZone(String zone, Context context) {
         // Prepare cities array
         List<City> cities = getAllCities(context);
 
@@ -406,11 +360,9 @@ public class LocationData
         String zoneCode = getZoneCode(zone);
 
         // Loop over cities
-        for (City city : cities)
-        {
+        for (City city : cities) {
             // Got a match?
-            if (city.codes.contains(zoneCode))
-            {
+            if (city.codes.contains(zoneCode)) {
                 // Prepare new location
                 Location location = new Location(LocationManager.PASSIVE_PROVIDER);
 
@@ -427,8 +379,7 @@ public class LocationData
         return locations;
     }
 
-    public static List<City> getCitiesByZone(String zone, Context context)
-    {
+    public static List<City> getCitiesByZone(String zone, Context context) {
         // Prepare cities array
         List<City> cities = getAllCities(context);
 
@@ -439,11 +390,9 @@ public class LocationData
         String zoneCode = getZoneCode(zone);
 
         // Loop over cities
-        for (City city : cities)
-        {
+        for (City city : cities) {
             // Got a match?
-            if (city.codes.contains(zoneCode))
-            {
+            if (city.codes.contains(zoneCode)) {
                 // Add to list
                 filteredCities.add(city);
             }
@@ -453,8 +402,7 @@ public class LocationData
         return filteredCities;
     }
 
-    public static List<String> explodeZonesCSV(String zonesCSV)
-    {
+    public static List<String> explodeZonesCSV(String zonesCSV) {
         // Unique list
         List<String> uniqueList = new ArrayList<String>();
 
@@ -462,11 +410,9 @@ public class LocationData
         List<String> csvList = Arrays.asList(zonesCSV.split(", "));
 
         // Loop over items
-        for (String item : csvList)
-        {
+        for (String item : csvList) {
             // Not already added?
-            if (!uniqueList.contains(item))
-            {
+            if (!uniqueList.contains(item)) {
                 // Add it
                 uniqueList.add(item);
             }
@@ -476,8 +422,7 @@ public class LocationData
         return uniqueList;
     }
 
-    public static List<String> getSelectedCityCodes(String selectedCities)
-    {
+    public static List<String> getSelectedCityCodes(String selectedCities) {
         // Result list
         List<String> codes = new ArrayList<>();
 
@@ -485,17 +430,14 @@ public class LocationData
         List<String> cityValuesList = Arrays.asList(selectedCities.split(","));
 
         // Loop over selected city values
-        for (String city : cityValuesList)
-        {
+        for (String city : cityValuesList) {
             // Get current city codes
             List<String> cityCodes = getAllCityZones(city);
 
             // Traverse codes
-            for (String code : cityCodes)
-            {
+            for (String code : cityCodes) {
                 // First time?
-                if (!codes.contains(code))
-                {
+                if (!codes.contains(code)) {
                     // Add code
                     codes.add(code);
                 }
@@ -506,20 +448,17 @@ public class LocationData
         return codes;
     }
 
-    public static String GetZoneRegion(String zone)
-    {
+    public static String GetZoneRegion(String zone) {
         // Remove code and trim
         return zone.replaceAll("\\s?([0-9]+)", "").trim();
     }
 
-    public static String getZoneCode(String zone)
-    {
+    public static String getZoneCode(String zone) {
         // Remove code and trim
         return StringUtils.regexMatch(zone, ".+?\\s?([0-9]+)").trim();
     }
 
-    public static List<String> getAllCityZones(String cityValue)
-    {
+    public static List<String> getAllCityZones(String cityValue) {
         // Compile regex
         Pattern regexPattern = Pattern.compile("\\((.+?)\\)");
 
@@ -530,8 +469,7 @@ public class LocationData
         List<String> codes = new ArrayList<>();
 
         // Did we find anything?
-        while (regexMatcher.find())
-        {
+        while (regexMatcher.find()) {
             // Get first group
             codes.add(getZoneCode(regexMatcher.group(1).trim()));
         }

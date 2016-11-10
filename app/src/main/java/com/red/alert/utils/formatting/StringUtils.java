@@ -4,19 +4,15 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class StringUtils
-{
-    public static boolean stringIsNullOrEmpty(String inputString)
-    {
+public class StringUtils {
+    public static boolean stringIsNullOrEmpty(String inputString) {
         // String is null? return true
-        if (inputString == null)
-        {
+        if (inputString == null) {
             return true;
         }
 
         // String is empty? true
-        if (inputString.trim().equals(""))
-        {
+        if (inputString.trim().equals("")) {
             return true;
         }
 
@@ -24,11 +20,9 @@ public class StringUtils
         return false;
     }
 
-    public static String implode(String separator, List<String> data)
-    {
+    public static String implode(String separator, List<String> data) {
         // No data?
-        if (data.size() == 0)
-        {
+        if (data.size() == 0) {
             return "";
         }
 
@@ -36,8 +30,7 @@ public class StringUtils
         StringBuilder builder = new StringBuilder();
 
         // Loop over list except last item
-        for (int i = 0; i < data.size() - 1; i++)
-        {
+        for (int i = 0; i < data.size() - 1; i++) {
             // Append current item
             builder.append(data.get(i));
 
@@ -52,8 +45,7 @@ public class StringUtils
         return builder.toString();
     }
 
-    public static String regexMatch(String source, String compilePattern)
-    {
+    public static String regexMatch(String source, String compilePattern) {
         // Compile regex
         Pattern compiledPattern = Pattern.compile(compilePattern);
 
@@ -64,8 +56,7 @@ public class StringUtils
         String match = "";
 
         // Did we find anything?
-        if (matcher.find())
-        {
+        if (matcher.find()) {
             // Get first group
             match = matcher.group(1);
         }

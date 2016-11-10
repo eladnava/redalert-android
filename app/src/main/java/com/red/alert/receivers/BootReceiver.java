@@ -6,13 +6,10 @@ import android.support.v4.content.WakefulBroadcastReceiver;
 
 import com.red.alert.logic.services.ServiceManager;
 
-public class BootReceiver extends WakefulBroadcastReceiver
-{
-    public void onReceive(Context context, Intent intent)
-    {
+public class BootReceiver extends WakefulBroadcastReceiver {
+    public void onReceive(Context context, Intent intent) {
         // Got boot completed event?
-        if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction()))
-        {
+        if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
             // Run all other services
             ServiceManager.startAppServices(context);
         }

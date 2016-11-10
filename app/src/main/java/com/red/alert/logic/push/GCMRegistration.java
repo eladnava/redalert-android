@@ -9,20 +9,17 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
 import com.red.alert.R;
 import com.red.alert.config.API;
-import com.red.alert.config.push.GCMGateway;
 import com.red.alert.config.Logging;
+import com.red.alert.config.push.GCMGateway;
 import com.red.alert.model.req.RegistrationRequest;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.integration.GooglePlayServices;
 import com.red.alert.utils.networking.HTTP;
 
-public class GCMRegistration
-{
-    public static void registerForPushNotifications(Context context) throws Exception
-    {
+public class GCMRegistration {
+    public static void registerForPushNotifications(Context context) throws Exception {
         // Make sure we have Google Play Services
-        if (!GooglePlayServices.isAvailable(context))
-        {
+        if (!GooglePlayServices.isAvailable(context)) {
             // Throw exception
             throw new Exception(context.getString(R.string.noGooglePlayServices));
         }
@@ -56,20 +53,17 @@ public class GCMRegistration
         saveRegistrationToken(context, token);
     }
 
-    public static String getRegistrationToken(Context context)
-    {
+    public static String getRegistrationToken(Context context) {
         // Get it from SharedPreferences (may be null)
         return Singleton.getSharedPreferences(context).getString(context.getString(R.string.gcmTokenPref), null);
     }
 
-    public static boolean isRegistered(Context context)
-    {
+    public static boolean isRegistered(Context context) {
         // Check whether it's null (in which case we never successfully registered)
         return getRegistrationToken(context) != null;
     }
 
-    public static void saveRegistrationToken(Context context, String registrationToken)
-    {
+    public static void saveRegistrationToken(Context context, String registrationToken) {
         // Edit shared preferences
         SharedPreferences.Editor editor = Singleton.getSharedPreferences(context).edit();
 

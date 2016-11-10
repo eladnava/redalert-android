@@ -10,10 +10,8 @@ import com.red.alert.utils.caching.Singleton;
 
 import me.pushy.sdk.Pushy;
 
-public class PushyRegistration
-{
-    public static void registerForPushNotifications(Context context) throws Exception
-    {
+public class PushyRegistration {
+    public static void registerForPushNotifications(Context context) throws Exception {
         // Acquire a unique registration ID for this device
         String token = Pushy.register(context);
 
@@ -24,20 +22,17 @@ public class PushyRegistration
         saveRegistrationToken(context, token);
     }
 
-    public static String getRegistrationToken(Context context)
-    {
+    public static String getRegistrationToken(Context context) {
         // Get it from SharedPreferences (may be null)
         return Singleton.getSharedPreferences(context).getString(context.getString(R.string.pushyTokenPref), null);
     }
 
-    public static boolean isRegistered(Context context)
-    {
+    public static boolean isRegistered(Context context) {
         // Check whether it's null (in which case we never successfully registered)
         return getRegistrationToken(context) != null;
     }
 
-    public static void saveRegistrationToken(Context context, String registrationToken)
-    {
+    public static void saveRegistrationToken(Context context, String registrationToken) {
         // Edit shared preferences
         SharedPreferences.Editor editor = Singleton.getSharedPreferences(context).edit();
 

@@ -30,17 +30,25 @@ import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.integration.GooglePlayServices;
 import com.red.alert.utils.metadata.LocationData;
 
-public class LocationAlerts extends AppCompatPreferenceActivity
-{
+public class LocationAlerts extends AppCompatPreferenceActivity {
     Preference mNearbyCities;
 
     CheckBoxPreference mGPS;
     SliderPreference mFrequency;
     SliderPreference mMaxDistance;
+    private SharedPreferences.OnSharedPreferenceChangeListener mBroadcastListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences Preferences, String Key) {
+            // Got new location?
+            if (Key.equalsIgnoreCase(LocationAlertsEvents.LOCATION_RECEIVED)) {
+                // Refresh setting summaries with new values
+                refreshSummaries();
+            }
+        }
+    };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Load UI elements
@@ -53,17 +61,13 @@ public class LocationAlerts extends AppCompatPreferenceActivity
         Volume.setVolumeKeysAction(this);
     }
 
-    private void verifyGooglePlayServicesAvailable()
-    {
+    private void verifyGooglePlayServicesAvailable() {
         // Show dialog
-        if ( !GooglePlayServices.isAvailable(this) )
-        {
+        if (!GooglePlayServices.isAvailable(this)) {
             // Show error
-            AlertDialogBuilder.showGenericDialog(getString(R.string.error), getString(R.string.noGooglePlayServices), this, new DialogInterface.OnClickListener()
-            {
+            AlertDialogBuilder.showGenericDialog(getString(R.string.error), getString(R.string.noGooglePlayServices), this, new DialogInterface.OnClickListener() {
                 @Override
-                public void onClick(DialogInterface dialog, int which)
-                {
+                public void onClick(DialogInterface dialog, int which) {
                     // No go.
                     finish();
                 }
@@ -72,8 +76,7 @@ public class LocationAlerts extends AppCompatPreferenceActivity
     }
 
     @Override
-    protected void onPause()
-    {
+    protected void onPause() {
         super.onPause();
 
         // Unregister for broadcasts
@@ -81,8 +84,7 @@ public class LocationAlerts extends AppCompatPreferenceActivity
     }
 
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
 
         // Support for RTL languages
@@ -95,31 +97,15 @@ public class LocationAlerts extends AppCompatPreferenceActivity
         Broadcasts.subscribe(this, mBroadcastListener);
     }
 
-    private SharedPreferences.OnSharedPreferenceChangeListener mBroadcastListener = new SharedPreferences.OnSharedPreferenceChangeListener()
-    {
-        @Override
-        public void onSharedPreferenceChanged(SharedPreferences Preferences, String Key)
-        {
-            // Got new location?
-            if (Key.equalsIgnoreCase(LocationAlertsEvents.LOCATION_RECEIVED))
-            {
-                // Refresh setting summaries with new values
-                refreshSummaries();
-            }
-        }
-    };
-
     @Override
-    public void onConfigurationChanged(Configuration newConfig)
-    {
+    public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
         // Support for RTL languages
         RTLSupport.mirrorActionBar(this);
     }
 
-    private void initializeUI()
-    {
+    private void initializeUI() {
         // Allow click on home button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -139,20 +125,15 @@ public class LocationAlerts extends AppCompatPreferenceActivity
         initializeListeners();
     }
 
-    private void initializeListeners()
-    {
+    private void initializeListeners() {
         // Max distance changed
-        mMaxDistance.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
-        {
+        mMaxDistance.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
-            public boolean onPreferenceChange(Preference preference, Object value)
-            {
+            public boolean onPreferenceChange(Preference preference, Object value) {
                 // Wait until value is saved
-                new Handler().postDelayed(new Runnable()
-                {
+                new Handler().postDelayed(new Runnable() {
                     @Override
-                    public void run()
-                    {
+                    public void run() {
                         // Set initial value
                         refreshSummaries();
                     }
@@ -164,20 +145,15 @@ public class LocationAlerts extends AppCompatPreferenceActivity
         });
 
         // Location alerts toggled
-        mGPS.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
-        {
+        mGPS.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
-            public boolean onPreferenceChange(Preference preference, Object value)
-            {
+            public boolean onPreferenceChange(Preference preference, Object value) {
                 // Wait until value is saved
-                new Handler().postDelayed(new Runnable()
-                {
+                new Handler().postDelayed(new Runnable() {
                     @Override
-                    public void run()
-                    {
+                    public void run() {
                         // Can we request location?
-                        if (!LocationLogic.shouldRequestLocationUpdates(LocationAlerts.this))
-                        {
+                        if (!LocationLogic.shouldRequestLocationUpdates(LocationAlerts.this)) {
                             return;
                         }
 
@@ -195,39 +171,31 @@ public class LocationAlerts extends AppCompatPreferenceActivity
         });
 
         // Max distance changed
-        mMaxDistance.setSeekBarChangedListener(new SliderPreference.onSeekBarChangedListener()
-        {
+        mMaxDistance.setSeekBarChangedListener(new SliderPreference.onSeekBarChangedListener() {
             @Override
-            public String getDialogMessage(float currentValue)
-            {
+            public String getDialogMessage(float currentValue) {
                 // Generate a new summary with the selected value
                 return getMaxDistanceSummary(currentValue);
             }
         });
 
         // Frequency changed - update dialog text
-        mFrequency.setSeekBarChangedListener(new SliderPreference.onSeekBarChangedListener()
-        {
+        mFrequency.setSeekBarChangedListener(new SliderPreference.onSeekBarChangedListener() {
             @Override
-            public String getDialogMessage(float value)
-            {
+            public String getDialogMessage(float value) {
                 // Generate a new summary with the selected value
                 return getFrequencySummary(value);
             }
         });
 
         // Frequency saved
-        mFrequency.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
-        {
+        mFrequency.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
-            public boolean onPreferenceChange(Preference preference, Object value)
-            {
+            public boolean onPreferenceChange(Preference preference, Object value) {
                 // Wait until value is saved
-                new Handler().postDelayed(new Runnable()
-                {
+                new Handler().postDelayed(new Runnable() {
                     @Override
-                    public void run()
-                    {
+                    public void run() {
                         // Set initial value
                         refreshSummaries();
 
@@ -242,14 +210,11 @@ public class LocationAlerts extends AppCompatPreferenceActivity
         });
     }
 
-    public void applyLocationFrequency()
-    {
+    public void applyLocationFrequency() {
         // Bind to our location service
-        bindService(new Intent(this, LocationService.class), new ServiceConnection()
-        {
+        bindService(new Intent(this, LocationService.class), new ServiceConnection() {
             @Override
-            public void onServiceConnected(ComponentName componentName, IBinder binder)
-            {
+            public void onServiceConnected(ComponentName componentName, IBinder binder) {
                 // Convert binder to LocalBinder
                 LocationService.LocalBinder localBinder = (LocationService.LocalBinder) binder;
 
@@ -264,27 +229,23 @@ public class LocationAlerts extends AppCompatPreferenceActivity
             }
 
             @Override
-            public void onServiceDisconnected(ComponentName componentName)
-            {
+            public void onServiceDisconnected(ComponentName componentName) {
                 // Do nothing
             }
         }, Context.BIND_AUTO_CREATE);
     }
 
-    private String getFrequencySummary(float OverrideValue)
-    {
+    private String getFrequencySummary(float OverrideValue) {
         // Construct summary text
         return getString(R.string.gpsFrequencyDesc) + "\r\n(" + getString(R.string.every) + " " + LocationLogic.getUpdateIntervalMinutes(this, OverrideValue) + " " + getString(R.string.minutes) + ")";
     }
 
-    private String getMaxDistanceSummary(float OverrideValue)
-    {
+    private String getMaxDistanceSummary(float OverrideValue) {
         // Construct summary text
         return getString(R.string.maxDistanceDesc) + "\r\n(" + LocationLogic.getMaxDistanceKilometers(this, OverrideValue) + " " + getString(R.string.kilometer) + ")";
     }
 
-    private void refreshSummaries()
-    {
+    private void refreshSummaries() {
         // Update summary text
         mMaxDistance.setSummary(getMaxDistanceSummary(-1));
 
@@ -298,19 +259,16 @@ public class LocationAlerts extends AppCompatPreferenceActivity
         String nearby;
 
         // No recent location?
-        if (location == null)
-        {
+        if (location == null) {
             // Show error
             nearby = getString(R.string.noLocation);
         }
-        else
-        {
+        else {
             // Get nearby cities
             nearby = LocationData.getNearbyCityNames(location, this);
 
             // No results?
-            if (StringUtils.stringIsNullOrEmpty(nearby))
-            {
+            if (StringUtils.stringIsNullOrEmpty(nearby)) {
                 // Show error
                 nearby = getString(R.string.noNearbyCities);
             }
@@ -320,11 +278,9 @@ public class LocationAlerts extends AppCompatPreferenceActivity
         mNearbyCities.setSummary(nearby);
     }
 
-    public boolean onOptionsItemSelected(final MenuItem Item)
-    {
+    public boolean onOptionsItemSelected(final MenuItem Item) {
         // Check item ID
-        switch (Item.getItemId())
-        {
+        switch (Item.getItemId()) {
             // Home button?
             case android.R.id.home:
                 onBackPressed();

@@ -7,26 +7,21 @@ import android.util.Log;
 import com.red.alert.config.Logging;
 import com.red.alert.logic.push.GCMRegistration;
 
-public class GCMRegistrationService extends IntentService
-{
+public class GCMRegistrationService extends IntentService {
     private static final String TAG = "GCMRegistrationIntentService";
 
-    public GCMRegistrationService()
-    {
+    public GCMRegistrationService() {
         // Call super with service class name
         super(TAG);
     }
 
     @Override
-    protected void onHandleIntent(Intent intent)
-    {
-        try
-        {
+    protected void onHandleIntent(Intent intent) {
+        try {
             // Refresh the registration ID
             GCMRegistration.registerForPushNotifications(this);
         }
-        catch (Exception exc)
-        {
+        catch (Exception exc) {
             // Log it
             Log.e(Logging.TAG, "Registration failed", exc);
         }

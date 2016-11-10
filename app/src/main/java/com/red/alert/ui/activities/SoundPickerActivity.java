@@ -17,25 +17,21 @@ import com.red.alert.logic.notifications.RocketNotifications;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.ui.notifications.AppNotifications;
 
-public class SoundPickerActivity extends FragmentActivity
-{
+public class SoundPickerActivity extends FragmentActivity {
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Load UI elements
         initializeUI();
     }
 
-    private int getSelectedSoundPosition()
-    {
+    private int getSelectedSoundPosition() {
         // Get selected sound
         Uri selectedSound = getIntent().getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI);
 
         // Got one?
-        if (selectedSound != null)
-        {
+        if (selectedSound != null) {
             // Get path to sound
             String soundFilePath = selectedSound.toString();
 
@@ -46,11 +42,9 @@ public class SoundPickerActivity extends FragmentActivity
             String[] soundValues = getSoundValues();
 
             // Get selected sound
-            for (int position = 0; position < soundValues.length; position++)
-            {
+            for (int position = 0; position < soundValues.length; position++) {
                 // Do we have a match?
-                if (soundValues[position].equals(soundFilePath))
-                {
+                if (soundValues[position].equals(soundFilePath)) {
                     // Return item position
                     return position;
                 }
@@ -61,17 +55,14 @@ public class SoundPickerActivity extends FragmentActivity
         return -1;
     }
 
-    private void initializeUI()
-    {
+    private void initializeUI() {
         // Use builder to create dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         // No cancellation
-        builder.setOnCancelListener(new DialogInterface.OnCancelListener()
-        {
+        builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
-            public void onCancel(DialogInterface Dialog)
-            {
+            public void onCancel(DialogInterface Dialog) {
                 // Stop playing sounds
                 onDialogCancelled(Dialog);
             }
@@ -79,13 +70,10 @@ public class SoundPickerActivity extends FragmentActivity
 
         // Insert version into message
         builder.setSingleChoiceItems(getSounds(), getSelectedSoundPosition(),
-                new DialogInterface.OnClickListener()
-                {
-                    public void onClick(DialogInterface Dialog, int Item)
-                    {
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface Dialog, int Item) {
                         // No calling activity?
-                        if (getCallingActivity() == null)
-                        {
+                        if (getCallingActivity() == null) {
                             return;
                         }
 
@@ -96,8 +84,7 @@ public class SoundPickerActivity extends FragmentActivity
                         String testAlertType = AlertTypes.TEST_SOUND;
 
                         // Secondary notification?
-                        if (getCallingActivity().getClassName().equals(SecondaryAlerts.class.getName()))
-                        {
+                        if (getCallingActivity().getClassName().equals(SecondaryAlerts.class.getName())) {
                             // Override type
                             testAlertType = AlertTypes.TEST_SECONDARY_SOUND;
                         }
@@ -111,11 +98,9 @@ public class SoundPickerActivity extends FragmentActivity
         builder.setTitle(getString(R.string.sounds));
 
         // Set positive button
-        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
-        {
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface DialogInterface, int i)
-            {
+            public void onClick(DialogInterface DialogInterface, int i) {
                 // Convert to AlertDialog
                 AlertDialog dialog = (AlertDialog) DialogInterface;
 
@@ -123,8 +108,7 @@ public class SoundPickerActivity extends FragmentActivity
                 int checkedItem = dialog.getListView().getCheckedItemPosition();
 
                 // No selection?
-                if (checkedItem == -1)
-                {
+                if (checkedItem == -1) {
                     // Close dialog and set result as failed
                     onDialogCancelled(dialog);
 
@@ -159,11 +143,9 @@ public class SoundPickerActivity extends FragmentActivity
         });
 
         // Set negative button
-        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener()
-        {
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface Dialog, int i)
-            {
+            public void onClick(DialogInterface Dialog, int i) {
                 // Stop playing sounds
                 onDialogCancelled(Dialog);
             }
@@ -172,23 +154,20 @@ public class SoundPickerActivity extends FragmentActivity
         // Create the dialog
         AlertDialog dialog = builder.create();
 
-        try
-        {
+        try {
             // Show dialog
             dialog.show();
 
             // Support for RTL languages
             RTLSupport.mirrorDialog(dialog, this);
         }
-        catch (Exception exc)
-        {
+        catch (Exception exc) {
             // Show toast instead
             Toast.makeText(SoundPickerActivity.this, exc.toString(), Toast.LENGTH_LONG).show();
         }
     }
 
-    private void onDialogCancelled(DialogInterface dialog)
-    {
+    private void onDialogCancelled(DialogInterface dialog) {
         // Close dialog
         dialog.dismiss();
 
@@ -202,14 +181,12 @@ public class SoundPickerActivity extends FragmentActivity
         finish();
     }
 
-    private String[] getSounds()
-    {
+    private String[] getSounds() {
         // Get sound titles
         return getResources().getStringArray(R.array.sounds);
     }
 
-    private String[] getSoundValues()
-    {
+    private String[] getSoundValues() {
         // Get sound values
         return getResources().getStringArray(R.array.soundValues);
     }

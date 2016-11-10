@@ -1,7 +1,6 @@
 package com.red.alert.config;
 
-public class LocationAlerts
-{
+public class LocationAlerts {
     // Max distance that can be selected for location-based alerts
     public static int MAX_DISTANCE_KM = 50;
 

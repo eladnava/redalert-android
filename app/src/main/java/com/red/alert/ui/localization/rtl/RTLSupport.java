@@ -12,35 +12,28 @@ import android.widget.TextView;
 
 import com.red.alert.utils.localization.Localization;
 
-public class RTLSupport
-{
+public class RTLSupport {
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    public static void mirrorActionBar(Activity activity)
-    {
+    public static void mirrorActionBar(Activity activity) {
         // Hebrew only
-        if (!Localization.isHebrewLocale(activity))
-        {
+        if (!Localization.isHebrewLocale(activity)) {
             return;
         }
 
         // Must be Jellybean or newer
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
-        {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             // Set RTL layout direction
             activity.getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         }
     }
 
-    public static void mirrorDialog(Dialog dialog, Context context)
-    {
+    public static void mirrorDialog(Dialog dialog, Context context) {
         // Hebrew only
-        if (!Localization.isHebrewLocale(context))
-        {
+        if (!Localization.isHebrewLocale(context)) {
             return;
         }
 
-        try
-        {
+        try {
             // Get message text view
             TextView message = (TextView) dialog.findViewById(android.R.id.message);
 
@@ -68,8 +61,7 @@ public class RTLSupport
             // Set layout params
             parent.setLayoutParams(originalParams);
         }
-        catch( Exception exc )
-        {
+        catch (Exception exc) {
             // Ignore, this is completely optional behavior
         }
     }

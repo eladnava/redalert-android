@@ -5,10 +5,8 @@ import android.os.Vibrator;
 
 import com.red.alert.logic.feedback.VibrationLogic;
 
-public class Vibration
-{
-    public static void stopVibration(Context context)
-    {
+public class Vibration {
+    public static void stopVibration(Context context) {
         // Get vibration service
         Vibrator vibratorService = (Vibrator) context.getSystemService(context.VIBRATOR_SERVICE);
 
@@ -16,17 +14,14 @@ public class Vibration
         vibratorService.cancel();
     }
 
-    public static void issueVibration(String alertType, Context context)
-    {
+    public static void issueVibration(String alertType, Context context) {
         // Enable vibration?
-        if (!VibrationLogic.isVibrationEnabled(alertType, context))
-        {
+        if (!VibrationLogic.isVibrationEnabled(alertType, context)) {
             return;
         }
 
         // Should we vibrate?
-        if (!VibrationLogic.shouldVibrate(alertType, context))
-        {
+        if (!VibrationLogic.shouldVibrate(alertType, context)) {
             return;
         }
 

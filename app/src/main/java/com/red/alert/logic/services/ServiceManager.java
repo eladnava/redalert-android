@@ -9,10 +9,8 @@ import com.red.alert.services.location.LocationService;
 
 import me.pushy.sdk.Pushy;
 
-public class ServiceManager
-{
-    public static void startAppServices(Context context)
-    {
+public class ServiceManager {
+    public static void startAppServices(Context context) {
         // Start the Pushy push service
         startPushyService(context);
 
@@ -20,11 +18,9 @@ public class ServiceManager
         startLocationService(context);
     }
 
-    public static void startLocationService(Context context)
-    {
+    public static void startLocationService(Context context) {
         // Can we request location?
-        if (!LocationLogic.shouldRequestLocationUpdates(context))
-        {
+        if (!LocationLogic.shouldRequestLocationUpdates(context)) {
             return;
         }
 
@@ -32,8 +28,7 @@ public class ServiceManager
         context.startService(new Intent(context, LocationService.class));
     }
 
-    public static void startPushyService(Context context)
-    {
+    public static void startPushyService(Context context) {
         // Set custom heartbeat interval before calling Pushy.listen()
         Pushy.setHeartbeatInterval(PushyGateway.SOCKET_HEARTBEAT_INTERVAL, context);
 

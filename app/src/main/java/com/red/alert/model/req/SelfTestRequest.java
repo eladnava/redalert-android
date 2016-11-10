@@ -2,8 +2,7 @@ package com.red.alert.model.req;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class SelfTestRequest
-{
+public class SelfTestRequest {
     @JsonProperty("token")
     public String token;
 
@@ -13,8 +12,7 @@ public class SelfTestRequest
     @JsonProperty("locale")
     public String locale;
 
-    public SelfTestRequest(String token, String locale, String platform)
-    {
+    public SelfTestRequest(String token, String locale, String platform) {
         // Set GCM registration token
         this.token = token;
 

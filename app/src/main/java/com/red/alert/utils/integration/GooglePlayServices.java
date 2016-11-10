@@ -4,12 +4,9 @@ import android.content.Context;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
-import com.red.alert.R;
 
-public class GooglePlayServices
-{
-    public static boolean isAvailable(Context context)
-    {
+public class GooglePlayServices {
+    public static boolean isAvailable(Context context) {
         // Get availability checker
         GoogleApiAvailability playServices = GoogleApiAvailability.getInstance();
 

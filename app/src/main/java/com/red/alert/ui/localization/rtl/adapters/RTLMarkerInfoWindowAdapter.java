@@ -8,26 +8,22 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.Marker;
 import com.red.alert.R;
 
-public class RTLMarkerInfoWindowAdapter implements GoogleMap.InfoWindowAdapter
-{
+public class RTLMarkerInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
     LayoutInflater mInflater;
 
-    public RTLMarkerInfoWindowAdapter(LayoutInflater inflater)
-    {
+    public RTLMarkerInfoWindowAdapter(LayoutInflater inflater) {
         // Set inflater
         this.mInflater = inflater;
     }
 
     @Override
-    public View getInfoWindow(Marker Marker)
-    {
+    public View getInfoWindow(Marker Marker) {
         // Do nothing
         return null;
     }
 
     @Override
-    public View getInfoContents(Marker marker)
-    {
+    public View getInfoContents(Marker marker) {
         // Inflate custom view
         View popup = mInflater.inflate(R.layout.map_tooltip, null);
 

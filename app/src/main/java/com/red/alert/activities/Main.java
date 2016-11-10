@@ -23,9 +23,9 @@ import com.red.alert.R;
 import com.red.alert.activities.settings.General;
 import com.red.alert.config.API;
 import com.red.alert.config.Alerts;
-import com.red.alert.config.RecentAlerts;
 import com.red.alert.config.Integrations;
 import com.red.alert.config.Logging;
+import com.red.alert.config.RecentAlerts;
 import com.red.alert.logic.communication.broadcasts.SettingsEvents;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
 import com.red.alert.logic.communication.intents.MainActivityParameters;
@@ -62,8 +62,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Main extends AppCompatActivity
-{
+public class Main extends AppCompatActivity {
     boolean mIsResumed;
     boolean mIsDestroyed;
     boolean mIsReloading;
@@ -77,10 +76,18 @@ public class Main extends AppCompatActivity
 
     List<Alert> mNewAlerts;
     List<Alert> mDisplayAlerts;
+    SharedPreferences.OnSharedPreferenceChangeListener mBroadcastListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences Preferences, String Key) {
+            // Asked for reload?
+            if (Key.equalsIgnoreCase(MainActivityParameters.RELOAD_RECENT_ALERTS)) {
+                reloadRecentAlerts();
+            }
+        }
+    };
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Initialize bug tracking
@@ -102,15 +109,13 @@ public class Main extends AppCompatActivity
         showImportantDialogs();
     }
 
-    void initializeUpdateChecker()
-    {
+    void initializeUpdateChecker() {
         // Do it async
         new CheckForUpdatesAsync().execute();
     }
 
     @Override
-    protected void onNewIntent(Intent intent)
-    {
+    protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
 
         // Clear app notifications
@@ -120,8 +125,7 @@ public class Main extends AppCompatActivity
         RTLSupport.mirrorActionBar(this);
     }
 
-    void initializeUI()
-    {
+    void initializeUI() {
         // RTL action bar hack
         RTLSupport.mirrorActionBar(this);
 
@@ -152,25 +156,20 @@ public class Main extends AppCompatActivity
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState)
-    {
+    public void onSaveInstanceState(Bundle outState) {
         // Avoid call to super(). Bug on API Level > 11.
     }
 
-    void initializeListeners()
-    {
+    void initializeListeners() {
         // Alert click listener
-        mAlertsList.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
+        mAlertsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id)
-            {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 // Get alert by click position
                 Alert alert = mDisplayAlerts.get(position);
 
                 // No such alert?
-                if (alert == null)
-                {
+                if (alert == null) {
                     return;
                 }
 
@@ -190,22 +189,18 @@ public class Main extends AppCompatActivity
         });
 
         // No alerts image click listener
-        mNoAlerts.setOnClickListener(new View.OnClickListener()
-        {
+        mNoAlerts.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 // DEBUG ONLY
                 //AlertLogic.processIncomingAlert("חיפה והקריות 160", "alert", Main.this);
             }
         });
 
         // "I'm Safe" button click listener
-        mImSafe.setOnClickListener(new View.OnClickListener()
-        {
+        mImSafe.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 // Prepare share intent
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
 
@@ -216,16 +211,13 @@ public class Main extends AppCompatActivity
                 shareIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.imSafeMessage));
 
                 // Send via WhatsApp?
-                if (Singleton.getSharedPreferences(Main.this).getBoolean(getString(R.string.imSafeWhatsAppPref), false))
-                {
+                if (Singleton.getSharedPreferences(Main.this).getBoolean(getString(R.string.imSafeWhatsAppPref), false)) {
                     // WhatsApp installed?
-                    if (WhatsApp.isAppInstalled(Main.this))
-                    {
+                    if (WhatsApp.isAppInstalled(Main.this)) {
                         // Set WhatsApp package
                         shareIntent.setPackage(Integrations.WHATSAPP_PACKAGE);
                     }
-                    else
-                    {
+                    else {
                         // Show toast
                         Toast.makeText(Main.this, getString(R.string.whatsAppNotInstalled), Toast.LENGTH_SHORT).show();
                     }
@@ -238,8 +230,7 @@ public class Main extends AppCompatActivity
     }
 
     @Override
-    public void onConfigurationChanged(android.content.res.Configuration newConfig)
-    {
+    public void onConfigurationChanged(android.content.res.Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
         // Support for RTL languages
@@ -247,8 +238,7 @@ public class Main extends AppCompatActivity
     }
 
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
 
         // Save state
@@ -271,8 +261,7 @@ public class Main extends AppCompatActivity
     }
 
     @Override
-    protected void onPause()
-    {
+    protected void onPause() {
         super.onPause();
 
         // Save state
@@ -282,24 +271,9 @@ public class Main extends AppCompatActivity
         Broadcasts.unsubscribe(this, mBroadcastListener);
     }
 
-    SharedPreferences.OnSharedPreferenceChangeListener mBroadcastListener = new SharedPreferences.OnSharedPreferenceChangeListener()
-    {
-        @Override
-        public void onSharedPreferenceChanged(SharedPreferences Preferences, String Key)
-        {
-            // Asked for reload?
-            if (Key.equalsIgnoreCase(MainActivityParameters.RELOAD_RECENT_ALERTS))
-            {
-                reloadRecentAlerts();
-            }
-        }
-    };
-
-    void showImportantDialogs()
-    {
+    void showImportantDialogs() {
         // Do we need to register for GCM or Pushy?
-        if (!GCMRegistration.isRegistered(this) || !PushyRegistration.isRegistered(this))
-        {
+        if (!GCMRegistration.isRegistered(this) || !PushyRegistration.isRegistered(this)) {
             // Register async
             new RegisterPushAsync().execute();
 
@@ -308,8 +282,7 @@ public class Main extends AppCompatActivity
         }
 
         // Did we enable a device integration but Bluetooth is disabled?
-        if ( BluetoothIntegration.isIntegrationEnabled(this) && !BluetoothIntegration.isBluetoothEnabled() )
-        {
+        if (BluetoothIntegration.isIntegrationEnabled(this) && !BluetoothIntegration.isBluetoothEnabled()) {
             // Ask user politely to enable Bluetooth
             BluetoothDialogs.showEnableBluetoothDialog(this);
 
@@ -321,22 +294,16 @@ public class Main extends AppCompatActivity
         initializeUpdateChecker();
     }
 
-    void pollRecentAlerts()
-    {
+    void pollRecentAlerts() {
         // Schedule a new timer
-        new Timer().scheduleAtFixedRate(new TimerTask()
-        {
+        new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
-            public void run()
-            {
-                runOnUiThread(new Runnable()
-                {
+            public void run() {
+                runOnUiThread(new Runnable() {
                     @Override
-                    public void run()
-                    {
+                    public void run() {
                         // App is running?
-                        if (mIsResumed)
-                        {
+                        if (mIsResumed) {
                             // Reload every X seconds
                             reloadRecentAlerts();
                         }
@@ -346,18 +313,15 @@ public class Main extends AppCompatActivity
         }, 0, 1000 * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC);
     }
 
-    void reloadRecentAlerts()
-    {
+    void reloadRecentAlerts() {
         // Not already reloading?
-        if (!mIsReloading)
-        {
+        if (!mIsReloading) {
             // Get recent alerts async
             new GetRecentAlertsAsync().execute();
         }
     }
 
-    void initializeSettingsButton(Menu OptionsMenu)
-    {
+    void initializeSettingsButton(Menu OptionsMenu) {
         // Add refresh in Action Bar
         MenuItem settingsItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.settings));
 
@@ -368,11 +332,9 @@ public class Main extends AppCompatActivity
         MenuItemCompat.setShowAsAction(settingsItem, MenuItem.SHOW_AS_ACTION_ALWAYS);
 
         // On click, go to Settings
-        settingsItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener()
-        {
+        settingsItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
-            public boolean onMenuItemClick(MenuItem item)
-            {
+            public boolean onMenuItemClick(MenuItem item) {
                 // Start settings activity
                 goToSettings(false);
 
@@ -382,8 +344,7 @@ public class Main extends AppCompatActivity
         });
     }
 
-    void goToSettings(boolean showRegionSelection)
-    {
+    void goToSettings(boolean showRegionSelection) {
         // Prepare new intent
         Intent settingsIntent = new Intent();
 
@@ -397,8 +358,7 @@ public class Main extends AppCompatActivity
         startActivity(settingsIntent);
     }
 
-    void initializeLoadingIndicator(Menu OptionsMenu)
-    {
+    void initializeLoadingIndicator(Menu OptionsMenu) {
         // Add refresh in Action Bar
         mLoadingItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.loading));
 
@@ -413,8 +373,7 @@ public class Main extends AppCompatActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu OptionsMenu)
-    {
+    public boolean onCreateOptionsMenu(Menu OptionsMenu) {
         // Add loading indicator
         initializeLoadingIndicator(OptionsMenu);
 
@@ -425,18 +384,15 @@ public class Main extends AppCompatActivity
         return true;
     }
 
-    private int getRecentAlerts()
-    {
+    private int getRecentAlerts() {
         // Store JSON as string initially
         String alertsJSON;
 
-        try
-        {
+        try {
             // Get it from /alerts
             alertsJSON = HTTP.get(API.API_ENDPOINT + "/alerts");
         }
-        catch (Exception exc)
-        {
+        catch (Exception exc) {
             // Log it
             Log.e(Logging.TAG, "Get recent alerts request failed", exc);
 
@@ -447,13 +403,12 @@ public class Main extends AppCompatActivity
         // Prepare tmp object list
         List<Alert> recentAlerts;
 
-        try
-        {
+        try {
             // Convert JSON to object
-            recentAlerts = Singleton.getJackson().readValue(alertsJSON, new TypeReference<List<Alert>>(){});
+            recentAlerts = Singleton.getJackson().readValue(alertsJSON, new TypeReference<List<Alert>>() {
+            });
         }
-        catch (Exception exc)
-        {
+        catch (Exception exc) {
             // Log it
             Log.e(Logging.TAG, "Get recent alerts request failed", exc);
 
@@ -465,8 +420,7 @@ public class Main extends AppCompatActivity
         SimpleDateFormat dateFormat = new SimpleDateFormat(Alerts.DATE_FORMAT);
 
         // Loop over alerts
-        for (Alert alert : recentAlerts)
-        {
+        for (Alert alert : recentAlerts) {
             // Convert date to string
             alert.dateString = dateFormat.format(alert.date * 1000);
 
@@ -487,18 +441,15 @@ public class Main extends AppCompatActivity
         return 0;
     }
 
-    private String checkForUpdates()
-    {
+    private String checkForUpdates() {
         // Grab the update JSON
         String updateJson;
 
-        try
-        {
+        try {
             // Get it from /update/android
             updateJson = HTTP.get(API.API_ENDPOINT + "/update/android");
         }
-        catch (Exception exc)
-        {
+        catch (Exception exc) {
             // Log it
             Log.e(Logging.TAG, "Get update info failed", exc);
 
@@ -509,13 +460,11 @@ public class Main extends AppCompatActivity
         // Convert into JSON
         VersionInfo updateInfo;
 
-        try
-        {
+        try {
             // Convert JSON to object
             updateInfo = Singleton.getJackson().readValue(updateJson, com.red.alert.model.res.VersionInfo.class);
         }
-        catch (Exception exc)
-        {
+        catch (Exception exc) {
             // Log it
             Log.e(Logging.TAG, "Parsing update info failed", exc);
 
@@ -524,14 +473,12 @@ public class Main extends AppCompatActivity
         }
 
         // Don't show update dialog?
-        if (!updateInfo.showDialog)
-        {
+        if (!updateInfo.showDialog) {
             return null;
         }
 
         // Update available? (Higher version code)
-        if (updateInfo.versionCode > AppVersion.getVersionCode(this))
-        {
+        if (updateInfo.versionCode > AppVersion.getVersionCode(this)) {
             // Return newer version string for display
             return updateInfo.version;
         }
@@ -540,19 +487,61 @@ public class Main extends AppCompatActivity
         return null;
     }
 
-    void toggleProgressBarVisibility(boolean visibility)
-    {
+    void toggleProgressBarVisibility(boolean visibility) {
         // Set loading visibility
-        if (mLoadingItem != null)
-        {
+        if (mLoadingItem != null) {
             mLoadingItem.setVisible(visibility);
         }
     }
 
-    public class GetRecentAlertsAsync extends AsyncTaskAdapter<Integer, String, Integer>
-    {
-        public GetRecentAlertsAsync()
-        {
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        // Avoid hiding invalid dialogs
+        mIsDestroyed = true;
+    }
+
+    void invalidateAlertList() {
+        // Clear global list
+        mDisplayAlerts.clear();
+
+        // Add all the new alerts
+        mDisplayAlerts.addAll(mNewAlerts);
+
+        // Invalidate the list
+        mAlertsAdapter.notifyDataSetChanged();
+
+        // No alerts? Show default
+        if (mDisplayAlerts.size() == 0) {
+            mNoAlerts.setVisibility(View.VISIBLE);
+        }
+        else {
+            mNoAlerts.setVisibility(View.GONE);
+        }
+    }
+
+    void showRegistrationSuccessDialog() {
+        // Already displayed?
+        if (AppPreferences.getTutorialDisplayed(this)) {
+            return;
+        }
+
+        // Build the dialog
+        AlertDialogBuilder.showGenericDialog(getString(R.string.pushRegistrationSuccess), getString(R.string.pushRegistrationSuccessDesc), this, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // Start settings activity
+                goToSettings(true);
+            }
+        });
+
+        // Tutorial was displayed
+        AppPreferences.setTutorialDisplayed(this);
+    }
+
+    public class GetRecentAlertsAsync extends AsyncTaskAdapter<Integer, String, Integer> {
+        public GetRecentAlertsAsync() {
             // Prevent concurrent reload
             mIsReloading = true;
 
@@ -561,21 +550,18 @@ public class Main extends AppCompatActivity
         }
 
         @Override
-        protected Integer doInBackground(Integer... Parameter)
-        {
+        protected Integer doInBackground(Integer... Parameter) {
             // Try to get recent alerts
             return getRecentAlerts();
         }
 
         @Override
-        protected void onPostExecute(Integer errorStringResource)
-        {
+        protected void onPostExecute(Integer errorStringResource) {
             // No longer reloading
             mIsReloading = false;
 
             // Activity dead?
-            if (isFinishing() || mIsDestroyed)
-            {
+            if (isFinishing() || mIsDestroyed) {
                 return;
             }
 
@@ -586,34 +572,21 @@ public class Main extends AppCompatActivity
             toggleProgressBarVisibility(false);
 
             // Success?
-            if (errorStringResource == 0)
-            {
+            if (errorStringResource == 0) {
                 // Invalidate the list
                 invalidateAlertList();
             }
-            else
-            {
+            else {
                 // Show error toast
                 Toast.makeText(Main.this, getString(errorStringResource), Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-    @Override
-    protected void onDestroy()
-    {
-        super.onDestroy();
-
-        // Avoid hiding invalid dialogs
-        mIsDestroyed = true;
-    }
-
-    public class RegisterPushAsync extends AsyncTaskAdapter<Integer, String, Exception>
-    {
+    public class RegisterPushAsync extends AsyncTaskAdapter<Integer, String, Exception> {
         ProgressDialog mLoading;
 
-        public RegisterPushAsync()
-        {
+        public RegisterPushAsync() {
             // Fix progress dialog appearance on old devices
             mLoading = ProgressDialogCompat.getStyledProgressDialog(Main.this);
 
@@ -628,32 +601,26 @@ public class Main extends AppCompatActivity
         }
 
         @Override
-        protected Exception doInBackground(Integer... Parameter)
-        {
+        protected Exception doInBackground(Integer... Parameter) {
             // Store exception from registration attempts
             Exception error = null;
 
-            try
-            {
+            try {
                 // Register for Pushy push notifications
                 PushyRegistration.registerForPushNotifications(Main.this);
             }
-            catch (Exception exc)
-            {
+            catch (Exception exc) {
                 // Return exception to onPostExecute
                 error = exc;
             }
 
             // Make sure we have Google Play Services installed
-            if (GooglePlayServices.isAvailable(Main.this))
-            {
-                try
-                {
+            if (GooglePlayServices.isAvailable(Main.this)) {
+                try {
                     // Register for GCM push notifications
                     GCMRegistration.registerForPushNotifications(Main.this);
                 }
-                catch (Exception exc)
-                {
+                catch (Exception exc) {
                     error = exc;
                 }
             }
@@ -663,23 +630,19 @@ public class Main extends AppCompatActivity
         }
 
         @Override
-        protected void onPostExecute(Exception exc)
-        {
+        protected void onPostExecute(Exception exc) {
             // Activity dead?
-            if (isFinishing() || mIsDestroyed)
-            {
+            if (isFinishing() || mIsDestroyed) {
                 return;
             }
 
             // Hide loading
-            if (mLoading.isShowing())
-            {
+            if (mLoading.isShowing()) {
                 mLoading.dismiss();
             }
 
             // Failed?
-            if (exc != null)
-            {
+            if (exc != null) {
                 // Log it
                 Log.e(Logging.TAG, "Push registration failed", exc);
 
@@ -687,93 +650,40 @@ public class Main extends AppCompatActivity
                 String errorMessage = getString(R.string.pushRegistrationFailed) + "\n\n" + exc.toString();
 
                 // Build the dialog
-                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, Main.this, new DialogInterface.OnClickListener()
-                {
+                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, Main.this, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i)
-                    {
+                    public void onClick(DialogInterface dialogInterface, int i) {
                         // Show success dialog
                         showRegistrationSuccessDialog();
                     }
                 });
             }
-            else
-            {
+            else {
                 // Success, show success dialog
                 showRegistrationSuccessDialog();
             }
         }
     }
 
-    public class CheckForUpdatesAsync extends AsyncTaskAdapter<Integer, String, String>
-    {
+    public class CheckForUpdatesAsync extends AsyncTaskAdapter<Integer, String, String> {
         @Override
-        protected String doInBackground(Integer... Parameter)
-        {
+        protected String doInBackground(Integer... Parameter) {
             // Try to check for updates
             return checkForUpdates();
         }
 
         @Override
-        protected void onPostExecute(String newVersion)
-        {
+        protected void onPostExecute(String newVersion) {
             // Activity dead?
-            if (isFinishing() || mIsDestroyed)
-            {
+            if (isFinishing() || mIsDestroyed) {
                 return;
             }
 
             // Got a return code?
-            if (!StringUtils.stringIsNullOrEmpty(newVersion))
-            {
+            if (!StringUtils.stringIsNullOrEmpty(newVersion)) {
                 // Show update dialog
                 UpdateDialogs.showUpdateDialog(Main.this, newVersion);
             }
         }
-    }
-
-    void invalidateAlertList()
-    {
-        // Clear global list
-        mDisplayAlerts.clear();
-
-        // Add all the new alerts
-        mDisplayAlerts.addAll(mNewAlerts);
-
-        // Invalidate the list
-        mAlertsAdapter.notifyDataSetChanged();
-
-        // No alerts? Show default
-        if (mDisplayAlerts.size() == 0)
-        {
-            mNoAlerts.setVisibility(View.VISIBLE);
-        }
-        else
-        {
-            mNoAlerts.setVisibility(View.GONE);
-        }
-    }
-
-    void showRegistrationSuccessDialog()
-    {
-        // Already displayed?
-        if (AppPreferences.getTutorialDisplayed(this))
-        {
-            return;
-        }
-
-        // Build the dialog
-        AlertDialogBuilder.showGenericDialog(getString(R.string.pushRegistrationSuccess), getString(R.string.pushRegistrationSuccessDesc), this, new DialogInterface.OnClickListener()
-        {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i)
-            {
-                // Start settings activity
-                goToSettings(true);
-            }
-        });
-
-        // Tutorial was displayed
-        AppPreferences.setTutorialDisplayed(this);
     }
 }

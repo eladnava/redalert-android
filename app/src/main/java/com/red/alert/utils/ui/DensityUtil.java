@@ -2,10 +2,8 @@ package com.red.alert.utils.ui;
 
 import android.content.Context;
 
-public class DensityUtil
-{
-    public static int convertDPToPixels(Context context, int dps)
-    {
+public class DensityUtil {
+    public static int convertDPToPixels(Context context, int dps) {
         // Get scale
         float scale = context.getResources().getDisplayMetrics().density;
 

@@ -1,7 +1,6 @@
 package com.red.alert.config;
 
-public class Logging
-{
+public class Logging {
     // Tag for all logcat logs
     public static String TAG = "RedAlert";
 

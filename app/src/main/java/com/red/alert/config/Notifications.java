@@ -1,7 +1,6 @@
 package com.red.alert.config;
 
-public class Notifications
-{
+public class Notifications {
     // The disconnected notification ID
     public static final int CONNECTIVITY_NOTIFICATION_ID = 1024;
 

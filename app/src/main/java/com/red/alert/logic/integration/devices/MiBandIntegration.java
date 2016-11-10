@@ -8,13 +8,10 @@ import com.betomaluje.miband.MiBand;
 import com.red.alert.config.Logging;
 import com.red.alert.logic.settings.AppPreferences;
 
-public class MiBandIntegration
-{
-    public static void notifyMiBand(final Context context)
-    {
+public class MiBandIntegration {
+    public static void notifyMiBand(final Context context) {
         // Xiaomi Mi Band integration enabled?
-        if (!AppPreferences.getMiBandIntegrationEnabled(context))
-        {
+        if (!AppPreferences.getMiBandIntegrationEnabled(context)) {
             // Stop execution
             return;
         }
@@ -23,11 +20,9 @@ public class MiBandIntegration
         MiBand miBand = MiBand.getInstance(context);
 
         // Attempt to connect to it
-        miBand.connect(new ActionCallback()
-        {
+        miBand.connect(new ActionCallback() {
             @Override
-            public void onSuccess(Object data)
-            {
+            public void onSuccess(Object data) {
                 // Log it
                 Log.d(Logging.TAG, "Connected to Mi Band");
 
@@ -36,22 +31,19 @@ public class MiBandIntegration
             }
 
             @Override
-            public void onFail(int errorCode, String msg)
-            {
+            public void onFail(int errorCode, String msg) {
                 // Log fail
                 Log.d(Logging.TAG, "Failed to connect to Mi Band: " + msg);
             }
         });
     }
 
-    public static void sendNotificationCommands(Context context)
-    {
+    public static void sendNotificationCommands(Context context) {
         // Get an instance of the Mi Band SDK
         MiBand miBand = MiBand.getInstance(context);
 
         // Not connected for some reason?
-        if ( ! miBand.isConnected() )
-        {
+        if (!miBand.isConnected()) {
             // Log it
             Log.e(Logging.TAG, "Mi Band is no longer connected!");
         }

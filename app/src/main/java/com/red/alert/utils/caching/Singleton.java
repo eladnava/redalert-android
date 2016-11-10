@@ -7,16 +7,13 @@ import android.preference.PreferenceManager;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class Singleton
-{
+public class Singleton {
     static ObjectMapper mMapper;
     static SharedPreferences mSettings;
 
-    public static SharedPreferences getSharedPreferences(Context context)
-    {
+    public static SharedPreferences getSharedPreferences(Context context) {
         // First time?
-        if (mSettings == null)
-        {
+        if (mSettings == null) {
             // Open shared preferences
             mSettings = PreferenceManager.getDefaultSharedPreferences(context);
         }
@@ -25,11 +22,9 @@ public class Singleton
         return mSettings;
     }
 
-    public static ObjectMapper getJackson()
-    {
+    public static ObjectMapper getJackson() {
         // First time?
-        if (mMapper == null)
-        {
+        if (mMapper == null) {
             // Get Jackson instance
             mMapper = new ObjectMapper();
 

@@ -22,20 +22,17 @@ import com.red.alert.utils.integration.GooglePlayServices;
 public class LocationService extends Service implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        LocationListener
-{
+        LocationListener {
     IBinder mServiceBinder;
     GoogleApiClient mClient;
     LocationRequest mLocationRequest;
 
     @Override
-    public void onCreate()
-    {
+    public void onCreate() {
         super.onCreate();
 
         // Must have Google Play Services
-        if (!GooglePlayServices.isAvailable(this))
-        {
+        if (!GooglePlayServices.isAvailable(this)) {
             return;
         }
 
@@ -49,8 +46,7 @@ public class LocationService extends Service implements
         Log.d(Logging.TAG, "LocationService started");
     }
 
-    void initializeLocationPolling()
-    {
+    void initializeLocationPolling() {
         // Create new request
         mLocationRequest = LocationRequest.create();
 
@@ -68,11 +64,9 @@ public class LocationService extends Service implements
                 .build();
     }
 
-    public void updateRequestInterval()
-    {
+    public void updateRequestInterval() {
         // Called when not requesting?
-        if (mLocationRequest == null)
-        {
+        if (mLocationRequest == null) {
             return;
         }
 
@@ -80,14 +74,11 @@ public class LocationService extends Service implements
         mLocationRequest.setInterval(LocationLogic.getUpdateIntervalMilliseconds(this));
     }
 
-    void connectLocationClient()
-    {
+    void connectLocationClient() {
         // Got a location client?
-        if (mClient != null)
-        {
+        if (mClient != null) {
             // Client isn't already connected?
-            if (!mClient.isConnected() || !mClient.isConnecting())
-            {
+            if (!mClient.isConnected() || !mClient.isConnecting()) {
                 // Ask for updates
                 mClient.connect();
             }
@@ -95,8 +86,7 @@ public class LocationService extends Service implements
     }
 
     @Override
-    public int onStartCommand(Intent Intent, int Flags, int StartId)
-    {
+    public int onStartCommand(Intent Intent, int Flags, int StartId) {
         // Try connecting
         connectLocationClient();
 
@@ -104,29 +94,24 @@ public class LocationService extends Service implements
         return START_STICKY;
     }
 
-    void disconnectClient()
-    {
+    void disconnectClient() {
         // Got a client?
-        if (mClient != null && mClient.isConnected())
-        {
-            try
-            {
+        if (mClient != null && mClient.isConnected()) {
+            try {
                 // Stop asking for updates
                 LocationServices.FusedLocationApi.removeLocationUpdates(mClient, LocationService.this);
 
                 // Disconnect client
                 mClient.disconnect();
             }
-            catch (Exception exc)
-            {
+            catch (Exception exc) {
                 // Log to logcat
                 Log.e(Logging.TAG, "LocationClient disconnect failed", exc);
             }
         }
     }
 
-    void reconnect()
-    {
+    void reconnect() {
         // First, try disconnecting
         disconnectClient();
 
@@ -135,8 +120,7 @@ public class LocationService extends Service implements
     }
 
     @Override
-    public void onDestroy()
-    {
+    public void onDestroy() {
         // Got a client?
         disconnectClient();
 
@@ -145,8 +129,7 @@ public class LocationService extends Service implements
     }
 
     @Override
-    public void onLocationChanged(Location location)
-    {
+    public void onLocationChanged(Location location) {
         // Get lat & long as float
         float latitude = (float) location.getLatitude();
         float longitude = (float) location.getLongitude();
@@ -162,21 +145,17 @@ public class LocationService extends Service implements
     }
 
     @Override
-    public void onConnected(Bundle dataBundle)
-    {
+    public void onConnected(Bundle dataBundle) {
         // No client?
-        if (mClient == null || mLocationRequest == null)
-        {
+        if (mClient == null || mLocationRequest == null) {
             return;
         }
 
-        try
-        {
+        try {
             // Request updates
             LocationServices.FusedLocationApi.requestLocationUpdates(mClient, mLocationRequest, this);
         }
-        catch (Exception exc)
-        {
+        catch (Exception exc) {
             // Log it
             Log.e(Logging.TAG, "FusedLocationApi connection failed", exc);
 
@@ -186,29 +165,24 @@ public class LocationService extends Service implements
     }
 
     @Override
-    public void onConnectionSuspended(int i)
-    {
+    public void onConnectionSuspended(int i) {
         // Should we do something in this case?
     }
 
     @Override
-    public void onConnectionFailed(ConnectionResult connectionResult)
-    {
+    public void onConnectionFailed(ConnectionResult connectionResult) {
         // Try reconnecting
         reconnect();
     }
 
     @Override
-    public IBinder onBind(Intent arg0)
-    {
+    public IBinder onBind(Intent arg0) {
         // Provide service binder
         return mServiceBinder;
     }
 
-    public class LocalBinder extends Binder
-    {
-        public LocationService getService()
-        {
+    public class LocalBinder extends Binder {
+        public LocationService getService() {
             // Return the instance
             return LocationService.this;
         }

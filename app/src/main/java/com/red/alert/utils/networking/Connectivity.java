@@ -13,12 +13,10 @@ import com.red.alert.logic.notifications.RocketNotifications;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.utils.localization.Localization;
 
-public class Connectivity
-{
-    public static boolean isConnected(Context context)
-    {
+public class Connectivity {
+    public static boolean isConnected(Context context) {
         // Grab connectivity service
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService( Context.CONNECTIVITY_SERVICE );
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         // Get current network (may be null)
         NetworkInfo activeNetInfo = connectivityManager.getActiveNetworkInfo();
@@ -27,14 +25,12 @@ public class Connectivity
         return activeNetInfo != null && activeNetInfo.isConnected();
     }
 
-    public static void refreshConnectionNotification(final Context context)
-    {
+    public static void refreshConnectionNotification(final Context context) {
         // Get notification manager
         final NotificationManager notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
 
         // Disabled the disconnection notification?
-        if ( ! AppPreferences.getDisconnectedNotificationEnabled(context))
-        {
+        if (!AppPreferences.getDisconnectedNotificationEnabled(context)) {
             // Clear old notification
             notificationManager.cancel(Notifications.CONNECTIVITY_NOTIFICATION_ID);
             return;
@@ -62,24 +58,19 @@ public class Connectivity
         builder.setContentIntent(RocketNotifications.getNotificationIntent(context));
 
         // Not connected and requested to be notified?
-        if (!isConnected(context))
-        {
+        if (!isConnected(context)) {
             notificationManager.notify(Notifications.CONNECTIVITY_NOTIFICATION_ID, builder.build());
         }
-        else
-        {
+        else {
             // We're connected
             //
             // Wait a few seconds for push services to reconnect
             // In the future, wait for their connectivity broadcast
-            new Handler().postDelayed(new Runnable()
-            {
+            new Handler().postDelayed(new Runnable() {
                 @Override
-                public void run()
-                {
+                public void run() {
                     // Still connected?
-                    if ( isConnected(context) )
-                    {
+                    if (isConnected(context)) {
                         // Clear old notification
                         notificationManager.cancel(Notifications.CONNECTIVITY_NOTIFICATION_ID);
                     }

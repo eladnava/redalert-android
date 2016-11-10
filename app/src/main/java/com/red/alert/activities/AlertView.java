@@ -17,24 +17,22 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.red.alert.R;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
 import com.red.alert.model.metadata.City;
-import com.red.alert.ui.localization.rtl.adapters.RTLMarkerInfoWindowAdapter;
-import com.red.alert.utils.localization.Localization;
 import com.red.alert.ui.localization.rtl.RTLSupport;
+import com.red.alert.ui.localization.rtl.adapters.RTLMarkerInfoWindowAdapter;
 import com.red.alert.ui.notifications.AppNotifications;
+import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
 
 import java.util.List;
 
-public class AlertView extends AppCompatActivity
-{
+public class AlertView extends AppCompatActivity {
     GoogleMap mMap;
 
     String mAlertZone;
     String mAlertDateString;
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Initialize alert
@@ -47,8 +45,7 @@ public class AlertView extends AppCompatActivity
         initializeMap();
     }
 
-    void unpackExtras()
-    {
+    void unpackExtras() {
         // Get alert area
         mAlertZone = getIntent().getStringExtra(AlertViewParameters.ALERT_ZONE);
 
@@ -56,14 +53,11 @@ public class AlertView extends AppCompatActivity
         mAlertDateString = getIntent().getStringExtra(AlertViewParameters.ALERT_DATE_STRING);
     }
 
-    void mapLoadedListener()
-    {
+    void mapLoadedListener() {
         // Wait for map to load
-        mMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener()
-        {
+        mMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
             @Override
-            public void onCameraChange(CameraPosition arg0)
-            {
+            public void onCameraChange(CameraPosition arg0) {
                 // Prevent from being called again
                 mMap.setOnCameraChangeListener(null);
 
@@ -74,11 +68,9 @@ public class AlertView extends AppCompatActivity
                 mMap.setMyLocationEnabled(true);
 
                 // Wait for tiles to load
-                new Handler().postDelayed(new Runnable()
-                {
+                new Handler().postDelayed(new Runnable() {
                     @Override
-                    public void run()
-                    {
+                    public void run() {
                         // Add map overlays
                         addOverlays();
                     }
@@ -87,11 +79,9 @@ public class AlertView extends AppCompatActivity
         });
     }
 
-    void initializeMap()
-    {
+    void initializeMap() {
         // Get map instance
-        if (mMap == null)
-        {
+        if (mMap == null) {
             // Stop execution
             return;
         }
@@ -100,14 +90,12 @@ public class AlertView extends AppCompatActivity
         mapLoadedListener();
     }
 
-    void addOverlays()
-    {
+    void addOverlays() {
         // Get alert area
         List<City> cities = LocationData.getCitiesByZone(mAlertZone, this);
 
         // No cities found?
-        if (cities.size() == 0)
-        {
+        if (cities.size() == 0) {
             return;
         }
 
@@ -121,11 +109,9 @@ public class AlertView extends AppCompatActivity
         boolean isEnglish = Localization.isEnglishLocale(this);
 
         // Traverse over cities
-        for (City city : cities)
-        {
+        for (City city : cities) {
             // No location?
-            if (city.latitude == 0)
-            {
+            if (city.latitude == 0) {
                 continue;
             }
 
@@ -163,8 +149,7 @@ public class AlertView extends AppCompatActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu OptionsMenu)
-    {
+    public boolean onCreateOptionsMenu(Menu OptionsMenu) {
         // Add share button
         initializeShareButton(OptionsMenu);
 
@@ -172,8 +157,7 @@ public class AlertView extends AppCompatActivity
         return true;
     }
 
-    private String getShareMessage()
-    {
+    private String getShareMessage() {
         // Get zone name
         String zone = LocationData.getLocalizedZone(mAlertZone, this);
 
@@ -181,8 +165,7 @@ public class AlertView extends AppCompatActivity
         return getString(R.string.alertSoundedAt) + " " + zone + " (" + LocationData.getCityNamesByZone(mAlertZone, this) + ") " + getString(R.string.atTime) + " " + mAlertDateString + " " + getString(R.string.alertSentVia);
     }
 
-    void initializeShareButton(Menu OptionsMenu)
-    {
+    void initializeShareButton(Menu OptionsMenu) {
         // Add refresh in Action Bar
         MenuItem shareItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.shareAlert));
 
@@ -193,11 +176,9 @@ public class AlertView extends AppCompatActivity
         MenuItemCompat.setShowAsAction(shareItem, MenuItem.SHOW_AS_ACTION_ALWAYS);
 
         // On click, open share
-        shareItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener()
-        {
+        shareItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
-            public boolean onMenuItemClick(MenuItem item)
-            {
+            public boolean onMenuItemClick(MenuItem item) {
                 // Prepare share intent
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
 
@@ -216,11 +197,9 @@ public class AlertView extends AppCompatActivity
         });
     }
 
-    public boolean onOptionsItemSelected(final MenuItem Item)
-    {
+    public boolean onOptionsItemSelected(final MenuItem Item) {
         // Check item ID
-        switch (Item.getItemId())
-        {
+        switch (Item.getItemId()) {
             // Home button?
             case android.R.id.home:
                 onBackPressed();
@@ -230,8 +209,7 @@ public class AlertView extends AppCompatActivity
     }
 
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
 
         // Support for RTL languages
@@ -242,16 +220,14 @@ public class AlertView extends AppCompatActivity
     }
 
     @Override
-    public void onConfigurationChanged(android.content.res.Configuration newConfig)
-    {
+    public void onConfigurationChanged(android.content.res.Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
         // Support for RTL languages
         RTLSupport.mirrorActionBar(this);
     }
 
-    void initializeUI()
-    {
+    void initializeUI() {
         // Reset activity name (after localization is loaded)
         setTitle(R.string.appName);
 

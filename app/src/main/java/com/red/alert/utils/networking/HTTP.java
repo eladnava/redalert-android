@@ -9,10 +9,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.util.EntityUtils;
 
-public class HTTP
-{
-    public static String get(String URL) throws Exception
-    {
+public class HTTP {
+    public static String get(String URL) throws Exception {
         // Get custom http client
         DefaultHttpClient client = getHTTPClient();
 
@@ -26,8 +24,7 @@ public class HTTP
         String responseText = EntityUtils.toString(response.getEntity());
 
         // Failed?
-        if (response.getStatusLine() == null || response.getStatusLine().getStatusCode() != 200)
-        {
+        if (response.getStatusLine() == null || response.getStatusLine().getStatusCode() != 200) {
             // Throw it out
             throw new Exception(response.getStatusLine().toString() + "\n" + responseText);
         }
@@ -36,8 +33,7 @@ public class HTTP
         return responseText;
     }
 
-    public static String post(String url, String json) throws Exception
-    {
+    public static String post(String url, String json) throws Exception {
         // Get custom http client
         HttpClient client = new DefaultHttpClient();
 
@@ -57,8 +53,7 @@ public class HTTP
         String responseText = EntityUtils.toString(response.getEntity());
 
         // Failed?
-        if (response.getStatusLine() == null || response.getStatusLine().getStatusCode() != 200)
-        {
+        if (response.getStatusLine() == null || response.getStatusLine().getStatusCode() != 200) {
             // Throw it out
             throw new Exception(response.getStatusLine().toString() + "\n" + responseText);
         }
@@ -67,8 +62,7 @@ public class HTTP
         return responseText;
     }
 
-    public static DefaultHttpClient getHTTPClient()
-    {
+    public static DefaultHttpClient getHTTPClient() {
         // Return default client
         return new DefaultHttpClient();
     }

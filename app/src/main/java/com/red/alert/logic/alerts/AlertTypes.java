@@ -1,7 +1,6 @@
 package com.red.alert.logic.alerts;
 
-public class AlertTypes
-{
+public class AlertTypes {
     public static final String SYSTEM = "system";
     public static final String PRIMARY = "alert";
     public static final String SECONDARY = "secondary_alert";

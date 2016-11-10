@@ -3,8 +3,7 @@ package com.red.alert.model.res;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class VersionInfo
-{
+public class VersionInfo {
     @JsonProperty("version")
     public String version;
 
@@ -15,8 +14,7 @@ public class VersionInfo
     public boolean showDialog;
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return version;
     }
 }

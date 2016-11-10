@@ -22,16 +22,13 @@ import com.red.alert.services.sound.PlaySoundService;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.formatting.StringUtils;
 
-public class RocketNotifications
-{
-    public static void notify(Context context, String alertZone, String notificationTitle, String notificationContent, String alertType, String overrideSound)
-    {
+public class RocketNotifications {
+    public static void notify(Context context, String alertZone, String notificationTitle, String notificationContent, String alertType, String overrideSound) {
         // Get notification manager
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
 
         // In case there is no content
-        if (StringUtils.stringIsNullOrEmpty(notificationContent))
-        {
+        if (StringUtils.stringIsNullOrEmpty(notificationContent)) {
             // Move title to content
             notificationContent = notificationTitle;
 
@@ -64,13 +61,11 @@ public class RocketNotifications
         // Cancel previous notification for same alert zone
         notificationManager.cancel(notificationID);
 
-        try
-        {
+        try {
             // Issue the notification
             notificationManager.notify(notificationID, builder.build());
         }
-        catch (Exception exc)
-        {
+        catch (Exception exc) {
             // Log it
             Log.e(Logging.TAG, "Rocket notification failed", exc);
 
@@ -91,8 +86,7 @@ public class RocketNotifications
         Broadcasts.publish(context, MainActivityParameters.RELOAD_RECENT_ALERTS);
     }
 
-    private static PendingIntent getNotificationDeletedReceiverIntent(Context context)
-    {
+    private static PendingIntent getNotificationDeletedReceiverIntent(Context context) {
         // Prepare delete intent
         Intent deleteIntent = new Intent(RocketNotificationParameters.NOTIFICATION_DELETED_ACTION);
 
@@ -100,8 +94,7 @@ public class RocketNotifications
         return PendingIntent.getBroadcast(context, 0, deleteIntent, 0);
     }
 
-    public static PendingIntent getNotificationIntent(Context context)
-    {
+    public static PendingIntent getNotificationIntent(Context context) {
         // Prepare notification intent
         Intent notificationIntent = new Intent(context, Main.class);
 
@@ -112,8 +105,7 @@ public class RocketNotifications
         return pendingIntent;
     }
 
-    static void playAlertSound(String alertType, String sound, Context context)
-    {
+    static void playAlertSound(String alertType, String sound, Context context) {
         // Create a new intent to start our sound service
         Intent playSound = new Intent(context, PlaySoundService.class);
 
@@ -121,8 +113,7 @@ public class RocketNotifications
         playSound.putExtra(SoundServiceParameters.ALERT_TYPE, alertType);
 
         // Got a sound?
-        if (sound != null)
-        {
+        if (sound != null) {
             playSound.putExtra(SoundServiceParameters.ALERT_SOUND, sound);
         }
 
