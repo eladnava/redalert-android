@@ -9,8 +9,8 @@ android {
         applicationId "com.red.alert"
         minSdkVersion 9
         targetSdkVersion 20
-        versionCode 10089
-        versionName "1.0.8.9"
+        versionCode 10090
+        versionName "1.0.9.0"
     }
     buildTypes {
         release {
@@ -35,6 +35,15 @@ android {
 }
 
 dependencies {
+    // Pushy SDK
+    compile 'me.pushy:sdk:1.0.16'
+
+    // Pushy SDK Dependency - Jackson
+    compile (
+            [group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.2.3'],
+            [group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.2.3'],
+            [group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.2.3']
+    )
 
     // AppCompat v7 Dependency
     compile 'com.android.support:appcompat-v7:22.1.0'
