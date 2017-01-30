@@ -19,7 +19,7 @@ The app utilizes real-time alert data provided by the Home Front Command (Pikud 
 * Published by **Geektime** as [the fastest rocket alert app](http://www.geektime.co.il/push-notifications-at-protective-edge/)
 * Featured by the Israeli government on their [Google+ page](https://plus.google.com/+Israel/posts/U3juWS1YPK4)
 * Ranked **1st place** on **Google Play's Top Free** in Israel for 4 weeks during Operation Protective Edge
-* Won **2nd place** in the [Ford SYNC AppLink TLV](https://www.getinthecartlv.com/) hackathon for integrating the app with Ford cars
+* Won **2nd place** in the [Ford SYNC AppLink TLV](https://eladnava.com/how-we-won-2nd-place-ford-tel-aviv-hackathon/) hackathon for integrating the app with Ford cars
 
 ## Features
 
