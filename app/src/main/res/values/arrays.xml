@@ -9,6 +9,7 @@
         <item>@string/spanish</item>
         <item>@string/russian</item>
         <item>@string/italian</item>
+        <item>@string/french</item>
     </string-array>
     <string-array name="langValues">
         <item></item>
@@ -17,6 +18,7 @@
         <item>@string/spanishCode</item>
         <item>@string/russianCode</item>
         <item>@string/italianCode</item>
+        <item>@string/frenchCode</item>
     </string-array>
     <string-array name="sounds">
         <item>@string/siren1</item>
