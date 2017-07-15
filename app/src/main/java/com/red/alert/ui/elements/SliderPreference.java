@@ -82,6 +82,7 @@ public class SliderPreference extends DialogPreference {
     }
 
     @Override
+    @SuppressWarnings("ResourceType")
     public void setSummary(int summaryResId) {
         try {
             setSummary(getContext().getResources().getStringArray(summaryResId));
