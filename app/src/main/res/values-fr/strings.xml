@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="appName">Tzeva Adom</string>
+    <string name="signing_up">Inscription pour les notifications push ... </string>
+    <string name="okay">OK</string>
+    <string name="error">Erreur</string>
+    <string name="noGooglePlayServices">Votre téléphone n\'a pas installé la version mise à jour de Google Play Services.</string>
+    <string name="pushRegistrationFailed">Une erreur s\'est produite lors de la signature de notifications push-rocket. Nous allons essayer de vous ré-inscrire ultérieurement.</string>
+    <string name="apiRequestFailed">Une requête pour récupérer des informations de nos serveurs a échoué. Vérifiez votre connexion Internet et réessayez.</string>
+    <string name="registrationFailed"> L\'enregistrement a échoué, réessayez ultérieurement.</string>
+    <string name="settings">Paramètres</string>
+    <string name="advanced">Options</string>
+    <string name="advancedSettings">Paramètres avancés</string>
+    <string name="advancedSettingsTitle">Paramètres avancés</string>
+    <string name="advancedSettingsDesc">Cliquez ici pour modifier les paramètres avancés.</string>
+    <string name="notifications">Recevoir les alertes</string>
+    <string name="notificationsDesc">Recevoir les alertes en temps réel.</string>
+    <string name="contact">Contact</string>
+    <string name="contactDesc">Cliquez ici pour contacter le développeur de l\'application.</string>
+    <string name="reportProblem">Signaler un problème</string>
+    <string name="manualContact">Contactez-moi par e-mail à support@redalert.me</string>
+    <string name="jsonFailed">Une erreur s\'est produite lors du chargement des données du serveur.</string>
+    <string name="notifyError">Une erreur s\'est produite lors de l\'affichage de la notification, redémarrez votre téléphone.</string>
+    <string name="safeCategory">\"Je suis en sécurité\"</string>
+    <string name="safe">Envoyer \"Je suis en sécurité\"</string>
+    <string name="imSafeMessage">Je suis en sécurité - envoyé via RedAlert pour Android - https://redalert.me</string>
+    <string name="imSafeDesc">Envoyer \"Je suis en sécurité\"</string>
+    <string name="pushRegistrationSuccess">L\'enregistrement est terminé avec succès</string>
+    <string name="pushRegistrationSuccessDesc">Vous êtes enregistré avec succès pour recevoir les notifications via RedAlert.\n\nSélectionnez les régions et villes d\'alerte préférées pour recevoir les alertes de roquettes.</string>
+    <string name="safeWhatsApp">Envoyer via WhatsApp</string>
+    <string name="safeWhatsAppDesc">En cliquant sur le bouton \"Je suis en sécurité\", le message sera envoyé via WhatsApp automatiquement.</string>
+    <string name="whatsAppNotInstalled">WhatsApp n\'est pas installé!</string>
+    <string name="soundSelection">Sonnerie de l\'alerte à la roquette</string>
+    <string name="soundSelectionDesc">Sélectionnez une sonnerie pour les alertes à la roquette.</string>
+    <string name="test">Tester</string>
+    <string name="testDesc">Envoyez-moi une alerte de test pour vérifier la connectivité.</string>
+    <string name="testFailed">Le test a échoué. Aucune alerte n\'a été reçue. Vérifiez votre connexion Internet et réessayez ultérieurement. Contactez-nous si le problème persiste.</string>
+    <string name="testSent">Veuillez attendre la notification de test</string>
+    <string name="reliability">Fiabilité</string>
+    <string name="noAlerts">Aucune alerte\nces derniers jours</string>
+    <string name="recentAlerts">Alertes récentes</string>
+    <string name="testSound">Test sonore - cliquez ici pour annuler</string>
+    <string name="siren1">Sirène 1</string>
+    <string name="siren2">Sirène 2</string>
+    <string name="siren3">Sirène 3</string>
+    <string name="siren4">Sirène 4</string>
+    <string name="siren5">Sirène 5</string>
+    <string name="tiny">Bref 1</string>
+    <string name="calm">Relaxant 1</string>
+    <string name="funny">Drôle</string>
+    <string name="language">Language</string>
+    <string name="langSelection">App language</string>
+    <string name="langSelectionDesc">Change the application\'s language.</string>
+    <string name="automatic">Automatic</string>
+    <string name="selectedRegions">Régions</string>
+    <string name="regionsDesc">Sélectionnez les régions pour lequel recevoir les alertes.</string>
+    <string name="langSelectionSuccess">Redémarrez l\'application</string>
+    <string name="silentOverride">Passer outre le mode silencieux</string>
+    <string name="silentOverrideDesc">Les alertes à la roquette passeront outre le mode silencieux.</string>
+    <string name="selectedCities">Autres villes</string>
+    <string name="testSuccessfulLong">Le test s\'est terminé avec succès! Les alertes de test ont été reçues via la notification push.</string>
+    <string name="cityDesc">Sélectionnez les villes pour recevoir les alertes les concernant, en plus des régions sélectionnées.</string>
+    <string name="website">Visitez notre site web</string>
+    <string name="websiteDesc">Cliquez ici pour visiter notre site officiel.</string>
+    <string name="areas">Régions</string>
+    <string name="receiveSecondaryAlerts">Alertes secondaires</string>
+    <string name="receiveSecondaryAlertsDesc">Recevoir des alertes de roquette secondaires en temps réel.</string>
+    <string name="sounds">Sonneries</string>
+    <string name="share">Partager</string>
+    <string name="shareDesc">Partager l\'application</string>
+    <string name="shareMessage">J\'utilise RedAlert pour Android pour obtenir des alertes de roquette en temps réel - https://redalert.me</string>
+    <string name="vibrate">Activer la vibration</string>
+    <string name="vibrateDesc">Les alertes de roquettes feront vibrer votre téléphone.</string>
+    <string name="sentVia">Envoyé via</string>
+    <string name="problemDesc">Description du problème:  </string>
+    <string name="noSound">Pas de son</string>
+    <string name="search">Rechercher ...</string>
+    <string name="allString">Tous</string>
+    <string name="noneString">Désactiver</string>
+    <string name="registrationID">ID d\'enregistrement</string>
+    <string name="calm2">Relaxant 2</string>
+    <string name="calm3">Relaxant 3</string>
+    <string name="calm4">Relaxant 4</string>
+    <string name="calm5">Relaxant 5</string>
+    <string name="tiny2">Bref 2</string>
+    <string name="tiny3">Bref 3</string>
+    <string name="tiny4">Bref 4</string>
+    <string name="tiny5">Bref 5</string>
+    <string name="tiny6">Bref 6</string>
+
+    <!-- Secondary Alerts -->
+    <string name="secondaryAlerts">Alertes secondaires</string>
+    <string name="secondaryAlertsTitle">Alertes secondaires</string>
+    <string name="secondaryAlertsDesc">Configurer les alertes secondaires dans d\'autres zones du pays.</string>
+
+    <!-- Secondary Sound -->
+    <string name="secondarySoundSelection">Sonnerie secondaire</string>
+    <string name="secondarySoundSelectionDesc">Sélectionnez une sonnerie pour les alertes de roquette secondaire.</string>
+
+    <!-- Secondary Vibration Mode -->
+    <string name="secondaryVibrate">Activer la vibration</string>
+    <string name="secondaryVibrateDesc">Les alertes de roquette secondaires font vibrer votre téléphone. </string>
+
+    <!-- Secondary Silent Mode Override -->
+    <string name="secondarySilentOverride">Passer outre le mode silencieux</string>
+    <string name="secondarySilentOverrideDesc">Les alertes de roquette secondaire passeront outre le mode silencieux.</string>
+
+    <!-- Rate the App -->
+    <string name="rateApp">Notez l\'application</string>
+    <string name="rateAppDesc">Evaluer l\'application sur Google Play.</string>
+
+    <string name="update">Mise à jour disponible</string>
+    <string name="updateDesc">Une version plus récente de cette application est disponible (% s), veuillez mettre à jour.</string>
+    <string name="updatePositive">Mise à jour</string>
+    <string name="notNow">Pas maintenant</string>
+
+    <!-- Volume -->
+    <string name="volume">Niveau de volume</string>
+    <string name="volumeDesc">Sélectionnez le volume des notifications d\'alerte.</string>
+
+    <!-- Secondary Volume -->
+    <string name="secondaryVolume">Niveau de volume</string>
+    <string name="secondaryVolumeDesc">Sélectionnez le volume des notifications secondaire d\'alerte.</string>
+
+    <!-- Secondary Cities -->
+    <string name="selectedSecondaryCities">Villes secondaires</string>
+    <string name="selectedSecondaryCitiesDesc">Sélectionnez les villes pour recevoir des alertes secondaires.</string>
+
+    <!-- GPS -->
+    <string name="locationAlerts">Alertes basées sur l\'emplacement </string>
+    <string name="locationAlertsDesc">Configurer les alertes basées sur la localisation pour recevoir des alertes de roquette dans votre région automatiquement.</string>
+    <string name="gpsEnabled">Alertes basées sur l\'emplacement </string>
+    <string name="gpsEnabledDesc">Recevoir des alertes localisées en temps réel.</string>
+    <string name="maxDistance">Distance maximale</string>
+    <string name="maxDistanceDesc">Sélectionner la distance maximale de chaque ville qui reçoit une alerte.</string>
+    <string name="kilometer">km</string>
+    <string name="nearbyCities">Villes proches</string>
+    <string name="noLocation">Impossible de déterminer votre dernier emplacement connu.</string>
+    <string name="noNearbyCities">Aucune ville voisine, essayez de changer la distance maximale.</string>
+
+    <!-- GPS Frequency -->
+    <string name="gpsFrequency">Intervalle de mise à jour</string>
+    <string name="gpsFrequencyDesc">Sélectionner l\'intervalle, en minutes, pour les mises à jour de l\'emplacement.</string>
+    <string name="every">Chaque</string>
+    <string name="minutes">minutes</string>
+
+    <!-- GPS Notification -->
+    <string name="enableGPSDesc">Veuillez activer le GPS pour recevoir des alertes basées sur la localisation.</string>
+    <string name="enable">Activer</string>
+
+    <!-- Alert Share -->
+    <string name="shareAlert">Partager l\'alerte</string>
+    <string name="alertSoundedAt">Une alerte rouge retentit à</string>
+    <string name="atTime">à</string>
+    <string name="alertSentVia">- Envoyé via RedAlert pour Android -
+        https://redalert.me
+    </string>
+
+    <!-- Disconnected Notification -->
+    <string name="disconnectedNotification">Notifier lors d\'une déconnection</string>
+    <string name="disconnectedNotificationDesc">Lorsque votre connexion au serveur d\'alertes échoue, une notification vous alertera pour vous prévenir de ne pas faire confiance à l\'application.</string>
+    <string name="connected">Connecté au serveur d\'alerte de roquette</string>
+    <string name="connecting">Connexion...</string>
+    <string name="notConnected">Non connecté au serveur d\'alerte de roquette</string>
+
+    <!-- Alert Popup -->
+    <string name="open">Ouvrir</string>
+    <string name="silence">Silence</string>
+    <string name="showPopup">Afficher la popup</string>
+    <string name="showPopupDesc">Les alertes de roquettes s\'affichera dans une popup.</string>
+    <string name="loading">Chargement ...</string>
+    <string name="testingGCM">Test de la notification... (1/2)</string>
+    <string name="testingPushy">Test de la notification... (2/2)</string>
+    <string name="gcmTestFailed">Le test a échoué partiellement. Aucune alerte n\'a été reçue de la notification de Google, mais une alerte a été reçue avec succès via la notification secondaire. Réessayez plus tard.</string>
+    <string name="pushyTestFailed">Le test a échoué partiellement. Aucune alerte n\'a été reçue de la notification secondaire, mais une alerte a été reçue avec succès via la notification de Google. Réessayez plus tard.</string>
+    <string name="debugInfo">Informations supplémentaires: </string>
+    <string name="testSuccessful">Le test s\'est terminé avec succès!</string>
+    <string name="alerts">Alertes</string>
+    <string name="advancedAlerts">Alertes avancées</string>
+    <string name="integrations">Intégrations</string>
+    <string name="integrationsTitle">Paramètres d\'intégration </string>
+    <string name="integrationsDesc">Configurer l\'intégration d\'alertes avec des périphériques externes.</string>
+    <string name="bleNotSupported">Ne supporte pas BLE</string>
+    <string name="bleNotSupportedDesc">Malheureusement, votre téléphone ne supporte pas Bluetooth Low Energy. Mettre à jour votre version Android 4.3 ou plus et réessayer.</string>
+    <string name="enableBluetooth">Activer le Bluetooth</string>
+    <string name="enableBluetoothDesc">Vous devez activer le Bluetooth dans les paramètres de votre téléphone et le laisser activé en tout temps pour recevoir des alertes via des périphériques intégrés.</string>
+    <string name="integrationsTest">Intégrations de test</string>
+    <string name="integrationsTestDesc">Testez la connectivité et la fiabilité des périphériques intégrés.</string>
+    <string name="integrationsTestSuccess">Le test de connectivité a été exécuté avec succès.\n\nVérifiez que les appareils ont répondu en conséquence.</string>
+    <string name="miBandIntegrationDesc">Les alertes de roquette en temps réel provoqueront une vibration et une lumière sur la Mi-Band. </string>
+    <string name="miBandTestFailed">Une erreur s\'est produite lors de la connexion à votre Mi-Band. Essayez de supprimer toutes les autres applications qui s\'intègrent à la Mi-Band (y compris Mi Fit), si elles sont installées. En outre, essayez de toucher la surface métallique de la bande (c\'est un capteur) pour le réveiller.\n\nContactez-nous si vous ne pouvez toujours pas connecter la bande après avoir essayé plusieurs fois.</string>
+    <string name="devices">Périphériques</string>
+</resources>

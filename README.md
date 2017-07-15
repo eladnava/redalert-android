@@ -40,7 +40,7 @@ Over **450,000 downloads** and a **4.7 star rating** to prove it. The only rocke
 * Sounds - choose from 15 unique sounds for rocket alerts
 * Vibration - your phone will vibrate in addition to playing the selected alert sound
 * History - display the list of daily rocket alerts, their location, and time of day (in your local time)
-* Translation - the app has been translated to multiple languages (Hebrew, English, Russian, Italian and Spanish)
+* Translation - the app has been translated to multiple languages (Hebrew, English, Russian, Italian, Spanish and French)
 * Scalability - the app is deployed to a cloud service which scales automatically to provide alerts to all users
 
 ## Requirements
