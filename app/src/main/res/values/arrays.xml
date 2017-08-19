@@ -10,7 +10,7 @@
         <item>@string/russian</item>
         <item>@string/italian</item>
         <item>@string/french</item>
-        <item>@string/German</item>
+        <item>@string/german</item>
     </string-array>
     <string-array name="langValues">
         <item></item>
