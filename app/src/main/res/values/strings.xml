@@ -264,6 +264,7 @@
     <string translatable="false" name="hebrew">עברית</string>
     <string translatable="false" name="italian">Italiano</string>
     <string translatable="false" name="french">Français</string>
+    <string translateble="false" name="German">German</string>
 
     <!-- Preference Keys -->
     <string translatable="false" name="selfTestPref">test</string>
@@ -329,6 +330,7 @@
     <string translatable="false" name="italianCode">it</string>
     <string translatable="false" name="hebrewCode2">he</string>
     <string translatable="false" name="frenchCode">fr</string>
+    <string translatable="false" name="germanCode">de</string>
 
     <!-- Sounds -->
     <string translatable="false" name="defaultSound">alarm1</string>
