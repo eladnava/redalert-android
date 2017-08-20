@@ -264,7 +264,7 @@
     <string translatable="false" name="hebrew">עברית</string>
     <string translatable="false" name="italian">Italiano</string>
     <string translatable="false" name="french">Français</string>
-    <string translateble="false" name="german">German</string>
+    <string translatable="false" name="german">German</string>
 
     <!-- Preference Keys -->
     <string translatable="false" name="selfTestPref">test</string>
