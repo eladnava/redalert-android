@@ -100,8 +100,8 @@
     <!-- Secondary Vibration Mode -->
     <string name="secondaryVibrate">Aktiviere die vibration</string>
     <string name="secondaryVibrateDesc">Sekundäre Raketenwarnungen lassen das Handy vibrieren.</string>
-66
-<!-- Secondary Silent Mode Override -->
+
+    <!-- Secondary Silent Mode Override -->
     <string name="secondarySilentOverride">Überschreibe den bitte nicht stören Modus</string>
     <string name="secondarySilentOverrideDesc">Sekundäre Raketenwarnungen überschreiben kurtzeitig den bitte nicht Stören Modus.</string>
 
@@ -150,7 +150,7 @@
 
     <!-- Alert Share -->
     <string name="shareAlert">Teile die Meldung</string>
-    #<string name="alertSoundedAt">Ein code-red-Alarm hörte sich aus A code red alert sounded off in</string>
+    <string name="alertSoundedAt">Ein code-red-Alarm hörte sich aus A code red alert sounded off in</string>
     <string name="atTime">beim</string>
     <string name="alertSentVia">- Gesendet mit  RedAlert für Android - https://redalert.me
     </string>
