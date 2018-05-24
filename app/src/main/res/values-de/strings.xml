@@ -189,4 +189,9 @@
     <string name="miBandIntegrationDesc">Echtzeit-Raketenwarnungen führen dazu, dass das Xiaomi Mi Band vibriert und aufleuchtet.</string>
     <string name="miBandTestFailed">Beim dem Versuch sich mit deinem  Mi Band zu verbinden ist ein Fehler aufgetreten. Versuche, alle anderen Apps zu löschen, die mit dem Band interagieren (einschließlich Mi Fit), falls vorhanden. Versuche auch, die Metalloberfläche des Bandes zu berühren (dort ist ein Sensor), um das Armband aufzuwecken. \n\n Kontaktiere uns, wenn Du das Mi Band nach dem erneuten Versuch nicht verbinden kannst..</string>
     <string name="devices">Geräte</string>
+
+    <!-- Operation Lifeshield -->
+    <string name="lifeshieldShelters">Lifeshield Unterstände:</string>
+    <string name="learnAboutLifeshield">Erfahren Sie mehr über Lifeshield</string>
+    <string name="learnAboutLifeshieldDesc">Klicken Sie hier, um mehr über Operation Lifeshield zu erfahren, eine gemeinnützige Organisation, die Luftschutzbunker in Israel errichtet.</string>
 </resources>

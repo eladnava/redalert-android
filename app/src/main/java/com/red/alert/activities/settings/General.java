@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.red.alert.R;
 import com.red.alert.config.API;
+import com.red.alert.config.Lifeshield;
 import com.red.alert.config.Logging;
 import com.red.alert.config.Support;
 import com.red.alert.config.Testing;
@@ -62,6 +63,7 @@ public class General extends AppCompatPreferenceActivity {
     Preference mContact;
     Preference mAdvanced;
     Preference mTestAlert;
+    Preference mLifeshield;
 
     PreferenceCategory mMainCategory;
     ListPreference mLanguageSelection;
@@ -212,6 +214,7 @@ public class General extends AppCompatPreferenceActivity {
         mContact = findPreference(getString(R.string.contactPref));
         mAdvanced = findPreference(getString(R.string.advancedPref));
         mTestAlert = findPreference(getString(R.string.selfTestPref));
+        mLifeshield = findPreference(getString(R.string.lifeshieldPref));
         mMainCategory = (PreferenceCategory) findPreference(getString(R.string.mainCategoryPref));
         mCitySelection = ((SearchableMultiSelectPreference) findPreference(getString(R.string.selectedCitiesPref)));
         mRegionSelection = ((SearchableMultiSelectPreference) findPreference(getString(R.string.selectedRegionsPref)));
@@ -295,8 +298,28 @@ public class General extends AppCompatPreferenceActivity {
                 // Initialize browser intent
                 Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse(Support.WEBSITE_LINK));
 
-                // Open browser
                 try {
+                    // Open browser
+                    startActivity(browser);
+                }
+                catch (ActivityNotFoundException ex) {
+                    // Do nothing
+                }
+
+                // Consume event
+                return true;
+            }
+        });
+
+        // Lifeshield website button
+        mLifeshield.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                // Initialize browser intent
+                Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse(Lifeshield.WEBSITE_LINK));
+
+                try {
+                    // Open browser
                     startActivity(browser);
                 }
                 catch (ActivityNotFoundException ex) {

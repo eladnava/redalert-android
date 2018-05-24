@@ -39,6 +39,11 @@ public class RTLMarkerInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
         // Set snippet
         textView.setText(marker.getSnippet());
 
+        // No snippet?
+        if (marker.getSnippet() == null) {
+            textView.setVisibility(View.GONE);
+        }
+
         // Return popup
         return popup;
     }

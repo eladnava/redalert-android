@@ -58,17 +58,21 @@
     <PreferenceCategory
         android:title="@string/contact">
         <Preference
-            android:key="@string/contactPref"
-            android:title="@string/reportProblem"
-            android:summary="@string/contactDesc"/>
+            android:key="@string/ratePref"
+            android:title="@string/rateApp"
+            android:summary="@string/rateAppDesc"/>
         <Preference
             android:key="@string/websitePref"
             android:title="@string/website"
             android:summary="@string/websiteDesc"/>
         <Preference
-            android:key="@string/ratePref"
-            android:title="@string/rateApp"
-            android:summary="@string/rateAppDesc"/>
+            android:key="@string/contactPref"
+            android:title="@string/reportProblem"
+            android:summary="@string/contactDesc"/>
+        <Preference
+            android:key="@string/lifeshieldPref"
+            android:title="@string/learnAboutLifeshield"
+            android:summary="@string/learnAboutLifeshieldDesc"/>
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/language">

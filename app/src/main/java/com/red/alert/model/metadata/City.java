@@ -32,6 +32,9 @@ public class City {
     @JsonProperty("time")
     public String time;
 
+    @JsonProperty("shelters")
+    public int shelters;
+
     @JsonProperty("countdown")
     public int countdown;
 

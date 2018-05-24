@@ -190,4 +190,9 @@
     <string name="miBandIntegrationDesc">Les alertes de roquette en temps réel provoqueront une vibration et une lumière sur la Mi-Band. </string>
     <string name="miBandTestFailed">Une erreur s\'est produite lors de la connexion à votre Mi-Band. Essayez de supprimer toutes les autres applications qui s\'intègrent à la Mi-Band (y compris Mi Fit), si elles sont installées. En outre, essayez de toucher la surface métallique de la bande (c\'est un capteur) pour le réveiller.\n\nContactez-nous si vous ne pouvez toujours pas connecter la bande après avoir essayé plusieurs fois.</string>
     <string name="devices">Périphériques</string>
+
+    <!-- Operation Lifeshield -->
+    <string name="lifeshieldShelters">Abris Lifeshield:</string>
+    <string name="learnAboutLifeshield">En savoir plus sur Lifeshield</string>
+    <string name="learnAboutLifeshieldDesc">Cliquez ici pour en savoir plus sur Operation Lifeshield, un organisme sans but lucratif qui déploie des abris anti-aériens en Israël.</string>
 </resources>

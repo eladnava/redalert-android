@@ -275,6 +275,7 @@
     <string translatable="false" name="pushyTokenPref">pushy_registration_token</string>
     <string translatable="false" name="tutorialPref">tutorial_1_0_5</string>
     <string translatable="false" name="ratePref">rating</string>
+    <string translatable="false" name="lifeshieldPref">lifeshield</string>
     <string translatable="false" name="contactPref">contact</string>
     <string translatable="false" name="advancedPref">advanced</string>
     <string translatable="false" name="enabledPref">enabled</string>
@@ -336,4 +337,9 @@
     <string translatable="false" name="defaultSound">alarm1</string>
     <string translatable="false" name="defaultSecondarySound">tiny</string>
     <string name="testSuccessful">הבדיקה הסתיימה בהצלחה!</string>
+
+    <!-- Operation Lifeshield -->
+    <string name="lifeshieldShelters">מקלטי לייפשילד:</string>
+    <string name="learnAboutLifeshield">למד עוד על לייפשילד</string>
+    <string name="learnAboutLifeshieldDesc">לחץ כאן כדי ללמוד עוד על לייפשילד, ארגון ללא מטרות רווח המציב מקלטים בחרבי ישראל.</string>
 </resources>

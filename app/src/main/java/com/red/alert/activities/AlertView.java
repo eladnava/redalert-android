@@ -130,10 +130,19 @@ public class AlertView extends AppCompatActivity {
             // Create location
             location = new LatLng(city.latitude, city.longitude);
 
+            // Optional snippet
+            String snippet = null;
+
+            // Add shelter count if exists for this city
+            if (city.shelters > 0) {
+                snippet = getString(R.string.lifeshieldShelters) + " " + city.shelters;
+            }
+
             // Add marker to map
             mMap.addMarker(new MarkerOptions()
                     .position(location)
-                    .title(cityName));
+                    .title(cityName)
+                    .snippet(snippet));
         }
 
         // Prepare new camera position

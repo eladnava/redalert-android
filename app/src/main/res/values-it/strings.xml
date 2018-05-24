@@ -193,4 +193,9 @@
     <string name="miBandTestFailed">Un errore c\'è stato un errore durante la connesione con la Mi Band. Prova a cancellare le altre App che interagiscono con il bracciale (Incluso Mi Fit) qualora siano installate. Inoltre, prova a toccare la superificie di metallo della banda (E\' un sensore)  per svegliarla.\n\n Contattaci qualora nonostante ciò non sia possibile connettersi con il dispositivo dopo numerosi tentativi.</string>
     <string name="devices">Dispositivi</string>
     <string name="secondarySilentOverrideDesc">Le allerte secondarie disabiliteranno la modalità silenziosa.</string>
+
+    <!-- Operation Lifeshield -->
+    <string name="lifeshieldShelters">Rifugi Lifeshield:</string>
+    <string name="learnAboutLifeshield">Ulteriori informazioni su Lifeshield</string>
+    <string name="learnAboutLifeshieldDesc">Clicca qui per saperne di più su Operation Lifeshield, un\'organizzazione no profit che utilizza rifugi antiaerei in Israele.</string>
 </resources>

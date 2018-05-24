@@ -235,4 +235,9 @@
     <string name="miBandIntegrationDesc">В режиме реального времени оповещения ракетные вызовет группа вибрировать и светиться.</string>
     <string name="miBandTestFailed">Произошла ошибка при подключении к Ми Band. Попробуйте удалить все другие приложения, которые интегрируются с группой (в том числе Ми Fit), если таковые установлены. Кроме того, попробуйте прикосновения к металлической поверхности полосы (это датчик), чтобы разбудить его.\n\nСвязаться с нами, если вы все еще не можете подключиться к группе после попытки несколько раз.</string>
     <string name="devices">Приборы</string>
+
+    <!-- Operation Lifeshield -->
+    <string name="lifeshieldShelters">Приюты Lifeshield:</string>
+    <string name="learnAboutLifeshield">Узнать о Lifeshield</string>
+    <string name="learnAboutLifeshieldDesc">Нажмите здесь, чтобы узнать больше об Операции Lifeshield, некоммерческой организации, которая развертывает убежища для воздушных налетов в Израиле.</string>
 </resources>
