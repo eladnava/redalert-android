@@ -855,17 +855,17 @@
   {
     "name": "אבני איתן",
     "name_en": "Avnei Eitan",
-    "zone": "גולן 2",
-    "zone_en": "Golan 2",
+    "zone": "גולן 5",
+    "zone_en": "Golan 5",
     "codes": [
-      2
+      5
     ],
     "region": "גולן",
     "time": "מיידי",
     "countdown": 0,
     "lat": 32.8248062,
     "lng": 35.7657776,
-    "value": "אבני איתן (גולן 2)"
+    "value": "אבני איתן (גולן 5)"
   },
   {
     "name": "אבני חפץ",
@@ -1020,17 +1020,17 @@
   {
     "name": "אודם",
     "name_en": "Odem",
-    "zone": "גולן 1",
-    "zone_en": "Golan 1",
+    "zone": "גולן 2",
+    "zone_en": "Golan 2",
     "codes": [
-      1
+      2
     ],
     "region": "גולן",
     "time": "מיידי",
     "countdown": 0,
     "lat": 33.19337,
     "lng": 35.7495651,
-    "value": "אודם (גולן 1)"
+    "value": "אודם (גולן 2)"
   },
   {
     "name": "אוהד",
@@ -2778,17 +2778,17 @@
   {
     "name": "אל רום",
     "name_en": "El-Rum",
-    "zone": "גולן 1",
-    "zone_en": "Golan 1",
+    "zone": "גולן 2",
+    "zone_en": "Golan 2",
     "codes": [
-      1
+      2
     ],
     "region": "גולן",
     "time": "מיידי",
     "countdown": 0,
     "lat": 33.18052,
     "lng": 35.7700958,
-    "value": "אל רום (גולן 1)"
+    "value": "אל רום (גולן 2)"
   },
   {
     "name": "אלומה",
@@ -2943,17 +2943,17 @@
   {
     "name": "אלי עד",
     "name_en": "Eliad",
-    "zone": "גולן 2",
-    "zone_en": "Golan 2",
+    "zone": "גולן 5",
+    "zone_en": "Golan 5",
     "codes": [
-      2
+      5
     ],
     "region": "גולן",
     "time": "מיידי",
     "countdown": 0,
     "lat": 32.8065834,
     "lng": 35.7365761,
-    "value": "אלי עד (גולן 2)"
+    "value": "אלי עד (גולן 5)"
   },
   {
     "name": "אליהב",
@@ -3303,17 +3303,17 @@
   {
     "name": "אפיק",
     "name_en": "Afik",
-    "zone": "גולן 2",
-    "zone_en": "Golan 2",
+    "zone": "גולן 5",
+    "zone_en": "Golan 5",
     "codes": [
-      2
+      5
     ],
     "region": "גולן",
     "time": "מיידי",
     "countdown": 0,
     "lat": 32.7794266,
     "lng": 35.7029953,
-    "value": "אפיק (גולן 2)"
+    "value": "אפיק (גולן 5)"
   },
   {
     "name": "אפיקים",
@@ -3954,17 +3954,17 @@
   {
     "name": "בוקעתא",
     "name_en": "Buq'ata",
-    "zone": "גולן 1",
-    "zone_en": "Golan 1",
+    "zone": "גולן 2",
+    "zone_en": "Golan 2",
     "codes": [
-      1
+      2
     ],
     "region": "גולן",
     "time": "מיידי",
     "countdown": 0,
     "lat": 33.2026558,
     "lng": 35.77677,
-    "value": "בוקעתא (גולן 1)"
+    "value": "בוקעתא (גולן 2)"
   },
   {
     "name": "בור אל מכסור",
@@ -5816,17 +5816,17 @@
   {
     "name": "בני יהודה",
     "name_en": "Bnei Yehuda",
-    "zone": "גולן 2",
-    "zone_en": "Golan 2",
+    "zone": "גולן 5",
+    "zone_en": "Golan 5",
     "codes": [
-      2
+      5
     ],
     "region": "גולן",
     "time": "מיידי",
     "countdown": 0,
     "lat": 32.7982635,
     "lng": 35.69107,
-    "value": "בני יהודה (גולן 2)"
+    "value": "בני יהודה (גולן 5)"
   },
   {
     "name": "בני נעים",
@@ -6857,17 +6857,17 @@
   {
     "name": "גבעת יואב",
     "name_en": "Giv'at Yo'av",
-    "zone": "גולן 2",
-    "zone_en": "Golan 2",
+    "zone": "גולן 5",
+    "zone_en": "Golan 5",
     "codes": [
-      2
+      5
     ],
     "region": "גולן",
     "time": "מיידי",
     "countdown": 0,
     "lat": 32.8012161,
     "lng": 35.680912,
-    "value": "גבעת יואב (גולן 2)"
+    "value": "גבעת יואב (גולן 5)"
   },
   {
     "name": "גבעת יערים",
@@ -8162,17 +8162,17 @@
   {
     "name": "גשור",
     "name_en": "Gshur",
-    "zone": "גולן 2",
-    "zone_en": "Golan 2",
+    "zone": "גולן 5",
+    "zone_en": "Golan 5",
     "codes": [
-      2
+      5
     ],
     "region": "גולן",
     "time": "מיידי",
     "countdown": 0,
     "lat": 32.8199425,
     "lng": 35.71571,
-    "value": "גשור (גולן 2)"
+    "value": "גשור (גולן 5)"
   },
   {
     "name": "גשר",
@@ -11091,17 +11091,17 @@
   {
     "name": "חספין",
     "name_en": "Haspin",
-    "zone": "גולן 2",
-    "zone_en": "Golan 2",
+    "zone": "גולן 5",
+    "zone_en": "Golan 5",
     "codes": [
-      2
+      5
     ],
     "region": "גולן",
     "time": "מיידי",
     "countdown": 0,
     "lat": 32.84563,
     "lng": 35.79299,
-    "value": "חספין (גולן 2)"
+    "value": "חספין (גולן 5)"
   },
   {
     "name": "חפץ חיים",
@@ -12126,17 +12126,17 @@
   {
     "name": "יונתן",
     "name_en": "Yonatan",
-    "zone": "גולן 2",
-    "zone_en": "Golan 2",
+    "zone": "גולן 4",
+    "zone_en": "Golan 4",
     "codes": [
-      2
+      4
     ],
     "region": "גולן",
     "time": "מיידי",
     "countdown": 0,
     "lat": 32.93966,
     "lng": 35.7954674,
-    "value": "יונתן (גולן 2)"
+    "value": "יונתן (גולן 4)"
   },
   {
     "name": "יושיביה",
@@ -13976,17 +13976,17 @@
   {
     "name": "כפר חרוב",
     "name_en": "Kfar Haruv",
-    "zone": "גולן 2",
-    "zone_en": "Golan 2",
+    "zone": "גולן 5",
+    "zone_en": "Golan 5",
     "codes": [
-      2
+      5
     ],
     "region": "גולן",
     "time": "מיידי",
     "countdown": 0,
     "lat": 32.7623558,
     "lng": 35.66418,
-    "value": "כפר חרוב (גולן 2)"
+    "value": "כפר חרוב (גולן 5)"
   },
   {
     "name": "כפר טרומן",
@@ -15451,17 +15451,17 @@
   {
     "name": "מבוא חמה",
     "name_en": "Mevo Hama",
-    "zone": "גולן 2",
-    "zone_en": "Golan 2",
+    "zone": "גולן 5",
+    "zone_en": "Golan 5",
     "codes": [
-      2
+      5
     ],
     "region": "גולן",
     "time": "מיידי",
     "countdown": 0,
     "lat": 32.736702,
     "lng": 35.65521,
-    "value": "מבוא חמה (גולן 2)"
+    "value": "מבוא חמה (גולן 5)"
   },
   {
     "name": "מבוא מודיעים",
@@ -16428,17 +16428,17 @@
   {
     "name": "מיצר",
     "name_en": "Meitsar",
-    "zone": "גולן 2",
-    "zone_en": "Golan 2",
+    "zone": "גולן 5",
+    "zone_en": "Golan 5",
     "codes": [
-      2
+      5
     ],
     "region": "גולן",
     "time": "מיידי",
     "countdown": 0,
     "lat": 32.7686424,
     "lng": 35.7363548,
-    "value": "מיצר (גולן 2)"
+    "value": "מיצר (גולן 5)"
   },
   {
     "name": "מירב",
@@ -18488,17 +18488,17 @@
   {
     "name": "נאות גולן",
     "name_en": "Ne'ot Golan",
-    "zone": "גולן 2",
-    "zone_en": "Golan 2",
+    "zone": "גולן 5",
+    "zone_en": "Golan 5",
     "codes": [
-      2
+      5
     ],
     "region": "גולן",
     "time": "מיידי",
     "countdown": 0,
     "lat": 32.7870255,
     "lng": 35.6931725,
-    "value": "נאות גולן (גולן 2)"
+    "value": "נאות גולן (גולן 5)"
   },
   {
     "name": "נאות הכיכר",
@@ -18728,17 +18728,17 @@
   {
     "name": "נוב",
     "name_en": "Nov",
-    "zone": "גולן 2",
-    "zone_en": "Golan 2",
+    "zone": "גולן 5",
+    "zone_en": "Golan 5",
     "codes": [
-      2
+      5
     ],
     "region": "גולן",
     "time": "מיידי",
     "countdown": 0,
     "lat": 32.83285,
     "lng": 35.7835732,
-    "value": "נוב (גולן 2)"
+    "value": "נוב (גולן 5)"
   },
   {
     "name": "נובא",
@@ -19538,17 +19538,17 @@
   {
     "name": "נטור",
     "name_en": "Natur",
-    "zone": "גולן 2",
-    "zone_en": "Golan 2",
+    "zone": "גולן 5",
+    "zone_en": "Golan 5",
     "codes": [
-      2
+      5
     ],
     "region": "גולן",
     "time": "מיידי",
     "countdown": 0,
     "lat": 32.85407,
     "lng": 35.7525749,
-    "value": "נטור (גולן 2)"
+    "value": "נטור (גולן 5)"
   },
   {
     "name": "נטע",
@@ -25374,17 +25374,17 @@
   {
     "name": "קשת",
     "name_en": "Keshet",
-    "zone": "גולן 3",
-    "zone_en": "Golan 3",
+    "zone": "גולן 4",
+    "zone_en": "Golan 4",
     "codes": [
-      3
+      4
     ],
     "region": "גולן",
     "time": "מיידי",
     "countdown": 0,
     "lat": 32.98039,
     "lng": 35.8084831,
-    "value": "קשת (גולן 3)"
+    "value": "קשת (גולן 4)"
   },
   {
     "name": "ראבא",
@@ -26351,17 +26351,17 @@
   {
     "name": "רמת מגשימים",
     "name_en": "Ramat Magshimim",
-    "zone": "גולן 2",
-    "zone_en": "Golan 2",
+    "zone": "גולן 5",
+    "zone_en": "Golan 5",
     "codes": [
-      2
+      5
     ],
     "region": "גולן",
     "time": "מיידי",
     "countdown": 0,
     "lat": 32.8440666,
     "lng": 35.80658,
-    "value": "רמת מגשימים (גולן 2)"
+    "value": "רמת מגשימים (גולן 5)"
   },
   {
     "name": "רמת פנקס",
