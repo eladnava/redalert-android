@@ -60,7 +60,7 @@ Over **450,000 downloads** and a **4.7 star rating** to prove it. The only rocke
 The application was developed to protect Israeli citizens. 
 It costs money to run the servers, your donation is greatly appreciated.
 
-* [Donate via Paypal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PG2VVX7GQ4KZE)
+* [Donate via Paypal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=eladnava@gmail.com&lc=US&item_name=RedAlert&no_note=0&cn=&curency_code=USD&bn=PP-DonationsBF:btn_donateCC_LG.gif:NonHosted)
 
 ## Special Thanks
 
