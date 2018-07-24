@@ -130,7 +130,7 @@ public class AlertLogic {
         // Traverse selected regions
         for (String region : selectedRegionsList) {
             // Does alert region contain the selected region?
-            if (alertRegion.contains(region)) {
+            if (alertRegion.startsWith(region)) {
                 // We got a match!
                 return true;
             }
