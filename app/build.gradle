@@ -37,13 +37,6 @@ dependencies {
     // Pushy SDK
     compile 'me.pushy:sdk:1.0.34'
 
-    // Pushy SDK Dependency - Jackson
-    compile (
-            [group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.2.3'],
-            [group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.2.3'],
-            [group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.2.3']
-    )
-
     // AppCompat v7 Dependency
     compile 'com.android.support:appcompat-v7:23.4.0'
 

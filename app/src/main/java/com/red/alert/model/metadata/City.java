@@ -1,6 +1,6 @@
 package com.red.alert.model.metadata;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import me.pushy.sdk.lib.jackson.annotation.JsonProperty;
 
 import java.util.List;
 

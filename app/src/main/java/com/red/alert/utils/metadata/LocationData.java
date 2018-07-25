@@ -5,7 +5,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.util.Log;
 
-import com.fasterxml.jackson.core.type.TypeReference;
+import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 import com.red.alert.R;
 import com.red.alert.config.Logging;
 import com.red.alert.logic.location.LocationLogic;

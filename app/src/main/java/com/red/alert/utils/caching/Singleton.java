@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import me.pushy.sdk.lib.jackson.databind.DeserializationFeature;
+import me.pushy.sdk.lib.jackson.databind.ObjectMapper;
 
 public class Singleton {
     static ObjectMapper mMapper;

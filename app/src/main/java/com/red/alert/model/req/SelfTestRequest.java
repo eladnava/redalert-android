@@ -1,6 +1,6 @@
 package com.red.alert.model.req;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import me.pushy.sdk.lib.jackson.annotation.JsonProperty;
 
 public class SelfTestRequest {
     @JsonProperty("token")

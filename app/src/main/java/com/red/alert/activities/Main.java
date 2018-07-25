@@ -18,7 +18,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.fasterxml.jackson.core.type.TypeReference;
+import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 import com.red.alert.R;
 import com.red.alert.activities.settings.General;
 import com.red.alert.config.API;
