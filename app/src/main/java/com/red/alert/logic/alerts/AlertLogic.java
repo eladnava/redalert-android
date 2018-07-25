@@ -128,10 +128,13 @@ public class AlertLogic {
         String alertRegion = LocationData.GetZoneRegion(zone);
 
         // Traverse selected regions
-        for (String region : selectedRegionsList) {
+        for (String selectedRegion : selectedRegionsList) {
             // Does alert region contain the selected region?
-            if (alertRegion.contains(region)) {
-                // We got a match!
+            if (selectedRegion.length() > 2 && alertRegion.contains(selectedRegion)) {
+                return true;
+            }
+            // Does alert region start with the selected region? (fix for "דן" matching "הירדן")
+            else if (selectedRegion.length() <= 2 && alertRegion.startsWith(selectedRegion)) {
                 return true;
             }
         }
