@@ -2,7 +2,7 @@
 <resources>
     <string-array name="regionNames">
         <item>Tout sélectionner</item>
-        <item>Dan - Région de Tel Aviv</item>
+        <item>Dan - Tel Aviv</item>
         <item>Jérusalem</item>
         <item>Haïfa</item>
         <item>Lahish - Ashdod</item>
