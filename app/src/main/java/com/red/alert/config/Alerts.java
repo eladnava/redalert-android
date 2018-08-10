@@ -8,6 +8,6 @@ public class Alerts {
     public static final int ALERT_POPUP_DONE_PADDING = 10;
 
     // Time that must pass (in seconds) in between alerts for the same zone (to avoid duplicate alerts)
-    public static final int DUPLICATE_ALERTS_PADDING_TIME = 60;
+    public static final int DUPLICATE_ALERTS_PADDING_TIME = 60 * 2;
 
 }
