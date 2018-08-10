@@ -12,9 +12,9 @@ public class AppNotifications {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
 
         // Cancel all notifications
-        notificationManager.cancel(context.getString(R.string.appName).hashCode());
+        notificationManager.cancelAll();
 
-        // Stop alert playing
+        // Stop alert sound if playing
         StopSoundService.stopSoundService(context);
     }
 }
