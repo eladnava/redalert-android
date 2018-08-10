@@ -12,8 +12,16 @@ public class VolumeLogic {
         // Get the audio manager
         AudioManager audioManager = (AudioManager) context.getSystemService(context.AUDIO_SERVICE);
 
-        // Get max possible volume
+        // Get current volume
+        int currentVolume = audioManager.getStreamVolume(Sound.STREAM_TYPE);
+
+        // Get requested volume
         int requestedVolume = VolumeLogic.getNotificationVolume(alertType, context);
+
+        // Avoid decreasing volume
+        if (currentVolume >= requestedVolume) {
+            return;
+        }
 
         // Set volume to desired level
         audioManager.setStreamVolume(Sound.STREAM_TYPE, requestedVolume, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
