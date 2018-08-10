@@ -44,13 +44,16 @@ public class AlertLogic {
                     overrideAlertType = AlertTypes.SECONDARY;
                 }
 
-                // Did we recently notify for this zone?
-                if (zoneRecentlyNotified(zone, context)) {
-                    continue;
-                }
+                // Not a test alert?
+                if (!overrideAlertType.contains("test")) {
+                    // Did we recently notify for this zone?
+                    if (zoneRecentlyNotified(zone, context)) {
+                        continue;
+                    }
 
-                // Save zone last alert timestamp to prevent duplicate alerts
-                AppPreferences.setZoneLastAlertTime(zone, DateTime.getUnixTimestamp(), context);
+                    // Save zone last alert timestamp to prevent duplicate alerts
+                    AppPreferences.setZoneLastAlertTime(zone, DateTime.getUnixTimestamp(), context);
+                }
 
                 // Get area names
                 String cityNames = LocationData.getCityNamesByZone(zone, context);
