@@ -164,7 +164,7 @@
     <string name="notConnected">Non connecté au serveur d\'alerte de roquette</string>
 
     <!-- Alert Popup -->
-    <string name="open">Ouvrir</string>
+    <string name="close">Fermer</string>
     <string name="silence">Silence</string>
     <string name="showPopup">Afficher la popup</string>
     <string name="showPopupDesc">Les alertes de roquettes s\'affichera dans une popup.</string>

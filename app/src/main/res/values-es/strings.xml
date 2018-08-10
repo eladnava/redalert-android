@@ -209,7 +209,7 @@
     </string>
 
     <!-- Alert Popup -->
-    <string name="open">Abierta</string>
+    <string name="close">Cerrar</string>
     <string name="silence">Silencio</string>
     <string name="showPopup">Mostrar popup</string>
     <string name="showPopupDesc">Alertas se mostrarán en una ventana emergente.</string>

@@ -166,7 +166,7 @@
     <string name="notConnected">Non connesso al server</string>
 
     <!-- Alert Popup -->
-    <string name="open">Aperto</string>
+    <string name="close">Chiuso</string>
     <string name="silence">Silenzio</string>
     <string name="showPopup">Mostra popup</string>
     <string name="showPopupDesc">Le allerte verrano mostrate in un pop-up.</string>

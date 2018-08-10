@@ -36,7 +36,7 @@ public class AlertPopup extends AppCompatActivity {
     TextView mCities;
     TextView mCounter;
 
-    Button mOpen;
+    Button mClose;
     Button mSilence;
 
     public static void showAlertPopup(String alertType, String zone, Context context) {
@@ -92,7 +92,7 @@ public class AlertPopup extends AppCompatActivity {
         setContentView(R.layout.popup);
 
         // Cache UI objects
-        mOpen = (Button) findViewById(R.id.open);
+        mClose = (Button) findViewById(R.id.close);
         mSilence = (Button) findViewById(R.id.silence);
         mCities = (TextView) findViewById(R.id.cities);
         mCounter = (TextView) findViewById(R.id.counter);
@@ -102,12 +102,12 @@ public class AlertPopup extends AppCompatActivity {
     }
 
     void initializeListeners() {
-        // Open button clicked
-        mOpen.setOnClickListener(new View.OnClickListener() {
+        // Close button clicked
+        mClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Open main activity
-                startActivity(new Intent().setClass(AlertPopup.this, Main.class));
+                // Stop the media service
+                StopSoundService.stopSoundService(AlertPopup.this);
 
                 // Close popup
                 finish();

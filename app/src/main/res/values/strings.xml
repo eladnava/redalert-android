@@ -247,7 +247,7 @@
     <string name="disconnectedNotificationDesc">כאשר החיבור לשרת ההתרעות מתנתק, תוצג התרעה כדי למנוע תלות באפליקציה.</string>
 
     <!-- Alert Popup -->
-    <string name="open">פתח</string>
+    <string name="close">סגור</string>
     <string name="silence">השתק</string>
     <string name="showPopup">הצג פופאפ</string>
     <string name="showPopupDesc">כאשר תתקבל אזעקת אמת, יוצג פופאפ עם מידע על האזעקה.</string>

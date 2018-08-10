@@ -164,7 +164,7 @@
     <string name="notConnected">Not connected to the rocket alert server</string>
 
     <!-- Alert Popup -->
-    <string name="open">Open</string>
+    <string name="close">Close</string>
     <string name="silence">Silence</string>
     <string name="showPopup">Show popup</string>
     <string name="showPopupDesc">Rocket alerts will be displayed in a pop-up window.</string>

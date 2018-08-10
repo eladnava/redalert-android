@@ -47,9 +47,9 @@
         android:layout_below="@+id/info">
 
         <Button
-            android:id="@+id/open"
+            android:id="@+id/close"
             android:textColor="#464646"
-            android:text="@string/open"
+            android:text="@string/close"
             android:background="#dcdcdc"
             android:layout_height="50dp"
             android:layout_width="0dp"

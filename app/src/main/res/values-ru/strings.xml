@@ -209,7 +209,7 @@
     <string name="notConnected">Не подключен к оповещения сервера</string>
 
     <!-- Alert Popup -->
-    <string name="open">Открыть</string>
+    <string name="close">Открыть</string>
     <string name="silence">Тишина</string>
     <string name="showPopup">Показать всплывающее</string>
     <string name="showPopupDesc">Оповещения Rocket будет отображаться в всплывающем окне.</string>

@@ -163,7 +163,7 @@
     <string name="notConnected">Keine Verbindung zum Rocket Alert Server.</string>
 
     <!-- Alert Popup -->
-    <string name="open">Öffnen</string>
+    <string name="close">Schließen</string>
     <string name="silence">stumm</string>
     <string name="showPopup">Meldungen werden als Popup Anzeigen</string>
     <string name="showPopupDesc">Raketen Alamirungen werden in einem pop-up fenster Angezeigt.</string>
