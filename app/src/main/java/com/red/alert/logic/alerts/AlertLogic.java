@@ -5,12 +5,14 @@ import android.location.Location;
 import android.util.Log;
 
 import com.red.alert.R;
+import com.red.alert.config.Alerts;
 import com.red.alert.config.Logging;
 import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.logic.notifications.RocketNotifications;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.formatting.StringUtils;
+import com.red.alert.utils.localization.DateTime;
 import com.red.alert.utils.metadata.LocationData;
 
 import java.util.Arrays;
@@ -42,6 +44,14 @@ public class AlertLogic {
                     overrideAlertType = AlertTypes.SECONDARY;
                 }
 
+                // Did we recently notify for this zone?
+                if (zoneRecentlyNotified(zone, context)) {
+                    continue;
+                }
+
+                // Save zone last alert timestamp to prevent duplicate alerts
+                AppPreferences.setZoneLastAlertTime(zone, DateTime.getUnixTimestamp(), context);
+
                 // Get area names
                 String cityNames = LocationData.getCityNamesByZone(zone, context);
 
@@ -52,6 +62,14 @@ public class AlertLogic {
                 RocketNotifications.notify(context, zone, zoneWithCountdown, cityNames, overrideAlertType, null);
             }
         }
+    }
+
+    static boolean zoneRecentlyNotified(String zone, Context context) {
+        // Buffer time in between alerts for same zone (to prevent duplicate alerts)
+        long recentCutoffTimestamp = DateTime.getUnixTimestamp() - Alerts.DUPLICATE_ALERTS_PADDING_TIME;
+
+        // Check that enough time passed
+        return AppPreferences.getZoneLastAlert(zone, context) > recentCutoffTimestamp;
     }
 
     public static boolean isRelevantZone(String alertType, String zone, Context context) {
