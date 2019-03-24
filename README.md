@@ -1,5 +1,10 @@
 <h1> <a href="https://redalert.me/" target="_blank"><img src="https://redalert.me/images/logo_big.png" align="right" height="40"></a> RedAlert for Android</h1>
 
+### NO LONGER ACTIVE
+<b>Warning:</b> This app is no longer active due to a Home Front Command decision to block access to the alert file for all third party alert applications.
+
+-----------------------------------
+
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/eladnava/redalert-android?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 RedAlert was developed by volunteers to provide real-time rocket alerts for Israeli citizens.
