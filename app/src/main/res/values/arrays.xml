@@ -62,19 +62,23 @@
         <item>tiny6</item>
         <item></item>
     </string-array>
-    <string-array name="regionNames">
+    <string-array name="zoneNames">
         <item>בחר הכל</item>
-        <item>גוש דן</item>
+        <item>דן</item>
         <item>ירושלים</item>
         <item>חיפה</item>
-        <item>לכיש - אשדוד</item>
-        <item>קריות</item>
-        <item>שפלה</item>
-        <item>כרמל</item>
-        <item>נגב</item>
+        <item>לכיש</item>
+        <item>הקריות</item>
+        <item>השפלה</item>
+        <item>דרום השפלה</item>
+        <item>חוף הכרמל</item>
+        <item>יערות הכרמל</item>
+        <item>מרכז הנגב</item>
+        <item>דרום הנגב</item>
         <item>אילת</item>
         <item>גולן</item>
-        <item>גליל</item>
+        <item>גליל עליון</item>
+        <item>גליל תחתון</item>
         <item>בית שמש</item>
         <item>עוטף עזה</item>
         <item>קו העימות</item>
@@ -89,26 +93,29 @@
         <item>ירקון</item>
         <item>מנשה</item>
         <item>ערבה</item>
-        <item>עירון</item>
-        <item>פצן</item>
         <item>קצרין</item>
         <item>שרון</item>
         <item>תבור</item>
         <item>ואדי ערה</item>
+        <item>עמק הירדן</item>
     </string-array>
-    <string-array translatable="false" name="regionValues">
+    <string-array translatable="false" name="zoneValues">
         <item>all</item>
         <item>דן</item>
         <item>ירושלים</item>
         <item>חיפה</item>
         <item>לכיש</item>
-        <item>קריות</item>
-        <item>שפלה</item>
-        <item>כרמל</item>
-        <item>נגב</item>
+        <item>הקריות</item>
+        <item>השפלה</item>
+        <item>דרום השפלה</item>
+        <item>חוף הכרמל</item>
+        <item>יערות הכרמל</item>
+        <item>מרכז הנגב</item>
+        <item>דרום הנגב</item>
         <item>אילת</item>
         <item>גולן</item>
-        <item>גליל</item>
+        <item>גליל עליון</item>
+        <item>גליל תחתון</item>
         <item>בית שמש</item>
         <item>עוטף עזה</item>
         <item>קו העימות</item>
@@ -123,11 +130,10 @@
         <item>ירקון</item>
         <item>מנשה</item>
         <item>ערבה</item>
-        <item>עירון</item>
-        <item>פצן</item>
         <item>קצרין</item>
         <item>שרון</item>
         <item>תבור</item>
         <item>ואדי ערה</item>
+        <item>עמק הירדן</item>
     </string-array>
 </resources>

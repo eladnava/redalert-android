@@ -69,7 +69,7 @@ public class General extends AppCompatPreferenceActivity {
     ListPreference mLanguageSelection;
 
     SearchableMultiSelectPreference mCitySelection;
-    SearchableMultiSelectPreference mRegionSelection;
+    SearchableMultiSelectPreference mZoneSelection;
     SharedPreferences.OnSharedPreferenceChangeListener mBroadcastListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
         @Override
         public void onSharedPreferenceChanged(SharedPreferences Preferences, String Key) {
@@ -113,12 +113,12 @@ public class General extends AppCompatPreferenceActivity {
             return;
         }
 
-        // Get area selection boolean
-        boolean showRegionSelection = extras.getBoolean(SettingsEvents.SHOW_REGION_SELECTION);
+        // Get zone selection boolean
+        boolean showZoneSelection = extras.getBoolean(SettingsEvents.SHOW_ZONE_SELECTION);
 
         // Show selection?
-        if (showRegionSelection) {
-            mRegionSelection.showDialog();
+        if (showZoneSelection) {
+            mZoneSelection.showDialog();
         }
     }
 
@@ -217,7 +217,7 @@ public class General extends AppCompatPreferenceActivity {
         mLifeshield = findPreference(getString(R.string.lifeshieldPref));
         mMainCategory = (PreferenceCategory) findPreference(getString(R.string.mainCategoryPref));
         mCitySelection = ((SearchableMultiSelectPreference) findPreference(getString(R.string.selectedCitiesPref)));
-        mRegionSelection = ((SearchableMultiSelectPreference) findPreference(getString(R.string.selectedRegionsPref)));
+        mZoneSelection = ((SearchableMultiSelectPreference) findPreference(getString(R.string.selectedZonesPref)));
         mLanguageSelection = (ListPreference) findPreference(getString(R.string.langPref));
 
         // Populate setting values
@@ -229,8 +229,8 @@ public class General extends AppCompatPreferenceActivity {
 
     void initializeSettings() {
         // Set entries & values
-        mRegionSelection.setEntries(getResources().getStringArray(R.array.regionNames));
-        mRegionSelection.setEntryValues(getResources().getStringArray(R.array.regionValues));
+        mZoneSelection.setEntries(getResources().getStringArray(R.array.zoneNames));
+        mZoneSelection.setEntryValues(getResources().getStringArray(R.array.zoneValues));
 
         // Set entries & values
         mCitySelection.setEntries(LocationData.getAllCityNames(this));
@@ -247,11 +247,11 @@ public class General extends AppCompatPreferenceActivity {
         // Update summary text
         mCitySelection.setSummary(getString(R.string.cityDesc) + "\r\n(" + LocationData.getSelectedCityNamesByValues(this, selectedCities, mCitySelection.getEntries(), mCitySelection.getEntryValues()) + ")");
 
-        // Get selected regions
-        String selectedRegions = Singleton.getSharedPreferences(this).getString(getString(R.string.selectedRegionsPref), getString(R.string.none));
+        // Get selected zones
+        String selectedZones = Singleton.getSharedPreferences(this).getString(getString(R.string.selectedZonesPref), getString(R.string.none));
 
         // Update summary text
-        mRegionSelection.setSummary(getString(R.string.regionsDesc) + "\r\n(" + LocationData.getSelectedCityNamesByValues(this, selectedRegions, mRegionSelection.getEntries(), mRegionSelection.getEntryValues()) + ")");
+        mZoneSelection.setSummary(getString(R.string.zonesDesc) + "\r\n(" + LocationData.getSelectedCityNamesByValues(this, selectedZones, mZoneSelection.getEntries(), mZoneSelection.getEntryValues()) + ")");
     }
 
     void initializeListeners() {
@@ -407,8 +407,8 @@ public class General extends AppCompatPreferenceActivity {
         // Break 2 lines
         body += "\r\n\r\n";
 
-        // Add selected regions
-        body += getString(R.string.selectedRegions) + ": " + LocationData.getSelectedCityNamesByValues(this, Singleton.getSharedPreferences(this).getString(getString(R.string.selectedRegionsPref), ""), getResources().getStringArray(R.array.regionNames), getResources().getStringArray(R.array.regionValues));
+        // Add selected zones
+        body += getString(R.string.selectedZones) + ": " + LocationData.getSelectedCityNamesByValues(this, Singleton.getSharedPreferences(this).getString(getString(R.string.selectedZonesPref), ""), getResources().getStringArray(R.array.zoneNames), getResources().getStringArray(R.array.zoneValues));
 
         // Break 1 line
         body += "\r\n";

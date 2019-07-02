@@ -52,8 +52,8 @@
     <string name="selectedSecondaryCitiesDesc">Выбрать вторичные населенные пункты, для которых сигнал будет активирован.</string>
 
     <!-- Region Selection -->
-    <string name="selectedRegions">Места</string>
-    <string name="regionsDesc">Выбрать населенные пункты, для которых сигнал будет активирован.</string>
+    <string name="selectedZones">Места</string>
+    <string name="zonesDesc">Выбрать населенные пункты, для которых сигнал будет активирован.</string>
 
     <!-- City Selection -->
     <string name="selectedCities">Дополнительные населенные пункты</string>

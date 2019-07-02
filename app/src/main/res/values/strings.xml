@@ -68,8 +68,8 @@
     <string name="selectedSecondaryCitiesDesc">בחר יישובים עבורם יתקבלו התרעות משנה.</string>
 
     <!-- Region Selection -->
-    <string name="selectedRegions">מרחבים שלמים</string>
-    <string name="regionsDesc">בחר מרחבים שלמים עבורם תופעל האזעקה.</string>
+    <string name="selectedZones">מרחבים שלמים</string>
+    <string name="zonesDesc">בחר מרחבים שלמים עבורם תופעל האזעקה.</string>
 
     <!-- City Selection -->
     <string name="selectedCities">יישובים נוספים</string>
@@ -234,7 +234,7 @@
 
     <!-- Alert Share -->
     <string name="shareAlert">שתף את האזעקה</string>
-    <string name="alertSoundedAt">אזעקת צבע אדום נשמעה במרחב</string>
+    <string name="alertSoundedAt">אזעקת צבע אדום נשמעה ב-</string>
     <string name="atTime">בשעה</string>
     <string name="alertSentVia">- נשלח באמצעות צבע אדום באנדרואיד -
         https://redalert.me
@@ -273,7 +273,7 @@
     <string translatable="false" name="websitePref">website</string>
     <string translatable="false" name="gcmTokenPref">gcm_registration_token</string>
     <string translatable="false" name="pushyTokenPref">pushy_registration_token</string>
-    <string translatable="false" name="tutorialPref">tutorial_1_0_5</string>
+    <string translatable="false" name="tutorialPref">tutorial_1_0_9_7</string>
     <string translatable="false" name="ratePref">rating</string>
     <string translatable="false" name="lifeshieldPref">lifeshield</string>
     <string translatable="false" name="contactPref">contact</string>
@@ -297,16 +297,16 @@
     <string translatable="false" name="secondaryVolumePref">secondary_volume</string>
     <string translatable="false" name="alertPopupPref">alert_popup</string>
     <string translatable="false" name="silentOverridePref">override</string>
-    <string translatable="false" name="selectedRegionsPref">areas</string>
+    <string translatable="false" name="selectedZonesPref">selected_zones</string>
     <string translatable="false" name="mainCategoryPref">main_category</string>
-    <string translatable="false" name="selectedCitiesPref">sub_areas</string>
+    <string translatable="false" name="selectedCitiesPref">selected_cities</string>
     <string translatable="false" name="secondaryPref">secondary</string>
     <string translatable="false" name="integrationsPref">integrations</string>
     <string translatable="false" name="imSafeWhatsAppPref">safe_whatsapp</string>
     <string translatable="false" name="secondarySilentOverridePref">secondary_override</string>
     <string translatable="false" name="secondaryEnabledPref">secondary_alerts</string>
     <string translatable="false" name="secondarySoundPref">secondary_sound</string>
-    <string translatable="false" name="selectedSecondaryCitiesPref">secondary_sub_areas</string>
+    <string translatable="false" name="selectedSecondaryCitiesPref">selected_secondary_cities</string>
 
     <!-- Default Volume -->
     <string name="defaultAlertVolume" translatable="false">1.0</string>

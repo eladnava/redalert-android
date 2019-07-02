@@ -55,9 +55,9 @@
     <string name="selectedSecondaryCities">Localidades secundarias</string>
     <string name="selectedSecondaryCitiesDesc">Seleccionar localidades para las cuales desea recibir notificaciones secundarias.</string>
 
-    <!-- Region Selection -->
-    <string name="selectedRegions">Zonas</string>
-    <string name="regionsDesc">Seleccionar zonas para las cuales se activará la notificación de alarma.</string>
+    <!-- Zone Selection -->
+    <string name="selectedZones">Zonas</string>
+    <string name="zonesDesc">Seleccionar zonas para las cuales se activará la notificación de alarma.</string>
 
     <!-- City Selection -->
     <string name="selectedCities">Localidades adicionales</string>

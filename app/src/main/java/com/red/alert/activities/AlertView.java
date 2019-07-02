@@ -23,12 +23,10 @@ import com.red.alert.ui.notifications.AppNotifications;
 import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
 
-import java.util.List;
-
 public class AlertView extends AppCompatActivity {
     GoogleMap mMap;
 
-    String mAlertZone;
+    String mAlertCity;
     String mAlertDateString;
 
     @Override
@@ -47,7 +45,7 @@ public class AlertView extends AppCompatActivity {
 
     void unpackExtras() {
         // Get alert area
-        mAlertZone = getIntent().getStringExtra(AlertViewParameters.ALERT_ZONE);
+        mAlertCity = getIntent().getStringExtra(AlertViewParameters.ALERT_CITY);
 
         // Get alert date string
         mAlertDateString = getIntent().getStringExtra(AlertViewParameters.ALERT_DATE_STRING);
@@ -92,10 +90,10 @@ public class AlertView extends AppCompatActivity {
 
     void addOverlays() {
         // Get alert area
-        List<City> cities = LocationData.getCitiesByZone(mAlertZone, this);
+        City city = LocationData.getCityByName(mAlertCity, this);
 
         // No cities found?
-        if (cities.size() == 0) {
+        if (city == null) {
             return;
         }
 
@@ -108,24 +106,16 @@ public class AlertView extends AppCompatActivity {
         // Get user's locale
         boolean isEnglish = Localization.isEnglishLocale(this);
 
-        // Traverse over cities
-        for (City city : cities) {
-            // No location?
-            if (city.latitude == 0) {
-                continue;
-            }
-
+        // No location?
+        if (city.latitude != 0) {
             // Get name
             String cityName = (isEnglish) ? city.nameEnglish : city.name;
 
-            // Get countdown
-            String zoneWithCountdown = LocationData.getLocalizedZoneWithCountdown(city.zone, this);
-
             // Set title manually after overriding locale
-            setTitle(zoneWithCountdown);
+            setTitle(cityName);
 
             // Set zoom
-            zoom = 12;
+            zoom = 10;
 
             // Create location
             location = new LatLng(city.latitude, city.longitude);
@@ -168,10 +158,10 @@ public class AlertView extends AppCompatActivity {
 
     private String getShareMessage() {
         // Get zone name
-        String zone = LocationData.getLocalizedZone(mAlertZone, this);
+        String cityName = LocationData.getLocalizedCityName(mAlertCity, this);
 
         // Construct share message
-        return getString(R.string.alertSoundedAt) + " " + zone + " (" + LocationData.getCityNamesByZone(mAlertZone, this) + ") " + getString(R.string.atTime) + " " + mAlertDateString + " " + getString(R.string.alertSentVia);
+        return getString(R.string.alertSoundedAt) + cityName + " (" + LocationData.getLocalizedZoneByCityName(mAlertCity, this) + ") " + getString(R.string.atTime) + " " + mAlertDateString + " " + getString(R.string.alertSentVia);
     }
 
     void initializeShareButton(Menu OptionsMenu) {

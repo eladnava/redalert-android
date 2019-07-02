@@ -33,13 +33,13 @@ import java.util.TimerTask;
 public class AlertPopup extends AppCompatActivity {
     boolean mIsDestroyed;
 
-    TextView mCities;
+    TextView mZone;
     TextView mCounter;
 
     Button mClose;
     Button mSilence;
 
-    public static void showAlertPopup(String alertType, String zone, Context context) {
+    public static void showAlertPopup(String alertType, String city, Context context) {
         // User disabled this feature?
         if (!AppPreferences.getPopupEnabled(context)) {
             // Stop execution
@@ -59,7 +59,7 @@ public class AlertPopup extends AppCompatActivity {
         popupIntent.setClass(context, AlertPopup.class);
 
         // Pass on zone
-        popupIntent.putExtra(AlertPopupParameters.ALERT_ZONE, zone);
+        popupIntent.putExtra(AlertPopupParameters.ALERT_CITY, city);
 
         // Clear top, set as new task
         popupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -94,7 +94,7 @@ public class AlertPopup extends AppCompatActivity {
         // Cache UI objects
         mClose = (Button) findViewById(R.id.close);
         mSilence = (Button) findViewById(R.id.silence);
-        mCities = (TextView) findViewById(R.id.cities);
+        mZone = (TextView) findViewById(R.id.zone);
         mCounter = (TextView) findViewById(R.id.counter);
 
         // Set up listeners
@@ -125,31 +125,30 @@ public class AlertPopup extends AppCompatActivity {
     }
 
     void initializeAlert() {
-        // Get region code
-        String zone = getIntent().getStringExtra(AlertPopupParameters.ALERT_ZONE);
+        // Get alert city
+        String city = getIntent().getStringExtra(AlertPopupParameters.ALERT_CITY);
 
         // None given?
+        if (StringUtils.stringIsNullOrEmpty(city)) {
+            return;
+        }
+
+        // Set title to city name
+        setTitle(LocationData.getLocalizedCityName(city, this));
+
+        // Get zone
+        String zone = LocationData.getLocalizedZoneByCityName(city, this);
+
+        // Unknown?
         if (StringUtils.stringIsNullOrEmpty(zone)) {
             return;
         }
 
-        // Set title to region code
-        setTitle(LocationData.getLocalizedZone(zone, this));
-
-        // Get cities
-        String zoneCities = LocationData.getCityNamesByZone(zone, this);
-
-        // No cities, unknown region
-        if (StringUtils.stringIsNullOrEmpty(zoneCities)) {
-            // No cities, unknown region
-            return;
-        }
-
         // Set cities to region cities
-        mCities.setText(zoneCities);
+        mZone.setText(zone);
 
         // Get countdown in seconds
-        int countdown = LocationData.getZoneCountdown(zone, this);
+        int countdown = LocationData.getCityCountdown(city, this);
 
         // Start counting down
         scheduleRocketCountdown(countdown);
@@ -165,12 +164,12 @@ public class AlertPopup extends AppCompatActivity {
         }
     }
 
-    void scheduleRocketCountdown(int Seconds) {
+    void scheduleRocketCountdown(int seconds) {
         // Offset impact to account for delivery delay
         // Seconds = Seconds - Main.IMPACT_COUNTDOWN_OFFSET;
 
         // Calculate time to impact
-        final long impactTimestamp = System.currentTimeMillis() + (Seconds * 1000);
+        final long impactTimestamp = System.currentTimeMillis() + (seconds * 1000);
 
         // Schedule a new timer
         new Timer().scheduleAtFixedRate(new TimerTask() {

@@ -22,16 +22,16 @@
         android:title="@string/areas">
         <com.red.alert.ui.elements.SearchableMultiSelectPreference
             redalert:checkAll="@string/all"
-            redalert:separator=","
+            redalert:separator="|"
             android:defaultValue="@string/none"
-            android:key="@string/selectedRegionsPref"
-            android:dialogTitle="@string/selectedRegions"
-            android:title="@string/selectedRegions"
-            android:summary="@string/regionsDesc"
+            android:key="@string/selectedZonesPref"
+            android:dialogTitle="@string/selectedZones"
+            android:title="@string/selectedZones"
+            android:summary="@string/zonesDesc"
             android:dependency="@string/enabledPref"/>
         <com.red.alert.ui.elements.SearchableMultiSelectPreference
             redalert:checkAll="@string/all"
-            redalert:separator=","
+            redalert:separator="|"
             android:defaultValue="@string/none"
             android:key="@string/selectedCitiesPref"
             android:dialogTitle="@string/selectedCities"

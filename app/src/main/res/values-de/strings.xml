@@ -52,8 +52,8 @@
     <string name="langSelection">App Sprache</string>
     <string name="langSelectionDesc">Ändere die Sprache der App.</string>
     <string name="automatic">Automatisch</string>
-    <string name="selectedRegions">Regionen</string>
-    <string name="regionsDesc">Wähle die Region aus, um von dort Alarmierungen zu erhalten.</string>
+    <string name="selectedZones">Regionen</string>
+    <string name="zonesDesc">Wähle die Region aus, um von dort Alarmierungen zu erhalten.</string>
     <string name="langSelectionSuccess">Starte die App neu</string>
     <string name="silentOverride">Überschreibe den "Bitte nicht stören modus"</string>
     <string name="silentOverrideDesc">Raketenwarnungen deaktivieren kurzzeitig den nicht stören Modus.</string>

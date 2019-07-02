@@ -13,7 +13,7 @@
             android:defaultValue="false"/>
         <com.red.alert.ui.elements.SearchableMultiSelectPreference
             redalert:checkAll="@string/all"
-            redalert:separator=","
+            redalert:separator="|"
             android:defaultValue="@string/all"
             android:key="@string/selectedSecondaryCitiesPref"
             android:dialogTitle="@string/selectedSecondaryCities"

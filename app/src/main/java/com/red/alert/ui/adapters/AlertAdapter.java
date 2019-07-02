@@ -44,8 +44,8 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
 
             // Cache the view resources
             viewHolder.time = (TextView) convertView.findViewById(R.id.time);
-            viewHolder.areaCode = (TextView) convertView.findViewById(R.id.areaCode);
-            viewHolder.areaNames = (TextView) convertView.findViewById(R.id.areaNames);
+            viewHolder.title = (TextView) convertView.findViewById(R.id.alertTitle);
+            viewHolder.desc = (TextView) convertView.findViewById(R.id.alertDesc);
 
             // Store it in tag
             convertView.setTag(viewHolder);
@@ -61,10 +61,10 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
         // Got an alert?
         if (alert != null) {
             // Set area localized zone
-            viewHolder.areaCode.setText(alert.localizedZone);
+            viewHolder.title.setText(alert.localizedCity);
 
             // Set area names
-            viewHolder.areaNames.setText(alert.cities);
+            viewHolder.desc.setText(alert.desc);
 
             // Set user-friendly time
             viewHolder.time.setText(alert.dateString);
@@ -81,7 +81,7 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
 
     public static class ViewHolder {
         public TextView time;
-        public TextView areaCode;
-        public TextView areaNames;
+        public TextView title;
+        public TextView desc;
     }
 }

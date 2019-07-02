@@ -7,14 +7,14 @@ public class Alert {
     public long date;
 
     @JsonProperty("area")
-    public String zone;
-    public String localizedZone;
+    public String city;
+    public String localizedCity;
 
-    public String cities;
+    public String desc;
     public String dateString;
 
     @Override
     public String toString() {
-        return zone;
+        return city;
     }
 }

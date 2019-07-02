@@ -1,37 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="regionNames">
+    <string-array name="zoneNames">
         <item>Tout sélectionner</item>
-        <item>Dan - Tel Aviv</item>
-        <item>Jérusalem</item>
-        <item>Haïfa</item>
-        <item>Lahish - Ashdod</item>
-        <item>Krayot</item>
-        <item>Shfela</item>
-        <item>Carmel</item>
-        <item>Negev</item>
+        <item>Dan</item>
+        <item>Jerusalem</item>
+        <item>Haifa</item>
+        <item>Lahish</item>
+        <item>HaKrayot</item>
+        <item>HaShfela</item>
+        <item>South HaShfela</item>
+        <item>Hof HaCarmel</item>
+        <item>Yea\'rot HaCarmel</item>
+        <item>Central Negev</item>
+        <item>South Negev</item>
         <item>Eilat</item>
         <item>Golan</item>
-        <item>Galil</item>
-        <item>Beit Shemes</item>
-        <item>Périmètre de Gaza</item>
-        <item>Ligne de confrontation</item>
-        <item>Mer Morte</item>
+        <item>Upper Galilee</item>
+        <item>Lower Galilee</item>
+        <item>Beit Shemesh</item>
+        <item>Gaza Perimeter</item>
+        <item>Confrontation Line</item>
+        <item>Dead Sea</item>
         <item>Ma\'ale Adumim</item>
         <item>Bikah</item>
-        <item>Vallée de Jezreel</item>
+        <item>Jezreel Valley</item>
         <item>Beit She\'an</item>
         <item>Hefer</item>
-        <item>Judée</item>
-        <item>Samarie</item>
+        <item>Judea</item>
+        <item>Samaria</item>
         <item>Yarkon</item>
         <item>Menashe</item>
         <item>Arabah</item>
-        <item>Iron</item>
-        <item>Patzan</item>
         <item>Katzrin</item>
         <item>Sharon</item>
         <item>Tabor</item>
         <item>Vadi Ara</item>
+        <item>HaYarden Valley</item>
     </string-array>
 </resources>

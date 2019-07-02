@@ -16,10 +16,10 @@ public class PushyPushReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         // Grab push data from extras
         String alertType = intent.getStringExtra(GCMPushParameters.ALERT_TYPE);
-        String alertZones = intent.getStringExtra(GCMPushParameters.ALERT_AREAS);
+        String alertCities = intent.getStringExtra(GCMPushParameters.ALERT_CITIES);
 
         // Bad push?
-        if (alertType == null || alertZones == null) {
+        if (alertType == null || alertCities == null) {
             // Log it
             Log.e(Logging.TAG, "Malformed push received via Pushy");
 
@@ -40,6 +40,6 @@ public class PushyPushReceiver extends BroadcastReceiver {
         }
 
         // Receive the alert
-        AlertLogic.processIncomingAlert(alertZones, alertType, context);
+        AlertLogic.processIncomingAlert(alertCities, alertType, context);
     }
 }

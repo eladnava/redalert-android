@@ -20,9 +20,6 @@ public class City {
     @JsonProperty("zone")
     public String zone;
 
-    @JsonProperty("codes")
-    public List<String> codes;
-
     @JsonProperty("zone_en")
     public String zoneEnglish;
 
@@ -31,6 +28,9 @@ public class City {
 
     @JsonProperty("time")
     public String time;
+
+    @JsonProperty("time_en")
+    public String timeEnglish;
 
     @JsonProperty("shelters")
     public int shelters;

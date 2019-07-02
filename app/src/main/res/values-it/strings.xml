@@ -56,8 +56,8 @@
     <string name="langSelectionDesc">Change the application\'s language.</string>
     <string name="langSelectionSuccess">Please restart the application</string>
 
-    <string name="selectedRegions">Regioni</string>
-    <string name="regionsDesc">Seleziona le regioni di interesse.</string>
+    <string name="selectedZones">Regioni</string>
+    <string name="zonesDesc">Seleziona le regioni di interesse.</string>
     <string name="silentOverride">Prevali sulla Modalità Silenziosa </string>
     <string name="silentOverrideDesc">Le allerte disabiliteranno la modalità silenziosa.</string>
     <string name="selectedCities">Città addizionali</string>

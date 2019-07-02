@@ -34,6 +34,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class SearchableMultiSelectPreference extends ListPreference {
     private static final String DEFAULT_SEPARATOR = "OV=I=XseparatorX=I=VO";
@@ -81,7 +82,7 @@ public class SearchableMultiSelectPreference extends ListPreference {
         if (separator == null) {
             separator = DEFAULT_SEPARATOR;
         }
-        String[] vals = haystack.split(separator);
+        String[] vals = haystack.split(Pattern.quote(separator));
         for (int i = 0; i < vals.length; i++) {
             if (vals[i].equals(straw)) {
                 return true;
@@ -354,7 +355,7 @@ public class SearchableMultiSelectPreference extends ListPreference {
             return null;
         }
         else {
-            return ((String) val).split(separator);
+            return ((String) val).split(Pattern.quote(separator));
         }
     }
 

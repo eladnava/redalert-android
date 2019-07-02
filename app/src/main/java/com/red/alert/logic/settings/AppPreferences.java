@@ -46,14 +46,14 @@ public class AppPreferences {
         Singleton.getSharedPreferences(context).edit().putBoolean(context.getString(R.string.tutorialPref), true).commit();
     }
 
-    public static void setZoneLastAlertTime(String zone, long timestamp, Context context) {
-        // Update last alert timestamp for this zone
-        Singleton.getSharedPreferences(context).edit().putLong(zone, timestamp).commit();
+    public static void setCityLastAlertTime(String city, long timestamp, Context context) {
+        // Update last alert timestamp for this city
+        Singleton.getSharedPreferences(context).edit().putLong(city, timestamp).commit();
     }
 
-    public static long getZoneLastAlert(String zone, Context context) {
-        // Get last alert timestamp for this zone
-        return Singleton.getSharedPreferences(context).getLong(zone, 0);
+    public static long getCityLastAlert(String city, Context context) {
+        // Get last alert timestamp for this city
+        return Singleton.getSharedPreferences(context).getLong(city, 0);
     }
 
     public static float getPrimaryAlertVolume(Context context, float overrideValue) {

@@ -180,7 +180,7 @@ public class Main extends AppCompatActivity {
                 alertView.setClass(Main.this, AlertView.class);
 
                 // Push extras
-                alertView.putExtra(AlertViewParameters.ALERT_ZONE, alert.localizedZone);
+                alertView.putExtra(AlertViewParameters.ALERT_CITY, alert.city);
                 alertView.putExtra(AlertViewParameters.ALERT_DATE_STRING, alert.dateString);
 
                 // Show it
@@ -290,6 +290,9 @@ public class Main extends AppCompatActivity {
             return;
         }
 
+        // Show dialog if not shown yet
+        showRegistrationSuccessDialog();
+
         // Check for updates
         initializeUpdateChecker();
     }
@@ -344,7 +347,7 @@ public class Main extends AppCompatActivity {
         });
     }
 
-    void goToSettings(boolean showRegionSelection) {
+    void goToSettings(boolean showZoneSelection) {
         // Prepare new intent
         Intent settingsIntent = new Intent();
 
@@ -352,7 +355,7 @@ public class Main extends AppCompatActivity {
         settingsIntent.setClass(Main.this, General.class);
 
         // Add area selection boolean
-        settingsIntent.putExtra(SettingsEvents.SHOW_REGION_SELECTION, showRegionSelection);
+        settingsIntent.putExtra(SettingsEvents.SHOW_ZONE_SELECTION, showZoneSelection);
 
         // Start settings activity
         startActivity(settingsIntent);
@@ -419,16 +422,23 @@ public class Main extends AppCompatActivity {
         // Initialize date format
         SimpleDateFormat dateFormat = new SimpleDateFormat(Alerts.DATE_FORMAT);
 
+        // For debugging purposes
+        // Alert fake = new Alert();
+        // fake.city = "אבו סנאן";
+        // fake.date = 1562037706;
+
+        // recentAlerts.add(fake);
+
         // Loop over alerts
         for (Alert alert : recentAlerts) {
             // Convert date to string
             alert.dateString = dateFormat.format(alert.date * 1000);
 
             // Convert area to friendly name
-            alert.cities = LocationData.getCityNamesByZone(alert.zone, this);
+            alert.desc = LocationData.getLocalizedZoneWithCountdown(alert.city, this);
 
             // Localize it
-            alert.localizedZone = LocationData.getLocalizedZone(alert.zone, this);
+            alert.localizedCity = LocationData.getLocalizedCityName(alert.city, this);
         }
 
         // Clear global list
@@ -653,8 +663,8 @@ public class Main extends AppCompatActivity {
                 AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, Main.this, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        // Show success dialog
-                        showRegistrationSuccessDialog();
+                        // Try to re-register immediately
+                        showImportantDialogs();
                     }
                 });
             }

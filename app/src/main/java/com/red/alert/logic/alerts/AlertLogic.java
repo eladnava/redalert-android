@@ -19,80 +19,80 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AlertLogic {
-    public static void processIncomingAlert(String zoneCSVString, String alertType, Context context) {
-        // No zones?
-        if (StringUtils.stringIsNullOrEmpty(zoneCSVString)) {
+    public static void processIncomingAlert(String citiesPSVString, String alertType, Context context) {
+        // No cities?
+        if (StringUtils.stringIsNullOrEmpty(citiesPSVString)) {
             return;
         }
 
-        // Log the zones
-        Log.i(Logging.TAG, "Received alert (" + alertType + "): " + zoneCSVString);
+        // Log the cities
+        Log.i(Logging.TAG, "Received alert (" + alertType + "): " + citiesPSVString);
 
-        // Get zones as list
-        List<String> zoneList = LocationData.explodeZonesCSV(zoneCSVString);
+        // Get alert cities as list
+        List<String> cityList = LocationData.explodeCitiesPSV(citiesPSVString);
 
-        // Loop over zones
-        for (String zone : zoneList) {
+        // Loop over cities
+        for (String city : cityList) {
             // Store default alert type in variable, override it later
             String overrideAlertType = alertType;
 
-            // Is this a relevant zone?
-            if (isRelevantZone(overrideAlertType, zone, context)) {
+            // Is this a relevant city?
+            if (isRelevantCity(overrideAlertType, city, context)) {
                 // Secondary alert?
-                if (isSecondaryZone(overrideAlertType, zone, context)) {
+                if (isSecondaryCity(overrideAlertType, city, context)) {
                     // Set type
                     overrideAlertType = AlertTypes.SECONDARY;
                 }
 
                 // Not a test alert?
                 if (!overrideAlertType.contains("test")) {
-                    // Did we recently notify for this zone?
-                    if (zoneRecentlyNotified(zone, context)) {
+                    // Did we recently notify for this city?
+                    if (cityRecentlyNotified(city, context)) {
                         continue;
                     }
 
-                    // Save zone last alert timestamp to prevent duplicate alerts
-                    AppPreferences.setZoneLastAlertTime(zone, DateTime.getUnixTimestamp(), context);
+                    // Save city last alert timestamp to prevent duplicate alerts
+                    AppPreferences.setCityLastAlertTime(city, DateTime.getUnixTimestamp(), context);
                 }
 
-                // Get area names
-                String cityNames = LocationData.getCityNamesByZone(zone, context);
+                // Localize city name
+                String localizedCityName = LocationData.getLocalizedCityName(city, context);
 
                 // Get impact countdown
-                String zoneWithCountdown = LocationData.getLocalizedZoneWithCountdown(zone, context);
+                String zoneWithCountdown = LocationData.getLocalizedZoneWithCountdown(city, context);
 
                 // Issue the notification
-                RocketNotifications.notify(context, zone, zoneWithCountdown, cityNames, overrideAlertType, null);
+                RocketNotifications.notify(context, city, localizedCityName, zoneWithCountdown, overrideAlertType, null);
             }
         }
     }
 
-    static boolean zoneRecentlyNotified(String zone, Context context) {
-        // Buffer time in between alerts for same zone (to prevent duplicate alerts)
+    static boolean cityRecentlyNotified(String city, Context context) {
+        // Buffer time in between alerts for same city (to prevent duplicate alerts)
         long recentCutoffTimestamp = DateTime.getUnixTimestamp() - Alerts.DUPLICATE_ALERTS_PADDING_TIME;
 
         // Check that enough time passed
-        return AppPreferences.getZoneLastAlert(zone, context) > recentCutoffTimestamp;
+        return AppPreferences.getCityLastAlert(city, context) > recentCutoffTimestamp;
     }
 
-    public static boolean isRelevantZone(String alertType, String zone, Context context) {
+    public static boolean isRelevantCity(String alertType, String city, Context context) {
         // Test or system message?
         if (isSystemTestAlert(alertType, context)) {
             return true;
         }
 
-        // Did user select this zone? Either via regions or cities
-        if (isZoneSelectedPrimarily(zone, context)) {
+        // Did user select this city? Either via entire zones or cities
+        if (isCitySelectedPrimarily(city, context)) {
             return true;
         }
 
         // Did user select this city?
-        if (isSecondaryZoneCitySelected(zone, context)) {
+        if (isSecondaryCitySelected(city, context)) {
             return true;
         }
 
         // Are we nearby?
-        if (isNearby(zone, context)) {
+        if (isNearby(city, context)) {
             return true;
         }
 
@@ -100,24 +100,24 @@ public class AlertLogic {
         return false;
     }
 
-    public static boolean isSecondaryZone(String alertType, String zone, Context context) {
+    public static boolean isSecondaryCity(String alertType, String city, Context context) {
         // System or test?
         if (isSystemTestAlert(alertType, context)) {
             return false;
         }
 
         // Did user select this area?
-        if (isZoneSelectedPrimarily(zone, context)) {
+        if (isCitySelectedPrimarily(city, context)) {
             return false;
         }
 
-        // Not a nearby zone?
-        if (isNearby(zone, context)) {
+        // Not a nearby city?
+        if (isNearby(city, context)) {
             return false;
         }
 
-        // Did user select this zone?
-        if (isSecondaryZoneCitySelected(zone, context)) {
+        // Did user select this city?
+        if (isSecondaryCitySelected(city, context)) {
             return true;
         }
 
@@ -125,7 +125,7 @@ public class AlertLogic {
         return false;
     }
 
-    public static boolean isZoneSelectedPrimarily(String zone, Context context) {
+    public static boolean isCitySelectedPrimarily(String city, Context context) {
         // Get enabled / disabled setting
         boolean notificationsEnabled = AppPreferences.getNotificationsEnabled(context);
 
@@ -134,30 +134,23 @@ public class AlertLogic {
             return false;
         }
 
-        // Get user's selected regions
-        String selectedRegions = Singleton.getSharedPreferences(context).getString(context.getString(R.string.selectedRegionsPref), context.getString(R.string.none));
+        // Get user's selected zones
+        String selectedZones = Singleton.getSharedPreferences(context).getString(context.getString(R.string.selectedZonesPref), context.getString(R.string.none));
 
         // All are selected?
-        if (StringUtils.stringIsNullOrEmpty(selectedRegions) || selectedRegions.equals(context.getString(R.string.all))) {
+        if (StringUtils.stringIsNullOrEmpty(selectedZones) || selectedZones.equals(context.getString(R.string.all))) {
             return true;
         }
 
-        // Explode regions into array
-        List<String> selectedRegionsList = Arrays.asList(selectedRegions.split(","));
+        // Explode selected zones into array
+        List<String> selectedZonesList = Arrays.asList(selectedZones.split("\\|"));
 
-        // Cache alert region for loop
-        String alertRegion = LocationData.GetZoneRegion(zone);
+        // Get zone by city name
+        String cityZone = LocationData.getZoneByCityName(city, context);
 
-        // Traverse selected regions
-        for (String selectedRegion : selectedRegionsList) {
-            // Does alert region contain the selected region?
-            if (selectedRegion.length() > 2 && alertRegion.contains(selectedRegion)) {
-                return true;
-            }
-            // Does alert region start with the selected region? (fix for "דן" matching "הירדן")
-            else if (selectedRegion.length() <= 2 && alertRegion.startsWith(selectedRegion)) {
-                return true;
-            }
+        // Check for containment
+        if (selectedZonesList.contains(cityZone)) {
+            return true;
         }
 
         // Get user's selected cities
@@ -169,10 +162,10 @@ public class AlertLogic {
         }
 
         // Explode into array
-        List<String> selectedCityCodes = LocationData.getSelectedCityCodes(selectedCities);
+        List<String> selectedCitiesList = LocationData.explodeCitiesPSV(selectedCities);
 
-        // Selected a city with this code?
-        if (selectedCityCodes.contains(LocationData.getZoneCode(zone))) {
+        // Selected this city?
+        if (selectedCitiesList.contains(city)) {
             // We got a match!
             return true;
         }
@@ -181,7 +174,7 @@ public class AlertLogic {
         return false;
     }
 
-    public static boolean isSecondaryZoneCitySelected(String zone, Context context) {
+    public static boolean isSecondaryCitySelected(String city, Context context) {
         // Get main enabled setting
         boolean notificationsEnabled = AppPreferences.getNotificationsEnabled(context);
 
@@ -206,12 +199,11 @@ public class AlertLogic {
             return true;
         }
 
-        // Get selected zone codes
-        List<String> selectedCityCodes = LocationData.getSelectedCityCodes(secondaryCities);
+        // Get selected cities as list
+        List<String> selectedCities = LocationData.explodeCitiesPSV(secondaryCities);
 
-        // Selected a city with this code?
-        if (selectedCityCodes.contains(LocationData.getZoneCode(zone))) {
-            // We got a match!
+        // Did we select this city?
+        if (selectedCities.contains(city)) {
             return true;
         }
 
@@ -219,7 +211,7 @@ public class AlertLogic {
         return false;
     }
 
-    public static boolean isNearby(String zone, Context context) {
+    public static boolean isNearby(String cityName, Context context) {
         // Get nearby alerts enabled setting
         boolean nearbyEnabled = Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.locationAlertsPref), false);
 
@@ -236,22 +228,24 @@ public class AlertLogic {
             return false;
         }
 
-        // Get zone locations
-        List<Location> locations = LocationData.getCityLocationsByZone(zone, context);
+        // Get city geolocation
+        Location location = LocationData.getCityLocation(cityName, context);
+
+        // No match?
+        if (location == null) {
+            return false;
+        }
 
         // Calculate max distance
         double maxDistance = LocationLogic.getMaxDistanceKilometers(context, -1);
 
-        // Loop over returned locations
-        for (Location location : locations) {
-            // Get distance to city in KM
-            float distance = location.distanceTo(myLocation) / 1000;
+        // Get distance to city in KM
+        float distance = location.distanceTo(myLocation) / 1000;
 
-            // Distance is less than max?
-            if (distance <= maxDistance) {
-                // We are nearby!
-                return true;
-            }
+        // Distance is less than max?
+        if (distance <= maxDistance) {
+            // We are nearby!
+            return true;
         }
 
         // No match

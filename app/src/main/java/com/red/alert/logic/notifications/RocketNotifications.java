@@ -23,7 +23,7 @@ import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.formatting.StringUtils;
 
 public class RocketNotifications {
-    public static void notify(Context context, String alertZone, String notificationTitle, String notificationContent, String alertType, String overrideSound) {
+    public static void notify(Context context, String city, String notificationTitle, String notificationContent, String alertType, String overrideSound) {
         // Get notification manager
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
 
@@ -77,7 +77,7 @@ public class RocketNotifications {
         playAlertSound(alertType, overrideSound, context);
 
         // Show alert popup (if applicable)
-        AlertPopup.showAlertPopup(alertType, alertZone, context);
+        AlertPopup.showAlertPopup(alertType, city, context);
 
         // Notify BLE devices (if applicable)
         BluetoothIntegration.notifyDevices(alertType, context);

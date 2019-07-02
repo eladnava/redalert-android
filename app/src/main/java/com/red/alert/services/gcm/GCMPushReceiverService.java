@@ -15,10 +15,10 @@ public class GCMPushReceiverService extends GcmListenerService {
     public void onMessageReceived(String from, Bundle data) {
         // Grab push data from extras
         String alertType = data.getString(GCMPushParameters.ALERT_TYPE);
-        String alertZones = data.getString(GCMPushParameters.ALERT_AREAS);
+        String alertCities = data.getString(GCMPushParameters.ALERT_CITIES);
 
         // Bad push?
-        if (alertType == null || alertZones == null) {
+        if (alertType == null || alertCities == null) {
             // Log it
             Log.e(Logging.TAG, "Malformed push received via GCM");
 
@@ -39,6 +39,6 @@ public class GCMPushReceiverService extends GcmListenerService {
         }
 
         // Receive the alert
-        AlertLogic.processIncomingAlert(alertZones, alertType, this);
+        AlertLogic.processIncomingAlert(alertCities, alertType, this);
     }
 }

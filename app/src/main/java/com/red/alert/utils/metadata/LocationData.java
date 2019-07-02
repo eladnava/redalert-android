@@ -20,8 +20,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class LocationData {
     private static List<City> mCities;
@@ -163,7 +161,7 @@ public class LocationData {
         List<String> selectedCityNames = new ArrayList<String>();
 
         // Remove area code
-        String[] selectedValues = selection.split(",");
+        String[] selectedValues = selection.split("\\|");
 
         // Loop over values
         for (String selectedValue : selectedValues) {
@@ -195,47 +193,41 @@ public class LocationData {
         return displayText;
     }
 
-    public static String getLocalizedZoneWithCountdown(String zone, Context context) {
+    public static String getLocalizedZoneWithCountdown(String cityName, Context context) {
         // Get user's locale
         boolean isEnglish = Localization.isEnglishLocale(context);
 
         // Prepare cities array
         List<City> cities = getAllCities(context);
 
-        // Cache zone code (numeric)
-        String zoneCode = getZoneCode(zone);
-
         // Loop over cities
         for (City city : cities) {
             // Got a match?
-            if (city.codes.contains(zoneCode)) {
+            if (city.name.equals(cityName)) {
                 // Hebrew?
                 if (!isEnglish) {
                     // Return area countdown
-                    return zone + " (" + city.time + ")";
+                    return city.zone + " (" + city.time + ")";
                 }
                 else {
-                    // Return area without countdown but in English
-                    return city.zoneEnglish;
+                    // Return area countdown in English
+                    return city.zoneEnglish  + " (" + city.timeEnglish + ")";
                 }
             }
         }
 
         // No match
-        return zone;
+        return "";
     }
 
-    public static int getZoneCountdown(String zone, Context context) {
+    public static int getCityCountdown(String cityName, Context context) {
         // Prepare cities array
         List<City> cities = getAllCities(context);
-
-        // Cache zone code
-        String zoneCode = getZoneCode(zone);
 
         // Loop over cities
         for (City city : cities) {
             // Got a match?
-            if (city.codes.contains(zoneCode)) {
+            if (city.name.equals(cityName)) {
                 // Return countdown
                 return city.countdown;
             }
@@ -245,65 +237,45 @@ public class LocationData {
         return 0;
     }
 
-    public static String getLocalizedZone(String zone, Context context) {
+    public static String getLocalizedCityName(String cityName, Context context) {
         // Get user's locale
         boolean isEnglish = Localization.isEnglishLocale(context);
 
         // Hebrew?
         if (!isEnglish) {
-            return zone;
+            return cityName;
         }
 
         // Prepare cities array
         List<City> cities = getAllCities(context);
 
-        // Cache zone code
-        String zoneCode = getZoneCode(zone);
-
         // Loop over cities
         for (City city : cities) {
             // Got a match?
-            if (city.codes.contains(zoneCode)) {
-                // Return english code
-                return city.zoneEnglish;
+            if (city.name.equals(cityName)) {
+                // Return english name
+                return city.nameEnglish;
             }
         }
 
         // No match
-        return zone;
+        return cityName;
     }
 
-    public static String getCityNamesByZone(String Zone, Context context) {
-        // Get user's locale
-        boolean isEnglish = Localization.isEnglishLocale(context);
-
+    public static City getCityByName(String cityName, Context context) {
         // Prepare cities array
         List<City> cities = getAllCities(context);
-
-        // Output array
-        List<String> cityNames = new ArrayList<String>();
-
-        // Cache zone code
-        String zoneCode = getZoneCode(Zone);
 
         // Loop over cities
         for (City city : cities) {
             // Got a match?
-            if (city.codes.contains(zoneCode)) {
-                // English?
-                if (!isEnglish) {
-                    // Add to list
-                    cityNames.add(city.name);
-                }
-                else {
-                    // Add to list
-                    cityNames.add(city.nameEnglish);
-                }
+            if (city.name.equals(cityName)) {
+                return city;
             }
         }
 
-        // Join and add original code
-        return StringUtils.implode(", ", cityNames);
+        // No match
+        return null;
     }
 
     public static String getNearbyCityNames(Location myLocation, Context context) {
@@ -314,7 +286,7 @@ public class LocationData {
         List<City> cities = getAllCities(context);
 
         // Output array
-        List<String> cityNames = new ArrayList<String>();
+        List<String> cityNames = new ArrayList<>();
 
         // Calculate max distance
         double maxDistance = LocationLogic.getMaxDistanceKilometers(context, -1);
@@ -349,20 +321,14 @@ public class LocationData {
         return StringUtils.implode(", ", cityNames);
     }
 
-    public static List<Location> getCityLocationsByZone(String zone, Context context) {
+    public static Location getCityLocation(String cityName, Context context) {
         // Prepare cities array
         List<City> cities = getAllCities(context);
-
-        // Output array
-        List<Location> locations = new ArrayList<Location>();
-
-        // Cache zone code
-        String zoneCode = getZoneCode(zone);
 
         // Loop over cities
         for (City city : cities) {
             // Got a match?
-            if (city.codes.contains(zoneCode)) {
+            if (city.name.equals(cityName)) {
                 // Prepare new location
                 Location location = new Location(LocationManager.PASSIVE_PROVIDER);
 
@@ -371,46 +337,23 @@ public class LocationData {
                 location.setLongitude(city.longitude);
 
                 // Add to list
-                locations.add(location);
+                return location;
             }
         }
 
-        // Return locations
-        return locations;
+        // Fail
+        return null;
     }
 
-    public static List<City> getCitiesByZone(String zone, Context context) {
-        // Prepare cities array
-        List<City> cities = getAllCities(context);
-
-        // Output array
-        List<City> filteredCities = new ArrayList<City>();
-
-        // Cache zone code
-        String zoneCode = getZoneCode(zone);
-
-        // Loop over cities
-        for (City city : cities) {
-            // Got a match?
-            if (city.codes.contains(zoneCode)) {
-                // Add to list
-                filteredCities.add(city);
-            }
-        }
-
-        // Return locations
-        return filteredCities;
-    }
-
-    public static List<String> explodeZonesCSV(String zonesCSV) {
-        // Unique list
-        List<String> uniqueList = new ArrayList<String>();
+    public static List<String> explodeCitiesPSV(String citiesPSV) {
+        // Unique cities list
+        List<String> uniqueList = new ArrayList<>();
 
         // Explode into array
-        List<String> csvList = Arrays.asList(zonesCSV.split(", "));
+        List<String> psvList = Arrays.asList(citiesPSV.split("\\|"));
 
         // Loop over items
-        for (String item : csvList) {
+        for (String item : psvList) {
             // Not already added?
             if (!uniqueList.contains(item)) {
                 // Add it
@@ -422,59 +365,38 @@ public class LocationData {
         return uniqueList;
     }
 
-    public static List<String> getSelectedCityCodes(String selectedCities) {
-        // Result list
-        List<String> codes = new ArrayList<>();
+    public static String getZoneByCityName(String cityName, Context context) {
+        // Prepare cities array
+        List<City> cities = getAllCities(context);
 
-        // Explode into array
-        List<String> cityValuesList = Arrays.asList(selectedCities.split(","));
-
-        // Loop over selected city values
-        for (String city : cityValuesList) {
-            // Get current city codes
-            List<String> cityCodes = getAllCityZones(city);
-
-            // Traverse codes
-            for (String code : cityCodes) {
-                // First time?
-                if (!codes.contains(code)) {
-                    // Add code
-                    codes.add(code);
-                }
+        // Loop over cities
+        for (City city : cities) {
+            // Got a match?
+            if (city.name.equals(cityName)) {
+                return city.zone;
             }
         }
 
-        // Return clean codes
-        return codes;
+        // Unknown city
+        return "";
     }
 
-    public static String GetZoneRegion(String zone) {
-        // Remove code and trim
-        return zone.replaceAll("\\s?([0-9]+)", "").trim();
-    }
+    public static String getLocalizedZoneByCityName(String cityName, Context context) {
+        // Get user's locale
+        boolean isEnglish = Localization.isEnglishLocale(context);
 
-    public static String getZoneCode(String zone) {
-        // Remove code and trim
-        return StringUtils.regexMatch(zone, ".+?\\s?([0-9]+)").trim();
-    }
+        // Prepare cities array
+        List<City> cities = getAllCities(context);
 
-    public static List<String> getAllCityZones(String cityValue) {
-        // Compile regex
-        Pattern regexPattern = Pattern.compile("\\((.+?)\\)");
-
-        // Match against source input
-        Matcher regexMatcher = regexPattern.matcher(cityValue);
-
-        // Prepare match object
-        List<String> codes = new ArrayList<>();
-
-        // Did we find anything?
-        while (regexMatcher.find()) {
-            // Get first group
-            codes.add(getZoneCode(regexMatcher.group(1).trim()));
+        // Loop over cities
+        for (City city : cities) {
+            // Got a match?
+            if (city.name.equals(cityName)) {
+                return isEnglish ? city.zoneEnglish: city.zone;
+            }
         }
 
-        // Return codes
-        return codes;
+        // Unknown city
+        return "";
     }
 }
