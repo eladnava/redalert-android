@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 26
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
         applicationId "com.red.alert"
         minSdkVersion 9
-        targetSdkVersion 20
+        targetSdkVersion 26
         versionCode 10097
         versionName "1.0.9.7"
     }
