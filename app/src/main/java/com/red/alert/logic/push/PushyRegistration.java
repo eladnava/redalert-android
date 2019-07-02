@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.red.alert.R;
 import com.red.alert.config.Logging;
+import com.red.alert.config.push.PushyGateway;
 import com.red.alert.utils.caching.Singleton;
 
 import me.pushy.sdk.Pushy;
@@ -14,6 +15,9 @@ public class PushyRegistration {
     public static void registerForPushNotifications(Context context) throws Exception {
         // Acquire a unique registration ID for this device
         String token = Pushy.register(context);
+
+        // Subscribe to global alerts topic
+        Pushy.subscribe(PushyGateway.ALERTS_TOPIC, context);
 
         // Log to logcat
         Log.d(Logging.TAG, "Pushy registration success: " + token);
