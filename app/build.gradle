@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.red.alert"
-        minSdkVersion 9
+        minSdkVersion 14
         targetSdkVersion 26
         versionCode 10097
         versionName "1.0.9.7"
@@ -38,9 +38,10 @@ dependencies {
     compile 'me.pushy:sdk:1.0.35'
 
     // AppCompat v7 Dependency
-    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:appcompat-v7:26.1.0'
 
     // Google Play Services Dependencies
+    //noinspection GradleCompatible
     compile 'com.google.android.gms:play-services-gcm:7.8.0'
     compile 'com.google.android.gms:play-services-location:7.8.0'
 
