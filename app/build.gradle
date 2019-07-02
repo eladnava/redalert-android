@@ -35,7 +35,7 @@ android {
 
 dependencies {
     // Pushy SDK
-    compile 'me.pushy:sdk:1.0.35'
+    compile 'me.pushy:sdk:1.0.48'
 
     // AppCompat v7 Dependency
     compile 'com.android.support:appcompat-v7:26.1.0'
