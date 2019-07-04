@@ -188,4 +188,5 @@
     <string name="lifeshieldShelters">Abris Lifeshield:</string>
     <string name="learnAboutLifeshield">En savoir plus sur Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Cliquez ici pour en savoir plus sur Operation Lifeshield, un organisme sans but lucratif qui déploie des abris anti-aériens en Israël.</string>
+    <string name="connecting">Connexion...</string>
 </resources>

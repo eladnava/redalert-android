@@ -188,4 +188,5 @@
     <string name="lifeshieldShelters">Lifeshield Shelters:</string>
     <string name="learnAboutLifeshield">Learn about Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Click here to learn more about Operation Lifeshield, a nonprofit that deploys air raid shelters in Israel.</string>
+    <string name="connecting">Connecting...</string>
 </resources>

@@ -233,4 +233,5 @@
     <string name="lifeshieldShelters">Refugios de Lifeshield:</string>
     <string name="learnAboutLifeshield">Aprende sobre Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Haga clic aquí para conocer más acerca de Operation Lifeshield, una organización sin fines de lucro que despliega refugios antiaéreos en Israel.</string>
+    <string name="connecting">Conectando...</string>
 </resources>

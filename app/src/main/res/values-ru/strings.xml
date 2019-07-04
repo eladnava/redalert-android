@@ -233,4 +233,5 @@
     <string name="lifeshieldShelters">Приюты Lifeshield:</string>
     <string name="learnAboutLifeshield">Узнать о Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Нажмите здесь, чтобы узнать больше об Операции Lifeshield, некоммерческой организации, которая развертывает убежища для воздушных налетов в Израиле.</string>
+    <string name="connecting">Подключение...</string>
 </resources>

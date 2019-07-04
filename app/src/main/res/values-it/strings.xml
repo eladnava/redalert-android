@@ -191,4 +191,5 @@
     <string name="lifeshieldShelters">Rifugi Lifeshield:</string>
     <string name="learnAboutLifeshield">Ulteriori informazioni su Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Clicca qui per saperne di più su Operation Lifeshield, un\'organizzazione no profit che utilizza rifugi antiaerei in Israele.</string>
+    <string name="connecting">Connettendo...</string>
 </resources>
