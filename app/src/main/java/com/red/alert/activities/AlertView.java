@@ -1,8 +1,11 @@
 package com.red.alert.activities;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -10,6 +13,7 @@ import android.view.MenuItem;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
@@ -38,9 +42,6 @@ public class AlertView extends AppCompatActivity {
 
         // Initialize UI
         initializeUI();
-
-        // Initialize map
-        initializeMap();
     }
 
     void unpackExtras() {
@@ -63,7 +64,9 @@ public class AlertView extends AppCompatActivity {
                 mMap.setInfoWindowAdapter(new RTLMarkerInfoWindowAdapter(getLayoutInflater()));
 
                 // Show my location button
-                mMap.setMyLocationEnabled(true);
+                if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    mMap.setMyLocationEnabled(true);
+                }
 
                 // Wait for tiles to load
                 new Handler().postDelayed(new Runnable() {
@@ -240,6 +243,14 @@ public class AlertView extends AppCompatActivity {
         setContentView(R.layout.alert_view);
 
         // Get map instance
-        mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
+        ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(GoogleMap googleMap) {
+                mMap = googleMap;
+
+                // Initialize map
+                initializeMap();
+            }
+        });
     }
 }
