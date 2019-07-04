@@ -39,7 +39,7 @@
     <string name="reliability">Affidabilità</string>
     <string name="noAlerts">Nessuna allerta\nnegli scorsi giorni</string>
     <string name="recentAlerts">Allerte recenti</string>
-    <string name="testSound">Suono di prova - tocca qui per cancellare</string>
+    <string name="testSound">Suono di prova</string>
     <string name="siren1">Sirena 1</string>
     <string name="siren2">Sirena 2</string>
     <string name="siren3">Sirena 3</string>

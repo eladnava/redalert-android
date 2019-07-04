@@ -18,9 +18,12 @@ import com.red.alert.logic.communication.intents.MainActivityParameters;
 import com.red.alert.logic.communication.intents.RocketNotificationParameters;
 import com.red.alert.logic.communication.intents.SoundServiceParameters;
 import com.red.alert.logic.integration.BluetoothIntegration;
+import com.red.alert.receivers.NotificationDeletedReceiver;
 import com.red.alert.services.sound.PlaySoundService;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.formatting.StringUtils;
+
+import me.pushy.sdk.Pushy;
 
 public class RocketNotifications {
     public static void notify(Context context, String city, String notificationTitle, String notificationContent, String alertType, String overrideSound) {
@@ -44,6 +47,7 @@ public class RocketNotifications {
                 .setContentText(notificationContent)
                 .setLights(Color.RED, 1000, 1000)
                 .setSmallIcon(R.drawable.ic_notify)
+                .setColor(Color.parseColor("#ff4032"))
                 .setCategory(NotificationCompat.CATEGORY_ALARM)
                 .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(notificationContent))
@@ -52,14 +56,20 @@ public class RocketNotifications {
         // Handle notification delete
         builder.setDeleteIntent(getNotificationDeletedReceiverIntent(context));
 
-        // Handle notification click
-        builder.setContentIntent(getNotificationIntent(context));
+        // No click event for test notifications
+        if (!alertType.contains("test")) {
+            // Handle notification click
+            builder.setContentIntent(getNotificationIntent(context));
+        }
 
         // Generate a notification ID based on the unique hash-code of the alert zone
         int notificationID = notificationTitle.hashCode();
 
         // Cancel previous notification for same alert zone
         notificationManager.cancel(notificationID);
+
+        // Automatically configure notification channel (if required)
+        Pushy.setNotificationChannel(builder, context);
 
         try {
             // Issue the notification
@@ -88,7 +98,10 @@ public class RocketNotifications {
 
     private static PendingIntent getNotificationDeletedReceiverIntent(Context context) {
         // Prepare delete intent
-        Intent deleteIntent = new Intent(RocketNotificationParameters.NOTIFICATION_DELETED_ACTION);
+        Intent deleteIntent = new Intent(context, NotificationDeletedReceiver.class);
+
+        // Set action
+        deleteIntent.setAction(RocketNotificationParameters.NOTIFICATION_DELETED_ACTION);
 
         // Get broadcast receiver
         return PendingIntent.getBroadcast(context, 0, deleteIntent, 0);

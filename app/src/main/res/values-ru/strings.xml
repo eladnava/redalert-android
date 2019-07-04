@@ -79,7 +79,7 @@
     <string name="sounds">Звуки</string>
     <string name="soundSelection">Звук сигнала</string>
     <string name="soundSelectionDesc">Выбрать звук  при тревоге.</string>
-    <string name="testSound">​​Проверка Звука- жмите здесь, чтобы отменить</string>
+    <string name="testSound">​​Проверка Звука</string>
     <string name="siren1">Сирена 1</string>
     <string name="siren2">Сирена 2</string>
     <string name="siren3">Сирена 3</string>

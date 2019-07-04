@@ -39,7 +39,7 @@
     <string name="reliability">Reliability</string>
     <string name="noAlerts">No alerts\nin the past day</string>
     <string name="recentAlerts">Recent Alerts</string>
-    <string name="testSound">Sound test - click here to cancel</string>
+    <string name="testSound">Sound test</string>
     <string name="siren1">Siren 1</string>
     <string name="siren2">Siren 2</string>
     <string name="siren3">Siren 3</string>

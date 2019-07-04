@@ -75,7 +75,7 @@
     <string name="sounds">Sonidos</string>
     <string name="soundSelection">Sonido de alarma Tzeva Adom</string>
     <string name="soundSelectionDesc">Seleccionar el sonido de la notificación de alarma.</string>
-    <string name="testSound">Probar el sonido de notificación - oprima para cancelar</string>
+    <string name="testSound">Probar el sonido de notificación</string>
     <string name="siren1">Sirena 1</string>
     <string name="siren2">Sirena 2</string>
     <string name="siren3">Sirena 3</string>

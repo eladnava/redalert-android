@@ -39,7 +39,7 @@
     <string name="reliability">Zuverlässigkeit</string>
     <string name="noAlerts">Keine Alarmierung\nin den Vergangenen tagen</string>
     <string name="recentAlerts">Kürzliche Alarmierungen</string>
-    <string name="testSound">Sound test - Klick hier zum benden</string>
+    <string name="testSound">Sound test</string>
     <string name="siren1">Sirene 1</string>
     <string name="siren2">Sirene 2</string>
     <string name="siren3">Sirene 3</string>

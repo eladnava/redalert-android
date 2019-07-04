@@ -104,7 +104,7 @@
     <string name="sounds">צלילים</string>
     <string name="soundSelection">צליל אזעקת אמת</string>
     <string name="soundSelectionDesc">בחר צליל שיושמע כאשר תופעל האזעקה.</string>
-    <string name="testSound">בדיקת צליל התרעה - לחץ כאן לביטול</string>
+    <string name="testSound">בדיקת צליל התרעה</string>
     <string name="siren1">סירנה 1</string>
     <string name="siren2">סירנה 2</string>
     <string name="siren3">סירנה 3</string>
