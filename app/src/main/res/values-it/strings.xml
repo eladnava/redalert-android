@@ -158,13 +158,6 @@
         https://redalert.me
     </string>
 
-    <!-- Disconnected Notification -->
-    <string name="disconnectedNotification">Notifica quando sconnesso</string>
-    <string name="disconnectedNotificationDesc">Quando la tua connessione con  il server fallisce una notifica ti informerà di non basare la tua sicurezza sulla applicazione.</string>
-    <string name="connected">Connesso al server delle allerte</string>
-    <string name="connecting">Connettendo...</string>
-    <string name="notConnected">Non connesso al server</string>
-
     <!-- Alert Popup -->
     <string name="close">Chiuso</string>
     <string name="silence">Silenzio</string>

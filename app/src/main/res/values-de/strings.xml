@@ -155,13 +155,6 @@
     <string name="alertSentVia">- Gesendet mit  RedAlert für Android - https://redalert.me
     </string>
 
-    <!-- Disconnected Notification -->
-    <string name="disconnectedNotification">Melde, wenn keine Verbindung besteht</string>
-    <string name="disconnectedNotificationDesc">Wenn eine Verbindung zum Alarmierungsserver fehlschlägt, wird eine Benachrichtigung Dich darauf aufmerksam machen.</string>
-    <string name="connected">Verbunden zum Rocket Alert Server.</string>
-    <string name="connecting">Verbinde...</string>
-    <string name="notConnected">Keine Verbindung zum Rocket Alert Server.</string>
-
     <!-- Alert Popup -->
     <string name="close">Schließen</string>
     <string name="silence">stumm</string>

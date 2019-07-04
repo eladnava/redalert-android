@@ -151,13 +151,6 @@
             </intent-filter>
         </receiver>
 
-        <!-- Connectivity Changed Receiver -->
-        <receiver android:name=".receivers.ConnectivityReceiver">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
-            </intent-filter>
-        </receiver>
-
         <!-- Sound Services -->
         <service android:name=".services.sound.PlaySoundService"/>
         <service android:name=".services.sound.StopSoundService"/>

@@ -15,13 +15,11 @@ import com.red.alert.ui.activities.AppCompatPreferenceActivity;
 import com.red.alert.ui.elements.SliderPreference;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.utils.feedback.Volume;
-import com.red.alert.utils.networking.Connectivity;
 
 public class Advanced extends AppCompatPreferenceActivity {
     Preference mLocationAlerts;
     Preference mIntergations;
     Preference mSecondaryAlerts;
-    Preference mDisconnectedNotification;
 
     SliderPreference mVolumeSelection;
 
@@ -63,7 +61,6 @@ public class Advanced extends AppCompatPreferenceActivity {
         mIntergations = findPreference(getString(R.string.integrationsPref));
         mLocationAlerts = findPreference(getString(R.string.locationPref));
         mSecondaryAlerts = findPreference(getString(R.string.secondaryPref));
-        mDisconnectedNotification = findPreference(getString(R.string.disconnectedNotificationPref));
         mVolumeSelection = (SliderPreference) findPreference(getString(R.string.volumePref));
 
         // Set up listeners
@@ -80,18 +77,6 @@ public class Advanced extends AppCompatPreferenceActivity {
 
                 // Generate summary
                 return getString(R.string.volumeDesc) + "\r\n(" + percent + "%)";
-            }
-        });
-
-        // Set up disconnected notification click listener
-        mDisconnectedNotification.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                // Refresh the disconnection notification
-                Connectivity.refreshConnectionNotification(Advanced.this);
-
-                // Consume event
-                return true;
             }
         });
 

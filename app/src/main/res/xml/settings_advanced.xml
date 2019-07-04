@@ -3,15 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/advancedSettingsTitle">
     <PreferenceCategory
-        android:title="@string/reliability">
-        <CheckBoxPreference
-            android:textDirection="rtl"
-            android:key="@string/disconnectedNotificationPref"
-            android:title="@string/disconnectedNotification"
-            android:summary="@string/disconnectedNotificationDesc"
-            android:defaultValue="false"/>
-    </PreferenceCategory>
-    <PreferenceCategory
         android:title="@string/alerts">
         <com.red.alert.ui.elements.SliderPreference
             android:key="@string/volumePref"

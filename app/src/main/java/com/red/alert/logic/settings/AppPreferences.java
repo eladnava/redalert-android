@@ -16,11 +16,6 @@ public class AppPreferences {
         return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.locationAlertsPref), false);
     }
 
-    public static boolean getDisconnectedNotificationEnabled(Context context) {
-        // Get saved preference
-        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.disconnectedNotificationPref), false);
-    }
-
     public static boolean getSecondaryNotificationsEnabled(Context context) {
         // Get saved preference
         return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.secondaryEnabledPref), false);

@@ -201,13 +201,6 @@
         https://redalert.me
     </string>
 
-    <!-- Disconnected Notification -->
-    <string name="disconnectedNotification">Сообщите, когда отключен</string>
-    <string name="disconnectedNotificationDesc">Если при подключении к серверу не удается оповещения, уведомление об этом и помешать вам, опираясь на приложения.</string>
-    <string name="connected">Подключено к оповещения сервера</string>
-    <string name="connecting">Подключение...</string>
-    <string name="notConnected">Не подключен к оповещения сервера</string>
-
     <!-- Alert Popup -->
     <string name="close">Открыть</string>
     <string name="silence">Тишина</string>

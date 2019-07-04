@@ -156,13 +156,6 @@
         https://redalert.me
     </string>
 
-    <!-- Disconnected Notification -->
-    <string name="disconnectedNotification">Notifier lors d\'une déconnection</string>
-    <string name="disconnectedNotificationDesc">Lorsque votre connexion au serveur d\'alertes échoue, une notification vous alertera pour vous prévenir de ne pas faire confiance à l\'application.</string>
-    <string name="connected">Connecté au serveur d\'alerte de roquette</string>
-    <string name="connecting">Connexion...</string>
-    <string name="notConnected">Non connecté au serveur d\'alerte de roquette</string>
-
     <!-- Alert Popup -->
     <string name="close">Fermer</string>
     <string name="silence">Silence</string>

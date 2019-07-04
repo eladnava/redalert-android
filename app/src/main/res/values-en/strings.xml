@@ -156,13 +156,6 @@
         https://redalert.me
     </string>
 
-    <!-- Disconnected Notification -->
-    <string name="disconnectedNotification">Notify when disconnected</string>
-    <string name="disconnectedNotificationDesc">When your connection to the alert server fails, a notification will alert you and prevent you from relying on the application.</string>
-    <string name="connected">Connected to the rocket alert server</string>
-    <string name="connecting">Connecting...</string>
-    <string name="notConnected">Not connected to the rocket alert server</string>
-
     <!-- Alert Popup -->
     <string name="close">Close</string>
     <string name="silence">Silence</string>

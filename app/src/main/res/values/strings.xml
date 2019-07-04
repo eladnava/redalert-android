@@ -240,12 +240,6 @@
         https://redalert.me
     </string>
 
-    <!-- Disconnection Notification -->
-    <string name="connected">מחובר לשרת ההתרעות</string>
-    <string name="notConnected">לא מחובר לשרת ההתרעות, בדוק את החיבור</string>
-    <string name="disconnectedNotification">הצג התרעה כאשר אין חיבור</string>
-    <string name="disconnectedNotificationDesc">כאשר החיבור לשרת ההתרעות מתנתק, תוצג התרעה כדי למנוע תלות באפליקציה.</string>
-
     <!-- Alert Popup -->
     <string name="close">סגור</string>
     <string name="silence">השתק</string>
@@ -285,7 +279,6 @@
     <string translatable="false" name="miBandPref">mi_band_integration</string>
     <string translatable="false" name="integrationsTestPref">test_integrations</string>
     <string translatable="false" name="locationAlertsPref">gps</string>
-    <string translatable="false" name="disconnectedNotificationPref">dc_notification</string>
     <string translatable="false" name="gpsFrequencyPref">gps_frequency</string>
     <string translatable="false" name="latitudePref">latitude</string>
     <string translatable="false" name="longitudePref">longitude</string>
