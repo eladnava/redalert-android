@@ -1,15 +1,20 @@
 package com.red.alert.ui.localization.rtl;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Build;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.red.alert.config.Logging;
 import com.red.alert.utils.localization.Localization;
 
 public class RTLSupport {
@@ -27,6 +32,7 @@ public class RTLSupport {
         }
     }
 
+    @SuppressLint("NewApi")
     public static void mirrorDialog(Dialog dialog, Context context) {
         // Hebrew only
         if (!Localization.isHebrewLocale(context)) {
@@ -38,13 +44,23 @@ public class RTLSupport {
             TextView message = (TextView) dialog.findViewById(android.R.id.message);
 
             // Defy gravity
-            message.setGravity(Gravity.RIGHT);
+            if (message != null) {
+                message.setGravity(Gravity.RIGHT);
+            }
 
             // Get the title of text view
             TextView title = (TextView) dialog.findViewById(context.getResources().getIdentifier("alertTitle", "id", "android"));
 
             // Defy gravity
             title.setGravity(Gravity.RIGHT);
+
+            // Get list view (may not exist)
+            ListView listView = (ListView) dialog.findViewById(context.getResources().getIdentifier("select_dialog_listview", "id", "android"));
+
+            // Check if list & set RTL mode
+            if (listView != null) {
+                listView.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            }
 
             // Get title's parent layout
             LinearLayout parent = ((LinearLayout) title.getParent());
@@ -62,7 +78,8 @@ public class RTLSupport {
             parent.setLayoutParams(originalParams);
         }
         catch (Exception exc) {
-            // Ignore, this is completely optional behavior
+            // Log failure to logcat
+            Log.d(Logging.TAG, "RTL failed", exc);
         }
     }
 }

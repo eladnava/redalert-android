@@ -37,7 +37,7 @@
             android:dialogTitle="@string/selectedCities"
             android:title="@string/selectedCities"
             android:summary="@string/cityDesc"/>
-        <com.red.alert.ui.elements.RingtoneSelectionPreference
+        <com.red.alert.ui.elements.SoundListPreference
             android:title="@string/soundSelection"
             android:key="@string/soundPref"
             android:summary="@string/soundSelectionDesc"

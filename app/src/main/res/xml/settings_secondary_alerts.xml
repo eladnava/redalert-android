@@ -20,7 +20,7 @@
             android:title="@string/selectedSecondaryCities"
             android:summary="@string/selectedSecondaryCitiesDesc"
             android:dependency="@string/secondaryEnabledPref"/>
-        <com.red.alert.ui.elements.RingtoneSelectionPreference
+        <com.red.alert.ui.elements.SoundListPreference
             android:key="@string/secondarySoundPref"
             android:title="@string/secondarySoundSelection"
             android:summary="@string/secondarySoundSelectionDesc"

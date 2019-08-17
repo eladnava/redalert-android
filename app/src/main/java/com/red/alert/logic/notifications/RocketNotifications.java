@@ -16,7 +16,6 @@ import com.red.alert.activities.Main;
 import com.red.alert.config.Logging;
 import com.red.alert.logic.communication.intents.MainActivityParameters;
 import com.red.alert.logic.communication.intents.RocketNotificationParameters;
-import com.red.alert.logic.communication.intents.SoundServiceParameters;
 import com.red.alert.logic.feedback.sound.SoundLogic;
 import com.red.alert.logic.integration.BluetoothIntegration;
 import com.red.alert.receivers.NotificationDeletedReceiver;
