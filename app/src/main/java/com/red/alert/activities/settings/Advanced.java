@@ -18,7 +18,7 @@ import com.red.alert.utils.feedback.Volume;
 
 public class Advanced extends AppCompatPreferenceActivity {
     Preference mLocationAlerts;
-    Preference mIntergations;
+    Preference mIntegrations;
     Preference mSecondaryAlerts;
 
     SliderPreference mVolumeSelection;
@@ -58,7 +58,7 @@ public class Advanced extends AppCompatPreferenceActivity {
         addPreferencesFromResource(R.xml.settings_advanced);
 
         // Cache resource IDs
-        mIntergations = findPreference(getString(R.string.integrationsPref));
+        mIntegrations = findPreference(getString(R.string.integrationsPref));
         mLocationAlerts = findPreference(getString(R.string.locationPref));
         mSecondaryAlerts = findPreference(getString(R.string.secondaryPref));
         mVolumeSelection = (SliderPreference) findPreference(getString(R.string.volumePref));
@@ -117,7 +117,7 @@ public class Advanced extends AppCompatPreferenceActivity {
         });
 
         // Set up integrations click listener
-        mIntergations.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+        mIntegrations.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 // Prepare new intent

@@ -1,6 +1,7 @@
 package com.red.alert.logic.location;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -73,7 +74,7 @@ public class LocationLogic {
 
     public static void saveLastKnownLocation(Context context, float latitude, float longitude) {
         // Get shared preferences
-        android.content.SharedPreferences preferences = Singleton.getSharedPreferences(context);
+        SharedPreferences preferences = Singleton.getSharedPreferences(context);
 
         // Edit preferences
         android.content.SharedPreferences.Editor editor = preferences.edit();
