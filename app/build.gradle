@@ -1,6 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
+    dexOptions {
+        preDexLibraries = false
+    }
+
     compileSdkVersion 26
     useLibrary 'org.apache.http.legacy'
 
