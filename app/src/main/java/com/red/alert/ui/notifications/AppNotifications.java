@@ -3,8 +3,7 @@ package com.red.alert.ui.notifications;
 import android.app.NotificationManager;
 import android.content.Context;
 
-import com.red.alert.R;
-import com.red.alert.services.sound.StopSoundService;
+import com.red.alert.logic.feedback.sound.SoundLogic;
 
 public class AppNotifications {
     public static void clearAll(Context context) {
@@ -15,6 +14,6 @@ public class AppNotifications {
         notificationManager.cancelAll();
 
         // Stop alert sound if playing
-        StopSoundService.stopSoundService(context);
+        SoundLogic.stopSound(context);
     }
 }

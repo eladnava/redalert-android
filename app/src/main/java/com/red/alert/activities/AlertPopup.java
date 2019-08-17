@@ -19,8 +19,8 @@ import com.red.alert.config.Alerts;
 import com.red.alert.config.Safety;
 import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.communication.intents.AlertPopupParameters;
+import com.red.alert.logic.feedback.sound.SoundLogic;
 import com.red.alert.logic.settings.AppPreferences;
-import com.red.alert.services.sound.StopSoundService;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.utils.feedback.Volume;
 import com.red.alert.utils.formatting.StringUtils;
@@ -107,7 +107,7 @@ public class AlertPopup extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Stop the media service
-                StopSoundService.stopSoundService(AlertPopup.this);
+                SoundLogic.stopSound(AlertPopup.this);
 
                 // Close popup
                 finish();
@@ -119,7 +119,7 @@ public class AlertPopup extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Stop the media service
-                StopSoundService.stopSoundService(AlertPopup.this);
+                SoundLogic.stopSound(AlertPopup.this);
             }
         });
     }

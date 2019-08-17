@@ -151,10 +151,6 @@
             </intent-filter>
         </receiver>
 
-        <!-- Sound Services -->
-        <service android:name=".services.sound.PlaySoundService"/>
-        <service android:name=".services.sound.StopSoundService"/>
-
         <!-- Location Polling Service -->
         <service android:name=".services.location.LocationService"/>
 

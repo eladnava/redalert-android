@@ -17,9 +17,9 @@ import com.red.alert.config.Logging;
 import com.red.alert.logic.communication.intents.MainActivityParameters;
 import com.red.alert.logic.communication.intents.RocketNotificationParameters;
 import com.red.alert.logic.communication.intents.SoundServiceParameters;
+import com.red.alert.logic.feedback.sound.SoundLogic;
 import com.red.alert.logic.integration.BluetoothIntegration;
 import com.red.alert.receivers.NotificationDeletedReceiver;
-import com.red.alert.services.sound.PlaySoundService;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.formatting.StringUtils;
 
@@ -84,7 +84,7 @@ public class RocketNotifications {
         }
 
         // Play alert sound (if applicable)
-        playAlertSound(alertType, overrideSound, context);
+        SoundLogic.playSound(alertType, overrideSound, context);
 
         // Show alert popup (if applicable)
         AlertPopup.showAlertPopup(alertType, city, context);
@@ -116,21 +116,5 @@ public class RocketNotifications {
 
         // Return it
         return pendingIntent;
-    }
-
-    static void playAlertSound(String alertType, String sound, Context context) {
-        // Create a new intent to start our sound service
-        Intent playSound = new Intent(context, PlaySoundService.class);
-
-        // Set the type
-        playSound.putExtra(SoundServiceParameters.ALERT_TYPE, alertType);
-
-        // Got a sound?
-        if (sound != null) {
-            playSound.putExtra(SoundServiceParameters.ALERT_SOUND, sound);
-        }
-
-        // Start the service
-        context.startService(playSound);
     }
 }

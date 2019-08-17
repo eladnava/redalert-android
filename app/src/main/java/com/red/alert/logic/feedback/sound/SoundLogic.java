@@ -3,15 +3,22 @@ package com.red.alert.logic.feedback.sound;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.PowerManager;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.red.alert.R;
+import com.red.alert.config.Logging;
 import com.red.alert.config.Sound;
 import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.utils.caching.Singleton;
+import com.red.alert.utils.feedback.Vibration;
 import com.red.alert.utils.formatting.StringUtils;
 
 public class SoundLogic {
+    static MediaPlayer mPlayer;
     static final int ALARM_CUTOFF_SECONDS = 5;
 
     public static boolean shouldPlayAlertSound(String alertType, Context context) {
@@ -240,5 +247,94 @@ public class SoundLogic {
     static long getCurrentPlayingAlertCutoff() {
         // Alarm played in past X seconds?
         return System.currentTimeMillis() - (1000 * ALARM_CUTOFF_SECONDS);
+    }
+
+    public static void playSound(String alertType, String alertSound, Context context) {
+        // Should we play it?
+        if (!shouldPlayAlertSound(alertType, context)) {
+            return;
+        }
+
+        // Avoid secondary override
+        if (isSoundCurrentlyPlaying(alertType, context)) {
+            return;
+        }
+
+        // Get path to resource
+        Uri alarmSoundURI = getAlertSound(alertType, alertSound, context);
+
+        // Invalid sound URI?
+        if (alarmSoundURI == null) {
+            return;
+        }
+
+        // Override volume (Also to set the user's chosen volume)
+        VolumeLogic.setStreamVolume(alertType, context);
+
+        // Play sound
+        playSoundURI(alarmSoundURI, context);
+
+        // Vibrate depending on type
+        Vibration.issueVibration(alertType, context);
+    }
+
+    public static void stopSound(Context context) {
+        // Got a player?
+        if (mPlayer != null) {
+            // Still playing?
+            if (mPlayer.isPlaying()) {
+                // Stop playing
+                mPlayer.stop();
+
+                // Reset media player
+                mPlayer.reset();
+            }
+
+            // Release resources associated
+            mPlayer.release();
+
+            // Reinitialize next time
+            mPlayer = null;
+        }
+
+        // Stop vibration
+        Vibration.stopVibration(context);
+    }
+
+    static void playSoundURI(Uri alarmSoundUi, Context context) {
+        // No URI?
+        if (alarmSoundUi == null) {
+            return;
+        }
+
+        // Already initialized or currently playing?
+        stopSound(context);
+
+        // Create new MediaPlayer
+        mPlayer = new MediaPlayer();
+
+        // Wake up processor
+        mPlayer.setWakeMode(context, PowerManager.PARTIAL_WAKE_LOCK);
+
+        // Set stream type
+        mPlayer.setAudioStreamType(getSoundStreamType(context));
+
+        try {
+            // Set URI data source
+            mPlayer.setDataSource(context, alarmSoundUi);
+
+            // Prepare media player
+            mPlayer.prepare();
+        }
+        catch (Exception exc) {
+            // Log it
+            Log.e(Logging.TAG, "Media player preparation failed", exc);
+
+            // Show visible error toast
+            Toast.makeText(context, exc.toString(), Toast.LENGTH_LONG).show();
+        }
+
+        // Actually start playing
+        mPlayer.start();
     }
 }
