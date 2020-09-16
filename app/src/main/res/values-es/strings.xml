@@ -207,9 +207,9 @@
     <string name="showPopup">Mostrar popup</string>
     <string name="showPopupDesc">Alertas se mostrarán en una ventana emergente.</string>
     <string name="loading">Cargando...</string>
-    <string name="testingGCM">Prueba de impulso de puerta de enlace... (1/2)</string>
+    <string name="testingFCM">Prueba de impulso de puerta de enlace... (1/2)</string>
     <string name="testingPushy">Prueba de impulso de puerta de enlace... (2/2)</string>
-    <string name="gcmTestFailed">La auto-prueba ha fallado parcialmente. Sin alerta se recibió el impulso de puerta de enlace de Google, pero una alerta fue recibida con éxito a través de la puerta de entrada de empuje secundaria. Por favor, inténtelo de nuevo más tarde.</string>
+    <string name="fcmTestFailed">La auto-prueba ha fallado parcialmente. Sin alerta se recibió el impulso de puerta de enlace de Google, pero una alerta fue recibida con éxito a través de la puerta de entrada de empuje secundaria. Por favor, inténtelo de nuevo más tarde.</string>
     <string name="pushyTestFailed">La auto-prueba ha fallado parcialmente. Sin alerta se recibió de la puerta de entrada de empuje secundaria, pero una alerta fue recibida con éxito a través de la puerta de enlace de empuje de Google. Por favor, inténtelo de nuevo más tarde.</string>
     <string name="debugInfo">Información adicional:</string>
     <string name="testSuccessful">El test ha completado con éxito!</string>

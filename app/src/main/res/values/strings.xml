@@ -191,10 +191,10 @@
     <string name="shareMessage">אני משתמש באפליקציית \"צבע אדום\" באנדרואיד כדי לקבל התרעות על אזעקות צבע אדום  - https://redalert.me</string>
 
     <!-- Self Test Result Dialogs -->
-    <string name="testingGCM">שולח התרעת בדיקה... (1/2)</string>
+    <string name="testingFCM">שולח התרעת בדיקה... (1/2)</string>
     <string name="testingPushy">שולח התרעת בדיקה... (2/2)</string>
     <string name="testFailed">הבדיקה העצמית נכשלה לחלוטין. לא התקבלה התרעת בדיקה מאף שירות התרעות. בדוק את החיבור לאינטרנט ונסה מאוחר יותר, וצור איתנו קשר אם התקלה אינה חולפת.</string>
-    <string name="gcmTestFailed">הבדיקה העצמית נכשלה חלקית. לא התקבלה התרעה דרך שרת ההתרעות של גוגל, אך כן התקבלה התרעה דרך שרת ההתרעות המשני. נסה שוב מאוחר יותר.</string>
+    <string name="fcmTestFailed">הבדיקה העצמית נכשלה חלקית. לא התקבלה התרעה דרך שרת ההתרעות של גוגל, אך כן התקבלה התרעה דרך שרת ההתרעות המשני. נסה שוב מאוחר יותר.</string>
     <string name="pushyTestFailed">הבדיקה העצמית נכשלה חלקית. לא התקבלה התרעה דרך שרת ההתרעות המשני, אך כן התקבלה התרעה דרך שרת ההתרעות של גוגל. נסה שוב מאוחר יותר.</string>
 
     <!-- Error Messages -->
@@ -234,7 +234,7 @@
 
     <!-- Alert Share -->
     <string name="shareAlert">שתף את האזעקה</string>
-    <string name="alertSoundedAt">אזעקת צבע אדום נשמעה ב-</string>
+    <string name="alertSoundedAt">אזעקת צבע אדום נשמעה ב</string>
     <string name="atTime">בשעה</string>
     <string name="alertSentVia">- נשלח באמצעות צבע אדום באנדרואיד -
         https://redalert.me
@@ -265,7 +265,7 @@
     <string translatable="false" name="langPref">lang</string>
     <string translatable="false" name="soundPref">sound</string>
     <string translatable="false" name="websitePref">website</string>
-    <string translatable="false" name="gcmTokenPref">gcm_registration_token</string>
+    <string translatable="false" name="fcmTokenPref">gcm_registration_token</string>
     <string translatable="false" name="pushyTokenPref">pushy_registration_token</string>
     <string translatable="false" name="tutorialPref">tutorial_1_0_9_7</string>
     <string translatable="false" name="ratePref">rating</string>

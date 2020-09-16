@@ -8,15 +8,15 @@ import android.util.Log;
 import com.red.alert.config.Logging;
 import com.red.alert.logic.alerts.AlertLogic;
 import com.red.alert.logic.communication.broadcasts.SelfTestEvents;
-import com.red.alert.logic.communication.push.GCMPushParameters;
+import com.red.alert.logic.communication.push.FCMPushParameters;
 import com.red.alert.utils.communication.Broadcasts;
 
 public class PushyPushReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         // Grab push data from extras
-        String alertType = intent.getStringExtra(GCMPushParameters.ALERT_TYPE);
-        String alertCities = intent.getStringExtra(GCMPushParameters.ALERT_CITIES);
+        String alertType = intent.getStringExtra(FCMPushParameters.ALERT_TYPE);
+        String alertCities = intent.getStringExtra(FCMPushParameters.ALERT_CITIES);
 
         // Bad push?
         if (alertType == null || alertCities == null) {

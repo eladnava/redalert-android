@@ -150,7 +150,7 @@
 
     <!-- Alert Share -->
     <string name="shareAlert">Teile die Meldung</string>
-    <string name="alertSoundedAt">Ein code-red-Alarm hörte sich aus A code red alert sounded off in</string>
+    <string name="alertSoundedAt">Ein code-red-Alarm hörte sich aus</string>
     <string name="atTime">beim</string>
     <string name="alertSentVia">- Gesendet mit  RedAlert für Android - https://redalert.me
     </string>
@@ -161,9 +161,9 @@
     <string name="showPopup">Meldungen werden als Popup Anzeigen</string>
     <string name="showPopupDesc">Raketen Alamirungen werden in einem pop-up fenster Angezeigt.</string>
     <string name="loading">Lade..</string>
-    <string name="testingGCM">Push Gateway wird Getestet... (1/2)</string>
+    <string name="testingFCM">Push Gateway wird Getestet... (1/2)</string>
     <string name="testingPushy">Push Gateway wird Getestet... (2/2)</string>
-    <string name="gcmTestFailed">Der Selbsttest scheiterte teilweise. Es wurde keine Warnung vom Google-Push-Gateway empfangen, aber eine Warnung wurde erfolgreich über das sekundäre Push-Gateway empfangen. Bitte versuchen Sie es später noch einmal.</string>
+    <string name="fcmTestFailed">Der Selbsttest scheiterte teilweise. Es wurde keine Warnung vom Google-Push-Gateway empfangen, aber eine Warnung wurde erfolgreich über das sekundäre Push-Gateway empfangen. Bitte versuchen Sie es später noch einmal.</string>
     <string name="pushyTestFailed">Der Selbsttest scheiterte teilweise. Es wurde kein Alarm vom sekundären Push-Gateway empfangen, aber eine Warnung wurde erfolgreich über das Google-Push-Gateway empfangen. Bitte versuchen Sie es später noch einmal.</string>
     <string name="debugInfo">Zusätzliche Informationen: </string>
     <string name="testSuccessful">Der Test wurde erfolgreich abgeschlossen!</string>

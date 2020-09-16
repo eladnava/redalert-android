@@ -5,6 +5,8 @@
 /captures
 output.json
 
+.idea/caches
+.idea/codeStyles
 .idea/workspace.xml
 .idea/libraries
 .idea/dictionaries

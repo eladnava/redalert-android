@@ -162,9 +162,9 @@
     <string name="showPopup">Afficher la popup</string>
     <string name="showPopupDesc">Les alertes de roquettes s\'affichera dans une popup.</string>
     <string name="loading">Chargement ...</string>
-    <string name="testingGCM">Test de la notification... (1/2)</string>
+    <string name="testingFCM">Test de la notification... (1/2)</string>
     <string name="testingPushy">Test de la notification... (2/2)</string>
-    <string name="gcmTestFailed">Le test a échoué partiellement. Aucune alerte n\'a été reçue de la notification de Google, mais une alerte a été reçue avec succès via la notification secondaire. Réessayez plus tard.</string>
+    <string name="fcmTestFailed">Le test a échoué partiellement. Aucune alerte n\'a été reçue de la notification de Google, mais une alerte a été reçue avec succès via la notification secondaire. Réessayez plus tard.</string>
     <string name="pushyTestFailed">Le test a échoué partiellement. Aucune alerte n\'a été reçue de la notification secondaire, mais une alerte a été reçue avec succès via la notification de Google. Réessayez plus tard.</string>
     <string name="debugInfo">Informations supplémentaires: </string>
     <string name="testSuccessful">Le test s\'est terminé avec succès!</string>

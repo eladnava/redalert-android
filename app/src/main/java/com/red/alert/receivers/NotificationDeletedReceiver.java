@@ -2,7 +2,7 @@ package com.red.alert.receivers;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.content.WakefulBroadcastReceiver;
+import androidx.legacy.content.WakefulBroadcastReceiver;
 
 import com.red.alert.logic.communication.intents.RocketNotificationParameters;
 import com.red.alert.logic.feedback.sound.SoundLogic;

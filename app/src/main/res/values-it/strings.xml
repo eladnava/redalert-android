@@ -164,9 +164,9 @@
     <string name="showPopup">Mostra popup</string>
     <string name="showPopupDesc">Le allerte verrano mostrate in un pop-up.</string>
     <string name="loading">Caricamento..</string>
-    <string name="testingGCM">Testando il gateway delle notifiche... (1/2)</string>
+    <string name="testingFCM">Testando il gateway delle notifiche... (1/2)</string>
     <string name="testingPushy">Testando il gateway delle notifiche... (2/2)</string>
-    <string name="gcmTestFailed">Il test è fallito parzialmente. Nessuna allerta è stata ricevuta dal gateway delle notifiche di Google, ma un allerta è stata ricevuta con successo tramite il gateway secondario delle notifiche. Riprova più tardi.</string>
+    <string name="fcmTestFailed">Il test è fallito parzialmente. Nessuna allerta è stata ricevuta dal gateway delle notifiche di Google, ma un allerta è stata ricevuta con successo tramite il gateway secondario delle notifiche. Riprova più tardi.</string>
     <string name="pushyTestFailed">Il test è fallito parzialmente. Nessuna allerta è stata ricevuta dal gateway secondario delle notifiche, ma un allerta è stata ricevuta con successo tramite il gateway secondario delle notifiche. Riprova più tardi.</string>
     <string name="debugInfo">Informazioni addizionali: </string>
     <string name="testSuccessful">Il test è stato completato con successo!</string>

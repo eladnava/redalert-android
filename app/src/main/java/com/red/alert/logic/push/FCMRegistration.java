@@ -4,44 +4,34 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.google.android.gms.gcm.GcmPubSub;
-import com.google.android.gms.gcm.GoogleCloudMessaging;
-import com.google.android.gms.iid.InstanceID;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.red.alert.R;
 import com.red.alert.config.API;
 import com.red.alert.config.Logging;
-import com.red.alert.config.push.GCMGateway;
+import com.red.alert.config.push.FCMGateway;
 import com.red.alert.model.req.RegistrationRequest;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.integration.GooglePlayServices;
 import com.red.alert.utils.networking.HTTP;
 
-public class GCMRegistration {
-    public static void registerForPushNotifications(Context context) throws Exception {
+import androidx.annotation.NonNull;
+
+public class FCMRegistration {
+    public static void registerForPushNotifications(final Context context) throws Exception {
         // Make sure we have Google Play Services
         if (!GooglePlayServices.isAvailable(context)) {
             // Throw exception
             throw new Exception(context.getString(R.string.noGooglePlayServices));
         }
 
-        // Get instance ID API
-        InstanceID instanceID = InstanceID.getInstance(context);
-
-        // Get a GCM registration token
-        String token = instanceID.getToken(GCMGateway.SENDER_ID, GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
+        // Get an FCM registration token
+        final String token = FirebaseInstanceId.getInstance().getToken(FCMGateway.SENDER_ID, FCMGateway.SCOPE);
 
         // Log to logcat
-        Log.d(Logging.TAG, "GCM registration success: " + token);
-
-        // Get GCM PubSub handler
-        GcmPubSub pubSub = GcmPubSub.getInstance(context);
-
-        // Subscribe to alerts topic
-        // (limited to 1M subscriptions app-wide - think about how to scale this when the time comes)
-        pubSub.subscribe(token, GCMGateway.ALERTS_TOPIC, null);
-
-        // Log it
-        Log.d(Logging.TAG, "GCM subscription success: " + GCMGateway.ALERTS_TOPIC);
+        Log.d(Logging.TAG, "FCM registration success: " + token);
 
         // Prepare an object to store and send the registration token to our API
         RegistrationRequest register = new RegistrationRequest(token, API.PLATFORM_IDENTIFIER);
@@ -49,13 +39,28 @@ public class GCMRegistration {
         // Send the request to our API
         HTTP.post(API.API_ENDPOINT + "/register", Singleton.getJackson().writeValueAsString(register));
 
-        // Persist it locally
-        saveRegistrationToken(context, token);
+        // Subscribe to alerts topic
+        FirebaseMessaging.getInstance().subscribeToTopic(FCMGateway.ALERTS_TOPIC)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (!task.isSuccessful()) {
+                            Log.e(Logging.TAG, "FCM subscribe failed: ", task.getException());
+                            return;
+                        }
+
+                        // Log it
+                        Log.d(Logging.TAG, "FCM subscribe success: " + FCMGateway.ALERTS_TOPIC);
+
+                        // Persist token locally
+                        saveRegistrationToken(context, token);
+                    }
+                });
     }
 
     public static String getRegistrationToken(Context context) {
         // Get it from SharedPreferences (may be null)
-        return Singleton.getSharedPreferences(context).getString(context.getString(R.string.gcmTokenPref), null);
+        return Singleton.getSharedPreferences(context).getString(context.getString(R.string.fcmTokenPref), null);
     }
 
     public static boolean isRegistered(Context context) {
@@ -68,7 +73,7 @@ public class GCMRegistration {
         SharedPreferences.Editor editor = Singleton.getSharedPreferences(context).edit();
 
         // Store boolean value
-        editor.putString(context.getString(R.string.gcmTokenPref), registrationToken);
+        editor.putString(context.getString(R.string.fcmTokenPref), registrationToken);
 
         // Save and flush
         editor.commit();

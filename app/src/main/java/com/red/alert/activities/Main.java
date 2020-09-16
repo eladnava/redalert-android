@@ -5,8 +5,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
+import androidx.appcompat.app.AppCompatActivity;
+
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,13 +28,11 @@ import com.red.alert.config.Alerts;
 import com.red.alert.config.Integrations;
 import com.red.alert.config.Logging;
 import com.red.alert.config.RecentAlerts;
-import com.red.alert.logic.alerts.AlertLogic;
 import com.red.alert.logic.communication.broadcasts.SettingsEvents;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
 import com.red.alert.logic.communication.intents.MainActivityParameters;
 import com.red.alert.logic.integration.BluetoothIntegration;
-import com.red.alert.logic.notifications.RocketNotifications;
-import com.red.alert.logic.push.GCMRegistration;
+import com.red.alert.logic.push.FCMRegistration;
 import com.red.alert.logic.push.PushyRegistration;
 import com.red.alert.logic.services.ServiceManager;
 import com.red.alert.logic.settings.AppPreferences;
@@ -270,8 +270,8 @@ public class Main extends AppCompatActivity {
     }
 
     void showImportantDialogs() {
-        // Do we need to register for GCM or Pushy?
-        if (!GCMRegistration.isRegistered(this) || !PushyRegistration.isRegistered(this)) {
+        // Do we need to register for FCM or Pushy?
+        if (!FCMRegistration.isRegistered(this) || !PushyRegistration.isRegistered(this)) {
             // Register async
             new RegisterPushAsync().execute();
 
@@ -625,8 +625,8 @@ public class Main extends AppCompatActivity {
             // Make sure we have Google Play Services installed
             if (GooglePlayServices.isAvailable(Main.this)) {
                 try {
-                    // Register for GCM push notifications
-                    GCMRegistration.registerForPushNotifications(Main.this);
+                    // Register for FCM push notifications
+                    FCMRegistration.registerForPushNotifications(Main.this);
                 }
                 catch (Exception exc) {
                     error = exc;

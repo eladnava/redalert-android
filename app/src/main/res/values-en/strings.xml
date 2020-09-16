@@ -162,9 +162,9 @@
     <string name="showPopup">Show popup</string>
     <string name="showPopupDesc">Rocket alerts will be displayed in a pop-up window.</string>
     <string name="loading">Loading..</string>
-    <string name="testingGCM">Testing push gateway... (1/2)</string>
+    <string name="testingFCM">Testing push gateway... (1/2)</string>
     <string name="testingPushy">Testing push gateway... (2/2)</string>
-    <string name="gcmTestFailed">The self-test failed partially. No alert was received from Google\'s push gateway, but an alert was successfully received via the secondary push gateway. Please try again later.</string>
+    <string name="fcmTestFailed">The self-test failed partially. No alert was received from Google\'s push gateway, but an alert was successfully received via the secondary push gateway. Please try again later.</string>
     <string name="pushyTestFailed">The self-test failed partially. No alert was received from the secondary push gateway, but an alert was successfully received via Google\'s push gateway. Please try again later.</string>
     <string name="debugInfo">Additional Info: </string>
     <string name="testSuccessful">The test has completed successfully!</string>

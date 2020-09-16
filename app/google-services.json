@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "23150228579",
+    "firebase_url": "https://redalert-api.firebaseio.com",
+    "project_id": "redalert-api",
+    "storage_bucket": "redalert-api.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:23150228579:android:44c53eddc1bb72f6",
+        "android_client_info": {
+          "package_name": "com.red.alert"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "23150228579-60doeebh24udmpb2t3aq7672c2a5edsd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoL_3SJ4Vlp7lP777Kp9pc1LIchdGM3og"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "23150228579-60doeebh24udmpb2t3aq7672c2a5edsd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

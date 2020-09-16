@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.view.MenuItemCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -164,7 +164,7 @@ public class AlertView extends AppCompatActivity {
         String cityName = LocationData.getLocalizedCityName(mAlertCity, this);
 
         // Construct share message
-        return getString(R.string.alertSoundedAt) + cityName + " (" + LocationData.getLocalizedZoneByCityName(mAlertCity, this) + ") " + getString(R.string.atTime) + " " + mAlertDateString + " " + getString(R.string.alertSentVia);
+        return getString(R.string.alertSoundedAt) + " " + cityName + " (" + LocationData.getLocalizedZoneByCityName(mAlertCity, this) + ") " + getString(R.string.atTime) + " " + mAlertDateString + " " + getString(R.string.alertSentVia);
     }
 
     void initializeShareButton(Menu OptionsMenu) {

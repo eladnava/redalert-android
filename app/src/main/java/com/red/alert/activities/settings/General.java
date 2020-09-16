@@ -13,7 +13,7 @@ import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
-import android.support.v4.view.MenuItemCompat;
+import androidx.core.view.MenuItemCompat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,7 +31,7 @@ import com.red.alert.logic.communication.broadcasts.LocationSelectionEvents;
 import com.red.alert.logic.communication.broadcasts.SelfTestEvents;
 import com.red.alert.logic.communication.broadcasts.SettingsEvents;
 import com.red.alert.logic.integration.BluetoothIntegration;
-import com.red.alert.logic.push.GCMRegistration;
+import com.red.alert.logic.push.FCMRegistration;
 import com.red.alert.logic.push.PushyRegistration;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.model.req.SelfTestRequest;
@@ -53,7 +53,7 @@ import com.red.alert.utils.threading.AsyncTaskAdapter;
 public class General extends AppCompatPreferenceActivity {
     boolean mIsTesting;
     boolean mIsDestroyed;
-    boolean mGcmTestPassed;
+    boolean mFcmTestPassed;
     boolean mPushyTestPassed;
 
     MenuItem mLoadingItem;
@@ -78,9 +78,9 @@ public class General extends AppCompatPreferenceActivity {
                 refreshAreaValues();
             }
 
-            // GCM test passed?
-            if (Key.equalsIgnoreCase(SelfTestEvents.GCM_TEST_PASSED)) {
-                mGcmTestPassed = true;
+            // FCM test passed?
+            if (Key.equalsIgnoreCase(SelfTestEvents.FCM_TEST_PASSED)) {
+                mFcmTestPassed = true;
             }
 
             // Pushy test passed?
@@ -428,8 +428,8 @@ public class General extends AppCompatPreferenceActivity {
         body += "location.enabled=" + AppPreferences.getLocationAlertsEnabled(this) + ", ";
         body += "volume.primary=" + AppPreferences.getPrimaryAlertVolume(this, -1) + ", ";
         body += "volume.secondary=" + AppPreferences.getSecondaryAlertVolume(this, -1) + ", ";
-        body += "gcm=" + GCMRegistration.isRegistered(this) + ", ";
-        body += "gcm.token=" + GCMRegistration.getRegistrationToken(this) + ", ";
+        body += "fcm=" + FCMRegistration.isRegistered(this) + ", ";
+        body += "fcm.token=" + FCMRegistration.getRegistrationToken(this) + ", ";
         body += "pushy=" + PushyRegistration.isRegistered(this) + ", ";
         body += "pushy.token=" + PushyRegistration.getRegistrationToken(this) + ", ";
         body += "android.sdk=" + Build.VERSION.SDK_INT + ", ";
@@ -470,21 +470,21 @@ public class General extends AppCompatPreferenceActivity {
         HTTP.post(API.API_ENDPOINT + "/test", Singleton.getJackson().writeValueAsString(test));
     }
 
-    void sendTestPushViaGcm() throws Exception {
+    void sendTestPushViaFcm() throws Exception {
         // Log to logcat
-        Log.d(Logging.TAG, "Testing GCM...");
+        Log.d(Logging.TAG, "Testing FCM...");
 
         // Reset test flag
-        mGcmTestPassed = false;
+        mFcmTestPassed = false;
 
         // Not registered?
-        if (!GCMRegistration.isRegistered(this)) {
+        if (!FCMRegistration.isRegistered(this)) {
             // No need for localization - only shows up in logcat for now
-            throw new Exception("The device is not registered for push notifications via GCM.");
+            throw new Exception("The device is not registered for push notifications via FCM.");
         }
 
         // Grab registration token
-        String token = GCMRegistration.getRegistrationToken(this);
+        String token = FCMRegistration.getRegistrationToken(this);
 
         // Get user's locale
         String locale = getResources().getConfiguration().locale.getLanguage();
@@ -496,12 +496,12 @@ public class General extends AppCompatPreferenceActivity {
         HTTP.post(API.API_ENDPOINT + "/test", Singleton.getJackson().writeValueAsString(test));
     }
 
-    boolean didPassGcmTest() {
+    boolean didPassFcmTest() {
         // Calculate the max timestamp
         long maxTimestamp = System.currentTimeMillis() + Testing.PUSH_GATEWAY_TIMEOUT_SECONDS * 1000;
 
         // Wait until boolean value changes or enough time passes
-        while (!mGcmTestPassed && System.currentTimeMillis() < maxTimestamp) {
+        while (!mFcmTestPassed && System.currentTimeMillis() < maxTimestamp) {
             // Sleep to relieve the thread
             try {
                 Thread.sleep(100);
@@ -511,7 +511,7 @@ public class General extends AppCompatPreferenceActivity {
         }
 
         // Return the outcome of the test
-        return mGcmTestPassed;
+        return mFcmTestPassed;
     }
 
     boolean didPassPushyTest() {
@@ -639,31 +639,31 @@ public class General extends AppCompatPreferenceActivity {
         @Override
         protected Integer doInBackground(Integer... Parameter) {
             // Test results
-            boolean gcmFailed = false, pushyFailed = false;
+            boolean fcmFailed = false, pushyFailed = false;
 
-            // IsTesting GCM
-            publishProgress(getString(R.string.testingGCM));
+            // IsTesting FCM
+            publishProgress(getString(R.string.testingFCM));
 
             try {
                 // Send a test push
-                sendTestPushViaGcm();
+                sendTestPushViaFcm();
             }
             catch (Exception exc) {
-                // GCM test is done
-                gcmFailed = true;
+                // FCM test is done
+                fcmFailed = true;
 
                 // Log to console
-                Log.e(Logging.TAG, "GCM test failed", exc);
+                Log.e(Logging.TAG, "FCM test failed", exc);
             }
 
             // Wait for test push to arrive
-            if (!gcmFailed) {
-                if (!didPassGcmTest()) {
-                    gcmFailed = true;
+            if (!fcmFailed) {
+                if (!didPassFcmTest()) {
+                    fcmFailed = true;
                 }
             }
 
-            // Done with GCM, testing Pushy
+            // Done with FCM, testing Pushy
             publishProgress(getString(R.string.testingPushy));
 
             try {
@@ -686,24 +686,24 @@ public class General extends AppCompatPreferenceActivity {
             }
 
             // At least one passed?
-            if (!gcmFailed || !pushyFailed) {
+            if (!fcmFailed || !pushyFailed) {
                 // Display "successful test" message
                 AlertLogic.processIncomingAlert(getString(R.string.testSuccessful), AlertTypes.TEST, General.this);
             }
 
             // Both succeeded?
-            if (!gcmFailed && !pushyFailed) {
+            if (!fcmFailed && !pushyFailed) {
                 return R.string.testSuccessfulLong;
             }
 
             // Both failed?
-            else if (gcmFailed && pushyFailed) {
+            else if (fcmFailed && pushyFailed) {
                 return R.string.testFailed;
             }
 
-            // Only GCM failed?
-            else if (gcmFailed) {
-                return R.string.gcmTestFailed;
+            // Only FCM failed?
+            else if (fcmFailed) {
+                return R.string.fcmTestFailed;
             }
 
             // Only Pushy failed?

@@ -13,7 +13,7 @@ public class SelfTestRequest {
     public String locale;
 
     public SelfTestRequest(String token, String locale, String platform) {
-        // Set GCM registration token
+        // Set FCM/Pushy registration token
         this.token = token;
 
         // Set the push type
