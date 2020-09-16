@@ -46,7 +46,6 @@ import com.red.alert.ui.dialogs.custom.LocationDialogs;
 import com.red.alert.ui.dialogs.custom.UpdateDialogs;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.ui.notifications.AppNotifications;
-import com.red.alert.utils.bugtracking.SplunkMINT;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.feedback.Volume;
@@ -91,9 +90,6 @@ public class Main extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Initialize bug tracking
-        SplunkMINT.logExceptions(this);
 
         // Initialize app UI
         initializeUI();
