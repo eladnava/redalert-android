@@ -211,6 +211,10 @@ public class SearchableMultiSelectPreference extends ListPreference {
                         item.checked = val;
 
                         canCheckAll();
+
+                        // Invalidate list views (to update checkbox display)
+                        ListView lv = getDialog().findViewById(R.id.searchListView);
+                        lv.invalidateViews();
                     }
                 });
 
