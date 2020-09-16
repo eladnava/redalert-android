@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:redalert="http://schemas.android.com/apk/res/com.red.alert"
+    xmlns:redalert="http://schemas.android.com/apk/res-auto"
     android:title="@string/settings">
     <PreferenceCategory
         android:key="@string/mainCategoryPref"
