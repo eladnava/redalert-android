@@ -1,7 +1,9 @@
 package com.red.alert.logic.location;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -10,6 +12,8 @@ import com.red.alert.R;
 import com.red.alert.config.LocationAlerts;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.integration.GooglePlayServices;
+
+import androidx.core.app.ActivityCompat;
 
 public class LocationLogic {
     public static int getUpdateIntervalMinutes(Context context, float overrideSetting) {
@@ -130,8 +134,12 @@ public class LocationLogic {
             return null;
         }
 
+        // No permission?
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return null;
+        }
+
         // Return last location
         return locationManager.getLastKnownLocation(bestProvider);
     }
-
 }

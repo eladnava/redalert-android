@@ -1,23 +1,34 @@
 package com.red.alert.ui.dialogs.custom;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.LocationManager;
+import android.os.Build;
 import android.widget.Toast;
 
 import com.red.alert.R;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 public class LocationDialogs {
     private static AlertDialog mLocationServicesDialog;
 
-    public static void requestEnableLocationServices(final Context context) {
+    public static void requestEnableLocationServices(final Activity context) {
         // Location alerts disabled?
         if (!AppPreferences.getLocationAlertsEnabled(context)) {
             return;
+        }
+
+        // Check permissions
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestLocationPermissionIfNecessary(context);
         }
 
         // Get location manager
@@ -83,6 +94,17 @@ public class LocationDialogs {
         catch (Exception exc) {
             // Show toast instead
             Toast.makeText(context, context.getString(R.string.enableGPSDesc), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private static void requestLocationPermissionIfNecessary(Activity context) {
+        // Check if user hasn't yet granted permission
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // Display permission dialog
+            ActivityCompat.requestPermissions(context,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+                    100);
         }
     }
 }
