@@ -20,7 +20,7 @@ android {
 
 dependencies {
     // Pushy SDK
-    compile 'me.pushy:sdk:1.0.56'
+    implementation 'me.pushy:sdk:1.0.56'
 
     // AppCompat v7 Dependency
     implementation 'androidx.appcompat:appcompat:1.2.0'
@@ -28,12 +28,10 @@ dependencies {
     // Firebase Cloud Messaging
     implementation "com.google.firebase:firebase-messaging:20.2.4"
 
-    // Google Play Services Dependencies
-    //noinspection GradleCompatible
-    compile 'com.google.android.gms:play-services-gcm:9.6.1'
-    compile 'com.google.android.gms:play-services-location:9.6.1'
-    compile 'com.google.android.gms:play-services-places:9.6.1'
+    // Google Location & Places APIs
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.gms:play-services-places:17.0.0'
 
     // All .jar files in ./libs
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
