@@ -1,14 +1,19 @@
 package com.red.alert.activities;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import androidx.core.view.MenuItemCompat;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.os.PowerManager;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -105,6 +110,12 @@ public class Main extends AppCompatActivity {
 
         // Got any dialogs to display?
         showImportantDialogs();
+
+        // Check for app version updates
+        initializeUpdateChecker();
+
+        // Always re-register FCM or Pushy on app start
+        new RegisterPushAsync().execute();
     }
 
     void initializeUpdateChecker() {
@@ -270,12 +281,13 @@ public class Main extends AppCompatActivity {
     }
 
     void showImportantDialogs() {
-        // Do we need to register for FCM or Pushy?
-        if (!FCMRegistration.isRegistered(this) || !PushyRegistration.isRegistered(this)) {
-            // Register async
-            new RegisterPushAsync().execute();
+        // Haven't displayed tutorial?
+        if (!AppPreferences.getTutorialDisplayed(this)) {
+            return;
+        }
 
-            // Avoid duplicate dialogs
+        // Haven't registered for notifications?
+        if (!FCMRegistration.isRegistered(this) || !PushyRegistration.isRegistered(this)) {
             return;
         }
 
@@ -288,11 +300,33 @@ public class Main extends AppCompatActivity {
             return;
         }
 
-        // Show dialog if not shown yet
-        showRegistrationSuccessDialog();
+        // Battery exemption dialog for Pushy
+        if (PushyRegistration.isRegistered(this)) {
+            // Android M (6) and up only
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                // Get power manager instance
+                PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
 
-        // Check for updates
-        initializeUpdateChecker();
+                // Check if app isn't already whitelisted from battery optimizations
+                if (!powerManager.isIgnoringBatteryOptimizations(getPackageName())) {
+                    // Get app name as string
+                    String appName = getPackageManager().getApplicationLabel(getApplicationInfo()).toString();
+
+                    // Instruct user to whitelist app from optimizations
+                    new AlertDialog.Builder(this)
+                            .setTitle("Disable battery optimizations")
+                            .setMessage("If you'd like to receive notifications in the background, please click OK and select \"All apps\" -> " + appName + " -> Don't optimize.")
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    // Display the battery whitelist screen
+                                    startActivity(new Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS));
+                                }
+                            })
+                            .setNegativeButton("Cancel", null).show();
+                }
+            }
+        }
     }
 
     void pollRecentAlerts() {
@@ -604,8 +638,11 @@ public class Main extends AppCompatActivity {
             // Set default message
             mLoading.setMessage(getString(R.string.signing_up));
 
-            // Show the progress dialog
-            mLoading.show();
+            // First time registering?
+            if (!FCMRegistration.isRegistered(Main.this) || !PushyRegistration.isRegistered(Main.this)) {
+                // Show the progress dialog
+                mLoading.show();
+            }
         }
 
         @Override
@@ -661,13 +698,12 @@ public class Main extends AppCompatActivity {
                 AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, Main.this, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        // Try to re-register immediately
-                        showImportantDialogs();
+                        // Do nothing on click
                     }
                 });
             }
             else {
-                // Success, show success dialog
+                // Success, show success dialog if haven't yet
                 showRegistrationSuccessDialog();
             }
         }
