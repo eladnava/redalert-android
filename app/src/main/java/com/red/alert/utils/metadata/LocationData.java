@@ -33,7 +33,7 @@ public class LocationData {
 
     public static String[] getAllCityNames(Context context) {
         // Check for english locale
-        boolean isEnglish = Localization.isEnglishLocale(context);
+        boolean isHebrew = Localization.isHebrewLocale(context);
 
         // Get all city objects
         List<City> cities = getAllCities(context);
@@ -43,8 +43,8 @@ public class LocationData {
 
         // Loop over cities
         for (City city : cities) {
-            // English?
-            if (!isEnglish) {
+            // Hebrew?
+            if (isHebrew) {
                 // Add to list
                 names.add(city.name);
             }
@@ -77,7 +77,7 @@ public class LocationData {
 
     public static String[] getAllCityZones(Context context) {
         // Get user's locale
-        boolean isEnglish = Localization.isEnglishLocale(context);
+        boolean isHebrew = Localization.isHebrewLocale(context);
 
         // Prepare cities array
         List<City> cities = getAllCities(context);
@@ -87,8 +87,8 @@ public class LocationData {
 
         // Loop over cities
         for (City city : cities) {
-            // English?
-            if (!isEnglish) {
+            // Hebrew?
+            if (isHebrew) {
                 // Add to list
                 values.add(city.zone);
             }
@@ -195,7 +195,7 @@ public class LocationData {
 
     public static String getLocalizedZoneWithCountdown(String cityName, Context context) {
         // Get user's locale
-        boolean isEnglish = Localization.isEnglishLocale(context);
+        boolean isHebrew = Localization.isHebrewLocale(context);
 
         // Prepare cities array
         List<City> cities = getAllCities(context);
@@ -205,7 +205,7 @@ public class LocationData {
             // Got a match?
             if (city.name.equals(cityName)) {
                 // Hebrew?
-                if (!isEnglish) {
+                if (isHebrew) {
                     // Return area countdown
                     return city.zone + " (" + city.time + ")";
                 }
@@ -239,10 +239,10 @@ public class LocationData {
 
     public static String getLocalizedCityName(String cityName, Context context) {
         // Get user's locale
-        boolean isEnglish = Localization.isEnglishLocale(context);
+        boolean isHebrew = Localization.isHebrewLocale(context);
 
         // Hebrew?
-        if (!isEnglish) {
+        if (isHebrew) {
             return cityName;
         }
 
@@ -280,7 +280,7 @@ public class LocationData {
 
     public static String getNearbyCityNames(Location myLocation, Context context) {
         // Get user's locale
-        boolean isEnglish = Localization.isEnglishLocale(context);
+        boolean isHebrew = Localization.isHebrewLocale(context);
 
         // Prepare cities array
         List<City> cities = getAllCities(context);
@@ -305,8 +305,8 @@ public class LocationData {
 
             // Distance is less than max?
             if (distance <= maxDistance) {
-                // English?
-                if (!isEnglish) {
+                // Hebrew?
+                if (isHebrew) {
                     // Add to list
                     cityNames.add(city.name);
                 }
@@ -383,7 +383,7 @@ public class LocationData {
 
     public static String getLocalizedZoneByCityName(String cityName, Context context) {
         // Get user's locale
-        boolean isEnglish = Localization.isEnglishLocale(context);
+        boolean isHebrew = Localization.isHebrewLocale(context);
 
         // Prepare cities array
         List<City> cities = getAllCities(context);
@@ -392,7 +392,7 @@ public class LocationData {
         for (City city : cities) {
             // Got a match?
             if (city.name.equals(cityName)) {
-                return isEnglish ? city.zoneEnglish: city.zone;
+                return isHebrew ? city.zone: city.zoneEnglish;
             }
         }
 

@@ -107,12 +107,12 @@ public class AlertView extends AppCompatActivity {
         LatLng location = new LatLng(31.4117256, 35.0818155);
 
         // Get user's locale
-        boolean isEnglish = Localization.isEnglishLocale(this);
+        boolean isHebrew = Localization.isHebrewLocale(this);
 
         // No location?
         if (city.latitude != 0) {
             // Get name
-            String cityName = (isEnglish) ? city.nameEnglish : city.name;
+            String cityName = (isHebrew) ? city.name : city.nameEnglish;
 
             // Set title manually after overriding locale
             setTitle(cityName);
