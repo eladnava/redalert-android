@@ -94,6 +94,9 @@ public class General extends AppCompatPreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Support for RTL languages
+        RTLSupport.mirrorActionBar(this);
+
         // Load UI elements
         initializeUI();
 
