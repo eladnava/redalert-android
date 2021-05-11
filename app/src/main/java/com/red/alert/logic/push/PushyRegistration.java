@@ -16,11 +16,15 @@ public class PushyRegistration {
         // Acquire a unique registration ID for this device
         String token = Pushy.register(context);
 
+        // Log to logcat
+        Log.d(Logging.TAG, "Pushy registration success: " + token);
+
         // Subscribe to global alerts topic
         Pushy.subscribe(PushyGateway.ALERTS_TOPIC, context);
 
-        // Log to logcat
-        Log.d(Logging.TAG, "Pushy registration success: " + token);
+        // Log it
+        Log.d(Logging.TAG, "Pushy subscribe success: " + PushyGateway.ALERTS_TOPIC);
+
 
         // Persist it locally (no need to send it to our API)
         saveRegistrationToken(context, token);
