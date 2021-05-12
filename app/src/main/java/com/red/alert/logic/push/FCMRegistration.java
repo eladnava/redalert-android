@@ -34,10 +34,11 @@ public class FCMRegistration {
         Log.d(Logging.TAG, "FCM registration success: " + token);
 
         // Prepare an object to store and send the registration token to our API
-        RegistrationRequest register = new RegistrationRequest(token, API.PLATFORM_IDENTIFIER);
+        // RegistrationRequest register = new RegistrationRequest(token, API.PLATFORM_IDENTIFIER);
 
         // Send the request to our API
-        HTTP.post(API.API_ENDPOINT + "/register", Singleton.getJackson().writeValueAsString(register));
+        // Disable for now -- there is no need to send the FCM token to the API as we make use of FCM Pub/Sub to send alerts
+        // HTTP.post(API.API_ENDPOINT + "/register", Singleton.getJackson().writeValueAsString(register));
 
         // Subscribe to alerts topic
         FirebaseMessaging.getInstance().subscribeToTopic(FCMGateway.ALERTS_TOPIC)
