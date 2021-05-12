@@ -34,7 +34,7 @@ public class LocationLogic {
 
     public static int getMaxDistanceKilometers(Context context, float overrideSetting) {
         // Get stored value
-        float sliderValue = Singleton.getSharedPreferences(context).getFloat(context.getString(R.string.maxDistancePref), 0.1f);
+        float sliderValue = Singleton.getSharedPreferences(context).getFloat(context.getString(R.string.maxDistancePref), 0.04f);
 
         // Override it?
         if (overrideSetting != -1) {
