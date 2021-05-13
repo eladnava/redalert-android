@@ -1,12 +1,20 @@
 package com.red.alert.logic.notifications;
 
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+
+import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
+import me.pushy.sdk.Pushy;
+
+import android.media.AudioAttributes;
+import android.net.Uri;
+import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -14,6 +22,7 @@ import com.red.alert.R;
 import com.red.alert.activities.AlertPopup;
 import com.red.alert.activities.Main;
 import com.red.alert.config.Logging;
+import com.red.alert.config.Sound;
 import com.red.alert.logic.communication.intents.MainActivityParameters;
 import com.red.alert.logic.communication.intents.RocketNotificationParameters;
 import com.red.alert.logic.feedback.sound.SoundLogic;
@@ -22,9 +31,11 @@ import com.red.alert.receivers.NotificationDeletedReceiver;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.formatting.StringUtils;
 
-import me.pushy.sdk.Pushy;
-
 public class RocketNotifications {
+    // Silent notification channel config for no-sound alerts
+    public static final String SILENT_NOTIFICATION_CHANNEL_ID = "redalert_silent";
+    public static final String SILENT_NOTIFICATION_CHANNEL_NAME = "Silent Notifications";
+
     public static void notify(Context context, String city, String notificationTitle, String notificationContent, String alertType, String overrideSound) {
         // Get notification manager
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
@@ -68,7 +79,7 @@ public class RocketNotifications {
         notificationManager.cancel(notificationID);
 
         // Automatically configure notification channel (if required)
-        Pushy.setNotificationChannel(builder, context);
+        setNotificationChannel(alertType, builder, context);
 
         try {
             // Issue the notification
@@ -115,5 +126,40 @@ public class RocketNotifications {
 
         // Return it
         return pendingIntent;
+    }
+
+    private static void setNotificationChannel(String alertType, NotificationCompat.Builder builder, Context context) {
+        // Android O and up (no channels before then)
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            return;
+        }
+
+        // Get path to alert sound resource for current alert type
+        Uri alarmSoundURI = SoundLogic.getAlertSound(alertType, null, context);
+
+        // "Silent" sound selected for this alert type?
+        if (SoundLogic.shouldPlayAlertSound(alertType, context) && alarmSoundURI == null) {
+            // Use silent alert notification channel
+            setSilentNotificationChannel(builder, context);
+        }
+        else {
+            // Use standard high-importance channel with sound + vibrate
+            Pushy.setNotificationChannel(builder, context);
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private static void setSilentNotificationChannel(NotificationCompat.Builder builder, Context context) {
+        // Get notification manager instance
+        NotificationManager manager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
+
+        // Initialize channel (low importance so Android does not force sound and vibration)
+        NotificationChannel channel = new NotificationChannel(SILENT_NOTIFICATION_CHANNEL_ID, SILENT_NOTIFICATION_CHANNEL_NAME, NotificationManager.IMPORTANCE_LOW);
+
+        // Create channel (does nothing if already exists)
+        manager.createNotificationChannel(channel);
+
+        // Set notification channel on builder
+        builder.setChannelId(SILENT_NOTIFICATION_CHANNEL_ID);
     }
 }
