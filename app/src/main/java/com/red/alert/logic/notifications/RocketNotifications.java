@@ -138,7 +138,7 @@ public class RocketNotifications {
         Uri alarmSoundURI = SoundLogic.getAlertSound(alertType, null, context);
 
         // "Silent" sound selected for this alert type?
-        if (SoundLogic.shouldPlayAlertSound(alertType, context) && alarmSoundURI == null) {
+        if (alarmSoundURI == null) {
             // Use silent alert notification channel
             setSilentNotificationChannel(builder, context);
         }
