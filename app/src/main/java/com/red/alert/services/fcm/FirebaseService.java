@@ -58,6 +58,9 @@ public class FirebaseService extends FirebaseMessagingService {
             return;
         }
 
+        // Log it
+        Log.e(Logging.TAG, "Received push via FCM gateway");
+
         // Receive the alert
         AlertLogic.processIncomingAlert(alertCities, alertType, this);
     }
