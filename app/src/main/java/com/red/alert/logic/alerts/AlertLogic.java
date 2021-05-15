@@ -48,6 +48,8 @@ public class AlertLogic {
                 if (!overrideAlertType.contains("test")) {
                     // Did we recently notify for this city?
                     if (cityRecentlyNotified(city, context)) {
+                        // Log that we're skipping this one
+                        Log.i(Logging.TAG, "Ignoring recently notified city: " + city);
                         continue;
                     }
 

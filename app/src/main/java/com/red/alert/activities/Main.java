@@ -51,6 +51,7 @@ import com.red.alert.ui.dialogs.custom.LocationDialogs;
 import com.red.alert.ui.dialogs.custom.UpdateDialogs;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.ui.notifications.AppNotifications;
+import com.red.alert.utils.backend.RedAlertAPI;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.feedback.Volume;
@@ -620,7 +621,7 @@ public class Main extends AppCompatActivity {
             }
             else {
                 // Show error toast
-                Toast.makeText(Main.this, getString(errorStringResource), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Main.this, getString(errorStringResource), Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -660,14 +661,41 @@ public class Main extends AppCompatActivity {
             }
 
             // Make sure we have Google Play Services installed
-            if (GooglePlayServices.isAvailable(Main.this)) {
-                try {
-                    // Register for FCM push notifications
-                    FCMRegistration.registerForPushNotifications(Main.this);
+            if (!GooglePlayServices.isAvailable(Main.this)) {
+                return new Exception("This app requires Google Play Services.");
+            }
+
+            // Keep track of previously-saved FCM token to detect changes and update the API
+            String previousFirebaseToken = FCMRegistration.getRegistrationToken(Main.this);
+
+            try {
+                // Register for FCM push notifications
+                String token = FCMRegistration.registerForPushNotifications(Main.this);
+
+                // First time registering with the API?
+                if (!RedAlertAPI.isRegistered(Main.this)) {
+                    // Register with RedAlert API and store user ID & hash
+                    RedAlertAPI.register(token,Main.this);
                 }
-                catch (Exception exc) {
-                    error = exc;
+                else {
+                    // FCM token has changed?
+                    if (!previousFirebaseToken.equals(FCMRegistration.getRegistrationToken(Main.this))) {
+                        // Update token server-side
+                        RedAlertAPI.updateToken(token, Main.this);
+                    }
                 }
+
+                // First time subscribing with the API?
+                if (!RedAlertAPI.isSubscribed(Main.this)) {
+                    // Update notification preferences
+                    RedAlertAPI.updateNotificationPreferences(Main.this);
+
+                    // Subscribe for alerts based on current city/region selections
+                    RedAlertAPI.subscribe(Main.this);
+                }
+            }
+            catch (Exception exc) {
+                error = exc;
             }
 
             // Return exc (if any)
@@ -692,15 +720,10 @@ public class Main extends AppCompatActivity {
                 Log.e(Logging.TAG, "Push registration failed", exc);
 
                 // Build an error message
-                String errorMessage = getString(R.string.pushRegistrationFailed) + "\n\n" + exc.toString();
+                String errorMessage = getString(R.string.pushRegistrationFailed) + "\n\n" + exc.getMessage() + "\n\n" + exc.getCause();
 
                 // Build the dialog
-                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, Main.this, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        // Do nothing on click
-                    }
-                });
+                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, Main.this, null);
             }
             else {
                 // Success, show success dialog if haven't yet

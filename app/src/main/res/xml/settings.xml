@@ -36,6 +36,7 @@
             android:key="@string/selectedCitiesPref"
             android:dialogTitle="@string/selectedCities"
             android:title="@string/selectedCities"
+            android:dependency="@string/enabledPref"
             android:summary="@string/cityDesc"/>
         <com.red.alert.ui.elements.SoundListPreference
             android:title="@string/soundSelection"
@@ -53,6 +54,7 @@
         <Preference
             android:key="@string/advancedPref"
             android:title="@string/advancedSettings"
+            android:dependency="@string/enabledPref"
             android:summary="@string/advancedSettingsDesc"/>
     </PreferenceCategory>
     <PreferenceCategory

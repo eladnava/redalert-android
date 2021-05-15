@@ -9,18 +9,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.red.alert.R;
-import com.red.alert.config.API;
 import com.red.alert.config.Logging;
 import com.red.alert.config.push.FCMGateway;
-import com.red.alert.model.req.RegistrationRequest;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.integration.GooglePlayServices;
-import com.red.alert.utils.networking.HTTP;
 
 import androidx.annotation.NonNull;
 
 public class FCMRegistration {
-    public static void registerForPushNotifications(final Context context) throws Exception {
+    public static String registerForPushNotifications(final Context context) throws Exception {
         // Make sure we have Google Play Services
         if (!GooglePlayServices.isAvailable(context)) {
             // Throw exception
@@ -33,30 +30,23 @@ public class FCMRegistration {
         // Log to logcat
         Log.d(Logging.TAG, "FCM registration success: " + token);
 
-        // Prepare an object to store and send the registration token to our API
-        // RegistrationRequest register = new RegistrationRequest(token, API.PLATFORM_IDENTIFIER);
-
-        // Send the request to our API
-        // Disable for now -- there is no need to send the FCM token to the API as we make use of FCM Pub/Sub to send alerts
-        // HTTP.post(API.API_ENDPOINT + "/register", Singleton.getJackson().writeValueAsString(register));
-
-        // Subscribe to alerts topic
-        FirebaseMessaging.getInstance().subscribeToTopic(FCMGateway.ALERTS_TOPIC)
+        // Unsubscribe from alerts topic (FCM Pub/Sub is unreliable for mission-critical alerts)
+        FirebaseMessaging.getInstance().unsubscribeFromTopic(FCMGateway.ALERTS_TOPIC)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (!task.isSuccessful()) {
-                            Log.e(Logging.TAG, "FCM subscribe failed: ", task.getException());
+                            Log.e(Logging.TAG, "FCM unsubscribe failed: ", task.getException());
                             return;
                         }
 
                         // Log it
-                        Log.d(Logging.TAG, "FCM subscribe success: " + FCMGateway.ALERTS_TOPIC);
-
-                        // Persist token locally
-                        saveRegistrationToken(context, token);
+                        Log.d(Logging.TAG, "FCM unsubscribe success: " + FCMGateway.ALERTS_TOPIC);
                     }
                 });
+
+        // Return token for saving and processing
+        return token;
     }
 
     public static String getRegistrationToken(Context context) {

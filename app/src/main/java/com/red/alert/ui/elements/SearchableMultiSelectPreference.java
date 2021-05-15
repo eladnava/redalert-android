@@ -409,7 +409,7 @@ public class SearchableMultiSelectPreference extends ListPreference {
                     if (mClickedDialogEntryIndices[0] == true) {
                         // Set empty value
                         setValue(join(values, separator));
-                        Broadcasts.publish(getContext(), LocationSelectionEvents.REFRESH_AREA_VALUES);
+                        Broadcasts.publish(getContext(), LocationSelectionEvents.LOCATIONS_UPDATED);
                         return;
                     }
                 }
@@ -436,7 +436,9 @@ public class SearchableMultiSelectPreference extends ListPreference {
             //}
         }
 
-        Broadcasts.publish(getContext(), LocationSelectionEvents.REFRESH_AREA_VALUES);
+        if (positiveResult) {
+            Broadcasts.publish(getContext(), LocationSelectionEvents.LOCATIONS_UPDATED);
+        }
     }
 
     public void showDialog() {

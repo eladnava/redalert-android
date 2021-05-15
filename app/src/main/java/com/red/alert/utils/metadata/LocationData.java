@@ -355,7 +355,7 @@ public class LocationData {
         // Loop over items
         for (String item : psvList) {
             // Not already added?
-            if (!uniqueList.contains(item)) {
+            if (!StringUtils.stringIsNullOrEmpty(item) && !uniqueList.contains(item) && !item.equals("none") && !item.equals("null")) {
                 // Add it
                 uniqueList.add(item);
             }

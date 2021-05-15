@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
@@ -37,10 +38,12 @@ import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.model.req.SelfTestRequest;
 import com.red.alert.ui.activities.AppCompatPreferenceActivity;
 import com.red.alert.ui.compatibility.ProgressDialogCompat;
+import com.red.alert.ui.dialogs.AlertDialogBuilder;
 import com.red.alert.ui.dialogs.custom.BluetoothDialogs;
 import com.red.alert.ui.elements.SearchableMultiSelectPreference;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.ui.notifications.AppNotifications;
+import com.red.alert.utils.backend.RedAlertAPI;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.feedback.Volume;
@@ -56,6 +59,9 @@ public class General extends AppCompatPreferenceActivity {
     boolean mFcmTestPassed;
     boolean mPushyTestPassed;
 
+    String mPreviousZones;
+    String mPreviousCities;
+
     MenuItem mLoadingItem;
 
     Preference mRate;
@@ -64,6 +70,7 @@ public class General extends AppCompatPreferenceActivity {
     Preference mAdvanced;
     Preference mTestAlert;
     Preference mLifeshield;
+    CheckBoxPreference mNotificationsEnabled;
 
     PreferenceCategory mMainCategory;
     ListPreference mLanguageSelection;
@@ -74,8 +81,12 @@ public class General extends AppCompatPreferenceActivity {
         @Override
         public void onSharedPreferenceChanged(SharedPreferences Preferences, String Key) {
             // Asked for reload?
-            if (Key.equalsIgnoreCase(LocationSelectionEvents.REFRESH_AREA_VALUES)) {
+            if (Key.equalsIgnoreCase(LocationSelectionEvents.LOCATIONS_UPDATED)) {
+                // Refresh city/region descriptions
                 refreshAreaValues();
+
+                // Update subscriptions on the server-side
+                new UpdateSubscriptionsAsync().execute();
             }
 
             // FCM test passed?
@@ -222,6 +233,7 @@ public class General extends AppCompatPreferenceActivity {
         mCitySelection = ((SearchableMultiSelectPreference) findPreference(getString(R.string.selectedCitiesPref)));
         mZoneSelection = ((SearchableMultiSelectPreference) findPreference(getString(R.string.selectedZonesPref)));
         mLanguageSelection = (ListPreference) findPreference(getString(R.string.langPref));
+        mNotificationsEnabled = (CheckBoxPreference)findPreference(getString(R.string.enabledPref));
 
         // Populate setting values
         initializeSettings();
@@ -239,6 +251,11 @@ public class General extends AppCompatPreferenceActivity {
         mCitySelection.setEntries(LocationData.getAllCityNames(this));
         mCitySelection.setEntryValues(LocationData.getAllCityValues(this));
 
+        // Not registered yet?
+        if (!RedAlertAPI.isRegistered(this)) {
+            mNotificationsEnabled.setEnabled(false);
+        }
+
         // Refresh area values
         refreshAreaValues();
     }
@@ -255,6 +272,12 @@ public class General extends AppCompatPreferenceActivity {
 
         // Update summary text
         mZoneSelection.setSummary(getString(R.string.zonesDesc) + "\r\n(" + LocationData.getSelectedCityNamesByValues(this, selectedZones, mZoneSelection.getEntries(), mZoneSelection.getEntryValues()) + ")");
+
+        // Save in case the update subscriptions request fails
+        if (mPreviousZones == null && mPreviousCities == null) {
+            mPreviousZones = selectedZones;
+            mPreviousCities = selectedCities;
+        }
     }
 
     void initializeListeners() {
@@ -334,6 +357,18 @@ public class General extends AppCompatPreferenceActivity {
             }
         });
 
+        // Notification toggle listener
+        mNotificationsEnabled.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                // Update notification preferences on the server-side
+                new UpdateNotificationsAsync().execute();
+
+                // Tell Android to persist new checkbox value
+                return true;
+            }
+        });
+
         // Rate button
         mRate.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
@@ -350,23 +385,27 @@ public class General extends AppCompatPreferenceActivity {
         mContact.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                // Set up contact click listener
-                Intent contactIntent = new Intent(Intent.ACTION_SEND);
-
-                // Set e-mail content type
-                contactIntent.setType("message/rfc822");
-
                 // Add debug flags
                 String body = getContactEmailBody();
 
-                // Set recipient and subject
-                contactIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{Support.CONTACT_EMAIL});
-                contactIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.appName));
-                contactIntent.putExtra(Intent.EXTRA_TEXT, body);
+                // Set up contact click listener
+                Intent selectorIntent = new Intent(Intent.ACTION_SENDTO);
+                selectorIntent.setData(Uri.parse("mailto:"));
+
+                // Prepare e-mail intent
+                final Intent emailIntent = new Intent(Intent.ACTION_SEND);
+
+                // Add e-mail, subject & debug body
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{Support.CONTACT_EMAIL});
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.appName));
+                emailIntent.putExtra(Intent.EXTRA_TEXT, body);
+
+                // Limit to mail apps only
+                emailIntent.setSelector(selectorIntent);
 
                 try {
-                    // Try sending via an e-mail app
-                    startActivity(Intent.createChooser(contactIntent, getString(R.string.contact)));
+                    // Try to open user's e-mail app
+                    startActivity(Intent.createChooser(emailIntent, getString(R.string.contact)));
                 }
                 catch (ActivityNotFoundException exc) {
                     // Show a toast instead
@@ -426,6 +465,8 @@ public class General extends AppCompatPreferenceActivity {
         body += getString(R.string.debugInfo) + ": ";
 
         // Add setting values & push notification device information
+        body += "user.id=" + RedAlertAPI.getUserId(this) + ", ";
+        body += "user.hash=" + RedAlertAPI.getUserHash(this) + ", ";
         body += "primary.enabled=" + AppPreferences.getNotificationsEnabled(this) + ", ";
         body += "secondary.enabled=" + AppPreferences.getNotificationsEnabled(this) + ", ";
         body += "location.enabled=" + AppPreferences.getLocationAlertsEnabled(this) + ", ";
@@ -737,6 +778,158 @@ public class General extends AppCompatPreferenceActivity {
 
             // Show result dialog
             selfTestCompleted(result);
+        }
+    }
+
+    public class UpdateSubscriptionsAsync extends AsyncTaskAdapter<Integer, String, Exception> {
+        ProgressDialog mLoading;
+
+        public UpdateSubscriptionsAsync() {
+            // Fix progress dialog appearance on old devices
+            mLoading = ProgressDialogCompat.getStyledProgressDialog(General.this);
+
+            // Prevent cancel
+            mLoading.setCancelable(false);
+
+            // Set default message
+            mLoading.setMessage(getString(R.string.loading));
+
+            // Show the progress dialog
+            mLoading.show();
+        }
+
+        @Override
+        protected Exception doInBackground(Integer... Parameter) {
+            try {
+                // Update alert subscriptions
+                RedAlertAPI.subscribe(General.this);
+            }
+            catch (Exception exc) {
+                // Return exception to onPostExecute
+                return exc;
+            }
+
+            // Success
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Exception exc) {
+            // Failed?
+            if (exc != null) {
+                // Log it
+                Log.e(Logging.TAG, "Updating subscriptions failed", exc);
+
+                // Restore previous city/region selections
+                SharedPreferences.Editor editor = Singleton.getSharedPreferences(General.this).edit();
+
+                // Restore original values
+                editor.putString(getString(R.string.selectedZonesPref), mPreviousZones);
+                editor.putString(getString(R.string.selectedCitiesPref), mPreviousCities);
+
+                // Save and flush to disk
+                editor.commit();
+            }
+
+            // Activity dead?
+            if (isFinishing() || mIsDestroyed) {
+                return;
+            }
+
+            // Hide loading dialog
+            if (mLoading.isShowing()) {
+                mLoading.dismiss();
+            }
+
+            // Show error if failed
+            if (exc != null) {
+                // Build an error message
+                String errorMessage = getString(R.string.apiRequestFailed) + "\n\n" + exc.getMessage() + "\n\n" + exc.getCause();
+
+                // Build the dialog
+                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, General.this, null);
+            }
+            else {
+                // Clear previously cached values
+                mPreviousZones = null;
+                mPreviousCities = null;
+            }
+
+            // Refresh city/region setting values
+            refreshAreaValues();
+        }
+    }
+
+    public class UpdateNotificationsAsync extends AsyncTaskAdapter<Integer, String, Exception> {
+        ProgressDialog mLoading;
+
+        public UpdateNotificationsAsync() {
+            // Fix progress dialog appearance on old devices
+            mLoading = ProgressDialogCompat.getStyledProgressDialog(General.this);
+
+            // Prevent cancel
+            mLoading.setCancelable(false);
+
+            // Set default message
+            mLoading.setMessage(getString(R.string.loading));
+
+            // Show the progress dialog
+            mLoading.show();
+        }
+
+        @Override
+        protected Exception doInBackground(Integer... Parameter) {
+            try {
+                // Update notification preferences
+                RedAlertAPI.updateNotificationPreferences(General.this);
+            }
+            catch (Exception exc) {
+                // Return exception to onPostExecute
+                return exc;
+            }
+
+            // Success
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Exception exc) {
+            // Failed?
+            if (exc != null) {
+                // Log it
+                Log.e(Logging.TAG, "Updating notification preferences failed", exc);
+
+                // Restore previous notification toggle state
+                SharedPreferences.Editor editor = Singleton.getSharedPreferences(General.this).edit();
+
+                // Restore original values
+                editor.putBoolean(getString(R.string.enabledPref), ! AppPreferences.getNotificationsEnabled(General.this));
+
+                // Save and flush to disk
+                editor.commit();
+            }
+
+            // Activity dead?
+            if (isFinishing() || mIsDestroyed) {
+                return;
+            }
+
+            // Hide loading dialog
+            if (mLoading.isShowing()) {
+                mLoading.dismiss();
+            }
+
+            // Show error if failed
+            if (exc != null) {
+                // Build an error message
+                String errorMessage = getString(R.string.apiRequestFailed) + "\n\n" + exc.getMessage() + "\n\n" + exc.getCause();
+
+                // Build the dialog
+                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, General.this, null);
+            }
+
+            // Refresh checkbox with new value
+            mNotificationsEnabled.setChecked(AppPreferences.getNotificationsEnabled(General.this));
         }
     }
 }

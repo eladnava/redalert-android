@@ -19,7 +19,7 @@ public class PushyRegistration {
         // Log to logcat
         Log.d(Logging.TAG, "Pushy registration success: " + token);
 
-        // Subscribe to global alerts topic
+        // Subscribe to global alerts topic (we need this for location alerts to work)
         Pushy.subscribe(PushyGateway.ALERTS_TOPIC, context);
 
         // Log it
