@@ -1,7 +1,9 @@
 package com.red.alert.services.location;
 
+import android.Manifest;
 import android.app.Service;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Binder;
 import android.os.Bundle;
@@ -19,6 +21,8 @@ import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.integration.GooglePlayServices;
 
+import androidx.core.content.ContextCompat;
+
 public class LocationService extends Service implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
@@ -33,6 +37,13 @@ public class LocationService extends Service implements
 
         // Must have Google Play Services
         if (!GooglePlayServices.isAvailable(this)) {
+            return;
+        }
+
+        // Check if the user revoked location access
+        // Must have location permission to continue
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
 
