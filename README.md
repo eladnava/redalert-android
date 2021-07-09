@@ -5,6 +5,7 @@
 RedAlert was developed by volunteers to provide real-time rocket alerts for Israeli citizens.
 
 * [Official Site](https://redalert.me)
+* [App Store Listing](https://apps.apple.com/il/app/zb-dwm-htr-wt-bzmn-mt/id937914925)
 * [Google Play Listing](https://play.google.com/store/apps/details?id=com.red.alert)
 
 The app utilizes real-time alert data provided by the Home Front Command (Pikud Haoref), which makes it extremely fast, reliable, and stable.
@@ -17,7 +18,6 @@ The app utilizes real-time alert data provided by the Home Front Command (Pikud 
 
 ## Achievements
 
-* **4.7**/5.0 star rating
 * **450,000+** downloads
 * Published by **Geektime** as [the fastest rocket alert app](http://www.geektime.co.il/push-notifications-at-protective-edge/)
 * Featured by the Israeli government on their [Google+ page](https://plus.google.com/+Israel/posts/U3juWS1YPK4)
@@ -27,7 +27,7 @@ The app utilizes real-time alert data provided by the Home Front Command (Pikud 
 ## Features
 
 #### The fastest, most reliable rocket alert application.
-Over **450,000 downloads** and a **4.7 star rating** to prove it. The only rocket alert application with dedicated push notification servers that dramatically improve alert speed and reliability.
+The only rocket alert application with dedicated push notification servers that dramatically improve alert speed and reliability.
 
 * Search - select preferred alert cities / regions by searching for them
 * Speed - rocket alerts are received before / during the official siren
