@@ -279,6 +279,7 @@
     <string translatable="false" name="miBandPref">mi_band_integration</string>
     <string translatable="false" name="integrationsTestPref">test_integrations</string>
     <string translatable="false" name="locationAlertsPref">gps</string>
+    <string translatable="false" name="batteryOptimizationWarningDisplayedPref">battery_optimization_warning_displayed</string>
     <string translatable="false" name="gpsFrequencyPref">gps_frequency</string>
     <string translatable="false" name="latitudePref">latitude</string>
     <string translatable="false" name="longitudePref">longitude</string>
