@@ -2,39 +2,35 @@
 <resources>
     <string-array name="zoneNames">
         <item>Select All</item>
-        <item>Dan</item>
-        <item>Jerusalem</item>
-        <item>Haifa</item>
-        <item>Lahish</item>
-        <item>HaKrayot</item>
-        <item>HaShfela</item>
-        <item>South HaShfela</item>
-        <item>Hof HaCarmel</item>
-        <item>Yea\'rot HaCarmel</item>
-        <item>Central Negev</item>
-        <item>South Negev</item>
         <item>Eilat</item>
-        <item>Golan</item>
+        <item>Bika\'a</item>
+        <item>Beit She\'an Valley</item>
+        <item>South Golan</item>
+        <item>North Golan</item>
         <item>Upper Galilee</item>
         <item>Lower Galilee</item>
-        <item>Beit Shemesh</item>
-        <item>Gaza Perimeter</item>
-        <item>Confrontation Line</item>
+        <item>Dan</item>
+        <item>South Negev</item>
+        <item>HaCarmel</item>
+        <item>HaMifratz</item>
+        <item>HaAmakim</item>
+        <item>HaShfela</item>
+        <item>Wadi Ara</item>
+        <item>Yehuda</item>
         <item>Dead Sea</item>
-        <item>Ma\'ale Adumim</item>
-        <item>Bikah</item>
-        <item>Jezreel Valley</item>
-        <item>Beit She\'an</item>
-        <item>Hefer</item>
-        <item>Judea</item>
-        <item>Samaria</item>
+        <item>Jerusalem</item>
         <item>Yarkon</item>
+        <item>Lachish</item>
         <item>Menashe</item>
-        <item>Arabah</item>
-        <item>Katzrin</item>
+        <item>West Negev</item>
+        <item>West Lachish</item>
+        <item>Center Galilee</item>
+        <item>Center Negev</item>
+        <item>Gaza Envelope</item>
+        <item>Arava</item>
+        <item>Confrontation Line</item>
+        <item>Shomron</item>
+        <item>Shfelat Yehuda</item>
         <item>Sharon</item>
-        <item>Tabor</item>
-        <item>Vadi Ara</item>
-        <item>HaYarden Valley</item>
     </string-array>
 </resources>

@@ -64,76 +64,68 @@
     </string-array>
     <string-array name="zoneNames">
         <item>בחר הכל</item>
-        <item>דן</item>
-        <item>ירושלים</item>
-        <item>חיפה</item>
-        <item>לכיש</item>
-        <item>הקריות</item>
-        <item>השפלה</item>
-        <item>דרום השפלה</item>
-        <item>חוף הכרמל</item>
-        <item>יערות הכרמל</item>
-        <item>מרכז הנגב</item>
-        <item>דרום הנגב</item>
         <item>אילת</item>
-        <item>גולן</item>
+        <item>בקעה</item>
+        <item>בקעת בית שאן</item>
+        <item>גולן דרום</item>
+        <item>גולן צפון</item>
         <item>גליל עליון</item>
         <item>גליל תחתון</item>
-        <item>בית שמש</item>
-        <item>עוטף עזה</item>
-        <item>קו העימות</item>
-        <item>ים המלח</item>
-        <item>מעלה אדומים</item>
-        <item>בקעה</item>
-        <item>עמק יזרעאל</item>
-        <item>בקעת בית שאן</item>
-        <item>חפר</item>
-        <item>יהודה</item>
-        <item>שומרון</item>
-        <item>ירקון</item>
-        <item>מנשה</item>
-        <item>ערבה</item>
-        <item>קצרין</item>
-        <item>שרון</item>
-        <item>תבור</item>
+        <item>דן</item>
+        <item>דרום הנגב</item>
+        <item>הכרמל</item>
+        <item>המפרץ</item>
+        <item>העמקים</item>
+        <item>השפלה</item>
         <item>ואדי ערה</item>
-        <item>עמק הירדן</item>
+        <item>יהודה</item>
+        <item>ים המלח</item>
+        <item>ירושלים</item>
+        <item>ירקון</item>
+        <item>לכיש</item>
+        <item>מנשה</item>
+        <item>מערב הנגב</item>
+        <item>מערב לכיש</item>
+        <item>מרכז הגליל</item>
+        <item>מרכז הנגב</item>
+        <item>עוטף עזה</item>
+        <item>ערבה</item>
+        <item>קו העימות</item>
+        <item>שומרון</item>
+        <item>שפלת יהודה</item>
+        <item>שרון</item>
     </string-array>
     <string-array translatable="false" name="zoneValues">
         <item>all</item>
-        <item>דן</item>
-        <item>ירושלים</item>
-        <item>חיפה</item>
-        <item>לכיש</item>
-        <item>הקריות</item>
-        <item>השפלה</item>
-        <item>דרום השפלה</item>
-        <item>חוף הכרמל</item>
-        <item>יערות הכרמל</item>
-        <item>מרכז הנגב</item>
-        <item>דרום הנגב</item>
         <item>אילת</item>
-        <item>גולן</item>
+        <item>בקעה</item>
+        <item>בקעת בית שאן</item>
+        <item>גולן דרום</item>
+        <item>גולן צפון</item>
         <item>גליל עליון</item>
         <item>גליל תחתון</item>
-        <item>בית שמש</item>
-        <item>עוטף עזה</item>
-        <item>קו העימות</item>
-        <item>ים המלח</item>
-        <item>מעלה אדומים</item>
-        <item>בקעה</item>
-        <item>עמק יזרעאל</item>
-        <item>בקעת בית שאן</item>
-        <item>חפר</item>
-        <item>יהודה</item>
-        <item>שומרון</item>
-        <item>ירקון</item>
-        <item>מנשה</item>
-        <item>ערבה</item>
-        <item>קצרין</item>
-        <item>שרון</item>
-        <item>תבור</item>
+        <item>דן</item>
+        <item>דרום הנגב</item>
+        <item>הכרמל</item>
+        <item>המפרץ</item>
+        <item>העמקים</item>
+        <item>השפלה</item>
         <item>ואדי ערה</item>
-        <item>עמק הירדן</item>
+        <item>יהודה</item>
+        <item>ים המלח</item>
+        <item>ירושלים</item>
+        <item>ירקון</item>
+        <item>לכיש</item>
+        <item>מנשה</item>
+        <item>מערב הנגב</item>
+        <item>מערב לכיש</item>
+        <item>מרכז הגליל</item>
+        <item>מרכז הנגב</item>
+        <item>עוטף עזה</item>
+        <item>ערבה</item>
+        <item>קו העימות</item>
+        <item>שומרון</item>
+        <item>שפלת יהודה</item>
+        <item>שרון</item>
     </string-array>
 </resources>
