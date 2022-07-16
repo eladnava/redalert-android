@@ -20,6 +20,16 @@ public class StringUtils {
         return false;
     }
 
+    public static String capitalize(String str) {
+        // Need at least 2 characters to proceed
+        if (str.length() < 2) {
+            return str;
+        }
+
+        // Capitalize string
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
+
     public static String implode(String separator, List<String> data) {
         // No data?
         if (data.size() == 0) {

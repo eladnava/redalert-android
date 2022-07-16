@@ -63,8 +63,11 @@ import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.networking.HTTP;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
 
+import org.ocpsoft.prettytime.PrettyTime;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -464,9 +467,6 @@ public class Main extends AppCompatActivity {
             return R.string.jsonFailed;
         }
 
-        // Initialize date format
-        SimpleDateFormat dateFormat = new SimpleDateFormat(Alerts.DATE_FORMAT);
-
         // For debugging purposes
         // Alert fake = new Alert();
         // fake.city = "אבו סנאן";
@@ -474,10 +474,17 @@ public class Main extends AppCompatActivity {
 
         // recentAlerts.add(fake);
 
+        // Initialize date format libraries
+        SimpleDateFormat dateFormat = new SimpleDateFormat(Alerts.DATE_FORMAT);
+        PrettyTime relativeFormat = new PrettyTime(getResources().getConfiguration().locale);
+
         // Loop over alerts
         for (Alert alert : recentAlerts) {
-            // Convert date to string
-            alert.dateString = dateFormat.format(alert.date * 1000);
+            // Convert unix timestamp to Date object
+            Date date = new Date(alert.date * 1000);
+
+            // Prepare string with relative time ago and fixed HH:mm:ss
+            alert.dateString = StringUtils.capitalize(relativeFormat.format(date)) + " (" + dateFormat.format(date) + ")";
 
             // Convert area to friendly name
             alert.desc = LocationData.getLocalizedZoneWithCountdown(alert.city, this);
