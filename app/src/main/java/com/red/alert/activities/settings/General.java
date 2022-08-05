@@ -458,6 +458,12 @@ public class General extends AppCompatPreferenceActivity {
         // Add selected cities
         body += getString(R.string.selectedCities) + ": " + LocationData.getSelectedCityNamesByValues(this, Singleton.getSharedPreferences(this).getString(getString(R.string.selectedCitiesPref), ""), LocationData.getAllCityNames(this), LocationData.getAllCityValues(this));
 
+        // Break 1 line
+        body += "\r\n";
+
+        // Add selected secondary cities
+        body += getString(R.string.selectedSecondaryCities) + ": " + LocationData.getSelectedCityNamesByValues(this, Singleton.getSharedPreferences(this).getString(getString(R.string.selectedSecondaryCitiesPref), ""), LocationData.getAllCityNames(this), LocationData.getAllCityValues(this));
+
         // Break 2 lines
         body += "\r\n\r\n";
 
