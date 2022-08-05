@@ -437,14 +437,8 @@ public class General extends AppCompatPreferenceActivity {
     }
 
     String getContactEmailBody() {
-        // Add default problem description text
-        String body = getString(R.string.problemDesc);
-
-        // Break a few lines
-        body += "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n";
-
         // Add sent via and app version
-        body += getString(R.string.sentVia) + " " + getString(R.string.appName) + " " + AppVersion.getVersionName(General.this);
+        String body = getString(R.string.sentVia) + " " + getString(R.string.appName) + " " + AppVersion.getVersionName(General.this);
 
         // Break 2 lines
         body += "\r\n\r\n";
@@ -489,6 +483,12 @@ public class General extends AppCompatPreferenceActivity {
 
         // Break 2 lines
         body += "\r\n\r\n";
+
+        // Add default problem description text
+        body += getString(R.string.problemDesc);
+
+        // Break a few lines
+        body += "\r\n";
 
         // Return body
         return body;
