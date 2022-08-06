@@ -18,7 +18,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.95803,
     "lng": 35.171969,
     "value": "אבו סנאן"
@@ -186,7 +186,7 @@
     "zone_en": "Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.576429,
     "lng": 34.762963,
     "value": "אבן שמואל"
@@ -378,7 +378,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 33.005183,
     "lng": 35.446736,
     "value": "אור הגנוז"
@@ -474,7 +474,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.304094,
     "lng": 34.524868,
     "value": "אורים"
@@ -642,7 +642,7 @@
     "zone_en": "West Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.636089,
     "lng": 34.554535,
     "value": "אזור תעשייה הדרומי אשקלון"
@@ -678,7 +678,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.984227,
     "lng": 35.552146,
     "value": "אזור תעשייה חצור הגלילית"
@@ -726,7 +726,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.926254,
     "lng": 35.319066,
     "value": "אזור תעשייה כרמיאל"
@@ -786,7 +786,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.046051,
     "lng": 34.851612,
     "value": "אזור תעשייה נ.ע.מ"
@@ -858,7 +858,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.9705521,
     "lng": 35.5646455,
     "value": "אזור תעשייה צ.ח.ר"
@@ -894,7 +894,7 @@
     "zone_en": "Lower Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.70327,
     "lng": 35.586875,
     "value": "אזור תעשייה צמח"
@@ -906,7 +906,7 @@
     "zone_en": "West Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.664701,
     "lng": 34.59809,
     "value": "אזור תעשייה צפוני אשקלון"
@@ -990,7 +990,7 @@
     "zone_en": "Eilat",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 29.597881,
     "lng": 34.9718911,
     "value": "אזור תעשייה שחורת"
@@ -1063,7 +1063,7 @@
     "zone_en": "Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.552682,
     "lng": 34.770151,
     "value": "אחוזם"
@@ -1171,7 +1171,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 33.021115,
     "lng": 35.576732,
     "value": "איילת השחר"
@@ -1195,7 +1195,7 @@
     "zone_en": "Eilat",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 29.580548,
     "lng": 34.963023,
     "value": "אילות"
@@ -1219,7 +1219,7 @@
     "zone_en": "Eilat",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 29.557669,
     "lng": 34.951925,
     "value": "אילת"
@@ -1255,7 +1255,7 @@
     "zone_en": "Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.572213,
     "lng": 34.747909,
     "value": "איתן"
@@ -1531,7 +1531,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.947834,
     "lng": 35.548516,
     "value": "אליפלט"
@@ -1579,7 +1579,7 @@
     "zone_en": "South Golan",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.912709,
     "lng": 35.60231,
     "value": "אלמגור"
@@ -1675,7 +1675,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.937351,
     "lng": 35.450365,
     "value": "אמירים"
@@ -1687,7 +1687,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.904989,
     "lng": 35.571136,
     "value": "אמנון"
@@ -1857,7 +1857,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.445516,
     "lng": 34.666654,
     "value": "אשבול"
@@ -2025,7 +2025,7 @@
     "zone_en": "West Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.6687885,
     "lng": 34.5742523,
     "value": "אשקלון - דרום"
@@ -2037,7 +2037,7 @@
     "zone_en": "West Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.6687885,
     "lng": 34.5742523,
     "value": "אשקלון - צפון"
@@ -2049,7 +2049,7 @@
     "zone_en": "West Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.6687885,
     "lng": 34.5742523,
     "value": "אשקלון I אזור מערב לכיש"
@@ -2061,7 +2061,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.971645,
     "lng": 35.1557,
     "value": "אשרת",
@@ -2122,7 +2122,7 @@
     "zone_en": "West Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.700354,
     "lng": 34.610934,
     "value": "באר גנים"
@@ -2267,7 +2267,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.948636,
     "lng": 35.080688,
     "value": "בוסתן הגליל",
@@ -2376,7 +2376,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.978108,
     "lng": 35.503096,
     "value": "ביריה"
@@ -2460,7 +2460,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.965655,
     "lng": 35.381268,
     "value": "בית ג'אן"
@@ -2508,7 +2508,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.422839,
     "lng": 34.607878,
     "value": "בית הגדי"
@@ -2544,7 +2544,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.971014,
     "lng": 35.145305,
     "value": "בית העמק"
@@ -3072,7 +3072,7 @@
     "zone_en": "West Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.637735,
     "lng": 34.610074,
     "value": "בית שקמה"
@@ -3228,7 +3228,7 @@
     "zone_en": "Gaza Envelope",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.143513,
     "lng": 34.316403,
     "value": "בני נצרים"
@@ -3336,7 +3336,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.929538,
     "lng": 35.271917,
     "value": "בענה"
@@ -3408,7 +3408,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.997704,
     "lng": 35.44819,
     "value": "בר יוחאי"
@@ -3432,7 +3432,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.556985,
     "lng": 34.646547,
     "value": "ברור חיל",
@@ -3445,7 +3445,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.370721,
     "lng": 34.634978,
     "value": "ברוש",
@@ -3458,7 +3458,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.046051,
     "lng": 34.851612,
     "value": "ברחבי הארץ"
@@ -3482,7 +3482,7 @@
     "zone_en": "West Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.668047,
     "lng": 34.624296,
     "value": "ברכיה",
@@ -3543,7 +3543,7 @@
     "zone_en": "West Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.648125,
     "lng": 34.597146,
     "value": "בת הדר",
@@ -3628,7 +3628,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.928656,
     "lng": 35.150573,
     "value": "ג'דידה מכר"
@@ -3640,7 +3640,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.94498,
     "lng": 35.184243,
     "value": "ג'וליס"
@@ -3736,7 +3736,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.211168,
     "lng": 34.466199,
     "value": "גבולות"
@@ -4144,7 +4144,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 33.018208,
     "lng": 35.619547,
     "value": "גדות"
@@ -4240,7 +4240,7 @@
     "zone_en": "West Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.628467,
     "lng": 34.602678,
     "value": "גיאה"
@@ -4276,7 +4276,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.904338,
     "lng": 35.232191,
     "value": "גילון צורית"
@@ -4324,7 +4324,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.967233,
     "lng": 35.249125,
     "value": "גיתה"
@@ -4828,7 +4828,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.507207,
     "lng": 34.645725,
     "value": "דורות"
@@ -4864,7 +4864,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.93445,
     "lng": 35.268394,
     "value": "דיר אל-אסד"
@@ -4984,7 +4984,7 @@
     "zone_en": "South Golan",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.726748,
     "lng": 35.622665,
     "value": "האון"
@@ -5044,7 +5044,7 @@
     "zone_en": "West Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.676356,
     "lng": 34.639275,
     "value": "הודיה",
@@ -5141,7 +5141,7 @@
     "zone_en": "Lower Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.7054377,
     "lng": 35.5917596,
     "value": "המכללה האקדמית כנרת"
@@ -5261,7 +5261,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.95055,
     "lng": 35.312278,
     "value": "הר-חלוץ"
@@ -5417,7 +5417,7 @@
     "zone_en": "Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.595592,
     "lng": 34.692362,
     "value": "זוהר",
@@ -5526,7 +5526,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.459133,
     "lng": 34.624161,
     "value": "זרועה",
@@ -5851,7 +5851,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 33.052851,
     "lng": 35.609244,
     "value": "חולתה"
@@ -6091,7 +6091,7 @@
     "zone_en": "West Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.57794,
     "lng": 34.658391,
     "value": "חלץ"
@@ -6271,7 +6271,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.980382,
     "lng": 35.543548,
     "value": "חצור הגלילית"
@@ -6367,7 +6367,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.957737,
     "lng": 35.328217,
     "value": "חרשים"
@@ -6403,7 +6403,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.96621,
     "lng": 35.592018,
     "value": "טובא זנגריה"
@@ -6523,7 +6523,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.927306,
     "lng": 35.182499,
     "value": "טל-אל"
@@ -6715,7 +6715,7 @@
     "zone_en": "Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.652961,
     "lng": 34.704874,
     "value": "יד נתן"
@@ -6885,7 +6885,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.981568,
     "lng": 35.241169,
     "value": "ינוח-ג'ת"
@@ -6909,7 +6909,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 33.05358,
     "lng": 35.589013,
     "value": "יסוד המעלה"
@@ -7258,7 +7258,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.953492,
     "lng": 35.21199,
     "value": "ירכא"
@@ -7474,7 +7474,7 @@
     "zone_en": "West Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.631482,
     "lng": 34.667794,
     "value": "כוכב מיכאל"
@@ -7486,7 +7486,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.90416,
     "lng": 35.550785,
     "value": "כורזים ורד הגליל"
@@ -7558,7 +7558,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.963461,
     "lng": 35.304434,
     "value": "כיסרא סמיע"
@@ -7570,7 +7570,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.946651,
     "lng": 35.250213,
     "value": "כישור"
@@ -7594,7 +7594,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.983567,
     "lng": 35.199672,
     "value": "כליל"
@@ -7630,7 +7630,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.909119,
     "lng": 35.360916,
     "value": "כמון"
@@ -7990,7 +7990,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.97466,
     "lng": 35.602308,
     "value": "כפר הנשיא"
@@ -8266,7 +8266,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.9520318,
     "lng": 35.1599957,
     "value": "כפר יסיף"
@@ -8386,7 +8386,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.891218,
     "lng": 35.098414,
     "value": "כפר מסריק"
@@ -8482,7 +8482,7 @@
     "zone_en": "West Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.675669,
     "lng": 34.612311,
     "value": "כפר סילבר",
@@ -8616,7 +8616,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.955698,
     "lng": 35.457916,
     "value": "כפר שמאי"
@@ -8688,7 +8688,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.928271,
     "lng": 35.606331,
     "value": "כרכום"
@@ -8796,7 +8796,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.914671,
     "lng": 35.292417,
     "value": "כרמיאל",
@@ -8858,7 +8858,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.94118,
     "lng": 35.286475,
     "value": "לבון"
@@ -8966,7 +8966,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.962661,
     "lng": 35.096741,
     "value": "לוחמי הגטאות"
@@ -9050,7 +9050,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.969958,
     "lng": 34.8974592,
     "value": "לפידות"
@@ -9170,7 +9170,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.44945,
     "lng": 34.654994,
     "value": "מבועים"
@@ -9218,7 +9218,7 @@
     "zone_en": "West Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.622518,
     "lng": 34.577431,
     "value": "מבקיעים",
@@ -9243,7 +9243,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.920132,
     "lng": 35.25665,
     "value": "מג'דל כרום"
@@ -9315,7 +9315,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.9766793,
     "lng": 35.278017,
     "value": "מגדל תפן"
@@ -9507,7 +9507,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.9916546,
     "lng": 35.4672368,
     "value": "מועצה אזורית מרום הגליל"
@@ -9603,7 +9603,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.983652,
     "lng": 35.098934,
     "value": "מזרעה"
@@ -9627,7 +9627,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.988845,
     "lng": 35.570375,
     "value": "מחניים"
@@ -9747,7 +9747,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.985226,
     "lng": 35.441643,
     "value": "מירון"
@@ -9819,7 +9819,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.905865,
     "lng": 35.32899099999999,
     "value": "מכמנים"
@@ -9927,7 +9927,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.9781222,
     "lng": 35.5719719,
     "value": "מנחת מחניים"
@@ -9975,7 +9975,7 @@
     "zone_en": "South Golan",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.682305,
     "lng": 35.597657,
     "value": "מסדה"
@@ -10059,7 +10059,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.397604,
     "lng": 34.593821,
     "value": "מעגלים, גבעולים, מלילות"
@@ -10071,7 +10071,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.397604,
     "lng": 34.593821,
     "value": "מעגלים, גבעולים, מלילות"
@@ -10083,7 +10083,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.397604,
     "lng": 34.593821,
     "value": "מעגלים, גבעולים, מלילות"
@@ -10095,7 +10095,7 @@
     "zone_en": "South Golan",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.706344,
     "lng": 35.600575,
     "value": "מעגן"
@@ -10900,7 +10900,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 33.003484,
     "lng": 35.598271,
     "value": "משמר הירדן"
@@ -10985,7 +10985,7 @@
     "zone_en": "West Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.656885,
     "lng": 34.621607,
     "value": "משען"
@@ -11153,7 +11153,7 @@
     "zone_en": "Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.662547,
     "lng": 34.679561,
     "value": "נגבה"
@@ -11177,7 +11177,7 @@
     "zone_en": "Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.621321,
     "lng": 34.704496,
     "value": "נהורה"
@@ -11225,7 +11225,7 @@
     "zone_en": "Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.625691,
     "lng": 34.69528,
     "value": "נוגה"
@@ -11249,7 +11249,7 @@
     "zone_en": "Gaza Envelope",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.162183,
     "lng": 34.329827,
     "value": "נווה"
@@ -11621,7 +11621,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.934675,
     "lng": 35.31652,
     "value": "נחף"
@@ -11801,7 +11801,7 @@
     "zone_en": "West Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.717845,
     "lng": 34.634636,
     "value": "ניצנים",
@@ -11862,7 +11862,7 @@
     "zone_en": "Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.608906,
     "lng": 34.714282,
     "value": "ניר ח'ן"
@@ -11898,7 +11898,7 @@
     "zone_en": "West Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.692156,
     "lng": 34.638071,
     "value": "ניר ישראל"
@@ -11910,7 +11910,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.477456,
     "lng": 34.630085,
     "value": "ניר משה"
@@ -11947,7 +11947,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.469933,
     "lng": 34.646166,
     "value": "ניר עקיבא"
@@ -12020,7 +12020,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.965465,
     "lng": 35.121588,
     "value": "נס עמים"
@@ -12212,7 +12212,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.991185,
     "lng": 35.130745,
     "value": "נתיב השיירה",
@@ -12225,7 +12225,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.423196,
     "lng": 34.595254,
     "value": "נתיבות",
@@ -12274,7 +12274,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.943109,
     "lng": 35.343616,
     "value": "סאג'ור"
@@ -12503,7 +12503,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 33.013123,
     "lng": 35.440171,
     "value": "ספסופה - כפר חושן"
@@ -12623,7 +12623,7 @@
     "zone_en": "Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.593042,
     "lng": 34.764524,
     "value": "עוזה"
@@ -12695,7 +12695,7 @@
     "zone_en": "Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.637665,
     "lng": 34.705108,
     "value": "עוצם"
@@ -12839,7 +12839,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.940754,
     "lng": 35.401027,
     "value": "עין אל אסד"
@@ -12948,7 +12948,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.902581,
     "lng": 35.09304,
     "value": "עין המפרץ"
@@ -13104,7 +13104,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.919391,
     "lng": 35.430072,
     "value": "עין כמונים"
@@ -13272,7 +13272,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.933052,
     "lng": 35.082678,
     "value": "עכו"
@@ -13284,7 +13284,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.895943,
     "lng": 35.088322,
     "value": "עכו - אזור תעשייה"
@@ -13358,7 +13358,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.997669,
     "lng": 35.524801,
     "value": "עמוקה"
@@ -13394,7 +13394,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.930354,
     "lng": 35.540521,
     "value": "עמיעד"
@@ -13442,7 +13442,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.977664,
     "lng": 35.161807,
     "value": "עמקה"
@@ -13550,7 +13550,7 @@
     "zone_en": "Center Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.888073,
     "lng": 35.290128,
     "value": "ערב אל-נעים"
@@ -13790,7 +13790,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.327829,
     "lng": 34.559981,
     "value": "פטיש"
@@ -13802,7 +13802,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.757505,
     "lng": 35.217323,
     "value": "פלך"
@@ -13874,7 +13874,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.437967,
     "lng": 34.692875,
     "value": "פעמי תש'ז"
@@ -13946,7 +13946,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.933066,
     "lng": 35.434318,
     "value": "פרוד"
@@ -13994,7 +13994,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.203909,
     "lng": 34.533359,
     "value": "צאלים",
@@ -14163,7 +14163,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.904338,
     "lng": 35.232191,
     "value": "צורית גילון"
@@ -14223,7 +14223,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.964648,
     "lng": 35.495997,
     "value": "צפת",
@@ -14308,7 +14308,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 33.005954,
     "lng": 35.468309,
     "value": "קדיתא"
@@ -14476,7 +14476,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.449795,
     "lng": 34.679092,
     "value": "קלחים"
@@ -14548,7 +14548,7 @@
     "zone_en": "South Golan",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.990998,
     "lng": 35.689865,
     "value": "קצרין"
@@ -14560,7 +14560,7 @@
     "zone_en": "South Golan",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.992367,
     "lng": 35.709357,
     "value": "קצרין - אזור תעשייה"
@@ -14776,7 +14776,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.937112,
     "lng": 35.366984,
     "value": "ראמה"
@@ -14836,7 +14836,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.970422,
     "lng": 35.542659,
     "value": "ראש פינה"
@@ -14944,7 +14944,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.977493,
     "lng": 35.099129,
     "value": "רגבה",
@@ -15005,7 +15005,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.497378,
     "lng": 34.705165,
     "value": "רוחמה",
@@ -15558,7 +15558,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.466377,
     "lng": 34.638576,
     "value": "שבי דרום"
@@ -15655,7 +15655,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 33.04647,
     "lng": 35.56525,
     "value": "שדה אליעזר"
@@ -15679,7 +15679,7 @@
     "zone_en": "Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.577476,
     "lng": 34.683443,
     "value": "שדה דוד"
@@ -15703,7 +15703,7 @@
     "zone_en": "Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.645723,
     "lng": 34.676849,
     "value": "שדה יואב"
@@ -15799,7 +15799,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.448747,
     "lng": 34.713234,
     "value": "שדה צבי"
@@ -15991,7 +15991,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.95148,
     "lng": 35.094955,
     "value": "שומרת"
@@ -16051,7 +16051,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.933936,
     "lng": 35.354523,
     "value": "שזור"
@@ -16063,7 +16063,7 @@
     "zone_en": "Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.618235,
     "lng": 34.723746,
     "value": "שחר"
@@ -16087,7 +16087,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.396398,
     "lng": 34.608144,
     "value": "שיבולים",
@@ -16112,7 +16112,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.9938295,
     "lng": 35.14856839999999,
     "value": "שייח' דנון"
@@ -16160,7 +16160,7 @@
     "zone_en": "Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.563697,
     "lng": 34.766832,
     "value": "שלווה"
@@ -16196,7 +16196,7 @@
     "zone_en": "Gaza Envelope",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.0856289,
     "lng": 34.8005087,
     "value": "שלומית"
@@ -16328,7 +16328,7 @@
     "zone_en": "South Golan",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.686919,
     "lng": 35.604656,
     "value": "שער הגולן"
@@ -16400,7 +16400,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.944553,
     "lng": 35.437848,
     "value": "שפר"
@@ -16484,7 +16484,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.404819,
     "lng": 34.604397,
     "value": "שרשרת",
@@ -16533,7 +16533,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.371709,
     "lng": 34.643547,
     "value": "תאשור"
@@ -16545,7 +16545,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.378858,
     "lng": 34.630364,
     "value": "תדהר"
@@ -16557,7 +16557,7 @@
     "zone_en": "Upper Galilee",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.928495,
     "lng": 35.245675,
     "value": "תובל"
@@ -16773,7 +16773,7 @@
     "zone_en": "South Golan",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 32.706396,
     "lng": 35.61786,
     "value": "תל קציר"
@@ -16845,7 +16845,7 @@
     "zone_en": "West Negev",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.438055,
     "lng": 34.644823,
     "value": "תלמי ביל'ו"
@@ -16882,7 +16882,7 @@
     "zone_en": "West Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.616857,
     "lng": 34.612482,
     "value": "תלמי יפה",
@@ -16895,7 +16895,7 @@
     "zone_en": "Lachish",
     "time": "30 שניות",
     "time_en": "30 seconds",
-    "countdown": 90,
+    "countdown": 30,
     "lat": 31.563416,
     "lng": 34.671998,
     "value": "תלמים"
