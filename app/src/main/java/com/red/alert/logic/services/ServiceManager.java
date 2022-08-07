@@ -24,8 +24,13 @@ public class ServiceManager {
             return;
         }
 
-        // Start the location service
-        context.startService(new Intent(context, LocationService.class));
+        try {
+            // Start the location service
+            context.startService(new Intent(context, LocationService.class));
+        }
+        catch (Exception exc) {
+            // May fail if called from BootReceiver
+        }
     }
 
     public static void startPushyService(Context context) {

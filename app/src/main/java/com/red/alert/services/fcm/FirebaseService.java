@@ -11,19 +11,27 @@ import com.red.alert.logic.communication.push.FCMPushParameters;
 import com.red.alert.logic.push.FCMRegistration;
 import com.red.alert.utils.backend.RedAlertAPI;
 import com.red.alert.utils.communication.Broadcasts;
-import com.red.alert.utils.threading.AsyncTaskAdapter;
 
 import java.util.Map;
 
 public class FirebaseService extends FirebaseMessagingService {
     @Override
     public void onNewToken(String token) {
+        // Debug log
+        Log.d(Logging.TAG, "FCM onNewToken() called");
+
         // Already registered with API?
         if (RedAlertAPI.isRegistered(this)) {
             // Check whether FCM token has changed
             if (FCMRegistration.isRegistered(this) && !FCMRegistration.getRegistrationToken(this).equals(token)) {
-                // Update token server-side
-                new UpdateTokenAsync().execute(token);
+                try {
+                    // Update token server-side
+                    RedAlertAPI.updateToken(token, FirebaseService.this);
+                }
+                catch (Exception exc) {
+                    // Log failure
+                    Log.e(Logging.TAG, "Updating device token failed", exc);
+                }
             }
         }
     }
@@ -63,34 +71,5 @@ public class FirebaseService extends FirebaseMessagingService {
 
         // Receive the alert
         AlertLogic.processIncomingAlert(alertCities, alertType, this);
-    }
-
-    public class UpdateTokenAsync extends AsyncTaskAdapter<String, String, Exception> {
-        @Override
-        protected Exception doInBackground(String... params) {
-            // Get new token as first param
-            String token = params[0];
-
-            try {
-                // Update token server-side
-                RedAlertAPI.updateToken(token, FirebaseService.this);
-            }
-            catch (Exception exc) {
-                // Return exception to onPostExecute
-                return exc;
-            }
-
-            // Success
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Exception exc) {
-            // Failed?
-            if (exc != null) {
-                // Log failure
-                Log.e(Logging.TAG, "Updating device token failed", exc);
-            }
-        }
     }
 }

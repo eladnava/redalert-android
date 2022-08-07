@@ -218,6 +218,9 @@ public class RedAlertAPI {
     }
 
     public static void updateToken(String token, Context context) throws Exception {
+        // Debug log
+        Log.d(Logging.TAG, "Updating FCM token...");
+
         // Prepare an object to send the new token to the API
         UpdateTokenRequest updateRequest = new UpdateTokenRequest(getUserId(context), getUserHash(context), token);
 

@@ -330,8 +330,8 @@ public class SoundLogic {
             // Log it
             Log.e(Logging.TAG, "Media player preparation failed", exc);
 
-            // Show visible error toast
-            Toast.makeText(context, exc.toString(), Toast.LENGTH_LONG).show();
+            // Stop execution
+            return;
         }
 
         // Actually start playing
