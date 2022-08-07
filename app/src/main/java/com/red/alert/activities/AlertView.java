@@ -30,6 +30,9 @@ import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AlertView extends AppCompatActivity {
     GoogleMap mMap;
 
@@ -71,10 +74,46 @@ public class AlertView extends AppCompatActivity {
                     mMap.setMyLocationEnabled(true);
                 }
 
+                // Set activity title
+                setActivityTitle();
+
                 // Add map overlays
                 addOverlays();
             }
         });
+    }
+
+    void setActivityTitle() {
+        ArrayList<String> localizedCityNames = new ArrayList();
+
+        // Get user's locale setting
+        boolean isHebrew = Localization.isHebrewLocale(this);
+
+        // Traverse cities
+        for (String cityName : mAlertCities) {
+            // Get city object
+            City city = LocationData.getCityByName(cityName, this);
+
+            // No city found?
+            if (city == null) {
+                localizedCityNames.add(cityName);
+                continue;
+            }
+
+            // Add localized name
+            localizedCityNames.add((isHebrew) ? city.name : city.nameEnglish);
+        }
+
+        // Set title manually after overriding locale
+        setTitle(TextUtils.join(", ", localizedCityNames));
+
+        // Attempt to identify alert zone
+        String zone = LocationData.getLocalizedZoneByCityName(mAlertCities[0], this);
+
+        // Add zone to title if identified
+        if (!StringUtils.stringIsNullOrEmpty(zone)) {
+            setTitle(getTitle() + " - " + zone);
+        }
     }
 
     void initializeMap() {
@@ -89,17 +128,6 @@ public class AlertView extends AppCompatActivity {
     }
 
     void addOverlays() {
-        // Set title manually after overriding locale
-        setTitle(TextUtils.join(", ", mAlertCities));
-
-        // Attempt to identify alert zone
-        String zone = LocationData.getLocalizedZoneByCityName(mAlertCities[0], this);
-
-        // Add zone to title if identified
-        if (!StringUtils.stringIsNullOrEmpty(zone)) {
-            setTitle(getTitle() + " - " + zone);
-        }
-
         // Prepare a boundary with all geo-located cities
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
 
