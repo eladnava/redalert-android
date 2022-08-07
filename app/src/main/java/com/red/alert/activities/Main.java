@@ -486,6 +486,11 @@ public class Main extends AppCompatActivity {
             // Prepare string with relative time ago and fixed HH:mm:ss
             alert.dateString = StringUtils.capitalize(relativeFormat.format(date)) + " (" + dateFormat.format(date) + ")";
 
+            // Fix for Hebrew relative time typos (singular time ago)
+            alert.dateString = alert.dateString.replace(" 1 דקה", " דקה");
+            alert.dateString = alert.dateString.replace(" 1 שעה", " שעה");
+            alert.dateString = alert.dateString.replace(" 2 שעות", " שעתיים");
+
             // Convert area to friendly name
             alert.desc = LocationData.getLocalizedZoneWithCountdown(alert.city, this);
 
