@@ -1,5 +1,7 @@
 package com.red.alert.model;
 
+import java.util.List;
+
 import me.pushy.sdk.lib.jackson.annotation.JsonProperty;
 
 public class Alert {
@@ -11,7 +13,10 @@ public class Alert {
     public String localizedCity;
 
     public String desc;
+    public String zone;
     public String dateString;
+
+    public List<String> groupedCities;
 
     @Override
     public String toString() {

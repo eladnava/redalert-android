@@ -24,8 +24,7 @@
         <TextView
                 android:id="@+id/alertTitle"
                 android:textSize="18sp"
-                android:ellipsize="end"
-                android:singleLine="true"
+                android:layout_marginBottom="5sp"
                 android:text="@string/placeHolder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

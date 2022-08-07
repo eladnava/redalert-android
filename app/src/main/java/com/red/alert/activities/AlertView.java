@@ -4,10 +4,11 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.os.Handler;
 import androidx.core.app.ActivityCompat;
 import androidx.core.view.MenuItemCompat;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -17,6 +18,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.red.alert.R;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
@@ -24,13 +26,14 @@ import com.red.alert.model.metadata.City;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.ui.localization.rtl.adapters.RTLMarkerInfoWindowAdapter;
 import com.red.alert.ui.notifications.AppNotifications;
+import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
 
 public class AlertView extends AppCompatActivity {
     GoogleMap mMap;
 
-    String mAlertCity;
+    String[] mAlertCities;
     String mAlertDateString;
 
     @Override
@@ -45,8 +48,8 @@ public class AlertView extends AppCompatActivity {
     }
 
     void unpackExtras() {
-        // Get alert area
-        mAlertCity = getIntent().getStringExtra(AlertViewParameters.ALERT_CITY);
+        // Get alert cities
+        mAlertCities = getIntent().getStringArrayExtra(AlertViewParameters.ALERT_CITIES);
 
         // Get alert date string
         mAlertDateString = getIntent().getStringExtra(AlertViewParameters.ALERT_DATE_STRING);
@@ -68,14 +71,8 @@ public class AlertView extends AppCompatActivity {
                     mMap.setMyLocationEnabled(true);
                 }
 
-                // Wait for tiles to load
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Add map overlays
-                        addOverlays();
-                    }
-                }, 500);
+                // Add map overlays
+                addOverlays();
             }
         });
     }
@@ -92,62 +89,92 @@ public class AlertView extends AppCompatActivity {
     }
 
     void addOverlays() {
-        // Get alert area
-        City city = LocationData.getCityByName(mAlertCity, this);
+        // Set title manually after overriding locale
+        setTitle(TextUtils.join(", ", mAlertCities));
 
-        // No cities found?
-        if (city == null) {
+        // Attempt to identify alert zone
+        String zone = LocationData.getLocalizedZoneByCityName(mAlertCities[0], this);
+
+        // Add zone to title if identified
+        if (!StringUtils.stringIsNullOrEmpty(zone)) {
+            setTitle(getTitle() + " - " + zone);
+        }
+
+        // Prepare a boundary with all geo-located cities
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+
+        // Keep track of whether any cities could be geo-located
+        boolean cityFound = false;
+
+        // Traverse cities
+        for (String cityName : mAlertCities) {
+            // Get city object
+            City city = LocationData.getCityByName(cityName, this);
+
+            // No city found?
+            if (city == null) {
+                continue;
+            }
+
+            // Get user's locale setting
+            boolean isHebrew = Localization.isHebrewLocale(this);
+
+            // Does this city have a geolocation?
+            if (city.latitude != 0) {
+                // Get localized city name
+                String localizedName = (isHebrew) ? city.name : city.nameEnglish;
+
+                // Create LatLng location object
+                LatLng location = new LatLng(city.latitude, city.longitude);
+
+                // Optional snippet
+                String snippet = mAlertDateString;
+
+                // Add shelter count if exists for this city
+                if (city.shelters > 0) {
+                    snippet += "\n" + getString(R.string.lifeshieldShelters) + " " + city.shelters;
+                }
+
+                // Add marker to map
+                mMap.addMarker(new MarkerOptions()
+                        .position(location)
+                        .title(localizedName)
+                        .snippet(snippet));
+
+                // Include location in zoom boundaries
+                builder.include(location);
+
+                // We found at least one city
+                cityFound = true;
+            }
+        }
+
+        // Geolocation failure?
+        if (!cityFound) {
             return;
         }
 
-        // Default to zoom of 8
-        int zoom = 8;
+        // Build a boundary for the map positioning
+        LatLngBounds bounds = builder.build();
 
-        // Default to center of Israel
-        LatLng location = new LatLng(31.4117256, 35.0818155);
+        // Set padding/offset from the edges of the screen (px)
+        int padding = 200;
 
-        // Get user's locale
-        boolean isHebrew = Localization.isHebrewLocale(this);
-
-        // No location?
-        if (city.latitude != 0) {
-            // Get name
-            String cityName = (isHebrew) ? city.name : city.nameEnglish;
-
-            // Set title manually after overriding locale
-            setTitle(cityName);
-
-            // Set zoom
-            zoom = 10;
-
-            // Create location
-            location = new LatLng(city.latitude, city.longitude);
-
-            // Optional snippet
-            String snippet = null;
-
-            // Add shelter count if exists for this city
-            if (city.shelters > 0) {
-                snippet = getString(R.string.lifeshieldShelters) + " " + city.shelters;
-            }
-
-            // Add marker to map
-            mMap.addMarker(new MarkerOptions()
-                    .position(location)
-                    .title(cityName)
-                    .snippet(snippet));
-        }
-
-        // Prepare new camera position
-        CameraPosition position = new CameraPosition.Builder()
-                .target(location)
-                .zoom(zoom)
-                .tilt(30)
-                .bearing(10)
-                .build();
+        // Set max zoom for animation to 13
+        mMap.setMaxZoomPreference(13);
 
         // Animate nicely
-        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(position), 1500, null);
+        mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding), 1500, new GoogleMap.CancelableCallback() {
+            @Override
+            public void onFinish() {
+                // Allow user to zoom in freely
+                mMap.resetMinMaxZoomPreference();
+            }
+
+            @Override
+            public void onCancel() {
+            }
+        });
     }
 
     @Override
@@ -161,10 +188,10 @@ public class AlertView extends AppCompatActivity {
 
     private String getShareMessage() {
         // Get zone name
-        String cityName = LocationData.getLocalizedCityName(mAlertCity, this);
+        String cityName = LocationData.getLocalizedCityName(TextUtils.join(", ", mAlertCities), this);
 
         // Construct share message
-        return getString(R.string.alertSoundedAt) + " " + cityName + " (" + LocationData.getLocalizedZoneByCityName(mAlertCity, this) + ") " + getString(R.string.atTime) + " " + mAlertDateString + " " + getString(R.string.alertSentVia);
+        return getString(R.string.alertSoundedAt) + cityName + " (" + LocationData.getLocalizedZoneByCityName(mAlertCities[0], this) + ") " + mAlertDateString + " " + getString(R.string.alertSentVia);
     }
 
     void initializeShareButton(Menu OptionsMenu) {

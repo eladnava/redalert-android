@@ -67,6 +67,7 @@ import org.ocpsoft.prettytime.PrettyTime;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Timer;
@@ -193,8 +194,8 @@ public class Main extends AppCompatActivity {
                 alertView.setClass(Main.this, AlertView.class);
 
                 // Push extras
-                alertView.putExtra(AlertViewParameters.ALERT_CITY, alert.city);
                 alertView.putExtra(AlertViewParameters.ALERT_DATE_STRING, alert.dateString);
+                alertView.putExtra(AlertViewParameters.ALERT_CITIES, alert.groupedCities.toArray(new String[0]));
 
                 // Show it
                 startActivity(alertView);
@@ -491,12 +492,16 @@ public class Main extends AppCompatActivity {
             alert.dateString = alert.dateString.replace(" 1 שעה", " שעה");
             alert.dateString = alert.dateString.replace(" 2 שעות", " שעתיים");
 
-            // Convert area to friendly name
+            // Prepare localized zone & countdown for display
+            alert.zone = LocationData.getLocalizedZoneByCityName(alert.city, this);
             alert.desc = LocationData.getLocalizedZoneWithCountdown(alert.city, this);
 
             // Localize it
             alert.localizedCity = LocationData.getLocalizedCityName(alert.city, this);
         }
+
+        // Group alerts with same timestamp
+        recentAlerts = groupAlerts(recentAlerts);
 
         // Clear global list
         mNewAlerts.clear();
@@ -506,6 +511,40 @@ public class Main extends AppCompatActivity {
 
         // Success
         return 0;
+    }
+
+    private List<Alert> groupAlerts(List<Alert> alerts) {
+        // Prepare grouped alerts list
+        List<Alert> groupedAlerts = new ArrayList<>();
+
+        // Keep track of last alert item added to list
+        Alert lastAlert = null;
+
+        // Traverse elements
+        for (int i = 0; i < alerts.size(); i++) {
+            // Current element
+            Alert currentAlert = alerts.get(i);
+
+            // Initialize city names list for map display
+            currentAlert.groupedCities = new ArrayList<>();
+            currentAlert.groupedCities.add(currentAlert.city);
+
+            // Check whether this new alert can be grouped with the previous one
+            // (Same region + 10 second cutoff threshold)
+            if (lastAlert != null && lastAlert.zone.equals(currentAlert.zone) && currentAlert.date >= lastAlert.date - 5 && currentAlert.date <= lastAlert.date + 5) {
+                // Group with previous alert list item
+                lastAlert.localizedCity += ", " + currentAlert.localizedCity;
+                lastAlert.groupedCities.add(currentAlert.city);
+            }
+            else {
+                // New alert (not grouped with previous item)
+                groupedAlerts.add(currentAlert);
+                lastAlert = currentAlert;
+            }
+        }
+
+        // Hooray
+        return groupedAlerts;
     }
 
     private String checkForUpdates() {
