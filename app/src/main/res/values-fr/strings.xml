@@ -150,7 +150,7 @@
 
     <!-- Alert Share -->
     <string name="shareAlert">Partager l\'alerte</string>
-    <string name="alertSoundedAt">Une alerte rouge retentit à</string>
+    <string name="alertSoundedAt">Une alerte rouge retentit à&#160;</string>
     <string name="atTime">à</string>
     <string name="alertSentVia">- Envoyé via RedAlert pour Android -
         https://redalert.me

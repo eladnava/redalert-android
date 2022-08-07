@@ -195,7 +195,7 @@
 
     <!-- Alert Share -->
     <string name="shareAlert">Comparte la alerta</string>
-    <string name="alertSoundedAt">Una alerta de código rojo sonaba apagado en</string>
+    <string name="alertSoundedAt">Una alerta de código rojo sonaba apagado en&#160;</string>
     <string name="atTime">en</string>
     <string name="alertSentVia">- Enviado desde Tzeva Adom en Android -
         https://redalert.me

@@ -152,7 +152,7 @@
 
     <!-- Alert Share -->
     <string name="shareAlert">Condividi l\'allerta</string>
-    <string name="alertSoundedAt"> Un codice di allarme rosso  è suonato a</string>
+    <string name="alertSoundedAt"> Un codice di allarme rosso  è suonato a&#160;</string>
     <string name="atTime">alle</string>
     <string name="alertSentVia">- Inviato tramite RedAlert per Android -
         https://redalert.me
