@@ -8,6 +8,7 @@ import com.red.alert.R;
 import com.red.alert.config.API;
 import com.red.alert.config.Logging;
 import com.red.alert.logic.push.FCMRegistration;
+import com.red.alert.logic.push.PushyRegistration;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.model.req.UpdateNotificationsRequest;
 import com.red.alert.model.req.RegistrationRequest;
@@ -25,9 +26,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RedAlertAPI {
-    public static void register(String token, Context context) throws Exception {
+    public static void register(String fcmToken, String pushyToken, Context context) throws Exception {
         // Prepare an object to store and send the FCM device token to the API
-        RegistrationRequest register = new RegistrationRequest(token, API.PLATFORM_IDENTIFIER);
+        RegistrationRequest register = new RegistrationRequest(fcmToken, pushyToken, API.PLATFORM_IDENTIFIER);
 
         // Send the request to our API
         String response;
@@ -60,7 +61,10 @@ public class RedAlertAPI {
         }
 
         // Persist FCM token locally
-        FCMRegistration.saveRegistrationToken(context, token);
+        FCMRegistration.saveRegistrationToken(context, fcmToken);
+
+        // Persist Pushy token locally
+        PushyRegistration.saveRegistrationToken(context, pushyToken);
 
         // Persist user ID and hash to SharedPreferences
         SharedPreferences.Editor editor = Singleton.getSharedPreferences(context).edit();
@@ -217,12 +221,12 @@ public class RedAlertAPI {
         }
     }
 
-    public static void updateToken(String token, Context context) throws Exception {
+    public static void updatePushTokens(String fcmToken, String pushyToken, Context context) throws Exception {
         // Debug log
-        Log.d(Logging.TAG, "Updating FCM token...");
+        Log.d(Logging.TAG, "Updating FCM & Pushy tokens...");
 
         // Prepare an object to send the new token to the API
-        UpdateTokenRequest updateRequest = new UpdateTokenRequest(getUserId(context), getUserHash(context), token);
+        UpdateTokenRequest updateRequest = new UpdateTokenRequest(getUserId(context), getUserHash(context), fcmToken, pushyToken);
 
         // Send the request to our API
         String responseJson;
@@ -251,14 +255,17 @@ public class RedAlertAPI {
         // Failed?
         if (!response.success) {
             // Log error
-            throw new Exception("Failed to update push token: " + response.error);
+            throw new Exception("Failed to update push tokens: " + response.error);
         }
 
         // Persist FCM token locally
-        FCMRegistration.saveRegistrationToken(context, token);
+        FCMRegistration.saveRegistrationToken(context, fcmToken);
+
+        // Persist Pushy token locally
+        PushyRegistration.saveRegistrationToken(context, pushyToken);
 
         // Log success
-        Log.d(Logging.TAG, "FCM token update success");
+        Log.d(Logging.TAG, "FCM & Pushy token update success");
     }
 
     static List<String> cleanSubscriptions(List<String> subscriptions) {

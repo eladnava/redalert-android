@@ -266,7 +266,7 @@
     <string translatable="false" name="soundPref">sound</string>
     <string translatable="false" name="websitePref">website</string>
     <string translatable="false" name="fcmTokenPref">gcm_registration_token</string>
-    <string translatable="false" name="pushyTokenPref">pushy_registration_token</string>
+    <string translatable="false" name="pushyTokenPref">pushy_registration_token_v2</string>
     <string translatable="false" name="tutorialPref">tutorial_1_0_13</string>
     <string translatable="false" name="ratePref">rating</string>
     <string translatable="false" name="lifeshieldPref">lifeshield</string>

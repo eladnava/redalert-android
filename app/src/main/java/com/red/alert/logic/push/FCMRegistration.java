@@ -12,6 +12,7 @@ import com.red.alert.R;
 import com.red.alert.config.Logging;
 import com.red.alert.config.push.FCMGateway;
 import com.red.alert.utils.caching.Singleton;
+import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.integration.GooglePlayServices;
 
 import androidx.annotation.NonNull;
@@ -51,12 +52,12 @@ public class FCMRegistration {
 
     public static String getRegistrationToken(Context context) {
         // Get it from SharedPreferences (may be null)
-        return Singleton.getSharedPreferences(context).getString(context.getString(R.string.fcmTokenPref), null);
+        return Singleton.getSharedPreferences(context).getString(context.getString(R.string.fcmTokenPref), "");
     }
 
     public static boolean isRegistered(Context context) {
         // Check whether it's null (in which case we never successfully registered)
-        return getRegistrationToken(context) != null;
+        return !StringUtils.stringIsNullOrEmpty(getRegistrationToken(context));
     }
 
     public static void saveRegistrationToken(Context context, String registrationToken) {

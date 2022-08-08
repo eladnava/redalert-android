@@ -10,12 +10,16 @@ public class UpdateTokenRequest {
     public String hash;
 
     @JsonProperty("token")
-    public String token;
+    public String fcmToken;
 
-    public UpdateTokenRequest(long uid, String hash, String token) {
+    @JsonProperty("pushyToken")
+    public String pushyToken;
+
+    public UpdateTokenRequest(long uid, String hash, String fcmToken, String pushyToken) {
         // Set members
         this.uid = uid;
         this.hash = hash;
-        this.token = token;
+        this.fcmToken = fcmToken;
+        this.pushyToken = pushyToken;
     }
 }

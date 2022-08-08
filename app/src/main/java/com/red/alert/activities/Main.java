@@ -67,7 +67,6 @@ import org.ocpsoft.prettytime.PrettyTime;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Timer;
@@ -711,40 +710,33 @@ public class Main extends AppCompatActivity {
 
         @Override
         protected Exception doInBackground(Integer... Parameter) {
-            // Store exception from registration attempts
-            Exception error = null;
-
-            try {
-                // Register for Pushy push notifications
-                PushyRegistration.registerForPushNotifications(Main.this);
-            }
-            catch (Exception exc) {
-                // Return exception to onPostExecute
-                error = exc;
-            }
-
             // Make sure we have Google Play Services installed
             if (!GooglePlayServices.isAvailable(Main.this)) {
                 return new Exception("This app requires Google Play Services.");
             }
 
-            // Keep track of previously-saved FCM token to detect changes and update the API
+            // Keep track of previously-saved Pushy & FCM tokens to detect changes and update the API
+            String previousPushyToken = PushyRegistration.getRegistrationToken(Main.this);
             String previousFirebaseToken = FCMRegistration.getRegistrationToken(Main.this);
 
             try {
+                // Register for Pushy push notifications
+                String pushyToken = PushyRegistration.registerForPushNotifications(Main.this);
+
                 // Register for FCM push notifications
-                String token = FCMRegistration.registerForPushNotifications(Main.this);
+                String fcmToken = FCMRegistration.registerForPushNotifications(Main.this);
 
                 // First time registering with the API?
                 if (!RedAlertAPI.isRegistered(Main.this)) {
                     // Register with RedAlert API and store user ID & hash
-                    RedAlertAPI.register(token,Main.this);
+                    RedAlertAPI.register(fcmToken, pushyToken,Main.this);
                 }
                 else {
-                    // FCM token has changed?
-                    if (!previousFirebaseToken.equals(FCMRegistration.getRegistrationToken(Main.this))) {
+                    // FCM or Pushy token have changed?
+                    if (!previousFirebaseToken.equals(fcmToken) ||
+                    !previousPushyToken.equals(pushyToken)) {
                         // Update token server-side
-                        RedAlertAPI.updateToken(token, Main.this);
+                        RedAlertAPI.updatePushTokens(fcmToken, pushyToken, Main.this);
                     }
                 }
 
@@ -758,11 +750,11 @@ public class Main extends AppCompatActivity {
                 }
             }
             catch (Exception exc) {
-                error = exc;
+                return exc;
             }
 
-            // Return exc (if any)
-            return error;
+            // Success
+            return null;
         }
 
         @Override
