@@ -3210,18 +3210,6 @@
     "value": "בני יהודה וגבעת יואב"
   },
   {
-    "name": "בני יהודה וגבעת יואב",
-    "name_en": "Bnei Yehuda And Givat Yoav",
-    "zone": "גולן דרום",
-    "zone_en": "South Golan",
-    "time": "15 שניות",
-    "time_en": "15 seconds",
-    "countdown": 15,
-    "lat": 32.798262,
-    "lng": 35.69107,
-    "value": "בני יהודה וגבעת יואב"
-  },
-  {
     "name": "בני נצרים",
     "name_en": "Bnei Netzarim",
     "zone": "עוטף עזה",
@@ -5496,18 +5484,6 @@
     "value": "זמרת, שובה"
   },
   {
-    "name": "זמרת, שובה",
-    "name_en": "Zimrat And Shuva",
-    "zone": "עוטף עזה",
-    "zone_en": "Gaza Envelope",
-    "time": "15 שניות",
-    "time_en": "15 seconds",
-    "countdown": 15,
-    "lat": 31.447853,
-    "lng": 34.552288,
-    "value": "זמרת, שובה"
-  },
-  {
     "name": "זנוח",
     "name_en": "Zanoah",
     "zone": "שפלת יהודה",
@@ -5579,18 +5555,6 @@
     "lat": 32.758894,
     "lng": 35.15837399999999,
     "value": "ח'וואלד"
-  },
-  {
-    "name": "חבצלת השרון וצוקי ים",
-    "name_en": "Havatzelet HaSharon And Tzukei Yam",
-    "zone": "שרון",
-    "zone_en": "Sharon",
-    "time": "דקה וחצי",
-    "time_en": "A minute and a half",
-    "countdown": 90,
-    "lat": 32.360122,
-    "lng": 34.858542,
-    "value": "חבצלת השרון וצוקי ים"
   },
   {
     "name": "חבצלת השרון וצוקי ים",
@@ -7300,54 +7264,6 @@
     "value": "ישובי יעל"
   },
   {
-    "name": "ישובי יעל",
-    "name_en": "Yael Settlements",
-    "zone": "העמקים",
-    "zone_en": "HaAmakim",
-    "time": "דקה",
-    "time_en": "A minute",
-    "countdown": 60,
-    "lat": 32.552064,
-    "lng": 35.306548,
-    "value": "ישובי יעל"
-  },
-  {
-    "name": "ישובי יעל",
-    "name_en": "Yael Settlements",
-    "zone": "העמקים",
-    "zone_en": "HaAmakim",
-    "time": "דקה",
-    "time_en": "A minute",
-    "countdown": 60,
-    "lat": 32.552064,
-    "lng": 35.306548,
-    "value": "ישובי יעל"
-  },
-  {
-    "name": "ישובי יעל",
-    "name_en": "Yael Settlements",
-    "zone": "העמקים",
-    "zone_en": "HaAmakim",
-    "time": "דקה",
-    "time_en": "A minute",
-    "countdown": 60,
-    "lat": 32.552064,
-    "lng": 35.306548,
-    "value": "ישובי יעל"
-  },
-  {
-    "name": "ישובי יעל",
-    "name_en": "Yael Settlements",
-    "zone": "העמקים",
-    "zone_en": "HaAmakim",
-    "time": "דקה",
-    "time_en": "A minute",
-    "countdown": 60,
-    "lat": 32.552064,
-    "lng": 35.306548,
-    "value": "ישובי יעל"
-  },
-  {
     "name": "ישעי",
     "name_en": "Yish'i",
     "zone": "שפלת יהודה",
@@ -8152,18 +8068,6 @@
     "value": "כפר חסידים"
   },
   {
-    "name": "כפר חסידים",
-    "name_en": "Kfar Hassidim",
-    "zone": "המפרץ",
-    "zone_en": "HaMifratz",
-    "time": "דקה",
-    "time_en": "A minute",
-    "countdown": 60,
-    "lat": 32.752262,
-    "lng": 35.094212,
-    "value": "כפר חסידים"
-  },
-  {
     "name": "כפר חרוב",
     "name_en": "Kfar Haruv",
     "zone": "גולן דרום",
@@ -8318,18 +8222,6 @@
     "lat": 32.345607,
     "lng": 34.916426,
     "value": "כפר מונש"
-  },
-  {
-    "name": "כפר מימון ותושיה",
-    "name_en": "Kfar Maimon And Tushia",
-    "zone": "עוטף עזה",
-    "zone_en": "Gaza Envelope",
-    "time": "15 שניות",
-    "time_en": "15 seconds",
-    "countdown": 15,
-    "lat": 31.43145,
-    "lng": 34.541237,
-    "value": "כפר מימון ותושיה"
   },
   {
     "name": "כפר מימון ותושיה",
@@ -9174,30 +9066,6 @@
     "lat": 31.44945,
     "lng": 34.654994,
     "value": "מבועים"
-  },
-  {
-    "name": "מבטחים, עמיעוז, ישע",
-    "name_en": "Mivtachim Amioz Yesha",
-    "zone": "עוטף עזה",
-    "zone_en": "Gaza Envelope",
-    "time": "15 שניות",
-    "time_en": "15 seconds",
-    "countdown": 15,
-    "lat": 31.248463,
-    "lng": 34.413404,
-    "value": "מבטחים, עמיעוז, ישע"
-  },
-  {
-    "name": "מבטחים, עמיעוז, ישע",
-    "name_en": "Mivtachim Amioz Yesha",
-    "zone": "עוטף עזה",
-    "zone_en": "Gaza Envelope",
-    "time": "15 שניות",
-    "time_en": "15 seconds",
-    "countdown": 15,
-    "lat": 31.248463,
-    "lng": 34.413404,
-    "value": "מבטחים, עמיעוז, ישע"
   },
   {
     "name": "מבטחים, עמיעוז, ישע",
@@ -10065,30 +9933,6 @@
     "value": "מעגלים, גבעולים, מלילות"
   },
   {
-    "name": "מעגלים, גבעולים, מלילות",
-    "name_en": "Maagalim, Givolim, Melilot",
-    "zone": "מערב הנגב",
-    "zone_en": "West Negev",
-    "time": "30 שניות",
-    "time_en": "30 seconds",
-    "countdown": 30,
-    "lat": 31.397604,
-    "lng": 34.593821,
-    "value": "מעגלים, גבעולים, מלילות"
-  },
-  {
-    "name": "מעגלים, גבעולים, מלילות",
-    "name_en": "Maagalim, Givolim, Melilot",
-    "zone": "מערב הנגב",
-    "zone_en": "West Negev",
-    "time": "30 שניות",
-    "time_en": "30 seconds",
-    "countdown": 30,
-    "lat": 31.397604,
-    "lng": 34.593821,
-    "value": "מעגלים, גבעולים, מלילות"
-  },
-  {
     "name": "מעגן",
     "name_en": "Ma'agan",
     "zone": "גולן דרום",
@@ -10676,54 +10520,6 @@
     "lat": 32.858756,
     "lng": 35.259817,
     "value": "מרכז אזורי משגב"
-  },
-  {
-    "name": "מרכז חבר",
-    "name_en": "Hever Settlements",
-    "zone": "העמקים",
-    "zone_en": "HaAmakim",
-    "time": "דקה",
-    "time_en": "A minute",
-    "countdown": 60,
-    "lat": 32.549097,
-    "lng": 35.264911,
-    "value": "מרכז חבר"
-  },
-  {
-    "name": "מרכז חבר",
-    "name_en": "Hever Settlements",
-    "zone": "העמקים",
-    "zone_en": "HaAmakim",
-    "time": "דקה",
-    "time_en": "A minute",
-    "countdown": 60,
-    "lat": 32.549097,
-    "lng": 35.264911,
-    "value": "מרכז חבר"
-  },
-  {
-    "name": "מרכז חבר",
-    "name_en": "Hever Settlements",
-    "zone": "העמקים",
-    "zone_en": "HaAmakim",
-    "time": "דקה",
-    "time_en": "A minute",
-    "countdown": 60,
-    "lat": 32.549097,
-    "lng": 35.264911,
-    "value": "מרכז חבר"
-  },
-  {
-    "name": "מרכז חבר",
-    "name_en": "Hever Settlements",
-    "zone": "העמקים",
-    "zone_en": "HaAmakim",
-    "time": "דקה",
-    "time_en": "A minute",
-    "countdown": 60,
-    "lat": 32.549097,
-    "lng": 35.264911,
-    "value": "מרכז חבר"
   },
   {
     "name": "מרכז חבר",
@@ -11745,18 +11541,6 @@
     "lat": 32.630986,
     "lng": 35.349399,
     "value": "נין"
-  },
-  {
-    "name": "ניצן",
-    "name_en": "Nitzan",
-    "zone": "מערב לכיש",
-    "zone_en": "West Lachish",
-    "time": "45 שניות",
-    "time_en": "45 seconds",
-    "countdown": 45,
-    "lat": 31.737518,
-    "lng": 34.630804,
-    "value": "ניצן"
   },
   {
     "name": "ניצן",
@@ -15887,30 +15671,6 @@
     "lat": 32.347731,
     "lng": 35.530587,
     "value": "שדמות מחולה"
-  },
-  {
-    "name": "שדרות, איבים, ניר עם",
-    "name_en": "Sderot, Ivim, Nir Am",
-    "zone": "עוטף עזה",
-    "zone_en": "Gaza Envelope",
-    "time": "15 שניות",
-    "time_en": "15 seconds",
-    "countdown": 15,
-    "lat": 31.518459,
-    "lng": 34.580544,
-    "value": "שדרות, איבים, ניר עם"
-  },
-  {
-    "name": "שדרות, איבים, ניר עם",
-    "name_en": "Sderot, Ivim, Nir Am",
-    "zone": "עוטף עזה",
-    "zone_en": "Gaza Envelope",
-    "time": "15 שניות",
-    "time_en": "15 seconds",
-    "countdown": 15,
-    "lat": 31.518459,
-    "lng": 34.580544,
-    "value": "שדרות, איבים, ניר עם"
   },
   {
     "name": "שדרות, איבים, ניר עם",
