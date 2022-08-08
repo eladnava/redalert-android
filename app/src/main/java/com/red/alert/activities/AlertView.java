@@ -31,7 +31,6 @@ import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AlertView extends AppCompatActivity {
     GoogleMap mMap;
@@ -134,6 +133,9 @@ public class AlertView extends AppCompatActivity {
         // Keep track of whether any cities could be geo-located
         boolean cityFound = false;
 
+        // Keep track of unique marker coordinates
+        ArrayList<String> uniqueCoordinates = new ArrayList<>();
+
         // Traverse cities
         for (String cityName : mAlertCities) {
             // Get city object
@@ -151,6 +153,12 @@ public class AlertView extends AppCompatActivity {
             if (city.latitude != 0) {
                 // Get localized city name
                 String localizedName = (isHebrew) ? city.name : city.nameEnglish;
+
+                // Already have a marker with these exact coordinates?
+                while (uniqueCoordinates.indexOf(city.latitude + "-" + city.longitude) != -1) {
+                    city.latitude += 0.01;
+                    city.longitude += 0.01;
+                }
 
                 // Create LatLng location object
                 LatLng location = new LatLng(city.latitude, city.longitude);
@@ -174,6 +182,9 @@ public class AlertView extends AppCompatActivity {
 
                 // We found at least one city
                 cityFound = true;
+
+                // Avoid adding another marker at these exact coordinates
+                uniqueCoordinates.add(city.latitude + "-" + city.longitude);
             }
         }
 
