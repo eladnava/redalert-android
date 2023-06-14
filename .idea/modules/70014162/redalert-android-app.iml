@@ -88,7 +88,7 @@
       <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/test/shaders" isTestSource="true" />
       <excludeFolder url="file://$USER_HOME$/Code/redalert-android/app/build" />
     </content>
-    <orderEntry type="jdk" jdkName="Android API 28 Platform" jdkType="Android SDK" />
+    <orderEntry type="jdk" jdkName="Android API 31 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Gradle: me.pushy:sdk:1.0.92@jar" level="project" />
     <orderEntry type="library" name="Gradle: org.ocpsoft.prettytime:prettytime:4.0.4.Final@jar" level="project" />
