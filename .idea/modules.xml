@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="redalert-android/app" />
-      <module fileurl="file://$PROJECT_DIR$/redalert-android.iml" filepath="$PROJECT_DIR$/redalert-android.iml" group="redalert-android" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1256594752/Code-redalert-android.iml" filepath="$PROJECT_DIR$/.idea/modules/1256594752/Code-redalert-android.iml" group="redalert-android" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/70014162/redalert-android-app.iml" filepath="$PROJECT_DIR$/.idea/modules/70014162/redalert-android-app.iml" group="redalert-android/app" />
     </modules>
   </component>
 </project>
