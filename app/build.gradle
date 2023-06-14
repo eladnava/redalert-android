@@ -20,7 +20,7 @@ android {
 
 dependencies {
     // Pushy SDK
-    implementation 'me.pushy:sdk:1.0.86'
+    implementation 'me.pushy:sdk:1.0.92'
 
     // PrettyTime
     implementation 'org.ocpsoft.prettytime:prettytime:4.0.4.Final'
