@@ -8,6 +8,7 @@
     <string name="pushRegistrationFailed">Ein Fehler ist während der Anmeldung beim Push-service aufgetreten. bitte versuche es Später nocheinmal.</string>
     <string name="apiRequestFailed">Eine Abfrage von Informationen bei unserem Server ist fehlgeschlagen, Bitte überprüfe Deine Internetverbindung und versuche es erneut.</string>
     <string name="registrationFailed"> Die anmeldung ist Fehlgeschlagen, versuches es zu einem Späteren zeitpung noch einmal</string>
+    <string name="grantNotificationPermission">Bitte aktivieren Sie "Benachrichtigungen" auf dem nächsten Bildschirm, um Benachrichtigungen in Echtzeit zu erhalten.</string>
     <string name="settings">Einstellungen</string>
     <string name="advanced">Erweiterungen</string>
     <string name="advancedSettings">Erweiterte Einstellungen</string>

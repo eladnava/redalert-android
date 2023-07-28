@@ -165,6 +165,7 @@
     <string name="pushRegistrationFailed">Se produjo un error al firmar para arriba para las notificaciones de cohetes de empuje. Vamos a tratar de firmar para arriba de nuevo en el futuro.</string>
     <string name="apiRequestFailed">Una solicitud para recuperar información de nuestros servidores fallaron. Por favor, compruebe su conexión a Internet y vuelva a intentarlo.</string>
     <string name="registrationFailed">El registro al servicio de notificaciones no tuvo éxito. Por favor, intente más tarde.</string>
+    <string name="grantNotificationPermission">Habilite "Notificaciones" en la siguiente pantalla para recibir alertas en tiempo real.</string>
 
     <!-- Success Messages -->
     <string name="registrationID">Código de registro</string>

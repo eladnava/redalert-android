@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.core.view.MenuItemCompat;
@@ -25,7 +26,10 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import me.pushy.sdk.Pushy;
 import me.pushy.sdk.lib.jackson.core.type.TypeReference;
+import me.pushy.sdk.util.PushyAuthentication;
+
 import com.red.alert.R;
 import com.red.alert.activities.settings.General;
 import com.red.alert.config.API;
@@ -271,6 +275,36 @@ public class Main extends AppCompatActivity {
 
         // Register for broadcasts
         Broadcasts.subscribe(this, mBroadcastListener);
+
+        // Android 13:
+        // Ensure notification permission has been granted
+        requestNotificationPermission();
+    }
+
+    void requestNotificationPermission() {
+        // Android 13 only
+        // Check if device is already registered, but permission not granted yet
+        if (PushyAuthentication.getDeviceCredentials(this) != null && !Pushy.isPermissionGranted(this)) {
+            // Show error with an on-click listener that opens the App Info page
+            AlertDialogBuilder.showGenericDialog(getString(R.string.error), getString(R.string.grantNotificationPermission), Main.this, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Open settings screen for this app
+                    Intent intent = new Intent();
+
+                    // Details page
+                    intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                    // Set package to current package
+                    Uri uri = Uri.fromParts("package", getPackageName(), null);
+                    intent.setData(uri);
+
+                    // Start settings activity
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
     @Override
@@ -775,7 +809,7 @@ public class Main extends AppCompatActivity {
                 Log.e(Logging.TAG, "Push registration failed", exc);
 
                 // Build an error message
-                String errorMessage = getString(R.string.pushRegistrationFailed) + "\n\n" + exc.getMessage() + "\n\n" + exc.getCause();
+                String errorMessage = getString(R.string.pushRegistrationFailed) + "\n\n" + exc.getMessage();
 
                 // Build the dialog
                 AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, Main.this, null);

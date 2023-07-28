@@ -204,6 +204,7 @@
     <string name="pushRegistrationFailed">ארעה שגיאה בהרשמה לשירות עדכוני הדחיפה של האפליקציה. ננסה לרשום אותך שוב מאוחר יותר.</string>
     <string name="apiRequestFailed">ארעה שגיאת תקשורת בטעינת נתונים מהשרת. בדוק את החיבור לאינטרנט ונסה שנית.</string>
     <string name="registrationFailed">ההרשמה לשירות העדכונים נכשלה. אנא נסה מאוחר יותר.</string>
+    <string name="grantNotificationPermission">יש לאפשר קבלת התראות מהאפליקציה במסך הבא.</string>
 
     <!-- Success Messages -->
     <string name="registrationID">קוד הרשמה</string>
