@@ -50,7 +50,8 @@
             android:label="@string/appName"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme"
-            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale">
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -70,7 +71,7 @@
             android:label="@string/appName"
             android:launchMode="singleInstance"
             android:excludeFromRecents="true"
-            android:taskAffinity=""
+            android:taskAffinity=".popup"
             android:theme="@style/PopupDialog"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
 
@@ -110,14 +111,14 @@
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
 
         <!-- Phone Boot Receiver -->
-        <receiver android:name=".receivers.BootReceiver">
+        <receiver android:name=".receivers.BootReceiver" android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
 
         <!-- Notification Deleted Event Receiver -->
-        <receiver android:name=".receivers.NotificationDeletedReceiver">
+        <receiver android:name=".receivers.NotificationDeletedReceiver" android:exported="false">
             <intent-filter>
                 <action android:name="NOTIFICATION_DELETED"/>
             </intent-filter>
@@ -138,8 +139,8 @@
         <!-- Pushy Declarations -->
 
         <!-- Pushy Notification Receiver -->
-        <!-- Incoming pushes will be redirected to the following BroadcastReceiver class -->
-        <receiver android:name=".receivers.pushy.PushyPushReceiver" >
+        <!-- Incoming push notifications will invoke the following BroadcastReceiver -->
+        <receiver android:name=".receivers.pushy.PushyPushReceiver" android:exported="false">
             <intent-filter>
                 <!-- Do not modify this -->
                 <action android:name="pushy.me" />
@@ -148,7 +149,7 @@
 
         <!-- Pushy Update Receiver -->
         <!-- Do not modify - internal BroadcastReceiver that restarts the listener service -->
-        <receiver android:name="me.pushy.sdk.receivers.PushyUpdateReceiver">
+        <receiver android:name="me.pushy.sdk.receivers.PushyUpdateReceiver" android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
@@ -156,7 +157,7 @@
 
         <!-- Pushy Boot Receiver -->
         <!-- Do not modify - internal BroadcastReceiver that restarts the listener service -->
-        <receiver android:name="me.pushy.sdk.receivers.PushyBootReceiver" >
+        <receiver android:name="me.pushy.sdk.receivers.PushyBootReceiver" android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
@@ -164,13 +165,13 @@
 
         <!-- Pushy Socket Service -->
         <!-- Do not modify - internal service -->
-        <service android:name="me.pushy.sdk.services.PushySocketService"/>
+        <service android:name="me.pushy.sdk.services.PushySocketService" android:stopWithTask="false" />
 
         <!-- Pushy Job Service (added in Pushy SDK 1.0.35) -->
         <!-- Do not modify - internal service -->
         <service android:name="me.pushy.sdk.services.PushyJobService"
             android:permission="android.permission.BIND_JOB_SERVICE"
-            android:exported="false" />
+            android:stopWithTask="false" />
 
         <!-- End Pushy Declarations -->
     </application>
