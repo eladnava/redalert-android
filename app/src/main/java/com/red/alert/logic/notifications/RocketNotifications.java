@@ -114,7 +114,7 @@ public class RocketNotifications {
         deleteIntent.setAction(RocketNotificationParameters.NOTIFICATION_DELETED_ACTION);
 
         // Get broadcast receiver
-        return PendingIntent.getBroadcast(context, 0, deleteIntent, 0);
+        return PendingIntent.getBroadcast(context, 0, deleteIntent, PendingIntent.FLAG_IMMUTABLE);
     }
 
     public static PendingIntent getNotificationIntent(Context context) {
@@ -122,7 +122,7 @@ public class RocketNotifications {
         Intent notificationIntent = new Intent(context, Main.class);
 
         // Prepare pending intent
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         // Return it
         return pendingIntent;
