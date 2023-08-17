@@ -262,6 +262,66 @@ public class LocationData {
         return cityName;
     }
 
+    public static String getLocalizedThreatType(String alertType, Context context) {
+        // Result resource
+        int result = 0;
+
+        // Get resource by alert type
+        switch (alertType) {
+            case "test":
+                result = R.string.test;
+                break;
+            case "missiles":
+                result = R.string.missiles;
+                break;
+            case "radiologicalEvent":
+                result = R.string.radiologicalEvent;
+                break;
+            case "earthQuake":
+                result = R.string.earthQuake;
+                break;
+            case "tsunami":
+                result = R.string.tsunami;
+                break;
+            case "hostileAircraftIntrusion":
+                result = R.string.hostileAircraftIntrusion;
+                break;
+            case "hazardousMaterials":
+                result = R.string.hazardousMaterials;
+                break;
+            case "terroristInfiltration":
+                result = R.string.terroristInfiltration;
+                break;
+            case "missilesDrill":
+                result = R.string.missilesDrill;
+                break;
+            case "earthQuakeDrill":
+                result = R.string.earthQuakeDrill;
+                break;
+            case "radiologicalEventDrill":
+                result = R.string.radiologicalEventDrill;
+                break;
+            case "tsunamiDrill":
+                result = R.string.tsunamiDrill;
+                break;
+            case "hostileAircraftIntrusionDrill":
+                result = R.string.hostileAircraftIntrusionDrill;
+                break;
+            case "hazardousMaterialsDrill":
+                result = R.string.hazardousMaterialsDrill;
+                break;
+            case "terroristInfiltrationDrill":
+                result = R.string.terroristInfiltrationDrill;
+                break;
+            default:
+                result = R.string.unknown;
+                break;
+        }
+
+        // Convert to string
+        return context.getString(result);
+    }
+
     public static City getCityByName(String cityName, Context context) {
         // Prepare cities array
         List<City> cities = getAllCities(context);

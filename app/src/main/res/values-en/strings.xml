@@ -190,4 +190,21 @@
     <string name="learnAboutLifeshield">Learn about Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Click here to learn more about Operation Lifeshield, a nonprofit that deploys air raid shelters in Israel.</string>
     <string name="connecting">Connecting...</string>
+
+    <!-- Alert Types -->
+    <string name="missiles">Rocket fire</string>
+    <string name="radiologicalEvent">Radiological event</string>
+    <string name="earthQuake">Earthquake</string>
+    <string name="tsunami">Tsunami warning</string>
+    <string name="hostileAircraftIntrusion">Hostile aircraft intrusion</string>
+    <string name="hazardousMaterials">Hazardous materials event</string>
+    <string name="terroristInfiltration">Terrorist infiltration</string>
+    <string name="missilesDrill">Drill: Rocket fire</string>
+    <string name="earthQuakeDrill">Drill: Earthquake</string>
+    <string name="radiologicalEventDrill">Drill: Radiological event</string>
+    <string name="tsunamiDrill">Drill: Tsunami warning</string>
+    <string name="hostileAircraftIntrusionDrill">Drill: Hostile aircraft intrusion</string>
+    <string name="hazardousMaterialsDrill">Drill: Hazardous materials event</string>
+    <string name="terroristInfiltrationDrill">Drill: Terrorist infiltration</string>
+    <string name="unknown">Alert</string>
 </resources>

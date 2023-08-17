@@ -4,11 +4,10 @@ import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-import com.red.alert.activities.Main;
 import com.red.alert.config.Logging;
 import com.red.alert.logic.alerts.AlertLogic;
 import com.red.alert.logic.communication.broadcasts.SelfTestEvents;
-import com.red.alert.logic.communication.push.FCMPushParameters;
+import com.red.alert.logic.communication.push.PushParameters;
 import com.red.alert.logic.push.FCMRegistration;
 import com.red.alert.logic.push.PushyRegistration;
 import com.red.alert.utils.backend.RedAlertAPI;
@@ -47,8 +46,9 @@ public class FirebaseService extends FirebaseMessagingService {
         Map<String, String> data = remoteMessage.getData();
 
         // Grab push data from extras
-        String alertType = data.get(FCMPushParameters.ALERT_TYPE);
-        String alertCities = data.get(FCMPushParameters.ALERT_CITIES);
+        String alertType = data.get(PushParameters.ALERT_TYPE);
+        String threatType = data.get(PushParameters.THREAT_TYPE);
+        String alertCities = data.get(PushParameters.ALERT_CITIES);
 
         // Bad push?
         if (alertType == null || alertCities == null) {
@@ -75,6 +75,6 @@ public class FirebaseService extends FirebaseMessagingService {
         Log.e(Logging.TAG, "Received push via FCM gateway");
 
         // Receive the alert
-        AlertLogic.processIncomingAlert(alertCities, alertType, this);
+        AlertLogic.processIncomingAlert(threatType, alertCities, alertType, this);
     }
 }

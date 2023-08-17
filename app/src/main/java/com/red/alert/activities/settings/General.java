@@ -738,7 +738,7 @@ public class General extends AppCompatPreferenceActivity {
             // At least one passed?
             if (!fcmFailed || !pushyFailed) {
                 // Display "successful test" message
-                AlertLogic.processIncomingAlert(getString(R.string.testSuccessful), AlertTypes.TEST, General.this);
+                AlertLogic.processIncomingAlert(AlertTypes.TEST, getString(R.string.testSuccessful), AlertTypes.TEST, General.this);
             }
 
             // Both succeeded?

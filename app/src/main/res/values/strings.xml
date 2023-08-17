@@ -247,6 +247,23 @@
     <string name="showPopup">הצג פופאפ</string>
     <string name="showPopupDesc">כאשר תתקבל אזעקת אמת, יוצג פופאפ עם מידע על האזעקה.</string>
 
+    <!-- Alert Types -->
+    <string name="missiles">ירי רקטות</string>
+    <string name="radiologicalEvent">אירוע רדיולוגי</string>
+    <string name="earthQuake">רעידת אדמה</string>
+    <string name="tsunami">סכנת צונאמי</string>
+    <string name="hostileAircraftIntrusion">חדירת מטוסים עוינים</string>
+    <string name="hazardousMaterials">אירוע חומרים מסוכנים</string>
+    <string name="terroristInfiltration">חדירת מחבלים</string>
+    <string name="missilesDrill">תרגיל: ירי רקטות</string>
+    <string name="earthQuakeDrill">תרגיל: רעידת אדמה</string>
+    <string name="radiologicalEventDrill">תרגיל: אירוע רדיולוגי</string>
+    <string name="tsunamiDrill">תרגיל: סכנת צונאמי</string>
+    <string name="hostileAircraftIntrusionDrill">תרגיל: חדירת מטוסית עוינים</string>
+    <string name="hazardousMaterialsDrill">תרגיל: אירוע חומרים מסוכנים</string>
+    <string name="terroristInfiltrationDrill">תרגיל: חדירת מחבלים</string>
+    <string name="unknown">אזעקה</string>
+
     <!-- Do not translate from here on down -->
 
     <!-- Integration Device Names -->

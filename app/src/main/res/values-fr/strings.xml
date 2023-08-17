@@ -190,4 +190,21 @@
     <string name="learnAboutLifeshield">En savoir plus sur Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Cliquez ici pour en savoir plus sur Operation Lifeshield, un organisme sans but lucratif qui déploie des abris anti-aériens en Israël.</string>
     <string name="connecting">Connexion...</string>
+
+    <!-- Alert Types -->
+    <string name="missiles">Tir de roquette</string>
+    <string name="radiologicalEvent">Événement radiologique</string>
+    <string name="earthQuake">Tremblement de terre</string>
+    <string name="tsunami">Alerte au tsunami</string>
+    <string name="hostileAircraftIntrusion">Intrusion d\'aéronefs hostiles</string>
+    <string name="hazardousMaterials">Matières dangereuses</string>
+    <string name="terroristInfiltration">Infiltration terroriste</string>
+    <string name="missilesDrill">Exercice: Tir de roquette</string>
+    <string name="earthQuakeDrill">Exercice: Tremblement de terre</string>
+    <string name="radiologicalEventDrill">Exercice: Événement radiologique</string>
+    <string name="tsunamiDrill">Exercice: Alerte au tsunami</string>
+    <string name="hostileAircraftIntrusionDrill">Exercice: Intrusion d\'aéronefs hostiles</string>
+    <string name="hazardousMaterialsDrill">Exercice: Matières dangereuses</string>
+    <string name="terroristInfiltrationDrill">Exercice: Infiltration terroriste</string>
+    <string name="unknown">Avertissement</string>
 </resources>

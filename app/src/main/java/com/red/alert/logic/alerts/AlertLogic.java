@@ -19,14 +19,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AlertLogic {
-    public static void processIncomingAlert(String citiesPSVString, String alertType, Context context) {
+    public static void processIncomingAlert(String threatType, String citiesPSVString, String alertType, Context context) {
         // No cities?
         if (StringUtils.stringIsNullOrEmpty(citiesPSVString)) {
             return;
         }
 
         // Log the cities
-        Log.i(Logging.TAG, "Received alert (" + alertType + "): " + citiesPSVString);
+        Log.i(Logging.TAG, "Received alert (" + threatType + "): " + citiesPSVString);
 
         // Get alert cities as list
         List<String> cityList = LocationData.explodeCitiesPSV(citiesPSVString);
@@ -60,11 +60,17 @@ public class AlertLogic {
                 // Localize city name
                 String localizedCityName = LocationData.getLocalizedCityName(city, context);
 
+                // Localize threat type
+                String localizedThreatType = LocationData.getLocalizedThreatType(threatType, context);
+
                 // Get impact countdown
                 String zoneWithCountdown = LocationData.getLocalizedZoneWithCountdown(city, context);
 
+                // Prepare title
+                String notificationTitle = localizedThreatType + ": " + localizedCityName;
+
                 // Issue the notification
-                RocketNotifications.notify(context, city, localizedCityName, zoneWithCountdown, overrideAlertType, null);
+                RocketNotifications.notify(context, city, notificationTitle, zoneWithCountdown, overrideAlertType, null);
             }
         }
     }

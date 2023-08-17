@@ -189,4 +189,21 @@
     <string name="learnAboutLifeshield">Erfahren Sie mehr über Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Klicken Sie hier, um mehr über Operation Lifeshield zu erfahren, eine gemeinnützige Organisation, die Luftschutzbunker in Israel errichtet.</string>
     <string name="connecting">Verbinde...</string>
+
+    <!-- Alert Types -->
+    <string name="missiles">Raketenfeuer</string>
+    <string name="radiologicalEvent">Radiologisches ereignis</string>
+    <string name="earthQuake">Erdbeben</string>
+    <string name="tsunami">Tsunami warnung</string>
+    <string name="hostileAircraftIntrusion">Eindringen feindlicher flugzeuge</string>
+    <string name="hazardousMaterials">Veranstaltung zu gefährlichen stoffen</string>
+    <string name="terroristInfiltration">Terroristische infiltration</string>
+    <string name="missilesDrill">Übung: Raketenfeuer</string>
+    <string name="earthQuakeDrill">Übung: Erdbeben</string>
+    <string name="radiologicalEventDrill">Übung: Radiologisches ereignis</string>
+    <string name="tsunamiDrill">Übung: Tsunami warnung</string>
+    <string name="hostileAircraftIntrusionDrill">Übung: Eindringen feindlicher flugzeuge</string>
+    <string name="hazardousMaterialsDrill">Übung: Gefährliche materialien</string>
+    <string name="terroristInfiltrationDrill">Übung: Terroristische unterwanderung</string>
+    <string name="unknown">Alarm</string>
 </resources>

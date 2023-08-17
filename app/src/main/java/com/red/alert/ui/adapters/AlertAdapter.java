@@ -66,8 +66,8 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
             // Set area names
             viewHolder.desc.setText(alert.desc);
 
-            // Set user-friendly time
-            viewHolder.time.setText(alert.dateString);
+            // Show alert type & user-friendly time
+            viewHolder.time.setText(alert.localizedThreat + " • " + alert.dateString);
         }
 
         // Return the view

@@ -37,6 +37,7 @@ import com.red.alert.config.Alerts;
 import com.red.alert.config.Integrations;
 import com.red.alert.config.Logging;
 import com.red.alert.config.RecentAlerts;
+import com.red.alert.logic.alerts.AlertLogic;
 import com.red.alert.logic.communication.broadcasts.SettingsEvents;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
 import com.red.alert.logic.communication.intents.MainActivityParameters;
@@ -210,7 +211,7 @@ public class Main extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // DEBUG ONLY
-                //AlertLogic.processIncomingAlert("חיפה והקריות 160", "alert", Main.this);
+                //AlertLogic.processIncomingAlert("missiles", "נהריה", "alert", Main.this);
             }
         });
 
@@ -505,6 +506,7 @@ public class Main extends AppCompatActivity {
         // Alert fake = new Alert();
         // fake.city = "אבו סנאן";
         // fake.date = 1562037706;
+        // fake.threat = "missiles";
 
         // recentAlerts.add(fake);
 
@@ -531,6 +533,7 @@ public class Main extends AppCompatActivity {
 
             // Localize it
             alert.localizedCity = LocationData.getLocalizedCityName(alert.city, this);
+            alert.localizedThreat = LocationData.getLocalizedThreatType(alert.threat, this);
         }
 
         // Group alerts with same timestamp

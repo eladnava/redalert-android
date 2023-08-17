@@ -10,7 +10,12 @@ public class Alert {
 
     @JsonProperty("area")
     public String city;
+
+    @JsonProperty("threat")
+    public String threat;
+
     public String localizedCity;
+    public String localizedThreat;
 
     public String desc;
     public String zone;
