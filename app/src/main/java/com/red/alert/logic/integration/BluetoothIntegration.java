@@ -1,5 +1,6 @@
 package com.red.alert.logic.integration;
 
+import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -15,7 +16,7 @@ public class BluetoothIntegration {
         // Type must be an "alert" or "test"
         if (alertType.equals(AlertTypes.PRIMARY) || alertType.equals(AlertTypes.TEST)) {
             // Check for BLE support + enabled Bluetooth controller
-            if (!isBLESupported(context) || !isBluetoothEnabled()) {
+            if (!isBLESupported(context) || !isBluetoothEnabled(context)) {
                 // Stop execution
                 return;
             }
@@ -52,7 +53,7 @@ public class BluetoothIntegration {
         return true;
     }
 
-    public static boolean isBluetoothEnabled() {
+    public static boolean isBluetoothEnabled(Context context) {
         // Must call Looper.prepare() due to ICS bug
         // And we can't call the function from UI thread when we receive a push notification)
         // http://stackoverflow.com/questions/5920578/bluetoothadapter-getdefault-throwing-runtimeexception-while-not-in-activity
@@ -70,8 +71,30 @@ public class BluetoothIntegration {
             return false;
         }
         else {
-            // Check if it's enabled and return the result
+            // Check if user has already granted the necessary Bluetooth runtime permissions
+            if (!runtimePermissionsGranted(context)) {
+                return false;
+            }
+
+            // Check if adapter is enabled and return the result
             return bluetoothAdapter.isEnabled();
         }
     }
+
+    private static boolean runtimePermissionsGranted(Context context) {
+        // Android 13 and up also requires the BLUETOOTH_CONNECT and BLUETOOTH_SCAN runtime permissions
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            return context.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+                    context.checkSelfPermission(Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_GRANTED &&
+                    context.checkSelfPermission(Manifest.permission.BLUETOOTH_SCAN) == PackageManager.PERMISSION_GRANTED;
+        }
+        // Android 6 and up only requires the ACCESS_FINE_LOCATION runtime permission
+        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return context.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+        }
+
+        // Previous Android versions below 6 did not require the user to consent to runtime permissions
+        return true;
+    }
+
 }

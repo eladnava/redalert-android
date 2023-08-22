@@ -331,7 +331,7 @@ public class Main extends AppCompatActivity {
         }
 
         // Did we enable a device integration but Bluetooth is disabled?
-        if (BluetoothIntegration.isIntegrationEnabled(this) && !BluetoothIntegration.isBluetoothEnabled()) {
+        if (BluetoothIntegration.isIntegrationEnabled(this) && !BluetoothIntegration.isBluetoothEnabled(this)) {
             // Ask user politely to enable Bluetooth
             BluetoothDialogs.showEnableBluetoothDialog(this);
 

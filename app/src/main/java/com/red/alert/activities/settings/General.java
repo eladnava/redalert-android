@@ -298,7 +298,7 @@ public class General extends AppCompatPreferenceActivity {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 // Did we enable a device integration but Bluetooth is disabled?
-                if (BluetoothIntegration.isIntegrationEnabled(General.this) && !BluetoothIntegration.isBluetoothEnabled()) {
+                if (BluetoothIntegration.isIntegrationEnabled(General.this) && !BluetoothIntegration.isBluetoothEnabled(General.this)) {
                     // Ask user politely to enable Bluetooth
                     BluetoothDialogs.showEnableBluetoothDialog(General.this);
 

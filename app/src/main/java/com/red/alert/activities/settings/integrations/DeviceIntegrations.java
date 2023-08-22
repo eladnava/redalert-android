@@ -55,7 +55,7 @@ public class DeviceIntegrations extends AppCompatPreferenceActivity {
         }
 
         // Bluetooth disabled?
-        if (!BluetoothIntegration.isBluetoothEnabled()) {
+        if (!BluetoothIntegration.isBluetoothEnabled(this)) {
             // Ask user to enable bluetooth politely
             BluetoothDialogs.showEnableBluetoothDialog(this);
         }
@@ -101,7 +101,7 @@ public class DeviceIntegrations extends AppCompatPreferenceActivity {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 // Bluetooth disabled?
-                if (!BluetoothIntegration.isBluetoothEnabled()) {
+                if (!BluetoothIntegration.isBluetoothEnabled(DeviceIntegrations.this)) {
                     // Ask user to enable bluetooth politely
                     BluetoothDialogs.showEnableBluetoothDialog(DeviceIntegrations.this);
 
