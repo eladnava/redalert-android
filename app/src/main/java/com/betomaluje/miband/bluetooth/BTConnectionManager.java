@@ -224,6 +224,11 @@ public class BTConnectionManager {
                 final Set<BluetoothDevice> pairedDevices = adapter.getBondedDevices();
 
                 for (BluetoothDevice pairedDevice : pairedDevices) {
+                    // Null safety check
+                    if (pairedDevice == null || pairedDevice.getName() == null || pairedDevice.getAddress() == null) {
+                        continue;
+                    }
+
                     if (pairedDevice.getName().equals("MI") && pairedDevice.getAddress().startsWith("88:0F:10")) {
                         mDeviceAddress = pairedDevice.getAddress();
                         //mFound = true;
