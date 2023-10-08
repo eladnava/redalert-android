@@ -185,7 +185,7 @@
     <!-- Success Messages -->
     <string name="registrationID">קוד הרשמה</string>
     <string name="pushRegistrationSuccess">ההרשמה הסתיימה בהצלחה</string>
-    <string name="pushRegistrationSuccessDesc">הינך רשום לשירות העדכונים של צבע אדום.\n\nעליך לבחור מרחבים ויישובים להתרעה כדי לקבל התרעות בזמן אמת.</string>
+    <string name="pushRegistrationSuccessDesc">הינך רשום לשירות העדכונים של צבע אדום.\n\nעליך לבחור מרחבים ויישובים להתרעה כדי לקבל התרעות בזמן אמת.\n\nאין יותר אפשרות לקבל התרעות לפי מיקום.</string>
 
     <!-- Alert Share -->
     <string name="shareAlert">שתף את האזעקה</string>
