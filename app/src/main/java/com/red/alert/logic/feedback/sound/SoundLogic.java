@@ -297,14 +297,14 @@ public class SoundLogic {
 
                     // Release resources associated
                     player.release();
-
-                    // Remove from list
-                    mPlayers.remove(player);
                 }
                 catch (Exception exc) {
                     // Do nothing
                 }
             }
+
+            // Clear list
+            mPlayers.clear();
         }
 
         // Stop vibration
