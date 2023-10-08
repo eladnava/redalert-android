@@ -1,13 +1,11 @@
 package com.red.alert.logic.alerts;
 
 import android.content.Context;
-import android.location.Location;
 import android.util.Log;
 
 import com.red.alert.R;
 import com.red.alert.config.Alerts;
 import com.red.alert.config.Logging;
-import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.logic.notifications.RocketNotifications;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.utils.caching.Singleton;
@@ -99,11 +97,6 @@ public class AlertLogic {
             return true;
         }
 
-        // Are we nearby?
-        if (isNearby(city, context)) {
-            return true;
-        }
-
         // Irrelevant
         return false;
     }
@@ -116,11 +109,6 @@ public class AlertLogic {
 
         // Did user select this area?
         if (isCitySelectedPrimarily(city, context)) {
-            return false;
-        }
-
-        // Not a nearby city?
-        if (isNearby(city, context)) {
             return false;
         }
 
@@ -212,47 +200,6 @@ public class AlertLogic {
 
         // Did we select this city?
         if (selectedCities.contains(city)) {
-            return true;
-        }
-
-        // No match
-        return false;
-    }
-
-    public static boolean isNearby(String cityName, Context context) {
-        // Get nearby alerts enabled setting
-        boolean nearbyEnabled = Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.locationAlertsPref), false);
-
-        // Are nearby alerts enabled?
-        if (!nearbyEnabled) {
-            return false;
-        }
-
-        // Get current location (last known)
-        Location myLocation = LocationLogic.getLocation(context);
-
-        // No recent location?
-        if (myLocation == null) {
-            return false;
-        }
-
-        // Get city geolocation
-        Location location = LocationData.getCityLocation(cityName, context);
-
-        // No match?
-        if (location == null) {
-            return false;
-        }
-
-        // Calculate max distance
-        double maxDistance = LocationLogic.getMaxDistanceKilometers(context, -1);
-
-        // Get distance to city in KM
-        float distance = location.distanceTo(myLocation) / 1000;
-
-        // Distance is less than max?
-        if (distance <= maxDistance) {
-            // We are nearby!
             return true;
         }
 

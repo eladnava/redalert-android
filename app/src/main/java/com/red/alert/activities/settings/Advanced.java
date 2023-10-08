@@ -7,7 +7,6 @@ import android.preference.Preference;
 import android.view.MenuItem;
 
 import com.red.alert.R;
-import com.red.alert.activities.settings.alerts.LocationAlerts;
 import com.red.alert.activities.settings.alerts.SecondaryAlerts;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.ui.activities.AppCompatPreferenceActivity;
@@ -16,7 +15,6 @@ import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.utils.feedback.Volume;
 
 public class Advanced extends AppCompatPreferenceActivity {
-    Preference mLocationAlerts;
     Preference mSecondaryAlerts;
 
     SliderPreference mVolumeSelection;
@@ -56,7 +54,6 @@ public class Advanced extends AppCompatPreferenceActivity {
         addPreferencesFromResource(R.xml.settings_advanced);
 
         // Cache resource IDs
-        mLocationAlerts = findPreference(getString(R.string.locationPref));
         mSecondaryAlerts = findPreference(getString(R.string.secondaryPref));
         mVolumeSelection = (SliderPreference) findPreference(getString(R.string.volumePref));
 
@@ -89,24 +86,6 @@ public class Advanced extends AppCompatPreferenceActivity {
 
                 // Show settings
                 startActivity(secondaryAlerts);
-
-                // Consume event
-                return true;
-            }
-        });
-
-        // Set up location alerts click listener
-        mLocationAlerts.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                // Prepare new intent
-                Intent locationAlerts = new Intent();
-
-                // Set class
-                locationAlerts.setClass(Advanced.this, LocationAlerts.class);
-
-                // Show settings
-                startActivity(locationAlerts);
 
                 // Consume event
                 return true;

@@ -19,11 +19,6 @@ public class AppPreferences {
         return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.enabledPref), true);
     }
 
-    public static boolean getLocationAlertsEnabled(Context context) {
-        // Get saved preference
-        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.locationAlertsPref), false);
-    }
-
     public static boolean getSecondaryNotificationsEnabled(Context context) {
         // Get saved preference
         return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.secondaryEnabledPref), false);
@@ -81,12 +76,6 @@ public class AppPreferences {
         // Check if notifications disabled
         if (!getNotificationsEnabled(context)) {
             return subscriptions;
-        }
-
-        // Location alerts enabled?
-        if (AppPreferences.getLocationAlertsEnabled(context)) {
-            // Subscribe to all and check proximity client-side
-            subscriptions.add("all");
         }
 
         // Get user's selected primary zones

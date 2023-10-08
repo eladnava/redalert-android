@@ -187,28 +187,6 @@
     <string name="pushRegistrationSuccess">ההרשמה הסתיימה בהצלחה</string>
     <string name="pushRegistrationSuccessDesc">הינך רשום לשירות העדכונים של צבע אדום.\n\nעליך לבחור מרחבים ויישובים להתרעה כדי לקבל התרעות בזמן אמת.</string>
 
-    <!-- GPS -->
-    <string name="locationAlerts">התרעות לפי מיקום</string>
-    <string name="locationAlertsDesc">לחץ כאן להגדרת התרעות מבוססות מיקום כדי לקבל התרעה לפי המיקום הנוכחי שלך.</string>
-    <string name="gpsEnabled">התרעות לפי מיקום</string>
-    <string name="gpsEnabledDesc">קבל התרעות לפי מיקומך בזמן אמת.</string>
-    <string name="maxDistance">מרחק מקסימלי</string>
-    <string name="maxDistanceDesc">בחר את המרחק המקסימלי שלך מכל יישוב שמופעלת בו אזעקת צבע אדום.</string>
-    <string name="kilometer">ק\"מ</string>
-    <string name="nearbyCities">יישובים בקרבתי</string>
-    <string name="noLocation">ארעה שגיאה בקבלת מיקומך האחרון.</string>
-    <string name="noNearbyCities">אין יישובים בקרבתך, נסה להגדיל את המרחק המקסימלי.</string>
-
-    <!-- GPS Frequency -->
-    <string name="gpsFrequency">קצב דגימה</string>
-    <string name="gpsFrequencyDesc">הגדר את הקצב שבו האפליקציה תאכן את מיקומך דרך אנטנות סלולריות.</string>
-    <string name="every">כל</string>
-    <string name="minutes">דקות</string>
-
-    <!-- GPS Notification -->
-    <string name="enableGPSDesc">יש להפעיל את חיישן ה-GPS כדי לקבל התרעות לפי מיקום.</string>
-    <string name="enable">הפעל</string>
-
     <!-- Alert Share -->
     <string name="shareAlert">שתף את האזעקה</string>
     <string name="alertSoundedAt">אזעקת צבע אדום נשמעה ב</string>
@@ -267,15 +245,9 @@
     <string translatable="false" name="lastAlertPref">last_alert</string>
     <string translatable="false" name="lastSecondaryAlertPref">last_secondary_alert</string>
     <string translatable="false" name="vibratePref">vibrate</string>
-    <string translatable="false" name="locationAlertsPref">gps</string>
     <string translatable="false" name="batteryOptimizationWarningDisplayedPref">battery_optimization_warning_displayed</string>
-    <string translatable="false" name="gpsFrequencyPref">gps_frequency</string>
-    <string translatable="false" name="latitudePref">latitude</string>
-    <string translatable="false" name="longitudePref">longitude</string>
-    <string translatable="false" name="maxDistancePref">max_distance</string>
     <string translatable="false" name="secondaryVibratePref">secondary_vibrate</string>
     <string translatable="false" name="volumePref">volume</string>
-    <string translatable="false" name="locationPref">location</string>
     <string translatable="false" name="nearbyCitiesPref">nearby_cities</string>
     <string translatable="false" name="secondaryVolumePref">secondary_volume</string>
     <string translatable="false" name="alertPopupPref">alert_popup</string>
@@ -295,10 +267,6 @@
 
     <!-- Default Volume -->
     <string name="defaultAlertVolume" translatable="false">1.0</string>
-
-    <!-- Default GPS Values -->
-    <string translatable="false" name="defaultMaxDistance">0.04</string>
-    <string translatable="false" name="defaultGPSPollingFrequency">0.02</string>
 
     <!-- MultiSelectSearchableListPreference Special Values -->
     <string translatable="false" name="all">all</string>

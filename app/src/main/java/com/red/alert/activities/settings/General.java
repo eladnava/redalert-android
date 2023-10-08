@@ -460,7 +460,6 @@ public class General extends AppCompatPreferenceActivity {
         body += "user.hash=" + RedAlertAPI.getUserHash(this) + ", ";
         body += "primary.enabled=" + AppPreferences.getNotificationsEnabled(this) + ", ";
         body += "secondary.enabled=" + AppPreferences.getNotificationsEnabled(this) + ", ";
-        body += "location.enabled=" + AppPreferences.getLocationAlertsEnabled(this) + ", ";
         body += "volume.primary=" + AppPreferences.getPrimaryAlertVolume(this, -1) + ", ";
         body += "volume.secondary=" + AppPreferences.getSecondaryAlertVolume(this, -1) + ", ";
         body += "fcm=" + FCMRegistration.isRegistered(this) + ", ";

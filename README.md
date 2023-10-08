@@ -33,7 +33,6 @@ The only rocket alert application with dedicated push notification servers that 
 * Search - select preferred alert cities / regions by searching for them
 * Speed - rocket alerts are received before / during the official siren
 * Stability - custom alert notification servers that greatly improve alert speed and reliability
-* GPS - receive rocket alerts in your area automatically in addition to city / region selection
 * Countdown - rocket alerts will display the estimated time until impact
 * Connectivity - check, at any time, whether your device is able to receive rocket alerts via the "self-test" option
 * Smart - the application will override silent / vibrate mode to sound rocket alerts

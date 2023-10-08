@@ -127,28 +127,6 @@
     <string name="selectedSecondaryCities">Secondary cities</string>
     <string name="selectedSecondaryCitiesDesc">Select cities to receive secondary alerts about.</string>
 
-    <!-- GPS -->
-    <string name="locationAlerts">Location-based alerts</string>
-    <string name="locationAlertsDesc">Click here to configure location-based alerts to receive rocket alerts in your area automatically.</string>
-    <string name="gpsEnabled">Location-based alerts</string>
-    <string name="gpsEnabledDesc">Receive location-based alerts in real-time.</string>
-    <string name="maxDistance">Max distance</string>
-    <string name="maxDistanceDesc">Slide to select the maximum distance from every city that receives a rocket alert.</string>
-    <string name="kilometer">km</string>
-    <string name="nearbyCities">Nearby cities</string>
-    <string name="noLocation">Failed to determine your last known location.</string>
-    <string name="noNearbyCities">No nearby cities, try changing the max distance.</string>
-
-    <!-- GPS Frequency -->
-    <string name="gpsFrequency">Update interval</string>
-    <string name="gpsFrequencyDesc">Slide to select the interval, in minutes, for location updates.</string>
-    <string name="every">Every</string>
-    <string name="minutes">minutes</string>
-
-    <!-- GPS Notification -->
-    <string name="enableGPSDesc">Please enable GPS to receive location-based alerts.</string>
-    <string name="enable">Enable</string>
-
     <!-- Alert Share -->
     <string name="shareAlert">Share the alert</string>
     <string name="alertSoundedAt">A code red alert sounded off in&#160;</string>

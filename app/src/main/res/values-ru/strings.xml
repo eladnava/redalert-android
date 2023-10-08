@@ -172,28 +172,6 @@
     <string name="pushRegistrationSuccess">Регистрация успешно завершена</string>
     <string name="pushRegistrationSuccessDesc">Вы успешно подписались на ракетных предупреждающих уведомлений с помощью RedAlert.\n\nПожалуйста, выберите желаемый Уведомления регионов и городов, чтобы получать уведомления ракеты.</string>
 
-    <!-- GPS -->
-    <string name="locationAlerts">Оповещения о местоположениях</string>
-    <string name="locationAlertsDesc">Щелкните здесь, чтобы настроить оповещения на основе определения местоположения для получения уведомлений ракетные в вашем районе автоматически.</string>
-    <string name="gpsEnabled">Оповещения о местоположениях</string>
-    <string name="gpsEnabledDesc">Получение уведомлений на основе определения местоположения в режиме реального времени.</string>
-    <string name="maxDistance">Максимальное расстояние</string>
-    <string name="maxDistanceDesc">Авто, чтобы выбрать максимальное расстояние от каждого города, который получает предупреждение ракетного.</string>
-    <string name="kilometer">km</string>
-    <string name="nearbyCities">Близлежащие города</string>
-    <string name="noLocation">Не удалось определить ваш последнего известного местоположения.</string>
-    <string name="noNearbyCities">Нет близлежащих городов, не попытаться изменить максимальное расстояние.</string>
-
-    <!-- GPS Frequency -->
-    <string name="gpsFrequency">интервал обновления</string>
-    <string name="gpsFrequencyDesc">Авто для выбора интервала, в течение нескольких минут, для обновления местоположения.</string>
-    <string name="every">каждый</string>
-    <string name="minutes">минут</string>
-
-    <!-- GPS Notification -->
-    <string name="enableGPSDesc">Пожалуйста, включите GPS, чтобы получать уведомления на основе определения местоположения.</string>
-    <string name="enable">Включить</string>
-
     <!-- Alert Share -->
     <string name="shareAlert">Дайте предупреждение</string>
     <string name="alertSoundedAt">Код красная тревога звучала с в&#160;</string>

@@ -50,7 +50,6 @@ import com.red.alert.model.res.VersionInfo;
 import com.red.alert.ui.adapters.AlertAdapter;
 import com.red.alert.ui.compatibility.ProgressDialogCompat;
 import com.red.alert.ui.dialogs.AlertDialogBuilder;
-import com.red.alert.ui.dialogs.custom.LocationDialogs;
 import com.red.alert.ui.dialogs.custom.UpdateDialogs;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.ui.notifications.AppNotifications;
@@ -268,9 +267,6 @@ public class Main extends AppCompatActivity {
 
         // Clear app notifications
         AppNotifications.clearAll(this);
-
-        // Ask user to enable GPS if necessary
-        LocationDialogs.requestEnableLocationServices(this);
 
         // Register for broadcasts
         Broadcasts.subscribe(this, mBroadcastListener);

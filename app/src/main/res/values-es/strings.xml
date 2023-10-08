@@ -172,28 +172,6 @@
     <string name="pushRegistrationSuccess">El registro ha finalizado con éxito</string>
     <string name="pushRegistrationSuccessDesc">Has registrado correctamente para cohetes notificaciones de alerta a través de RedAlert.\n\nPor favor seleccione sus regiones y ciudades de alerta preferidos para recibir alertas de cohetes.</string>
 
-    <!-- GPS -->
-    <string name="locationAlerts">Ubicación alertas</string>
-    <string name="locationAlertsDesc">Haga clic aquí para configurar alertas basadas en la localización y recibirás un email con cohetes en su área de forma automática.</string>
-    <string name="gpsEnabled">Ubicación alertas</string>
-    <string name="gpsEnabledDesc">Recibe alertas basadas en la localización en tiempo real.</string>
-    <string name="maxDistance">Distancia máxima</string>
-    <string name="maxDistanceDesc">Deslice para seleccionar la distancia máxima de cada ciudad que recibe una alerta de cohetes.</string>
-    <string name="kilometer">km</string>
-    <string name="nearbyCities">Ciudades cercanas</string>
-    <string name="noLocation">No se pudo determinar la última ubicación conocida.</string>
-    <string name="noNearbyCities">No hay ciudades cercanas, intente cambiar la distancia máxima.</string>
-
-    <!-- GPS Frequency -->
-    <string name="gpsFrequency">Intervalo de actualización</string>
-    <string name="gpsFrequencyDesc">Deslice para seleccionar el intervalo de tiempo, en minutos, para actualizaciones de ubicación.</string>
-    <string name="every">Cada</string>
-    <string name="minutes">minutos</string>
-
-    <!-- GPS Notification -->
-    <string name="enableGPSDesc">Por favor, activa el GPS para recibir alertas basadas en la localización.</string>
-    <string name="enable">Habilitar</string>
-
     <!-- Alert Share -->
     <string name="shareAlert">Comparte la alerta</string>
     <string name="alertSoundedAt">Una alerta de código rojo sonaba apagado en&#160;</string>

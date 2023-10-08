@@ -127,28 +127,6 @@
     <string name="selectedSecondaryCities">Villes secondaires</string>
     <string name="selectedSecondaryCitiesDesc">Sélectionnez les villes pour recevoir des alertes secondaires.</string>
 
-    <!-- GPS -->
-    <string name="locationAlerts">Alertes basées sur l\'emplacement </string>
-    <string name="locationAlertsDesc">Configurer les alertes basées sur la localisation pour recevoir des alertes de roquette dans votre région automatiquement.</string>
-    <string name="gpsEnabled">Alertes basées sur l\'emplacement </string>
-    <string name="gpsEnabledDesc">Recevoir des alertes localisées en temps réel.</string>
-    <string name="maxDistance">Distance maximale</string>
-    <string name="maxDistanceDesc">Sélectionner la distance maximale de chaque ville qui reçoit une alerte.</string>
-    <string name="kilometer">km</string>
-    <string name="nearbyCities">Villes proches</string>
-    <string name="noLocation">Impossible de déterminer votre dernier emplacement connu.</string>
-    <string name="noNearbyCities">Aucune ville voisine, essayez de changer la distance maximale.</string>
-
-    <!-- GPS Frequency -->
-    <string name="gpsFrequency">Intervalle de mise à jour</string>
-    <string name="gpsFrequencyDesc">Sélectionner l\'intervalle, en minutes, pour les mises à jour de l\'emplacement.</string>
-    <string name="every">Chaque</string>
-    <string name="minutes">minutes</string>
-
-    <!-- GPS Notification -->
-    <string name="enableGPSDesc">Veuillez activer le GPS pour recevoir des alertes basées sur la localisation.</string>
-    <string name="enable">Activer</string>
-
     <!-- Alert Share -->
     <string name="shareAlert">Partager l\'alerte</string>
     <string name="alertSoundedAt">Une alerte rouge retentit à&#160;</string>
