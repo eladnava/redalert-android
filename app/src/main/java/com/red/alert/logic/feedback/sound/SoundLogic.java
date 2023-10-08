@@ -7,7 +7,6 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.PowerManager;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.red.alert.R;
 import com.red.alert.config.Logging;
@@ -17,8 +16,11 @@ import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.feedback.Vibration;
 import com.red.alert.utils.formatting.StringUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SoundLogic {
-    static MediaPlayer mPlayer;
+    static List<MediaPlayer> mPlayers;
     static final int ALARM_CUTOFF_SECONDS = 5;
 
     public static boolean shouldPlayAlertSound(String alertType, Context context) {
@@ -280,21 +282,29 @@ public class SoundLogic {
 
     public static void stopSound(Context context) {
         // Got a player?
-        if (mPlayer != null) {
-            // Still playing?
-            if (mPlayer.isPlaying()) {
-                // Stop playing
-                mPlayer.stop();
+        if (mPlayers != null) {
+            // Traverse players
+            for (MediaPlayer player : mPlayers) {
+                try {
+                    // Still playing?
+                    if (player.isPlaying()) {
+                        // Stop playing
+                        player.stop();
 
-                // Reset media player
-                mPlayer.reset();
+                        // Reset media player
+                        player.reset();
+                    }
+
+                    // Release resources associated
+                    player.release();
+
+                    // Remove from list
+                    mPlayers.remove(player);
+                }
+                catch (Exception exc) {
+                    // Do nothing
+                }
             }
-
-            // Release resources associated
-            mPlayer.release();
-
-            // Reinitialize next time
-            mPlayer = null;
         }
 
         // Stop vibration
@@ -311,20 +321,23 @@ public class SoundLogic {
         stopSound(context);
 
         // Create new MediaPlayer
-        mPlayer = new MediaPlayer();
+        MediaPlayer player = new MediaPlayer();
 
         // Wake up processor
-        mPlayer.setWakeMode(context, PowerManager.PARTIAL_WAKE_LOCK);
+        player.setWakeMode(context, PowerManager.PARTIAL_WAKE_LOCK);
 
         // Set stream type
-        mPlayer.setAudioStreamType(getSoundStreamType(context));
+        player.setAudioStreamType(getSoundStreamType(context));
 
         try {
             // Set URI data source
-            mPlayer.setDataSource(context, alarmSoundUi);
+            player.setDataSource(context, alarmSoundUi);
 
             // Prepare media player
-            mPlayer.prepare();
+            player.prepare();
+
+            // Actually start playing
+            player.start();
         }
         catch (Exception exc) {
             // Log it
@@ -334,7 +347,12 @@ public class SoundLogic {
             return;
         }
 
-        // Actually start playing
-        mPlayer.start();
+        // Initialize list
+        if (mPlayers == null) {
+            mPlayers = new ArrayList<>();
+        }
+
+        // Add player to list of players
+        mPlayers.add(player);
     }
 }
