@@ -25,6 +25,11 @@ public class AppPreferences {
     }
 
     public static boolean getTutorialDisplayed(Context context) {
+        // No regions/cities selected?
+        if (AppPreferences.getNotificationsEnabled(context) && AppPreferences.getSubscriptions(context).size() == 0) {
+            return false;
+        }
+
         // Get saved preference
         return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.tutorialPref), false);
     }
