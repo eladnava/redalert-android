@@ -171,4 +171,5 @@
     <string name="hazardousMaterialsDrill">Drill: Hazardous materials event</string>
     <string name="terroristInfiltrationDrill">Drill: Terrorist infiltration</string>
     <string name="unknown">Alert</string>
+    <string name="system">System Alert</string>
 </resources>

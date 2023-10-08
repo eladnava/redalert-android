@@ -9,7 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.red.alert.R;
+import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.model.Alert;
+import com.red.alert.utils.metadata.LocationData;
 
 import java.util.List;
 
@@ -62,6 +64,19 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
         if (alert != null) {
             // Set area localized zone
             viewHolder.title.setText(alert.localizedCity);
+
+            // System alert?
+            if (alert.threat.equals(AlertTypes.SYSTEM)) {
+                // Set desc to "system message"
+                alert.desc = alert.localizedThreat;
+
+                // Hide time
+                viewHolder.time.setVisibility(View.GONE);
+            }
+            else {
+                // Show time
+                viewHolder.time.setVisibility(View.VISIBLE);
+            }
 
             // Set area names
             viewHolder.desc.setText(alert.desc);

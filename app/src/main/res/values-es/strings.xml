@@ -216,4 +216,5 @@
     <string name="hazardousMaterialsDrill">Ejercicio: Hazardous materials</string>
     <string name="terroristInfiltrationDrill">Ejercicio: Infiltración terrorista</string>
     <string name="unknown">Alerta</string>
+    <string name="system">Aviso del Sistema</string>
 </resources>

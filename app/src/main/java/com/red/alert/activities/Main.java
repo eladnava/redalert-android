@@ -37,6 +37,7 @@ import com.red.alert.config.Alerts;
 import com.red.alert.config.Integrations;
 import com.red.alert.config.Logging;
 import com.red.alert.config.RecentAlerts;
+import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.communication.broadcasts.SettingsEvents;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
 import com.red.alert.logic.communication.intents.MainActivityParameters;
@@ -182,6 +183,11 @@ public class Main extends AppCompatActivity {
 
                 // No such alert?
                 if (alert == null) {
+                    return;
+                }
+
+                // No map view for system alerts
+                if (alert.threat.equals(AlertTypes.SYSTEM)) {
                     return;
                 }
 

@@ -355,6 +355,9 @@ public class LocationData {
             case "terroristInfiltrationDrill":
                 result = R.string.terroristInfiltrationDrill;
                 break;
+            case "system":
+                result = R.string.system;
+                break;
             default:
                 result = R.string.unknown;
                 break;

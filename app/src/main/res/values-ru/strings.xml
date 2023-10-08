@@ -216,4 +216,5 @@
     <string name="hazardousMaterialsDrill">Упражнение: опасные материалы</string>
     <string name="terroristInfiltrationDrill">Упражнение: проникновение террористов</string>
     <string name="unknown">Оповещен</string>
+    <string name="system">Системное оповещение</string>
 </resources>
