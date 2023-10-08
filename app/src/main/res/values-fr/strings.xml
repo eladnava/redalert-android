@@ -171,25 +171,11 @@
     <string name="testSuccessful">Le test s\'est terminé avec succès!</string>
     <string name="alerts">Alertes</string>
     <string name="advancedAlerts">Alertes avancées</string>
-    <string name="integrations">Intégrations</string>
-    <string name="integrationsTitle">Paramètres d\'intégration </string>
-    <string name="integrationsDesc">Configurer l\'intégration d\'alertes avec des périphériques externes.</string>
-    <string name="bleNotSupported">Ne supporte pas BLE</string>
-    <string name="bleNotSupportedDesc">Malheureusement, votre téléphone ne supporte pas Bluetooth Low Energy. Mettre à jour votre version Android 4.3 ou plus et réessayer.</string>
-    <string name="enableBluetooth">Activer le Bluetooth</string>
-    <string name="enableBluetoothDesc">Vous devez activer le Bluetooth dans les paramètres de votre téléphone et le laisser activé en tout temps pour recevoir des alertes via des périphériques intégrés.</string>
-    <string name="integrationsTest">Intégrations de test</string>
-    <string name="integrationsTestDesc">Testez la connectivité et la fiabilité des périphériques intégrés.</string>
-    <string name="integrationsTestSuccess">Le test de connectivité a été exécuté avec succès.\n\nVérifiez que les appareils ont répondu en conséquence.</string>
-    <string name="miBandIntegrationDesc">Les alertes de roquette en temps réel provoqueront une vibration et une lumière sur la Mi-Band. </string>
-    <string name="miBandTestFailed">Une erreur s\'est produite lors de la connexion à votre Mi-Band. Essayez de supprimer toutes les autres applications qui s\'intègrent à la Mi-Band (y compris Mi Fit), si elles sont installées. En outre, essayez de toucher la surface métallique de la bande (c\'est un capteur) pour le réveiller.\n\nContactez-nous si vous ne pouvez toujours pas connecter la bande après avoir essayé plusieurs fois.</string>
-    <string name="devices">Périphériques</string>
 
     <!-- Operation Lifeshield -->
     <string name="lifeshieldShelters">Abris Lifeshield:</string>
     <string name="learnAboutLifeshield">En savoir plus sur Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Cliquez ici pour en savoir plus sur Operation Lifeshield, un organisme sans but lucratif qui déploie des abris anti-aériens en Israël.</string>
-    <string name="connecting">Connexion...</string>
 
     <!-- Alert Types -->
     <string name="missiles">Tir de roquette</string>

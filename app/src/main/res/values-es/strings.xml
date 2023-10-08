@@ -216,25 +216,11 @@
     <string name="testSuccessful">El test ha completado con éxito!</string>
     <string name="alerts">Alertas</string>
     <string name="advancedAlerts">Alertas Avanzadas</string>
-    <string name="integrations">Integraciones</string>
-    <string name="integrationsTitle">Ajustes de integración</string>
-    <string name="integrationsDesc">Haga clic aquí para configurar la integración de alerta con dispositivos externos.</string>
-    <string name="bleNotSupported">Sin Soporte BLE</string>
-    <string name="bleNotSupportedDesc">Por desgracia, el teléfono no es compatible con Bluetooth de baja energía. Actualice su versión de Android a 4.3+ y vuelva a intentarlo.</string>
-    <string name="enableBluetooth">Activar Bluetooth</string>
-    <string name="enableBluetoothDesc">Вы должны включить Bluetooth в настройках телефона и оставить это позволило в любое время получать уведомления с помощью интегрированных устройств.</string>
-    <string name="integrationsTest">Prueba las integraciones</string>
-    <string name="integrationsTestDesc">Prueba de la conectividad y la fiabilidad de los dispositivos integrados.</string>
-    <string name="integrationsTestSuccess">La prueba de conectividad completada con éxito.\n\nCompruebe que los dispositivos respondió en consecuencia.</string>
-    <string name="miBandIntegrationDesc">Alertas de cohetes en tiempo real hará que la banda vibre y se encienden.</string>
-    <string name="miBandTestFailed">Se produjo un error al conectar con tu Mi Band. Trate de eliminar todas las demás aplicaciones que se integran con la banda (incluyendo Mi Fit), en su caso están instalados. Además, trate de tocar la superficie de metal de la banda (es un sensor) para despertarlo.\n\nContacte con nosotros si usted todavía no puede conectarse a la banda después de probar un par de veces.</string>
-    <string name="devices">Dispositivos</string>
 
     <!-- Operation Lifeshield -->
     <string name="lifeshieldShelters">Refugios de Lifeshield:</string>
     <string name="learnAboutLifeshield">Aprende sobre Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Haga clic aquí para conocer más acerca de Operation Lifeshield, una organización sin fines de lucro que despliega refugios antiaéreos en Israel.</string>
-    <string name="connecting">Conectando...</string>
 
     <!-- Alert Types -->
     <string name="missiles">Fuego de cohete</string>

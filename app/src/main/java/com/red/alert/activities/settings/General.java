@@ -31,7 +31,6 @@ import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.communication.broadcasts.LocationSelectionEvents;
 import com.red.alert.logic.communication.broadcasts.SelfTestEvents;
 import com.red.alert.logic.communication.broadcasts.SettingsEvents;
-import com.red.alert.logic.integration.BluetoothIntegration;
 import com.red.alert.logic.push.FCMRegistration;
 import com.red.alert.logic.push.PushyRegistration;
 import com.red.alert.logic.settings.AppPreferences;
@@ -39,7 +38,6 @@ import com.red.alert.model.req.SelfTestRequest;
 import com.red.alert.ui.activities.AppCompatPreferenceActivity;
 import com.red.alert.ui.compatibility.ProgressDialogCompat;
 import com.red.alert.ui.dialogs.AlertDialogBuilder;
-import com.red.alert.ui.dialogs.custom.BluetoothDialogs;
 import com.red.alert.ui.elements.SearchableMultiSelectPreference;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.ui.notifications.AppNotifications;
@@ -297,15 +295,6 @@ public class General extends AppCompatPreferenceActivity {
         mTestAlert.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                // Did we enable a device integration but Bluetooth is disabled?
-                if (BluetoothIntegration.isIntegrationEnabled(General.this) && !BluetoothIntegration.isBluetoothEnabled(General.this)) {
-                    // Ask user politely to enable Bluetooth
-                    BluetoothDialogs.showEnableBluetoothDialog(General.this);
-
-                    // Don't run the test yet
-                    return false;
-                }
-
                 // Not already testing?
                 if (!mIsTesting) {
                     // Send a test push

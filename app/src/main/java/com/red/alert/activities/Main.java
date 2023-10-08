@@ -37,11 +37,9 @@ import com.red.alert.config.Alerts;
 import com.red.alert.config.Integrations;
 import com.red.alert.config.Logging;
 import com.red.alert.config.RecentAlerts;
-import com.red.alert.logic.alerts.AlertLogic;
 import com.red.alert.logic.communication.broadcasts.SettingsEvents;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
 import com.red.alert.logic.communication.intents.MainActivityParameters;
-import com.red.alert.logic.integration.BluetoothIntegration;
 import com.red.alert.logic.push.FCMRegistration;
 import com.red.alert.logic.push.PushyRegistration;
 import com.red.alert.logic.services.ServiceManager;
@@ -51,7 +49,6 @@ import com.red.alert.model.res.VersionInfo;
 import com.red.alert.ui.adapters.AlertAdapter;
 import com.red.alert.ui.compatibility.ProgressDialogCompat;
 import com.red.alert.ui.dialogs.AlertDialogBuilder;
-import com.red.alert.ui.dialogs.custom.BluetoothDialogs;
 import com.red.alert.ui.dialogs.custom.LocationDialogs;
 import com.red.alert.ui.dialogs.custom.UpdateDialogs;
 import com.red.alert.ui.localization.rtl.RTLSupport;
@@ -327,15 +324,6 @@ public class Main extends AppCompatActivity {
 
         // Haven't registered for notifications?
         if (!FCMRegistration.isRegistered(this) || !PushyRegistration.isRegistered(this)) {
-            return;
-        }
-
-        // Did we enable a device integration but Bluetooth is disabled?
-        if (BluetoothIntegration.isIntegrationEnabled(this) && !BluetoothIntegration.isBluetoothEnabled(this)) {
-            // Ask user politely to enable Bluetooth
-            BluetoothDialogs.showEnableBluetoothDialog(this);
-
-            // Avoid duplicate dialogs
             return;
         }
 

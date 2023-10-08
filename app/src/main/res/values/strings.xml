@@ -27,7 +27,6 @@
     <string name="settings">הגדרות</string>
     <string name="advanced">אפשרויות</string>
     <string name="alerts">התרעות</string>
-    <string name="integrations">אינטגרציות</string>
     <string name="advancedAlerts">התרעות מתקדמות</string>
     <string name="advancedSettings">הגדרות מתקדמות</string>
 
@@ -49,11 +48,6 @@
     <string name="secondaryAlerts">התרעות משנה</string>
     <string name="secondaryAlertsTitle">התרעות משנה</string>
     <string name="secondaryAlertsDesc">לחץ כאן להגדרת התרעות משנה כדי להתעדכן על אזורים אחרים במקביל.</string>
-
-    <!-- Integrations -->
-    <string name="devices">מכשירים</string>
-    <string name="integrationsTitle">הגדרת אינטגרציות</string>
-    <string name="integrationsDesc">לחץ כאן להגדיר אינטגרציות עם מכשירי התרעה חיצוניים.</string>
 
     <!-- Enable Secondary Alerts -->
     <string name="receiveSecondaryAlerts">התרעות משנה</string>
@@ -81,24 +75,6 @@
     <string name="testSent">אנא המתן לקבלת עדכון הדחיפה</string>
     <string name="reliability">אמינות</string>
     <string name="testSuccessfulLong">הבדיקה העצמית הסתיימה בהצלחה! התקבלו התרעות בדיקה משתי שירותי דחיפה שונים.</string>
-
-    <!-- Mi Band Integration -->
-    <string name="miBandIntegrationDesc">התרעות בזמן אמת יפעילו את הרטט ותאורת ה-LED בצמיד.</string>
-
-    <!-- Integrations Test -->
-    <string name="connecting">מתחבר...</string>
-    <string name="integrationsTest">בדיקת אינטגרציות</string>
-    <string name="integrationsTestDesc">בדוק את תקינות החיבור למכשירים החיצוניים.</string>
-    <string name="integrationsTestSuccess">בדיקת תקינות החיבור למכשירים החיצוניים הסתיימה בהצלחה.\n\nוודא שהמכשירים הגיבו לבדיקה.</string>
-    <string name="miBandTestFailed">ארעה תקלה בהתחברות לצמיד Mi Band. נסה למחוק כל אפליקציה אחרת המתממשקת עם הצמיד (כולל Mi Fit) במידה וקיימת. בנוסף, נסה לגעת בחלק המתכתי של הצמיד (יש לו חיישן) כדי לעורר אותו ולגרום לו להתחבר עם הטלפון.\n\nצור קשר אם אינך מצליח להתחבר לצמיד לאחר כמה ניסיונות.</string>
-
-    <!-- Enable Bluetooth Dialog -->
-    <string name="enableBluetooth">הפעל Bluetooth</string>
-    <string name="enableBluetoothDesc">עליך להפעיל את אפשרות ה-Bluetooth במכשירך ולהשיארה במצב מופעל כדי שהתרעות יתקבלו במכשירים החיצוניים בזמן אמת.</string>
-
-    <!-- BLE Not Supported Dialog -->
-    <string name="bleNotSupported">אין תמיכה ב-BLE</string>
-    <string name="bleNotSupportedDesc">לצערנו, מכשירך אינו תומך בקישוריות Bluetooth Low Energy. עדכן את גרסת האנדוראיד ל-4.3+ ונסה שוב.</string>
 
     <!-- Sound Selection -->
     <string name="sounds">צלילים</string>
@@ -266,9 +242,6 @@
 
     <!-- Do not translate from here on down -->
 
-    <!-- Integration Device Names -->
-    <string name="miBand" translatable="false">Xiaomi Mi Band</string>
-
     <!-- Static Language Identifiers -->
     <string translatable="false" name="english">English</string>
     <string translatable="false" name="spanish">Español</string>
@@ -294,8 +267,6 @@
     <string translatable="false" name="lastAlertPref">last_alert</string>
     <string translatable="false" name="lastSecondaryAlertPref">last_secondary_alert</string>
     <string translatable="false" name="vibratePref">vibrate</string>
-    <string translatable="false" name="miBandPref">mi_band_integration</string>
-    <string translatable="false" name="integrationsTestPref">test_integrations</string>
     <string translatable="false" name="locationAlertsPref">gps</string>
     <string translatable="false" name="batteryOptimizationWarningDisplayedPref">battery_optimization_warning_displayed</string>
     <string translatable="false" name="gpsFrequencyPref">gps_frequency</string>
@@ -313,7 +284,6 @@
     <string translatable="false" name="mainCategoryPref">main_category</string>
     <string translatable="false" name="selectedCitiesPref">selected_cities</string>
     <string translatable="false" name="secondaryPref">secondary</string>
-    <string translatable="false" name="integrationsPref">integrations</string>
     <string translatable="false" name="imSafeWhatsAppPref">safe_whatsapp</string>
     <string translatable="false" name="secondarySilentOverridePref">secondary_override</string>
     <string translatable="false" name="secondaryEnabledPref">secondary_alerts</string>

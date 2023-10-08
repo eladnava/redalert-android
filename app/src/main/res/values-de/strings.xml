@@ -170,25 +170,11 @@
     <string name="testSuccessful">Der Test wurde erfolgreich abgeschlossen!</string>
     <string name="alerts">Alarmierungen</string>
     <string name="advancedAlerts">Erweiterte Alarmierung</string>
-    <string name="integrations">Integration</string>
-    <string name="integrationsTitle">Integrations Einstellungen</string>
-    <string name="integrationsDesc">Klicken Sie hier, um RocketAlert mit einem externen Gerät zu verbinden.</string>
-    <string name="bleNotSupported">Kein BLE Support</string>
-    <string name="bleNotSupportedDesc">Leider unterstützt dein Telefon keine Bluetooth Low Energy. Aktualisiere deine Android-Version auf 4.3+ und versuchen es erneut.</string>
-    <string name="enableBluetooth">Schalte dein Bluetooth</string>
-    <string name="enableBluetoothDesc">Du musst Dein Bluetooth in Deinen Telefoneinstellungen aktivieren und jederzeit eingeschaltet lassen, um Benachrichtigungen über integrierte Geräte zu erhalten.</string>
-    <string name="integrationsTest">integrationstest</string>
-    <string name="integrationsTestDesc">Teste die Verbindung und Zuverlässigkeit von Deinen externen Geräten.</string>
-    <string name="integrationsTestSuccess">Der Konnektivitätstest wurde erfolgreich abgeschlossen. \n\nVergewisser Dich, dass die Geräte entsprechend reagierten.</string>
-    <string name="miBandIntegrationDesc">Echtzeit-Raketenwarnungen führen dazu, dass das Xiaomi Mi Band vibriert und aufleuchtet.</string>
-    <string name="miBandTestFailed">Beim dem Versuch sich mit deinem  Mi Band zu verbinden ist ein Fehler aufgetreten. Versuche, alle anderen Apps zu löschen, die mit dem Band interagieren (einschließlich Mi Fit), falls vorhanden. Versuche auch, die Metalloberfläche des Bandes zu berühren (dort ist ein Sensor), um das Armband aufzuwecken. \n\n Kontaktiere uns, wenn Du das Mi Band nach dem erneuten Versuch nicht verbinden kannst..</string>
-    <string name="devices">Geräte</string>
 
     <!-- Operation Lifeshield -->
     <string name="lifeshieldShelters">Lifeshield Unterstände:</string>
     <string name="learnAboutLifeshield">Erfahren Sie mehr über Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Klicken Sie hier, um mehr über Operation Lifeshield zu erfahren, eine gemeinnützige Organisation, die Luftschutzbunker in Israel errichtet.</string>
-    <string name="connecting">Verbinde...</string>
 
     <!-- Alert Types -->
     <string name="missiles">Raketenfeuer</string>

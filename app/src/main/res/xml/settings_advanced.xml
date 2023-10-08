@@ -41,13 +41,6 @@
             android:summary="@string/locationAlertsDesc"/>
     </PreferenceCategory>
     <PreferenceCategory
-        android:title="@string/integrations">
-        <Preference
-            android:key="@string/integrationsPref"
-            android:title="@string/integrationsTitle"
-            android:summary="@string/integrationsDesc"/>
-    </PreferenceCategory>
-    <PreferenceCategory
         android:title="@string/safeCategory">
         <CheckBoxPreference
             android:textDirection="rtl"

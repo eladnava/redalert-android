@@ -173,26 +173,12 @@
     <string name="testSuccessful">Il test è stato completato con successo!</string>
     <string name="alerts">Allerte</string>
     <string name="advancedAlerts"> Allerte Avanzate</string>
-    <string name="integrations">Interazioni</string>
-    <string name="integrationsTitle">Impostazioni per le interazioni</string>
-    <string name="integrationsDesc">Tocca qui per impostare l\'interazione delle allerte con device esterni.</string>
-    <string name="bleNotSupported"> BLE Non supportato</string>
-    <string name="bleNotSupportedDesc"> Sfortunatamente, il tuo telefono non supporta il Bluetooth a bassa energia. Aggiorna il sistema ad Android 4.3 o superiore e prova nuovamente.</string>
-    <string name="enableBluetooth">Abilita Bluetooth</string>
-    <string name="enableBluetoothDesc">Devi abiltiare il Bluetooth nelle impostazioni del tuo telefono e lasciarlo abilitato sempre per ricevere le allerte attravero i dispositivi che interagiscono.</string>
-    <string name="integrationsTest">Testa le integrazioni</string>
-    <string name="integrationsTestDesc">Testa la connetività e la disponibilità dei dispositivi integrati.</string>
-    <string name="integrationsTestSuccess">Il test per la connettività è stato completato con successo.\n\n Verifica che il dispositivo risponda.</string>
-    <string name="miBandIntegrationDesc">Le allerte in tempo reale causeranno la vibrazione e l\'illuminazione del bracciale.</string>
-    <string name="miBandTestFailed">Un errore c\'è stato un errore durante la connesione con la Mi Band. Prova a cancellare le altre App che interagiscono con il bracciale (Incluso Mi Fit) qualora siano installate. Inoltre, prova a toccare la superificie di metallo della banda (E\' un sensore)  per svegliarla.\n\n Contattaci qualora nonostante ciò non sia possibile connettersi con il dispositivo dopo numerosi tentativi.</string>
-    <string name="devices">Dispositivi</string>
     <string name="secondarySilentOverrideDesc">Le allerte secondarie disabiliteranno la modalità silenziosa.</string>
 
     <!-- Operation Lifeshield -->
     <string name="lifeshieldShelters">Rifugi Lifeshield:</string>
     <string name="learnAboutLifeshield">Ulteriori informazioni su Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Clicca qui per saperne di più su Operation Lifeshield, un\'organizzazione no profit che utilizza rifugi antiaerei in Israele.</string>
-    <string name="connecting">Connettendo...</string>
 
     <!-- Alert Types -->
     <string name="missiles">Fuoco di razzi</string>

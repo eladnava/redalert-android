@@ -26,7 +26,6 @@ import com.red.alert.config.Sound;
 import com.red.alert.logic.communication.intents.MainActivityParameters;
 import com.red.alert.logic.communication.intents.RocketNotificationParameters;
 import com.red.alert.logic.feedback.sound.SoundLogic;
-import com.red.alert.logic.integration.BluetoothIntegration;
 import com.red.alert.receivers.NotificationDeletedReceiver;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.formatting.StringUtils;
@@ -98,9 +97,6 @@ public class RocketNotifications {
 
         // Show alert popup (if applicable)
         AlertPopup.showAlertPopup(alertType, city, context);
-
-        // Notify BLE devices (if applicable)
-        BluetoothIntegration.notifyDevices(alertType, context);
 
         // Reload recent alerts (if main activity is open)
         Broadcasts.publish(context, MainActivityParameters.RELOAD_RECENT_ALERTS);

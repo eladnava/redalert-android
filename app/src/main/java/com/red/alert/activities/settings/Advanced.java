@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import com.red.alert.R;
 import com.red.alert.activities.settings.alerts.LocationAlerts;
 import com.red.alert.activities.settings.alerts.SecondaryAlerts;
-import com.red.alert.activities.settings.integrations.DeviceIntegrations;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.ui.activities.AppCompatPreferenceActivity;
 import com.red.alert.ui.elements.SliderPreference;
@@ -18,7 +17,6 @@ import com.red.alert.utils.feedback.Volume;
 
 public class Advanced extends AppCompatPreferenceActivity {
     Preference mLocationAlerts;
-    Preference mIntegrations;
     Preference mSecondaryAlerts;
 
     SliderPreference mVolumeSelection;
@@ -58,7 +56,6 @@ public class Advanced extends AppCompatPreferenceActivity {
         addPreferencesFromResource(R.xml.settings_advanced);
 
         // Cache resource IDs
-        mIntegrations = findPreference(getString(R.string.integrationsPref));
         mLocationAlerts = findPreference(getString(R.string.locationPref));
         mSecondaryAlerts = findPreference(getString(R.string.secondaryPref));
         mVolumeSelection = (SliderPreference) findPreference(getString(R.string.volumePref));
@@ -110,24 +107,6 @@ public class Advanced extends AppCompatPreferenceActivity {
 
                 // Show settings
                 startActivity(locationAlerts);
-
-                // Consume event
-                return true;
-            }
-        });
-
-        // Set up integrations click listener
-        mIntegrations.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                // Prepare new intent
-                Intent integrations = new Intent();
-
-                // Set class
-                integrations.setClass(Advanced.this, DeviceIntegrations.class);
-
-                // Show settings
-                startActivity(integrations);
 
                 // Consume event
                 return true;

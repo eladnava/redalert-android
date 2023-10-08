@@ -13,14 +13,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
-    <!-- BLE Integration -->
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_SCAN"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
-
-    <uses-feature android:name="android.hardware.bluetooth_le" android:required="false" />
-
     <!-- Google Play Services Feature Declarations -->
     <uses-feature
         android:name="android.hardware.location"
@@ -102,13 +94,6 @@
         <activity
             android:name=".activities.settings.alerts.LocationAlerts"
             android:label="@string/secondaryAlerts"
-            android:theme="@style/AppTheme"
-            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
-
-        <!-- Integration Settings -->
-        <activity
-            android:name=".activities.settings.integrations.DeviceIntegrations"
-            android:label="@string/integrations"
             android:theme="@style/AppTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
 

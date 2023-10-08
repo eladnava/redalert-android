@@ -171,25 +171,11 @@
     <string name="testSuccessful">The test has completed successfully!</string>
     <string name="alerts">Alerts</string>
     <string name="advancedAlerts">Advanced Alerts</string>
-    <string name="integrations">Integrations</string>
-    <string name="integrationsTitle">Integration settings</string>
-    <string name="integrationsDesc">Click here to set up alert integration with external devices.</string>
-    <string name="bleNotSupported">No BLE Support</string>
-    <string name="bleNotSupportedDesc">Unfortunately, your phone does not support Bluetooth Low Energy. Update your Android version to 4.3+ and try again.</string>
-    <string name="enableBluetooth">Enable Bluetooth</string>
-    <string name="enableBluetoothDesc">You must enable Bluetooth in your phone settings and leave it enabled at all times to receive alerts via integrated devices.</string>
-    <string name="integrationsTest">Test integrations</string>
-    <string name="integrationsTestDesc">Test the connectivity and reliability of integrated devices.</string>
-    <string name="integrationsTestSuccess">The connectivity test completed successfully.\n\nVerify that the devices responded accordingly.</string>
-    <string name="miBandIntegrationDesc">Real-time rocket alerts will cause the band to vibrate and light up.</string>
-    <string name="miBandTestFailed">An error occurred while connecting to your Mi Band. Try deleting all other apps that integrate with the band (including Mi Fit), if any are installed. Also, try touching the metal surface of the band (it\'s a sensor) to wake it up.\n\nContact us if you still can\'t connect the band after trying a few times.</string>
-    <string name="devices">Devices</string>
 
     <!-- Operation Lifeshield -->
     <string name="lifeshieldShelters">Lifeshield Shelters:</string>
     <string name="learnAboutLifeshield">Learn about Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Click here to learn more about Operation Lifeshield, a nonprofit that deploys air raid shelters in Israel.</string>
-    <string name="connecting">Connecting...</string>
 
     <!-- Alert Types -->
     <string name="missiles">Rocket fire</string>
