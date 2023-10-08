@@ -245,7 +245,6 @@
     <string translatable="false" name="lastAlertPref">last_alert</string>
     <string translatable="false" name="lastSecondaryAlertPref">last_secondary_alert</string>
     <string translatable="false" name="vibratePref">vibrate</string>
-    <string translatable="false" name="batteryOptimizationWarningDisplayedPref">battery_optimization_warning_displayed</string>
     <string translatable="false" name="secondaryVibratePref">secondary_vibrate</string>
     <string translatable="false" name="volumePref">volume</string>
     <string translatable="false" name="nearbyCitiesPref">nearby_cities</string>

@@ -114,9 +114,6 @@ public class Main extends AppCompatActivity {
         // Start the app services
         ServiceManager.startAppServices(this);
 
-        // Got any dialogs to display?
-        showImportantDialogs();
-
         // Check for app version updates
         initializeUpdateChecker();
 
@@ -311,58 +308,6 @@ public class Main extends AppCompatActivity {
 
         // Unregister for broadcasts
         Broadcasts.unsubscribe(this, mBroadcastListener);
-    }
-
-    void showImportantDialogs() {
-        // Haven't displayed tutorial?
-        if (!AppPreferences.getTutorialDisplayed(this)) {
-            return;
-        }
-
-        // Haven't registered for notifications?
-        if (!FCMRegistration.isRegistered(this) || !PushyRegistration.isRegistered(this)) {
-            return;
-        }
-
-        // Battery exemption dialog for Pushy
-        if (PushyRegistration.isRegistered(this)) {
-            // Android M (6) and up only
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                // Get power manager instance
-                PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
-
-                // Check if app isn't already whitelisted from battery optimizations
-                if (!powerManager.isIgnoringBatteryOptimizations(getPackageName())) {
-                    // Only warn once
-                    if (!Singleton.getSharedPreferences(this).getBoolean(getString(R.string.batteryOptimizationWarningDisplayedPref), false)) {
-                        // Get app name as string
-                        String appName = getPackageManager().getApplicationLabel(getApplicationInfo()).toString();
-
-                        // Instruct user to whitelist app from optimizations
-                        new AlertDialog.Builder(this)
-                                .setTitle("Disable battery optimizations")
-                                .setMessage("If you'd like to receive notifications in the background, please click OK and select \"All apps\" -> " + appName + " -> Don't optimize.")
-                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        // Display the battery whitelist screen
-                                        startActivity(new Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS));
-                                    }
-                                })
-                                .setNegativeButton("Cancel", null).show();
-
-                        // Persist warning displayed flag to SharedPreferences
-                        SharedPreferences.Editor editor = Singleton.getSharedPreferences(this).edit();
-
-                        // Set to true
-                        editor.putBoolean(getString(R.string.batteryOptimizationWarningDisplayedPref), true);
-
-                        // Save and flush to disk
-                        editor.commit();
-                    }
-                }
-            }
-        }
     }
 
     void pollRecentAlerts() {
