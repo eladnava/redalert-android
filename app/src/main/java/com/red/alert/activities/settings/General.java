@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.red.alert.R;
+import com.red.alert.activities.Main;
 import com.red.alert.config.API;
 import com.red.alert.config.Lifeshield;
 import com.red.alert.config.Logging;
@@ -32,6 +33,7 @@ import com.red.alert.logic.communication.broadcasts.LocationSelectionEvents;
 import com.red.alert.logic.communication.broadcasts.SelfTestEvents;
 import com.red.alert.logic.communication.broadcasts.SettingsEvents;
 import com.red.alert.logic.push.FCMRegistration;
+import com.red.alert.logic.push.PushManager;
 import com.red.alert.logic.push.PushyRegistration;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.model.req.SelfTestRequest;
@@ -798,6 +800,9 @@ public class General extends AppCompatPreferenceActivity {
             try {
                 // Update alert subscriptions
                 RedAlertAPI.subscribe(General.this);
+
+                // Update Pub/Sub subscriptions
+                PushManager.updateSubscriptions(General.this);
             }
             catch (Exception exc) {
                 // Return exception to onPostExecute
@@ -877,6 +882,9 @@ public class General extends AppCompatPreferenceActivity {
             try {
                 // Update notification preferences
                 RedAlertAPI.updateNotificationPreferences(General.this);
+
+                // Update notification preferences
+                PushManager.updateSubscriptions(General.this);
             }
             catch (Exception exc) {
                 // Return exception to onPostExecute

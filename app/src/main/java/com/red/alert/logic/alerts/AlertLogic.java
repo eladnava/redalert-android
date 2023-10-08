@@ -29,7 +29,7 @@ public class AlertLogic {
         Log.i(Logging.TAG, "Received alert (" + threatType + "): " + citiesPSVString);
 
         // Get alert cities as list
-        List<String> cityList = LocationData.explodeCitiesPSV(citiesPSVString);
+        List<String> cityList = LocationData.explodePSV(citiesPSVString);
 
         // Loop over cities
         for (String city : cityList) {
@@ -170,7 +170,7 @@ public class AlertLogic {
         }
 
         // Explode into array
-        List<String> selectedCitiesList = LocationData.explodeCitiesPSV(selectedCities);
+        List<String> selectedCitiesList = LocationData.explodePSV(selectedCities);
 
         // Selected this city?
         if (selectedCitiesList.contains(city)) {
@@ -208,7 +208,7 @@ public class AlertLogic {
         }
 
         // Get selected cities as list
-        List<String> selectedCities = LocationData.explodeCitiesPSV(secondaryCities);
+        List<String> selectedCities = LocationData.explodePSV(secondaryCities);
 
         // Did we select this city?
         if (selectedCities.contains(city)) {

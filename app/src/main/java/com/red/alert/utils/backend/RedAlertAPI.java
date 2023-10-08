@@ -110,7 +110,7 @@ public class RedAlertAPI {
         // Anything selected?
         if (!StringUtils.stringIsNullOrEmpty(selectedZones)) {
             // Explode selected zones into array and push into primarySubs
-            primarySubscriptions.addAll(LocationData.explodeCitiesPSV(selectedZones));
+            primarySubscriptions.addAll(LocationData.explodePSV(selectedZones));
         }
         else {
             // Empty value means all regions
@@ -123,7 +123,7 @@ public class RedAlertAPI {
         // Anything selected?
         if (!StringUtils.stringIsNullOrEmpty(selectedCities)) {
             // Explode selected cities into array and push into primarySubs
-            primarySubscriptions.addAll(LocationData.explodeCitiesPSV(selectedCities));
+            primarySubscriptions.addAll(LocationData.explodePSV(selectedCities));
         }
         else {
             // Empty value means all cities
@@ -136,7 +136,7 @@ public class RedAlertAPI {
         // Anything selected?
         if (!StringUtils.stringIsNullOrEmpty(secondaryCities)) {
             // Explode selected cities into array and push into secondarySubs
-            secondarySubscriptions.addAll(LocationData.explodeCitiesPSV(secondaryCities));
+            secondarySubscriptions.addAll(LocationData.explodePSV(secondaryCities));
         }
         else {
             // Empty value means all cities

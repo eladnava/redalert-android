@@ -262,6 +262,51 @@ public class LocationData {
         return cityName;
     }
 
+    public static List<String> getEnglishZoneTopicNames(List<String> hebrewZoneNames, Context context) {
+        // Output list
+        List<String> output = new ArrayList<>();
+
+        // Prepare cities list
+        List<City> cities = getAllCities(context);
+
+        // Loop over cities
+        for (City city : cities) {
+            // Got a match?
+            if (hebrewZoneNames.contains(city.zone)) {
+                // Add english zone name to output list
+                output.add(sanitizeTopicName(city.zoneEnglish));
+            }
+        }
+
+        // All done
+        return output;
+    }
+
+    public static String sanitizeTopicName(String topic) {
+        // Replace non-alphabet characters with '_'
+        return topic.toLowerCase().replaceAll("[^a-z]", "_").replaceAll("_+", "_");
+    }
+
+    public static List<String> getEnglishCityTopicNames(List<String> hebrewCityNames, Context context) {
+        // Output list
+        List<String> output = new ArrayList<>();
+
+        // Prepare cities list
+        List<City> cities = getAllCities(context);
+
+        // Loop over cities
+        for (City city : cities) {
+            // Got a match?
+            if (hebrewCityNames.contains(city.name)) {
+                // Add english zone name to output list
+                output.add(sanitizeTopicName(city.nameEnglish));
+            }
+        }
+
+        // All done
+        return output;
+    }
+
     public static String getLocalizedThreatType(String alertType, Context context) {
         // Result resource
         int result = 0;
@@ -405,8 +450,8 @@ public class LocationData {
         return null;
     }
 
-    public static List<String> explodeCitiesPSV(String citiesPSV) {
-        // Unique cities list
+    public static List<String> explodePSV(String citiesPSV) {
+        // Unique list
         List<String> uniqueList = new ArrayList<>();
 
         // Explode into array
@@ -458,5 +503,41 @@ public class LocationData {
 
         // Unknown city
         return "";
+    }
+
+    public static List<String> getZonesByCityValues(List<String> cityValues, Context context) {
+        // Results array
+        List<String> results = new ArrayList<>();
+
+        // Loop over cities
+        for (String cityValue : cityValues) {
+            // Attempt to find city by value
+            City city = getCityByValue(cityValue, context);
+
+            // Got a match?
+            if (city != null) {
+                // Return english name
+                results.add(city.zoneEnglish.toLowerCase());
+            }
+        }
+
+        // Return results
+        return results;
+    }
+
+    public static City getCityByValue(String value, Context context) {
+        // Prepare cities array
+        List<City> cities = getAllCities(context);
+
+        // Loop over cities
+        for (City city : cities) {
+            // Got a match?
+            if (city.value.equals(value)) {
+                return city;
+            }
+        }
+
+        // No match
+        return null;
     }
 }

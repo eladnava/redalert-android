@@ -10,8 +10,10 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.red.alert.R;
+import com.red.alert.activities.Main;
 import com.red.alert.config.Logging;
 import com.red.alert.logic.communication.broadcasts.LocationSelectionEvents;
+import com.red.alert.logic.push.PushManager;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.ui.activities.AppCompatPreferenceActivity;
 import com.red.alert.ui.compatibility.ProgressDialogCompat;
@@ -189,6 +191,9 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
             try {
                 // Update alert subscriptions
                 RedAlertAPI.subscribe(SecondaryAlerts.this);
+
+                // Update Pub/Sub subscriptions
+                PushManager.updateSubscriptions(SecondaryAlerts.this);
             }
             catch (Exception exc) {
                 // Return exception to onPostExecute
@@ -266,6 +271,9 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
             try {
                 // Update notification preferences
                 RedAlertAPI.updateNotificationPreferences(SecondaryAlerts.this);
+
+                // Update notification preferences
+                PushManager.updateSubscriptions(SecondaryAlerts.this);
             }
             catch (Exception exc) {
                 // Return exception to onPostExecute

@@ -6,7 +6,4 @@ public class FCMGateway {
 
     // FCM Scope
     public static String SCOPE = "*";
-
-    // FCM Topic Name for PubSub push notifications
-    public static String ALERTS_TOPIC = "alerts";
 }

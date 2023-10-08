@@ -41,6 +41,7 @@ import com.red.alert.logic.communication.broadcasts.SettingsEvents;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
 import com.red.alert.logic.communication.intents.MainActivityParameters;
 import com.red.alert.logic.push.FCMRegistration;
+import com.red.alert.logic.push.PushManager;
 import com.red.alert.logic.push.PushyRegistration;
 import com.red.alert.logic.services.ServiceManager;
 import com.red.alert.logic.settings.AppPreferences;
@@ -772,6 +773,9 @@ public class Main extends AppCompatActivity {
 
                     // Subscribe for alerts based on current city/region selections
                     RedAlertAPI.subscribe(Main.this);
+
+                    // Update Pub/Sub subscriptions
+                    PushManager.updateSubscriptions(Main.this);
                 }
             }
             catch (Exception exc) {

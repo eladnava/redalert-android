@@ -2,13 +2,16 @@ package com.red.alert.logic.push;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.red.alert.R;
 import com.red.alert.config.Logging;
-import com.red.alert.config.push.PushyGateway;
+import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.formatting.StringUtils;
+
+import java.util.List;
 
 import me.pushy.sdk.Pushy;
 
@@ -17,14 +20,11 @@ public class PushyRegistration {
         // Acquire a unique registration ID for this device
         String token = Pushy.register(context);
 
+        // Save token
+        saveRegistrationToken(context, token);
+
         // Log to logcat
         Log.d(Logging.TAG, "Pushy registration success: " + token);
-
-        // Subscribe to global alerts topic (we need this for location alerts to work)
-        Pushy.subscribe(PushyGateway.ALERTS_TOPIC, context);
-
-        // Log it
-        Log.d(Logging.TAG, "Pushy subscribe success: " + PushyGateway.ALERTS_TOPIC);
 
         // Return token to be sent to API
         return token;
@@ -49,5 +49,31 @@ public class PushyRegistration {
 
         // Save and flush
         editor.commit();
+    }
+
+    public static void updateSubscriptions(Context context) throws Exception {
+        // Make sure registered for notifications
+        if (!PushyRegistration.isRegistered(context)) {
+            return;
+        }
+
+        // Unsubscribe from all
+        Pushy.unsubscribe("*", context);
+
+        // Get new subscriptions list
+        List<String> subscriptions = AppPreferences.getSubscriptions(context);
+
+        // Got any?
+        if (subscriptions.size() > 0) {
+            // Subscribe to new topics
+            Pushy.subscribe(subscriptions.toArray(new String[0]), context);
+
+            // Log it
+            Log.d(Logging.TAG, "Pushy subscribe success: " + TextUtils.join(", ", subscriptions));
+        }
+        else {
+            // Log it
+            Log.d(Logging.TAG, "Pushy unsubscribed from all");
+        }
     }
 }

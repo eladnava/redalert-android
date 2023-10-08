@@ -1,5 +1,6 @@
 package com.red.alert.activities.settings.alerts;
 
+import android.app.ProgressDialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,29 +14,37 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.red.alert.R;
+import com.red.alert.config.Logging;
 import com.red.alert.logic.communication.broadcasts.LocationAlertsEvents;
 import com.red.alert.logic.location.LocationLogic;
+import com.red.alert.logic.push.PushManager;
+import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.services.location.LocationService;
 import com.red.alert.ui.activities.AppCompatPreferenceActivity;
+import com.red.alert.ui.compatibility.ProgressDialogCompat;
 import com.red.alert.ui.dialogs.AlertDialogBuilder;
 import com.red.alert.ui.dialogs.custom.LocationDialogs;
 import com.red.alert.ui.elements.SliderPreference;
 import com.red.alert.ui.localization.rtl.RTLSupport;
+import com.red.alert.utils.backend.RedAlertAPI;
+import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.feedback.Volume;
 import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.integration.GooglePlayServices;
 import com.red.alert.utils.metadata.LocationData;
+import com.red.alert.utils.threading.AsyncTaskAdapter;
 
 public class LocationAlerts extends AppCompatPreferenceActivity {
     Preference mNearbyCities;
-
     CheckBoxPreference mGPS;
     SliderPreference mFrequency;
     SliderPreference mMaxDistance;
+
     private SharedPreferences.OnSharedPreferenceChangeListener mBroadcastListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
         @Override
         public void onSharedPreferenceChanged(SharedPreferences Preferences, String Key) {
@@ -152,6 +161,9 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        // Update subscriptions on the server-side
+                        new UpdateSubscriptionsAsync().execute();
+
                         // Can we request location?
                         if (!LocationLogic.shouldRequestLocationUpdates(LocationAlerts.this)) {
                             return;
@@ -287,5 +299,77 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
         }
 
         return super.onOptionsItemSelected(Item);
+    }
+
+    public class UpdateSubscriptionsAsync extends AsyncTaskAdapter<Integer, String, Exception> {
+        ProgressDialog mLoading;
+
+        public UpdateSubscriptionsAsync() {
+            // Fix progress dialog appearance on old devices
+            mLoading = ProgressDialogCompat.getStyledProgressDialog(LocationAlerts.this);
+
+            // Prevent cancel
+            mLoading.setCancelable(false);
+
+            // Set default message
+            mLoading.setMessage(getString(R.string.loading));
+
+            // Show the progress dialog
+            mLoading.show();
+        }
+
+        @Override
+        protected Exception doInBackground(Integer... Parameter) {
+            try {
+                // Update notification preferences
+                PushManager.updateSubscriptions(LocationAlerts.this);
+            } catch (Exception exc) {
+                // Return exception to onPostExecute
+                return exc;
+            }
+
+            // Success
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Exception exc) {
+            // Failed?
+            if (exc != null) {
+                // Log it
+                Log.e(Logging.TAG, "Updating subscriptions failed", exc);
+
+                // Restore previous notification toggle state
+                SharedPreferences.Editor editor = Singleton.getSharedPreferences(LocationAlerts.this).edit();
+
+                // Restore original values
+                editor.putBoolean(getString(R.string.locationAlertsPref), !AppPreferences.getLocationAlertsEnabled(LocationAlerts.this));
+
+                // Save and flush to disk
+                editor.commit();
+            }
+
+            // Activity dead?
+            if (isFinishing()) {
+                return;
+            }
+
+            // Hide loading dialog
+            if (mLoading.isShowing()) {
+                mLoading.dismiss();
+            }
+
+            // Show error if failed
+            if (exc != null) {
+                // Build an error message
+                String errorMessage = getString(R.string.apiRequestFailed) + "\n\n" + exc.getMessage() + "\n\n" + exc.getCause();
+
+                // Build the dialog
+                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, LocationAlerts.this, null);
+            }
+
+            // Refresh checkbox with new value
+            mGPS.setChecked(AppPreferences.getLocationAlertsEnabled(LocationAlerts.this));
+        }
     }
 }
