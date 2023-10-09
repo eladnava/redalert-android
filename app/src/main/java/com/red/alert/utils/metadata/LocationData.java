@@ -263,6 +263,12 @@ public class LocationData {
         // Output list
         List<String> output = new ArrayList<>();
 
+        // Support for "all"
+        if (hebrewZoneNames.size() == 1 && hebrewZoneNames.get(0).equals("all")) {
+            output.add("all");
+            return output;
+        }
+
         // Prepare cities list
         List<City> cities = getAllCities(context);
 
@@ -287,6 +293,12 @@ public class LocationData {
     public static List<String> getEnglishCityTopicNames(List<String> hebrewCityNames, Context context) {
         // Output list
         List<String> output = new ArrayList<>();
+
+        // Support for "all"
+        if (hebrewCityNames.size() == 1 && hebrewCityNames.get(0).equals("all")) {
+            output.add("all");
+            return output;
+        }
 
         // Prepare cities list
         List<City> cities = getAllCities(context);
