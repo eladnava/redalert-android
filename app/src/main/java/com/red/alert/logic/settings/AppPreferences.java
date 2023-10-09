@@ -100,7 +100,7 @@ public class AppPreferences {
 
         // Anything selected?
         if (!StringUtils.stringIsNullOrEmpty(selectedCities)) {
-            // Explode selected zones into array and push into primarySubs
+            // Explode selected cities into array and push into primarySubs
             subscriptions.addAll(LocationData.getEnglishCityTopicNames(LocationData.explodePSV(selectedCities), context));
 
         } else {
@@ -115,14 +115,8 @@ public class AppPreferences {
 
             // Anything selected?
             if (!StringUtils.stringIsNullOrEmpty(secondaryCities)) {
-                // Explode PSV into List<String>
-                List<String> cities = LocationData.explodePSV(secondaryCities);
-
-                // Add all cities
-                subscriptions.addAll(cities);
-
-                // Add all cities' zones as well
-                subscriptions.addAll(LocationData.getZonesByCityValues(cities, context));
+                // Explode selected cities into array and push into primarySubs
+                subscriptions.addAll(LocationData.getEnglishCityTopicNames(LocationData.explodePSV(secondaryCities), context));
             } else {
                 // Empty value means all cities
                 subscriptions.add("all");
