@@ -171,4 +171,8 @@
     <string name="terroristInfiltrationDrill">Übung: Terroristische unterwanderung</string>
     <string name="unknown">Alarm</string>
     <string name="system">Systemhinweis</string>
+
+    <!-- Battery Optimization Dialog -->
+    <string name="disableBatteryOptimizations">Deaktivieren Sie die Batterieoptimierungen</string>
+    <string name="disableBatteryOptimizationsInstructions">Um Benachrichtigungen im Hintergrund zu erhalten, stellen Sie bitte im nächsten Bildschirm \"Akku\" auf \"Uneingeschränkt\" ein.</string>
 </resources>

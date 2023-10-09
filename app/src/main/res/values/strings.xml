@@ -219,6 +219,10 @@
     <string name="unknown">אזעקה</string>
     <string name="system">הודעת מערכת</string>
 
+    <!-- Battery Optimization Dialog -->
+    <string name="disableBatteryOptimizations">ביטול אופטימיזציות סוללה</string>
+    <string name="disableBatteryOptimizationsInstructions">כדי לקבל התרעות צבע אדום בזמן אמת, בחר/י ״סוללה״ -> ״ללא הגבלות״ במסך הבא.</string>
+
     <!-- Do not translate from here on down -->
 
     <!-- Static Language Identifiers -->
@@ -246,6 +250,7 @@
     <string translatable="false" name="lastAlertPref">last_alert</string>
     <string translatable="false" name="lastSecondaryAlertPref">last_secondary_alert</string>
     <string translatable="false" name="vibratePref">vibrate</string>
+    <string translatable="false" name="batteryOptimizationWarningDisplayedCountPref">battery_optimization_warning_displayed_counter</string>
     <string translatable="false" name="secondaryVibratePref">secondary_vibrate</string>
     <string translatable="false" name="volumePref">volume</string>
     <string translatable="false" name="nearbyCitiesPref">nearby_cities</string>
@@ -263,7 +268,7 @@
     <string translatable="false" name="selectedSecondaryCitiesPref">selected_secondary_cities</string>
     <string translatable="false" name="userIdPref">user_id</string>
     <string translatable="false" name="userHashPref">user_hash</string>
-    <string translatable="false" name="isSubscribedPref">is_subscribed_1_0_22</string>
+    <string translatable="false" name="isSubscribedPref">is_subscribed_1_0_24</string>
 
     <!-- Default Volume -->
     <string name="defaultAlertVolume" translatable="false">1.0</string>

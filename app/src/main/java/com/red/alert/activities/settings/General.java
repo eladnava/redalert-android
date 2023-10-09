@@ -4,17 +4,21 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import androidx.core.view.MenuItemCompat;
+
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -47,6 +51,7 @@ import com.red.alert.utils.backend.RedAlertAPI;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.feedback.Volume;
+import com.red.alert.utils.intents.AndroidSettings;
 import com.red.alert.utils.marketing.GooglePlay;
 import com.red.alert.utils.metadata.AppVersion;
 import com.red.alert.utils.metadata.LocationData;
@@ -297,6 +302,40 @@ public class General extends AppCompatPreferenceActivity {
         mTestAlert.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
+                // Battery exemption dialog
+                if (PushyRegistration.isRegistered(General.this)) {
+                    // Android M (6) and up only
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        // Get power manager instance
+                        PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+
+                        // Check if app isn't already whitelisted from battery optimizations
+                        if (!powerManager.isIgnoringBatteryOptimizations(getPackageName())) {
+                            // Show the dialog
+                            AlertDialogBuilder.showGenericDialog(getString(R.string.disableBatteryOptimizations), getString(R.string.disableBatteryOptimizationsInstructions), getString(R.string.okay), getString(R.string.notNow), true, General.this, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int which) {
+                                    // Clicked okay?
+                                    if (which == DialogInterface.BUTTON_POSITIVE) {
+                                        // Open App Info settings page
+                                        AndroidSettings.openAppInfoPage(General.this);
+                                    }
+                                    else {
+                                        // Not already testing?
+                                        if (!mIsTesting) {
+                                            // Send a test push
+                                            new PerformSelfTestAsync().execute();
+                                        }
+                                    }
+                                }
+                            });
+
+                            // Consume event
+                            return true;
+                        }
+                    }
+                }
+
                 // Not already testing?
                 if (!mIsTesting) {
                     // Send a test push
@@ -846,7 +885,7 @@ public class General extends AppCompatPreferenceActivity {
                 String errorMessage = getString(R.string.apiRequestFailed) + "\n\n" + exc.getMessage() + "\n\n" + exc.getCause();
 
                 // Build the dialog
-                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, General.this, null);
+                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, getString(R.string.okay), null, false, General.this, null);
             }
             else {
                 // Clear previously cached values
@@ -884,8 +923,7 @@ public class General extends AppCompatPreferenceActivity {
 
                 // Update notification preferences
                 PushManager.updateSubscriptions(General.this);
-            }
-            catch (Exception exc) {
+            } catch (Exception exc) {
                 // Return exception to onPostExecute
                 return exc;
             }
@@ -905,7 +943,7 @@ public class General extends AppCompatPreferenceActivity {
                 SharedPreferences.Editor editor = Singleton.getSharedPreferences(General.this).edit();
 
                 // Restore original values
-                editor.putBoolean(getString(R.string.enabledPref), ! AppPreferences.getNotificationsEnabled(General.this));
+                editor.putBoolean(getString(R.string.enabledPref), !AppPreferences.getNotificationsEnabled(General.this));
 
                 // Save and flush to disk
                 editor.commit();
@@ -927,7 +965,7 @@ public class General extends AppCompatPreferenceActivity {
                 String errorMessage = getString(R.string.apiRequestFailed) + "\n\n" + exc.getMessage() + "\n\n" + exc.getCause();
 
                 // Build the dialog
-                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, General.this, null);
+                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, getString(R.string.okay), null, false, General.this, null);
             }
 
             // Refresh checkbox with new value

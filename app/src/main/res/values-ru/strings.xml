@@ -217,4 +217,8 @@
     <string name="terroristInfiltrationDrill">Упражнение: проникновение террористов</string>
     <string name="unknown">Оповещен</string>
     <string name="system">Системное оповещение</string>
+
+    <!-- Battery Optimization Dialog -->
+    <string name="disableBatteryOptimizations">Отключить оптимизацию батареи</string>
+    <string name="disableBatteryOptimizationsInstructions">Чтобы получать оповещения в фоновом режиме, на следующем экране установите для параметра «Батарея» значение «Неограниченно».</string>
 </resources>

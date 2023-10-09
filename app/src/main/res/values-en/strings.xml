@@ -172,4 +172,8 @@
     <string name="terroristInfiltrationDrill">Drill: Terrorist infiltration</string>
     <string name="unknown">Alert</string>
     <string name="system">System Alert</string>
+
+    <!-- Battery Optimization Dialog -->
+    <string name="disableBatteryOptimizations">Disable battery optimizations</string>
+    <string name="disableBatteryOptimizationsInstructions">To receive alerts in the background, please set \"Battery\" to \"Unrestricted\" in the next screen.</string>
 </resources>

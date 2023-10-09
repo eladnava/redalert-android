@@ -236,7 +236,7 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
                 String errorMessage = getString(R.string.apiRequestFailed) + "\n\n" + exc.getMessage() + "\n\n" + exc.getCause();
 
                 // Build the dialog
-                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, SecondaryAlerts.this, null);
+                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, getString(R.string.okay), null, false, SecondaryAlerts.this, null);
             }
             else {
                 // Clear previously cached values
@@ -316,7 +316,7 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
                 String errorMessage = getString(R.string.apiRequestFailed) + "\n\n" + exc.getMessage() + "\n\n" + exc.getCause();
 
                 // Build the dialog
-                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, SecondaryAlerts.this, null);
+                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, getString(R.string.okay), null, false, SecondaryAlerts.this, null);
             }
 
             // Refresh checkbox with new value

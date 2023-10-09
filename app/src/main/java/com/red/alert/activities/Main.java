@@ -1,6 +1,5 @@
 package com.red.alert.activities;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,7 +10,6 @@ import android.os.Build;
 import android.os.Bundle;
 import androidx.core.view.MenuItemCompat;
 import androidx.appcompat.app.AppCompatActivity;
-
 
 import android.os.PowerManager;
 import android.provider.Settings;
@@ -61,6 +59,7 @@ import com.red.alert.utils.feedback.Volume;
 import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.integration.GooglePlayServices;
 import com.red.alert.utils.integration.WhatsApp;
+import com.red.alert.utils.intents.AndroidSettings;
 import com.red.alert.utils.metadata.AppVersion;
 import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.networking.HTTP;
@@ -79,6 +78,7 @@ public class Main extends AppCompatActivity {
     boolean mIsResumed;
     boolean mIsDestroyed;
     boolean mIsReloading;
+    boolean mBatteryDialogDisplayed;
 
     Button mImSafe;
     ListView mAlertsList;
@@ -277,6 +277,9 @@ public class Main extends AppCompatActivity {
         // Android 13:
         // Ensure notification permission has been granted
         requestNotificationPermission();
+
+        // Ask user to whitelist app from battery optimizations
+        showBatteryExemptionDialog();
     }
 
     void requestNotificationPermission() {
@@ -284,22 +287,11 @@ public class Main extends AppCompatActivity {
         // Check if device is already registered, but permission not granted yet
         if (PushyAuthentication.getDeviceCredentials(this) != null && !Pushy.isPermissionGranted(this)) {
             // Show error with an on-click listener that opens the App Info page
-            AlertDialogBuilder.showGenericDialog(getString(R.string.error), getString(R.string.grantNotificationPermission), Main.this, new DialogInterface.OnClickListener() {
+            AlertDialogBuilder.showGenericDialog(getString(R.string.error), getString(R.string.grantNotificationPermission), getString(R.string.okay), null, false, Main.this, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    // Open settings screen for this app
-                    Intent intent = new Intent();
-
-                    // Details page
-                    intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                    // Set package to current package
-                    Uri uri = Uri.fromParts("package", getPackageName(), null);
-                    intent.setData(uri);
-
-                    // Start settings activity
-                    startActivity(intent);
+                    // Open App Info settings page
+                    AndroidSettings.openAppInfoPage(Main.this);
                 }
             });
         }
@@ -314,6 +306,76 @@ public class Main extends AppCompatActivity {
 
         // Unregister for broadcasts
         Broadcasts.unsubscribe(this, mBroadcastListener);
+    }
+
+    void showBatteryExemptionDialog() {
+        // Android M (6) and up only
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return;
+        }
+
+        // Haven't displayed tutorial?
+        if (!AppPreferences.getTutorialDisplayed(this)) {
+            return;
+        }
+
+        // Haven't registered for notifications?
+        if (!FCMRegistration.isRegistered(this) || !PushyRegistration.isRegistered(this)) {
+            return;
+        }
+
+        // Android 13 notification permission not granted yet?
+        if (!Pushy.isPermissionGranted(this)) {
+            return;
+        }
+
+        // Already displayed for this activity?
+        if (mBatteryDialogDisplayed) {
+            return;
+        }
+
+        // Get power manager instance
+        PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+
+        // Check if app isn't already whitelisted from battery optimizations
+        if (powerManager.isIgnoringBatteryOptimizations(getPackageName())) {
+            return;
+        }
+
+        // Check how many times we asked already
+        int count = Singleton.getSharedPreferences(this).getInt(getString(R.string.batteryOptimizationWarningDisplayedCountPref), 0);
+
+        // Warn 3 times
+        if (count >= 3) {
+            return;
+        }
+
+        // Show the dialog
+        AlertDialogBuilder.showGenericDialog(getString(R.string.disableBatteryOptimizations), getString(R.string.disableBatteryOptimizationsInstructions), getString(R.string.okay), getString(R.string.notNow), true, this, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                // Clicked okay?
+                if (which == DialogInterface.BUTTON_POSITIVE) {
+                    // Open App Info settings page
+                    AndroidSettings.openAppInfoPage(Main.this);
+                }
+            }
+        });
+
+        // Don't show again for this activity
+        mBatteryDialogDisplayed = true;
+
+        // Increment counter
+        count++;
+
+        // Persist dialog display counter to SharedPreferences
+        SharedPreferences.Editor editor = Singleton.getSharedPreferences(this).edit();
+
+        // Save counter as integer
+        editor.putInt(getString(R.string.batteryOptimizationWarningDisplayedCountPref), count);
+
+        // Save and flush to disk
+        editor.commit();
     }
 
     void pollRecentAlerts() {
@@ -606,7 +668,7 @@ public class Main extends AppCompatActivity {
         }
 
         // Build the dialog
-        AlertDialogBuilder.showGenericDialog(getString(R.string.pushRegistrationSuccess), getString(R.string.pushRegistrationSuccessDesc), this, new DialogInterface.OnClickListener() {
+        AlertDialogBuilder.showGenericDialog(getString(R.string.pushRegistrationSuccess), getString(R.string.pushRegistrationSuccessDesc), getString(R.string.okay), null, false, this, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 // Start settings activity
@@ -754,7 +816,7 @@ public class Main extends AppCompatActivity {
                 String errorMessage = getString(R.string.pushRegistrationFailed) + "\n\n" + exc.getMessage();
 
                 // Build the dialog
-                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, Main.this, null);
+                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, getString(R.string.okay), null, false, Main.this, null);
             }
             else {
                 // Success, show success dialog if haven't yet

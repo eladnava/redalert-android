@@ -7,17 +7,23 @@ import android.widget.Toast;
 
 import com.red.alert.R;
 import com.red.alert.ui.localization.rtl.RTLSupport;
+import com.red.alert.utils.formatting.StringUtils;
 
 public class AlertDialogBuilder {
-    public static final void showGenericDialog(String title, String message, Context context, DialogInterface.OnClickListener clickListener) {
+    public static final void showGenericDialog(String title, String message, String positiveButton, String negativeButton, boolean cancelable, Context context, DialogInterface.OnClickListener clickListener) {
         // Use builder to create dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
         // Use builder to create dialog
-        builder.setTitle(title).setMessage(message).setCancelable(false).setPositiveButton(R.string.okay, clickListener);
+        builder.setTitle(title).setMessage(message).setPositiveButton(R.string.okay, clickListener);
 
-        // Prevent cancellation
-        builder.setCancelable(false);
+        // Negative button defined?
+        if (!StringUtils.stringIsNullOrEmpty(negativeButton)) {
+            builder.setNegativeButton(negativeButton, clickListener);
+        }
+
+        // Set cancelable flag
+        builder.setCancelable(cancelable);
 
         try {
             // Build it

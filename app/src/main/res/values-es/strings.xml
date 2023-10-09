@@ -217,4 +217,8 @@
     <string name="terroristInfiltrationDrill">Ejercicio: Infiltración terrorista</string>
     <string name="unknown">Alerta</string>
     <string name="system">Aviso del Sistema</string>
+
+    <!-- Battery Optimization Dialog -->
+    <string name="disableBatteryOptimizations">Desactivar Optimizaciones de Batería</string>
+    <string name="disableBatteryOptimizationsInstructions">Para recibir alertas en segundo plano, configure \"Batería\" en \"Sin restricciones\" en la siguiente pantalla.</string>
 </resources>
