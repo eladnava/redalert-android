@@ -268,7 +268,7 @@
     <string translatable="false" name="selectedSecondaryCitiesPref">selected_secondary_cities</string>
     <string translatable="false" name="userIdPref">user_id</string>
     <string translatable="false" name="userHashPref">user_hash</string>
-    <string translatable="false" name="isSubscribedPref">is_subscribed_1_0_24</string>
+    <string translatable="false" name="isSubscribedPref">is_subscribed_1_0_25</string>
 
     <!-- Default Volume -->
     <string name="defaultAlertVolume" translatable="false">1.0</string>

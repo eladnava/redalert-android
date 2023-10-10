@@ -133,11 +133,6 @@ public class AppPreferences {
     static List<String> cleanSubscriptions(List<String> subscriptions) {
         // Traverse items
         for (String item : subscriptions) {
-            // All selected at least once?
-            if (item.equals("all") || item.equals("")) {
-                return Arrays.asList("all");
-            }
-
             // "None" selected?
             if (item.equals("none")) {
                 return new ArrayList<>();
