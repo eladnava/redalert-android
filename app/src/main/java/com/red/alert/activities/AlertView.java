@@ -202,18 +202,23 @@ public class AlertView extends AppCompatActivity {
         // Set max zoom for animation to 13
         mMap.setMaxZoomPreference(13);
 
-        // Animate nicely
-        mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding), 1500, new GoogleMap.CancelableCallback() {
-            @Override
-            public void onFinish() {
-                // Allow user to zoom in freely
-                mMap.resetMinMaxZoomPreference();
-            }
+        try {
+            // Animate nicely
+            mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding), 1500, new GoogleMap.CancelableCallback() {
+                @Override
+                public void onFinish() {
+                    // Allow user to zoom in freely
+                    mMap.resetMinMaxZoomPreference();
+                }
 
-            @Override
-            public void onCancel() {
-            }
-        });
+                @Override
+                public void onCancel() {
+                }
+            });
+        }
+        catch (Exception exc) {
+            // Ignore exceptions
+        }
     }
 
     @Override

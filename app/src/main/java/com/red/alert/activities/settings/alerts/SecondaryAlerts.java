@@ -227,7 +227,13 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
 
             // Hide loading dialog
             if (mLoading.isShowing()) {
-                mLoading.dismiss();
+                try {
+                    mLoading.dismiss();
+                }
+                catch (Exception exc2) {
+                    // Most likely, activity was destroyed
+                    return;
+                }
             }
 
             // Show error if failed

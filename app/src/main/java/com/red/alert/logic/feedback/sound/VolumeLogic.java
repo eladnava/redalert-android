@@ -15,8 +15,13 @@ public class VolumeLogic {
         // Get max possible volume
         int requestedVolume = VolumeLogic.getNotificationVolume(alertType, context);
 
-        // Set volume to desired level
-        audioManager.setStreamVolume(Sound.STREAM_TYPE, requestedVolume, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+        try {
+            // Set volume to desired level
+            audioManager.setStreamVolume(Sound.STREAM_TYPE, requestedVolume, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+        }
+        catch (SecurityException exc) {
+            // Ignore SecurityException: Not allowed to change Do Not Disturb state
+        }
     }
 
     public static int getNotificationVolume(String alertType, Context context) {
