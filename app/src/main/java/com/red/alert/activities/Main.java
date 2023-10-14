@@ -564,8 +564,8 @@ public class Main extends AppCompatActivity {
             currentAlert.groupedCities.add(currentAlert.city);
 
             // Check whether this new alert can be grouped with the previous one
-            // (Same region + 10 second cutoff threshold)
-            if (lastAlert != null && lastAlert.zone.equals(currentAlert.zone) && currentAlert.date >= lastAlert.date - 5 && currentAlert.date <= lastAlert.date + 5) {
+            // (Same region + 15 second cutoff threshold in either direction)
+            if (lastAlert != null && lastAlert.zone.equals(currentAlert.zone) && currentAlert.date >= lastAlert.date - 15 && currentAlert.date <= lastAlert.date + 15) {
                 // Group with previous alert list item
                 lastAlert.localizedCity += ", " + currentAlert.localizedCity;
                 lastAlert.groupedCities.add(currentAlert.city);
