@@ -5,14 +5,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.core.view.MenuItemCompat;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.PowerManager;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -525,9 +523,9 @@ public class Main extends AppCompatActivity {
             alert.dateString = alert.dateString.replace(" 1 שעה", " שעה");
             alert.dateString = alert.dateString.replace(" 2 שעות", " שעתיים");
 
-            // Prepare localized zone & countdown for display
+            // Prepare localized zone for display
             alert.zone = LocationData.getLocalizedZoneByCityName(alert.city, this);
-            alert.desc = LocationData.getLocalizedZoneWithCountdown(alert.city, this);
+            alert.desc = alert.zone;
 
             // Localize it
             alert.localizedCity = LocationData.getLocalizedCityName(alert.city, this);
