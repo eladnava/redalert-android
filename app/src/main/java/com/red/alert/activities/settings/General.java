@@ -507,6 +507,12 @@ public class General extends AppCompatPreferenceActivity {
         body += "pushy.token=" + PushyRegistration.getRegistrationToken(this) + ", ";
         body += "android.sdk=" + Build.VERSION.SDK_INT + ", ";
         body += "android.version=" + Build.VERSION.RELEASE + ", ";
+
+        // Add battery optimizations whitelist status
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            body += "android.isIgnoringBatteryOptimizations=" + ((PowerManager) getSystemService(Context.POWER_SERVICE)).isIgnoringBatteryOptimizations(getPackageName()) + ", ";
+        }
+
         body += "phone.manufacturer=" + Build.MANUFACTURER + ", ";
         body += "phone.model=" + Build.MODEL;
 
