@@ -87,9 +87,6 @@ public class RocketNotifications {
         catch (Exception exc) {
             // Log it
             Log.e(Logging.TAG, "Rocket notification failed", exc);
-
-            // Show it as a toast message
-            Toast.makeText(context, notificationTitle + " - " + notificationContent, Toast.LENGTH_LONG).show();
         }
 
         // Play alert sound (if applicable)
