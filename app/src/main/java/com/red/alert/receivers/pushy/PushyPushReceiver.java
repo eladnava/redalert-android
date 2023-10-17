@@ -41,7 +41,7 @@ public class PushyPushReceiver extends BroadcastReceiver {
         }
 
         // Log it
-        Log.e(Logging.TAG, "Received push via Pushy gateway");
+        Log.d(Logging.TAG, "Received push via Pushy gateway");
 
         // Receive the alert
         AlertLogic.processIncomingAlert(threatType, alertCities, alertType, context);
