@@ -135,7 +135,6 @@
     <string name="language">שפה</string>
     <string name="langSelection">בחירת שפה (Language)</string>
     <string name="langSelectionDesc">בחר שפה עבור ממשק האפליקציה.</string>
-    <string name="langSelectionSuccess">יש להפעיל מחדש את האפליקציה</string>
 
     <!-- Contact -->
     <string name="contact">צור קשר</string>

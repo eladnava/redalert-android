@@ -55,7 +55,6 @@
     <string name="automatic">Automatic</string>
     <string name="selectedZones">Régions</string>
     <string name="zonesDesc">Sélectionnez les régions pour lequel recevoir les alertes.</string>
-    <string name="langSelectionSuccess">Redémarrez l\'application</string>
     <string name="silentOverride">Passer outre le mode silencieux</string>
     <string name="silentOverrideDesc">Les alertes à la roquette passeront outre le mode silencieux.</string>
     <string name="selectedCities">Autres villes</string>

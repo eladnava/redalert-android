@@ -55,7 +55,6 @@
     <string name="language">Language</string>
     <string name="langSelection">App language</string>
     <string name="langSelectionDesc">Change the application\'s language.</string>
-    <string name="langSelectionSuccess">Please restart the application</string>
 
     <string name="selectedZones">Regioni</string>
     <string name="zonesDesc">Seleziona le regioni di interesse.</string>

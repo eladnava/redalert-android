@@ -20,15 +20,10 @@ import com.red.alert.utils.localization.Localization;
 public class RTLSupport {
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     public static void mirrorActionBar(Activity activity) {
-        // Hebrew only
-        if (!Localization.isHebrewLocale(activity)) {
-            return;
-        }
-
         // Must be Jellybean or newer
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             // Set RTL layout direction
-            activity.getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            activity.getWindow().getDecorView().setLayoutDirection(Localization.isHebrewLocale(activity) ? View.LAYOUT_DIRECTION_RTL : View.LAYOUT_DIRECTION_LTR);
         }
     }
 

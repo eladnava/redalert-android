@@ -55,7 +55,6 @@
     <string name="automatic">Automatic</string>
     <string name="selectedZones">Regions</string>
     <string name="zonesDesc">Select regions to receive alerts for.</string>
-    <string name="langSelectionSuccess">Please restart the application</string>
     <string name="silentOverride">Override silent mode</string>
     <string name="silentOverrideDesc">Rocket alerts will disable silent mode.</string>
     <string name="selectedCities">Additional cities</string>

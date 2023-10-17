@@ -290,8 +290,11 @@ public class General extends AppCompatPreferenceActivity {
         mLanguageSelection.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object o) {
-                // Show instructions toast
-                Toast.makeText(General.this, R.string.langSelectionSuccess, Toast.LENGTH_LONG).show();
+                // Close settings activity
+                finish();
+
+                // Notify language changed
+                Broadcasts.publish(General.this, SettingsEvents.LANGUAGE_CHANGED);
 
                 // Update the preference
                 return true;

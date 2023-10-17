@@ -55,7 +55,6 @@
     <string name="automatic">Automatisch</string>
     <string name="selectedZones">Regionen</string>
     <string name="zonesDesc">Wähle die Region aus, um von dort Alarmierungen zu erhalten.</string>
-    <string name="langSelectionSuccess">Starte die App neu</string>
     <string name="silentOverride">Überschreibe den "Bitte nicht stören modus"</string>
     <string name="silentOverrideDesc">Raketenwarnungen deaktivieren kurzzeitig den nicht stören Modus.</string>
     <string name="selectedCities">Weitere Städte</string>
