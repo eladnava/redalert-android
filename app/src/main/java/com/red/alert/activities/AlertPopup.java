@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.PowerManager;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -52,6 +54,9 @@ public class AlertPopup extends AppCompatActivity {
             return;
         }
 
+        // Turn screen on
+        wakeUpPhone(context);
+
         // Create new popup intent
         Intent popupIntent = new Intent();
 
@@ -68,6 +73,18 @@ public class AlertPopup extends AppCompatActivity {
 
         // Display popup activity
         context.startActivity(popupIntent);
+    }
+
+    static void wakeUpPhone(Context context) {
+        // Get power manager instance
+        PowerManager powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+
+        // Screen off?
+        if (!powerManager.isScreenOn()) {
+            // Turn screen on
+            PowerManager.WakeLock wl = powerManager.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, "redalert:alert");
+            wl.acquire(3000);
+        }
     }
 
     @Override
