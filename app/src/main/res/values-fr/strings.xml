@@ -30,7 +30,6 @@
     <string name="pushRegistrationSuccessDesc">Vous êtes enregistré avec succès pour recevoir les notifications via RedAlert.\n\nSélectionnez les régions et villes d\'alerte préférées pour recevoir les alertes de roquettes.</string>
     <string name="safeWhatsApp">Envoyer via WhatsApp</string>
     <string name="safeWhatsAppDesc">En cliquant sur le bouton \"Je suis en sécurité\", le message sera envoyé via WhatsApp automatiquement.</string>
-    <string name="whatsAppNotInstalled">WhatsApp n\'est pas installé!</string>
     <string name="soundSelection">Sonnerie de l\'alerte à la roquette</string>
     <string name="soundSelectionDesc">Sélectionnez une sonnerie pour les alertes à la roquette.</string>
     <string name="test">Tester</string>

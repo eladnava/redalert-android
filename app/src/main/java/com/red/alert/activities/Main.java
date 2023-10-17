@@ -236,15 +236,8 @@ public class Main extends AppCompatActivity {
 
                 // Send via WhatsApp?
                 if (Singleton.getSharedPreferences(Main.this).getBoolean(getString(R.string.imSafeWhatsAppPref), false)) {
-                    // WhatsApp installed?
-                    if (WhatsApp.isAppInstalled(Main.this)) {
-                        // Set WhatsApp package
-                        shareIntent.setPackage(Integrations.WHATSAPP_PACKAGE);
-                    }
-                    else {
-                        // Show toast
-                        Toast.makeText(Main.this, getString(R.string.whatsAppNotInstalled), Toast.LENGTH_SHORT).show();
-                    }
+                    // Set WhatsApp package
+                    shareIntent.setPackage(Integrations.WHATSAPP_PACKAGE);
                 }
 
                 // Show chooser

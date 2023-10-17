@@ -126,7 +126,6 @@
     <!-- I'm Safe - WhatsApp Integration -->
     <string name="safeWhatsApp">שלח באמצעות WhatsApp</string>
     <string name="safeWhatsAppDesc">לחיצה על כפתור הדיווח תוביל ישירות לבחירת אנשי הקשר.</string>
-    <string name="whatsAppNotInstalled">WhatsApp אינו מותקן!</string>
 
     <!-- Languages -->
     <string name="automatic">אוטומטי</string>

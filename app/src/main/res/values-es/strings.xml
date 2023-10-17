@@ -120,7 +120,6 @@
     <!-- I'm Safe - WhatsApp Integration -->
     <string name="safeWhatsApp">Enviar mediante WhatsApp</string>
     <string name="safeWhatsAppDesc">Elegir contactos a los que desea enviar el mensaje</string>
-    <string name="whatsAppNotInstalled">¡WhatsApp no está instalado!</string>
 
     <!-- Languages -->
     <string name="automatic">Automatic</string>

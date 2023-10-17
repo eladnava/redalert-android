@@ -30,7 +30,6 @@
     <string name="pushRegistrationSuccessDesc">Ti sei collegato con successo tramite RedAlert, riceverai notifiche qualora vi siano attacchi.\n\n Seleziona le città e le aree di interesse per ricevere notifiche personalizzate.</string>
     <string name="safeWhatsApp">Manda con WhatsApp</string>
     <string name="safeWhatsAppDesc">Toccando il bottone \"Sono salvo\" verrà automaticamente mandato un messaggio tramite WhatsApp.</string>
-    <string name="whatsAppNotInstalled">WhatsApp non è installato!</string>
     <string name="soundSelection">Suono notifica di attacco</string>
     <string name="soundSelectionDesc">Seleziona un suono per le allerte in caso di attacco.</string>
     <string name="test">Test</string>

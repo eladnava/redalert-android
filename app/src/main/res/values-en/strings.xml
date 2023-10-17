@@ -30,7 +30,6 @@
     <string name="pushRegistrationSuccessDesc">You have successfully signed up for rocket alert notifications via RedAlert.\n\nPlease select your preferred alert regions and cities to receive rocket alerts.</string>
     <string name="safeWhatsApp">Send via WhatsApp</string>
     <string name="safeWhatsAppDesc">Clicking the \"I\'m safe\" button will send the message via WhatsApp automatically.</string>
-    <string name="whatsAppNotInstalled">WhatsApp is not installed!</string>
     <string name="soundSelection">Rocket alert sound</string>
     <string name="soundSelectionDesc">Select a sound for incoming rocket alerts.</string>
     <string name="test">Self-test</string>

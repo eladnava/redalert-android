@@ -30,7 +30,6 @@
     <string name="pushRegistrationSuccessDesc">Du hast Dich erfolgreich für die Raketen Alarmierung von RedAlert registriert-\n\n Bitte wähle Deine bevorzugten Regionen und Städte aus, um Raketenwarnungen zu erhalten.</string>
     <string name="safeWhatsApp">Senden über  WhatsApp</string>
     <string name="safeWhatsAppDesc">Drücke auf den \"ich bin in Sicherheit\" Button, dann wird eine Automatische Nachricht über WhatsApp verschickt.</string>
-    <string name="whatsAppNotInstalled">WhatsApp ist nicht installiert!</string>
     <string name="soundSelection">Raketen Alarmierungston</string>
     <string name="soundSelectionDesc">Suche dir einen Ton für eingebende Raketenwarnungen aus.</string>
     <string name="test">Selbst-test</string>

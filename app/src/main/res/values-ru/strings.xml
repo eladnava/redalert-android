@@ -128,7 +128,6 @@
     <!-- I'm Safe - WhatsApp Integration -->
     <string name="safeWhatsApp">Отправлено через WhatsApp</string>
     <string name="safeWhatsAppDesc">При нажатии кнопки "Сообщить" напрямую выбрать контакты.</string>
-    <string name="whatsAppNotInstalled">WhatsApp не установлен</string>
 
     <!-- Languages -->
     <string name="automatic">Automatic</string>
