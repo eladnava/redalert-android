@@ -120,7 +120,7 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
 
     void refreshAreaValues() {
         // Get secondary cities
-        String secondaryCities = Singleton.getSharedPreferences(this).getString(getString(R.string.selectedSecondaryCitiesPref), getString(R.string.all));
+        String secondaryCities = Singleton.getSharedPreferences(this).getString(getString(R.string.selectedSecondaryCitiesPref), getString(R.string.none));
 
         // Update summary text
         mSecondaryCitySelection.setSummary(getString(R.string.selectedSecondaryCitiesDesc) + "\r\n(" + LocationData.getSelectedCityNamesByValues(this, secondaryCities, mSecondaryCitySelection.getEntries(), mSecondaryCitySelection.getEntryValues()) + ")");

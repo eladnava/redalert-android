@@ -111,7 +111,7 @@ public class AppPreferences {
         // Check if secondary notifications enabled
         if (getSecondaryNotificationsEnabled(context)) {
             // Get user's secondary cities
-            String secondaryCities = Singleton.getSharedPreferences(context).getString(context.getString(R.string.selectedSecondaryCitiesPref), context.getString(R.string.all));
+            String secondaryCities = Singleton.getSharedPreferences(context).getString(context.getString(R.string.selectedSecondaryCitiesPref), context.getString(R.string.none));
 
             // Anything selected?
             if (!StringUtils.stringIsNullOrEmpty(secondaryCities)) {
