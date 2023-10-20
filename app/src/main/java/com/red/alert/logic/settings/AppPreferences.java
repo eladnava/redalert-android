@@ -8,7 +8,6 @@ import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.metadata.LocationData;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -34,9 +33,9 @@ public class AppPreferences {
         return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.tutorialPref), false);
     }
 
-    public static boolean getPopupEnabled(Context context) {
+    public static boolean getWakeScreenEnabled(Context context) {
         // Get saved preference
-        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.alertPopupPref), true);
+        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.wakeScreenPref), true);
     }
 
     public static void setTutorialDisplayed(Context context) {

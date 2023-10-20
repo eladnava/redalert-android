@@ -25,16 +25,6 @@
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
-    <style name="PopupDialog" parent="@style/Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowAnimationStyle">@null</item>
-        <item name="android:backgroundDimAmount">0.7</item>
-        <item name="android:backgroundDimEnabled">true</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-
     <style name="AlertDialog" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:colorBackgroundCacheHint">@null</item>

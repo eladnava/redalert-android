@@ -43,16 +43,6 @@
             android:theme="@style/AppTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
 
-        <!-- Alert Popup -->
-        <activity
-            android:name=".activities.AlertPopup"
-            android:label="@string/appName"
-            android:launchMode="singleInstance"
-            android:excludeFromRecents="true"
-            android:taskAffinity=".popup"
-            android:theme="@style/PopupDialog"
-            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
-
         <!-- Settings -->
         <activity
             android:name=".activities.settings.General"

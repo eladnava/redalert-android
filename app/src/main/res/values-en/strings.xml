@@ -133,11 +133,11 @@
         https://redalert.me
     </string>
 
-    <!-- Alert Popup -->
-    <string name="close">Close</string>
-    <string name="silence">Silence</string>
-    <string name="showPopup">Show popup</string>
-    <string name="showPopupDesc">Rocket alerts will be displayed in a pop-up window.</string>
+    <!-- Wake Screen -->
+    <string name="wakeScreen">Wake screen</string>
+    <string name="wakeScreenDesc">Rocket alerts will wake your phone screen.</string>
+
+    <!-- Miscellaneous -->
     <string name="loading">Loading..</string>
     <string name="testingFCM">Testing push gateway... (1/2)</string>
     <string name="testingPushy">Testing push gateway... (2/2)</string>

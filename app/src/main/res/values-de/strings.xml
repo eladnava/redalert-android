@@ -132,11 +132,11 @@
     <string name="alertSentVia">- Gesendet mit  RedAlert für Android - https://redalert.me
     </string>
 
-    <!-- Alert Popup -->
-    <string name="close">Schließen</string>
-    <string name="silence">stumm</string>
-    <string name="showPopup">Meldungen werden als Popup Anzeigen</string>
-    <string name="showPopupDesc">Raketen Alamirungen werden in einem pop-up fenster Angezeigt.</string>
+    <!-- Wake Screen -->
+    <string name="wakeScreen">Bildschirm einschalten</string>
+    <string name="wakeScreenDesc">Raketenwarnungen wecken den Bildschirm Ihres Telefons.</string>
+
+    <!-- Miscellaneous -->
     <string name="loading">Lade..</string>
     <string name="testingFCM">Push Gateway wird Getestet... (1/2)</string>
     <string name="testingPushy">Push Gateway wird Getestet... (2/2)</string>

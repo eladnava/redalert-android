@@ -178,11 +178,11 @@
         https://redalert.me
     </string>
 
-    <!-- Alert Popup -->
-    <string name="close">Cerrar</string>
-    <string name="silence">Silencio</string>
-    <string name="showPopup">Mostrar popup</string>
-    <string name="showPopupDesc">Alertas se mostrarán en una ventana emergente.</string>
+    <!-- Wake Screen -->
+    <string name="wakeScreen">Encender la pantalla</string>
+    <string name="wakeScreenDesc">Las alertas de cohetes activarán la pantalla de tu teléfono.</string>
+
+    <!-- Miscellaneous -->
     <string name="loading">Cargando...</string>
     <string name="testingFCM">Prueba de impulso de puerta de enlace... (1/2)</string>
     <string name="testingPushy">Prueba de impulso de puerta de enlace... (2/2)</string>

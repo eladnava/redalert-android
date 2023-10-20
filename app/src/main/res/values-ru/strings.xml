@@ -178,11 +178,11 @@
         https://redalert.me
     </string>
 
-    <!-- Alert Popup -->
-    <string name="close">Открыть</string>
-    <string name="silence">Тишина</string>
-    <string name="showPopup">Показать всплывающее</string>
-    <string name="showPopupDesc">Оповещения Rocket будет отображаться в всплывающем окне.</string>
+    <!-- Wake Screen -->
+    <string name="wakeScreen">Включить экран</string>
+    <string name="wakeScreenDesc">Оповещения о ракетах разбудят экран вашего телефона.</string>
+
+    <!-- Miscellaneous -->
     <string name="loading">загрузка...</string>
     <string name="testingFCM">Тестирование толчок шлюз... (1/2)</string>
     <string name="testingPushy">Тестирование толчок шлюз... (2/2)</string>

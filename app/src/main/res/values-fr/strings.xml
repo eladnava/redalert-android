@@ -133,11 +133,11 @@
         https://redalert.me
     </string>
 
-    <!-- Alert Popup -->
-    <string name="close">Fermer</string>
-    <string name="silence">Silence</string>
-    <string name="showPopup">Afficher la popup</string>
-    <string name="showPopupDesc">Les alertes de roquettes s\'affichera dans une popup.</string>
+    <!-- Wake Screen -->
+    <string name="wakeScreen">Allumer l\'écran</string>
+    <string name="wakeScreenDesc">Les alertes de fusée réveilleront l\'écran de votre téléphone.</string>
+
+    <!-- Miscellaneous -->
     <string name="loading">Chargement ...</string>
     <string name="testingFCM">Test de la notification... (1/2)</string>
     <string name="testingPushy">Test de la notification... (2/2)</string>

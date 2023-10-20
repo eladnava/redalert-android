@@ -12,20 +12,17 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import me.pushy.sdk.Pushy;
 
-import android.media.AudioAttributes;
 import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.red.alert.R;
-import com.red.alert.activities.AlertPopup;
 import com.red.alert.activities.Main;
 import com.red.alert.config.Logging;
-import com.red.alert.config.Sound;
 import com.red.alert.logic.communication.intents.MainActivityParameters;
 import com.red.alert.logic.communication.intents.RocketNotificationParameters;
 import com.red.alert.logic.feedback.sound.SoundLogic;
+import com.red.alert.logic.phone.PowerManagement;
 import com.red.alert.receivers.NotificationDeletedReceiver;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.formatting.StringUtils;
@@ -92,8 +89,8 @@ public class RocketNotifications {
         // Play alert sound (if applicable)
         SoundLogic.playSound(alertType, overrideSound, context);
 
-        // Show alert popup (if applicable)
-        AlertPopup.showAlertPopup(alertType, city, context);
+        // Wake up phone screen (if enabled)
+        PowerManagement.wakeUpScreen(alertType, city, context);
 
         // Reload recent alerts (if main activity is open)
         Broadcasts.publish(context, MainActivityParameters.RELOAD_RECENT_ALERTS);

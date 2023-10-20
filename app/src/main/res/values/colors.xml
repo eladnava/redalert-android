@@ -3,7 +3,6 @@
     <color name="countdown_pre_impact">#ff4032</color>
     <color name="countdown_post_impact">#464646</color>
     <color name="countdown_post_impact_safe">#ff00a737</color>
-    <color name="popup_background">#B3000000</color>
     <color name="colorPrimary">#222222</color>
     <color name="colorPrimaryDark">#000</color>
     <color name="colorAccent">#ff4032</color>

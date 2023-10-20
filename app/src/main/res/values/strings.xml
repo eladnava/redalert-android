@@ -107,7 +107,7 @@
 
     <!-- Secondary Vibration Mode -->
     <string name="secondaryVibrate">הפעל רטט</string>
-    <string name="secondaryVibrateDesc">כאשר תתקבל התרעת משנה המכשיר ירטוט.</string>
+    <string name="secondaryVibrateDesc">כאשר תתקבל התרעת משנה, המכשיר ירטוט.</string>
 
     <!-- Silent Mode Override -->
     <string name="silentOverride">עקוף מצב שקט</string>
@@ -194,11 +194,9 @@
         https://redalert.me
     </string>
 
-    <!-- Alert Popup -->
-    <string name="close">סגור</string>
-    <string name="silence">השתק</string>
-    <string name="showPopup">הצג פופאפ</string>
-    <string name="showPopupDesc">כאשר תתקבל אזעקת אמת, יוצג פופאפ עם מידע על האזעקה.</string>
+    <!-- Wake Screen -->
+    <string name="wakeScreen">הדלק מסך</string>
+    <string name="wakeScreenDesc">כאשר תתקבל אזעקת אמת, מסך הטלפון ידלק.</string>
 
     <!-- Alert Types -->
     <string name="missiles">ירי רקטות</string>
@@ -259,7 +257,7 @@
     <string translatable="false" name="volumePref">volume</string>
     <string translatable="false" name="nearbyCitiesPref">nearby_cities</string>
     <string translatable="false" name="secondaryVolumePref">secondary_volume</string>
-    <string translatable="false" name="alertPopupPref">alert_popup</string>
+    <string translatable="false" name="wakeScreenPref">wake_screen</string>
     <string translatable="false" name="silentOverridePref">override</string>
     <string translatable="false" name="selectedZonesPref">selected_zones</string>
     <string translatable="false" name="mainCategoryPref">main_category</string>

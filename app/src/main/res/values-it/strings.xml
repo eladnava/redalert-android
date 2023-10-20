@@ -135,11 +135,11 @@
         https://redalert.me
     </string>
 
-    <!-- Alert Popup -->
-    <string name="close">Chiuso</string>
-    <string name="silence">Silenzio</string>
-    <string name="showPopup">Mostra popup</string>
-    <string name="showPopupDesc">Le allerte verrano mostrate in un pop-up.</string>
+    <!-- Wake Screen -->
+    <string name="wakeScreen">Accendi lo schermo</string>
+    <string name="wakeScreenDesc">Gli avvisi sui razzi riattiveranno lo schermo del tuo telefono.</string>
+
+    <!-- Miscellaneous -->
     <string name="loading">Caricamento..</string>
     <string name="testingFCM">Testando il gateway delle notifiche... (1/2)</string>
     <string name="testingPushy">Testando il gateway delle notifiche... (2/2)</string>
