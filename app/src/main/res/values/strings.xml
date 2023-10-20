@@ -74,7 +74,7 @@
     <string name="testDesc">שלח אלי התרעה המדמה אזעקת צבע אדום.</string>
     <string name="testSent">אנא המתן לקבלת עדכון הדחיפה</string>
     <string name="reliability">אמינות</string>
-    <string name="testSuccessfulLong">הבדיקה העצמית הסתיימה בהצלחה! התקבלו התרעות בדיקה משתי שירותי דחיפה שונים.</string>
+    <string name="testSuccessfulLong">הבדיקה העצמית הסתיימה בהצלחה!</string>
     <string name="testSuccessful">הבדיקה הסתיימה בהצלחה!</string>
 
     <!-- Sound Selection -->
