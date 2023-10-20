@@ -65,7 +65,7 @@ public class FCMRegistration {
 
         try {
             // Get it from /subscriptions
-            subscriptionsJSON = HTTP.get(API.API_ENDPOINT + "/subscriptions?token=" + getRegistrationToken(context));
+            subscriptionsJSON = HTTP.get("/subscriptions?token=" + getRegistrationToken(context));
         } catch (Exception exc) {
             // Non-recoverable error
             throw new Exception("Get subscriptions request failed", exc);

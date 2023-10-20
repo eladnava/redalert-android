@@ -35,7 +35,7 @@ public class RedAlertAPI {
 
         try {
             // Execute request
-            response = HTTP.post(API.API_ENDPOINT + "/register", Singleton.getJackson().writeValueAsString(register));
+            response = HTTP.post("/register", Singleton.getJackson().writeValueAsString(register));
         }
         catch (Exception exc) {
             // Log failure
@@ -151,7 +151,7 @@ public class RedAlertAPI {
 
         try {
             // Execute request
-            responseJson = HTTP.post(API.API_ENDPOINT + "/subscribe", Singleton.getJackson().writeValueAsString(subscribe));
+            responseJson = HTTP.post("/subscribe", Singleton.getJackson().writeValueAsString(subscribe));
         }
         catch (Exception exc) {
             // Log failure
@@ -195,7 +195,7 @@ public class RedAlertAPI {
 
         try {
             // Execute request
-            responseJson = HTTP.post(API.API_ENDPOINT + "/update/notifications", Singleton.getJackson().writeValueAsString(updateNotifications));
+            responseJson = HTTP.post("/update/notifications", Singleton.getJackson().writeValueAsString(updateNotifications));
         }
         catch (Exception exc) {
             // Log failure
@@ -233,7 +233,7 @@ public class RedAlertAPI {
 
         try {
             // Execute request
-            responseJson = HTTP.post(API.API_ENDPOINT + "/update/token", Singleton.getJackson().writeValueAsString(updateRequest));
+            responseJson = HTTP.post("/update/token", Singleton.getJackson().writeValueAsString(updateRequest));
         }
         catch (Exception exc) {
             // Log failure

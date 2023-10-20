@@ -555,7 +555,7 @@ public class General extends AppCompatPreferenceActivity {
         SelfTestRequest test = new SelfTestRequest(token, locale, API.PUSHY_PLATFORM_IDENTIFIER);
 
         // Send the request to our API
-        HTTP.post(API.API_ENDPOINT + "/test", Singleton.getJackson().writeValueAsString(test));
+        HTTP.post("/test", Singleton.getJackson().writeValueAsString(test));
     }
 
     void sendTestPushViaFcm() throws Exception {
@@ -581,7 +581,7 @@ public class General extends AppCompatPreferenceActivity {
         SelfTestRequest test = new SelfTestRequest(token, locale, API.PLATFORM_IDENTIFIER);
 
         // Send the request to our API
-        HTTP.post(API.API_ENDPOINT + "/test", Singleton.getJackson().writeValueAsString(test));
+        HTTP.post("/test", Singleton.getJackson().writeValueAsString(test));
     }
 
     boolean didPassFcmTest() {

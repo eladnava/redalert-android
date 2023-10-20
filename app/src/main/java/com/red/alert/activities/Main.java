@@ -58,7 +58,6 @@ import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.feedback.Volume;
 import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.integration.GooglePlayServices;
-import com.red.alert.utils.integration.WhatsApp;
 import com.red.alert.utils.intents.AndroidSettings;
 import com.red.alert.utils.metadata.AppVersion;
 import com.red.alert.utils.metadata.LocationData;
@@ -470,7 +469,7 @@ public class Main extends AppCompatActivity {
 
         try {
             // Get it from /alerts
-            alertsJSON = HTTP.get(API.API_ENDPOINT + "/alerts");
+            alertsJSON = HTTP.get("/alerts");
         }
         catch (Exception exc) {
             // Log it
@@ -583,7 +582,7 @@ public class Main extends AppCompatActivity {
 
         try {
             // Get it from /update/android
-            updateJson = HTTP.get(API.API_ENDPOINT + "/update/android");
+            updateJson = HTTP.get("/update/android");
         }
         catch (Exception exc) {
             // Log it
@@ -812,7 +811,7 @@ public class Main extends AppCompatActivity {
                 Log.e(Logging.TAG, "Push registration failed", exc);
 
                 // Build an error message
-                String errorMessage = getString(R.string.pushRegistrationFailed) + "\n\n" + exc.getMessage();
+                String errorMessage = getString(R.string.pushRegistrationFailed) + "\n\n" + exc.getMessage() + "\n\n" + exc.getCause();
 
                 // Build the dialog
                 AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, getString(R.string.okay), null, false, Main.this, null);
