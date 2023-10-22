@@ -239,7 +239,7 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
             // Show error if failed
             if (exc != null) {
                 // Build an error message
-                String errorMessage = getString(R.string.apiRequestFailed) + "\n\n" + exc.getMessage() + "\n\n" + exc.getCause();
+                String errorMessage = getString(R.string.apiRequestFailed) + "\n\n" + exc.getMessage() + (exc.getCause() != null ? "\n\n" + exc.getCause() : "");
 
                 // Build the dialog
                 AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, getString(R.string.okay), null, false, SecondaryAlerts.this, null);
@@ -319,7 +319,7 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
             // Show error if failed
             if (exc != null) {
                 // Build an error message
-                String errorMessage = getString(R.string.apiRequestFailed) + "\n\n" + exc.getMessage() + "\n\n" + exc.getCause();
+                String errorMessage = getString(R.string.apiRequestFailed) + "\n\n" + exc.getMessage() + (exc.getCause() != null ? "\n\n" + exc.getCause() : "");
 
                 // Build the dialog
                 AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, getString(R.string.okay), null, false, SecondaryAlerts.this, null);

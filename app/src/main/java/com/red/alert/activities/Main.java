@@ -811,7 +811,7 @@ public class Main extends AppCompatActivity {
                 Log.e(Logging.TAG, "Push registration failed", exc);
 
                 // Build an error message
-                String errorMessage = getString(R.string.pushRegistrationFailed) + "\n\n" + exc.getMessage() + "\n\n" + exc.getCause();
+                String errorMessage = getString(R.string.pushRegistrationFailed) + "\n\n" + exc.getMessage() + (exc.getCause() != null ? "\n\n" + exc.getCause() : "");
 
                 // Build the dialog
                 AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, getString(R.string.okay), null, false, Main.this, null);
