@@ -99,9 +99,6 @@ public class Main extends AppCompatActivity {
                 // Reload activity
                 finish();
                 startActivity(new Intent(Main.this, Main.class));
-
-                // Restart the app services
-                ServiceManager.startAppServices(Main.this);
             }
         }
     };
@@ -118,9 +115,6 @@ public class Main extends AppCompatActivity {
 
         // Volume keys should control alert volume
         Volume.setVolumeKeysAction(this);
-
-        // Start the app services
-        ServiceManager.startAppServices(this);
 
         // Check for app version updates
         initializeUpdateChecker();
@@ -280,6 +274,9 @@ public class Main extends AppCompatActivity {
 
         // Ask user to whitelist app from battery optimizations
         showBatteryExemptionDialog();
+
+        // Restart the app services if needed
+        ServiceManager.startAppServices(this);
     }
 
     void requestNotificationPermission() {
