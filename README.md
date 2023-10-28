@@ -9,9 +9,7 @@ RedAlert was developed by volunteers to provide real-time rocket alerts for Isra
 * [Google Play Listing](https://play.google.com/store/apps/details?id=com.red.alert)
 * [Android APK Download](https://github.com/eladnava/redalert-android/releases/latest/download/app-release.apk)
 
-The app utilizes real-time alert data provided by the Home Front Command (Pikud Haoref), which makes it extremely fast, reliable, and stable.
-
-> Note: Rocket alerts are detected using the open-source [pikud-haoref-api](https://github.com/eladnava/pikud-haoref-api) Node.js package.
+The app utilizes real-time alert data provided by the Home Front Command (Pikud Haoref), which makes it extremely fast, reliable, and stable. Rocket alerts are detected using the open-source [pikud-haoref-api](https://github.com/eladnava/pikud-haoref-api) Node.js package.
 
 ## Screenshots
 
