@@ -15,7 +15,7 @@ The app utilizes real-time alert data provided by the Home Front Command (Pikud 
 
 ## Screenshots
 
-<img src="http://redalert.me/images/screenshot1.png" width="250"> <img src="http://redalert.me/images/screenshot2.png" width="250">
+<img src="screenshot1.png" width="250"> <img src="screenshot2.png" width="250">
 
 ## Achievements
 
