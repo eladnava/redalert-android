@@ -1,4 +1,4 @@
-<h1> <a href="https://redalert.me/" target="_blank"><img src="https://redalert.me/images/logo_big.png" align="right" height="40"></a> RedAlert for Android</h1>
+<h1> <a href="https://redalert.me/" target="_blank"><img src="logo_big.png" align="right" height="40"></a> RedAlert for Android</h1>
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/eladnava/redalert-android?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
@@ -9,13 +9,11 @@ RedAlert was developed by volunteers to provide real-time rocket alerts for Isra
 * [Google Play Listing](https://play.google.com/store/apps/details?id=com.red.alert)
 * [Android APK Download](https://github.com/eladnava/redalert-android/releases/latest/download/app-release.apk)
 
-The app utilizes real-time alert data provided by the Home Front Command (Pikud Haoref), which makes it extremely fast, reliable, and stable.
-
-> Note: Rocket alerts are detected using the open-source [pikud-haoref-api](https://github.com/eladnava/pikud-haoref-api) Node.js package.
+The app utilizes real-time alert data provided by the Home Front Command (Pikud Haoref), which makes it extremely fast, reliable, and stable. Rocket alerts are detected using the open-source [pikud-haoref-api](https://github.com/eladnava/pikud-haoref-api) Node.js package.
 
 ## Screenshots
 
-<img src="http://redalert.me/images/screenshot1.png" width="250"> <img src="http://redalert.me/images/screenshot2.png" width="250">
+<img src="screenshot1.png" width="250"> <img src="screenshot2.png" width="250">
 
 ## Achievements
 
