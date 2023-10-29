@@ -64,8 +64,8 @@ public class FCMRegistration {
         String subscriptionsJSON;
 
         try {
-            // Get it from /subscriptions
-            subscriptionsJSON = HTTP.get("/subscriptions?token=" + getRegistrationToken(context));
+            // Send the request to our API
+            subscriptionsJSON = HTTP.post("/subscriptions?token=" + getRegistrationToken(context), "{}");
         } catch (Exception exc) {
             // Non-recoverable error
             throw new Exception("Get subscriptions request failed", exc);
