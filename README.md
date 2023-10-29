@@ -1,4 +1,4 @@
-<h1> <a href="https://redalert.me/" target="_blank"><img src="logo_big.png" align="right" height="40"></a> RedAlert for Android</h1>
+<h1> <a href="https://redalert.me/" target="_blank"><img src="img/logo_big.png" align="right" height="40"></a> RedAlert for Android</h1>
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/eladnava/redalert-android?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
@@ -13,7 +13,7 @@ The app utilizes real-time alert data provided by the Home Front Command (Pikud 
 
 ## Screenshots
 
-<img src="screenshot1.png" width="250"> <img src="screenshot2.png" width="250">
+<img src="img/screenshot1.png" width="250"> <img src="img/screenshot2.png" width="250">
 
 ## Achievements
 
