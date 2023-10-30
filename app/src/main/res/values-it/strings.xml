@@ -13,9 +13,9 @@
     <string name="advanced">Avanzate</string>
     <string name="advancedSettings">Impostazioni Avanzate</string>
     <string name="advancedSettingsTitle">Impostazioni Avanzate</string>
-    <string name="advancedSettingsDesc">Tocca qui per modificare le impostazioni avanzate.</string>
+    <string name="advancedSettingsDesc">Tocca qui per modificare le impostazioni avanzate</string>
     <string name="notifications">Ricevi le allerte</string>
-    <string name="notificationsDesc">Ricevi le allerte in tempo reale.</string>
+    <string name="notificationsDesc">Ricevi le allerte in tempo reale</string>
     <string name="contact">Contatti</string>
     <string name="contactDesc">Tocca qui per contattare lo sviluppatore dell\'applicazione</string>
     <string name="reportProblem">Riporta un problema</string>
@@ -29,13 +29,12 @@
     <string name="pushRegistrationSuccess">Successo!</string>
     <string name="pushRegistrationSuccessDesc">Ti sei collegato con successo tramite RedAlert, riceverai notifiche qualora vi siano attacchi.\n\n Seleziona le città e le aree di interesse per ricevere notifiche personalizzate.</string>
     <string name="safeWhatsApp">Manda con WhatsApp</string>
-    <string name="safeWhatsAppDesc">Toccando il bottone \"Sono salvo\" verrà automaticamente mandato un messaggio tramite WhatsApp.</string>
+    <string name="safeWhatsAppDesc">Toccando il bottone \"Sono salvo\" verrà automaticamente mandato un messaggio tramite WhatsApp</string>
     <string name="soundSelection">Suono notifica di attacco</string>
-    <string name="soundSelectionDesc">Seleziona un suono per le allerte in caso di attacco.</string>
+    <string name="soundSelectionDesc">Seleziona un suono per le allerte in caso di attacco</string>
     <string name="test">Test</string>
-    <string name="testDesc">Mandami un allarme per verificare la connettività.</string>
+    <string name="testDesc">Mandami un allarme per verificare la connettività</string>
     <string name="testFailed">Il test è fallito completamente. Nessun allarme è stato ricevuto da nessun gateway per notifiche push. Controlla la tua connessione a internet e prova nuovamente più tardi; Contattaci qualora il problema persista.</string>
-    <string name="testSent"> Si attenda per la notifica di test.</string>
     <string name="reliability">Affidabilità</string>
     <string name="noAlerts">Nessuna allerta\nnegli scorsi giorni</string>
     <string name="recentAlerts">Allerte recenti</string>
@@ -53,26 +52,26 @@
     <string name="automatic">Automatic</string>
     <string name="language">Language</string>
     <string name="langSelection">App language</string>
-    <string name="langSelectionDesc">Change the application\'s language.</string>
+    <string name="langSelectionDesc">Change the application\'s language</string>
 
-    <string name="selectedZones">Regioni</string>
-    <string name="zonesDesc">Seleziona le regioni di interesse.</string>
+    <string name="selectedZones">Regioni aggiuntive</string>
+    <string name="selectedZonesDesc">Ricevi avvisi su intere regioni (oltre alle città)</string>
     <string name="silentOverride">Prevali sulla Modalità Silenziosa </string>
-    <string name="silentOverrideDesc">Le allerte disabiliteranno la modalità silenziosa.</string>
-    <string name="selectedCities">Città addizionali</string>
+    <string name="silentOverrideDesc">Le allerte disabiliteranno la modalità silenziosa</string>
+    <string name="selectedCities">Città</string>
     <string name="testSuccessfulLong">Il test è stato completato con successo!</string>
-    <string name="cityDesc">Seleziona le città delle quali si vogliono ricevere le allerte oltre alle regioni selezionate.</string>
+    <string name="selectedCitiesDesc">Ricevi avvisi su città e paesi specifici</string>
     <string name="website">Visita il nostro sito</string>
-    <string name="websiteDesc">Tocca qui per visita il nostro sito ufficiale.</string>
-    <string name="areas">Aree</string>
+    <string name="websiteDesc">Tocca qui per visita il nostro sito ufficiale</string>
+    <string name="alertRegions">Aree</string>
     <string name="receiveSecondaryAlerts">Allerte secondarie</string>
-    <string name="receiveSecondaryAlertsDesc">Ricevi le allerte secondarie in tempo reale.</string>
+    <string name="receiveSecondaryAlertsDesc">Ricevi le allerte secondarie in tempo reale</string>
     <string name="sounds">Suoni</string>
     <string name="share">Condividi</string>
     <string name="shareDesc">Condividi l\'applicazione</string>
     <string name="shareMessage">Sto utilizzando Redalert su Android per avere allerte riguardanti gli attacchi in tempo reale - https://redalert.me</string>
     <string name="vibrate">Abilita vibrazione</string>
-    <string name="vibrateDesc">Le allerte faranno vibrare il tuo smartphone.</string>
+    <string name="vibrateDesc">Le allerte faranno vibrare il tuo smartphone</string>
     <string name="sentVia">Invito utilizzando</string>
     <string name="problemDesc">Descrizione del problema: </string>
     <string name="noSound">Nessun suono</string>
@@ -93,39 +92,39 @@
     <!-- Secondary Alerts -->
     <string name="secondaryAlerts">Allerte secondarie</string>
     <string name="secondaryAlertsTitle">Allerte secondarie</string>
-    <string name="secondaryAlertsDesc">Tocca qui per configurare le allerte secondarie per rimanere aggiornato riguardo attacchi in altre zone.</string>
+    <string name="secondaryAlertsDesc">Tocca qui per configurare le allerte secondarie per rimanere aggiornato riguardo attacchi in altre zone</string>
 
     <!-- Secondary Sound -->
     <string name="secondarySoundSelection">Suoni Secondari</string>
-    <string name="secondarySoundSelectionDesc">Seleziona un suono per le allerte secondarie.</string>
+    <string name="secondarySoundSelectionDesc">Seleziona un suono per le allerte secondarie</string>
 
     <!-- Secondary Vibration Mode -->
     <string name="secondaryVibrate">Abilita vibrazione</string>
-    <string name="secondaryVibrateDesc">Le allerte secondarie faranno vibrare il tuo telefono.</string>
+    <string name="secondaryVibrateDesc">Le allerte secondarie faranno vibrare il tuo telefono</string>
 
     <!-- Secondary Silent Mode Override -->
     <string name="secondarySilentOverride">Override silent mode</string>
 
     <!-- Rate the App -->
     <string name="rateApp">Vota l\'app</string>
-    <string name="rateAppDesc">Clicca qui per votare l\'applicazione sul Google Play.</string>
+    <string name="rateAppDesc">Clicca qui per votare l\'applicazione sul Google Play</string>
 
     <string name="update">Aggiornamento disponibile</string>
-    <string name="updateDesc">Una versione più recente di questa applicazione è disponibile (%s), E\' consigliato l\'aggiornamento..</string>
+    <string name="updateDesc">Una versione più recente di questa applicazione è disponibile (%s), E\' consigliato l\'aggiornamento.</string>
     <string name="updatePositive">Aggiorna</string>
     <string name="notNow">Non ora</string>
 
     <!-- Volume -->
     <string name="volume">Livello del Volume</string>
-    <string name="volumeDesc">Scorri per selezionare il volume desiderato per le allerte.</string>
+    <string name="volumeDesc">Scorri per selezionare il volume desiderato per le allerte</string>
 
     <!-- Secondary Volume -->
     <string name="secondaryVolume">Livello del Volume</string>
-    <string name="secondaryVolumeDesc">Scorri per selezionare il volume desiderato per le allerte secondarie.</string>
+    <string name="secondaryVolumeDesc">Scorri per selezionare il volume desiderato per le allerte secondarie</string>
 
     <!-- Secondary Cities -->
     <string name="selectedSecondaryCities">Città secondarie</string>
-    <string name="selectedSecondaryCitiesDesc">Seleziona le altre città riguardo le quali si vogliono riceve le allerte secondarie.</string>
+    <string name="selectedSecondaryCitiesDesc">Seleziona le altre città riguardo le quali si vogliono riceve le allerte secondarie</string>
 
     <!-- Alert Share -->
     <string name="shareAlert">Condividi l\'allerta</string>
@@ -137,26 +136,26 @@
 
     <!-- Wake Screen -->
     <string name="wakeScreen">Accendi lo schermo</string>
-    <string name="wakeScreenDesc">Gli avvisi sui razzi riattiveranno lo schermo del tuo telefono.</string>
+    <string name="wakeScreenDesc">Gli avvisi sui razzi riattiveranno lo schermo del tuo telefono</string>
 
     <!-- Alert Popup -->
     <string name="close">Chiuso</string>
     <string name="silence">Silenzio</string>
     <string name="showPopup">Mostra popup</string>
-    <string name="showPopupDesc">Le allerte verrano mostrate in un pop-up.</string>
+    <string name="showPopupDesc">Le allerte verrano mostrate in un pop-up</string>
     <string name="grantOverlayPermission">Consenti la visualizzazione su altre app</string>
     <string name="grantOverlayPermissionInstructions">Seleziona "RedAlert" -> "Consenti visualizzazione su altre app" nella schermata successiva.</string>
 
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Migliorare l\'affidabilità</string>
-    <string name="foregroundServiceDesc">Visualizza una notifica continua che impedirà ad Android di terminare l\'app in background.</string>
+    <string name="foregroundServiceDesc">Visualizza una notifica continua che impedirà ad Android di terminare l\'app in background</string>
     <string name="pushy_foreground_service_title">@string/appName</string>
     <string name="pushy_foreground_service_connected">Connesso al servizio di notifica</string>
     <string name="pushy_foreground_service_connecting">Connessione al server...</string>
     <string name="pushy_foreground_service_disconnected">Non connesso al servizio di notifica</string>
 
     <!-- Miscellaneous -->
-    <string name="loading">Caricamento..</string>
+    <string name="loading">Caricamento...</string>
     <string name="testingFCM">Testando il gateway delle notifiche... (1/2)</string>
     <string name="testingPushy">Testando il gateway delle notifiche... (2/2)</string>
     <string name="fcmTestFailed">Il test è fallito parzialmente. Nessuna allerta è stata ricevuta dal gateway delle notifiche di Google, ma un allerta è stata ricevuta con successo tramite il gateway secondario delle notifiche. Riprova più tardi.</string>
@@ -165,7 +164,7 @@
     <string name="testSuccessful">Il test è stato completato con successo!</string>
     <string name="alerts">Allerte</string>
     <string name="advancedAlerts"> Allerte Avanzate</string>
-    <string name="secondarySilentOverrideDesc">Le allerte secondarie disabiliteranno la modalità silenziosa.</string>
+    <string name="secondarySilentOverrideDesc">Le allerte secondarie disabiliteranno la modalità silenziosa</string>
 
     <!-- Operation Lifeshield -->
     <string name="lifeshieldShelters">Rifugi Lifeshield:</string>

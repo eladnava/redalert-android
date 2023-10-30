@@ -13,11 +13,11 @@
     <string name="advanced">Advanced</string>
     <string name="advancedSettings">Advanced settings</string>
     <string name="advancedSettingsTitle">Advanced Settings</string>
-    <string name="advancedSettingsDesc">Click here to modify advanced settings.</string>
+    <string name="advancedSettingsDesc">Modify advanced settings</string>
     <string name="notifications">Receive alerts</string>
-    <string name="notificationsDesc">Receive rocket alerts in real-time.</string>
+    <string name="notificationsDesc">Receive rocket alerts in real time</string>
     <string name="contact">Contact</string>
-    <string name="contactDesc">Click here to contact the app developer.</string>
+    <string name="contactDesc">Contact the app developer</string>
     <string name="reportProblem">Report a problem</string>
     <string name="manualContact">Contact me via e-mail at support@redalert.me</string>
     <string name="jsonFailed">An error occurred while loading data from the server.</string>
@@ -29,13 +29,12 @@
     <string name="pushRegistrationSuccess">Success</string>
     <string name="pushRegistrationSuccessDesc">You have successfully signed up for rocket alert notifications via RedAlert.\n\nPlease select your preferred alert regions and cities to receive rocket alerts.</string>
     <string name="safeWhatsApp">Send via WhatsApp</string>
-    <string name="safeWhatsAppDesc">Clicking the \"I\'m safe\" button will send the message via WhatsApp automatically.</string>
+    <string name="safeWhatsAppDesc">Tapping the \"I\'m safe\" button will open up WhatsApp contact selection</string>
     <string name="soundSelection">Rocket alert sound</string>
-    <string name="soundSelectionDesc">Select a sound for incoming rocket alerts.</string>
+    <string name="soundSelectionDesc">Select a sound for incoming rocket alerts</string>
     <string name="test">Self-test</string>
-    <string name="testDesc">Send me a test rocket alert to verify connectivity.</string>
+    <string name="testDesc">Send a test rocket alert to verify connectivity</string>
     <string name="testFailed">The self-test failed completely. No alert was received from any push notification gateway. Check your Internet connection and try again later, and contact us if the problem persists.</string>
-    <string name="testSent">Please wait for the test notification</string>
     <string name="reliability">Reliability</string>
     <string name="noAlerts">No alerts\nin the past day</string>
     <string name="recentAlerts">Recent Alerts</string>
@@ -50,26 +49,26 @@
     <string name="funny">Funny</string>
     <string name="language">Language</string>
     <string name="langSelection">App language</string>
-    <string name="langSelectionDesc">Change the application\'s language.</string>
+    <string name="langSelectionDesc">Change the application language</string>
     <string name="automatic">Automatic</string>
-    <string name="selectedZones">Regions</string>
-    <string name="zonesDesc">Select regions to receive alerts for.</string>
+    <string name="selectedCities">Cities</string>
+    <string name="selectedCitiesDesc">Receive alerts about specific cities and towns</string>
+    <string name="selectedZones">Additional regions</string>
+    <string name="selectedZonesDesc">Receive alerts about entire regions (in addition to cities)</string>
     <string name="silentOverride">Override silent mode</string>
-    <string name="silentOverrideDesc">Rocket alerts will disable silent mode.</string>
-    <string name="selectedCities">Additional cities</string>
+    <string name="silentOverrideDesc">Rocket alerts will disable silent mode</string>
     <string name="testSuccessfulLong">The self-test has completed successfully!</string>
-    <string name="cityDesc">Select cities to receive alerts about, in addition to the selected regions.</string>
     <string name="website">Visit our website</string>
-    <string name="websiteDesc">Click here to visit our official website.</string>
-    <string name="areas">Areas</string>
+    <string name="websiteDesc">Visit our official website</string>
+    <string name="alertRegions">Areas</string>
     <string name="receiveSecondaryAlerts">Secondary alerts</string>
-    <string name="receiveSecondaryAlertsDesc">Receive secondary rocket alerts in real-time.</string>
+    <string name="receiveSecondaryAlertsDesc">Receive secondary rocket alerts in real-time</string>
     <string name="sounds">Sounds</string>
     <string name="share">Share</string>
     <string name="shareDesc">Share the app</string>
     <string name="shareMessage">I\'m using RedAlert for Android to get real-time rocket alerts - https://redalert.me</string>
     <string name="vibrate">Enable vibration</string>
-    <string name="vibrateDesc">Rocket alerts will make your phone vibrate.</string>
+    <string name="vibrateDesc">Rocket alerts will vibrate your phone</string>
     <string name="sentVia">Sent using</string>
     <string name="problemDesc">Problem description: </string>
     <string name="noSound">No sound</string>
@@ -90,23 +89,23 @@
     <!-- Secondary Alerts -->
     <string name="secondaryAlerts">Secondary alerts</string>
     <string name="secondaryAlertsTitle">Secondary Alerts</string>
-    <string name="secondaryAlertsDesc">Click here to configure secondary alerts to stay updated about alerts in other locations.</string>
+    <string name="secondaryAlertsDesc">Configure secondary alerts to stay updated about alerts in other areas</string>
 
     <!-- Secondary Sound -->
     <string name="secondarySoundSelection">Secondary sound</string>
-    <string name="secondarySoundSelectionDesc">Select a sound for secondary rocket alerts.</string>
+    <string name="secondarySoundSelectionDesc">Select a sound for secondary rocket alerts</string>
 
     <!-- Secondary Vibration Mode -->
     <string name="secondaryVibrate">Enable vibration</string>
-    <string name="secondaryVibrateDesc">Secondary rocket alerts will make your phone vibrate.</string>
+    <string name="secondaryVibrateDesc">Secondary rocket alerts will vibrate your phone</string>
 
     <!-- Secondary Silent Mode Override -->
     <string name="secondarySilentOverride">Override silent mode</string>
-    <string name="secondarySilentOverrideDesc">Secondary rocket alerts will override silent mode.</string>
+    <string name="secondarySilentOverrideDesc">Secondary rocket alerts will override silent mode</string>
 
     <!-- Rate the App -->
     <string name="rateApp">Rate the app</string>
-    <string name="rateAppDesc">Click here to rate the app on Google Play.</string>
+    <string name="rateAppDesc">Rate the app on Google Play</string>
 
     <string name="update">Update Available</string>
     <string name="updateDesc">A newer version of this application is available (%s), please update.</string>
@@ -115,15 +114,15 @@
 
     <!-- Volume -->
     <string name="volume">Volume level</string>
-    <string name="volumeDesc">Slide to select the desired volume for rocket alerts.</string>
+    <string name="volumeDesc">Slide to select the desired volume for rocket alerts</string>
 
     <!-- Secondary Volume -->
     <string name="secondaryVolume">Volume level</string>
-    <string name="secondaryVolumeDesc">Slide to select the desired volume for secondary rocket alerts.</string>
+    <string name="secondaryVolumeDesc">Slide to select the desired volume for secondary rocket alerts</string>
 
     <!-- Secondary Cities -->
     <string name="selectedSecondaryCities">Secondary cities</string>
-    <string name="selectedSecondaryCitiesDesc">Select cities to receive secondary alerts about.</string>
+    <string name="selectedSecondaryCitiesDesc">Receive secondary alerts about specific cities and towns</string>
 
     <!-- Alert Share -->
     <string name="shareAlert">Share the alert</string>
@@ -135,26 +134,26 @@
 
     <!-- Wake Screen -->
     <string name="wakeScreen">Wake screen</string>
-    <string name="wakeScreenDesc">Rocket alerts will wake your phone screen.</string>
+    <string name="wakeScreenDesc">Rocket alerts will wake your phone screen</string>
 
     <!-- Alert Popup -->
     <string name="close">Close</string>
     <string name="silence">Silence</string>
     <string name="showPopup">Show popup</string>
-    <string name="showPopupDesc">Rocket alerts will be displayed in a pop-up window.</string>
+    <string name="showPopupDesc">Rocket alerts will be displayed in a pop-up window</string>
     <string name="grantOverlayPermission">Allow displaying over other apps</string>
     <string name="grantOverlayPermissionInstructions">Please select \"RedAlert\" -> \"Allow display over other apps\" in the next screen.</string>
 
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Improve reliability</string>
-    <string name="foregroundServiceDesc">Display an ongoing notification that will prevent Android from killing the app in the background.</string>
+    <string name="foregroundServiceDesc">Display an ongoing notification that will prevent Android from killing the app in the background</string>
     <string name="pushy_foreground_service_title">@string/appName</string>
     <string name="pushy_foreground_service_connected">Connected to the notification service</string>
     <string name="pushy_foreground_service_connecting">Connecting...</string>
     <string name="pushy_foreground_service_disconnected">Not connected to the notification service</string>
 
     <!-- Miscellaneous -->
-    <string name="loading">Loading..</string>
+    <string name="loading">Loading...</string>
     <string name="testingFCM">Testing push gateway... (1/2)</string>
     <string name="testingPushy">Testing push gateway... (2/2)</string>
     <string name="fcmTestFailed">The self-test failed partially. No alert was received from Google\'s push gateway, but an alert was successfully received via the secondary push gateway. Please try again later.</string>
@@ -167,7 +166,7 @@
     <!-- Operation Lifeshield -->
     <string name="lifeshieldShelters">Lifeshield Shelters:</string>
     <string name="learnAboutLifeshield">Learn about Lifeshield</string>
-    <string name="learnAboutLifeshieldDesc">Click here to learn more about Operation Lifeshield, a nonprofit that deploys air raid shelters in Israel.</string>
+    <string name="learnAboutLifeshieldDesc">Learn more about Operation Lifeshield, a nonprofit that deploys air raid shelters in Israel.</string>
 
     <!-- Alert Types -->
     <string name="missiles">Rocket fire</string>

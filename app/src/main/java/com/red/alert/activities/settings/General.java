@@ -18,16 +18,13 @@ import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import androidx.core.view.MenuItemCompat;
 
-import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.red.alert.R;
-import com.red.alert.activities.Main;
 import com.red.alert.config.API;
-import com.red.alert.config.Lifeshield;
 import com.red.alert.config.Logging;
 import com.red.alert.config.Support;
 import com.red.alert.config.Testing;
@@ -74,7 +71,6 @@ public class General extends AppCompatPreferenceActivity {
     Preference mContact;
     Preference mAdvanced;
     Preference mTestAlert;
-    Preference mLifeshield;
     CheckBoxPreference mNotificationsEnabled;
 
     PreferenceCategory mMainCategory;
@@ -233,7 +229,6 @@ public class General extends AppCompatPreferenceActivity {
         mContact = findPreference(getString(R.string.contactPref));
         mAdvanced = findPreference(getString(R.string.advancedPref));
         mTestAlert = findPreference(getString(R.string.selfTestPref));
-        mLifeshield = findPreference(getString(R.string.lifeshieldPref));
         mMainCategory = (PreferenceCategory) findPreference(getString(R.string.mainCategoryPref));
         mCitySelection = ((SearchableMultiSelectPreference) findPreference(getString(R.string.selectedCitiesPref)));
         mZoneSelection = ((SearchableMultiSelectPreference) findPreference(getString(R.string.selectedZonesPref)));
@@ -270,13 +265,13 @@ public class General extends AppCompatPreferenceActivity {
         String selectedCities = Singleton.getSharedPreferences(this).getString(getString(R.string.selectedCitiesPref), getString(R.string.none));
 
         // Update summary text
-        mCitySelection.setSummary(getString(R.string.cityDesc) + "\r\n(" + LocationData.getSelectedCityNamesByValues(this, selectedCities, mCitySelection.getEntries(), mCitySelection.getEntryValues()) + ")");
+        mCitySelection.setSummary(getString(R.string.selectedCitiesDesc) + "\r\n(" + LocationData.getSelectedCityNamesByValues(this, selectedCities, mCitySelection.getEntries(), mCitySelection.getEntryValues()) + ")");
 
         // Get selected zones
         String selectedZones = Singleton.getSharedPreferences(this).getString(getString(R.string.selectedZonesPref), getString(R.string.none));
 
         // Update summary text
-        mZoneSelection.setSummary(getString(R.string.zonesDesc) + "\r\n(" + LocationData.getSelectedCityNamesByValues(this, selectedZones, mZoneSelection.getEntries(), mZoneSelection.getEntryValues()) + ")");
+        mZoneSelection.setSummary(getString(R.string.selectedZonesDesc) + "\r\n(" + LocationData.getSelectedCityNamesByValues(this, selectedZones, mZoneSelection.getEntries(), mZoneSelection.getEntryValues()) + ")");
 
         // Save in case the update subscriptions request fails
         if (mPreviousZones == null && mPreviousCities == null) {
@@ -356,26 +351,6 @@ public class General extends AppCompatPreferenceActivity {
             public boolean onPreferenceClick(Preference preference) {
                 // Initialize browser intent
                 Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse(Support.WEBSITE_LINK));
-
-                try {
-                    // Open browser
-                    startActivity(browser);
-                }
-                catch (ActivityNotFoundException ex) {
-                    // Do nothing
-                }
-
-                // Consume event
-                return true;
-            }
-        });
-
-        // Lifeshield website button
-        mLifeshield.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                // Initialize browser intent
-                Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse(Lifeshield.WEBSITE_LINK));
 
                 try {
                     // Open browser

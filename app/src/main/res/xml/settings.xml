@@ -19,16 +19,7 @@
             android:dependency="@string/enabledPref"/>
     </PreferenceCategory>
     <PreferenceCategory
-        android:title="@string/areas">
-        <com.red.alert.ui.elements.SearchableMultiSelectPreference
-            redalert:checkAll="@string/all"
-            redalert:separator="|"
-            android:defaultValue="@string/none"
-            android:key="@string/selectedZonesPref"
-            android:dialogTitle="@string/selectedZones"
-            android:title="@string/selectedZones"
-            android:summary="@string/zonesDesc"
-            android:dependency="@string/enabledPref"/>
+        android:title="@string/alertRegions">
         <com.red.alert.ui.elements.SearchableMultiSelectPreference
             redalert:checkAll="@string/all"
             redalert:separator="|"
@@ -37,7 +28,19 @@
             android:dialogTitle="@string/selectedCities"
             android:title="@string/selectedCities"
             android:dependency="@string/enabledPref"
-            android:summary="@string/cityDesc"/>
+            android:summary="@string/selectedCitiesDesc"/>
+        <com.red.alert.ui.elements.SearchableMultiSelectPreference
+            redalert:checkAll="@string/all"
+            redalert:separator="|"
+            android:defaultValue="@string/none"
+            android:key="@string/selectedZonesPref"
+            android:dialogTitle="@string/selectedZones"
+            android:title="@string/selectedZones"
+            android:summary="@string/selectedZonesDesc"
+            android:dependency="@string/enabledPref"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/sounds">
         <com.red.alert.ui.elements.SoundListPreference
             android:title="@string/soundSelection"
             android:key="@string/soundPref"
@@ -71,10 +74,6 @@
             android:key="@string/contactPref"
             android:title="@string/reportProblem"
             android:summary="@string/contactDesc"/>
-        <Preference
-            android:key="@string/lifeshieldPref"
-            android:title="@string/learnAboutLifeshield"
-            android:summary="@string/learnAboutLifeshieldDesc"/>
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/language">

@@ -26,14 +26,14 @@
     <string name="advanced">Opciones</string>
     <string name="advancedSettings">Configuración avanzada</string>
     <string name="advancedSettingsTitle">Configuración avanzada</string>
-    <string name="advancedSettingsDesc">Editar opciones de configuración avanzadas.</string>
+    <string name="advancedSettingsDesc">Editar opciones de configuración avanzadas</string>
 
     <!-- Enable/Disable Notifications -->
     <string name="notifications">Notificación en tiempo-real</string>
-    <string name="notificationsDesc">Recibir notificaciones en tiempo-real.</string>
+    <string name="notificationsDesc">Recibir notificaciones en tiempo-real</string>
 
     <!-- Area Selection -->
-    <string name="areas">Areas</string>
+    <string name="alertRegions">Áreas</string>
     <string name="search">Buscar…</string>
     <string name="allString">Todo</string>
     <string name="noneString">Desactivado</string>
@@ -41,40 +41,39 @@
     <!-- Secondary Alerts -->
     <string name="secondaryAlerts">Notificaciones secundarias</string>
     <string name="secondaryAlertsTitle">Notificaciones secundarias</string>
-    <string name="secondaryAlertsDesc">Configurar notificaciones de alarmas en otras zonas del país.</string>
+    <string name="secondaryAlertsDesc">Configurar notificaciones de alarmas en otras zonas del país</string>
 
     <!-- Enable Secondary Alerts -->
     <string name="receiveSecondaryAlerts">Notificaciones secundarias</string>
-    <string name="receiveSecondaryAlertsDesc">Recibir notificaciones secundarias en tiempo-real.</string>
+    <string name="receiveSecondaryAlertsDesc">Recibir notificaciones secundarias en tiempo-real</string>
 
     <!-- Secondary Sound -->
     <string name="secondarySoundSelection">Sonido secundario</string>
-    <string name="secondarySoundSelectionDesc">Elegir el sonido de las notificaciones secundarias.</string>
+    <string name="secondarySoundSelectionDesc">Elegir el sonido de las notificaciones secundarias</string>
 
     <!-- Secondary Cities -->
     <string name="selectedSecondaryCities">Localidades secundarias</string>
-    <string name="selectedSecondaryCitiesDesc">Seleccionar localidades para las cuales desea recibir notificaciones secundarias.</string>
+    <string name="selectedSecondaryCitiesDesc">Seleccionar localidades para las cuales desea recibir notificaciones secundarias</string>
 
     <!-- Zone Selection -->
-    <string name="selectedZones">Zonas</string>
-    <string name="zonesDesc">Seleccionar zonas para las cuales se activará la notificación de alarma.</string>
+    <string name="selectedZones">Regiones adicionales</string>
+    <string name="selectedZonesDesc">Reciba alertas sobre regiones enteras (además de ciudades)</string>
 
     <!-- City Selection -->
-    <string name="selectedCities">Localidades adicionales</string>
-    <string name="cityDesc">Seleccionar localidades adicionales para las cuales se activará la notificación de alarma (además de las zonas seleccionadas).</string>
+    <string name="selectedCities">Ciudades</string>
+    <string name="selectedCitiesDesc">Reciba alertas sobre ciudades y pueblos específicos</string>
 
     <!-- Self-test -->
     <string name="test">Prueba</string>
-    <string name="testDesc">Enviarme una notificación que simula una alarma \(Tzeva Adom\).</string>
+    <string name="testDesc">Enviarme una notificación que simula una alarma \(Tzeva Adom\)</string>
     <string name="testFailed">La auto-prueba ha fallado por completo. Sin alerta fue recibida de cualquier pasarela de empuje. Compruebe su conexión a Internet y vuelva a intentarlo más tarde, y ponerse en contacto con nosotros si el problema persiste.</string>
-    <string name="testSent">Por favor, espere a recibir la notificación de prueba</string>
     <string name="reliability">Fiabilidad</string>
     <string name="testSuccessfulLong">El auto-test ha completado con éxito!</string>
 
     <!-- Sound Selection -->
     <string name="sounds">Sonidos</string>
     <string name="soundSelection">Sonido de alarma Tzeva Adom</string>
-    <string name="soundSelectionDesc">Seleccionar el sonido de la notificación de alarma.</string>
+    <string name="soundSelectionDesc">Seleccionar el sonido de la notificación de alarma</string>
     <string name="testSound">Probar el sonido de notificación</string>
     <string name="siren1">Sirena 1</string>
     <string name="siren2">Sirena 2</string>
@@ -97,19 +96,19 @@
 
     <!-- Vibration Mode -->
     <string name="vibrate">Activar vibración</string>
-    <string name="vibrateDesc">Hacer vibrar el dispositivo cuando suena la alarma Tzeva Adom.</string>
+    <string name="vibrateDesc">Hacer vibrar el dispositivo cuando suena la alarma Tzeva Adom</string>
 
     <!-- Secondary Vibration Mode -->
     <string name="secondaryVibrate">Activar vibración</string>
-    <string name="secondaryVibrateDesc">Hacer vibrar el dispositivo cuando se recibe una notificación secundaria.</string>
+    <string name="secondaryVibrateDesc">Hacer vibrar el dispositivo cuando se recibe una notificación secundaria</string>
 
     <!-- Silent Mode Override -->
     <string name="silentOverride">Cancelar modo silencioso</string>
-    <string name="silentOverrideDesc">Cancelar el modo silencioso cuando suena la alarma Tzeva Adom.</string>
+    <string name="silentOverrideDesc">Cancelar el modo silencioso cuando suena la alarma Tzeva Adom</string>
 
     <!-- Silent Mode Override -->
     <string name="secondarySilentOverride">Cancelar modo silencioso</string>
-    <string name="secondarySilentOverrideDesc">Cancelar el modo silencioso cuando se recibe una notificación secundaria.</string>
+    <string name="secondarySilentOverrideDesc">Cancelar el modo silencioso cuando se recibe una notificación secundaria</string>
 
     <!-- I'm Safe -->
     <string name="safe">Enviar  \"Estoy en el área protegida\"</string>
@@ -125,31 +124,31 @@
     <string name="automatic">Automatic</string>
     <string name="language">Language</string>
     <string name="langSelection">App language</string>
-    <string name="langSelectionDesc">Change the application\'s language.</string>
+    <string name="langSelectionDesc">Change the application\'s language</string>
 
     <!-- Contact -->
     <string name="contact">Contacto</string>
     <string name="sentVia">Enviado mediante</string>
     <string name="problemDesc">Descripción del error:</string>
-    <string name="contactDesc">Enviar un email al autor de la aplicación.</string>
+    <string name="contactDesc">Enviar un email al autor de la aplicación</string>
     <string name="reportProblem">Reportar un error o problema</string>
     <string name="manualContact">Contactar al autor de la aplicación: support@redalert.me</string>
 
     <!-- Rate the App -->
     <string name="rateApp">Califique la aplicación</string>
-    <string name="rateAppDesc">Califique la aplicación en Google Play.</string>
+    <string name="rateAppDesc">Califique la aplicación en Google Play</string>
 
     <!-- Volume -->
     <string name="volume">Intensidad de sonido</string>
-    <string name="volumeDesc">Seleccione la intensidad del sonido de las notificaciones de alarma.</string>
+    <string name="volumeDesc">Seleccione la intensidad del sonido de las notificaciones de alarma</string>
 
     <!-- Secondary Volume -->
     <string name="secondaryVolume">Intensidad de sonido</string>
-    <string name="secondaryVolumeDesc">Seleccione la intensidad del sonido de las notificaciones secundarias.</string>
+    <string name="secondaryVolumeDesc">Seleccione la intensidad del sonido de las notificaciones secundarias</string>
 
     <!-- Website -->
     <string name="website">Visite nuestro sitio</string>
-    <string name="websiteDesc">Haga clic aquí para visitar nuestra página web oficial.</string>
+    <string name="websiteDesc">Haga clic aquí para visitar nuestra página web oficial</string>
 
     <!-- Share the Application -->
     <string name="share">Compartir</string>
@@ -180,19 +179,19 @@
 
     <!-- Wake Screen -->
     <string name="wakeScreen">Encender la pantalla</string>
-    <string name="wakeScreenDesc">Las alertas de cohetes activarán la pantalla de tu teléfono.</string>
+    <string name="wakeScreenDesc">Las alertas de cohetes activarán la pantalla de tu teléfono</string>
 
     <!-- Alert Popup -->
     <string name="close">Cerrar</string>
     <string name="silence">Silencio</string>
     <string name="showPopup">Mostrar popup</string>
-    <string name="showPopupDesc">Alertas se mostrarán en una ventana emergente.</string>
+    <string name="showPopupDesc">Alertas se mostrarán en una ventana emergente</string>
     <string name="grantOverlayPermission">Permitir visualización sobre otras aplicaciones</string>
     <string name="grantOverlayPermissionInstructions">Seleccione "RedAlert" -> "Permitir visualización sobre otras aplicaciones" en la siguiente pantalla.</string>
 
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Mejorar la confiabilidad</string>
-    <string name="foregroundServiceDesc">Muestra una notificación continua que evitará que Android cierre la aplicación en segundo plano.</string>
+    <string name="foregroundServiceDesc">Muestra una notificación continua que evitará que Android cierre la aplicación en segundo plano</string>
     <string name="pushy_foreground_service_title">@string/appName</string>
     <string name="pushy_foreground_service_connected">Conectado al servicio de notificaciones</string>
     <string name="pushy_foreground_service_connecting">Conectando...</string>

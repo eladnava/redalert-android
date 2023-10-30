@@ -26,59 +26,58 @@
     <string name="advanced">Расширенные</string>
     <string name="advancedSettings">Расширенные настройки</string>
     <string name="advancedSettingsTitle">Дополнительные настройки</string>
-    <string name="advancedSettingsDesc">Нажмите здесь, чтобы изменить дополнительные настройки.</string>
+    <string name="advancedSettingsDesc">Нажмите здесь, чтобы изменить дополнительные настройки</string>
 
     <!-- Enable/Disable Notifications -->
-    <string name="notifications">Оповещения в режиме реального времени.</string>
-    <string name="notificationsDesc">Получать оповещения в режиме реального времени.</string>
+    <string name="notifications">Оповещения в режиме реального времени</string>
+    <string name="notificationsDesc">Получать оповещения в режиме реального времени</string>
 
     <!-- Area Selection -->
-    <string name="areas">области</string>
+    <string name="alertRegions">Области</string>
     <string name="search">Введите слово...</string>
     <string name="allString">Все</string>
     <string name="noneString">Выкл</string>
 
     <!-- Secondary Alerts -->
     <string name="receiveSecondaryAlerts">Вторичные Оповещения</string>
-    <string name="receiveSecondaryAlertsDesc">Получать вторичные оповещения в режиме реального времени.</string>
+    <string name="receiveSecondaryAlertsDesc">Получать вторичные оповещения в режиме реального времени</string>
 
     <!-- Secondary Alerts -->
     <string name="secondaryAlerts">Вторичные Оповещения</string>
     <string name="secondaryAlertsTitle">Вторичные Оповещения</string>
-    <string name="secondaryAlertsDesc">Щелкните здесь, чтобы настроить вторичные оповещения о других областях.</string>
+    <string name="secondaryAlertsDesc">Щелкните здесь, чтобы настроить вторичные оповещения о других областях</string>
 
     <!-- Secondary Cities -->
     <string name="selectedSecondaryCities">Вторичные населенные пункты</string>
-    <string name="selectedSecondaryCitiesDesc">Выбрать вторичные населенные пункты, для которых сигнал будет активирован.</string>
+    <string name="selectedSecondaryCitiesDesc">Выбрать вторичные населенные пункты, для которых сигнал будет активирован</string>
 
     <!-- Region Selection -->
-    <string name="selectedZones">Места</string>
-    <string name="zonesDesc">Выбрать населенные пункты, для которых сигнал будет активирован.</string>
+    <string name="selectedZones">Дополнительные регионы</string>
+    <string name="selectedZonesDesc">Получайте оповещения о целых регионах (помимо городов)</string>
 
     <!-- City Selection -->
-    <string name="selectedCities">Дополнительные населенные пункты</string>
-    <string name="cityDesc">Выбрать населенные пункты, для которых сигнал будет активирован, в дополнение к выбранным зонам.</string>
+    <string name="selectedCities">Города</string>
+    <string name="selectedCitiesDesc">Получайте оповещения о конкретных городах и поселках</string>
 
     <!-- Self-test -->
     <string name="test">Проверка</string>
-    <string name="testDesc">Отправить мне уведомление, имитирующее Цева Адом.</string>
+    <string name="testDesc">Отправить мне уведомление, имитирующее Цева Адом</string>
     <string name="testFailed">Самодиагностика удалось полностью. Оповещение не было получено от любого толчка шлюза. Проверьте подключение к Интернету и повторите попытку позже, и, свяжитесь с нами, если проблема все еще существует.</string>
-    <string name="testSent">Пожалуйста, подождите уведомления.</string>
     <string name="reliability">Проверка</string>
     <string name="testSuccessfulLong">Самодиагностика успешно завершила!</string>
 
     <!-- Volume -->
     <string name="volume">уровень громкости</string>
-    <string name="volumeDesc">Выберите нужный объем для предупреждения ракетных.</string>
+    <string name="volumeDesc">Выберите нужный объем для предупреждения ракетных</string>
 
     <!-- Secondary Volume -->
     <string name="secondaryVolume">уровень громкости</string>
-    <string name="secondaryVolumeDesc">Выберите нужный объем для предупреждения вторичных ракетных.</string>
+    <string name="secondaryVolumeDesc">Выберите нужный объем для предупреждения вторичных ракетных</string>
 
     <!-- Sound Selection -->
     <string name="sounds">Звуки</string>
     <string name="soundSelection">Звук сигнала</string>
-    <string name="soundSelectionDesc">Выбрать звук  при тревоге.</string>
+    <string name="soundSelectionDesc">Выбрать звук  при тревоге</string>
     <string name="testSound">​​Проверка Звука</string>
     <string name="siren1">Сирена 1</string>
     <string name="siren2">Сирена 2</string>
@@ -101,23 +100,23 @@
 
     <!-- Secondary Sound -->
     <string name="secondarySoundSelection">Вторичный звук</string>
-    <string name="secondarySoundSelectionDesc">Выбрать звук  при  тревоге вторичные.</string>
+    <string name="secondarySoundSelectionDesc">Выбрать звук  при  тревоге вторичные</string>
 
     <!-- Vibration Mode -->
     <string name="vibrate">Вибрация</string>
-    <string name="vibrateDesc">При сигнале тревоги, устройство будет вибрировать.</string>
+    <string name="vibrateDesc">При сигнале тревоги, устройство будет вибрировать</string>
 
     <!-- Silent Mode Override -->
     <string name="silentOverride">Выключите бесшумный режим</string>
-    <string name="silentOverrideDesc">При сигнале тревоги, тихий режим будет отменен.</string>
+    <string name="silentOverrideDesc">При сигнале тревоги, тихий режим будет отменен</string>
 
     <!-- Secondary Vibration Mode -->
     <string name="secondaryVibrate">Вибрация</string>
-    <string name="secondaryVibrateDesc">При вторичный сигнале тревоги, устройство будет вибрировать.</string>
+    <string name="secondaryVibrateDesc">При вторичный сигнале тревоги, устройство будет вибрировать</string>
 
     <!-- Secondary Silent Mode Override -->
     <string name="secondarySilentOverride">Выключите бесшумный режим</string>
-    <string name="secondarySilentOverrideDesc">При вторичный сигнале тревоги, тихий режим будет отменен.</string>
+    <string name="secondarySilentOverrideDesc">При вторичный сигнале тревоги, тихий режим будет отменен</string>
 
     <!-- I'm Safe -->
     <string name="safe">Отправить\"Я в убежище\"</string>
@@ -127,34 +126,34 @@
 
     <!-- I'm Safe - WhatsApp Integration -->
     <string name="safeWhatsApp">Отправлено через WhatsApp</string>
-    <string name="safeWhatsAppDesc">При нажатии кнопки "Сообщить" напрямую выбрать контакты.</string>
+    <string name="safeWhatsAppDesc">При нажатии кнопки "Сообщить" напрямую выбрать контакты</string>
 
     <!-- Languages -->
     <string name="automatic">Automatic</string>
     <string name="language">Language</string>
     <string name="langSelection">App language</string>
-    <string name="langSelectionDesc">Change the application\'s language.</string>
+    <string name="langSelectionDesc">Change the application\'s language</string>
 
     <!-- Contact -->
     <string name="contact">Для Связи</string>
     <string name="problemDesc">Описание ошибки: </string>
     <string name="sentVia">Отправлено через</string>
     <string name="registrationID">Регистрационный код</string>
-    <string name="contactDesc">Нажмите здесь, чтобы отправить письмо разработчику приложения.</string>
+    <string name="contactDesc">Нажмите здесь, чтобы отправить письмо разработчику приложения</string>
     <string name="reportProblem">Пожаловаться</string>
     <string name="manualContact">Свяжитесь со мной в support@redalert.me</string>
 
     <!-- Rate the App -->
     <string name="rateApp">Оценить приложение</string>
-    <string name="rateAppDesc">Нажмите сюда, чтобы оценить приложение на Google Play.</string>
+    <string name="rateAppDesc">Нажмите сюда, чтобы оценить приложение на Google Play</string>
 
     <!-- Website -->
     <string name="website">Посетите наш веб-сайт</string>
-    <string name="websiteDesc">Нажмите здесь, чтобы посетить наш официальный сайт.</string>
+    <string name="websiteDesc">Нажмите здесь, чтобы посетить наш официальный сайт</string>
 
     <!-- Share the Application -->
     <string name="share">Поделиться</string>
-    <string name="shareDesc">Поделиться приложением.</string>
+    <string name="shareDesc">Поделиться приложением</string>
     <string name="shareMessage">Я использую приложение \ "Цева Адом \" Android для получения оповещений в состоянии повышенной готовности - https://redalert.me</string>
 
     <!-- Error Messages -->
@@ -180,19 +179,19 @@
 
     <!-- Wake Screen -->
     <string name="wakeScreen">Включить экран</string>
-    <string name="wakeScreenDesc">Оповещения о ракетах разбудят экран вашего телефона.</string>
+    <string name="wakeScreenDesc">Оповещения о ракетах разбудят экран вашего телефона</string>
 
     <!-- Alert Popup -->
     <string name="close">Открыть</string>
     <string name="silence">Тишина</string>
     <string name="showPopup">Показать всплывающее</string>
-    <string name="showPopupDesc">Оповещения Rocket будет отображаться в всплывающем окне.</string>
+    <string name="showPopupDesc">Оповещения Rocket будет отображаться в всплывающем окне</string>
     <string name="grantOverlayPermission">Разрешить отображение поверх других приложений</string>
     <string name="grantOverlayPermissionInstructions">Пожалуйста, выберите «RedAlert» -> «Разрешить отображение поверх других приложений» на следующем экране.</string>
 
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Повышение надежности</string>
-    <string name="foregroundServiceDesc">Отобразите постоянное уведомление, которое не позволит Android завершить работу приложения в фоновом режиме.</string>
+    <string name="foregroundServiceDesc">Отобразите постоянное уведомление, которое не позволит Android завершить работу приложения в фоновом режиме</string>
     <string name="pushy_foreground_service_title">@string/appName</string>
     <string name="pushy_foreground_service_connected">Подключено к сервису уведомлений</string>
     <string name="pushy_foreground_service_connecting">Подключение...</string>

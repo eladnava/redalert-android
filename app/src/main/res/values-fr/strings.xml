@@ -13,11 +13,11 @@
     <string name="advanced">Options</string>
     <string name="advancedSettings">Paramètres avancés</string>
     <string name="advancedSettingsTitle">Paramètres avancés</string>
-    <string name="advancedSettingsDesc">Cliquez ici pour modifier les paramètres avancés.</string>
+    <string name="advancedSettingsDesc">Cliquez ici pour modifier les paramètres avancés</string>
     <string name="notifications">Recevoir les alertes</string>
-    <string name="notificationsDesc">Recevoir les alertes en temps réel.</string>
+    <string name="notificationsDesc">Recevoir les alertes en temps réel</string>
     <string name="contact">Contact</string>
-    <string name="contactDesc">Cliquez ici pour contacter le développeur de l\'application.</string>
+    <string name="contactDesc">Cliquez ici pour contacter le développeur de l\'application</string>
     <string name="reportProblem">Signaler un problème</string>
     <string name="manualContact">Contactez-moi par e-mail à support@redalert.me</string>
     <string name="jsonFailed">Une erreur s\'est produite lors du chargement des données du serveur.</string>
@@ -29,13 +29,12 @@
     <string name="pushRegistrationSuccess">L\'enregistrement est terminé avec succès</string>
     <string name="pushRegistrationSuccessDesc">Vous êtes enregistré avec succès pour recevoir les notifications via RedAlert.\n\nSélectionnez les régions et villes d\'alerte préférées pour recevoir les alertes de roquettes.</string>
     <string name="safeWhatsApp">Envoyer via WhatsApp</string>
-    <string name="safeWhatsAppDesc">En cliquant sur le bouton \"Je suis en sécurité\", le message sera envoyé via WhatsApp automatiquement.</string>
+    <string name="safeWhatsAppDesc">En cliquant sur le bouton \"Je suis en sécurité\", le message sera envoyé via WhatsApp automatiquement</string>
     <string name="soundSelection">Sonnerie de l\'alerte à la roquette</string>
-    <string name="soundSelectionDesc">Sélectionnez une sonnerie pour les alertes à la roquette.</string>
+    <string name="soundSelectionDesc">Sélectionnez une sonnerie pour les alertes à la roquette</string>
     <string name="test">Tester</string>
-    <string name="testDesc">Envoyez-moi une alerte de test pour vérifier la connectivité.</string>
+    <string name="testDesc">Envoyez-moi une alerte de test pour vérifier la connectivité</string>
     <string name="testFailed">Le test a échoué. Aucune alerte n\'a été reçue. Vérifiez votre connexion Internet et réessayez ultérieurement. Contactez-nous si le problème persiste.</string>
-    <string name="testSent">Veuillez attendre la notification de test</string>
     <string name="reliability">Fiabilité</string>
     <string name="noAlerts">Aucune alerte\nces derniers jours</string>
     <string name="recentAlerts">Alertes récentes</string>
@@ -50,26 +49,26 @@
     <string name="funny">Drôle</string>
     <string name="language">Language</string>
     <string name="langSelection">App language</string>
-    <string name="langSelectionDesc">Change the application\'s language.</string>
+    <string name="langSelectionDesc">Change the application\'s language</string>
     <string name="automatic">Automatic</string>
-    <string name="selectedZones">Régions</string>
-    <string name="zonesDesc">Sélectionnez les régions pour lequel recevoir les alertes.</string>
+    <string name="selectedZones">Régions supplémentaires</string>
+    <string name="selectedZonesDesc">Recevez des alertes sur des régions entières (en plus des villes)</string>
     <string name="silentOverride">Passer outre le mode silencieux</string>
-    <string name="silentOverrideDesc">Les alertes à la roquette passeront outre le mode silencieux.</string>
-    <string name="selectedCities">Autres villes</string>
+    <string name="silentOverrideDesc">Les alertes à la roquette passeront outre le mode silencieux</string>
+    <string name="selectedCities">Villes</string>
     <string name="testSuccessfulLong">Le test s\'est terminé avec succès!</string>
-    <string name="cityDesc">Sélectionnez les villes pour recevoir les alertes les concernant, en plus des régions sélectionnées.</string>
+    <string name="selectedCitiesDesc">Recevez des alertes sur des villes et villages spécifiques</string>
     <string name="website">Visitez notre site web</string>
-    <string name="websiteDesc">Cliquez ici pour visiter notre site officiel.</string>
-    <string name="areas">Régions</string>
+    <string name="websiteDesc">Cliquez ici pour visiter notre site officiel</string>
+    <string name="alertRegions">Zones</string>
     <string name="receiveSecondaryAlerts">Alertes secondaires</string>
-    <string name="receiveSecondaryAlertsDesc">Recevoir des alertes de roquette secondaires en temps réel.</string>
+    <string name="receiveSecondaryAlertsDesc">Recevoir des alertes de roquette secondaires en temps réel</string>
     <string name="sounds">Sonneries</string>
     <string name="share">Partager</string>
     <string name="shareDesc">Partager l\'application</string>
     <string name="shareMessage">J\'utilise RedAlert pour Android pour obtenir des alertes de roquette en temps réel - https://redalert.me</string>
     <string name="vibrate">Activer la vibration</string>
-    <string name="vibrateDesc">Les alertes de roquettes feront vibrer votre téléphone.</string>
+    <string name="vibrateDesc">Les alertes de roquettes feront vibrer votre téléphone</string>
     <string name="sentVia">Envoyé via</string>
     <string name="problemDesc">Description du problème:  </string>
     <string name="noSound">Pas de son</string>
@@ -90,11 +89,11 @@
     <!-- Secondary Alerts -->
     <string name="secondaryAlerts">Alertes secondaires</string>
     <string name="secondaryAlertsTitle">Alertes secondaires</string>
-    <string name="secondaryAlertsDesc">Configurer les alertes secondaires dans d\'autres zones du pays.</string>
+    <string name="secondaryAlertsDesc">Configurer les alertes secondaires dans d\'autres zones du pays</string>
 
     <!-- Secondary Sound -->
     <string name="secondarySoundSelection">Sonnerie secondaire</string>
-    <string name="secondarySoundSelectionDesc">Sélectionnez une sonnerie pour les alertes de roquette secondaire.</string>
+    <string name="secondarySoundSelectionDesc">Sélectionnez une sonnerie pour les alertes de roquette secondaire</string>
 
     <!-- Secondary Vibration Mode -->
     <string name="secondaryVibrate">Activer la vibration</string>
@@ -102,11 +101,11 @@
 
     <!-- Secondary Silent Mode Override -->
     <string name="secondarySilentOverride">Passer outre le mode silencieux</string>
-    <string name="secondarySilentOverrideDesc">Les alertes de roquette secondaire passeront outre le mode silencieux.</string>
+    <string name="secondarySilentOverrideDesc">Les alertes de roquette secondaire passeront outre le mode silencieux</string>
 
     <!-- Rate the App -->
     <string name="rateApp">Notez l\'application</string>
-    <string name="rateAppDesc">Evaluer l\'application sur Google Play.</string>
+    <string name="rateAppDesc">Evaluer l\'application sur Google Play</string>
 
     <string name="update">Mise à jour disponible</string>
     <string name="updateDesc">Une version plus récente de cette application est disponible (% s), veuillez mettre à jour.</string>
@@ -115,15 +114,15 @@
 
     <!-- Volume -->
     <string name="volume">Niveau de volume</string>
-    <string name="volumeDesc">Sélectionnez le volume des notifications d\'alerte.</string>
+    <string name="volumeDesc">Sélectionnez le volume des notifications d\'alerte</string>
 
     <!-- Secondary Volume -->
     <string name="secondaryVolume">Niveau de volume</string>
-    <string name="secondaryVolumeDesc">Sélectionnez le volume des notifications secondaire d\'alerte.</string>
+    <string name="secondaryVolumeDesc">Sélectionnez le volume des notifications secondaire d\'alerte</string>
 
     <!-- Secondary Cities -->
     <string name="selectedSecondaryCities">Villes secondaires</string>
-    <string name="selectedSecondaryCitiesDesc">Sélectionnez les villes pour recevoir des alertes secondaires.</string>
+    <string name="selectedSecondaryCitiesDesc">Sélectionnez les villes pour recevoir des alertes secondaires</string>
 
     <!-- Alert Share -->
     <string name="shareAlert">Partager l\'alerte</string>
@@ -135,26 +134,26 @@
 
     <!-- Wake Screen -->
     <string name="wakeScreen">Allumer l\'écran</string>
-    <string name="wakeScreenDesc">Les alertes de fusée réveilleront l\'écran de votre téléphone.</string>
+    <string name="wakeScreenDesc">Les alertes de fusée réveilleront l\'écran de votre téléphone</string>
 
     <!-- Alert Popup -->
     <string name="close">Fermer</string>
     <string name="silence">Silence</string>
     <string name="showPopup">Afficher la popup</string>
-    <string name="showPopupDesc">Les alertes de roquettes s\'affichera dans une popup.</string>
+    <string name="showPopupDesc">Les alertes de roquettes s\'affichera dans une popup</string>
     <string name="grantOverlayPermission">Autoriser l\'affichage sur d\'autres applications</string>
     <string name="grantOverlayPermissionInstructions">Veuillez sélectionner « RedAlert » -> « Autoriser l\'affichage sur d\'autres applications » dans l\'écran suivant.</string>
 
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Améliorer la fiabilité</string>
-    <string name="foregroundServiceDesc">Affichez une notification en cours qui empêchera Android de supprimer l\'application en arrière-plan.</string>
+    <string name="foregroundServiceDesc">Affichez une notification en cours qui empêchera Android de supprimer l\'application en arrière-plan</string>
     <string name="pushy_foreground_service_title">@string/appName</string>
     <string name="pushy_foreground_service_connected">Connecté au service de notifications</string>
     <string name="pushy_foreground_service_connecting">Connexion au serveur...</string>
     <string name="pushy_foreground_service_disconnected">Non connecté au service de notification</string>
 
     <!-- Miscellaneous -->
-    <string name="loading">Chargement ...</string>
+    <string name="loading">Chargement...</string>
     <string name="testingFCM">Test de la notification... (1/2)</string>
     <string name="testingPushy">Test de la notification... (2/2)</string>
     <string name="fcmTestFailed">Le test a échoué partiellement. Aucune alerte n\'a été reçue de la notification de Google, mais une alerte a été reçue avec succès via la notification secondaire. Réessayez plus tard.</string>

@@ -7,17 +7,17 @@
     <string name="noGooglePlayServices">Dein Telefon verfügt nicht über eine aktelle Version des Google Play Services.</string>
     <string name="pushRegistrationFailed">Ein Fehler ist während der Anmeldung beim Push-service aufgetreten. bitte versuche es Später nocheinmal.</string>
     <string name="apiRequestFailed">Eine Abfrage von Informationen bei unserem Server ist fehlgeschlagen, Bitte überprüfe Deine Internetverbindung und versuche es erneut.</string>
-    <string name="registrationFailed"> Die anmeldung ist Fehlgeschlagen, versuches es zu einem Späteren zeitpung noch einmal</string>
+    <string name="registrationFailed">Die anmeldung ist Fehlgeschlagen, versuches es zu einem Späteren zeitpung noch einmal.</string>
     <string name="grantNotificationPermission">Bitte aktivieren Sie "Benachrichtigungen" auf dem nächsten Bildschirm, um Benachrichtigungen in Echtzeit zu erhalten.</string>
     <string name="settings">Einstellungen</string>
     <string name="advanced">Erweiterungen</string>
     <string name="advancedSettings">Erweiterte Einstellungen</string>
     <string name="advancedSettingsTitle">Erweiterte Einstellungen</string>
-    <string name="advancedSettingsDesc">Klick hier für die Erweiterten Einstellungen.</string>
+    <string name="advancedSettingsDesc">Klick hier für die Erweiterten Einstellungen</string>
     <string name="notifications">Erhalte Alamierungen</string>
-    <string name="notificationsDesc">Erhalte Meldungen der Raketenangriffe in Echtzeit.</string>
+    <string name="notificationsDesc">Erhalte Meldungen der Raketenangriffe in Echtzeit</string>
     <string name="contact">Kontakt</string>
-    <string name="contactDesc">Klick hier um den App-Entwickler zu kontaktieren.</string>
+    <string name="contactDesc">Klick hier um den App-Entwickler zu kontaktieren</string>
     <string name="reportProblem">Melde ein Problem</string>
     <string name="manualContact">Kontaktiere mich per E-Mail: support@redalert.me</string>
     <string name="jsonFailed">Beim Laden der Daten vom Server ist ein Problem aufgetreten.</string>
@@ -29,13 +29,12 @@
     <string name="pushRegistrationSuccess">Erfolgreich</string>
     <string name="pushRegistrationSuccessDesc">Du hast Dich erfolgreich für die Raketen Alarmierung von RedAlert registriert-\n\n Bitte wähle Deine bevorzugten Regionen und Städte aus, um Raketenwarnungen zu erhalten.</string>
     <string name="safeWhatsApp">Senden über  WhatsApp</string>
-    <string name="safeWhatsAppDesc">Drücke auf den \"ich bin in Sicherheit\" Button, dann wird eine Automatische Nachricht über WhatsApp verschickt.</string>
+    <string name="safeWhatsAppDesc">Drücke auf den \"ich bin in Sicherheit\" Button, dann wird eine Automatische Nachricht über WhatsApp verschickt</string>
     <string name="soundSelection">Raketen Alarmierungston</string>
-    <string name="soundSelectionDesc">Suche dir einen Ton für eingebende Raketenwarnungen aus.</string>
+    <string name="soundSelectionDesc">Suche dir einen Ton für eingebende Raketenwarnungen aus</string>
     <string name="test">Selbst-test</string>
-    <string name="testDesc">Erhalte eine test Alarmierung um die Verbindung zu testen.</string>
+    <string name="testDesc">Erhalte eine test Alarmierung um die Verbindung zu testen</string>
     <string name="testFailed">Der Selbsttest ist vollständig scheitert. Es wurde kein Alamierung von dem Push Service Gateway empfangen. Überprüfe deine Internetverbindung und versuchen Sie es später erneut kontaktiere uns, wenn das Problem weiterhin besteht.</string>
-    <string name="testSent">Bitte warte auf die Testnachricht.</string>
     <string name="reliability">Zuverlässigkeit</string>
     <string name="noAlerts">Keine Alarmierung\nin den Vergangenen tagen</string>
     <string name="recentAlerts">Kürzliche Alarmierungen</string>
@@ -50,26 +49,26 @@
     <string name="funny">Lustig</string>
     <string name="language">Spracheinstellungen</string>
     <string name="langSelection">App Sprache</string>
-    <string name="langSelectionDesc">Ändere die Sprache der App.</string>
+    <string name="langSelectionDesc">Ändere die Sprache der App</string>
     <string name="automatic">Automatisch</string>
-    <string name="selectedZones">Regionen</string>
-    <string name="zonesDesc">Wähle die Region aus, um von dort Alarmierungen zu erhalten.</string>
+    <string name="selectedZones">Weitere Regionen</string>
+    <string name="selectedZonesDesc">Erhalten Sie Benachrichtigungen über ganze Regionen (zusätzlich zu Städten)</string>
     <string name="silentOverride">Überschreibe den "Bitte nicht stören modus"</string>
-    <string name="silentOverrideDesc">Raketenwarnungen deaktivieren kurzzeitig den nicht stören Modus.</string>
-    <string name="selectedCities">Weitere Städte</string>
+    <string name="silentOverrideDesc">Raketenwarnungen deaktivieren kurzzeitig den nicht stören Modus</string>
+    <string name="selectedCities">Städte</string>
     <string name="testSuccessfulLong">Der Selbsttest ist erfolgreich abgeschlossen!</string>
-    <string name="cityDesc">Wähle die Städte aus, um neben den ausgewählten Regionen auch Alamierungen von dort zu erhalten.</string>
+    <string name="selectedCitiesDesc">Erhalten Sie Benachrichtigungen über bestimmte Städte und Gemeinden</string>
     <string name="website">Besuche unsere Website</string>
     <string name="websiteDesc">Klick hier zum Besuchen der offiziellen Webseite</string>
-    <string name="areas">Regionen</string>
+    <string name="alertRegions">Bereiche</string>
     <string name="receiveSecondaryAlerts">Sekundärwarnungen</string>
-    <string name="receiveSecondaryAlertsDesc">Benachrichtigungen erhalten für Sekundärwarnungen.</string>
+    <string name="receiveSecondaryAlertsDesc">Benachrichtigungen erhalten für Sekundärwarnungen</string>
     <string name="sounds">Töne</string>
     <string name="share">Teile</string>
     <string name="shareDesc">Teile die App</string>
     <string name="shareMessage">Ich verwende Red Alert für Android, um Echtzeit-Raketenwarnungen zu erhalten - https://redalert.me</string>
     <string name="vibrate">Schalte die vibration ein</string>
-    <string name="vibrateDesc">Raketen Alarmierungen lassen Dein Handy vibrieren.</string>
+    <string name="vibrateDesc">Raketen Alarmierungen lassen Dein Handy vibrieren</string>
     <string name="sentVia">Gesendet mit</string>
     <string name="problemDesc">Problem Beschreibung: </string>
     <string name="noSound">Kein Ton</string>
@@ -90,23 +89,23 @@
     <!-- Secondary Alerts -->
     <string name="secondaryAlerts">Sekundärwarnungen</string>
     <string name="secondaryAlertsTitle">Sekundärwarnungen</string>
-    <string name="secondaryAlertsDesc">Klick hier, um sekundäre Alarmierungen zu konfigurieren, um Warnungen aus anderen Orten zu erhalten.</string>
+    <string name="secondaryAlertsDesc">Klick hier, um sekundäre Alarmierungen zu konfigurieren, um Warnungen aus anderen Orten zu erhalten</string>
 
     <!-- Secondary Sound -->
     <string name="secondarySoundSelection">Sekundär ton</string>
-    <string name="secondarySoundSelectionDesc">Wähle einen Ton für sekundäre Raketenwarnungen aus.</string>
+    <string name="secondarySoundSelectionDesc">Wähle einen Ton für sekundäre Raketenwarnungen aus</string>
 
     <!-- Secondary Vibration Mode -->
     <string name="secondaryVibrate">Aktiviere die vibration</string>
-    <string name="secondaryVibrateDesc">Sekundäre Raketenwarnungen lassen das Handy vibrieren.</string>
+    <string name="secondaryVibrateDesc">Sekundäre Raketenwarnungen lassen das Handy vibrieren</string>
 
     <!-- Secondary Silent Mode Override -->
     <string name="secondarySilentOverride">Überschreibe den bitte nicht stören Modus</string>
-    <string name="secondarySilentOverrideDesc">Sekundäre Raketenwarnungen überschreiben kurtzeitig den bitte nicht Stören Modus.</string>
+    <string name="secondarySilentOverrideDesc">Sekundäre Raketenwarnungen überschreiben kurtzeitig den bitte nicht Stören Modus</string>
 
     <!-- Rate the App -->
     <string name="rateApp">Bewerte die App</string>
-    <string name="rateAppDesc">Klick hier zum Bewerten der App in Google Play.</string>
+    <string name="rateAppDesc">Klick hier zum Bewerten der App in Google Play</string>
 
     <string name="update">Update Vorhanden</string>
     <string name="updateDesc">Eine neue Version dieser application ist vorhanden (%s), Bitte update sie.</string>
@@ -115,7 +114,7 @@
 
     <!-- Volume -->
     <string name="volume">Lautstärke</string>
-    <string name="volumeDesc">Stelle die gewünschte Lautstärke der Alarmierung ein.</string>
+    <string name="volumeDesc">Stelle die gewünschte Lautstärke der Alarmierung ein</string>
 
     <!-- Secondary Volume -->
     <string name="secondaryVolume">Lautstärke</string>
@@ -123,7 +122,7 @@
 
     <!-- Secondary Cities -->
     <string name="selectedSecondaryCities">Sekundärstädte</string>
-    <string name="selectedSecondaryCitiesDesc">Wählen Sie Städte aus, um aktuelle Alerts zu erhalten.</string>
+    <string name="selectedSecondaryCitiesDesc">Wählen Sie Städte aus, um aktuelle Alerts zu erhalten</string>
 
     <!-- Alert Share -->
     <string name="shareAlert">Teile die Meldung</string>
@@ -134,26 +133,26 @@
 
     <!-- Wake Screen -->
     <string name="wakeScreen">Bildschirm einschalten</string>
-    <string name="wakeScreenDesc">Raketenwarnungen wecken den Bildschirm Ihres Telefons.</string>
+    <string name="wakeScreenDesc">Raketenwarnungen wecken den Bildschirm Ihres Telefons</string>
 
     <!-- Alert Popup -->
     <string name="close">Schließen</string>
     <string name="silence">stumm</string>
     <string name="showPopup">Meldungen werden als Popup Anzeigen</string>
-    <string name="showPopupDesc">Raketen Alamirungen werden in einem pop-up fenster Angezeigt.</string>
+    <string name="showPopupDesc">Raketen Alamirungen werden in einem pop-up fenster Angezeigt</string>
     <string name="grantOverlayPermission">Anzeige über anderen Apps zulassen</string>
     <string name="grantOverlayPermissionInstructions">Bitte wählen Sie im nächsten Bildschirm „RedAlert“ -> „Anzeige über anderen Apps zulassen“.</string>
 
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Verbessern Sie die Zuverlässigkeit</string>
-    <string name="foregroundServiceDesc">Zeigt eine fortlaufende Benachrichtigung an, die verhindert, dass Android die App im Hintergrund beendet.</string>
+    <string name="foregroundServiceDesc">Zeigt eine fortlaufende Benachrichtigung an, die verhindert, dass Android die App im Hintergrund beendet</string>
     <string name="pushy_foreground_service_title">@string/appName</string>
     <string name="pushy_foreground_service_connected">Verbunden mit dem Benachrichtigungsdienst</string>
     <string name="pushy_foreground_service_connecting">Verbinden...</string>
     <string name="pushy_foreground_service_disconnected">Keine Verbindung zum Benachrichtigungsdienst</string>
 
     <!-- Miscellaneous -->
-    <string name="loading">Lade..</string>
+    <string name="loading">Lade...</string>
     <string name="testingFCM">Push Gateway wird Getestet... (1/2)</string>
     <string name="testingPushy">Push Gateway wird Getestet... (2/2)</string>
     <string name="fcmTestFailed">Der Selbsttest scheiterte teilweise. Es wurde keine Warnung vom Google-Push-Gateway empfangen, aber eine Warnung wurde erfolgreich über das sekundäre Push-Gateway empfangen. Bitte versuchen Sie es später noch einmal.</string>
