@@ -8,23 +8,19 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 
-import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
-import me.pushy.sdk.Pushy;
 
 import android.media.AudioAttributes;
-import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.red.alert.R;
 import com.red.alert.activities.AlertPopup;
 import com.red.alert.activities.Main;
 import com.red.alert.config.Logging;
-import com.red.alert.config.Sound;
 import com.red.alert.logic.communication.intents.MainActivityParameters;
 import com.red.alert.logic.communication.intents.RocketNotificationParameters;
+import com.red.alert.logic.feedback.VibrationLogic;
 import com.red.alert.logic.feedback.sound.SoundLogic;
 import com.red.alert.logic.phone.PowerManagement;
 import com.red.alert.receivers.NotificationDeletedReceiver;
@@ -32,9 +28,9 @@ import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.formatting.StringUtils;
 
 public class RocketNotifications {
-    // Silent notification channel config for no-sound alerts
-    public static final String SILENT_NOTIFICATION_CHANNEL_ID = "redalert_silent";
-    public static final String SILENT_NOTIFICATION_CHANNEL_NAME = "Silent Notifications";
+    // Notification channel config
+    public static final String ALERT_NOTIFICATION_CHANNEL_ID = "redalert";
+    public static final String ALERT_NOTIFICATION_CHANNEL_NAME = "Alerts";
 
     public static void notify(Context context, String city, String notificationTitle, String notificationContent, String alertType, String overrideSound) {
         // Get notification manager
@@ -57,9 +53,9 @@ public class RocketNotifications {
                 .setContentText(notificationContent)
                 .setLights(Color.RED, 1000, 1000)
                 .setSmallIcon(R.drawable.ic_notify)
-                .setColor(Color.parseColor("#ff4032"))
                 .setCategory(NotificationCompat.CATEGORY_ALARM)
                 .setPriority(NotificationCompat.PRIORITY_MAX)
+                .setColor(context.getResources().getColor(R.color.colorAccent))
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(notificationContent))
                 .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher));
 
@@ -73,22 +69,25 @@ public class RocketNotifications {
         }
 
         // Generate a notification ID based on the unique hash-code of the alert zone
-        int notificationID = notificationTitle.hashCode();
+        int notificationId = notificationTitle.hashCode();
 
-        // Cancel previous notification for same alert zone
-        notificationManager.cancel(notificationID);
+        // Cancel previous notification for same alert city
+        notificationManager.cancel(notificationId);
 
-        // Automatically configure notification channel (if required)
-        setNotificationChannel(alertType, builder, context);
+        // Configure notification channel (if required)
+        setNotificationChannel(builder, context);
 
         try {
             // Issue the notification
-            notificationManager.notify(notificationID, builder.build());
+            notificationManager.notify(notificationId, builder.build());
         }
         catch (Exception exc) {
             // Log it
             Log.e(Logging.TAG, "Rocket notification failed", exc);
         }
+
+        // Vibrate (if applicable)
+        VibrationLogic.issueVibration(alertType, context);
 
         // Play alert sound (if applicable)
         SoundLogic.playSound(alertType, overrideSound, context);
@@ -125,38 +124,43 @@ public class RocketNotifications {
         return pendingIntent;
     }
 
-    private static void setNotificationChannel(String alertType, NotificationCompat.Builder builder, Context context) {
-        // Android O and up (no channels before then)
+    private static void setNotificationChannel(NotificationCompat.Builder builder, Context context) {
+        // Android O and up
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
             return;
         }
 
-        // Get path to alert sound resource for current alert type
-        Uri alarmSoundURI = SoundLogic.getAlertSound(alertType, null, context);
-
-        // "Silent" sound selected for this alert type?
-        if (alarmSoundURI == null) {
-            // Use silent alert notification channel
-            setSilentNotificationChannel(builder, context);
-        }
-        else {
-            // Use standard high-importance channel with sound + vibrate
-            Pushy.setNotificationChannel(builder, context);
-        }
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private static void setSilentNotificationChannel(NotificationCompat.Builder builder, Context context) {
         // Get notification manager instance
         NotificationManager manager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
 
-        // Initialize channel (low importance so Android does not force sound and vibration)
-        NotificationChannel channel = new NotificationChannel(SILENT_NOTIFICATION_CHANNEL_ID, SILENT_NOTIFICATION_CHANNEL_NAME, NotificationManager.IMPORTANCE_LOW);
+        // Initialize channel (set high importance)
+        NotificationChannel channel = new NotificationChannel(ALERT_NOTIFICATION_CHANNEL_ID, ALERT_NOTIFICATION_CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH);
+
+        // Set dummy audio attributes (sound will be silent)
+        AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .setUsage(AudioAttributes.USAGE_ALARM)
+                .build();
+
+        // Set silent sound (play sound manually using MediaPlayer APIs to override silent mode)
+        channel.setSound(SoundLogic.getAppSoundByResourceName("silent", context), audioAttributes);
+
+        // Disable vibration (vibrate manually to override silent mode)
+        channel.enableVibration(false);
+
+        // Bypass do-not-disturb mode
+        channel.setBypassDnd(true);
+
+        // Enable lights
+        channel.enableLights(true);
+
+        // Display flashing red color on supported phones
+        channel.setLightColor(Color.RED);
 
         // Create channel (does nothing if already exists)
         manager.createNotificationChannel(channel);
 
-        // Set notification channel on builder
-        builder.setChannelId(SILENT_NOTIFICATION_CHANNEL_ID);
+        // Configure builder to use channel ID
+        builder.setChannelId(ALERT_NOTIFICATION_CHANNEL_ID);
     }
 }

@@ -1,7 +1,6 @@
 package com.red.alert.logic.feedback.sound;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -12,16 +11,15 @@ import com.red.alert.R;
 import com.red.alert.config.Logging;
 import com.red.alert.config.Sound;
 import com.red.alert.logic.alerts.AlertTypes;
+import com.red.alert.logic.feedback.VibrationLogic;
 import com.red.alert.utils.caching.Singleton;
-import com.red.alert.utils.feedback.Vibration;
 import com.red.alert.utils.formatting.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SoundLogic {
-    static List<MediaPlayer> mPlayers;
-    static final int ALARM_CUTOFF_SECONDS = 5;
+    static List<Player> mPlayers;
 
     public static boolean shouldPlayAlertSound(String alertType, Context context) {
         // No type?
@@ -119,7 +117,7 @@ public class SoundLogic {
         return Uri.parse(uri);
     }
 
-    static Uri getAppSoundByResourceName(String resourceName, Context context) {
+    public static Uri getAppSoundByResourceName(String resourceName, Context context) {
         // Convert to resource ID
         int resourceID = context.getResources().getIdentifier("raw/" + resourceName, "raw", context.getPackageName());
 
@@ -170,95 +168,39 @@ public class SoundLogic {
         // Secondary alert?
         if (alertType.equals(AlertTypes.SECONDARY)
                 || alertType.equals(AlertTypes.TEST_SECONDARY_SOUND)) {
-            overrideSilentMode = Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.secondarySilentOverridePref), false);
+            overrideSilentMode = Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.secondarySilentOverridePref), true);
         }
 
         // Return setting value
         return overrideSilentMode;
     }
 
-    public static boolean isSoundCurrentlyPlaying(String alertType, Context context) {
-        // Primary rocket notification?
-        if (alertType.equals(AlertTypes.PRIMARY)) {
-            return primaryAlertCurrentlyPlaying(context);
+    static boolean isSoundTypeCurrentlyPlaying(String soundType) {
+        // Got a player?
+        if (mPlayers != null) {
+            // Traverse players
+            for (Player player : mPlayers) {
+                try {
+                    // Still playing?
+                    if (player.isPlaying()) {
+                        // Check sound type for match
+                        if (player.getSoundType().equals(soundType)) {
+                            return true;
+                        }
+                    }
+                } catch (Exception exc) {
+                    // Ignore exceptions and return false
+                }
+            }
         }
 
-        // Secondary rocket notification?
-        if (alertType.equals(AlertTypes.SECONDARY)) {
-            return secondaryAlertCurrentlyPlaying(context);
-        }
-
-        // Not playing
+        // Sound type not currently playing
         return false;
-    }
-
-    public static boolean secondaryAlertCurrentlyPlaying(Context context) {
-        // Set currently playing
-        boolean currentlyPlaying = false;
-
-        // Do we have an alert currently playing? (Played in last X sec)
-        if (getAlertLastPlayedTimestamp(context.getString(R.string.lastAlertPref), context) > getCurrentPlayingAlertCutoff()) {
-            currentlyPlaying = true;
-        }
-
-        // Do we have a sound currently playing? (Played in last X sec)
-        if (getAlertLastPlayedTimestamp(context.getString(R.string.lastSecondaryAlertPref), context) > getCurrentPlayingAlertCutoff()) {
-            currentlyPlaying = true;
-        }
-
-        // Save current timestamp
-        saveAlertCurrentlyPlaying(context.getString(R.string.lastSecondaryAlertPref), context);
-
-        // No sound playing
-        return currentlyPlaying;
-    }
-
-    public static boolean primaryAlertCurrentlyPlaying(Context context) {
-        // Set currently playing
-        boolean currentlyPlaying = false;
-
-        // Do we have a sound currently playing? (Played in last X sec)
-        if (getAlertLastPlayedTimestamp(context.getString(R.string.lastAlertPref), context) > getCurrentPlayingAlertCutoff()) {
-            currentlyPlaying = true;
-        }
-
-        // Save current timestamp
-        saveAlertCurrentlyPlaying(context.getString(R.string.lastAlertPref), context);
-
-        // No sound playing
-        return currentlyPlaying;
-    }
-
-    static void saveAlertCurrentlyPlaying(String preference, Context context) {
-        // Edit shared preferences
-        SharedPreferences.Editor edit = Singleton.getSharedPreferences(context).edit();
-
-        // Store current ms in settings with the given property,
-        // so that listeners will be notified
-        edit.putLong(preference, System.currentTimeMillis());
-
-        // Save and flush
-        edit.commit();
-    }
-
-    static long getAlertLastPlayedTimestamp(String preference, Context context) {
-        // Get last played from preferences
-        return Singleton.getSharedPreferences(context).getLong(preference, 0);
-    }
-
-    static long getCurrentPlayingAlertCutoff() {
-        // Alarm played in past X seconds?
-        return System.currentTimeMillis() - (1000 * ALARM_CUTOFF_SECONDS);
     }
 
     public static void playSound(String alertType, String alertSound, Context context) {
         // Should we play it?
         if (!shouldPlayAlertSound(alertType, context)) {
-            return;
-        }
-
-        // Avoid secondary override
-        if (isSoundCurrentlyPlaying(alertType, context)) {
             return;
         }
 
@@ -270,21 +212,23 @@ public class SoundLogic {
             return;
         }
 
-        // Override volume (Also to set the user's chosen volume)
+        // Avoid playing same sound type currently
+        if (isSoundTypeCurrentlyPlaying(alertType)) {
+            return;
+        }
+
+        // Override volume (also to set the user's chosen volume)
         VolumeLogic.setStreamVolume(alertType, context);
 
         // Play sound
-        playSoundURI(alarmSoundURI, context);
-
-        // Vibrate depending on type
-        Vibration.issueVibration(alertType, context);
+        playSoundURI(alarmSoundURI, alertType, context);
     }
 
     public static void stopSound(Context context) {
         // Got a player?
         if (mPlayers != null) {
             // Traverse players
-            for (MediaPlayer player : mPlayers) {
+            for (Player player : mPlayers) {
                 try {
                     // Still playing?
                     if (player.isPlaying()) {
@@ -308,20 +252,20 @@ public class SoundLogic {
         }
 
         // Stop vibration
-        Vibration.stopVibration(context);
+        VibrationLogic.stopVibration(context);
     }
 
-    static void playSoundURI(Uri alarmSoundUi, Context context) {
+    static void playSoundURI(Uri alarmSoundUi, String soundType, Context context) {
         // No URI?
         if (alarmSoundUi == null) {
             return;
         }
 
-        // Already initialized or currently playing?
-        stopSound(context);
-
         // Create new MediaPlayer
-        MediaPlayer player = new MediaPlayer();
+        Player player = new Player();
+
+        // Set sound type
+        player.setSoundType(soundType);
 
         // Wake up processor
         player.setWakeMode(context, PowerManager.PARTIAL_WAKE_LOCK);
@@ -354,5 +298,20 @@ public class SoundLogic {
 
         // Add player to list of players
         mPlayers.add(player);
+    }
+
+    /* Declare custom MediaPlayer class to store alert sound type */
+    static class Player extends MediaPlayer {
+        String mSoundType;
+
+        public String getSoundType() {
+            // Return sound type
+            return mSoundType;
+        }
+
+        public void setSoundType(String soundType) {
+            // Store sound type for later
+            mSoundType = soundType;
+        }
     }
 }

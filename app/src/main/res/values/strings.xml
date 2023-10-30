@@ -265,8 +265,6 @@
     <string translatable="false" name="contactPref">contact</string>
     <string translatable="false" name="advancedPref">advanced</string>
     <string translatable="false" name="enabledPref">enabled</string>
-    <string translatable="false" name="lastAlertPref">last_alert</string>
-    <string translatable="false" name="lastSecondaryAlertPref">last_secondary_alert</string>
     <string translatable="false" name="vibratePref">vibrate</string>
     <string translatable="false" name="batteryOptimizationWarningDisplayedCountPref">battery_optimization_warning_displayed_counter</string>
     <string translatable="false" name="secondaryVibratePref">secondary_vibrate</string>

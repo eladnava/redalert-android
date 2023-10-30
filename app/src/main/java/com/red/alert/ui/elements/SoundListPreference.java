@@ -13,6 +13,7 @@ import com.red.alert.R;
 import com.red.alert.activities.settings.alerts.SecondaryAlerts;
 import com.red.alert.config.Sound;
 import com.red.alert.logic.alerts.AlertTypes;
+import com.red.alert.logic.feedback.sound.SoundLogic;
 import com.red.alert.logic.notifications.RocketNotifications;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.ui.notifications.AppNotifications;
@@ -83,6 +84,9 @@ public class SoundListPreference extends ListPreference {
                             // Override type
                             testAlertType = AlertTypes.TEST_SECONDARY_SOUND;
                         }
+
+                        // Stop any previously-selected sound
+                        SoundLogic.stopSound(mContext);
 
                         // Dispatch test notification
                         RocketNotifications.notify(mContext, null, mContext.getString(R.string.appName), mContext.getString(R.string.testSound), testAlertType, path);
