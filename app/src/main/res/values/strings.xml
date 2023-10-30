@@ -206,6 +206,14 @@
     <string name="grantOverlayPermission">אפשר הצגה מעל אפליקציות אחרות</string>
     <string name="grantOverlayPermissionInstructions">בחר/י ״צבע אדום״ -> ״הצגה מעל אפליקציות אחרות״ במסך הבא.</string>
 
+    <!-- Pushy Foreground Service -->
+    <string name="foregroundService">שפר אמינות</string>
+    <string name="foregroundServiceDesc">הצג התרעה קבועה שתמנע ממערכת ההפעלה לכבות את האפליקציה ברקע.</string>
+    <string name="pushy_foreground_service_title">צבע אדום</string>
+    <string name="pushy_foreground_service_connected">מחובר לשירות ההתרעות</string>
+    <string name="pushy_foreground_service_connecting">מתחבר לשירות ההתרעות</string>
+    <string name="pushy_foreground_service_disconnected">לא מחובר לשירות ההתרעות</string>
+
     <!-- Alert Types -->
     <string name="missiles">ירי רקטות</string>
     <string name="radiologicalEvent">אירוע רדיולוגי</string>
@@ -266,6 +274,7 @@
     <string translatable="false" name="nearbyCitiesPref">nearby_cities</string>
     <string translatable="false" name="secondaryVolumePref">secondary_volume</string>
     <string translatable="false" name="alertPopupPref">alert_popup_v2</string>
+    <string translatable="false" name="foregroundServicePref">foreground_service</string>
     <string translatable="false" name="wakeScreenPref">wake_screen</string>
     <string translatable="false" name="silentOverridePref">override</string>
     <string translatable="false" name="selectedZonesPref">selected_zones</string>

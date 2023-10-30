@@ -145,6 +145,14 @@
     <string name="grantOverlayPermission">Allow displaying over other apps</string>
     <string name="grantOverlayPermissionInstructions">Please select \"RedAlert\" -> \"Allow display over other apps\" in the next screen.</string>
 
+    <!-- Pushy Foreground Service -->
+    <string name="foregroundService">Improve reliability</string>
+    <string name="foregroundServiceDesc">Display an ongoing notification that will prevent Android from killing the app in the background.</string>
+    <string name="pushy_foreground_service_title">@string/appName</string>
+    <string name="pushy_foreground_service_connected">Connected to the notification service</string>
+    <string name="pushy_foreground_service_connecting">Connecting...</string>
+    <string name="pushy_foreground_service_disconnected">Not connected to the notification service</string>
+
     <!-- Miscellaneous -->
     <string name="loading">Loading..</string>
     <string name="testingFCM">Testing push gateway... (1/2)</string>

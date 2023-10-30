@@ -145,6 +145,14 @@
     <string name="grantOverlayPermission">Autoriser l\'affichage sur d\'autres applications</string>
     <string name="grantOverlayPermissionInstructions">Veuillez sélectionner « RedAlert » -> « Autoriser l\'affichage sur d\'autres applications » dans l\'écran suivant.</string>
 
+    <!-- Pushy Foreground Service -->
+    <string name="foregroundService">Améliorer la fiabilité</string>
+    <string name="foregroundServiceDesc">Affichez une notification en cours qui empêchera Android de supprimer l\'application en arrière-plan.</string>
+    <string name="pushy_foreground_service_title">@string/appName</string>
+    <string name="pushy_foreground_service_connected">Connecté au service de notifications</string>
+    <string name="pushy_foreground_service_connecting">Connexion au serveur...</string>
+    <string name="pushy_foreground_service_disconnected">Non connecté au service de notification</string>
+
     <!-- Miscellaneous -->
     <string name="loading">Chargement ...</string>
     <string name="testingFCM">Test de la notification... (1/2)</string>

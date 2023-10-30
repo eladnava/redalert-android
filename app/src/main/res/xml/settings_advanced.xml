@@ -34,6 +34,12 @@
             android:title="@string/showPopup"
             android:summary="@string/showPopupDesc"
             android:defaultValue="false"/>
+        <CheckBoxPreference
+            android:textDirection="rtl"
+            android:key="@string/foregroundServicePref"
+            android:title="@string/foregroundService"
+            android:summary="@string/foregroundServiceDesc"
+            android:defaultValue="false"/>
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/advancedAlerts">

@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.provider.Settings;
@@ -20,10 +21,16 @@ import com.red.alert.ui.elements.SliderPreference;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.utils.feedback.Volume;
 
+import me.pushy.sdk.Pushy;
+import me.pushy.sdk.services.PushySocketService;
+import me.pushy.sdk.util.PushyServiceManager;
+
 public class Advanced extends AppCompatPreferenceActivity {
     Preference mSecondaryAlerts;
-    CheckBoxPreference mAlertPopup;
     SliderPreference mVolumeSelection;
+
+    CheckBoxPreference mAlertPopup;
+    CheckBoxPreference mForegroundService;
 
     static final int ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE = 1000;
 
@@ -65,6 +72,7 @@ public class Advanced extends AppCompatPreferenceActivity {
         mSecondaryAlerts = findPreference(getString(R.string.secondaryPref));
         mVolumeSelection = (SliderPreference) findPreference(getString(R.string.volumePref));
         mAlertPopup = (CheckBoxPreference)findPreference(getString(R.string.alertPopupPref));
+        mForegroundService = (CheckBoxPreference)findPreference(getString(R.string.foregroundServicePref));
 
         // Set up listeners
         initializeListeners();
@@ -101,7 +109,7 @@ public class Advanced extends AppCompatPreferenceActivity {
             }
         });
 
-        // Alert popup listener
+        // Alert popup checkbox listener
         mAlertPopup.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -122,6 +130,30 @@ public class Advanced extends AppCompatPreferenceActivity {
                     // Tell Android *not* to persist new checkbox value
                     return false;
                 }
+
+                // Tell Android to persist new checkbox value
+                return true;
+            }
+        });
+
+        // Foreground service checkbox listener
+        mForegroundService.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object value) {
+                // Stop existing service
+                PushyServiceManager.stop(Advanced.this);
+
+                // Toggle foreground service
+                Pushy.toggleForegroundService((boolean)value, Advanced.this);
+
+                // Wait 2 seconds
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Start service again
+                        PushyServiceManager.start(Advanced.this);
+                    }
+                }, 2000);
 
                 // Tell Android to persist new checkbox value
                 return true;

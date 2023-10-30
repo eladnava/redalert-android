@@ -190,6 +190,14 @@
     <string name="grantOverlayPermission">Permitir visualización sobre otras aplicaciones</string>
     <string name="grantOverlayPermissionInstructions">Seleccione "RedAlert" -> "Permitir visualización sobre otras aplicaciones" en la siguiente pantalla.</string>
 
+    <!-- Pushy Foreground Service -->
+    <string name="foregroundService">Mejorar la confiabilidad</string>
+    <string name="foregroundServiceDesc">Muestra una notificación continua que evitará que Android cierre la aplicación en segundo plano.</string>
+    <string name="pushy_foreground_service_title">@string/appName</string>
+    <string name="pushy_foreground_service_connected">Conectado al servicio de notificaciones</string>
+    <string name="pushy_foreground_service_connecting">Conectando...</string>
+    <string name="pushy_foreground_service_disconnected">No conectado al servicio de notificación</string>
+
     <!-- Miscellaneous -->
     <string name="loading">Cargando...</string>
     <string name="testingFCM">Prueba de impulso de puerta de enlace... (1/2)</string>

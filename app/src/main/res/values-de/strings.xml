@@ -144,6 +144,14 @@
     <string name="grantOverlayPermission">Anzeige über anderen Apps zulassen</string>
     <string name="grantOverlayPermissionInstructions">Bitte wählen Sie im nächsten Bildschirm „RedAlert“ -> „Anzeige über anderen Apps zulassen“.</string>
 
+    <!-- Pushy Foreground Service -->
+    <string name="foregroundService">Verbessern Sie die Zuverlässigkeit</string>
+    <string name="foregroundServiceDesc">Zeigt eine fortlaufende Benachrichtigung an, die verhindert, dass Android die App im Hintergrund beendet.</string>
+    <string name="pushy_foreground_service_title">@string/appName</string>
+    <string name="pushy_foreground_service_connected">Verbunden mit dem Benachrichtigungsdienst</string>
+    <string name="pushy_foreground_service_connecting">Verbinden...</string>
+    <string name="pushy_foreground_service_disconnected">Keine Verbindung zum Benachrichtigungsdienst</string>
+
     <!-- Miscellaneous -->
     <string name="loading">Lade..</string>
     <string name="testingFCM">Push Gateway wird Getestet... (1/2)</string>

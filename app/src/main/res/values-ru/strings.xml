@@ -190,6 +190,14 @@
     <string name="grantOverlayPermission">Разрешить отображение поверх других приложений</string>
     <string name="grantOverlayPermissionInstructions">Пожалуйста, выберите «RedAlert» -> «Разрешить отображение поверх других приложений» на следующем экране.</string>
 
+    <!-- Pushy Foreground Service -->
+    <string name="foregroundService">Повышение надежности</string>
+    <string name="foregroundServiceDesc">Отобразите постоянное уведомление, которое не позволит Android завершить работу приложения в фоновом режиме.</string>
+    <string name="pushy_foreground_service_title">@string/appName</string>
+    <string name="pushy_foreground_service_connected">Подключено к сервису уведомлений</string>
+    <string name="pushy_foreground_service_connecting">Подключение...</string>
+    <string name="pushy_foreground_service_disconnected">Не подключен к сервису уведомлений</string>
+
     <!-- Miscellaneous -->
     <string name="loading">загрузка...</string>
     <string name="testingFCM">Тестирование толчок шлюз... (1/2)</string>

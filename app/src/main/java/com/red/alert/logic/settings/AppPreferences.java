@@ -39,6 +39,11 @@ public class AppPreferences {
         return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.alertPopupPref), false);
     }
 
+    public static boolean getForegroundServiceEnabled(Context context) {
+        // Get saved preference
+        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.foregroundServicePref), false);
+    }
+
     public static boolean getWakeScreenEnabled(Context context) {
         // Get saved preference
         return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.wakeScreenPref), true);
