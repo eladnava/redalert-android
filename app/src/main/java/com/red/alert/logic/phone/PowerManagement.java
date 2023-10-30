@@ -14,6 +14,12 @@ public class PowerManagement {
             return;
         }
 
+        // Alert popup enabled?
+        if (AppPreferences.getPopupEnabled(context)) {
+            // Stop execution, popup window already wakes up the screen
+            return;
+        }
+
         // Type must be a primary "alert"
         if (!alertType.equals(AlertTypes.PRIMARY)) {
             // Stop execution
@@ -24,7 +30,7 @@ public class PowerManagement {
         wakeUpScreen(context);
     }
 
-    static void wakeUpScreen(Context context) {
+    public static void wakeUpScreen(Context context) {
         // Get power manager instance
         PowerManager powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
 

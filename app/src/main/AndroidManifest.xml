@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
     <!-- RedAlert -->
     <application
@@ -41,6 +42,16 @@
             android:name=".activities.AlertView"
             android:label="@string/appName"
             android:theme="@style/AppTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
+
+        <!-- Alert Popup -->
+        <activity
+            android:name=".activities.AlertPopup"
+            android:label="@string/appName"
+            android:launchMode="singleInstance"
+            android:excludeFromRecents="true"
+            android:taskAffinity=".popup"
+            android:theme="@style/PopupDialog"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
 
         <!-- Settings -->

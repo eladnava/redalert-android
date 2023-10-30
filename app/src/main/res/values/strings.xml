@@ -198,6 +198,14 @@
     <string name="wakeScreen">הדלק מסך</string>
     <string name="wakeScreenDesc">כאשר תתקבל אזעקת אמת, מסך הטלפון ידלק.</string>
 
+    <!-- Alert Popup -->
+    <string name="close">סגור</string>
+    <string name="silence">השתק</string>
+    <string name="showPopup">הצג פופאפ</string>
+    <string name="showPopupDesc">כאשר תתקבל אזעקת אמת, יוצג פופאפ עם מידע על האזעקה.</string>
+    <string name="grantOverlayPermission">אפשר הצגה מעל אפליקציות אחרות</string>
+    <string name="grantOverlayPermissionInstructions">בחר/י ״צבע אדום״ -> ״הצגה מעל אפליקציות אחרות״ במסך הבא.</string>
+
     <!-- Alert Types -->
     <string name="missiles">ירי רקטות</string>
     <string name="radiologicalEvent">אירוע רדיולוגי</string>
@@ -257,6 +265,7 @@
     <string translatable="false" name="volumePref">volume</string>
     <string translatable="false" name="nearbyCitiesPref">nearby_cities</string>
     <string translatable="false" name="secondaryVolumePref">secondary_volume</string>
+    <string translatable="false" name="alertPopupPref">alert_popup_v2</string>
     <string translatable="false" name="wakeScreenPref">wake_screen</string>
     <string translatable="false" name="silentOverridePref">override</string>
     <string translatable="false" name="selectedZonesPref">selected_zones</string>

@@ -275,6 +275,9 @@ public class Main extends AppCompatActivity {
         // Ask user to whitelist app from battery optimizations
         showBatteryExemptionDialog();
 
+        // Ask user to grant app overlay permission if revoked
+        showAlertPopupPermissionDialog();
+
         // Restart the app services if needed
         ServiceManager.startAppServices(this);
     }
@@ -370,6 +373,55 @@ public class Main extends AppCompatActivity {
 
         // Save and flush to disk
         editor.commit();
+    }
+
+    void showAlertPopupPermissionDialog() {
+        // Android M (6) and up only
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return;
+        }
+
+        // Check if alert popup disabled
+        if (!AppPreferences.getPopupEnabled(this)) {
+            return;
+        }
+
+        // Check if we already have permission to draw over other apps
+        if (Settings.canDrawOverlays(this)) {
+            return;
+        }
+
+        // Haven't displayed tutorial?
+        if (!AppPreferences.getTutorialDisplayed(this)) {
+            return;
+        }
+
+        // Haven't registered for notifications?
+        if (!FCMRegistration.isRegistered(this) || !PushyRegistration.isRegistered(this)) {
+            return;
+        }
+
+        // Android 13 notification permission not granted yet?
+        if (!Pushy.isPermissionGranted(this)) {
+            return;
+        }
+
+        // Battery exemption dialog is being displayed?
+        if (mBatteryDialogDisplayed) {
+            return;
+        }
+
+        // Show permission request dialog
+        AlertDialogBuilder.showGenericDialog(getString(R.string.grantOverlayPermission), getString(R.string.grantOverlayPermissionInstructions), getString(R.string.okay), getString(R.string.notNow), true, this, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                // Clicked okay?
+                if (which == DialogInterface.BUTTON_POSITIVE) {
+                    // Bring user to relevant settings activity to grant the app overlay permission
+                    startActivity(new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName())));
+                }
+            }
+        });
     }
 
     void pollRecentAlerts() {

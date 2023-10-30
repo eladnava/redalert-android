@@ -12,12 +12,6 @@
             android:dialogMessage="@string/volumeDesc"/>
         <CheckBoxPreference
             android:textDirection="rtl"
-            android:key="@string/wakeScreenPref"
-            android:title="@string/wakeScreen"
-            android:summary="@string/wakeScreenDesc"
-            android:defaultValue="true"/>
-        <CheckBoxPreference
-            android:textDirection="rtl"
             android:key="@string/vibratePref"
             android:title="@string/vibrate"
             android:summary="@string/vibrateDesc"
@@ -28,6 +22,18 @@
             android:title="@string/silentOverride"
             android:summary="@string/silentOverrideDesc"
             android:defaultValue="true"/>
+        <CheckBoxPreference
+            android:textDirection="rtl"
+            android:key="@string/wakeScreenPref"
+            android:title="@string/wakeScreen"
+            android:summary="@string/wakeScreenDesc"
+            android:defaultValue="true"/>
+        <CheckBoxPreference
+            android:textDirection="rtl"
+            android:key="@string/alertPopupPref"
+            android:title="@string/showPopup"
+            android:summary="@string/showPopupDesc"
+            android:defaultValue="false"/>
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/advancedAlerts">

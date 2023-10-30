@@ -139,6 +139,14 @@
     <string name="wakeScreen">Accendi lo schermo</string>
     <string name="wakeScreenDesc">Gli avvisi sui razzi riattiveranno lo schermo del tuo telefono.</string>
 
+    <!-- Alert Popup -->
+    <string name="close">Chiuso</string>
+    <string name="silence">Silenzio</string>
+    <string name="showPopup">Mostra popup</string>
+    <string name="showPopupDesc">Le allerte verrano mostrate in un pop-up.</string>
+    <string name="grantOverlayPermission">Consenti la visualizzazione su altre app</string>
+    <string name="grantOverlayPermissionInstructions">Seleziona "RedAlert" -> "Consenti visualizzazione su altre app" nella schermata successiva.</string>
+
     <!-- Miscellaneous -->
     <string name="loading">Caricamento..</string>
     <string name="testingFCM">Testando il gateway delle notifiche... (1/2)</string>

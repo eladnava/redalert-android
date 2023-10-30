@@ -137,6 +137,14 @@
     <string name="wakeScreen">Allumer l\'écran</string>
     <string name="wakeScreenDesc">Les alertes de fusée réveilleront l\'écran de votre téléphone.</string>
 
+    <!-- Alert Popup -->
+    <string name="close">Fermer</string>
+    <string name="silence">Silence</string>
+    <string name="showPopup">Afficher la popup</string>
+    <string name="showPopupDesc">Les alertes de roquettes s\'affichera dans une popup.</string>
+    <string name="grantOverlayPermission">Autoriser l\'affichage sur d\'autres applications</string>
+    <string name="grantOverlayPermissionInstructions">Veuillez sélectionner « RedAlert » -> « Autoriser l\'affichage sur d\'autres applications » dans l\'écran suivant.</string>
+
     <!-- Miscellaneous -->
     <string name="loading">Chargement ...</string>
     <string name="testingFCM">Test de la notification... (1/2)</string>

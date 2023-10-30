@@ -182,6 +182,14 @@
     <string name="wakeScreen">Encender la pantalla</string>
     <string name="wakeScreenDesc">Las alertas de cohetes activarán la pantalla de tu teléfono.</string>
 
+    <!-- Alert Popup -->
+    <string name="close">Cerrar</string>
+    <string name="silence">Silencio</string>
+    <string name="showPopup">Mostrar popup</string>
+    <string name="showPopupDesc">Alertas se mostrarán en una ventana emergente.</string>
+    <string name="grantOverlayPermission">Permitir visualización sobre otras aplicaciones</string>
+    <string name="grantOverlayPermissionInstructions">Seleccione "RedAlert" -> "Permitir visualización sobre otras aplicaciones" en la siguiente pantalla.</string>
+
     <!-- Miscellaneous -->
     <string name="loading">Cargando...</string>
     <string name="testingFCM">Prueba de impulso de puerta de enlace... (1/2)</string>

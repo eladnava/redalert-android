@@ -136,6 +136,14 @@
     <string name="wakeScreen">Bildschirm einschalten</string>
     <string name="wakeScreenDesc">Raketenwarnungen wecken den Bildschirm Ihres Telefons.</string>
 
+    <!-- Alert Popup -->
+    <string name="close">Schließen</string>
+    <string name="silence">stumm</string>
+    <string name="showPopup">Meldungen werden als Popup Anzeigen</string>
+    <string name="showPopupDesc">Raketen Alamirungen werden in einem pop-up fenster Angezeigt.</string>
+    <string name="grantOverlayPermission">Anzeige über anderen Apps zulassen</string>
+    <string name="grantOverlayPermissionInstructions">Bitte wählen Sie im nächsten Bildschirm „RedAlert“ -> „Anzeige über anderen Apps zulassen“.</string>
+
     <!-- Miscellaneous -->
     <string name="loading">Lade..</string>
     <string name="testingFCM">Push Gateway wird Getestet... (1/2)</string>

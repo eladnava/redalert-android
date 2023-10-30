@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#e9e9e9"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/info"
+        android:gravity="center"
+        android:layout_margin="25dp"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/counter"
+            android:textSize="32sp"
+            android:gravity="center"
+            android:layout_margin="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ScrollView
+            android:scrollbars="none"
+            android:layout_height="75dp"
+            android:layout_gravity="center"
+            android:layout_width="fill_parent">
+
+            <TextView
+                android:id="@+id/zone"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layoutDirection="ltr"
+        android:id="@+id/bottomContainer"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/info">
+
+        <Button
+            android:id="@+id/close"
+            android:textColor="#464646"
+            android:text="@string/close"
+            android:background="#dcdcdc"
+            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"/>
+
+        <Button
+            android:id="@+id/silence"
+            android:textColor="#fff"
+            android:text="@string/silence"
+            android:background="#ff4032"
+            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"/>
+    </LinearLayout>
+</RelativeLayout>
+

@@ -182,6 +182,14 @@
     <string name="wakeScreen">Включить экран</string>
     <string name="wakeScreenDesc">Оповещения о ракетах разбудят экран вашего телефона.</string>
 
+    <!-- Alert Popup -->
+    <string name="close">Открыть</string>
+    <string name="silence">Тишина</string>
+    <string name="showPopup">Показать всплывающее</string>
+    <string name="showPopupDesc">Оповещения Rocket будет отображаться в всплывающем окне.</string>
+    <string name="grantOverlayPermission">Разрешить отображение поверх других приложений</string>
+    <string name="grantOverlayPermissionInstructions">Пожалуйста, выберите «RedAlert» -> «Разрешить отображение поверх других приложений» на следующем экране.</string>
+
     <!-- Miscellaneous -->
     <string name="loading">загрузка...</string>
     <string name="testingFCM">Тестирование толчок шлюз... (1/2)</string>
