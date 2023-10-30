@@ -39,8 +39,13 @@ public class PowerManagement {
             // Turn on
             PowerManager.WakeLock wl = powerManager.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, "redalert:alert");
 
-            // Release wakelock automatically after 3 seconds
-            wl.acquire(3000);
+            try {
+                // Release wakelock automatically after 3 seconds
+                wl.acquire(3000);
+            }
+            catch (Exception exc) {
+                // Ignore exceptions
+            }
         }
     }
 }
