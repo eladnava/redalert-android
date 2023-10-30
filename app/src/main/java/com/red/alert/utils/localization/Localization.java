@@ -68,5 +68,6 @@ public class Localization {
 
         // Apply the configuration
         context.getResources().updateConfiguration(configuration, context.getResources().getDisplayMetrics());
+        context.getApplicationContext().getResources().updateConfiguration(configuration, context.getResources().getDisplayMetrics());
     }
 }
