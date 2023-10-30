@@ -57,7 +57,7 @@
     <string name="silentOverride">Überschreibe den "Bitte nicht stören modus"</string>
     <string name="silentOverrideDesc">Raketenwarnungen deaktivieren kurzzeitig den nicht stören Modus.</string>
     <string name="selectedCities">Weitere Städte</string>
-    <string name="testSuccessfulLong">Der Selbsttest ist erfolgreich abgeschlossen! Test-Alamierung wurden von beiden Push-Benachrichtigungs-Gateways empfangen.</string>
+    <string name="testSuccessfulLong">Der Selbsttest ist erfolgreich abgeschlossen!</string>
     <string name="cityDesc">Wähle die Städte aus, um neben den ausgewählten Regionen auch Alamierungen von dort zu erhalten.</string>
     <string name="website">Besuche unsere Website</string>
     <string name="websiteDesc">Klick hier zum Besuchen der offiziellen Webseite</string>

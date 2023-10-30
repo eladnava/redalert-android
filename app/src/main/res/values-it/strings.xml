@@ -60,7 +60,7 @@
     <string name="silentOverride">Prevali sulla Modalità Silenziosa </string>
     <string name="silentOverrideDesc">Le allerte disabiliteranno la modalità silenziosa.</string>
     <string name="selectedCities">Città addizionali</string>
-    <string name="testSuccessfulLong">Il test è stato completato con successo! Le allerte saranno ricevuto tramite entrambi i gateway per le notifiche push.</string>
+    <string name="testSuccessfulLong">Il test è stato completato con successo!</string>
     <string name="cityDesc">Seleziona le città delle quali si vogliono ricevere le allerte oltre alle regioni selezionate.</string>
     <string name="website">Visita il nostro sito</string>
     <string name="websiteDesc">Tocca qui per visita il nostro sito ufficiale.</string>

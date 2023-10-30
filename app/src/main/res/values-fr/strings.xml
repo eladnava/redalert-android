@@ -57,7 +57,7 @@
     <string name="silentOverride">Passer outre le mode silencieux</string>
     <string name="silentOverrideDesc">Les alertes à la roquette passeront outre le mode silencieux.</string>
     <string name="selectedCities">Autres villes</string>
-    <string name="testSuccessfulLong">Le test s\'est terminé avec succès! Les alertes de test ont été reçues via la notification push.</string>
+    <string name="testSuccessfulLong">Le test s\'est terminé avec succès!</string>
     <string name="cityDesc">Sélectionnez les villes pour recevoir les alertes les concernant, en plus des régions sélectionnées.</string>
     <string name="website">Visitez notre site web</string>
     <string name="websiteDesc">Cliquez ici pour visiter notre site officiel.</string>

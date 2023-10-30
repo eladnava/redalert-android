@@ -69,7 +69,7 @@
     <string name="testFailed">La auto-prueba ha fallado por completo. Sin alerta fue recibida de cualquier pasarela de empuje. Compruebe su conexión a Internet y vuelva a intentarlo más tarde, y ponerse en contacto con nosotros si el problema persiste.</string>
     <string name="testSent">Por favor, espere a recibir la notificación de prueba</string>
     <string name="reliability">Fiabilidad</string>
-    <string name="testSuccessfulLong">El auto-test ha completado con éxito! Se recibieron alertas de prueba de ambas puertas de enlace de notificación push.</string>
+    <string name="testSuccessfulLong">El auto-test ha completado con éxito!</string>
 
     <!-- Sound Selection -->
     <string name="sounds">Sonidos</string>

@@ -57,7 +57,7 @@
     <string name="silentOverride">Override silent mode</string>
     <string name="silentOverrideDesc">Rocket alerts will disable silent mode.</string>
     <string name="selectedCities">Additional cities</string>
-    <string name="testSuccessfulLong">The self-test has completed successfully! Test alerts were received from both push notification gateways.</string>
+    <string name="testSuccessfulLong">The self-test has completed successfully!</string>
     <string name="cityDesc">Select cities to receive alerts about, in addition to the selected regions.</string>
     <string name="website">Visit our website</string>
     <string name="websiteDesc">Click here to visit our official website.</string>
