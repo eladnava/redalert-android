@@ -451,17 +451,17 @@ public class General extends AppCompatPreferenceActivity {
         // Break 2 lines
         body += "\r\n\r\n";
 
-        // Add selected zones
-        body += getString(R.string.selectedZones) + ": " + LocationData.getSelectedCityNamesByValues(this, Singleton.getSharedPreferences(this).getString(getString(R.string.selectedZonesPref), ""), getResources().getStringArray(R.array.zoneNames), getResources().getStringArray(R.array.zoneValues));
-
-        // Break 1 line
-        body += "\r\n";
-
         // Add selected cities
         body += getString(R.string.selectedCities) + ": " + LocationData.getSelectedCityNamesByValues(this, Singleton.getSharedPreferences(this).getString(getString(R.string.selectedCitiesPref), ""), LocationData.getAllCityNames(this), LocationData.getAllCityValues(this));
 
         // Break 1 line
         body += "\r\n";
+
+        // Add selected zones
+        body += getString(R.string.selectedZones) + ": " + LocationData.getSelectedCityNamesByValues(this, Singleton.getSharedPreferences(this).getString(getString(R.string.selectedZonesPref), ""), getResources().getStringArray(R.array.zoneNames), getResources().getStringArray(R.array.zoneValues));
+
+        // Break 2 lines
+        body += "\r\n\r\n";
 
         // Add selected secondary cities
         body += getString(R.string.selectedSecondaryCities) + ": " + LocationData.getSelectedCityNamesByValues(this, Singleton.getSharedPreferences(this).getString(getString(R.string.selectedSecondaryCitiesPref), ""), LocationData.getAllCityNames(this), LocationData.getAllCityValues(this));
