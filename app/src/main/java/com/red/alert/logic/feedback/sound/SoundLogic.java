@@ -16,10 +16,12 @@ import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.formatting.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class SoundLogic {
-    static List<Player> mPlayers;
+    // Use Collections.synchronizedList to avoid ConcurrentModificationException
+    static List<Player> mPlayers = Collections.synchronizedList(new ArrayList());
 
     public static boolean shouldPlayAlertSound(String alertType, Context context) {
         // No type?
@@ -176,8 +178,8 @@ public class SoundLogic {
     }
 
     static boolean isSoundTypeCurrentlyPlaying(String soundType) {
-        // Got a player?
-        if (mPlayers != null) {
+        // Avoid ConcurrentModificationException
+        synchronized (mPlayers) {
             // Traverse players
             for (Player player : mPlayers) {
                 try {
@@ -225,8 +227,8 @@ public class SoundLogic {
     }
 
     public static void stopSound(Context context) {
-        // Got a player?
-        if (mPlayers != null) {
+        // Avoid ConcurrentModificationException
+        synchronized (mPlayers) {
             // Traverse players
             for (Player player : mPlayers) {
                 try {
@@ -291,13 +293,11 @@ public class SoundLogic {
             return;
         }
 
-        // Initialize list
-        if (mPlayers == null) {
-            mPlayers = new ArrayList<>();
+        // Avoid ConcurrentModificationException
+        synchronized (mPlayers) {
+            // Add player to list of players
+            mPlayers.add(player);
         }
-
-        // Add player to list of players
-        mPlayers.add(player);
     }
 
     /* Declare custom MediaPlayer class to store alert sound type */
