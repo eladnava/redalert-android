@@ -826,14 +826,14 @@ public class Main extends AppCompatActivity {
 
                 // First time subscribing with the API?
                 if (!RedAlertAPI.isSubscribed(Main.this)) {
+                    // Update Pub/Sub subscriptions
+                    PushManager.updateSubscriptions(Main.this);
+
                     // Update notification preferences
                     RedAlertAPI.updateNotificationPreferences(Main.this);
 
                     // Subscribe for alerts based on current city/region selections
                     RedAlertAPI.subscribe(Main.this);
-
-                    // Update Pub/Sub subscriptions
-                    PushManager.updateSubscriptions(Main.this);
                 }
             }
             catch (Exception exc) {

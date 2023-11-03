@@ -188,11 +188,11 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
         @Override
         protected Exception doInBackground(Integer... Parameter) {
             try {
-                // Update alert subscriptions
-                RedAlertAPI.subscribe(SecondaryAlerts.this);
-
                 // Update Pub/Sub subscriptions
                 PushManager.updateSubscriptions(SecondaryAlerts.this);
+
+                // Update alert subscriptions
+                RedAlertAPI.subscribe(SecondaryAlerts.this);
             }
             catch (Exception exc) {
                 // Return exception to onPostExecute
@@ -275,10 +275,10 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
         protected Exception doInBackground(Integer... Parameter) {
             try {
                 // Update notification preferences
-                RedAlertAPI.updateNotificationPreferences(SecondaryAlerts.this);
+                PushManager.updateSubscriptions(SecondaryAlerts.this);
 
                 // Update notification preferences
-                PushManager.updateSubscriptions(SecondaryAlerts.this);
+                RedAlertAPI.updateNotificationPreferences(SecondaryAlerts.this);
             }
             catch (Exception exc) {
                 // Return exception to onPostExecute

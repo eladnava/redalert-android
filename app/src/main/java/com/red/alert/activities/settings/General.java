@@ -820,11 +820,11 @@ public class General extends AppCompatPreferenceActivity {
         @Override
         protected Exception doInBackground(Integer... Parameter) {
             try {
-                // Update alert subscriptions
-                RedAlertAPI.subscribe(General.this);
-
                 // Update Pub/Sub subscriptions
                 PushManager.updateSubscriptions(General.this);
+
+                // Update alert subscriptions
+                RedAlertAPI.subscribe(General.this);
             }
             catch (Exception exc) {
                 // Return exception to onPostExecute
@@ -903,10 +903,10 @@ public class General extends AppCompatPreferenceActivity {
         protected Exception doInBackground(Integer... Parameter) {
             try {
                 // Update notification preferences
-                RedAlertAPI.updateNotificationPreferences(General.this);
+                PushManager.updateSubscriptions(General.this);
 
                 // Update notification preferences
-                PushManager.updateSubscriptions(General.this);
+                RedAlertAPI.updateNotificationPreferences(General.this);
             } catch (Exception exc) {
                 // Return exception to onPostExecute
                 return exc;
