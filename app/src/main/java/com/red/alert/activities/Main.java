@@ -8,6 +8,8 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.view.MenuItemCompat;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -76,7 +78,10 @@ public class Main extends AppCompatActivity {
     boolean mIsResumed;
     boolean mIsDestroyed;
     boolean mIsReloading;
+    boolean mCheckedForUpdates;
     boolean mBatteryDialogDisplayed;
+    boolean mAppOverlayDialogDisplayed;
+    boolean mNotificationPermissionDialogDisplayed;
 
     Button mImSafe;
     ListView mAlertsList;
@@ -116,14 +121,49 @@ public class Main extends AppCompatActivity {
         // Volume keys should control alert volume
         Volume.setVolumeKeysAction(this);
 
-        // Check for app version updates
-        initializeUpdateChecker();
-
         // Always re-register FCM or Pushy on app start
         new RegisterPushAsync().execute();
     }
 
-    void initializeUpdateChecker() {
+    void showAppUpdateAvailableDialog() {
+        // Haven't displayed tutorial?
+        if (!AppPreferences.getTutorialDisplayed(this)) {
+            return;
+        }
+
+        // Not registered?
+        if (!RedAlertAPI.isRegistered(Main.this)) {
+            return;
+        }
+
+        // Haven't registered with FCM/Pushy for notifications?
+        if (!FCMRegistration.isRegistered(this) || !PushyRegistration.isRegistered(this)) {
+            return;
+        }
+
+        // Battery dialog already displayed?
+        if (mBatteryDialogDisplayed) {
+            return;
+        }
+
+        // App overlay permission dialog is being displayed?
+        if (mAppOverlayDialogDisplayed) {
+            return;
+        }
+
+        // Notification permission dialog is being displayed?
+        if (mNotificationPermissionDialogDisplayed) {
+            return;
+        }
+
+        // Already checked for updates?
+        if (mCheckedForUpdates) {
+            return;
+        }
+
+        // Avoid checking multiple times
+        mCheckedForUpdates = true;
+
         // Do it async
         new CheckForUpdatesAsync().execute();
     }
@@ -278,14 +318,19 @@ public class Main extends AppCompatActivity {
         // Ask user to grant app overlay permission if revoked
         showAlertPopupPermissionDialog();
 
+        // Check for app version updates
+        showAppUpdateAvailableDialog();
+
         // Restart the app services if needed
         ServiceManager.startAppServices(this);
     }
 
     void requestNotificationPermission() {
-        // Android 13 only
         // Check if device is already registered, but permission not granted yet
-        if (PushyAuthentication.getDeviceCredentials(this) != null && !Pushy.isPermissionGranted(this)) {
+        if (PushyAuthentication.getDeviceCredentials(this) != null && (!Pushy.isPermissionGranted(this) || !NotificationManagerCompat.from(Main.this).areNotificationsEnabled())) {
+            // Mark dialog as displayed
+            mNotificationPermissionDialogDisplayed = true;
+
             // Show error with an on-click listener that opens the App Info page
             AlertDialogBuilder.showGenericDialog(getString(R.string.error), getString(R.string.grantNotificationPermission), getString(R.string.okay), null, false, Main.this, new DialogInterface.OnClickListener() {
                 @Override
@@ -321,13 +366,13 @@ public class Main extends AppCompatActivity {
             return;
         }
 
-        // Android 13 notification permission not granted yet?
-        if (!Pushy.isPermissionGranted(this)) {
+        // Already displayed for this activity?
+        if (mBatteryDialogDisplayed) {
             return;
         }
 
-        // Already displayed for this activity?
-        if (mBatteryDialogDisplayed) {
+        // Notification permission dialog is being displayed?
+        if (mNotificationPermissionDialogDisplayed) {
             return;
         }
 
@@ -401,15 +446,18 @@ public class Main extends AppCompatActivity {
             return;
         }
 
-        // Android 13 notification permission not granted yet?
-        if (!Pushy.isPermissionGranted(this)) {
-            return;
-        }
-
         // Battery exemption dialog is being displayed?
         if (mBatteryDialogDisplayed) {
             return;
         }
+
+        // Notification permission dialog is being displayed?
+        if (mNotificationPermissionDialogDisplayed) {
+            return;
+        }
+
+        // Prevent other dialogs from being displayed
+        mAppOverlayDialogDisplayed = true;
 
         // Show permission request dialog
         AlertDialogBuilder.showGenericDialog(getString(R.string.grantOverlayPermission), getString(R.string.grantOverlayPermissionInstructions), getString(R.string.okay), getString(R.string.notNow), true, this, new DialogInterface.OnClickListener() {
