@@ -26,8 +26,8 @@
     <string name="safe">Invia \"Sono salvo\"</string>
     <string name="imSafeMessage">Sono salvo - Inviato tramite RedAlert per Android - https://redalert.me</string>
     <string name="imSafeDesc">Manda il messaggio \"Sono salvo\"</string>
-    <string name="pushRegistrationSuccess">Successo!</string>
-    <string name="pushRegistrationSuccessDesc">Ti sei collegato con successo tramite RedAlert, riceverai notifiche qualora vi siano attacchi.\n\n Seleziona le città e le aree di interesse per ricevere notifiche personalizzate.</string>
+    <string name="pushRegistrationSuccess">Seleziona la tua Città</string>
+    <string name="pushRegistrationSuccessDesc">Seleziona la tua città o paese per ricevere avvisi in tempo reale.</string>
     <string name="safeWhatsApp">Manda con WhatsApp</string>
     <string name="safeWhatsAppDesc">Toccando il bottone \"Sono salvo\" verrà automaticamente mandato un messaggio tramite WhatsApp</string>
     <string name="soundSelection">Suono notifica di attacco</string>

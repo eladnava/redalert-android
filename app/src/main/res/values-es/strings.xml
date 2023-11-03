@@ -166,8 +166,8 @@
 
     <!-- Success Messages -->
     <string name="registrationID">Código de registro</string>
-    <string name="pushRegistrationSuccess">El registro ha finalizado con éxito</string>
-    <string name="pushRegistrationSuccessDesc">Has registrado correctamente para cohetes notificaciones de alerta a través de RedAlert.\n\nPor favor seleccione sus regiones y ciudades de alerta preferidos para recibir alertas de cohetes.</string>
+    <string name="pushRegistrationSuccess">Selecciona tu Ciudad</string>
+    <string name="pushRegistrationSuccessDesc">Seleccione su ciudad o pueblo para recibir alertas en tiempo real.</string>
 
     <!-- Alert Share -->
     <string name="shareAlert">Comparte la alerta</string>

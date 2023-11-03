@@ -26,8 +26,8 @@
     <string name="safe">Sende \"ich bin in Sicherheit\"</string>
     <string name="imSafeMessage">ich"bin in Sicherheit - Gesendet mit RedAlert für Android - https://redalert.me</string>
     <string name="imSafeDesc">Sende \"ich bin in Sicherheit\"</string>
-    <string name="pushRegistrationSuccess">Erfolgreich</string>
-    <string name="pushRegistrationSuccessDesc">Du hast Dich erfolgreich für die Raketen Alarmierung von RedAlert registriert-\n\n Bitte wähle Deine bevorzugten Regionen und Städte aus, um Raketenwarnungen zu erhalten.</string>
+    <string name="pushRegistrationSuccess">Wählen Sie Ihre Stadt aus</string>
+    <string name="pushRegistrationSuccessDesc">Bitte wählen Sie Ihre Stadt oder Gemeinde aus, um Echtzeitbenachrichtigungen zu erhalten.</string>
     <string name="safeWhatsApp">Senden über  WhatsApp</string>
     <string name="safeWhatsAppDesc">Drücke auf den \"ich bin in Sicherheit\" Button, dann wird eine Automatische Nachricht über WhatsApp verschickt</string>
     <string name="soundSelection">Raketen Alarmierungston</string>

@@ -26,8 +26,8 @@
     <string name="safe">Envoyer \"Je suis en sécurité\"</string>
     <string name="imSafeMessage">Je suis en sécurité - envoyé via RedAlert pour Android - https://redalert.me</string>
     <string name="imSafeDesc">Envoyer \"Je suis en sécurité\"</string>
-    <string name="pushRegistrationSuccess">L\'enregistrement est terminé avec succès</string>
-    <string name="pushRegistrationSuccessDesc">Vous êtes enregistré avec succès pour recevoir les notifications via RedAlert.\n\nSélectionnez les régions et villes d\'alerte préférées pour recevoir les alertes de roquettes.</string>
+    <string name="pushRegistrationSuccess">Sélectionnez votre Ville</string>
+    <string name="pushRegistrationSuccessDesc">Veuillez sélectionner votre ville ou village pour recevoir des alertes en temps réel.</string>
     <string name="safeWhatsApp">Envoyer via WhatsApp</string>
     <string name="safeWhatsAppDesc">En cliquant sur le bouton \"Je suis en sécurité\", le message sera envoyé via WhatsApp automatiquement</string>
     <string name="soundSelection">Sonnerie de l\'alerte à la roquette</string>

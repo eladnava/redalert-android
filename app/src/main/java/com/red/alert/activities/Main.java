@@ -482,7 +482,7 @@ public class Main extends AppCompatActivity {
         settingsIntent.setClass(Main.this, General.class);
 
         // Add area selection boolean
-        settingsIntent.putExtra(SettingsEvents.SHOW_ZONE_SELECTION, showZoneSelection);
+        settingsIntent.putExtra(SettingsEvents.SHOW_CITY_SELECTION, showZoneSelection);
 
         // Start settings activity
         startActivity(settingsIntent);

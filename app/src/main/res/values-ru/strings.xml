@@ -166,8 +166,8 @@
     <string name="grantNotificationPermission">Включите «Уведомления» на следующем экране, чтобы получать оповещения в режиме реального времени.</string>
 
     <!-- Success Messages -->
-    <string name="pushRegistrationSuccess">Регистрация успешно завершена</string>
-    <string name="pushRegistrationSuccessDesc">Вы успешно подписались на ракетных предупреждающих уведомлений с помощью RedAlert.\n\nПожалуйста, выберите желаемый Уведомления регионов и городов, чтобы получать уведомления ракеты.</string>
+    <string name="pushRegistrationSuccess">Выберите свой город</string>
+    <string name="pushRegistrationSuccessDesc">Пожалуйста, выберите свой город или поселок, чтобы получать оповещения в режиме реального времени.</string>
 
     <!-- Alert Share -->
     <string name="shareAlert">Дайте предупреждение</string>

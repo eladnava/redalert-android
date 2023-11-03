@@ -128,12 +128,12 @@ public class General extends AppCompatPreferenceActivity {
             return;
         }
 
-        // Get zone selection boolean
-        boolean showZoneSelection = extras.getBoolean(SettingsEvents.SHOW_ZONE_SELECTION);
+        // Get city selection boolean
+        boolean showCitySelection = extras.getBoolean(SettingsEvents.SHOW_CITY_SELECTION);
 
         // Show selection?
-        if (showZoneSelection) {
-            mZoneSelection.showDialog();
+        if (showCitySelection) {
+            mCitySelection.showDialog();
         }
     }
 
