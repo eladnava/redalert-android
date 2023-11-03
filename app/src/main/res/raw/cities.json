@@ -553,7 +553,7 @@
   },
   {
     "name": "אזור תעשייה אפק ולב הארץ",
-    "name_en": "Afek And Lev Ha\\\"aretz Industrial Zone",
+    "name_en": "Afek And Lev Ha\"aretz Industrial Zone",
     "zone": "ירקון",
     "zone_en": "Yarkon",
     "time": "דקה וחצי",
@@ -1887,7 +1887,7 @@
     "value": "אשדוד - א,ב,ד,ה"
   },
   {
-    "name": "אשדוד - אזור תעשייה צפוני ונ",
+    "name": "אשדוד - איזור תעשייה צפוני",
     "name_en": "Ashdod - Northern Industrial Zone And Port",
     "zone": "לכיש",
     "zone_en": "Lachish",
@@ -1896,7 +1896,7 @@
     "countdown": 45,
     "lat": 31.8322214,
     "lng": 34.6759104,
-    "value": "אשדוד - אזור תעשייה צפוני ונ"
+    "value": "אשדוד - איזור תעשייה צפוני"
   },
   {
     "name": "אשדוד - ג,ו,ז",
@@ -1933,18 +1933,6 @@
     "lat": 31.804381,
     "lng": 34.655314,
     "value": "אשדוד -יא,יב,טו,יז,מרינה,סיט"
-  },
-  {
-    "name": "אשדוד I אזור לכיש",
-    "name_en": "Ashdod I Lakhish Area",
-    "zone": "לכיש",
-    "zone_en": "Lachish",
-    "time": "45 שניות",
-    "time_en": "45 seconds",
-    "countdown": 45,
-    "lat": 31.804381,
-    "lng": 34.655314,
-    "value": "אשדוד I אזור לכיש"
   },
   {
     "name": "אשדות יעקב איחוד",
@@ -2043,18 +2031,6 @@
     "value": "אשקלון - צפון"
   },
   {
-    "name": "אשקלון I אזור מערב לכיש",
-    "name_en": "Ashkelon I Western Lakhish Area",
-    "zone": "מערב לכיש",
-    "zone_en": "West Lachish",
-    "time": "30 שניות",
-    "time_en": "30 seconds",
-    "countdown": 30,
-    "lat": 31.6687885,
-    "lng": 34.5742523,
-    "value": "אשקלון I אזור מערב לכיש"
-  },
-  {
     "name": "אשרת",
     "name_en": "Oshrat",
     "zone": "גליל עליון",
@@ -2078,6 +2054,18 @@
     "lat": 31.780385,
     "lng": 35.010102,
     "value": "אשתאול"
+  },
+  {
+    "name": "אתר דודאים",
+    "name_en": "Dudaim Site",
+    "zone": "מרכז הנגב",
+    "zone_en": "Center Negev",
+    "time": "45 שניות",
+    "time_en": "45 seconds",
+    "countdown": 45,
+    "lat": 31.319078,
+    "lng": 34.727616,
+    "value": "אתר דודאים"
   },
   {
     "name": "אתר ההנצחה גולני",
@@ -2210,18 +2198,6 @@
     "lat": 31.252973,
     "lng": 34.791462,
     "value": "באר שבע - צפון"
-  },
-  {
-    "name": "באר שבע I אזור מרכז הנגב",
-    "name_en": "Beer Sheva I Center Negev Area",
-    "zone": "מרכז הנגב",
-    "zone_en": "Center Negev",
-    "time": "דקה",
-    "time_en": "A minute",
-    "countdown": 60,
-    "lat": 31.258556,
-    "lng": 34.797527,
-    "value": "באר שבע I אזור מרכז הנגב"
   },
   {
     "name": "בארות יצחק",
@@ -3294,7 +3270,7 @@
     "value": "בנימינה"
   },
   {
-    "name": "בסמ\\\"ה",
+    "name": "בסמ\"ה",
     "name_en": "Basma",
     "zone": "ואדי ערה",
     "zone_en": "Wadi Ara",
@@ -3303,7 +3279,7 @@
     "countdown": 90,
     "lat": 32.52940100000001,
     "lng": 35.103199,
-    "value": "בסמ\\\"ה"
+    "value": "בסמ\"ה"
   },
   {
     "name": "בסמת טבעון",
@@ -3438,18 +3414,6 @@
     "lng": 34.634978,
     "value": "ברוש",
     "shelters": 1
-  },
-  {
-    "name": "ברחבי הארץ",
-    "name_en": "Across The Country",
-    "zone": "מערב הנגב",
-    "zone_en": "West Negev",
-    "time": "30 שניות",
-    "time_en": "30 seconds",
-    "countdown": 30,
-    "lat": 31.046051,
-    "lng": 34.851612,
-    "value": "ברחבי הארץ"
   },
   {
     "name": "ברטעה",
@@ -4198,6 +4162,18 @@
     "value": "גורן"
   },
   {
+    "name": "גורנות הגליל",
+    "name_en": "Gornot HaGalil",
+    "zone": "קו העימות",
+    "zone_en": "Confrontation Line",
+    "time": "מיידי",
+    "time_en": "Immediately",
+    "countdown": 0,
+    "lat": 33.059286,
+    "lng": 35.24967,
+    "value": "גורנות הגליל"
+  },
+  {
     "name": "גזית",
     "name_en": "Gazit",
     "zone": "העמקים",
@@ -4640,18 +4616,6 @@
     "lat": 29.941617,
     "lng": 35.064691,
     "value": "גרופית"
-  },
-  {
-    "name": "גרנות הגליל",
-    "name_en": "Gornot HaGalil",
-    "zone": "קו העימות",
-    "zone_en": "Confrontation Line",
-    "time": "מיידי",
-    "time_en": "Immediately",
-    "countdown": 0,
-    "lat": 33.059286,
-    "lng": 35.24967,
-    "value": "גרנות הגליל"
   },
   {
     "name": "גשור",
@@ -5315,18 +5279,6 @@
     "value": "הרצליה - מרכז וגליל ים"
   },
   {
-    "name": "הרצליה I אזור דן",
-    "name_en": "Herzeliya I Dan Area",
-    "zone": "דן",
-    "zone_en": "Dan",
-    "time": "דקה וחצי",
-    "time_en": "A minute and a half",
-    "countdown": 90,
-    "lat": 32.0245041,
-    "lng": 34.8058575,
-    "value": "הרצליה I אזור דן"
-  },
-  {
     "name": "הררית יחד",
     "name_en": "Hararit Yachad",
     "zone": "מרכז הגליל",
@@ -5351,7 +5303,7 @@
     "value": "ואדי אל חמאם"
   },
   {
-    "name": "ואדי אל נעם",
+    "name": "ואדי אל נעם דרום",
     "name_en": "Wadi Al-Na'am",
     "zone": "דרום הנגב",
     "zone_en": "South Negev",
@@ -5360,7 +5312,7 @@
     "countdown": 60,
     "lat": 31.568567,
     "lng": 34.788161,
-    "value": "ואדי אל נעם"
+    "value": "ואדי אל נעם דרום"
   },
   {
     "name": "ורד יריחו",
@@ -5689,18 +5641,6 @@
     "value": "חדרה - נווה חיים"
   },
   {
-    "name": "חדרה I אזור מנשה",
-    "name_en": "Hadera I Menashe Area",
-    "zone": "מנשה",
-    "zone_en": "Menashe",
-    "time": "דקה וחצי",
-    "time_en": "A minute and a half",
-    "countdown": 90,
-    "lat": 32.0245041,
-    "lng": 34.8058575,
-    "value": "חדרה I אזור מנשה"
-  },
-  {
     "name": "חוות גלעד",
     "name_en": "Khavat Gil'ad",
     "zone": "שומרון",
@@ -5999,18 +5939,6 @@
     "lat": 32.8340986,
     "lng": 35.0667691,
     "value": "חיפה - קריית חיים ושמואל"
-  },
-  {
-    "name": "חיפה I אזור המפרץ",
-    "name_en": "Haifa I HaMifratz Area",
-    "zone": "מנשה",
-    "zone_en": "Menashe",
-    "time": "דקה",
-    "time_en": "A minute",
-    "countdown": 60,
-    "lat": 32.7940463,
-    "lng": 34.989571,
-    "value": "חיפה I אזור המפרץ"
   },
   {
     "name": "חיפה-מפרץ",
@@ -7190,18 +7118,6 @@
     "lat": 31.768319,
     "lng": 35.21371,
     "value": "ירושלים - צפון"
-  },
-  {
-    "name": "ירושלים I אזור ירושלים",
-    "name_en": "Jerusalem I Jerusalem Area",
-    "zone": "ירושלים",
-    "zone_en": "Jerusalem",
-    "time": "דקה וחצי",
-    "time_en": "A minute and a half",
-    "countdown": 90,
-    "lat": 31.768319,
-    "lng": 35.21371,
-    "value": "ירושלים I אזור ירושלים"
   },
   {
     "name": "ירחיב",
@@ -9357,30 +9273,6 @@
     "value": "מועאוויה"
   },
   {
-    "name": "מועצה אזורית מבואות חרמון",
-    "name_en": "Mevo'ot Hermon Regional Council",
-    "zone": "קו העימות",
-    "zone_en": "Confrontation Line",
-    "time": "מיידי",
-    "time_en": "Immediately",
-    "countdown": 0,
-    "lat": 33.0614193,
-    "lng": 35.5548422,
-    "value": "מועצה אזורית מבואות חרמון"
-  },
-  {
-    "name": "מועצה אזורית מרום הגליל",
-    "name_en": "Merom Hagalil Regional Council",
-    "zone": "גליל עליון",
-    "zone_en": "Upper Galilee",
-    "time": "30 שניות",
-    "time_en": "30 seconds",
-    "countdown": 30,
-    "lat": 32.9916546,
-    "lng": 35.4672368,
-    "value": "מועצה אזורית מרום הגליל"
-  },
-  {
     "name": "מוצא עילית",
     "name_en": "Motza Illit",
     "zone": "ירושלים",
@@ -10498,6 +10390,18 @@
     "value": "מרכז אזורי דרום השרון"
   },
   {
+    "name": "מרכז אזורי מבואות חרמון",
+    "name_en": "Mevo'ot Hermon Regional Council",
+    "zone": "קו העימות",
+    "zone_en": "Confrontation Line",
+    "time": "מיידי",
+    "time_en": "Immediately",
+    "countdown": 0,
+    "lat": 33.000651,
+    "lng": 35.438202,
+    "value": "מרכז אזורי מבואות חרמון"
+  },
+  {
     "name": "מרכז אזורי מגילות",
     "name_en": "Megilot Regional Cetner",
     "zone": "ים המלח",
@@ -10508,6 +10412,18 @@
     "lat": 32.0245041,
     "lng": 34.8058575,
     "value": "מרכז אזורי מגילות"
+  },
+  {
+    "name": "מרכז אזורי מרום גליל",
+    "name_en": "Merom Hagalil Regional Council",
+    "zone": "גליל עליון",
+    "zone_en": "Upper Galilee",
+    "time": "30 שניות",
+    "time_en": "30 seconds",
+    "countdown": 30,
+    "lat": 33.000651,
+    "lng": 35.438202,
+    "value": "מרכז אזורי מרום גליל"
   },
   {
     "name": "מרכז אזורי משגב",
@@ -12038,18 +11954,6 @@
     "lat": 32.321458,
     "lng": 34.853196,
     "value": "נתניה - מערב"
-  },
-  {
-    "name": "נתניה I אזור שרון",
-    "name_en": "Netanya I Sharon Area",
-    "zone": "שרון",
-    "zone_en": "Sharon",
-    "time": "דקה וחצי",
-    "time_en": "A minute and a half",
-    "countdown": 90,
-    "lat": 32.321458,
-    "lng": 34.853196,
-    "value": "נתניה I אזור שרון"
   },
   {
     "name": "סאג'ור",
@@ -14398,6 +14302,18 @@
     "value": "קריית גת, כרמי גת"
   },
   {
+    "name": "קריית חינוך מרחבים",
+    "name_en": "Merhavim Educational Campus",
+    "zone": "מערב הנגב",
+    "zone_en": "West Negev",
+    "time": "45 שניות",
+    "time_en": "45 seconds",
+    "countdown": 45,
+    "lat": 31.3138394,
+    "lng": 34.5749882,
+    "value": "קריית חינוך מרחבים"
+  },
+  {
     "name": "קריית טבעון-בית זייד",
     "name_en": "Kiryat Tivon",
     "zone": "העמקים",
@@ -14516,18 +14432,6 @@
     "lat": 31.529326,
     "lng": 35.115625,
     "value": "קרית ארבע"
-  },
-  {
-    "name": "קרית חינוך מרחבים",
-    "name_en": "Merhavim Educational Campus",
-    "zone": "מערב הנגב",
-    "zone_en": "West Negev",
-    "time": "45 שניות",
-    "time_en": "45 seconds",
-    "countdown": 45,
-    "lat": 31.316534,
-    "lng": 34.595627,
-    "value": "קרית חינוך מרחבים"
   },
   {
     "name": "קרני שומרון",
@@ -14660,18 +14564,6 @@
     "lat": 31.9730015,
     "lng": 34.7925013,
     "value": "ראשון לציון - מערב"
-  },
-  {
-    "name": "ראשון לציון I אזור השפלה",
-    "name_en": "Rishon LeZion I Hashfela Area",
-    "zone": "השפלה",
-    "zone_en": "HaShfela",
-    "time": "דקה וחצי",
-    "time_en": "A minute and a half",
-    "countdown": 90,
-    "lat": 32.0245041,
-    "lng": 34.8058575,
-    "value": "ראשון לציון I אזור השפלה"
   },
   {
     "name": "רבבה",
@@ -15070,18 +14962,6 @@
     "lat": 32.068424,
     "lng": 34.824785,
     "value": "רמת גן - מערב"
-  },
-  {
-    "name": "רמת גן I אזור דן",
-    "name_en": "Ramat Gan I Dan Area",
-    "zone": "דן",
-    "zone_en": "Dan",
-    "time": "דקה וחצי",
-    "time_en": "A minute and a half",
-    "countdown": 90,
-    "lat": 32.0245041,
-    "lng": 34.8058575,
-    "value": "רמת גן I אזור דן"
   },
   {
     "name": "רמת דוד",
@@ -16429,18 +16309,6 @@
     "lat": 32.099092,
     "lng": 34.796106,
     "value": "תל אביב - עבר הירקון"
-  },
-  {
-    "name": "תל אביב-יפו I אזור דן",
-    "name_en": "Tel Aviv - Yafo I Dan Area",
-    "zone": "דן",
-    "zone_en": "Dan",
-    "time": "דקה וחצי",
-    "time_en": "A minute and a half",
-    "countdown": 90,
-    "lat": 32.0245041,
-    "lng": 34.8058575,
-    "value": "תל אביב-יפו I אזור דן"
   },
   {
     "name": "תל חי",
