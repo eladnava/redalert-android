@@ -5,7 +5,7 @@
     <string name="okay">OK</string>
     <string name="error">Error</string>
     <string name="noGooglePlayServices">Your phone does not have an updated version of Google Play Services installed.</string>
-    <string name="pushRegistrationFailed">An error occurred while signing you up for rocket push notifications. We\'ll try to sign you up again in the future.</string>
+    <string name="pushRegistrationFailed">An error occurred while signing you up for push notifications. We\'ll try to sign you up again in the future.</string>
     <string name="apiRequestFailed">A request to retrieve information from our servers failed. Please check your Internet connection and try again.</string>
     <string name="registrationFailed">Registration failed, please try again later.</string>
     <string name="grantNotificationPermission">Please enable "Notifications" on the next screen to receive alerts in real time.</string>
@@ -13,9 +13,9 @@
     <string name="advanced">Advanced</string>
     <string name="advancedSettings">Advanced settings</string>
     <string name="advancedSettingsTitle">Advanced Settings</string>
-    <string name="advancedSettingsDesc">Modify advanced settings</string>
+    <string name="advancedSettingsDesc">Configure secondary alerts and modify advanced settings</string>
     <string name="notifications">Receive alerts</string>
-    <string name="notificationsDesc">Receive rocket alerts in real time</string>
+    <string name="notificationsDesc">Receive alerts in real time</string>
     <string name="contact">Contact</string>
     <string name="contactDesc">Contact the app developer</string>
     <string name="reportProblem">Report a problem</string>
@@ -27,13 +27,13 @@
     <string name="imSafeMessage">I\'m safe - sent via RedAlert for Android - https://redalert.me</string>
     <string name="imSafeDesc">Send \"I\'m safe\"</string>
     <string name="pushRegistrationSuccess">Success</string>
-    <string name="pushRegistrationSuccessDesc">You have successfully signed up for rocket alert notifications via RedAlert.\n\nPlease select your preferred alert regions and cities to receive rocket alerts.</string>
+    <string name="pushRegistrationSuccessDesc">You have successfully signed up for notifications via RedAlert.\n\nPlease select your preferred alert regions and cities to receive real-time alerts.</string>
     <string name="safeWhatsApp">Send via WhatsApp</string>
     <string name="safeWhatsAppDesc">Tapping the \"I\'m safe\" button will open up WhatsApp contact selection</string>
-    <string name="soundSelection">Rocket alert sound</string>
-    <string name="soundSelectionDesc">Select a sound for incoming rocket alerts</string>
+    <string name="soundSelection">Alert sound</string>
+    <string name="soundSelectionDesc">Select a sound for incoming alerts</string>
     <string name="test">Self-test</string>
-    <string name="testDesc">Send a test rocket alert to verify connectivity</string>
+    <string name="testDesc">Send a test alert to verify connectivity</string>
     <string name="testFailed">The self-test failed completely. No alert was received from any push notification gateway. Check your Internet connection and try again later, and contact us if the problem persists.</string>
     <string name="reliability">Reliability</string>
     <string name="noAlerts">No alerts\nin the past day</string>
@@ -56,19 +56,19 @@
     <string name="selectedZones">Additional regions</string>
     <string name="selectedZonesDesc">Receive alerts about entire regions (in addition to cities)</string>
     <string name="silentOverride">Override silent mode</string>
-    <string name="silentOverrideDesc">Rocket alerts will disable silent mode</string>
+    <string name="silentOverrideDesc">Incoming alerts will disable silent mode</string>
     <string name="testSuccessfulLong">The self-test has completed successfully!</string>
     <string name="website">Visit our website</string>
     <string name="websiteDesc">Visit our official website</string>
     <string name="alertRegions">Areas</string>
     <string name="receiveSecondaryAlerts">Secondary alerts</string>
-    <string name="receiveSecondaryAlertsDesc">Receive secondary rocket alerts in real-time</string>
+    <string name="receiveSecondaryAlertsDesc">Receive secondary alerts in real-time</string>
     <string name="sounds">Sounds</string>
     <string name="share">Share</string>
     <string name="shareDesc">Share the app</string>
-    <string name="shareMessage">I\'m using RedAlert for Android to get real-time rocket alerts - https://redalert.me</string>
+    <string name="shareMessage">I\'m using RedAlert for Android to get real-time alerts - https://redalert.me</string>
     <string name="vibrate">Enable vibration</string>
-    <string name="vibrateDesc">Rocket alerts will vibrate your phone</string>
+    <string name="vibrateDesc">Incoming alerts will vibrate your phone</string>
     <string name="sentVia">Sent using</string>
     <string name="problemDesc">Problem description: </string>
     <string name="noSound">No sound</string>
@@ -93,15 +93,15 @@
 
     <!-- Secondary Sound -->
     <string name="secondarySoundSelection">Secondary sound</string>
-    <string name="secondarySoundSelectionDesc">Select a sound for secondary rocket alerts</string>
+    <string name="secondarySoundSelectionDesc">Select a sound for secondary alerts</string>
 
     <!-- Secondary Vibration Mode -->
     <string name="secondaryVibrate">Enable vibration</string>
-    <string name="secondaryVibrateDesc">Secondary rocket alerts will vibrate your phone</string>
+    <string name="secondaryVibrateDesc">Secondary alerts will vibrate your phone</string>
 
     <!-- Secondary Silent Mode Override -->
     <string name="secondarySilentOverride">Override silent mode</string>
-    <string name="secondarySilentOverrideDesc">Secondary rocket alerts will override silent mode</string>
+    <string name="secondarySilentOverrideDesc">Secondary alerts will override silent mode</string>
 
     <!-- Rate the App -->
     <string name="rateApp">Rate the app</string>
@@ -114,11 +114,11 @@
 
     <!-- Volume -->
     <string name="volume">Volume level</string>
-    <string name="volumeDesc">Slide to select the desired volume for rocket alerts</string>
+    <string name="volumeDesc">Slide to select the desired volume for incoming alerts</string>
 
     <!-- Secondary Volume -->
     <string name="secondaryVolume">Volume level</string>
-    <string name="secondaryVolumeDesc">Slide to select the desired volume for secondary rocket alerts</string>
+    <string name="secondaryVolumeDesc">Slide to select the desired volume for secondary alerts</string>
 
     <!-- Secondary Cities -->
     <string name="selectedSecondaryCities">Secondary cities</string>
@@ -134,13 +134,13 @@
 
     <!-- Wake Screen -->
     <string name="wakeScreen">Wake screen</string>
-    <string name="wakeScreenDesc">Rocket alerts will wake your phone screen</string>
+    <string name="wakeScreenDesc">Incoming alerts will wake your phone screen</string>
 
     <!-- Alert Popup -->
     <string name="close">Close</string>
     <string name="silence">Silence</string>
     <string name="showPopup">Show popup</string>
-    <string name="showPopupDesc">Rocket alerts will be displayed in a pop-up window</string>
+    <string name="showPopupDesc">Incoming alerts will be displayed in a pop-up window</string>
     <string name="grantOverlayPermission">Allow displaying over other apps</string>
     <string name="grantOverlayPermissionInstructions">Please select \"RedAlert\" -> \"Allow display over other apps\" in the next screen.</string>
 
