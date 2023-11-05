@@ -21,6 +21,7 @@ import androidx.core.view.MenuItemCompat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.red.alert.R;
@@ -633,15 +634,15 @@ public class General extends AppCompatPreferenceActivity {
         MenuItem shareItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.share));
 
         // Set up the view
-        shareItem.setIcon(R.drawable.ic_share);
+        shareItem.setActionView(R.layout.share_button);
 
         // Specify the show flags
         MenuItemCompat.setShowAsAction(shareItem, MenuItem.SHOW_AS_ACTION_ALWAYS);
 
         // On click, open share
-        shareItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        shareItem.getActionView().findViewById(R.id.image).setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onMenuItemClick(MenuItem item) {
+            public void onClick(View view) {
                 // Prepare share intent
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
 
@@ -653,9 +654,6 @@ public class General extends AppCompatPreferenceActivity {
 
                 // Show chooser
                 startActivity(Intent.createChooser(shareIntent, getString(R.string.shareDesc)));
-
-                // Consume event
-                return true;
             }
         });
     }

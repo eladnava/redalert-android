@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -506,20 +507,17 @@ public class Main extends AppCompatActivity {
         MenuItem settingsItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.settings));
 
         // Set up the view
-        settingsItem.setIcon(R.drawable.ic_settings);
+        settingsItem.setActionView(R.layout.settings_button);
 
         // Specify the show flags
         MenuItemCompat.setShowAsAction(settingsItem, MenuItem.SHOW_AS_ACTION_ALWAYS);
 
         // On click, open Settings activity
-        settingsItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        settingsItem.getActionView().findViewById(R.id.image).setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onMenuItemClick(MenuItem item) {
+            public void onClick(View view) {
                 // Start settings activity
                 goToSettings(false);
-
-                // Consume event
-                return true;
             }
         });
     }
@@ -551,6 +549,9 @@ public class Main extends AppCompatActivity {
 
                                 // Invalidate the list
                                 invalidateAlertList();
+
+                                // Clear app notifications
+                                AppNotifications.clearAll(Main.this);
                             }
                         }
                     });
