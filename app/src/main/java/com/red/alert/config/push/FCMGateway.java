@@ -6,4 +6,7 @@ public class FCMGateway {
 
     // FCM Scope
     public static String SCOPE = "*";
+
+    // FCM InstanceID Subscriptions Cache Time
+    public static int FCM_SUBSCRIPTIONS_CACHE_TIME = 6;
 }

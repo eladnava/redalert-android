@@ -10,7 +10,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.red.alert.R;
-import com.red.alert.config.API;
 import com.red.alert.config.Logging;
 import com.red.alert.config.push.FCMGateway;
 import com.red.alert.logic.settings.AppPreferences;
@@ -94,9 +93,9 @@ public class FCMRegistration {
             return;
         }
 
-        // FCM InstanceID API returns cached subscriptions for up to 6 seconds
+        // FCM InstanceID API returns cached subscriptions for up to X seconds
         // Ensure enough time passed before the last time we updated the FCM subscriptions
-        while (AppPreferences.getLastSubscribedTimestamp(context) > DateTime.getUnixTimestamp() - 6) {
+        while (AppPreferences.getLastSubscribedTimestamp(context) > DateTime.getUnixTimestamp() - FCMGateway.FCM_SUBSCRIPTIONS_CACHE_TIME) {
             Thread.sleep(500);
         }
 
