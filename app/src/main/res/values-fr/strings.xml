@@ -192,6 +192,10 @@
     <string name="disableBatteryOptimizations">Désactiver les Optimisations de la Batterie</string>
     <string name="disableBatteryOptimizationsInstructions">Pour recevoir des alertes en arrière-plan, définissez \"Batterie\" sur \"Aucune restriction\" sur l\'écran suivant.</string>
 
+    <!-- Battery Optimization Reminder Setting -->
+    <string name="disableBatteryOptimizationsReminder">Important: Désactivez les optimisations de la batterie</string>
+    <string name="disableBatteryOptimizationsReminderDesc">Nous avons détecté que vous n\'avez pas encore désactivé les optimisations de batterie pour RedAlert. Pour recevoir des alertes en temps réel pendant que l\'application s\'exécute en arrière-plan, vous devez désactiver les optimisations de batterie. Appuyez sur pour obtenir des instructions.</string>
+
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">Effacer les alertes récentes?</string>
     <string name="clearRecentAlertsDesc">Souhaitez-vous effacer la liste des alertes récentes?</string>

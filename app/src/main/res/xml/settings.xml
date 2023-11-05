@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
+    android:key="@string/mainSettingsScreen"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:redalert="http://schemas.android.com/apk/res-auto"
     android:title="@string/settings">
@@ -17,6 +18,13 @@
             android:title="@string/test"
             android:summary="@string/testDesc"
             android:dependency="@string/enabledPref"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="@string/batteryOptimizationCategory"
+        android:title="@string/disableBatteryOptimizationsReminder">
+        <Preference
+            android:key="@string/batteryOptimizationPref"
+            android:summary="@string/disableBatteryOptimizationsReminderDesc"/>
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/alertRegions">

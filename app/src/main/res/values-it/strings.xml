@@ -195,6 +195,10 @@
     <string name="disableBatteryOptimizations">Disattiva le Ottimizzazioni della Batteria</string>
     <string name="disableBatteryOptimizationsInstructions">Per ricevere avvisi in background, imposta \"Batteria\" su \"Nessuna restrizione\" nella schermata successiva.</string>
 
+    <!-- Battery Optimization Reminder Setting -->
+    <string name="disableBatteryOptimizationsReminder">Importante: Disabilita le ottimizzazioni della batteria</string>
+    <string name="disableBatteryOptimizationsReminderDesc">Abbiamo rilevato che non hai ancora disabilitato le ottimizzazioni della batteria per RedAlert. Per ricevere avvisi in tempo reale mentre l\'app è in esecuzione in background, devi disattivare le ottimizzazioni della batteria. Tocca per istruzioni.</string>
+
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">Cancellare gli avvisi recenti?</string>
     <string name="clearRecentAlertsDesc">Vuoi cancellare l\'elenco degli avvisi recenti?</string>

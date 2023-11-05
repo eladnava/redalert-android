@@ -18,6 +18,7 @@ import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import androidx.core.view.MenuItemCompat;
 
+import android.preference.PreferenceScreen;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -72,9 +73,11 @@ public class General extends AppCompatPreferenceActivity {
     Preference mContact;
     Preference mAdvanced;
     Preference mTestAlert;
+    Preference mBatteryOptimization;
     CheckBoxPreference mNotificationsEnabled;
 
     PreferenceCategory mMainCategory;
+    PreferenceCategory mBatteryOptimizationCategory;
     ListPreference mLanguageSelection;
 
     SearchableMultiSelectPreference mCitySelection;
@@ -166,6 +169,17 @@ public class General extends AppCompatPreferenceActivity {
 
         // Register for broadcasts
         Broadcasts.subscribe(this, mBroadcastListener);
+
+        // Get power manager instance
+        PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+
+        // Android M (6) and up only
+        // Check if app is already whitelisted from battery optimizations
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M || powerManager.isIgnoringBatteryOptimizations(getPackageName())) {
+            // Remove reminder message about whitelisting the app
+            PreferenceScreen preferenceScreen = (PreferenceScreen) findPreference(getResources().getString(R.string.mainSettingsScreen));
+            preferenceScreen.removePreference(mBatteryOptimizationCategory);
+        }
     }
 
     void selfTestCompleted(int result) {
@@ -230,7 +244,9 @@ public class General extends AppCompatPreferenceActivity {
         mContact = findPreference(getString(R.string.contactPref));
         mAdvanced = findPreference(getString(R.string.advancedPref));
         mTestAlert = findPreference(getString(R.string.selfTestPref));
+        mBatteryOptimization = findPreference(getString(R.string.batteryOptimizationPref));
         mMainCategory = (PreferenceCategory) findPreference(getString(R.string.mainCategoryPref));
+        mBatteryOptimizationCategory = (PreferenceCategory)findPreference(getString(R.string.batteryOptimizationCategory));
         mCitySelection = ((SearchableMultiSelectPreference) findPreference(getString(R.string.selectedCitiesPref)));
         mZoneSelection = ((SearchableMultiSelectPreference) findPreference(getString(R.string.selectedZonesPref)));
         mLanguageSelection = (ListPreference) findPreference(getString(R.string.langPref));
@@ -301,45 +317,32 @@ public class General extends AppCompatPreferenceActivity {
         mTestAlert.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                // Battery exemption dialog
-                if (PushyRegistration.isRegistered(General.this)) {
-                    // Android M (6) and up only
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        // Get power manager instance
-                        PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
-
-                        // Check if app isn't already whitelisted from battery optimizations
-                        if (!powerManager.isIgnoringBatteryOptimizations(getPackageName())) {
-                            // Show the dialog
-                            AlertDialogBuilder.showGenericDialog(getString(R.string.disableBatteryOptimizations), getString(R.string.disableBatteryOptimizationsInstructions), getString(R.string.okay), getString(R.string.notNow), true, General.this, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int which) {
-                                    // Clicked okay?
-                                    if (which == DialogInterface.BUTTON_POSITIVE) {
-                                        // Open App Info settings page
-                                        AndroidSettings.openAppInfoPage(General.this);
-                                    }
-                                    else {
-                                        // Not already testing?
-                                        if (!mIsTesting) {
-                                            // Send a test push
-                                            new PerformSelfTestAsync().execute();
-                                        }
-                                    }
-                                }
-                            });
-
-                            // Consume event
-                            return true;
-                        }
-                    }
-                }
-
                 // Not already testing?
                 if (!mIsTesting) {
                     // Send a test push
                     new PerformSelfTestAsync().execute();
                 }
+
+                // Consume event
+                return true;
+            }
+        });
+
+        // Battery optimization whitelist
+        mBatteryOptimization.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                // Show the dialog
+                AlertDialogBuilder.showGenericDialog(getString(R.string.disableBatteryOptimizations), getString(R.string.disableBatteryOptimizationsInstructions), getString(R.string.okay), getString(R.string.notNow), true, General.this, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        // Clicked okay?
+                        if (which == DialogInterface.BUTTON_POSITIVE) {
+                            // Open App Info settings page
+                            AndroidSettings.openAppInfoPage(General.this);
+                        }
+                    }
+                });
 
                 // Consume event
                 return true;

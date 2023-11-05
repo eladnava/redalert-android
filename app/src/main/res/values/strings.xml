@@ -237,6 +237,10 @@
     <string name="disableBatteryOptimizations">ביטול אופטימיזציות סוללה</string>
     <string name="disableBatteryOptimizationsInstructions">כדי לקבל התרעות צבע אדום בזמן אמת, בחר/י ״סוללה״ -> ״ללא הגבלות״ במסך הבא.</string>
 
+    <!-- Battery Optimization Reminder Setting -->
+    <string name="disableBatteryOptimizationsReminder">חשוב: ביטול אופטימיזציות סוללה</string>
+    <string name="disableBatteryOptimizationsReminderDesc">זיהינו כי עוד לא ביטלת אופטימיזציות סוללה עבור האפליקציה. כדי לקבל התרעות צבע אדום בזמן אמת, יש לבטל אופטימיזציות סוללה. לחץ כאן למידע נוסף.</string>
+
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">מחק התרעות אחרונות?</string>
     <string name="clearRecentAlertsDesc">האם תרצה לאפס את רשימת ההתרעות האחרונות?</string>
@@ -281,7 +285,10 @@
     <string translatable="false" name="wakeScreenPref">wake_screen</string>
     <string translatable="false" name="silentOverridePref">override</string>
     <string translatable="false" name="selectedZonesPref">selected_zones</string>
+    <string translatable="false" name="mainSettingsScreen">main_settings</string>
     <string translatable="false" name="mainCategoryPref">main_category</string>
+    <string translatable="false" name="batteryOptimizationPref">battery_optimization</string>
+    <string translatable="false" name="batteryOptimizationCategory">battery_optimization_category</string>
     <string translatable="false" name="selectedCitiesPref">selected_cities</string>
     <string translatable="false" name="secondaryPref">secondary</string>
     <string translatable="false" name="imSafeWhatsAppPref">safe_whatsapp</string>

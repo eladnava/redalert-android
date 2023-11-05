@@ -237,6 +237,10 @@
     <string name="disableBatteryOptimizations">Отключить оптимизацию батареи</string>
     <string name="disableBatteryOptimizationsInstructions">Чтобы получать оповещения в фоновом режиме, на следующем экране установите для параметра «Батарея» значение «Неограниченно».</string>
 
+    <!-- Battery Optimization Reminder Setting -->
+    <string name="disableBatteryOptimizationsReminder">Важно: отключите оптимизацию батареи</string>
+    <string name="disableBatteryOptimizationsReminderDesc">Мы обнаружили, что вы еще не отключили оптимизацию батареи для RedAlert. Чтобы получать оповещения в режиме реального времени, пока приложение работает в фоновом режиме, необходимо отключить оптимизацию батареи. Нажмите, чтобы просмотреть инструкции.</string>
+
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">Удалить недавние оповещения?</string>
     <string name="clearRecentAlertsDesc">Хотите очистить список последних оповещений?</string>

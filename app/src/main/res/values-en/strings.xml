@@ -192,6 +192,10 @@
     <string name="disableBatteryOptimizations">Disable battery optimizations</string>
     <string name="disableBatteryOptimizationsInstructions">To receive alerts in the background, please set \"Battery\" to \"Unrestricted\" in the next screen.</string>
 
+    <!-- Battery Optimization Reminder Setting -->
+    <string name="disableBatteryOptimizationsReminder">Important: Disable battery optimizations</string>
+    <string name="disableBatteryOptimizationsReminderDesc">We\'ve detected that you have not yet disabled battery optimizations for RedAlert. To receive alerts in real-time while the app is running in the background, you must disable battery optimizations. Tap for instructions.</string>
+
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">Clear recent alerts?</string>
     <string name="clearRecentAlertsDesc">Would you like to clear the list of recent alerts?</string>
