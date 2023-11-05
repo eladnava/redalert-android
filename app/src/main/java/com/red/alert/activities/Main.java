@@ -299,9 +299,6 @@ public class Main extends AppCompatActivity {
         // Save state
         mIsResumed = true;
 
-        // Reload alerts manually
-        reloadRecentAlerts();
-
         // Support for RTL languages
         RTLSupport.mirrorActionBar(this);
 
