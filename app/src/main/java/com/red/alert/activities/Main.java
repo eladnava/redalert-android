@@ -509,8 +509,8 @@ public class Main extends AppCompatActivity {
         // Specify the show flags
         MenuItemCompat.setShowAsAction(settingsItem, MenuItem.SHOW_AS_ACTION_ALWAYS);
 
-        // On click root action view, open settings activity
-        settingsItem.getActionView().setOnClickListener(new View.OnClickListener() {
+        // On click, open Settings activity
+        settingsItem.getActionView().findViewById(R.id.image).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Start settings activity
@@ -518,12 +518,15 @@ public class Main extends AppCompatActivity {
             }
         });
 
-        // On click image, open settings activity
-        settingsItem.getActionView().findViewById(R.id.image).setOnClickListener(new View.OnClickListener() {
+        // On click, open Settings activity
+        settingsItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
-            public void onClick(View view) {
+            public boolean onMenuItemClick(MenuItem item) {
                 // Start settings activity
                 goToSettings(false);
+
+                // Consume event
+                return true;
             }
         });
     }
