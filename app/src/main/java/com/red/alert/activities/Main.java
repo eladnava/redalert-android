@@ -509,7 +509,16 @@ public class Main extends AppCompatActivity {
         // Specify the show flags
         MenuItemCompat.setShowAsAction(settingsItem, MenuItem.SHOW_AS_ACTION_ALWAYS);
 
-        // On click, open Settings activity
+        // On click root action view, open settings activity
+        settingsItem.getActionView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Start settings activity
+                goToSettings(false);
+            }
+        });
+
+        // On click image, open settings activity
         settingsItem.getActionView().findViewById(R.id.image).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
