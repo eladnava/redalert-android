@@ -3,6 +3,8 @@
     <string name="appName">RedAlert</string>
     <string name="signing_up">Mi sto collegando per ricevere le notifiche push...</string>
     <string name="okay">OK</string>
+    <string name="yes">Sì</string>
+    <string name="no">No</string>
     <string name="error">Errore</string>
     <string name="noGooglePlayServices">Il tuo smartphone non ha installata una versione aggiornata di Google Play Services.</string>
     <string name="pushRegistrationFailed">L\'applicazione ha riscontrato un errore durante il collegamento per ricevere le notifiche push. Proveremo a collegarti nuovamente in futuro.</string>
@@ -192,4 +194,8 @@
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">Disattiva le Ottimizzazioni della Batteria</string>
     <string name="disableBatteryOptimizationsInstructions">Per ricevere avvisi in background, imposta \"Batteria\" su \"Nessuna restrizione\" nella schermata successiva.</string>
+
+    <!-- Clear Recent Alerts Dialog -->
+    <string name="clearRecentAlerts">Cancellare gli avvisi recenti?</string>
+    <string name="clearRecentAlertsDesc">Vuoi cancellare l\'elenco degli avvisi recenti?</string>
 </resources>

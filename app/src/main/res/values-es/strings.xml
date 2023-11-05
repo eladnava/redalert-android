@@ -10,6 +10,8 @@
     <!-- Dialog Buttons -->
     <string name="okay">Ok</string>
     <string name="error">Error</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
 
     <!-- Update Dialog -->
     <string name="update">Actualizar versión</string>
@@ -234,4 +236,8 @@
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">Desactivar Optimizaciones de Batería</string>
     <string name="disableBatteryOptimizationsInstructions">Para recibir alertas en segundo plano, configure \"Batería\" en \"Sin restricciones\" en la siguiente pantalla.</string>
+
+    <!-- Clear Recent Alerts Dialog -->
+    <string name="clearRecentAlerts">¿Borrar alertas recientes?</string>
+    <string name="clearRecentAlertsDesc">¿Le gustaría borrar la lista de alertas recientes?</string>
 </resources>

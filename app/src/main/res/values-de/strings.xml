@@ -3,6 +3,8 @@
     <string name="appName">RedAlert</string>
     <string name="signing_up">Für Push-Benachrichtigungen Melde dich an...</string>
     <string name="okay">OK</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
     <string name="error">Fehler</string>
     <string name="noGooglePlayServices">Dein Telefon verfügt nicht über eine aktelle Version des Google Play Services.</string>
     <string name="pushRegistrationFailed">Ein Fehler ist während der Anmeldung beim Push-service aufgetreten. bitte versuche es Später nocheinmal.</string>
@@ -188,4 +190,8 @@
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">Deaktivieren Sie die Batterieoptimierungen</string>
     <string name="disableBatteryOptimizationsInstructions">Um Benachrichtigungen im Hintergrund zu erhalten, stellen Sie bitte im nächsten Bildschirm \"Akku\" auf \"Uneingeschränkt\" ein.</string>
+
+    <!-- Clear Recent Alerts Dialog -->
+    <string name="clearRecentAlerts">Aktuelle Benachrichtigungen löschen?</string>
+    <string name="clearRecentAlertsDesc">Möchten Sie die Liste der letzten Benachrichtigungen löschen?</string>
 </resources>

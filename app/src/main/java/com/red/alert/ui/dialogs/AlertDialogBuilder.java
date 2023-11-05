@@ -15,7 +15,7 @@ public class AlertDialogBuilder {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
         // Use builder to create dialog
-        builder.setTitle(title).setMessage(message).setPositiveButton(R.string.okay, clickListener);
+        builder.setTitle(title).setMessage(message).setPositiveButton(positiveButton, clickListener);
 
         // Negative button defined?
         if (!StringUtils.stringIsNullOrEmpty(negativeButton)) {

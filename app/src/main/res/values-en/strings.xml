@@ -3,6 +3,8 @@
     <string name="appName">RedAlert</string>
     <string name="signing_up">Signing up for push notifications...</string>
     <string name="okay">OK</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
     <string name="error">Error</string>
     <string name="noGooglePlayServices">Your phone does not have an updated version of Google Play Services installed.</string>
     <string name="pushRegistrationFailed">An error occurred while signing you up for push notifications. We\'ll try to sign you up again in the future.</string>
@@ -189,4 +191,8 @@
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">Disable battery optimizations</string>
     <string name="disableBatteryOptimizationsInstructions">To receive alerts in the background, please set \"Battery\" to \"Unrestricted\" in the next screen.</string>
+
+    <!-- Clear Recent Alerts Dialog -->
+    <string name="clearRecentAlerts">Clear recent alerts?</string>
+    <string name="clearRecentAlertsDesc">Would you like to clear the list of recent alerts?</string>
 </resources>

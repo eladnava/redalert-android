@@ -10,6 +10,8 @@
     <!-- Dialog Buttons -->
     <string name="okay">ОК</string>
     <string name="error">Ошибка</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
 
     <!-- Update Dialog -->
     <string name="notNow">не сейчас</string>
@@ -234,4 +236,8 @@
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">Отключить оптимизацию батареи</string>
     <string name="disableBatteryOptimizationsInstructions">Чтобы получать оповещения в фоновом режиме, на следующем экране установите для параметра «Батарея» значение «Неограниченно».</string>
+
+    <!-- Clear Recent Alerts Dialog -->
+    <string name="clearRecentAlerts">Удалить недавние оповещения?</string>
+    <string name="clearRecentAlertsDesc">Хотите очистить список последних оповещений?</string>
 </resources>

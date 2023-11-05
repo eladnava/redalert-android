@@ -10,6 +10,8 @@
     <string name="signing_up">נרשם לשירות עדכוני צבע אדום...</string>
 
     <!-- Dialog Buttons -->
+    <string name="yes">כן</string>
+    <string name="no">לא</string>
     <string name="okay">אוקי</string>
     <string name="error">שגיאה</string>
 
@@ -235,6 +237,10 @@
     <string name="disableBatteryOptimizations">ביטול אופטימיזציות סוללה</string>
     <string name="disableBatteryOptimizationsInstructions">כדי לקבל התרעות צבע אדום בזמן אמת, בחר/י ״סוללה״ -> ״ללא הגבלות״ במסך הבא.</string>
 
+    <!-- Clear Recent Alerts Dialog -->
+    <string name="clearRecentAlerts">מחק התרעות אחרונות?</string>
+    <string name="clearRecentAlertsDesc">האם תרצה לאפס את רשימת ההתרעות האחרונות?</string>
+
     <!-- Operation Lifeshield -->
     <string name="lifeshieldShelters">מקלטי לייפשילד:</string>
     <string name="learnAboutLifeshield">למד עוד על לייפשילד</string>
@@ -287,6 +293,7 @@
     <string translatable="false" name="userHashPref">user_hash</string>
     <string translatable="false" name="isSubscribedPref">is_subscribed_1_0_33</string>
     <string translatable="false" name="lastSubscribed">last_subscribed</string>
+    <string translatable="false" name="recentAlertsCutoff">recent_alerts_cutoff</string>
 
     <!-- Default Volume -->
     <string name="defaultAlertVolume" translatable="false">1.0</string>

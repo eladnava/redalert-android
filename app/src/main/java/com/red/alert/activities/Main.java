@@ -60,6 +60,7 @@ import com.red.alert.utils.feedback.Volume;
 import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.integration.GooglePlayServices;
 import com.red.alert.utils.intents.AndroidSettings;
+import com.red.alert.utils.localization.DateTime;
 import com.red.alert.utils.metadata.AppVersion;
 import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.networking.HTTP;
@@ -89,6 +90,7 @@ public class Main extends AppCompatActivity {
     MenuItem mLoadingItem;
     LinearLayout mNoAlerts;
     AlertAdapter mAlertsAdapter;
+    MenuItem mClearRecentAlertsItem;
 
     List<Alert> mNewAlerts;
     List<Alert> mDisplayAlerts;
@@ -500,7 +502,7 @@ public class Main extends AppCompatActivity {
     }
 
     void initializeSettingsButton(Menu OptionsMenu) {
-        // Add refresh in Action Bar
+        // Add settings item
         MenuItem settingsItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.settings));
 
         // Set up the view
@@ -509,7 +511,7 @@ public class Main extends AppCompatActivity {
         // Specify the show flags
         MenuItemCompat.setShowAsAction(settingsItem, MenuItem.SHOW_AS_ACTION_ALWAYS);
 
-        // On click, go to Settings
+        // On click, open Settings activity
         settingsItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -520,6 +522,54 @@ public class Main extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    void initializeClearRecentAlertsButton(Menu OptionsMenu) {
+        // Add clear item
+        mClearRecentAlertsItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.clearRecentAlerts));
+
+        // Set default icon
+        mClearRecentAlertsItem.setIcon(R.drawable.ic_clear);
+
+        // Specify the show flags
+        MenuItemCompat.setShowAsAction(mClearRecentAlertsItem, MenuItem.SHOW_AS_ACTION_ALWAYS);
+
+        // On click, toggle clearing recent alerts
+        mClearRecentAlertsItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                // Clear currently displayed alerts
+                if (mDisplayAlerts.size() > 0) {
+                    // Show the dialog
+                    AlertDialogBuilder.showGenericDialog(getString(R.string.clearRecentAlerts), getString(R.string.clearRecentAlertsDesc), getString(R.string.yes), getString(R.string.no), true, Main.this, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int which) {
+                            // Clicked okay?
+                            if (which == DialogInterface.BUTTON_POSITIVE) {
+                                // Set recent alerts cutoff timestamp to now
+                                AppPreferences.updateRecentAlertsCutoffTimestamp(DateTime.getUnixTimestamp(), Main.this);
+
+                                // Invalidate the list
+                                invalidateAlertList();
+                            }
+                        }
+                    });
+                }
+                else {
+                    // No alerts displayed, so display all of them
+                    AppPreferences.updateRecentAlertsCutoffTimestamp(0, Main.this);
+
+                    // Invalidate the list
+                    invalidateAlertList();
+                }
+
+                // Consume event
+                return true;
+            }
+        });
+
+        // By default, hide button until alerts are returned by the server
+        mClearRecentAlertsItem.setVisible(false);
     }
 
     void goToSettings(boolean showZoneSelection) {
@@ -554,6 +604,9 @@ public class Main extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu OptionsMenu) {
         // Add loading indicator
         initializeLoadingIndicator(OptionsMenu);
+
+        // Add clear recent alerts button
+        initializeClearRecentAlertsButton(OptionsMenu);
 
         // Add settings button
         initializeSettingsButton(OptionsMenu);
@@ -633,6 +686,9 @@ public class Main extends AppCompatActivity {
 
         // Clear global list
         mNewAlerts.clear();
+
+        // Check if user cleared the recent alerts
+        final long cutoffTimestamp = AppPreferences.getRecentAlertsCutoffTimestamp(Main.this);
 
         // Add all the new alerts
         mNewAlerts.addAll(recentAlerts);
@@ -743,8 +799,24 @@ public class Main extends AppCompatActivity {
         // Clear global list
         mDisplayAlerts.clear();
 
-        // Add all the new alerts
-        mDisplayAlerts.addAll(mNewAlerts);
+        // Check if user cleared the recent alerts
+        final long cutoffTimestamp = AppPreferences.getRecentAlertsCutoffTimestamp(Main.this);
+
+        // Remove alerts that occurred before the cutoff
+        if (cutoffTimestamp > 0) {
+            // Traverse alerts
+            for (Alert alert : mNewAlerts) {
+                // Check if alert date is after cutoff timestamp
+                if (alert.date > cutoffTimestamp) {
+                    // Add to display list
+                    mDisplayAlerts.add(alert);
+                }
+            }
+        }
+        else {
+            // No alert date cutoff, add all the new alerts
+            mDisplayAlerts.addAll(mNewAlerts);
+        }
 
         // Invalidate the list
         mAlertsAdapter.notifyDataSetChanged();
@@ -755,6 +827,29 @@ public class Main extends AppCompatActivity {
         }
         else {
             mNoAlerts.setVisibility(View.GONE);
+        }
+
+        // Update displayed icon according to how many alerts were returned from the server
+        updateClearAlertsButton(cutoffTimestamp);
+    }
+
+    void updateClearAlertsButton(long cutoffTimestamp) {
+        // By default, show clear button
+        mClearRecentAlertsItem.setVisible(true);
+
+        // In case no alerts are being displayed but alerts were returned
+        if (cutoffTimestamp > 0 && mNewAlerts.size() > 0 && mDisplayAlerts.size() == 0) {
+            // Show restore icon to allow user to restore all recent alerts
+            mClearRecentAlertsItem.setIcon(R.drawable.ic_restore);
+        }
+        // In case there are no alerts in the past 24 hours
+        else if (mNewAlerts.size() == 0) {
+            // Hide clear button
+            mClearRecentAlertsItem.setVisible(false);
+        }
+        else {
+            // There are alerts, show default clear icon
+            mClearRecentAlertsItem.setIcon(R.drawable.ic_clear);
         }
     }
 

@@ -22,7 +22,6 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 
-
 public class FCMRegistration {
     public static String registerForPushNotifications(final Context context) throws Exception {
         // Get an FCM registration token
