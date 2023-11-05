@@ -15,6 +15,7 @@ import com.red.alert.config.Logging;
 import com.red.alert.config.push.FCMGateway;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.utils.caching.Singleton;
+import com.red.alert.utils.localization.DateTime;
 import com.red.alert.utils.networking.HTTP;
 
 import java.util.List;
@@ -93,6 +94,12 @@ public class FCMRegistration {
             return;
         }
 
+        // FCM InstanceID API returns cached subscriptions for up to 6 seconds
+        // Ensure enough time passed before the last time we updated the FCM subscriptions
+        while (AppPreferences.getLastSubscribedTimestamp(context) > DateTime.getUnixTimestamp() - 6) {
+            Thread.sleep(500);
+        }
+
         // Get list of existing subscriptions
         List<String> existingSubscriptions = FCMRegistration.getCurrentFCMSubscriptions(context);
 
@@ -167,5 +174,8 @@ public class FCMRegistration {
                 throw new Exception("Failed to unsubscribe from topic: " + topic);
             }
         }
+
+        // Update FCM last subscribed timestamp
+        AppPreferences.updateLastSubscribedTimestamp(DateTime.getUnixTimestamp(), context);
     }
 }

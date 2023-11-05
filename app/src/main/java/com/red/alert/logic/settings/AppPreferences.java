@@ -54,6 +54,16 @@ public class AppPreferences {
         Singleton.getSharedPreferences(context).edit().putBoolean(context.getString(R.string.tutorialPref), true).commit();
     }
 
+    public static long getLastSubscribedTimestamp(Context context) {
+        // Fetch last subscribed timestamp
+        return Singleton.getSharedPreferences(context).getLong(context.getString(R.string.lastSubscribed), 0);
+    }
+
+    public static void updateLastSubscribedTimestamp(long timestamp, Context context) {
+        // Update last subscribed timestamp
+        Singleton.getSharedPreferences(context).edit().putLong(context.getString(R.string.lastSubscribed), timestamp).commit();
+    }
+
     public static void setCityLastAlertTime(String city, long timestamp, Context context) {
         // Update last alert timestamp for this city
         Singleton.getSharedPreferences(context).edit().putLong(city, timestamp).commit();
