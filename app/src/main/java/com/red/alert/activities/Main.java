@@ -19,7 +19,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -62,6 +61,7 @@ import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.integration.GooglePlayServices;
 import com.red.alert.utils.intents.AndroidSettings;
 import com.red.alert.utils.localization.DateTime;
+import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.AppVersion;
 import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.networking.HTTP;
@@ -114,6 +114,9 @@ public class Main extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Ensure RTL layouts are used if needed
+        Localization.overridePhoneLocale(this);
 
         // Initialize app UI
         initializeUI();
