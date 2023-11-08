@@ -847,6 +847,11 @@ public class Main extends AppCompatActivity {
     }
 
     void updateClearAlertsButton(long cutoffTimestamp) {
+        // Null pointer check
+        if (mClearRecentAlertsItem == null) {
+            return;
+        }
+
         // By default, show clear button
         mClearRecentAlertsItem.setVisible(true);
 
