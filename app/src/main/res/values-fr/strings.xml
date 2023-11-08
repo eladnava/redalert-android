@@ -110,7 +110,7 @@
     <string name="rateAppDesc">Evaluer l\'application sur Google Play</string>
 
     <string name="update">Mise à jour disponible</string>
-    <string name="updateDesc">Une version plus récente de cette application est disponible (% s), veuillez mettre à jour.</string>
+    <string name="updateDesc">Une version plus récente de cette application est disponible (%s), veuillez mettre à jour.</string>
     <string name="updatePositive">Mise à jour</string>
     <string name="notNow">Pas maintenant</string>
 
