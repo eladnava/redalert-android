@@ -233,6 +233,10 @@
     <string name="unknown">Оповещен</string>
     <string name="system">Системное оповещение</string>
 
+    <!-- Custom Sound Selection Dialog -->
+    <string name="selectCustomSound">Выберите собственный звук</string>
+    <string name="selectCustomSoundDesc">Выберите свой собственный звук, нажав «Звук» -> «Мои звуки» -> «+» -> «Сохранить» на следующем экране.</string>
+
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">Отключить оптимизацию батареи</string>
     <string name="disableBatteryOptimizationsInstructions">Чтобы получать оповещения в фоновом режиме, на следующем экране установите для параметра «Батарея» значение «Неограниченно».</string>

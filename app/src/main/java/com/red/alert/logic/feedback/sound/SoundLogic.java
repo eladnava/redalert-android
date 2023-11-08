@@ -64,30 +64,20 @@ public class SoundLogic {
         return Sound.STREAM_TYPE;
     }
 
-    public static Uri getAlertSound(String alertType, String overrideSound, Context context) {
+    public static String getAlertSoundName(String alertType, String overrideSound, Context context) {
         // Override sound selection?
         if (overrideSound != null) {
-            // Convert to URI and return it
-            return getSoundURI(overrideSound, context);
+            return overrideSound;
         }
 
-        // Get selected sound
+        // Get sound preference name (based on alert type being primary/secondary)
         String soundPreference = getSoundPreference(alertType, context);
 
-        // Get sound file path
-        String selectedSound = Singleton.getSharedPreferences(context).getString(soundPreference, getDefaultSound(alertType, context));
-
-        // No sound selected?
-        if (StringUtils.stringIsNullOrEmpty(selectedSound)) {
-            // Nothing to play
-            return null;
-        }
-
-        // Get path to sound resource
-        return getSoundURI(selectedSound, context);
+        // Return selected sound file name
+        return Singleton.getSharedPreferences(context).getString(soundPreference, getDefaultSound(alertType, context));
     }
 
-    static Uri getSoundURI(String uri, Context context) {
+    static Uri getAlertSoundURI(String uri, Context context) {
         // No URI? Nothing to do here
         if (StringUtils.stringIsNullOrEmpty(uri)) {
             return null;
@@ -200,17 +190,9 @@ public class SoundLogic {
         return false;
     }
 
-    public static void playSound(String alertType, String alertSound, Context context) {
+    public static void playSound(String alertType, String overrideSound, Context context) {
         // Should we play it?
         if (!shouldPlayAlertSound(alertType, context)) {
-            return;
-        }
-
-        // Get path to resource
-        Uri alarmSoundURI = getAlertSound(alertType, alertSound, context);
-
-        // Invalid sound URI?
-        if (alarmSoundURI == null) {
             return;
         }
 
@@ -222,8 +204,19 @@ public class SoundLogic {
         // Override volume (also to set the user's chosen volume)
         VolumeLogic.setStreamVolume(alertType, context);
 
+        // Get alert sound name
+        String alertSoundName = getAlertSoundName(alertType, overrideSound, context);
+
+        // Invalid sound name (or custom sound selected)?
+        if (StringUtils.stringIsNullOrEmpty(alertSoundName) || alertSoundName.equals(Sound.CUSTOM_SOUND_NAME)) {
+            return;
+        }
+
+        // Convert to resource URI
+        Uri alertSoundURI = getAlertSoundURI(alertSoundName, context);
+
         // Play sound
-        playSoundURI(alarmSoundURI, alertType, context);
+        playSoundURI(alertSoundURI, alertType, context);
     }
 
     public static void stopSound(Context context) {

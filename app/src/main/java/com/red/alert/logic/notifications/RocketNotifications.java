@@ -18,6 +18,9 @@ import com.red.alert.R;
 import com.red.alert.activities.AlertPopup;
 import com.red.alert.activities.Main;
 import com.red.alert.config.Logging;
+import com.red.alert.config.NotificationChannels;
+import com.red.alert.config.Sound;
+import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.communication.intents.MainActivityParameters;
 import com.red.alert.logic.communication.intents.RocketNotificationParameters;
 import com.red.alert.logic.feedback.VibrationLogic;
@@ -28,10 +31,6 @@ import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.formatting.StringUtils;
 
 public class RocketNotifications {
-    // Notification channel config
-    public static final String ALERT_NOTIFICATION_CHANNEL_ID = "redalert";
-    public static final String ALERT_NOTIFICATION_CHANNEL_NAME = "Alerts";
-
     public static void notify(Context context, String city, String notificationTitle, String notificationContent, String alertType, String overrideSound) {
         // Get notification manager
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
@@ -75,7 +74,7 @@ public class RocketNotifications {
         notificationManager.cancel(notificationId);
 
         // Configure notification channel (if required)
-        setNotificationChannel(builder, context);
+        setNotificationChannel(alertType, overrideSound, builder, context);
 
         try {
             // Issue the notification
@@ -124,17 +123,46 @@ public class RocketNotifications {
         return pendingIntent;
     }
 
-    private static void setNotificationChannel(NotificationCompat.Builder builder, Context context) {
+    public static String getNotificationChannelId(String alertType, String overrideSound, Context context) {
+        // Initialize notification channel params
+        String channelId = NotificationChannels.PRIMARY_ALERT_NOTIFICATION_CHANNEL_ID;
+
+        // Secondary alert?
+        if (alertType.equals(AlertTypes.SECONDARY) || alertType.equals(AlertTypes.TEST_SECONDARY_SOUND)) {
+            channelId = NotificationChannels.SECONDARY_ALERT_NOTIFICATION_CHANNEL_ID;
+        }
+
+        // Using custom sound?
+        if (SoundLogic.getAlertSoundName(alertType, overrideSound, context).equals(Sound.CUSTOM_SOUND_NAME)) {
+            channelId += NotificationChannels.CUSTOM_SOUND_NOTIFICATION_CHANNEL_SUFFIX;
+        }
+
+        // All done
+        return channelId;
+    }
+
+    public static void setNotificationChannel(String alertType, String overrideSound, NotificationCompat.Builder builder, Context context) {
         // Android O and up
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
             return;
+        }
+
+        // Determine notification channel ID
+        String channelId = getNotificationChannelId(alertType, overrideSound, context);
+
+        // Get notification channel name
+        String channelName = NotificationChannels.PRIMARY_ALERT_NOTIFICATION_CHANNEL_NAME;
+
+        // Secondary alert?
+        if (alertType.equals(AlertTypes.SECONDARY) || alertType.equals(AlertTypes.TEST_SECONDARY_SOUND)) {
+            channelName = NotificationChannels.SECONDARY_ALERT_NOTIFICATION_CHANNEL_NAME;
         }
 
         // Get notification manager instance
         NotificationManager manager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
 
         // Initialize channel (set high importance)
-        NotificationChannel channel = new NotificationChannel(ALERT_NOTIFICATION_CHANNEL_ID, ALERT_NOTIFICATION_CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH);
+        NotificationChannel channel = new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH);
 
         // Set dummy audio attributes (sound will be silent)
         AudioAttributes audioAttributes = new AudioAttributes.Builder()
@@ -161,6 +189,8 @@ public class RocketNotifications {
         manager.createNotificationChannel(channel);
 
         // Configure builder to use channel ID
-        builder.setChannelId(ALERT_NOTIFICATION_CHANNEL_ID);
+        if (builder != null) {
+            builder.setChannelId(channelId);
+        }
     }
 }

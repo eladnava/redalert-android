@@ -188,6 +188,10 @@
     <string name="unknown">Alert</string>
     <string name="system">System Alert</string>
 
+    <!-- Custom Sound Selection Dialog -->
+    <string name="selectCustomSound">Select custom sound</string>
+    <string name="selectCustomSoundDesc">Choose your own sound by tapping "Sound" -> "My Sounds" -> "+" -> "Save" on the next screen.</string>
+
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">Disable battery optimizations</string>
     <string name="disableBatteryOptimizationsInstructions">To receive alerts in the background, please set \"Battery\" to \"Unrestricted\" in the next screen.</string>

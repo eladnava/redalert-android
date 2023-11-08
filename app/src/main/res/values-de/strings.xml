@@ -187,6 +187,10 @@
     <string name="unknown">Alarm</string>
     <string name="system">Systemhinweis</string>
 
+    <!-- Custom Sound Selection Dialog -->
+    <string name="selectCustomSound">Wählen Sie benutzerdefinierten Sound</string>
+    <string name="selectCustomSoundDesc">Wählen Sie Ihren eigenen Sound, indem Sie im nächsten Bildschirm auf „Sound“ -> „Meine Sounds“ -> „+“ -> „Speichern“ klicken.</string>
+
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">Deaktivieren Sie die Batterieoptimierungen</string>
     <string name="disableBatteryOptimizationsInstructions">Um Benachrichtigungen im Hintergrund zu erhalten, stellen Sie bitte im nächsten Bildschirm \"Akku\" auf \"Uneingeschränkt\" ein.</string>

@@ -8,4 +8,7 @@ public class Sound {
 
     // The AudioManager stream that sirens will be played on
     public static int STREAM_TYPE = AudioManager.STREAM_ALARM;
+
+    // DUser selected custom sound key
+    public static String CUSTOM_SOUND_NAME = "custom";
 }

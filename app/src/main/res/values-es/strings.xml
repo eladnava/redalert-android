@@ -233,6 +233,10 @@
     <string name="unknown">Alerta</string>
     <string name="system">Aviso del Sistema</string>
 
+    <!-- Custom Sound Selection Dialog -->
+    <string name="selectCustomSound">Seleccionar sonido personalizado</string>
+    <string name="selectCustomSoundDesc">Elija su propio sonido tocando "Sonido" -> "Mis sonidos" -> "+" -> "Guardar" en la siguiente pantalla.</string>
+
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">Desactivar Optimizaciones de Batería</string>
     <string name="disableBatteryOptimizationsInstructions">Para recibir alertas en segundo plano, configure \"Batería\" en \"Sin restricciones\" en la siguiente pantalla.</string>

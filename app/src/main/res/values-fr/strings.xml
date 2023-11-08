@@ -188,6 +188,10 @@
     <string name="unknown">Avertissement</string>
     <string name="system">Avis Système</string>
 
+    <!-- Custom Sound Selection Dialog -->
+    <string name="selectCustomSound">Sélectionnez un son personnalisé</string>
+    <string name="selectCustomSoundDesc">Choisissez votre propre son en appuyant sur "Son" -> "Mes sons" -> "+" -> "Enregistrer" sur l\'écran suivant.</string>
+
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">Désactiver les Optimisations de la Batterie</string>
     <string name="disableBatteryOptimizationsInstructions">Pour recevoir des alertes en arrière-plan, définissez \"Batterie\" sur \"Aucune restriction\" sur l\'écran suivant.</string>

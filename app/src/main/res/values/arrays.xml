@@ -41,6 +41,7 @@
         <item>@string/tiny5</item>
         <item>@string/tiny6</item>
         <item>@string/noSound</item>
+        <item>@string/selectCustomSound</item>
     </string-array>
     <string-array translatable="false" name="soundValues">
         <item>alarm1</item>
@@ -61,6 +62,7 @@
         <item>tiny5</item>
         <item>tiny6</item>
         <item></item>
+        <item>custom</item>
     </string-array>
     <string-array name="zoneNames">
         <item>בחר הכל</item>

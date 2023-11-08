@@ -1,12 +1,14 @@
 package com.red.alert.ui.elements;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.preference.ListPreference;
+import android.provider.Settings;
 import android.util.AttributeSet;
 
 import com.red.alert.R;
@@ -15,12 +17,12 @@ import com.red.alert.config.Sound;
 import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.feedback.sound.SoundLogic;
 import com.red.alert.logic.notifications.RocketNotifications;
+import com.red.alert.ui.dialogs.AlertDialogBuilder;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.ui.notifications.AppNotifications;
 import com.red.alert.utils.caching.Singleton;
 
 public class SoundListPreference extends ListPreference {
-
     static Context mContext;
 
     int mSelectedItem;
@@ -70,11 +72,63 @@ public class SoundListPreference extends ListPreference {
         builder.setSingleChoiceItems(mEntries, mSelectedItem,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        // Update selected item
-                        mSelectedItem = which;
+                        // Get notification manager
+                        final NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(mContext.NOTIFICATION_SERVICE);
 
                         // Get path to selected sound
-                        String path = mEntryValues[which].toString();
+                        final String path = mEntryValues[which].toString();
+
+                        // Determine channel ID (primary/secondary)
+                        final String alertSoundType = getKey().equals(mContext.getString(R.string.secondarySoundPref)) ? AlertTypes.SECONDARY : AlertTypes.PRIMARY;
+
+                        // Custom sound option selected?
+                        if (path.equals(Sound.CUSTOM_SOUND_NAME)) {
+                            // Delete (hide) old notification channel
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                notificationManager.deleteNotificationChannel(RocketNotifications.getNotificationChannelId(alertSoundType, "alarm1", mContext));
+                            }
+
+                            // Instruct user how to configure custom sound
+                            AlertDialogBuilder.showGenericDialog(mContext.getString(R.string.selectCustomSound), mContext.getString(R.string.selectCustomSoundDesc), mContext.getString(R.string.okay), mContext.getString(R.string.notNow), true, getDialog().getContext(), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int which) {
+                                    // Clicked okay?
+                                    if (which == DialogInterface.BUTTON_POSITIVE) {
+                                        // Get channel ID by alert type
+                                        String channelId = RocketNotifications.getNotificationChannelId(alertSoundType, Sound.CUSTOM_SOUND_NAME, mContext);
+
+                                        // Ensure notification channel created
+                                        RocketNotifications.setNotificationChannel(alertSoundType, path, null, mContext);
+
+                                        // Open notification channel config to allow user to select custom sound
+                                        Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+                                        intent.putExtra(Settings.EXTRA_CHANNEL_ID, channelId);
+                                        intent.putExtra(Settings.EXTRA_APP_PACKAGE, mContext.getPackageName());
+                                        getDialog().getContext().startActivity(intent);
+
+                                        // Save custom sound selection
+                                        Singleton.getSharedPreferences(mContext).edit().putString(getKey(), path).commit();
+
+                                        // Dismiss dialog
+                                        getDialog().dismiss();
+                                    }
+                                    else {
+                                        // Clicked not now, stop playing custom sound
+                                        AppNotifications.clearAll(mContext);
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            // Selected built-in sound
+                            // Delete (hide) custom notification channel
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                notificationManager.deleteNotificationChannel(RocketNotifications.getNotificationChannelId(alertSoundType, Sound.CUSTOM_SOUND_NAME, mContext));
+                            }
+                        }
+
+                        // Update selected item
+                        mSelectedItem = which;
 
                         // Get test type
                         String testAlertType = AlertTypes.TEST_SOUND;
@@ -90,7 +144,6 @@ public class SoundListPreference extends ListPreference {
 
                         // Dispatch test notification
                         RocketNotifications.notify(mContext, null, mContext.getString(R.string.appName), mContext.getString(R.string.testSound), testAlertType, path);
-
                     }
                 });
 
