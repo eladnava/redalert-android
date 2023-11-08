@@ -2,7 +2,9 @@ package com.red.alert.logic.feedback.sound;
 
 import android.content.Context;
 import android.media.AudioManager;
+import android.util.Log;
 
+import com.red.alert.config.Logging;
 import com.red.alert.config.Sound;
 import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.settings.AppPreferences;
@@ -20,7 +22,8 @@ public class VolumeLogic {
             audioManager.setStreamVolume(Sound.STREAM_TYPE, requestedVolume, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
         }
         catch (SecurityException exc) {
-            // Ignore SecurityException: Not allowed to change Do Not Disturb state
+            // Log SecurityException: Not allowed to change Do Not Disturb state
+            Log.d(Logging.TAG, "Error changing alarm stream volume", exc);
         }
     }
 
