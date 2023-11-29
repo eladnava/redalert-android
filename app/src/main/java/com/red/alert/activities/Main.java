@@ -509,20 +509,11 @@ public class Main extends AppCompatActivity {
         // Add settings item
         MenuItem settingsItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.settings));
 
-        // Set up the view
-        settingsItem.setActionView(R.layout.settings_button);
+        // Set settings icon
+        settingsItem.setIcon(R.drawable.ic_settings);
 
         // Specify the show flags
         MenuItemCompat.setShowAsAction(settingsItem, MenuItem.SHOW_AS_ACTION_ALWAYS);
-
-        // On click, open Settings activity
-        settingsItem.getActionView().findViewById(R.id.image).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Start settings activity
-                goToSettings(false);
-            }
-        });
 
         // On click, open Settings activity
         settingsItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {

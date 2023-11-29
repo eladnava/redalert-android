@@ -243,16 +243,16 @@ public class AlertView extends AppCompatActivity {
         // Add refresh in Action Bar
         MenuItem shareItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.shareAlert));
 
-        // Set up the view
-        shareItem.setActionView(R.layout.share_button);
+        // Set share icon
+        shareItem.setIcon(R.drawable.ic_share);
 
         // Specify the show flags
         MenuItemCompat.setShowAsAction(shareItem, MenuItem.SHOW_AS_ACTION_ALWAYS);
 
         // On click, open share
-        shareItem.getActionView().findViewById(R.id.image).setOnClickListener(new View.OnClickListener() {
+        shareItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
-            public void onClick(View view) {
+            public boolean onMenuItemClick(MenuItem item) {
                 // Prepare share intent
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
 
@@ -264,6 +264,9 @@ public class AlertView extends AppCompatActivity {
 
                 // Show chooser
                 startActivity(Intent.createChooser(shareIntent, getString(R.string.shareAlert)));
+
+                // Consume event
+                return true;
             }
         });
     }
