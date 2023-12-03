@@ -694,9 +694,6 @@ public class Main extends AppCompatActivity {
         // Clear global list
         mNewAlerts.clear();
 
-        // Check if user cleared the recent alerts
-        final long cutoffTimestamp = AppPreferences.getRecentAlertsCutoffTimestamp(Main.this);
-
         // Add all the new alerts
         mNewAlerts.addAll(recentAlerts);
 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="zoneNames">
+        <item>Выбрать все</item>
+        <item>Эйлат</item>
+        <item>Бикъа</item>
+        <item>Бикъат Бейт Шеан</item>
+        <item>Южный Голан</item>
+        <item>Северный Голан</item>
+        <item>Верхняя Галилея</item>
+        <item>Нижняя Галилея</item>
+        <item>Дан</item>
+        <item>Южный Негев</item>
+        <item>Ха-Кармель</item>
+        <item>Ха-Мифрац</item>
+        <item>Ха-Амаким</item>
+        <item>Ха-Шфела</item>
+        <item>Вади Ара</item>
+        <item>Йегуда</item>
+        <item>Мёртвое море</item>
+        <item>Иерусалим</item>
+        <item>Яркон</item>
+        <item>Лахиш</item>
+        <item>Менаше</item>
+        <item>Западный Негев</item>
+        <item>Западный Лахиш</item>
+        <item>Центральная Галилея</item>
+        <item>Центральный Негев</item>
+        <item>Округ Газа</item>
+        <item>Арава</item>
+        <item>Кав Ха-Имут</item>
+        <item>Самария</item>
+        <item>Шфелат Йегуда</item>
+        <item>Шарон</item>
+    </string-array>
+</resources>

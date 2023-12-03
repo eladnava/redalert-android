@@ -45,6 +45,10 @@ public class LocationData {
                 // Add to list
                 names.add(city.name);
             }
+            else if (Localization.isRussian(context)) {
+                // Add russian name to list
+                names.add(city.nameRussian);
+            }
             else {
                 // Add english name to list
                 names.add(city.nameEnglish);
@@ -89,6 +93,10 @@ public class LocationData {
                 // Add to list
                 values.add(city.zone);
             }
+            else if (Localization.isRussian(context)) {
+                // Add russian name to list
+                values.add(city.zoneRussian);
+            }
             else {
                 // Add to list
                 values.add(city.zoneEnglish);
@@ -104,9 +112,6 @@ public class LocationData {
         if (mCities != null) {
             return mCities;
         }
-
-        // Initialize the list
-        mCities = new ArrayList<>();
 
         try {
             // Open the cities.json for reading
@@ -206,8 +211,12 @@ public class LocationData {
                     // Return area countdown
                     return city.zone + " (" + city.time + ")";
                 }
+                else if (Localization.isRussian(context)) {
+                    // Return area countdown in russian
+                    return city.zoneRussian  + " (" + city.timeRussian + ")";
+                }
                 else {
-                    // Return area countdown in English
+                    // Return area countdown in english
                     return city.zoneEnglish  + " (" + city.timeEnglish + ")";
                 }
             }
@@ -250,6 +259,11 @@ public class LocationData {
         for (City city : cities) {
             // Got a match?
             if (city.name.equals(cityName)) {
+                // Check for russian first
+                if (Localization.isRussian(context)) {
+                    return city.nameRussian;
+                }
+
                 // Return english name
                 return city.nameEnglish;
             }
@@ -442,7 +456,15 @@ public class LocationData {
         for (City city : cities) {
             // Got a match?
             if (city.name.equals(cityName)) {
-                return isHebrew ? city.zone: city.zoneEnglish;
+                // Add localized zone
+                if (isHebrew) {
+                    return city.zone;
+                } else if (Localization.isRussian(context)) {
+                    return city.zoneRussian;
+                }
+                else {
+                    return city.zoneEnglish;
+                }
             }
         }
 

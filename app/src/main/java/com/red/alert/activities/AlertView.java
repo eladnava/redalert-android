@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -86,9 +85,6 @@ public class AlertView extends AppCompatActivity {
     void setActivityTitle() {
         ArrayList<String> localizedCityNames = new ArrayList();
 
-        // Get user's locale setting
-        boolean isHebrew = Localization.isHebrewLocale(this);
-
         // Traverse cities
         for (String cityName : mAlertCities) {
             // Get city object
@@ -101,7 +97,7 @@ public class AlertView extends AppCompatActivity {
             }
 
             // Add localized name
-            localizedCityNames.add((isHebrew) ? city.name : city.nameEnglish);
+            localizedCityNames.add(LocationData.getLocalizedCityName(city.name, this));
         }
 
         // Set title manually after overriding locale
@@ -112,7 +108,7 @@ public class AlertView extends AppCompatActivity {
 
         // Add zone to title if identified
         if (!StringUtils.stringIsNullOrEmpty(zone)) {
-            setTitle(getTitle() + " - " + zone);
+            setTitle(getTitle() + " (" + zone + ")");
         }
     }
 
@@ -147,13 +143,10 @@ public class AlertView extends AppCompatActivity {
                 continue;
             }
 
-            // Get user's locale setting
-            boolean isHebrew = Localization.isHebrewLocale(this);
-
             // Does this city have a geolocation?
             if (city.latitude != 0) {
                 // Get localized city name
-                String localizedName = (isHebrew) ? city.name : city.nameEnglish;
+                String localizedName = LocationData.getLocalizedCityName(city.name, this);
 
                 // Already have a marker with these exact coordinates?
                 while (uniqueCoordinates.indexOf(city.latitude + "-" + city.longitude) != -1) {
@@ -236,7 +229,7 @@ public class AlertView extends AppCompatActivity {
         String cityName = LocationData.getLocalizedCityName(TextUtils.join(", ", mAlertCities), this);
 
         // Construct share message
-        return getString(R.string.alertSoundedAt) + cityName + " (" + LocationData.getLocalizedZoneByCityName(mAlertCities[0], this) + ") " + mAlertDateString + " " + getString(R.string.alertSentVia);
+        return getString(R.string.alertSoundedAt) + getTitle() + " " + mAlertDateString + " " + getString(R.string.alertSentVia);
     }
 
     void initializeShareButton(Menu OptionsMenu) {

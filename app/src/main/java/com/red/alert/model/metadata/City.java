@@ -17,11 +17,17 @@ public class City {
     @JsonProperty("name_en")
     public String nameEnglish;
 
+    @JsonProperty("name_ru")
+    public String nameRussian;
+
     @JsonProperty("zone")
     public String zone;
 
     @JsonProperty("zone_en")
     public String zoneEnglish;
+
+    @JsonProperty("zone_ru")
+    public String zoneRussian;
 
     @JsonProperty("value")
     public String value;
@@ -31,6 +37,9 @@ public class City {
 
     @JsonProperty("time_en")
     public String timeEnglish;
+
+    @JsonProperty("time_ru")
+    public String timeRussian;
 
     @JsonProperty("shelters")
     public int shelters;
