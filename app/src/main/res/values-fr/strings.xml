@@ -170,7 +170,7 @@
     <string name="learnAboutLifeshield">En savoir plus sur Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Cliquez ici pour en savoir plus sur Operation Lifeshield, un organisme sans but lucratif qui déploie des abris anti-aériens en Israël.</string>
 
-    <!-- Alert Types -->
+    <!-- Threat Types -->
     <string name="missiles">Tir de roquette</string>
     <string name="radiologicalEvent">Événement radiologique</string>
     <string name="earthQuake">Tremblement de terre</string>
@@ -187,6 +187,15 @@
     <string name="terroristInfiltrationDrill">Exercice: Infiltration terroriste</string>
     <string name="unknown">Avertissement</string>
     <string name="system">Avis Système</string>
+
+    <!-- Threat Instructions -->
+    <string name="missilesInstructions">Entrez dans l\'espace protégé et restez-y pendant 10 minutes.</string>
+    <string name="hostileAircraftIntrusionInstructions">Entrez immédiatement dans la zone protégée et restez-y pendant 10 minutes, à moins qu\'un nouvel avertissement ne soit donné.</string>
+    <string name="earthQuakeInstructions">Sortez immédiatement dans une zone dégagée. Si cela n\'est pas possible, entrez dans le MMD ou dans une cage d\'escalier.</string>
+    <string name="radiologicalEventInstructions">Entrez dans le bâtiment et fermez les portes et les fenêtres.</string>
+    <string name="terroristInfiltrationInstructions">Entrez immédiatement dans le bâtiment et fermez les portes et les fenêtres.</string>
+    <string name="tsunamiInstructions">Éloignez-vous immédiatement de la plage d\'au moins un kilomètre ou montez au quatrième étage ou plus.</string>
+    <string name="hazardousMaterialsInstructions">Entrez immédiatement dans le bâtiment et fermez les portes et les fenêtres.</string>
 
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">Sélectionnez un son personnalisé</string>

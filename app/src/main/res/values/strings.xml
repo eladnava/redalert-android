@@ -215,7 +215,7 @@
     <string name="pushy_foreground_service_connecting">מתחבר לשירות ההתרעות</string>
     <string name="pushy_foreground_service_disconnected">לא מחובר לשירות ההתרעות</string>
 
-    <!-- Alert Types -->
+    <!-- Threat Types -->
     <string name="missiles">ירי רקטות</string>
     <string name="radiologicalEvent">אירוע רדיולוגי</string>
     <string name="earthQuake">רעידת אדמה</string>
@@ -232,6 +232,15 @@
     <string name="terroristInfiltrationDrill">תרגיל: חדירת מחבלים</string>
     <string name="unknown">אזעקה</string>
     <string name="system">הודעת מערכת</string>
+
+    <!-- Threat Instructions -->
+    <string name="missilesInstructions">היכנסו למרחב המוגן ושהו בו 10 דקות.</string>
+    <string name="hostileAircraftIntrusionInstructions">היכנסו מיד למרחב המוגן ושהו בו למשך 10 דקות, אלא אם ניתנה התרעה נוספת.</string>
+    <string name="earthQuakeInstructions">צאו מיד לשטח פתוח. אם לא ניתן, היכנסו לממ"ד או לחדר מדרגות.</string>
+    <string name="radiologicalEventInstructions">היכנסו למבנה וסגרו את הדלתות והחלונות.</string>
+    <string name="terroristInfiltrationInstructions">היכנסו מיד למבנה וסגרו את הדלתות והחלונות.</string>
+    <string name="tsunamiInstructions">התרחקו מיד מחוף הים קילומטר אחד לפחות או עלו לקומה רביעית ומעלה.</string>
+    <string name="hazardousMaterialsInstructions">היכנסו מיד למבנה וסגרו את הדלתות והחלונות.</string>
 
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">בחר צליל מהטלפון</string>

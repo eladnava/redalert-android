@@ -143,7 +143,7 @@ public class SoundListPreference extends ListPreference {
                         SoundLogic.stopSound(mContext);
 
                         // Dispatch test notification
-                        RocketNotifications.notify(mContext, null, mContext.getString(R.string.appName), mContext.getString(R.string.testSound), testAlertType, path);
+                        RocketNotifications.notify(mContext, null, mContext.getString(R.string.appName), mContext.getString(R.string.testSound), testAlertType, null, path);
                     }
                 });
 

@@ -6,6 +6,8 @@ import android.util.Log;
 import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 import com.red.alert.R;
 import com.red.alert.config.Logging;
+import com.red.alert.config.ThreatTypes;
+import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.model.metadata.City;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.formatting.StringUtils;
@@ -330,58 +332,121 @@ public class LocationData {
         return output;
     }
 
-    public static String getLocalizedThreatType(String alertType, Context context) {
+    public static String getLocalizedThreatType(String threatType, Context context) {
         // Result resource
         int result = 0;
 
         // Get resource by alert type
-        switch (alertType) {
-            case "test":
+        switch (threatType) {
+            case ThreatTypes.TEST:
                 result = R.string.test;
                 break;
-            case "missiles":
+            case ThreatTypes.MISSILES:
                 result = R.string.missiles;
                 break;
-            case "radiologicalEvent":
+            case ThreatTypes.RADIOLOGICAL_EVENT:
                 result = R.string.radiologicalEvent;
                 break;
-            case "earthQuake":
+            case ThreatTypes.EARTHQUAKE:
                 result = R.string.earthQuake;
                 break;
-            case "tsunami":
+            case ThreatTypes.TSUNAMI:
                 result = R.string.tsunami;
                 break;
-            case "hostileAircraftIntrusion":
+            case ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION:
                 result = R.string.hostileAircraftIntrusion;
                 break;
-            case "hazardousMaterials":
+            case ThreatTypes.HAZARDOUS_MATERIALS:
                 result = R.string.hazardousMaterials;
                 break;
-            case "terroristInfiltration":
+            case ThreatTypes.TERRORIST_INFILTRATION:
                 result = R.string.terroristInfiltration;
                 break;
-            case "missilesDrill":
+            case ThreatTypes.MISSILES_DRILL:
                 result = R.string.missilesDrill;
                 break;
-            case "earthQuakeDrill":
+            case ThreatTypes.EARTHQUAKE_DRILL:
                 result = R.string.earthQuakeDrill;
                 break;
-            case "radiologicalEventDrill":
+            case ThreatTypes.RADIOLOGICAL_EVENT_DRILL:
                 result = R.string.radiologicalEventDrill;
                 break;
-            case "tsunamiDrill":
+            case ThreatTypes.TSUNAMI_DRILL:
                 result = R.string.tsunamiDrill;
                 break;
-            case "hostileAircraftIntrusionDrill":
+            case ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION_DRILL:
                 result = R.string.hostileAircraftIntrusionDrill;
                 break;
-            case "hazardousMaterialsDrill":
+            case ThreatTypes.HAZARDOUS_MATERIALS_DRILL:
                 result = R.string.hazardousMaterialsDrill;
                 break;
-            case "terroristInfiltrationDrill":
+            case ThreatTypes.TERRORIST_INFILTRATION_DRILL:
                 result = R.string.terroristInfiltrationDrill;
                 break;
-            case "system":
+            case ThreatTypes.SYSTEM:
+                result = R.string.system;
+                break;
+            default:
+                result = R.string.unknown;
+                break;
+        }
+
+        // Convert to string
+        return context.getString(result);
+    }
+
+    public static String getLocalizedThreatInstructions(String threatType, Context context) {
+        // Result resource
+        int result = 0;
+
+        // Get resource by alert type
+        switch (threatType) {
+            case ThreatTypes.TEST:
+                result = R.string.test;
+                break;
+            case ThreatTypes.MISSILES:
+                result = R.string.missilesInstructions;
+                break;
+            case ThreatTypes.RADIOLOGICAL_EVENT:
+                result = R.string.radiologicalEventInstructions;
+                break;
+            case ThreatTypes.EARTHQUAKE:
+                result = R.string.earthQuakeInstructions;
+                break;
+            case ThreatTypes.TSUNAMI:
+                result = R.string.tsunamiInstructions;
+                break;
+            case ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION:
+                result = R.string.hostileAircraftIntrusionInstructions;
+                break;
+            case ThreatTypes.HAZARDOUS_MATERIALS:
+                result = R.string.hazardousMaterialsInstructions;
+                break;
+            case ThreatTypes.TERRORIST_INFILTRATION:
+                result = R.string.terroristInfiltrationInstructions;
+                break;
+            case ThreatTypes.MISSILES_DRILL:
+                result = R.string.missilesInstructions;
+                break;
+            case ThreatTypes.EARTHQUAKE_DRILL:
+                result = R.string.earthQuakeInstructions;
+                break;
+            case ThreatTypes.RADIOLOGICAL_EVENT_DRILL:
+                result = R.string.radiologicalEventInstructions;
+                break;
+            case ThreatTypes.TSUNAMI_DRILL:
+                result = R.string.tsunamiInstructions;
+                break;
+            case ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION_DRILL:
+                result = R.string.hostileAircraftIntrusionInstructions;
+                break;
+            case ThreatTypes.HAZARDOUS_MATERIALS_DRILL:
+                result = R.string.hazardousMaterialsInstructions;
+                break;
+            case ThreatTypes.TERRORIST_INFILTRATION_DRILL:
+                result = R.string.terroristInfiltrationInstructions;
+                break;
+            case ThreatTypes.SYSTEM:
                 result = R.string.system;
                 break;
             default:

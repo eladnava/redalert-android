@@ -215,7 +215,7 @@
     <string name="learnAboutLifeshield">Aprende sobre Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Haga clic aquí para conocer más acerca de Operation Lifeshield, una organización sin fines de lucro que despliega refugios antiaéreos en Israel.</string>
 
-    <!-- Alert Types -->
+    <!-- Threat Types -->
     <string name="missiles">Fuego de cohete</string>
     <string name="radiologicalEvent">Evento radiológico</string>
     <string name="earthQuake">Terremoto</string>
@@ -232,6 +232,15 @@
     <string name="terroristInfiltrationDrill">Ejercicio: Infiltración terrorista</string>
     <string name="unknown">Alerta</string>
     <string name="system">Aviso del Sistema</string>
+
+    <!-- Threat Instructions -->
+    <string name="missilesInstructions">Ingrese al espacio protegido y permanezca allí durante 10 minutos.</string>
+    <string name="hostileAircraftIntrusionInstructions">Ingrese al área protegida inmediatamente y permanezca allí durante 10 minutos, a menos que reciba más advertencias.</string>
+    <string name="earthQuakeInstructions">Salga inmediatamente a un área abierta. Si esto no es posible, ingrese al MMD o al hueco de una escalera.</string>
+    <string name="radiologicalEventInstructions">Entre al edificio y cierre las puertas y ventanas.</string>
+    <string name="terroristInfiltrationInstructions">Entre al edificio inmediatamente y cierre las puertas y ventanas.</string>
+    <string name="tsunamiInstructions">Aléjese inmediatamente de la playa al menos un kilómetro o suba al cuarto piso o más.</string>
+    <string name="hazardousMaterialsInstructions">Entre al edificio inmediatamente y cierre las puertas y ventanas.</string>
 
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">Seleccionar sonido personalizado</string>

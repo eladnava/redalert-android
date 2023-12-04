@@ -6,6 +6,7 @@ import android.util.Log;
 import com.red.alert.R;
 import com.red.alert.config.Alerts;
 import com.red.alert.config.Logging;
+import com.red.alert.config.ThreatTypes;
 import com.red.alert.logic.notifications.RocketNotifications;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.utils.caching.Singleton;
@@ -61,14 +62,24 @@ public class AlertLogic {
                 // Localize threat type
                 String localizedThreatType = LocationData.getLocalizedThreatType(threatType, context);
 
-                // Get impact countdown
-                String zoneWithCountdown = LocationData.getLocalizedZoneWithCountdown(city, context);
-
-                // Prepare title
+                // Prepare notification title with threat type and city name
                 String notificationTitle = localizedThreatType + ": " + localizedCityName;
 
+                // Prepare notification body with zone and countdown
+                String notificationBody = LocationData.getLocalizedZoneWithCountdown(city, context);
+
+                // Rocket fire alert?
+                if (threatType.contains(ThreatTypes.MISSILES)) {
+                    // Add threat instructions to notification body in a new line after zone and countdown
+                    notificationBody += "\n" + LocationData.getLocalizedThreatInstructions(threatType, context);
+                }
+                else {
+                    // For all other threat types, only display threat instructions in notification body (don't display zone / countdown)
+                    notificationBody = LocationData.getLocalizedThreatInstructions(threatType, context);
+                }
+
                 // Issue the notification
-                RocketNotifications.notify(context, city, notificationTitle, zoneWithCountdown, overrideAlertType, null);
+                RocketNotifications.notify(context, city, notificationTitle, notificationBody, overrideAlertType, threatType, null);
             }
         }
     }

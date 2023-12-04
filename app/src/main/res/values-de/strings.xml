@@ -169,7 +169,7 @@
     <string name="learnAboutLifeshield">Erfahren Sie mehr über Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Klicken Sie hier, um mehr über Operation Lifeshield zu erfahren, eine gemeinnützige Organisation, die Luftschutzbunker in Israel errichtet.</string>
 
-    <!-- Alert Types -->
+    <!-- Threat Types -->
     <string name="missiles">Raketenfeuer</string>
     <string name="radiologicalEvent">Radiologisches ereignis</string>
     <string name="earthQuake">Erdbeben</string>
@@ -186,6 +186,15 @@
     <string name="terroristInfiltrationDrill">Übung: Terroristische unterwanderung</string>
     <string name="unknown">Alarm</string>
     <string name="system">Systemhinweis</string>
+
+    <!-- Threat Instructions -->
+    <string name="missilesInstructions">Betreten Sie den geschützten Bereich und bleiben Sie dort 10 Minuten lang.</string>
+    <string name="hostileAircraftIntrusionInstructions">Betreten Sie sofort den geschützten Bereich und bleiben Sie dort 10 Minuten lang, sofern keine weitere Warnung erfolgt.</string>
+    <string name="earthQuakeInstructions">Begeben Sie sich sofort in einen offenen Bereich. Sollte dies nicht möglich sein, betreten Sie das MMD oder ein Treppenhaus.</string>
+    <string name="radiologicalEventInstructions">Betreten Sie das Gebäude und schließen Sie die Türen und Fenster.</string>
+    <string name="terroristInfiltrationInstructions">Betreten Sie sofort das Gebäude und schließen Sie die Türen und Fenster.</string>
+    <string name="tsunamiInstructions">Entfernen Sie sich sofort mindestens einen Kilometer vom Strand oder begeben Sie sich in die vierte Etage oder höher.</string>
+    <string name="hazardousMaterialsInstructions">Betreten Sie sofort das Gebäude und schließen Sie die Türen und Fenster.</string>
 
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">Wählen Sie benutzerdefinierten Sound</string>

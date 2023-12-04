@@ -31,7 +31,7 @@ import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.formatting.StringUtils;
 
 public class RocketNotifications {
-    public static void notify(Context context, String city, String notificationTitle, String notificationContent, String alertType, String overrideSound) {
+    public static void notify(Context context, String city, String notificationTitle, String notificationContent, String alertType, String threatType, String overrideSound) {
         // Get notification manager
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
 
@@ -95,7 +95,7 @@ public class RocketNotifications {
         PowerManagement.wakeUpScreen(alertType, city, context);
 
         // Show alert popup (if applicable)
-        AlertPopup.showAlertPopup(alertType, city, context);
+        AlertPopup.showAlertPopup(alertType, city, threatType, context);
 
         // Reload recent alerts (if main activity is open)
         Broadcasts.publish(context, MainActivityParameters.RELOAD_RECENT_ALERTS);

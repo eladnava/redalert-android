@@ -1,6 +1,5 @@
 package com.red.alert.activities;
 
-import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -8,9 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.PowerManager;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,10 +18,9 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.red.alert.R;
-import com.red.alert.activities.settings.Advanced;
 import com.red.alert.config.Alerts;
-import com.red.alert.config.Logging;
 import com.red.alert.config.Safety;
+import com.red.alert.config.ThreatTypes;
 import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.communication.intents.AlertPopupParameters;
 import com.red.alert.logic.feedback.sound.SoundLogic;
@@ -42,13 +38,14 @@ import java.util.TimerTask;
 public class AlertPopup extends AppCompatActivity {
     boolean mIsDestroyed;
 
-    TextView mZone;
     TextView mCounter;
+    TextView mThreatType;
+    TextView mInstructions;
 
     Button mClose;
     Button mSilence;
 
-    public static void showAlertPopup(String alertType, String city, Context context) {
+    public static void showAlertPopup(String alertType, String city, String threatType, Context context) {
         // User disabled this feature?
         if (!AppPreferences.getPopupEnabled(context)) {
             return;
@@ -73,8 +70,9 @@ public class AlertPopup extends AppCompatActivity {
         // Set class to popup activity
         popupIntent.setClass(context, AlertPopup.class);
 
-        // Pass on zone
-        popupIntent.putExtra(AlertPopupParameters.ALERT_CITY, city);
+        // Pass on city name
+        popupIntent.putExtra(AlertPopupParameters.CITY, city);
+        popupIntent.putExtra(AlertPopupParameters.THREAT_TYPE, threatType);
 
         // Clear top, set as new task
         popupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -109,8 +107,9 @@ public class AlertPopup extends AppCompatActivity {
         // Cache UI objects
         mClose = (Button) findViewById(R.id.close);
         mSilence = (Button) findViewById(R.id.silence);
-        mZone = (TextView) findViewById(R.id.zone);
         mCounter = (TextView) findViewById(R.id.counter);
+        mThreatType = (TextView) findViewById(R.id.threatType);
+        mInstructions = (TextView) findViewById(R.id.instructions);
 
         // Set up listeners
         initializeListeners();
@@ -140,8 +139,9 @@ public class AlertPopup extends AppCompatActivity {
     }
 
     void initializeAlert() {
-        // Get alert city
-        String city = getIntent().getStringExtra(AlertPopupParameters.ALERT_CITY);
+        // Get alert city & threat type
+        String city = getIntent().getStringExtra(AlertPopupParameters.CITY);
+        String threatType = getIntent().getStringExtra(AlertPopupParameters.THREAT_TYPE);
 
         // None given?
         if (StringUtils.stringIsNullOrEmpty(city)) {
@@ -151,22 +151,23 @@ public class AlertPopup extends AppCompatActivity {
         // Set title to city name
         setTitle(LocationData.getLocalizedCityName(city, this));
 
-        // Get zone
-        String zone = LocationData.getLocalizedZoneByCityName(city, this);
+        // Display threat type & safety instructions
+        mThreatType.setText(LocationData.getLocalizedThreatType(threatType, this));
+        mInstructions.setText(LocationData.getLocalizedThreatInstructions(threatType, this));
 
-        // Unknown?
-        if (StringUtils.stringIsNullOrEmpty(zone)) {
-            return;
+        // Not a rocket fire alert?
+        // Hide countdown timer
+        if (threatType != null && !threatType.contains(ThreatTypes.MISSILES)) {
+            // Countdown is only relevant for rocket fire
+            mCounter.setVisibility(View.GONE);
         }
+        else {
+            // Get countdown in seconds
+            int countdown = LocationData.getCityCountdown(city, this);
 
-        // Set cities to region cities
-        mZone.setText(zone);
-
-        // Get countdown in seconds
-        int countdown = LocationData.getCityCountdown(city, this);
-
-        // Start counting down
-        scheduleRocketCountdown(countdown);
+            // Start counting down
+            scheduleRocketCountdown(countdown);
+        }
     }
 
     @Override

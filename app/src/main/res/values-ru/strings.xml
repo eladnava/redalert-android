@@ -215,7 +215,7 @@
     <string name="learnAboutLifeshield">Узнать о Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Нажмите здесь, чтобы узнать больше об Операции Lifeshield, некоммерческой организации, которая развертывает убежища для воздушных налетов в Израиле.</string>
 
-    <!-- Alert Types -->
+    <!-- Threat Types -->
     <string name="missiles">Ракетный огонь</string>
     <string name="radiologicalEvent">Радиологическое событие</string>
     <string name="earthQuake">Землетрясение</string>
@@ -232,6 +232,15 @@
     <string name="terroristInfiltrationDrill">Упражнение: проникновение террористов</string>
     <string name="unknown">Оповещен</string>
     <string name="system">Системное оповещение</string>
+
+    <!-- Threat Instructions -->
+    <string name="missilesInstructions">Войдите в защищённое пространство и оставайтесь в нём 10 минут.</string>
+    <string name="hostileAircraftIntrusionInstructions">Немедленно войдите в защищённое пространство и оставайтесь в нём на протяжении 10 минут, кроме случаев получения дополнительного оповещения.</string>
+    <string name="earthQuakeInstructions">Немедленно выйдите на открытое пространство. Если это невозможно, войдите в МАМАД или выйдите на лестничную клетку.</string>
+    <string name="radiologicalEventInstructions">Войдите в здание, закройте двери и окна.</string>
+    <string name="terroristInfiltrationInstructions">Немедленно войдите в здание, закройте двери и окна.</string>
+    <string name="tsunamiInstructions">Немедленно удалитесь от пляжа как минимум на 1 км или поднимитесь на 4 этаж и выше.</string>
+    <string name="hazardousMaterialsInstructions">Немедленно войдите в здание, закройте двери и окна.</string>
 
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">Выберите собственный звук</string>

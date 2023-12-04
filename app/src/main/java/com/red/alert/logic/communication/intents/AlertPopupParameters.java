@@ -1,5 +1,6 @@
 package com.red.alert.logic.communication.intents;
 
 public class AlertPopupParameters {
-    public static final String ALERT_CITY = "AlertCity";
+    public static final String CITY = "City";
+    public static final String THREAT_TYPE = "ThreatType";
 }

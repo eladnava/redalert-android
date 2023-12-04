@@ -170,7 +170,7 @@
     <string name="learnAboutLifeshield">Learn about Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Learn more about Operation Lifeshield, a nonprofit that deploys air raid shelters in Israel.</string>
 
-    <!-- Alert Types -->
+    <!-- Threat Types -->
     <string name="missiles">Rocket fire</string>
     <string name="radiologicalEvent">Radiological event</string>
     <string name="earthQuake">Earthquake</string>
@@ -187,6 +187,15 @@
     <string name="terroristInfiltrationDrill">Drill: Terrorist infiltration</string>
     <string name="unknown">Alert</string>
     <string name="system">System Alert</string>
+
+    <!-- Threat Instructions -->
+    <string name="missilesInstructions">Enter the protected space and stay in it for 10 minutes.</string>
+    <string name="hostileAircraftIntrusionInstructions">Enter the protected space immediately and stay in it for 10 minutes, unless another alert is received.</string>
+    <string name="earthQuakeInstructions">Immediately go out into the open. If not possible, enter the protected room or stairwell.</string>
+    <string name="radiologicalEventInstructions">Enter a building and close the doors and windows.</string>
+    <string name="terroristInfiltrationInstructions">Immediately enter a nearby building, lock the doors and close the windows.</string>
+    <string name="tsunamiInstructions">Immediately move at least one kilometer away from the beach or go up to a fourth floor and higher.</string>
+    <string name="hazardousMaterialsInstructions">Immediately enter a nearby building and close the doors and windows.</string>
 
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">Select custom sound</string>
