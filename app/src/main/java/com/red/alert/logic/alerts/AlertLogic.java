@@ -73,7 +73,7 @@ public class AlertLogic {
                     // Add threat instructions to notification body in a new line after zone and countdown
                     notificationBody += "\n" + LocationData.getLocalizedThreatInstructions(threatType, context);
                 }
-                else {
+                else if (!threatType.contains(ThreatTypes.TEST)) {
                     // For all other threat types, only display threat instructions in notification body (don't display zone / countdown)
                     notificationBody = LocationData.getLocalizedThreatInstructions(threatType, context);
                 }
