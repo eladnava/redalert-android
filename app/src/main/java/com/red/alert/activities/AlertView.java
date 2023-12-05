@@ -20,6 +20,8 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polygon;
+import com.google.android.gms.maps.model.PolygonOptions;
 import com.red.alert.R;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
 import com.red.alert.model.metadata.City;
@@ -31,6 +33,8 @@ import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class AlertView extends AppCompatActivity {
     GoogleMap mMap;
@@ -133,6 +137,9 @@ public class AlertView extends AppCompatActivity {
         // Keep track of unique marker coordinates
         ArrayList<String> uniqueCoordinates = new ArrayList<>();
 
+        // Get polygons data for all cities (execution takes roughly 1 second)
+        HashMap<String, ArrayList<ArrayList<Double>>> polygons = LocationData.getAllPolygons(this);
+
         // Traverse cities
         for (String cityName : mAlertCities) {
             // Get city object
@@ -141,6 +148,48 @@ public class AlertView extends AppCompatActivity {
             // No city found?
             if (city == null) {
                 continue;
+            }
+
+            // Check if we have polygon data for this city
+            if (polygons.containsKey(String.valueOf(city.id))) {
+                // Get polygons for city
+                ArrayList<ArrayList<Double>> cityPolygons = polygons.get(String.valueOf(city.id));
+
+                // Prepare list of LatLng objects with all polygon points
+                List<LatLng> polygonPoints = new ArrayList<>();
+
+                // Prepare a boundary calculator to find polygon center point
+                LatLngBounds.Builder polygonCenter = new LatLngBounds.Builder();
+
+                // Traverse polygon points
+                for (ArrayList<Double> polygonPoint : cityPolygons) {
+                    // Create new LatLng object for each point
+                    LatLng point = new LatLng(polygonPoint.get(0), polygonPoint.get(1));
+
+                    // Include in ArrayList
+                    polygonPoints.add(point);
+
+                    // Include in LatLngBounds
+                    polygonCenter.include(point);
+                }
+
+                // Add city polygon to map with custom styling
+                mMap.addPolygon(new PolygonOptions()
+                        .clickable(true)
+                        .strokeWidth(4)
+                        .strokeColor(0xffe40000)
+                        .fillColor(0xb3ffafaf)
+                        .addAll(polygonPoints));
+
+                // Get polygon center point
+                LatLngBounds bounds = polygonCenter.build();
+
+                // Use center of polygon instead of default city location
+                LatLng center = bounds.getCenter();
+
+                // Override city lat, lng with polygon center point
+                city.latitude = center.latitude;
+                city.longitude = center.longitude;
             }
 
             // Does this city have a geolocation?
@@ -295,8 +344,11 @@ public class AlertView extends AppCompatActivity {
     }
 
     void initializeUI() {
+        // Ensure the right language is displayed
+        Localization.overridePhoneLocale(this);
+
         // Reset activity name (after localization is loaded)
-        setTitle(R.string.appName);
+        setTitle(R.string.loading);
 
         // Allow click on home button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

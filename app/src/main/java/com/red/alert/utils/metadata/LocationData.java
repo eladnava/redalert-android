@@ -18,10 +18,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class LocationData {
     private static List<City> mCities;
+    private static HashMap<String, ArrayList<ArrayList<Double>>> mPolygons;
 
     /*
     // Zone = דן 161
@@ -116,7 +118,7 @@ public class LocationData {
         }
 
         try {
-            // Open the cities.json for reading
+            // Open cities.json for reading
             InputStream stream = context.getResources().openRawResource(R.raw.cities);
 
             // Create a buffered reader
@@ -148,6 +150,46 @@ public class LocationData {
 
         // Return them
         return mCities;
+    }
+
+    public static HashMap<String, ArrayList<ArrayList<Double>>> getAllPolygons(Context context) {
+        // Got it in cache?
+        if (mPolygons != null) {
+            return mPolygons;
+        }
+
+        try {
+            // Open polygons.json for reading
+            InputStream stream = context.getResources().openRawResource(R.raw.polygons);
+
+            // Create a buffered reader
+            BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+
+            // StringBuilder for efficiency
+            StringBuilder builder = new StringBuilder();
+
+            // A temporary variable to store current line
+            String currentLine;
+
+            // Read all lines
+            while ((currentLine = reader.readLine()) != null) {
+                // Append to builder
+                builder.append(currentLine);
+            }
+
+            // Convert to string
+            String json = builder.toString();
+
+            // Convert to HashMap object
+            mPolygons = Singleton.getJackson().readValue(json, new TypeReference<HashMap<String,ArrayList<ArrayList<Double>>>>() {});
+        }
+        catch (Exception exc) {
+            // Log it
+            Log.e(Logging.TAG, "Failed to load polygons.json", exc);
+        }
+
+        // Return polygon data
+        return mPolygons;
     }
 
     public static String getSelectedCityNamesByValues(Context context, String selection, CharSequence[] names, CharSequence[] values) {

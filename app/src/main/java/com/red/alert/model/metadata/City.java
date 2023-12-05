@@ -5,6 +5,9 @@ import me.pushy.sdk.lib.jackson.annotation.JsonProperty;
 import java.util.List;
 
 public class City {
+    @JsonProperty("id")
+    public int id;
+
     @JsonProperty("lat")
     public double latitude;
 
