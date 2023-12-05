@@ -273,7 +273,7 @@ public class SearchableMultiSelectPreference extends ListPreference {
                             final String objStr = obj.toString().toLowerCase();
                             if (StringUtils.stringIsNullOrEmpty(filterString)
                                     || objStr.contains(filterString)
-                                    || (obj.areaCode != null && obj.areaCode.toLowerCase().equals(filterString))
+                                    || (obj.areaCode != null && obj.areaCode.toLowerCase().contains(filterString))
                                     ) {
                                 list.add(obj);
                             }
