@@ -59,7 +59,7 @@ import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.feedback.Volume;
 import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.integration.GooglePlayServices;
-import com.red.alert.utils.intents.AndroidSettings;
+import com.red.alert.utils.os.AndroidSettings;
 import com.red.alert.utils.localization.DateTime;
 import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.AppVersion;
@@ -399,7 +399,7 @@ public class Main extends AppCompatActivity {
         }
 
         // Show the dialog
-        AlertDialogBuilder.showGenericDialog(getString(R.string.disableBatteryOptimizations), getString(R.string.disableBatteryOptimizationsInstructions), getString(R.string.okay), getString(R.string.notNow), true, this, new DialogInterface.OnClickListener() {
+        AlertDialogBuilder.showGenericDialog(getString(R.string.disableBatteryOptimizations), AndroidSettings.getBatteryOptimizationWhitelistInstructions(this), getString(R.string.okay), getString(R.string.notNow), true, this, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
                 // Clicked okay?

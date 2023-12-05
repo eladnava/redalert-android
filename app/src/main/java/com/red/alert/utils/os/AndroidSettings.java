@@ -1,9 +1,12 @@
-package com.red.alert.utils.intents;
+package com.red.alert.utils.os;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.Settings;
+
+import com.red.alert.R;
 
 public class AndroidSettings {
     public static void openAppInfoPage(Context context) {
@@ -20,5 +23,15 @@ public class AndroidSettings {
 
         // Start settings activity
         context.startActivity(intent);
+    }
+
+    public static String getBatteryOptimizationWhitelistInstructions(Context context) {
+        // Special instructions for Samsung devices
+        if (Build.MANUFACTURER.toLowerCase().contains("samsung")) {
+            return context.getString(R.string.disableBatteryOptimizationsSamsungInstructions);
+        }
+
+        // Display stock Android instructions
+        return context.getString(R.string.disableBatteryOptimizationsInstructions);
     }
 }

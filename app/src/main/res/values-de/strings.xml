@@ -203,6 +203,7 @@
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">Deaktivieren Sie die Batterieoptimierungen</string>
     <string name="disableBatteryOptimizationsInstructions">Um Benachrichtigungen im Hintergrund zu erhalten, stellen Sie bitte im nächsten Bildschirm \"Akku\" auf \"Uneingeschränkt\" ein.</string>
+    <string name="disableBatteryOptimizationsSamsungInstructions">Um Benachrichtigungen im Hintergrund zu erhalten, wählen Sie im nächsten Bildschirm \"Akku\" -> \"Akkuverbrauch optimieren\“ -> \"Apps nicht optimiert\“ -> \"Alle“ -> \"RedAlert“ -> Optimierung für die App deaktivieren.</string>
 
     <!-- Battery Optimization Reminder Setting -->
     <string name="disableBatteryOptimizationsReminder">Wichtig: Deaktivieren Sie die Batterieoptimierungen</string>

@@ -204,6 +204,7 @@
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">Désactiver les Optimisations de la Batterie</string>
     <string name="disableBatteryOptimizationsInstructions">Pour recevoir des alertes en arrière-plan, définissez \"Batterie\" sur \"Aucune restriction\" sur l\'écran suivant.</string>
+    <string name="disableBatteryOptimizationsSamsungInstructions">Pour recevoir des alertes en arrière-plan, sélectionnez « Batterie » sur l\'écran suivant -> « Optimiser l\'utilisation de la batterie » -> « Applications non optimisées » -> « Toutes » -> « RedAlert » -> Désactiver l\'optimisation de l\'application.</string>
 
     <!-- Battery Optimization Reminder Setting -->
     <string name="disableBatteryOptimizationsReminder">Important: Désactivez les optimisations de la batterie</string>

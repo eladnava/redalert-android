@@ -22,7 +22,6 @@ import android.preference.PreferenceScreen;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.red.alert.R;
@@ -50,7 +49,7 @@ import com.red.alert.utils.backend.RedAlertAPI;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.feedback.Volume;
-import com.red.alert.utils.intents.AndroidSettings;
+import com.red.alert.utils.os.AndroidSettings;
 import com.red.alert.utils.marketing.GooglePlay;
 import com.red.alert.utils.metadata.AppVersion;
 import com.red.alert.utils.metadata.LocationData;
@@ -333,7 +332,7 @@ public class General extends AppCompatPreferenceActivity {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 // Show the dialog
-                AlertDialogBuilder.showGenericDialog(getString(R.string.disableBatteryOptimizations), getString(R.string.disableBatteryOptimizationsInstructions), getString(R.string.okay), getString(R.string.notNow), true, General.this, new DialogInterface.OnClickListener() {
+                AlertDialogBuilder.showGenericDialog(getString(R.string.disableBatteryOptimizations), AndroidSettings.getBatteryOptimizationWhitelistInstructions(General.this), getString(R.string.okay), getString(R.string.notNow), true, General.this, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int which) {
                         // Clicked okay?
