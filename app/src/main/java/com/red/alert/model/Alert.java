@@ -18,7 +18,6 @@ public class Alert {
     public String localizedThreat;
 
     public String desc;
-    public String zone;
     public String dateString;
 
     public List<String> groupedCities;

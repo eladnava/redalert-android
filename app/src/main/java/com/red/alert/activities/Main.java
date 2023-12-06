@@ -246,6 +246,7 @@ public class Main extends AppCompatActivity {
 
                 // Push extras
                 alertView.putExtra(AlertViewParameters.ALERT_DATE_STRING, alert.dateString);
+                alertView.putExtra(AlertViewParameters.ALERT_THREAT, alert.threat);
                 alertView.putExtra(AlertViewParameters.ALERT_CITIES, alert.groupedCities.toArray(new String[0]));
 
                 // Show it
@@ -680,7 +681,6 @@ public class Main extends AppCompatActivity {
             alert.dateString = alert.dateString.replace(" 2 שעות", " שעתיים");
 
             // Prepare localized zone & countdown for display
-            alert.zone = LocationData.getLocalizedZoneByCityName(alert.city, this);
             alert.desc = LocationData.getLocalizedZoneWithCountdown(alert.city, this);
 
             // Localize it
@@ -719,9 +719,15 @@ public class Main extends AppCompatActivity {
 
             // Check whether this new alert can be grouped with the previous one
             // (Same region + 15 second cutoff threshold in either direction)
-            if (lastAlert != null && lastAlert.zone.equals(currentAlert.zone) && currentAlert.date >= lastAlert.date - 15 && currentAlert.date <= lastAlert.date + 15) {
+            if (lastAlert != null && currentAlert.date >= lastAlert.date - 15 && currentAlert.date <= lastAlert.date + 15) {
                 // Group with previous alert list item
                 lastAlert.localizedCity += ", " + currentAlert.localizedCity;
+
+                // Add current alert zone if new
+                if (!lastAlert.desc.contains(currentAlert.desc)) {
+                    lastAlert.desc += ", " + currentAlert.desc;
+                }
+
                 lastAlert.groupedCities.add(currentAlert.city);
             }
             else {

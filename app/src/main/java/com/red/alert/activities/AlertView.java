@@ -39,6 +39,7 @@ import java.util.List;
 public class AlertView extends AppCompatActivity {
     GoogleMap mMap;
 
+    String mAlertThreat;
     String[] mAlertCities;
     String mAlertDateString;
 
@@ -56,6 +57,9 @@ public class AlertView extends AppCompatActivity {
     void unpackExtras() {
         // Get alert cities
         mAlertCities = getIntent().getStringArrayExtra(AlertViewParameters.ALERT_CITIES);
+
+        // Get alert threat type
+        mAlertThreat = getIntent().getStringExtra(AlertViewParameters.ALERT_THREAT);
 
         // Get alert date string
         mAlertDateString = getIntent().getStringExtra(AlertViewParameters.ALERT_DATE_STRING);
@@ -107,12 +111,12 @@ public class AlertView extends AppCompatActivity {
         // Set title manually after overriding locale
         setTitle(TextUtils.join(", ", localizedCityNames));
 
-        // Attempt to identify alert zone
-        String zone = LocationData.getLocalizedZoneByCityName(mAlertCities[0], this);
+        // Localize threat type
+        String threat = LocationData.getLocalizedThreatType(mAlertThreat, this);
 
-        // Add zone to title if identified
-        if (!StringUtils.stringIsNullOrEmpty(zone)) {
-            setTitle(getTitle() + " (" + zone + ")");
+        // Add localized threat type to title
+        if (!StringUtils.stringIsNullOrEmpty(threat)) {
+            setTitle(threat + ": " + getTitle());
         }
     }
 
@@ -194,8 +198,8 @@ public class AlertView extends AppCompatActivity {
 
             // Does this city have a geolocation?
             if (city.latitude != 0) {
-                // Get localized city name
-                String localizedName = LocationData.getLocalizedCityName(city.name, this);
+                // Get localized city and zone names
+                String localizedName = LocationData.getLocalizedCityName(city.name, this) + " (" + LocationData.getLocalizedZoneByCityName(city.name, this) + ")";
 
                 // Already have a marker with these exact coordinates?
                 while (uniqueCoordinates.indexOf(city.latitude + "-" + city.longitude) != -1) {
@@ -206,19 +210,19 @@ public class AlertView extends AppCompatActivity {
                 // Create LatLng location object
                 LatLng location = new LatLng(city.latitude, city.longitude);
 
-                // Optional snippet
-                String snippet = mAlertDateString;
+                // Marker tooltip
+                String tooltip = mAlertDateString;
 
                 // Add shelter count if exists for this city
                 if (city.shelters > 0) {
-                    snippet += "\n" + getString(R.string.lifeshieldShelters) + " " + city.shelters;
+                    tooltip += "\n" + getString(R.string.lifeshieldShelters) + " " + city.shelters;
                 }
 
                 // Add marker to map
                 mMap.addMarker(new MarkerOptions()
                         .position(location)
                         .title(localizedName)
-                        .snippet(snippet));
+                        .snippet(tooltip));
 
                 // Include location in zoom boundaries
                 builder.include(location);
