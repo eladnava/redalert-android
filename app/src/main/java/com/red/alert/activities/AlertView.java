@@ -1,13 +1,11 @@
 package com.red.alert.activities;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import androidx.core.app.ActivityCompat;
 import androidx.core.view.MenuItemCompat;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,7 +18,6 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.red.alert.R;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
@@ -31,6 +28,7 @@ import com.red.alert.ui.notifications.AppNotifications;
 import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
+import com.red.alert.utils.threading.AsyncTaskAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,6 +40,11 @@ public class AlertView extends AppCompatActivity {
     String mAlertThreat;
     String[] mAlertCities;
     String mAlertDateString;
+
+    MenuItem mShareItem;
+    MenuItem mLoadingItem;
+
+    ArrayList<String> mLocalizedCityNames;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -77,21 +80,22 @@ public class AlertView extends AppCompatActivity {
                 mMap.setInfoWindowAdapter(new RTLMarkerInfoWindowAdapter(getLayoutInflater()));
 
                 // Show my location button
-                if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                    mMap.setMyLocationEnabled(true);
-                }
+                // if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    // mMap.setMyLocationEnabled(true);
+                // }
 
                 // Set activity title
                 setActivityTitle();
 
-                // Add map overlays
-                addOverlays();
+                // Load polygon data async
+                new LoadPolygonData().execute();
             }
         });
     }
 
     void setActivityTitle() {
-        ArrayList<String> localizedCityNames = new ArrayList();
+        // Initialize city names array list
+        mLocalizedCityNames = new ArrayList();
 
         // Traverse cities
         for (String cityName : mAlertCities) {
@@ -100,16 +104,16 @@ public class AlertView extends AppCompatActivity {
 
             // No city found?
             if (city == null) {
-                localizedCityNames.add(cityName);
+                mLocalizedCityNames.add(cityName);
                 continue;
             }
 
             // Add localized name
-            localizedCityNames.add(LocationData.getLocalizedCityName(city.name, this));
+            mLocalizedCityNames.add(LocationData.getLocalizedCityName(city.name, this));
         }
 
         // Set title manually after overriding locale
-        setTitle(TextUtils.join(", ", localizedCityNames));
+        setTitle(TextUtils.join(", ", mLocalizedCityNames));
 
         // Localize threat type
         String threat = LocationData.getLocalizedThreatType(mAlertThreat, this);
@@ -241,27 +245,33 @@ public class AlertView extends AppCompatActivity {
         }
 
         // Build a boundary for the map positioning
-        LatLngBounds bounds = builder.build();
+        final LatLngBounds bounds = builder.build();
 
         // Set padding/offset from the edges of the screen (px)
-        int padding = 200;
+        final int padding = 200;
 
         // Set max zoom for animation to 13
         mMap.setMaxZoomPreference(13);
 
         try {
-            // Animate nicely
-            mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding), 1500, new GoogleMap.CancelableCallback() {
+            // Delay animation by 500ms
+            new Handler().postDelayed(new Runnable() {
                 @Override
-                public void onFinish() {
-                    // Allow user to zoom in freely
-                    mMap.resetMinMaxZoomPreference();
-                }
+                public void run() {
+                    // Animate nicely
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding), 1500, new GoogleMap.CancelableCallback() {
+                        @Override
+                        public void onFinish() {
+                            // Allow user to zoom in freely
+                            mMap.resetMinMaxZoomPreference();
+                        }
 
-                @Override
-                public void onCancel() {
+                        @Override
+                        public void onCancel() {
+                        }
+                    });
                 }
-            });
+            }, 500);
         }
         catch (Exception exc) {
             // Ignore exceptions
@@ -273,30 +283,33 @@ public class AlertView extends AppCompatActivity {
         // Add share button
         initializeShareButton(OptionsMenu);
 
+        // Add loading indicator
+        initializeLoadingIndicator(OptionsMenu);
+
         // Show the menu
         return true;
     }
 
     private String getShareMessage() {
-        // Get zone name
-        String cityName = LocationData.getLocalizedCityName(TextUtils.join(", ", mAlertCities), this);
-
         // Construct share message
-        return getString(R.string.alertSoundedAt) + getTitle() + " " + mAlertDateString + " " + getString(R.string.alertSentVia);
+        return getString(R.string.alertSoundedAt) + TextUtils.join(", ", mLocalizedCityNames) + " " + mAlertDateString + " " + getString(R.string.alertSentVia);
     }
 
     void initializeShareButton(Menu OptionsMenu) {
-        // Add refresh in Action Bar
-        MenuItem shareItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.shareAlert));
+        // Add share icon to Action Bar
+        mShareItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.shareAlert));
 
         // Set share icon
-        shareItem.setIcon(R.drawable.ic_share);
+        mShareItem.setIcon(R.drawable.ic_share);
+
+        // Hide by default
+        mShareItem.setVisible(false);
 
         // Specify the show flags
-        MenuItemCompat.setShowAsAction(shareItem, MenuItem.SHOW_AS_ACTION_ALWAYS);
+        MenuItemCompat.setShowAsAction(mShareItem, MenuItem.SHOW_AS_ACTION_ALWAYS);
 
         // On click, open share
-        shareItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        mShareItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 // Prepare share intent
@@ -351,9 +364,6 @@ public class AlertView extends AppCompatActivity {
         // Ensure the right language is displayed
         Localization.overridePhoneLocale(this);
 
-        // Reset activity name (after localization is loaded)
-        setTitle(R.string.loading);
-
         // Allow click on home button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -373,5 +383,52 @@ public class AlertView extends AppCompatActivity {
                 initializeMap();
             }
         });
+    }
+
+    void initializeLoadingIndicator(Menu OptionsMenu) {
+        // Add loading spinner to Action Bar
+        mLoadingItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.loading));
+
+        // Set up the view
+        MenuItemCompat.setActionView(mLoadingItem, R.layout.loading);
+
+        // Specify the show flags
+        MenuItemCompat.setShowAsAction(mLoadingItem, MenuItem.SHOW_AS_ACTION_ALWAYS);
+
+        // Hide by default
+        mLoadingItem.setVisible(false);
+    }
+
+    public class LoadPolygonData extends AsyncTaskAdapter<Integer, String, Integer> {
+        public LoadPolygonData() {
+            // Show loading indicator
+            mLoadingItem.setVisible(true);
+        }
+
+        @Override
+        protected Integer doInBackground(Integer... Parameter) {
+            // Load polygons data for all cities (execution takes roughly 1 second)
+            LocationData.getAllPolygons(AlertView.this);
+
+            // No errors
+            return 0;
+        }
+
+        @Override
+        protected void onPostExecute(Integer error) {
+            // Activity dead?
+            if (isFinishing()) {
+                return;
+            }
+
+            // Add city polygons and markers
+            addOverlays();
+
+            // Hide loading indicator
+            mLoadingItem.setVisible(false);
+
+            // Show share button
+            mShareItem.setVisible(true);
+        }
     }
 }

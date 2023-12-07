@@ -340,4 +340,9 @@
     <!-- Sounds -->
     <string translatable="false" name="defaultSound">alarm1</string>
     <string translatable="false" name="defaultSecondarySound">tiny</string>
+
+    <!-- Default Map Location & Zoom (Center of Israel) -->
+    <string translatable="false" name="defaultZoom">8</string>
+    <string translatable="false" name="defaultLatitude">31.401331884548895</string>
+    <string translatable="false" name="defaultLongitude">34.84646325081433</string>
 </resources>

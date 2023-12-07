@@ -1,19 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#e9e9e9"
-    android:orientation="vertical"
+<?xml version="1.0" encoding="utf-8" ?>
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/map"
+    android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ProgressBar
-        android:id="@+id/loading"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:indeterminate="true"
-        android:layout_centerInParent="true"/>
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/map"
-              android:name="com.google.android.gms.maps.SupportMapFragment"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"/>
-</RelativeLayout>
+    android:layout_height="match_parent"
+    map:cameraTargetLat="@string/defaultLatitude"
+    map:cameraTargetLng="@string/defaultLongitude"
+    map:cameraZoom="@string/defaultZoom" />
