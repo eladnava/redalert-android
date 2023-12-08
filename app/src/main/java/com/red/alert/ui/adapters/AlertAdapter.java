@@ -6,12 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.red.alert.R;
-import com.red.alert.logic.alerts.AlertTypes;
+import com.red.alert.config.ThreatTypes;
 import com.red.alert.model.Alert;
-import com.red.alert.utils.metadata.LocationData;
 
 import java.util.List;
 
@@ -48,6 +48,7 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
             viewHolder.time = (TextView) convertView.findViewById(R.id.time);
             viewHolder.title = (TextView) convertView.findViewById(R.id.alertTitle);
             viewHolder.desc = (TextView) convertView.findViewById(R.id.alertDesc);
+            viewHolder.image = (ImageView) convertView.findViewById(R.id.image);
 
             // Store it in tag
             convertView.setTag(viewHolder);
@@ -66,7 +67,7 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
             viewHolder.title.setText(alert.localizedCity);
 
             // System alert?
-            if (alert.threat.equals(AlertTypes.SYSTEM)) {
+            if (alert.threat.equals(ThreatTypes.SYSTEM)) {
                 // Set desc to "system message"
                 alert.desc = alert.localizedThreat;
 
@@ -83,6 +84,32 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
 
             // Show alert type & user-friendly time
             viewHolder.time.setText(alert.localizedThreat + " • " + alert.dateString);
+
+            // Custom threat icons
+            if (alert.threat.contains(ThreatTypes.RADIOLOGICAL_EVENT)) {
+                viewHolder.image.setImageResource(R.drawable.ic_radiological_event);
+            }
+            else if (alert.threat.contains(ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION)) {
+                viewHolder.image.setImageResource(R.drawable.ic_hostile_aircraft_intrusion);
+            }
+            else if (alert.threat.contains(ThreatTypes.HAZARDOUS_MATERIALS)) {
+                viewHolder.image.setImageResource(R.drawable.ic_hazardous_materials);
+            }
+            else if (alert.threat.contains(ThreatTypes.TSUNAMI)) {
+                viewHolder.image.setImageResource(R.drawable.ic_tsunami);
+            }
+            else if (alert.threat.contains(ThreatTypes.MISSILES)) {
+                viewHolder.image.setImageResource(R.drawable.ic_launcher);
+            }
+            else if (alert.threat.contains(ThreatTypes.TERRORIST_INFILTRATION)) {
+                viewHolder.image.setImageResource(R.drawable.ic_terrorist_infiltration);
+            }
+            else if (alert.threat.contains(ThreatTypes.EARTHQUAKE)) {
+                viewHolder.image.setImageResource(R.drawable.ic_earthquake);
+            }
+            else {
+                viewHolder.image.setImageResource(R.drawable.ic_launcher);
+            }
         }
 
         // Return the view
@@ -98,5 +125,6 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
         public TextView time;
         public TextView title;
         public TextView desc;
+        public ImageView image;
     }
 }
