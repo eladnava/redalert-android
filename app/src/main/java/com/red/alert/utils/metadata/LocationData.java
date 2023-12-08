@@ -23,6 +23,8 @@ import java.util.List;
 
 public class LocationData {
     private static List<City> mCities;
+    private static boolean mFetchingCities;
+
     private static HashMap<String, ArrayList<ArrayList<Double>>> mPolygons;
 
     /*
@@ -112,12 +114,25 @@ public class LocationData {
     }
 
     public static List<City> getAllCities(Context context) {
+        // Already fetching?
+        while (mFetchingCities) {
+            try {
+                // Wait for operation to complete (blocking)
+                Thread.sleep(100);
+            } catch (Exception exc) {
+                // Ignore errors
+            }
+        }
+
         // Got it in cache?
         if (mCities != null) {
             return mCities;
         }
 
         try {
+            // Prevent concurrent loading of cities.json
+            mFetchingCities = true;
+
             // Open cities.json for reading
             InputStream stream = context.getResources().openRawResource(R.raw.cities);
 
@@ -146,6 +161,10 @@ public class LocationData {
         catch (Exception exc) {
             // Log it
             Log.e(Logging.TAG, "Failed to load cities.json", exc);
+        }
+        finally {
+            // No longer fetching cities
+            mFetchingCities = false;
         }
 
         // Return them
