@@ -5,19 +5,25 @@ import android.util.Log;
 
 import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 import com.red.alert.R;
+import com.red.alert.config.Alerts;
 import com.red.alert.config.Logging;
 import com.red.alert.config.ThreatTypes;
 import com.red.alert.logic.alerts.AlertTypes;
+import com.red.alert.model.Alert;
 import com.red.alert.model.metadata.City;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.localization.Localization;
 
+import org.ocpsoft.prettytime.PrettyTime;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -632,5 +638,38 @@ public class LocationData {
 
         // No match
         return null;
+    }
+
+    public static String getAlertDateTimeString(long timestamp, long firstAlertTimestamp, Context context) {
+        // Initialize date format libraries
+        SimpleDateFormat dateFormat = new SimpleDateFormat(Alerts.DATE_FORMAT);
+        PrettyTime relativeFormat = new PrettyTime(context.getResources().getConfiguration().locale);
+
+        // Convert unix timestamp to Java Date
+        Date date = new Date(timestamp * 1000);
+
+        // Result string
+        String dateString;
+
+        // Grouped alert?
+        if (firstAlertTimestamp > 0 && firstAlertTimestamp != timestamp) {
+            // Convert unix timestamp of first grouped alert to Date object
+            Date firstAlertDate = new Date(firstAlertTimestamp * 1000);
+
+            // Prepare string with relative time ago and fixed HH:mm:ss with both the first and last alert times
+            dateString = StringUtils.capitalize(relativeFormat.format(date)) + " (" + dateFormat.format(firstAlertDate) + " - " + dateFormat.format(date) + ")";
+        }
+        else {
+            // Prepare string with relative time ago and fixed HH:mm:ss
+            dateString = StringUtils.capitalize(relativeFormat.format(date)) + " (" + dateFormat.format(date) + ")";
+        }
+
+        // Fix for Hebrew relative time typos (singular time ago)
+        dateString = dateString.replace(" 1 דקה", " דקה");
+        dateString = dateString.replace(" 1 שעה", " שעה");
+        dateString = dateString.replace(" 2 שעות", " שעתיים");
+
+        // All done
+        return dateString;
     }
 }

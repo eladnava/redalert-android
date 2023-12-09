@@ -27,17 +27,16 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import me.pushy.sdk.Pushy;
+import me.pushy.sdk.lib.jackson.core.JsonProcessingException;
 import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 import me.pushy.sdk.util.PushyAuthentication;
 
 import com.red.alert.R;
 import com.red.alert.activities.settings.General;
-import com.red.alert.config.Alerts;
 import com.red.alert.config.Integrations;
 import com.red.alert.config.Logging;
 import com.red.alert.config.RecentAlerts;
 import com.red.alert.config.ThreatTypes;
-import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.communication.broadcasts.SettingsEvents;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
 import com.red.alert.logic.communication.intents.MainActivityParameters;
@@ -68,11 +67,7 @@ import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.networking.HTTP;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
 
-import org.ocpsoft.prettytime.PrettyTime;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -245,10 +240,14 @@ public class Main extends AppCompatActivity {
                 // Set class
                 alertView.setClass(Main.this, AlertView.class);
 
-                // Push extras
-                alertView.putExtra(AlertViewParameters.ALERT_DATE_STRING, alert.dateString);
-                alertView.putExtra(AlertViewParameters.ALERT_THREAT, alert.threat);
-                alertView.putExtra(AlertViewParameters.ALERT_CITIES, alert.groupedCities.toArray(new String[0]));
+                try {
+                    // Pass grouped alerts as JSON
+                    alertView.putExtra(AlertViewParameters.ALERTS, Singleton.getJackson().writer().writeValueAsString(alert.groupedAlerts));
+                } catch (JsonProcessingException e) {
+                    // Show error dialog
+                    AlertDialogBuilder.showGenericDialog(getString(R.string.error), e.getMessage(), getString(R.string.okay), null, false, Main.this, null);
+                    return;
+                }
 
                 // Show it
                 startActivity(alertView);
@@ -664,22 +663,10 @@ public class Main extends AppCompatActivity {
 
         // recentAlerts.add(fake);
 
-        // Initialize date format libraries
-        SimpleDateFormat dateFormat = new SimpleDateFormat(Alerts.DATE_FORMAT);
-        PrettyTime relativeFormat = new PrettyTime(getResources().getConfiguration().locale);
-
         // Loop over alerts
         for (Alert alert : recentAlerts) {
-            // Convert unix timestamp to Date object
-            Date date = new Date(alert.date * 1000);
-
             // Prepare string with relative time ago and fixed HH:mm:ss
-            alert.dateString = StringUtils.capitalize(relativeFormat.format(date)) + " (" + dateFormat.format(date) + ")";
-
-            // Fix for Hebrew relative time typos (singular time ago)
-            alert.dateString = alert.dateString.replace(" 1 דקה", " דקה");
-            alert.dateString = alert.dateString.replace(" 1 שעה", " שעה");
-            alert.dateString = alert.dateString.replace(" 2 שעות", " שעתיים");
+            alert.dateString = LocationData.getAlertDateTimeString(alert.date, 0, this);
 
             // Prepare localized zone & countdown for display
             alert.desc = LocationData.getLocalizedZoneWithCountdown(alert.city, this);
@@ -715,8 +702,8 @@ public class Main extends AppCompatActivity {
             Alert currentAlert = alerts.get(i);
 
             // Initialize city names list for map display
-            currentAlert.groupedCities = new ArrayList<>();
-            currentAlert.groupedCities.add(currentAlert.city);
+            currentAlert.groupedAlerts = new ArrayList<>();
+            currentAlert.groupedAlerts.add(currentAlert);
 
             // Check whether this new alert can be grouped with the previous one
             // (Same region + 15 second cutoff threshold in either direction)
@@ -729,7 +716,14 @@ public class Main extends AppCompatActivity {
                     lastAlert.desc += ", " + currentAlert.desc;
                 }
 
-                lastAlert.groupedCities.add(currentAlert.city);
+                // Add current alert to last alert's group
+                lastAlert.groupedAlerts.add(currentAlert);
+
+                // Different timestamps?
+                if (lastAlert.date != currentAlert.date) {
+                    // Display first & last alert times
+                    lastAlert.dateString = LocationData.getAlertDateTimeString(lastAlert.date, currentAlert.date, this);
+                }
             }
             else {
                 // New alert (not grouped with previous item)

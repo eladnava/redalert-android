@@ -2,6 +2,7 @@ package com.red.alert.model;
 
 import java.util.List;
 
+import me.pushy.sdk.lib.jackson.annotation.JsonIgnore;
 import me.pushy.sdk.lib.jackson.annotation.JsonProperty;
 
 public class Alert {
@@ -20,7 +21,8 @@ public class Alert {
     public String desc;
     public String dateString;
 
-    public List<String> groupedCities;
+    @JsonIgnore
+    public List<Alert> groupedAlerts;
 
     @Override
     public String toString() {

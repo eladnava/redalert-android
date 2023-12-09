@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.core.view.MenuItemCompat;
 import androidx.appcompat.app.AppCompatActivity;
+import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 
 import android.os.Handler;
 import android.text.TextUtils;
@@ -21,25 +22,26 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.red.alert.R;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
+import com.red.alert.model.Alert;
 import com.red.alert.model.metadata.City;
+import com.red.alert.ui.dialogs.AlertDialogBuilder;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.ui.localization.rtl.adapters.RTLMarkerInfoWindowAdapter;
 import com.red.alert.ui.notifications.AppNotifications;
+import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class AlertView extends AppCompatActivity {
     GoogleMap mMap;
-
-    String mAlertThreat;
-    String[] mAlertCities;
-    String mAlertDateString;
+    List<Alert> mAlerts;
 
     MenuItem mShareItem;
     MenuItem mLoadingItem;
@@ -58,14 +60,13 @@ public class AlertView extends AppCompatActivity {
     }
 
     void unpackExtras() {
-        // Get alert cities
-        mAlertCities = getIntent().getStringArrayExtra(AlertViewParameters.ALERT_CITIES);
-
-        // Get alert threat type
-        mAlertThreat = getIntent().getStringExtra(AlertViewParameters.ALERT_THREAT);
-
-        // Get alert date string
-        mAlertDateString = getIntent().getStringExtra(AlertViewParameters.ALERT_DATE_STRING);
+        try {
+            // Parse grouped alerts from JSON
+            mAlerts = Singleton.getJackson().readValue(getIntent().getStringExtra(AlertViewParameters.ALERTS), new TypeReference<List<Alert>>() {});
+        } catch (IOException e) {
+            // Show error dialog
+            AlertDialogBuilder.showGenericDialog(getString(R.string.error), e.getMessage(), getString(R.string.okay), null, false, AlertView.this, null);
+        }
     }
 
     void mapLoadedListener() {
@@ -97,26 +98,17 @@ public class AlertView extends AppCompatActivity {
         // Initialize city names array list
         mLocalizedCityNames = new ArrayList();
 
-        // Traverse cities
-        for (String cityName : mAlertCities) {
-            // Get city object
-            City city = LocationData.getCityByName(cityName, this);
-
-            // No city found?
-            if (city == null) {
-                mLocalizedCityNames.add(cityName);
-                continue;
-            }
-
+        // Traverse alerts
+        for (Alert alert : mAlerts) {
             // Add localized name
-            mLocalizedCityNames.add(LocationData.getLocalizedCityName(city.name, this));
+            mLocalizedCityNames.add(alert.localizedCity);
         }
 
         // Set title manually after overriding locale
         setTitle(TextUtils.join(", ", mLocalizedCityNames));
 
         // Localize threat type
-        String threat = LocationData.getLocalizedThreatType(mAlertThreat, this);
+        String threat = mAlerts.get(0).localizedThreat;
 
         // Add localized threat type to title
         if (!StringUtils.stringIsNullOrEmpty(threat)) {
@@ -148,10 +140,10 @@ public class AlertView extends AppCompatActivity {
         // Get polygons data for all cities (execution takes roughly 1 second)
         HashMap<String, ArrayList<ArrayList<Double>>> polygons = LocationData.getAllPolygons(this);
 
-        // Traverse cities
-        for (String cityName : mAlertCities) {
+        // Traverse alerts
+        for (Alert alert : mAlerts) {
             // Get city object
-            City city = LocationData.getCityByName(cityName, this);
+            City city = LocationData.getCityByName(alert.city, this);
 
             // No city found?
             if (city == null) {
@@ -215,7 +207,7 @@ public class AlertView extends AppCompatActivity {
                 LatLng location = new LatLng(city.latitude, city.longitude);
 
                 // Marker tooltip
-                String tooltip = mAlertDateString;
+                String tooltip = LocationData.getAlertDateTimeString(alert.date, 0, this);
 
                 // Add shelter count if exists for this city
                 if (city.shelters > 0) {
@@ -292,7 +284,7 @@ public class AlertView extends AppCompatActivity {
 
     private String getShareMessage() {
         // Construct share message
-        return getString(R.string.alertSoundedAt) + TextUtils.join(", ", mLocalizedCityNames) + " " + mAlertDateString + " " + getString(R.string.alertSentVia);
+        return getString(R.string.alertSoundedAt) + TextUtils.join(", ", mLocalizedCityNames) + " " + mAlerts.get(0).dateString + " " + getString(R.string.alertSentVia);
     }
 
     void initializeShareButton(Menu OptionsMenu) {
