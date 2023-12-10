@@ -38,6 +38,8 @@ import java.util.TimerTask;
 public class AlertPopup extends AppCompatActivity {
     boolean mIsDestroyed;
 
+    Timer mTimer;
+
     TextView mCounter;
     TextView mThreatType;
     TextView mInstructions;
@@ -91,10 +93,18 @@ public class AlertPopup extends AppCompatActivity {
         initializeUI();
 
         // Populate UI elements
-        initializeAlert();
+        initializeAlert(getIntent());
 
         // Volume keys should control alert volume
         Volume.setVolumeKeysAction(this);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+
+        // Update popup with new alert info
+        initializeAlert(intent);
     }
 
     void initializeUI() {
@@ -138,10 +148,10 @@ public class AlertPopup extends AppCompatActivity {
         });
     }
 
-    void initializeAlert() {
+    void initializeAlert(Intent intent) {
         // Get alert city & threat type
-        String city = getIntent().getStringExtra(AlertPopupParameters.CITY);
-        String threatType = getIntent().getStringExtra(AlertPopupParameters.THREAT_TYPE);
+        String city = intent.getStringExtra(AlertPopupParameters.CITY);
+        String threatType = intent.getStringExtra(AlertPopupParameters.THREAT_TYPE);
 
         // None given?
         if (StringUtils.stringIsNullOrEmpty(city)) {
@@ -181,6 +191,11 @@ public class AlertPopup extends AppCompatActivity {
     }
 
     void scheduleRocketCountdown(int seconds) {
+        // Cancel previous timer if set
+        if (mTimer != null) {
+            mTimer.cancel();
+        }
+
         // Offset impact to account for delivery delay
         // Seconds = Seconds - Main.IMPACT_COUNTDOWN_OFFSET;
 
@@ -188,7 +203,10 @@ public class AlertPopup extends AppCompatActivity {
         final long impactTimestamp = System.currentTimeMillis() + (seconds * 1000);
 
         // Schedule a new timer
-        new Timer().scheduleAtFixedRate(new TimerTask() {
+        mTimer = new Timer();
+
+        // Run every 100ms
+        mTimer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 runOnUiThread(new Runnable() {
