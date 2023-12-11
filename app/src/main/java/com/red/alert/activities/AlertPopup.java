@@ -29,6 +29,7 @@ import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.utils.feedback.Volume;
 import com.red.alert.utils.formatting.StringUtils;
+import com.red.alert.utils.localization.DateTime;
 import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.ui.DensityUtil;
 
@@ -72,7 +73,7 @@ public class AlertPopup extends AppCompatActivity {
         // Set class to popup activity
         popupIntent.setClass(context, AlertPopup.class);
 
-        // Pass on city name
+        // Pass on city name & threat type
         popupIntent.putExtra(AlertPopupParameters.CITY, city);
         popupIntent.putExtra(AlertPopupParameters.THREAT_TYPE, threatType);
 
@@ -149,9 +150,10 @@ public class AlertPopup extends AppCompatActivity {
     }
 
     void initializeAlert(Intent intent) {
-        // Get alert city & threat type
+        // Get alert city, threat type, and alert timestamp
         String city = intent.getStringExtra(AlertPopupParameters.CITY);
         String threatType = intent.getStringExtra(AlertPopupParameters.THREAT_TYPE);
+        long timestamp = intent.getLongExtra(AlertPopupParameters.TIMESTAMP, DateTime.getUnixTimestamp());
 
         // None given?
         if (StringUtils.stringIsNullOrEmpty(city)) {
@@ -176,7 +178,7 @@ public class AlertPopup extends AppCompatActivity {
             int countdown = LocationData.getCityCountdown(city, this);
 
             // Start counting down
-            scheduleRocketCountdown(countdown);
+            scheduleRocketCountdown(timestamp, countdown);
         }
     }
 
@@ -190,7 +192,7 @@ public class AlertPopup extends AppCompatActivity {
         }
     }
 
-    void scheduleRocketCountdown(int seconds) {
+    void scheduleRocketCountdown(long timestamp, int seconds) {
         // Cancel previous timer if set
         if (mTimer != null) {
             mTimer.cancel();
@@ -200,7 +202,7 @@ public class AlertPopup extends AppCompatActivity {
         // Seconds = Seconds - Main.IMPACT_COUNTDOWN_OFFSET;
 
         // Calculate time to impact
-        final long impactTimestamp = System.currentTimeMillis() + (seconds * 1000);
+        final long impactTimestamp = (timestamp * 1000) + (seconds * 1000);
 
         // Schedule a new timer
         mTimer = new Timer();
@@ -244,7 +246,6 @@ public class AlertPopup extends AppCompatActivity {
         if (currentTimestamp <= impactTimestamp) {
             // Convert it
             updateCountdownTimerText(seconds, R.color.countdown_pre_impact);
-
         }
         else if (currentTimestamp > impactTimestamp) {
             // Number of seconds to wait after impact

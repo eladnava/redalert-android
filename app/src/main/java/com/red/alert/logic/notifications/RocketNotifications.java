@@ -21,6 +21,7 @@ import com.red.alert.config.Logging;
 import com.red.alert.config.NotificationChannels;
 import com.red.alert.config.Sound;
 import com.red.alert.logic.alerts.AlertTypes;
+import com.red.alert.logic.communication.intents.AlertPopupParameters;
 import com.red.alert.logic.communication.intents.MainActivityParameters;
 import com.red.alert.logic.communication.intents.RocketNotificationParameters;
 import com.red.alert.logic.feedback.VibrationLogic;
@@ -29,6 +30,7 @@ import com.red.alert.logic.phone.PowerManagement;
 import com.red.alert.receivers.NotificationDeletedReceiver;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.formatting.StringUtils;
+import com.red.alert.utils.localization.DateTime;
 
 public class RocketNotifications {
     public static void notify(Context context, String city, String notificationTitle, String notificationContent, String alertType, String threatType, String overrideSound) {
@@ -64,7 +66,7 @@ public class RocketNotifications {
         // No click event for test notifications
         if (!alertType.contains("test")) {
             // Handle notification click
-            builder.setContentIntent(getNotificationIntent(context));
+            builder.setContentIntent(getNotificationIntent(city, threatType, context));
         }
 
         // Generate a notification ID based on the unique hash-code of the alert zone
@@ -112,9 +114,14 @@ public class RocketNotifications {
         return PendingIntent.getBroadcast(context, 0, deleteIntent, PendingIntent.FLAG_IMMUTABLE);
     }
 
-    public static PendingIntent getNotificationIntent(Context context) {
+    public static PendingIntent getNotificationIntent(String city, String threatType, Context context) {
         // Prepare notification intent
         Intent notificationIntent = new Intent(context, Main.class);
+
+        // Pass on city name, threat type, and alert received timestamp
+        notificationIntent.putExtra(AlertPopupParameters.CITY, city);
+        notificationIntent.putExtra(AlertPopupParameters.THREAT_TYPE, threatType);
+        notificationIntent.putExtra(AlertPopupParameters.TIMESTAMP, DateTime.getUnixTimestamp());
 
         // Prepare pending intent
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);

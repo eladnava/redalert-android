@@ -13,6 +13,7 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.core.view.MenuItemCompat;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Handler;
 import android.os.PowerManager;
 import android.provider.Settings;
 import android.util.Log;
@@ -36,8 +37,10 @@ import com.red.alert.activities.settings.General;
 import com.red.alert.config.Integrations;
 import com.red.alert.config.Logging;
 import com.red.alert.config.RecentAlerts;
+import com.red.alert.config.Safety;
 import com.red.alert.config.ThreatTypes;
 import com.red.alert.logic.communication.broadcasts.SettingsEvents;
+import com.red.alert.logic.communication.intents.AlertPopupParameters;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
 import com.red.alert.logic.communication.intents.MainActivityParameters;
 import com.red.alert.logic.push.FCMRegistration;
@@ -179,6 +182,9 @@ public class Main extends AppCompatActivity {
 
         // RTL action bar hack
         RTLSupport.mirrorActionBar(this);
+
+        // Handle notification click event (show alert popup)
+        handleNotificationClick(intent);
     }
 
     void initializeUI() {
@@ -1046,6 +1052,50 @@ public class Main extends AppCompatActivity {
                 // Show update dialog
                 UpdateDialogs.showUpdateDialog(Main.this, newVersion);
             }
+        }
+    }
+
+    void handleNotificationClick(Intent intent) {
+        // Extract clicked notification params
+        String city = intent.getStringExtra(AlertPopupParameters.CITY);
+        String threatType = intent.getStringExtra(AlertPopupParameters.THREAT_TYPE);
+        long timestamp = intent.getLongExtra(AlertPopupParameters.TIMESTAMP, 0);
+
+        // Display popup if all necessary parameters are set
+        if (city != null && threatType != null && timestamp > 0) {
+            // Get countdown in seconds for city
+            int countdown = LocationData.getCityCountdown(city, this);
+
+            // Check for old (inactive) alert
+            // Only display alert popup for currently active alerts (+ 10 minutes)
+            if (timestamp < (DateTime.getUnixTimestamp() - countdown - (Safety.POST_IMPACT_WAIT_MINUTES * 60)) ) {
+                return;
+            }
+
+            // Create new popup intent
+            final Intent popupIntent = new Intent();
+
+            // Set class to popup activity
+            popupIntent.setClass(this, AlertPopup.class);
+
+            // Pass on city name, threat type, and alert received timestamp
+            popupIntent.putExtra(AlertPopupParameters.CITY, city);
+            popupIntent.putExtra(AlertPopupParameters.TIMESTAMP, timestamp);
+            popupIntent.putExtra(AlertPopupParameters.THREAT_TYPE, threatType);
+
+            // Clear top, set as new task
+            popupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            popupIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            popupIntent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+
+            // Delay popup by 300ms to allow main activity UI to finish rendering
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    // Display popup activity
+                    startActivity(popupIntent);
+                }
+            }, 300);
         }
     }
 }
