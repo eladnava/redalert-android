@@ -184,7 +184,7 @@
     <string name="wakeScreenDesc">Оповещения о ракетах разбудят экран вашего телефона</string>
 
     <!-- Alert Popup -->
-    <string name="close">Открыть</string>
+    <string name="close">Закрывать</string>
     <string name="silence">Тишина</string>
     <string name="showPopup">Показать всплывающее</string>
     <string name="showPopupDesc">Оповещения Rocket будет отображаться в всплывающем окне</string>

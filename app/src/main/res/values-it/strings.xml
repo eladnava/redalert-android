@@ -141,7 +141,7 @@
     <string name="wakeScreenDesc">Gli avvisi sui razzi riattiveranno lo schermo del tuo telefono</string>
 
     <!-- Alert Popup -->
-    <string name="close">Chiuso</string>
+    <string name="close">Chiudere</string>
     <string name="silence">Silenzio</string>
     <string name="showPopup">Mostra popup</string>
     <string name="showPopupDesc">Le allerte verrano mostrate in un pop-up</string>

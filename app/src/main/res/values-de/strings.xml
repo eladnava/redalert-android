@@ -139,7 +139,7 @@
 
     <!-- Alert Popup -->
     <string name="close">Schließen</string>
-    <string name="silence">stumm</string>
+    <string name="silence">Stumm</string>
     <string name="showPopup">Meldungen werden als Popup Anzeigen</string>
     <string name="showPopupDesc">Raketen Alamirungen werden in einem pop-up fenster Angezeigt</string>
     <string name="grantOverlayPermission">Anzeige über anderen Apps zulassen</string>
