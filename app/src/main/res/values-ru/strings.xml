@@ -216,14 +216,14 @@
     <string name="learnAboutLifeshieldDesc">Нажмите здесь, чтобы узнать больше об Операции Lifeshield, некоммерческой организации, которая развертывает убежища для воздушных налетов в Израиле.</string>
 
     <!-- Threat Types -->
-    <string name="missiles">Ракетный огонь</string>
+    <string name="missiles">Pакетный обстрел</string>
     <string name="radiologicalEvent">Радиологическое событие</string>
     <string name="earthQuake">Землетрясение</string>
     <string name="tsunami">Предупреждение о цунами</string>
     <string name="hostileAircraftIntrusion">Вторжение вражеских самолетов</string>
     <string name="hazardousMaterials">Опасные материалы</string>
     <string name="terroristInfiltration">Террористическое проникновение</string>
-    <string name="missilesDrill">Упражнение: Ракетный огонь</string>
+    <string name="missilesDrill">Упражнение: Pакетный обстрел</string>
     <string name="earthQuakeDrill">Упражнение: Землетрясение</string>
     <string name="radiologicalEventDrill">Упражнение: радиационное событие</string>
     <string name="tsunamiDrill">Упражнение: предупреждение о цунами</string>
