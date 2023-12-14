@@ -679,6 +679,7 @@ public class Main extends AppCompatActivity {
 
             // Localize it
             alert.localizedCity = LocationData.getLocalizedCityName(alert.city, this);
+            alert.localizedZone = LocationData.getLocalizedZoneByCityName(alert.city, this);
             alert.localizedThreat = LocationData.getLocalizedThreatType(alert.threat, this);
         }
 
@@ -718,7 +719,7 @@ public class Main extends AppCompatActivity {
                 lastAlert.localizedCity += ", " + currentAlert.localizedCity;
 
                 // Add current alert zone if new
-                if (!lastAlert.desc.contains(currentAlert.desc)) {
+                if (!lastAlert.desc.contains(currentAlert.localizedZone)) {
                     lastAlert.desc += ", " + currentAlert.desc;
                 }
 

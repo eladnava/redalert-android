@@ -16,6 +16,7 @@ public class Alert {
     public String threat;
 
     public String localizedCity;
+    public String localizedZone;
     public String localizedThreat;
 
     public String desc;
