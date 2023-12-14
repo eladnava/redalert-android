@@ -56,7 +56,7 @@
         <!-- Alert View -->
         <activity
             android:name=".activities.AlertView"
-            android:label="@string/appName"
+            android:label=""
             android:theme="@style/AppTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
 
