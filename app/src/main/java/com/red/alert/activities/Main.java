@@ -5,10 +5,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.view.MenuItemCompat;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,6 +45,7 @@ import com.red.alert.logic.communication.broadcasts.SettingsEvents;
 import com.red.alert.logic.communication.intents.AlertPopupParameters;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
 import com.red.alert.logic.communication.intents.MainActivityParameters;
+import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.logic.push.FCMRegistration;
 import com.red.alert.logic.push.PushManager;
 import com.red.alert.logic.push.PushyRegistration;
@@ -80,9 +83,7 @@ public class Main extends AppCompatActivity {
     boolean mIsDestroyed;
     boolean mIsReloading;
     boolean mCheckedForUpdates;
-    boolean mBatteryDialogDisplayed;
-    boolean mAppOverlayDialogDisplayed;
-    boolean mNotificationPermissionDialogDisplayed;
+    boolean mPermissionDialogDisplayed;
 
     Button mImSafe;
     ListView mAlertsList;
@@ -146,18 +147,8 @@ public class Main extends AppCompatActivity {
             return;
         }
 
-        // Battery dialog already displayed?
-        if (mBatteryDialogDisplayed) {
-            return;
-        }
-
-        // App overlay permission dialog is being displayed?
-        if (mAppOverlayDialogDisplayed) {
-            return;
-        }
-
-        // Notification permission dialog is being displayed?
-        if (mNotificationPermissionDialogDisplayed) {
+        // Already displayed a permission dialog for this activity?
+        if (mPermissionDialogDisplayed) {
             return;
         }
 
@@ -215,11 +206,6 @@ public class Main extends AppCompatActivity {
 
         // On-click listeners
         initializeListeners();
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        // Avoid call to super(). Bug on API Level > 11.
     }
 
     void initializeListeners() {
@@ -328,6 +314,9 @@ public class Main extends AppCompatActivity {
         // Ask user to whitelist app from battery optimizations
         showBatteryExemptionDialog();
 
+        // Ask user to enable location permission if necessary
+        showLocationPermissionDialog();
+
         // Ask user to grant app overlay permission if revoked
         showAlertPopupPermissionDialog();
 
@@ -341,8 +330,8 @@ public class Main extends AppCompatActivity {
     void requestNotificationPermission() {
         // Check if device is already registered, but permission not granted yet
         if (PushyAuthentication.getDeviceCredentials(this) != null && (!Pushy.isPermissionGranted(this) || !NotificationManagerCompat.from(Main.this).areNotificationsEnabled())) {
-            // Mark dialog as displayed
-            mNotificationPermissionDialogDisplayed = true;
+            // Prevent other dialogs from being displayed
+            mPermissionDialogDisplayed = true;
 
             // Show error with an on-click listener that opens the App Info page
             AlertDialogBuilder.showGenericDialog(getString(R.string.error), getString(R.string.grantNotificationPermission), getString(R.string.okay), null, false, Main.this, new DialogInterface.OnClickListener() {
@@ -352,6 +341,27 @@ public class Main extends AppCompatActivity {
                     AndroidSettings.openAppInfoPage(Main.this);
                 }
             });
+        }
+    }
+
+    void showLocationPermissionDialog() {
+        // Location alerts disabled?
+        if (!AppPreferences.getLocationAlertsEnabled(this)) {
+            return;
+        }
+
+        // Already displayed a permission dialog for this activity?
+        if (mPermissionDialogDisplayed) {
+            return;
+        }
+
+        // Can we access the user's location?
+        if (!LocationLogic.isLocationAccessGranted(this)) {
+            // Request permission via dialog
+            LocationLogic.showLocationAccessRequestDialog(this);
+
+            // Prevent other dialogs from being displayed
+            mPermissionDialogDisplayed = true;
         }
     }
 
@@ -379,13 +389,8 @@ public class Main extends AppCompatActivity {
             return;
         }
 
-        // Already displayed for this activity?
-        if (mBatteryDialogDisplayed) {
-            return;
-        }
-
-        // Notification permission dialog is being displayed?
-        if (mNotificationPermissionDialogDisplayed) {
+        // Already displayed a permission dialog for this activity?
+        if (mPermissionDialogDisplayed) {
             return;
         }
 
@@ -405,7 +410,7 @@ public class Main extends AppCompatActivity {
             return;
         }
 
-        // Show the dialog
+        // Show a dialog to the user
         AlertDialogBuilder.showGenericDialog(getString(R.string.disableBatteryOptimizations), AndroidSettings.getBatteryOptimizationWhitelistInstructions(this), getString(R.string.okay), getString(R.string.notNow), true, this, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
@@ -417,8 +422,8 @@ public class Main extends AppCompatActivity {
             }
         });
 
-        // Don't show again for this activity
-        mBatteryDialogDisplayed = true;
+        // Prevent other dialogs from being displayed
+        mPermissionDialogDisplayed = true;
 
         // Increment counter
         count++;
@@ -459,18 +464,13 @@ public class Main extends AppCompatActivity {
             return;
         }
 
-        // Battery exemption dialog is being displayed?
-        if (mBatteryDialogDisplayed) {
-            return;
-        }
-
-        // Notification permission dialog is being displayed?
-        if (mNotificationPermissionDialogDisplayed) {
+        // Already displayed a permission dialog for this activity?
+        if (mPermissionDialogDisplayed) {
             return;
         }
 
         // Prevent other dialogs from being displayed
-        mAppOverlayDialogDisplayed = true;
+        mPermissionDialogDisplayed = true;
 
         // Show permission request dialog
         AlertDialogBuilder.showGenericDialog(getString(R.string.grantOverlayPermission), getString(R.string.grantOverlayPermissionInstructions), getString(R.string.okay), getString(R.string.notNow), true, this, new DialogInterface.OnClickListener() {
@@ -551,7 +551,7 @@ public class Main extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 // Clear currently displayed alerts
                 if (mDisplayAlerts.size() > 0) {
-                    // Show the dialog
+                    // Show a dialog to the user
                     AlertDialogBuilder.showGenericDialog(getString(R.string.clearRecentAlerts), getString(R.string.clearRecentAlertsDesc), getString(R.string.yes), getString(R.string.no), true, Main.this, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int which) {
@@ -1096,6 +1096,20 @@ public class Main extends AppCompatActivity {
                     startActivity(popupIntent);
                 }
             }, 300);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        // Just granted location permission?
+        if (requestCode == LocationLogic.LOCATION_PERMISSION_REQUEST_CODE && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+            // Location alerts enabled?
+            if (AppPreferences.getLocationAlertsEnabled(this)) {
+                // Start the location service
+                ServiceManager.startLocationService(this);
+            }
         }
     }
 }

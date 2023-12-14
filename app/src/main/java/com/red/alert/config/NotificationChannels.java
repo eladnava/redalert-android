@@ -11,4 +11,9 @@ public class NotificationChannels {
 
     // Custom sound notification channel suffix
     public static final String CUSTOM_SOUND_NOTIFICATION_CHANNEL_SUFFIX = "_custom";
+
+    // Location service foreground notification channel
+    public static final String LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_ID = "redalert_location";
+    public static final String LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_NAME = "Location-based Alerts";
+
 }

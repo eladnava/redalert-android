@@ -104,6 +104,12 @@ public class RedAlertAPI {
         List<String> primarySubscriptions = new ArrayList<>();
         List<String> secondarySubscriptions = new ArrayList<>();
 
+        // Location alerts enabled?
+        if (AppPreferences.getLocationAlertsEnabled(context)) {
+            // Subscribe to all and check proximity client-side
+            primarySubscriptions.add("all");
+        }
+
         // Get user's selected primary zones
         String selectedZones = Singleton.getSharedPreferences(context).getString(context.getString(R.string.selectedZonesPref), context.getString(R.string.none));
 

@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.red.alert.R;
+import com.red.alert.activities.Main;
 import com.red.alert.config.Logging;
 import com.red.alert.logic.communication.broadcasts.LocationSelectionEvents;
 import com.red.alert.logic.push.PushManager;
@@ -89,7 +90,7 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
         // Allow click on home button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // Load settings from XML There is no non-deprecated way to do it on API Level 7
+        // Load settings from XML (there is no non-deprecated way to do it on API level 7)
         addPreferencesFromResource(R.xml.settings_secondary_alerts);
 
         // Cache resource IDs

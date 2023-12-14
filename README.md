@@ -28,6 +28,7 @@ The app relays real-time safety alerts published by the Home Front Command (Piku
 #### The fastest, most reliable emergency alert app in Israel.
 
 * Speed & reliability - alerts are received before / during the official siren thanks to dedicated notification servers
+* Location-based alerts - receive emergency alerts on the move in addition to city / region selection
 * Threat types - receive alerts about rocket fire, hostile aircraft intrusion, terrorist infiltration, and more
 * Alert history - see the list of recent alerts, their location, and time of day (in your local time)
 * Connectivity test - check, at any time, whether your device is able to receive alerts via the "self-test" option

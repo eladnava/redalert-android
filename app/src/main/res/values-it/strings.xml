@@ -128,6 +128,28 @@
     <string name="selectedSecondaryCities">Città secondarie</string>
     <string name="selectedSecondaryCitiesDesc">Seleziona le altre città riguardo le quali si vogliono riceve le allerte secondarie</string>
 
+    <!-- GPS -->
+    <string name="locationAlerts">Allerte basate sulla posizione</string>
+    <string name="locationAlertsDesc">Configurez des alertes basées sur la localisation et recevez des alertes d\'urgence sur la canette</string>
+    <string name="gpsEnabled">Allerte basate sulla posizione</string>
+    <string name="gpsEnabledDesc">Ricevi allerte in tempo reale basate sulla posizione</string>
+    <string name="maxDistance">Distanza massima</string>
+    <string name="maxDistanceDesc">Scorri per selezionare la distanza massima da ogni città entro cui si vuole ricevere l\'allerta</string>
+    <string name="kilometer">km</string>
+    <string name="nearbyCities">Città vicine</string>
+    <string name="noLocation">Tentativo di determinare la tua ultima posizione fallito</string>
+    <string name="noNearbyCities">Nessuna città in prossimità, prova ad aumentare la distanza</string>
+
+    <!-- GPS Frequency -->
+    <string name="gpsFrequency">Aggiorna intervallo</string>
+    <string name="gpsFrequencyDesc"> Scorri per decidere l\'intervallo, in minuti, per l\'aggiornamento della posizione</string>
+    <string name="every">Ogni</string>
+    <string name="minutes">minuti</string>
+
+    <!-- GPS Notification -->
+    <string name="enableGPSDesc">Abilita il GPS per ricevere allerte basate sulla posizione.</string>
+    <string name="enable">Abilitato</string>
+
     <!-- Alert Share -->
     <string name="shareAlert">Condividi l\'allerta</string>
     <string name="alertSoundedAt"> Un codice di allarme rosso  è suonato a&#160;</string>

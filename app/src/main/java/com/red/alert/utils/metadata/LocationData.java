@@ -1,12 +1,15 @@
 package com.red.alert.utils.metadata;
 
 import android.content.Context;
+import android.location.Location;
+import android.location.LocationManager;
 import android.util.Log;
 
 import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 import com.red.alert.R;
 import com.red.alert.config.Alerts;
 import com.red.alert.config.Logging;
+import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.config.ThreatTypes;
 import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.model.Alert;
@@ -538,6 +541,76 @@ public class LocationData {
         }
 
         // No match
+        return null;
+    }
+
+    public static String getNearbyCityNames(Location myLocation, Context context) {
+        // Get user's locale
+        boolean isHebrew = Localization.isHebrewLocale(context);
+
+        // Prepare cities array
+        List<City> cities = getAllCities(context);
+
+        // Output array
+        List<String> cityNames = new ArrayList<>();
+
+        // Calculate max distance
+        double maxDistance = LocationLogic.getMaxDistanceKilometers(context, -1);
+
+        // Traverse all cities
+        for (City city : cities) {
+            // Create an empty location object
+            Location location = new Location(LocationManager.PASSIVE_PROVIDER);
+
+            // Set latitude & longitude
+            location.setLatitude(city.latitude);
+            location.setLongitude(city.longitude);
+
+            // Get distance to city in KM
+            float distance = location.distanceTo(myLocation) / 1000;
+
+            // Distance is less than max?
+            if (distance <= maxDistance) {
+                // Hebrew?
+                if (isHebrew) {
+                    cityNames.add(city.name);
+                }
+                // Russian?
+                else if (Localization.isRussian(context)) {
+                    cityNames.add(city.nameRussian);
+                }
+                else {
+                    // Revert to English
+                    cityNames.add(city.nameEnglish);
+                }
+            }
+        }
+
+        // Join and add original code
+        return StringUtils.implode(", ", cityNames);
+    }
+
+    public static Location getCityLocation(String cityName, Context context) {
+        // Prepare cities array
+        List<City> cities = getAllCities(context);
+
+        // Loop over cities
+        for (City city : cities) {
+            // Got a match?
+            if (city.name.equals(cityName)) {
+                // Create an empty location object
+                Location location = new Location(LocationManager.PASSIVE_PROVIDER);
+
+                // Set latitude & longitude
+                location.setLatitude(city.latitude);
+                location.setLongitude(city.longitude);
+
+                // Add to list
+                return location;
+            }
+        }
+
+        // Fail
         return null;
     }
 

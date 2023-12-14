@@ -1,12 +1,14 @@
 package com.red.alert.logic.alerts;
 
 import android.content.Context;
+import android.location.Location;
 import android.util.Log;
 
 import com.red.alert.R;
 import com.red.alert.config.Alerts;
 import com.red.alert.config.Logging;
 import com.red.alert.config.ThreatTypes;
+import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.logic.notifications.RocketNotifications;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.utils.caching.Singleton;
@@ -108,6 +110,11 @@ public class AlertLogic {
             return true;
         }
 
+        // Are we nearby?
+        if (isNearby(city, context)) {
+            return true;
+        }
+
         // Irrelevant
         return false;
     }
@@ -120,6 +127,12 @@ public class AlertLogic {
 
         // Did user select this area?
         if (isCitySelectedPrimarily(city, context)) {
+            return false;
+        }
+
+        // Are we nearby?
+        // It's a primary alert then, not a secondary alert
+        if (isNearby(city, context)) {
             return false;
         }
 
@@ -215,6 +228,44 @@ public class AlertLogic {
         }
 
         // No match
+        return false;
+    }
+
+    public static boolean isNearby(String cityName, Context context) {
+        // Are location alerts enabled?
+        if (!AppPreferences.getLocationAlertsEnabled(context)) {
+            return false;
+        }
+
+        // Get current location (last known)
+        Location myLocation = LocationLogic.getCurrentLocation(context);
+
+        // No recent location?
+        if (myLocation == null) {
+            return false;
+        }
+
+        // Get city geolocation
+        Location cityLocation = LocationData.getCityLocation(cityName, context);
+
+        // No city found?
+        if (cityLocation == null) {
+            return false;
+        }
+
+        // Get max distance configured for location-based alerts
+        double maxDistance = LocationLogic.getMaxDistanceKilometers(context, -1);
+
+        // Calculate distance to city in kilometers
+        float distance = cityLocation.distanceTo(myLocation) / 1000;
+
+        // Distance is less than max?
+        if (distance <= maxDistance) {
+            // We are nearby!
+            return true;
+        }
+
+        // We are too far away from this city
         return false;
     }
 

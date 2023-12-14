@@ -1,7 +1,11 @@
 package com.red.alert.activities;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+
+import androidx.core.app.ActivityCompat;
 import androidx.core.view.MenuItemCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import me.pushy.sdk.lib.jackson.core.type.TypeReference;
@@ -81,9 +85,9 @@ public class AlertView extends AppCompatActivity {
                 mMap.setInfoWindowAdapter(new RTLMarkerInfoWindowAdapter(getLayoutInflater()));
 
                 // Show my location button
-                // if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                    // mMap.setMyLocationEnabled(true);
-                // }
+                 if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                     mMap.setMyLocationEnabled(true);
+                 }
 
                 // Set activity title
                 setActivityTitle();

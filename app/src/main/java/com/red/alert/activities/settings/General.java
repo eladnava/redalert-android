@@ -34,6 +34,7 @@ import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.communication.broadcasts.LocationSelectionEvents;
 import com.red.alert.logic.communication.broadcasts.SelfTestEvents;
 import com.red.alert.logic.communication.broadcasts.SettingsEvents;
+import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.logic.push.FCMRegistration;
 import com.red.alert.logic.push.PushManager;
 import com.red.alert.logic.push.PushyRegistration;
@@ -234,7 +235,7 @@ public class General extends AppCompatPreferenceActivity {
         // Allow click on home button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // Load settings from XML There is no non-deprecated way to do it on API Level 7
+        // Load settings from XML (there is no non-deprecated way to do it on API level 7)
         addPreferencesFromResource(R.xml.settings);
 
         // Cache resource IDs
@@ -331,7 +332,7 @@ public class General extends AppCompatPreferenceActivity {
         mBatteryOptimization.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                // Show the dialog
+                // Show a dialog to the user
                 AlertDialogBuilder.showGenericDialog(getString(R.string.disableBatteryOptimizations), AndroidSettings.getBatteryOptimizationWhitelistInstructions(General.this), getString(R.string.okay), getString(R.string.notNow), true, General.this, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int which) {
@@ -480,6 +481,9 @@ public class General extends AppCompatPreferenceActivity {
         body += "user.hash=" + RedAlertAPI.getUserHash(this) + ", ";
         body += "primary.enabled=" + AppPreferences.getNotificationsEnabled(this) + ", ";
         body += "secondary.enabled=" + AppPreferences.getNotificationsEnabled(this) + ", ";
+        body += "location.enabled=" + AppPreferences.getLocationAlertsEnabled(this) + ", ";
+        body += "location.maxDistance=" + LocationLogic.getMaxDistanceKilometers(this, -1) + "km, ";
+        body += "location.updateInterval=every " + LocationLogic.getUpdateIntervalMilliseconds(this) / 1000 / 60 + " minute(s), ";
         body += "volume.primary=" + AppPreferences.getPrimaryAlertVolume(this, -1) + ", ";
         body += "volume.secondary=" + AppPreferences.getSecondaryAlertVolume(this, -1) + ", ";
         body += "fcm=" + FCMRegistration.isRegistered(this) + ", ";

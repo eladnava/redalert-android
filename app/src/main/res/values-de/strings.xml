@@ -126,6 +126,28 @@
     <string name="selectedSecondaryCities">Sekundärstädte</string>
     <string name="selectedSecondaryCitiesDesc">Wählen Sie Städte aus, um aktuelle Alerts zu erhalten</string>
 
+    <!-- GPS -->
+    <string name="locationAlerts">Standortbasierte Alarmierungen</string>
+    <string name="locationAlertsDesc">Konfigurieren Sie standortbasierte Benachrichtigungen und erhalten Sie Notfallbenachrichtigungen auf dem Laufenden</string>
+    <string name="gpsEnabled">Standortbasierte Alarmierungen</string>
+    <string name="gpsEnabledDesc">Empfangen von standortbasierten Alarmierungen in Echtzeit</string>
+    <string name="maxDistance">Maximale entfernung</string>
+    <string name="maxDistanceDesc">Schieben den Regler, um die maximale Entfernung von jeder Stadt auszuwählen, die eine Raketenwarnung empfängt</string>
+    <string name="kilometer">km</string>
+    <string name="nearbyCities">in der nähe liegende Städte</string>
+    <string name="noLocation">Dein Standort konnte nicht ermittelt werden</string>
+    <string name="noNearbyCities">Keine in der nähe liegenden Stäte, ändere die maximale Distance</string>
+
+    <!-- GPS Frequency -->
+    <string name="gpsFrequency">Update intervall</string>
+    <string name="gpsFrequencyDesc">Schieben den Regler, um das Minuten Intervall für Standortaktualisierungen auszuwählen</string>
+    <string name="every">alle</string>
+    <string name="minutes">minuten</string>
+
+    <!-- GPS Notification -->
+    <string name="enableGPSDesc">Bitte Aktiviere dein GPS Um standortbezogene Alarme zu erhalten.</string>
+    <string name="enable">Einschalten</string>
+
     <!-- Alert Share -->
     <string name="shareAlert">Teile die Meldung</string>
     <string name="alertSoundedAt">Ein code-red-Alarm hörte sich aus&#160;</string>

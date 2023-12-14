@@ -28,7 +28,7 @@
     <string name="safe">Send \"I\'m safe\"</string>
     <string name="imSafeMessage">I\'m safe - sent via RedAlert for Android - https://redalert.me</string>
     <string name="imSafeDesc">Send \"I\'m safe\"</string>
-    <string name="pushRegistrationSuccess">Select Your City</string>
+    <string name="pushRegistrationSuccess">Select City of Residence</string>
     <string name="pushRegistrationSuccessDesc">Please select your city or town to receive real-time alerts.</string>
     <string name="safeWhatsApp">Send via WhatsApp</string>
     <string name="safeWhatsAppDesc">Tapping the \"I\'m safe\" button will open up WhatsApp contact selection</string>
@@ -125,6 +125,28 @@
     <!-- Secondary Cities -->
     <string name="selectedSecondaryCities">Secondary cities</string>
     <string name="selectedSecondaryCitiesDesc">Receive secondary alerts about specific cities and towns</string>
+
+    <!-- GPS -->
+    <string name="locationAlerts">Location-based alerts</string>
+    <string name="locationAlertsDesc">Configure location-based alerts to receive emergency alerts on the move</string>
+    <string name="gpsEnabled">Location-based alerts</string>
+    <string name="gpsEnabledDesc">Receive location-based alerts in real-time</string>
+    <string name="maxDistance">Max distance</string>
+    <string name="maxDistanceDesc">Slide to select the maximum distance from every city that receives an emergency alert</string>
+    <string name="kilometer">km</string>
+    <string name="nearbyCities">Nearby cities</string>
+    <string name="noLocation">Failed to determine your last known location</string>
+    <string name="noNearbyCities">No nearby cities, try increasing the max distance</string>
+
+    <!-- GPS Frequency -->
+    <string name="gpsFrequency">Update interval</string>
+    <string name="gpsFrequencyDesc">Slide to select the interval, in minutes, for location updates</string>
+    <string name="every">Every</string>
+    <string name="minutes">minutes</string>
+
+    <!-- GPS Notification -->
+    <string name="enableGPSDesc">Please enable GPS to receive location-based alerts.</string>
+    <string name="enable">Enable</string>
 
     <!-- Alert Share -->
     <string name="shareAlert">Share the alert</string>

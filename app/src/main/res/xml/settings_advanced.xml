@@ -47,6 +47,10 @@
             android:key="@string/secondaryPref"
             android:title="@string/secondaryAlerts"
             android:summary="@string/secondaryAlertsDesc"/>
+        <Preference
+            android:key="@string/locationPref"
+            android:title="@string/locationAlerts"
+            android:summary="@string/locationAlertsDesc"/>
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/safeCategory">

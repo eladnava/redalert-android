@@ -13,6 +13,7 @@ import android.provider.Settings;
 import android.view.MenuItem;
 
 import com.red.alert.R;
+import com.red.alert.activities.settings.alerts.LocationAlerts;
 import com.red.alert.activities.settings.alerts.SecondaryAlerts;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.ui.activities.AppCompatPreferenceActivity;
@@ -26,6 +27,7 @@ import me.pushy.sdk.services.PushySocketService;
 import me.pushy.sdk.util.PushyServiceManager;
 
 public class Advanced extends AppCompatPreferenceActivity {
+    Preference mLocationAlerts;
     Preference mSecondaryAlerts;
     SliderPreference mVolumeSelection;
 
@@ -65,10 +67,11 @@ public class Advanced extends AppCompatPreferenceActivity {
         // Allow click on home button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // Load settings from XML There is no non-deprecated way to do it on API Level 7
+        // Load settings from XML (there is no non-deprecated way to do it on API level 7)
         addPreferencesFromResource(R.xml.settings_advanced);
 
         // Cache resource IDs
+        mLocationAlerts = findPreference(getString(R.string.locationPref));
         mSecondaryAlerts = findPreference(getString(R.string.secondaryPref));
         mVolumeSelection = (SliderPreference) findPreference(getString(R.string.volumePref));
         mAlertPopup = (CheckBoxPreference)findPreference(getString(R.string.alertPopupPref));
@@ -101,8 +104,26 @@ public class Advanced extends AppCompatPreferenceActivity {
                 // Set class
                 secondaryAlerts.setClass(Advanced.this, SecondaryAlerts.class);
 
-                // Show settings
+                // Take user to Secondary Alerts settings page
                 startActivity(secondaryAlerts);
+
+                // Consume event
+                return true;
+            }
+        });
+
+        // Set up location alerts click listener
+        mLocationAlerts.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                // Prepare new intent
+                Intent locationAlerts = new Intent();
+
+                // Set class
+                locationAlerts.setClass(Advanced.this, LocationAlerts.class);
+
+                // Take user to Location Alerts settings page
+                startActivity(locationAlerts);
 
                 // Consume event
                 return true;
