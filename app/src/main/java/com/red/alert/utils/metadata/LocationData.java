@@ -464,6 +464,39 @@ public class LocationData {
         // Convert to string
         return context.getString(result);
     }
+    
+    public static int getThreatDrawable(String threat) {
+        // Null fallback
+        if (threat == null) {
+            return R.drawable.ic_launcher;
+        }
+
+        // Return drawable resource by threat type
+        if (threat.contains(ThreatTypes.RADIOLOGICAL_EVENT)) {
+            return R.drawable.ic_radiological_event;
+        }
+        else if (threat.contains(ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION)) {
+            return R.drawable.ic_hostile_aircraft_intrusion;
+        }
+        else if (threat.contains(ThreatTypes.HAZARDOUS_MATERIALS)) {
+            return R.drawable.ic_hazardous_materials;
+        }
+        else if (threat.contains(ThreatTypes.TSUNAMI)) {
+            return R.drawable.ic_tsunami;
+        }
+        else if (threat.contains(ThreatTypes.MISSILES)) {
+            return R.drawable.ic_launcher;
+        }
+        else if (threat.contains(ThreatTypes.TERRORIST_INFILTRATION)) {
+            return R.drawable.ic_terrorist_infiltration;
+        }
+        else if (threat.contains(ThreatTypes.EARTHQUAKE)) {
+            return R.drawable.ic_earthquake;
+        }
+        else {
+            return R.drawable.ic_launcher;
+        }
+    }
 
     public static String getLocalizedThreatInstructions(String threatType, Context context) {
         // Result resource

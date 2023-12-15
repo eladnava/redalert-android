@@ -31,6 +31,7 @@ import com.red.alert.receivers.NotificationDeletedReceiver;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.localization.DateTime;
+import com.red.alert.utils.metadata.LocationData;
 
 public class RocketNotifications {
     public static void notify(Context context, String city, String notificationTitle, String notificationContent, String alertType, String threatType, String overrideSound) {
@@ -58,7 +59,7 @@ public class RocketNotifications {
                 .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setColor(context.getResources().getColor(R.color.colorAccent))
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(notificationContent))
-                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher));
+                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), LocationData.getThreatDrawable(threatType)));
 
         // Handle notification delete
         builder.setDeleteIntent(getNotificationDeletedReceiverIntent(context));

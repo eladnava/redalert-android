@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.red.alert.R;
 import com.red.alert.config.ThreatTypes;
 import com.red.alert.model.Alert;
+import com.red.alert.utils.metadata.LocationData;
 
 import java.util.List;
 
@@ -86,30 +87,7 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
             viewHolder.time.setText(alert.localizedThreat + " • " + alert.dateString);
 
             // Custom threat icons
-            if (alert.threat.contains(ThreatTypes.RADIOLOGICAL_EVENT)) {
-                viewHolder.image.setImageResource(R.drawable.ic_radiological_event);
-            }
-            else if (alert.threat.contains(ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION)) {
-                viewHolder.image.setImageResource(R.drawable.ic_hostile_aircraft_intrusion);
-            }
-            else if (alert.threat.contains(ThreatTypes.HAZARDOUS_MATERIALS)) {
-                viewHolder.image.setImageResource(R.drawable.ic_hazardous_materials);
-            }
-            else if (alert.threat.contains(ThreatTypes.TSUNAMI)) {
-                viewHolder.image.setImageResource(R.drawable.ic_tsunami);
-            }
-            else if (alert.threat.contains(ThreatTypes.MISSILES)) {
-                viewHolder.image.setImageResource(R.drawable.ic_launcher);
-            }
-            else if (alert.threat.contains(ThreatTypes.TERRORIST_INFILTRATION)) {
-                viewHolder.image.setImageResource(R.drawable.ic_terrorist_infiltration);
-            }
-            else if (alert.threat.contains(ThreatTypes.EARTHQUAKE)) {
-                viewHolder.image.setImageResource(R.drawable.ic_earthquake);
-            }
-            else {
-                viewHolder.image.setImageResource(R.drawable.ic_launcher);
-            }
+            viewHolder.image.setImageResource(LocationData.getThreatDrawable(alert.threat));
         }
 
         // Return the view
