@@ -10,6 +10,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Binder;
@@ -330,10 +331,11 @@ public class LocationService extends Service implements
 
         // Create foreground notification
         Notification notification = new NotificationCompat.Builder(this, NotificationChannels.LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_ID)
+                .setGroup(NotificationChannels.LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_ID)
                 .setContentTitle(title)
                 .setContentText(text)
                 .setSmallIcon(R.drawable.ic_location_service)
-                .setColor(getResources().getColor(R.color.colorAccent))
+                .setColor(Color.TRANSPARENT)
                 .setPriority(Notification.PRIORITY_LOW)
                 .setContentIntent(launcherIntent)
                 .build();
