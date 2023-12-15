@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -482,8 +483,24 @@ public class General extends AppCompatPreferenceActivity {
         body += "primary.enabled=" + AppPreferences.getNotificationsEnabled(this) + ", ";
         body += "secondary.enabled=" + AppPreferences.getNotificationsEnabled(this) + ", ";
         body += "location.enabled=" + AppPreferences.getLocationAlertsEnabled(this) + ", ";
-        body += "location.maxDistance=" + LocationLogic.getMaxDistanceKilometers(this, -1) + "km, ";
-        body += "location.updateInterval=every " + LocationLogic.getUpdateIntervalMilliseconds(this) / 1000 / 60 + " minute(s), ";
+
+        // Check if location alerts enabled
+        if (AppPreferences.getLocationAlertsEnabled(this)) {
+            // Get current location
+            Location location = LocationLogic.getCurrentLocation(this);
+
+            // Null check
+            if (location != null) {
+                // Add nearby cities for debugging purposes
+                body += "location.nearbyCities=" + LocationData.getNearbyCityNames(location, this) + ", ";
+            }
+
+            // Add max distance and update interval
+            body += "location.maxDistance=" + LocationLogic.getMaxDistanceKilometers(this, -1) + "km, ";
+            body += "location.updateInterval=every " + LocationLogic.getUpdateIntervalMilliseconds(this) / 1000 / 60 + " minute(s), ";
+        }
+
+        // Add other params
         body += "volume.primary=" + AppPreferences.getPrimaryAlertVolume(this, -1) + ", ";
         body += "volume.secondary=" + AppPreferences.getSecondaryAlertVolume(this, -1) + ", ";
         body += "fcm=" + FCMRegistration.isRegistered(this) + ", ";
