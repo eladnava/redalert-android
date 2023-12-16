@@ -70,11 +70,11 @@
 
     <!-- Volume -->
     <string name="volume">уровень громкости</string>
-    <string name="volumeDesc">Выберите нужный объем для предупреждения ракетных</string>
+    <string name="volumeDesc">Настройте нужный уровень громкости сигнала для оповещений</string>
 
     <!-- Secondary Volume -->
     <string name="secondaryVolume">уровень громкости</string>
-    <string name="secondaryVolumeDesc">Выберите нужный объем для предупреждения вторичных ракетных</string>
+    <string name="secondaryVolumeDesc">Настройте уровень громкости сигнала для вторичных оповещений</string>
 
     <!-- Sound Selection -->
     <string name="sounds">Звуки</string>
@@ -173,7 +173,7 @@
 
     <!-- GPS -->
     <string name="locationAlerts">Оповещения о местоположениях</string>
-    <string name="locationAlertsDesc">Цонфигуре лоцатион-басед алертс то рецеиве эмергенций алертс он тхе может</string>
+    <string name="locationAlertsDesc">Настрой оповещения основанные на местоположении, чтоб получать предупреждения во время движения</string>
     <string name="gpsEnabled">Оповещения о местоположениях</string>
     <string name="gpsEnabledDesc">Получение уведомлений на основе определения местоположения в режиме реального времени</string>
     <string name="maxDistance">Максимальное расстояние</string>
