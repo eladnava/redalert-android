@@ -8,8 +8,8 @@ android {
         applicationId "com.red.alert"
         minSdkVersion 16
         targetSdkVersion 33
-        versionCode 10440
-        versionName "1.0.44"
+        versionCode 10450
+        versionName "1.0.45"
     }
     buildTypes {
         release {
