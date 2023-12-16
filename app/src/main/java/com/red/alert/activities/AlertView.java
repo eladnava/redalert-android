@@ -81,7 +81,7 @@ public class AlertView extends AppCompatActivity {
                 // Prevent from being called again
                 mMap.setOnCameraChangeListener(null);
 
-                // Fix RTL bug with hebrew
+                // Fix RTL bug
                 mMap.setInfoWindowAdapter(new RTLMarkerInfoWindowAdapter(getLayoutInflater()));
 
                 // Show my location button

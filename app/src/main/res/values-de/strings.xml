@@ -30,7 +30,7 @@
     <string name="imSafeDesc">Sende \"ich bin in Sicherheit\"</string>
     <string name="pushRegistrationSuccess">Wählen Sie Ihre Stadt aus</string>
     <string name="pushRegistrationSuccessDesc">Bitte wählen Sie Ihre Stadt oder Gemeinde aus, um Echtzeitbenachrichtigungen zu erhalten.</string>
-    <string name="safeWhatsApp">Senden über  WhatsApp</string>
+    <string name="safeWhatsApp">Senden über WhatsApp</string>
     <string name="safeWhatsAppDesc">Drücke auf den \"ich bin in Sicherheit\" Button, dann wird eine Automatische Nachricht über WhatsApp verschickt</string>
     <string name="soundSelection">Raketen Alarmierungston</string>
     <string name="soundSelectionDesc">Suche dir einen Ton für eingebende Raketenwarnungen aus</string>
@@ -49,10 +49,10 @@
     <string name="tiny">Short 1</string>
     <string name="calm">Relaxing 1</string>
     <string name="funny">Lustig</string>
-    <string name="language">Spracheinstellungen</string>
-    <string name="langSelection">App Sprache</string>
-    <string name="langSelectionDesc">Ändere die Sprache der App</string>
-    <string name="automatic">Automatisch</string>
+    <string name="automatic">Automatic</string>
+    <string name="language">Language</string>
+    <string name="langSelection">App language</string>
+    <string name="langSelectionDesc">Change the application language</string>
     <string name="selectedZones">Weitere Regionen</string>
     <string name="selectedZonesDesc">Erhalten Sie Benachrichtigungen über ganze Regionen (zusätzlich zu Städten)</string>
     <string name="silentOverride">Überschreibe den "Bitte nicht stören modus"</string>

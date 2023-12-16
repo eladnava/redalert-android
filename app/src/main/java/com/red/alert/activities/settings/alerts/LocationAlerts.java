@@ -280,10 +280,10 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
 
     private void refreshSummaries() {
         // Update summary text
-        mMaxDistance.setSummary(getMaxDistanceSummary(-1));
+        mMaxDistance.setSummary(Localization.localizeDigits(getMaxDistanceSummary(-1), this));
 
         // Update summary text
-        mFrequency.setSummary(getFrequencySummary(-1));
+        mFrequency.setSummary(Localization.localizeDigits(getFrequencySummary(-1), this));
 
         // Get current location
         Location location = LocationLogic.getCurrentLocation(this);

@@ -15,6 +15,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.red.alert.R;
+import com.red.alert.utils.localization.Localization;
 
 /**
  * @author Jay Weisskopf
@@ -130,7 +131,7 @@ public class SliderPreference extends DialogPreference {
             return "?";
         }
 
-        return getSeekBarChangedListener().getDialogMessage(value);
+        return Localization.localizeDigits(getSeekBarChangedListener().getDialogMessage(value), getContext());
     }
 
     @Override

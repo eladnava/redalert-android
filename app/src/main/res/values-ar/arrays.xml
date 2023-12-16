@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="zoneNames">
+        <item>اختر الكل</item>
+        <item>ايلات</item>
+        <item>بيكعا</item>
+        <item>بيكعات بيت شان</item>
+        <item>الجولان الجنوبي</item>
+        <item>الجولان الشمالي</item>
+        <item>الجليل الأعلى</item>
+        <item>الجليل الأسفل</item>
+        <item>دان</item>
+        <item>جنوب النقب</item>
+        <item>الكرمل</item>
+        <item>همفراتس</item>
+        <item>هعماكيم</item>
+        <item>هشفيلاه</item>
+        <item>وادي عارة</item>
+        <item>يهودا</item>
+        <item>البحر الميت</item>
+        <item>أورشليمالقدس</item>
+        <item>اليركون</item>
+        <item>لخيش</item>
+        <item>مناشيه</item>
+        <item>النقب الغربي</item>
+        <item>غرب لخيش</item>
+        <item>مركز الجليل</item>
+        <item>مركز النقب</item>
+        <item>غلاف غزة</item>
+        <item>العرباه</item>
+        <item>خط المواجهة</item>
+        <item>السامرة</item>
+        <item>شيفلات يهودا</item>
+        <item>شارون</item>
+    </string-array>
+</resources>

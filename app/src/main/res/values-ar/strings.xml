@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="appName">أحمر اللون</string>
+    <string name="signing_up">الاشتراك في الإشعارات الفورية...</string>
+    <string name="okay">موافق</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+    <string name="error">خطأ</string>
+    <string name="noGooglePlayServices">لا يحتوي هاتفك على إصدار محدث من خدمات تطبيقات جوجل مثبتًا.</string>
+    <string name="pushRegistrationFailed">حدث خطأ أثناء تسجيلك للحصول على إشعارات الدفع. سنحاول تسجيلك مرة أخرى في المستقبل.</string>
+    <string name="apiRequestFailed">فشل طلب استرداد المعلومات من خوادمنا. الرجاء التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى.</string>
+    <string name="registrationFailed">فشل التسجيل، يرجى المحاولة مرة أخرى لاحقًا.</string>
+    <string name="grantNotificationPermission">يُرجى تمكين \"الإشعارات\" على الشاشة التالية لتلقي التنبيهات في الوقت الفعلي.</string>
+    <string name="settings">الإعدادات</string>
+    <string name="advanced">متقدم</string>
+    <string name="advancedSettings">الإعدادات المتقدمة</string>
+    <string name="advancedSettingsTitle">الإعدادات المتقدمة</string>
+    <string name="advancedSettingsDesc">تكوين التنبيهات الثانوية وتعديل الإعدادات المتقدمة</string>
+    <string name="notifications">تلقي التنبيهات</string>
+    <string name="notificationsDesc">تلقي التنبيهات في الوقت الفعلي</string>
+    <string name="contact">جهة الاتصال</string>
+    <string name="contactDesc">اتصل بمطور التطبيق</string>
+    <string name="reportProblem">الإبلاغ عن مشكلة</string>
+    <string name="manualContact">اتصل بي عبر البريد الإلكتروني على support@redalert.me</string>
+    <string name="jsonFailed">حدث خطأ أثناء تحميل البيانات من الخادم.</string>
+    <string name="notifyError">حدث خطأ أثناء عرض الإشعار، يرجى إعادة تشغيل هاتفك.</string>
+    <string name="safeCategory">\"أنا آمن\"</string>
+    <string name="safe">أرسل \"أنا آمن\"</string>
+    <string name="imSafeMessage">أنا آمن - تم الإرسال عبر أحمر اللون لنظام ذكري المظهر - https://redalert.me</string>
+    <string name="imSafeDesc">أرسل \"أنا آمن\"</string>
+    <string name="pushRegistrationSuccess">حدد مدينة الإقامة</string>
+    <string name="pushRegistrationSuccessDesc">يُرجى تحديد مدينتك أو بلدتك لتلقي التنبيهات في الوقت الفعلي.</string>
+    <string name="safeWhatsApp">إرسال عبر واتساب</string>
+    <string name="safeWhatsAppDesc">سيؤدي النقر على زر \"أنا آمن\" إلى فتح اختيار جهة اتصال واتساب</string>
+    <string name="soundSelection">صوت التنبيه</string>
+    <string name="soundSelectionDesc">حدد صوتًا للتنبيهات الواردة</string>
+    <string name="test">الاختبار الذاتي</string>
+    <string name="testDesc">أرسل تنبيه اختبار للتحقق من الاتصال</string>
+    <string name="testFailed">فشل الاختبار الذاتي تمامًا. لم يتم تلقي أي تنبيه من أي بوابة إشعار الدفع. تحقق من اتصالك بالإنترنت وحاول مرة أخرى لاحقًا، واتصل بنا إذا استمرت المشكلة.</string>
+    <string name="reliability">الموثوقية</string>
+    <string name="noAlerts">لا توجد تنبيهات\nفي اليوم الماضي</string>
+    <string name="recentAlerts">التنبيهات الأخيرة</string>
+    <string name="testSound">اختبار الصوت</string>
+    <string name="siren1">صفارة الإنذار ۱</string>
+    <string name="siren2">صفارة الإنذار ۲</string>
+    <string name="siren3">صفارة الإنذار ۳</string>
+    <string name="siren4">صفارة الإنذار ٤</string>
+    <string name="siren5">صفارة الإنذار ٥</string>
+    <string name="tiny">قصير ۱</string>
+    <string name="calm">الاسترخاء ۱</string>
+    <string name="funny">مضحك</string>
+    <string name="automatic">Automatic</string>
+    <string name="language">اللغة</string>
+    <string name="langSelection">لغة التطبيق (Language)</string>
+    <string name="langSelectionDesc">تغيير لغة التطبيق</string>
+    <string name="selectedCities">المدن</string>
+    <string name="selectedCitiesDesc">تلقي تنبيهات حول مدن وبلدات محددة</string>
+    <string name="selectedZones">مناطق إضافية</string>
+    <string name="selectedZonesDesc">تلقي تنبيهات حول مناطق بأكملها (بالإضافة إلى المدن)</string>
+    <string name="silentOverride">تجاوز الوضع الصامت</string>
+    <string name="silentOverrideDesc">ستؤدي التنبيهات الواردة إلى تعطيل الوضع الصامت</string>
+    <string name="testSuccessfulLong">اكتمل الاختبار الذاتي بنجاح!</string>
+    <string name="website">تفضل بزيارة موقعنا على الويب</string>
+    <string name="websiteDesc">تفضل بزيارة موقعنا الرسمي</string>
+    <string name="alertRegions">المناطق</string>
+    <string name="receiveSecondaryAlerts">التنبيهات الثانوية</string>
+    <string name="receiveSecondaryAlertsDesc">تلقي التنبيهات الثانوية في الوقت الفعلي</string>
+    <string name="sounds">الأصوات</string>
+    <string name="share">مشاركة</string>
+    <string name="shareDesc">مشاركة التطبيق</string>
+    <string name="shareMessage">أنا أستخدم أحمر اللون لنظام ذكري المظهر للحصول على تنبيهات في الوقت الفعلي - https://redalert.me</string>
+    <string name="vibrate">تمكين الاهتزاز</string>
+    <string name="vibrateDesc">ستؤدي التنبيهات الواردة إلى اهتزاز هاتفك</string>
+    <string name="sentVia">تم الإرسال باستخدام</string>
+    <string name="problemDesc">وصف المشكلة: </string>
+    <string name="noSound">لا يوجد صوت</string>
+    <string name="search">أدخل كلمات البحث الأساسية...</string>
+    <string name="allString">الكل</string>
+    <string name="noneString">لا شيء</string>
+    <string name="registrationID">معرف التسجيل</string>
+    <string name="calm2">الاسترخاء ۲</string>
+    <string name="calm3">الاسترخاء ۳</string>
+    <string name="calm4">الاسترخاء ٤</string>
+    <string name="calm5">الاسترخاء ٥</string>
+    <string name="tiny2">قصير ۲</string>
+    <string name="tiny3">قصير ۳</string>
+    <string name="tiny4">قصير ٤</string>
+    <string name="tiny5">قصيرة ٥</string>
+    <string name="tiny6">قصيرة ٦</string>
+
+    <!-- تنبيهات ثانوية -->
+    <string name="secondaryAlerts">التنبيهات الثانوية</string>
+    <string name="secondaryAlertsTitle">التنبيهات الثانوية</string>
+    <string name="secondaryAlertsDesc">قم بتكوين التنبيهات الثانوية لتبقى على اطلاع دائم بالتنبيهات في المناطق الأخرى</string>
+
+    <!-- الصوت الثانوي -->
+    <string name="secondarySoundSelection">الصوت الثانوي</string>
+    <string name="secondarySoundSelectionDesc">حدد صوتًا للتنبيهات الثانوية</string>
+
+    <!-- وضع الاهتزاز الثانوي -->
+    <string name="secondaryVibrate">تمكين الاهتزاز</string>
+    <string name="secondaryVibrateDesc">ستؤدي التنبيهات الثانوية إلى اهتزاز هاتفك</string>
+
+    <!-- تجاوز الوضع الصامت الثانوي -->
+    <string name="secondarySilentOverride">تجاوز الوضع الصامت</string>
+    <string name="secondarySilentOverrideDesc">ستتجاوز التنبيهات الثانوية الوضع الصامت</string>
+
+    <!-- تقييم التطبيق -->
+    <string name="rateApp">تقييم التطبيق</string>
+    <string name="rateAppDesc">تقييم التطبيق على تطبيقات جوجل</string>
+
+    <string name="update">التحديث متاح</string>
+    <string name="updateDesc">يتوفر إصدار أحدث من هذا التطبيق (%s)، يرجى التحديث.</string>
+    <string name="updatePositive">تحديث</string>
+    <string name="notNow">ليس الآن</string>
+
+    <!--الحجم -->
+    <string name="volume">مستوى الصوت</string>
+    <string name="volumeDesc">قم بالتمرير لتحديد مستوى الصوت المطلوب للتنبيهات الواردة</string>
+
+    <!-- المجلد الثانوي -->
+    <string name="secondaryVolume">مستوى الصوت</string>
+    <string name="secondaryVolumeDesc">قم بالتمرير لتحديد مستوى الصوت المطلوب للتنبيهات الثانوية</string>
+
+    <!-- المدن الثانوية -->
+    <string name="selectedSecondaryCities">المدن الثانوية</string>
+    <string name="selectedSecondaryCitiesDesc">تلقي تنبيهات ثانوية حول مدن وبلدات محددة</string>
+
+    <!-- نظام تحديد المواقع -->
+    <string name="locationAlerts">التنبيهات المستندة إلى الموقع</string>
+    <string name="locationAlertsDesc">تكوين التنبيهات المستندة إلى الموقع لتلقي تنبيهات الطوارئ أثناء التنقل</string>
+    <string name="gpsEnabled">التنبيهات المستندة إلى الموقع</string>
+    <string name="gpsEnabledDesc">تلقي التنبيهات المستندة إلى الموقع في الوقت الفعلي</string>
+    <string name="maxDistance">المسافة القصوى</string>
+    <string name="maxDistanceDesc">قم بالتمرير لتحديد أقصى مسافة من كل مدينة تتلقى تنبيهًا للطوارئ</string>
+    <string name="kilometer">كم</string>
+    <string name="nearbyCities">المدن القريبة</string>
+    <string name="noLocation">فشل في تحديد آخر موقع معروف لك</string>
+    <string name="noNearbyCities">لا توجد مدن قريبة، حاول زيادة الحد الأقصى للمسافة</string>
+
+    <!-- تردد نظام تحديد المواقع -->
+    <string name="gpsFrequency">الفاصل الزمني للتحديث</string>
+    <string name="gpsFrequencyDesc">قم بالتمرير لتحديد الفاصل الزمني، بالدقائق، لتحديثات الموقع</string>
+    <string name="every">كل</string>
+    <string name="minutes">الدقائق</string>
+
+    <!-- إشعار GPS -->
+    <string name="enableGPSDesc">يُرجى تمكين نظام تحديد المواقع العالمي (نظام تحديد المواقع) لتلقي التنبيهات المستندة إلى الموقع.</string>
+    <string name="enable">تمكين</string>
+
+    <!-- تنبيه بالمشاركة -->
+    <string name="shareAlert">شارك التنبيه</string>
+    <string name="alertSoundedAt">إنطلق تنبيه باللون الأحمر في&#160;</string>
+    <string name="atTime">في</string>
+    <string name="alertSentVia">- تم الإرسال عبر أحمر اللون لنظام ذكري المظهر - https://redalert.me</string>
+
+    <!-- تنشيط الشاشة -->
+    <string name="wakeScreen">تنشيط الشاشة</string>
+    <string name="wakeScreenDesc">ستعمل التنبيهات الواردة على تنشيط شاشة هاتفك</string>
+
+    <!-- تنبيه منبثق -->
+    <string name="close">إغلاق</string>
+    <string name="silence">الصمت</string>
+    <string name="showPopup">إظهار النافذة المنبثقة</string>
+    <string name="showPopupDesc">سيتم عرض التنبيهات الواردة في نافذة منبثقة</string>
+    <string name="grantOverlayPermission">السماح بالعرض فوق التطبيقات الأخرى</string>
+    <string name="grantOverlayPermissionInstructions">يُرجى تحديد \"أحمر اللون\" -> \"السماح بالعرض فوق التطبيقات الأخرى\" في الشاشة التالية.</string>
+
+    <!-- خدمة مقدمة انتهازية -->
+    <string name="foregroundService">تحسين الموثوقية</string>
+    <string name="foregroundServiceDesc">عرض إشعار مستمر يمنع ذكري المظهر من إنهاء التطبيق في الخلفية</string>
+    <string name="pushy_foreground_service_title">@string/appName</string>
+    <string name="pushy_foreground_service_connected">متصل بخدمة الإشعارات</string>
+    <string name="pushy_foreground_service_connecting">جارٍ الاتصال...</string>
+    <string name="pushy_foreground_service_disconnected">غير متصل بخدمة الإشعارات</string>
+
+    <!-- متنوع -->
+    <string name="loading">جارٍ التحميل...</string>
+    <string name="testingFCM">اختبار بوابة الدفع... (۱/۲)</string>
+    <string name="testingPushy">اختبار بوابة الدفع... (۲/۲)</string>
+    <string name="fcmTestFailed">فشل الاختبار الذاتي جزئيًا. لم يتم تلقي أي تنبيه من بوابة الدفع الخاصة بـ جوجل، ولكن تم استلام التنبيه بنجاح عبر بوابة الدفع الثانوية. يرجى المحاولة مرة أخرى لاحقًا.</string>
+    <string name="pushyTestFailed">فشل الاختبار الذاتي جزئيًا. لم يتم تلقي أي تنبيه من بوابة الدفع الثانوية، ولكن تم استلام التنبيه بنجاح عبر بوابة الدفع الخاصة بـ جوجل. يرجى المحاولة مرة أخرى لاحقًا.</string>
+    <string name="debugInfo">معلومات إضافية: </string>
+    <string name="testSuccessful">اكتمل الاختبار بنجاح!</string>
+    <string name="alerts">التنبيهات</string>
+    <string name="advancedAlerts">التنبيهات المتقدمة</string>
+
+    <!-- عملية درع النجاة -->
+    <string name="lifeshieldShelters">ملاجئ Lifeshield:</string>
+    <string name="learnAboutLifeshield">تعرف على Lifeshield</string>
+    <string name="learnAboutLifeshieldDesc">تعرف على المزيد حول Operation Lifeshield، وهي منظمة غير ربحية تنشر ملاجئ الغارات الجوية في إسرائيل.</string>
+
+    <!-- أنواع التهديدات -->
+    <string name="missiles">إطلاق الصواريخ</string>
+    <string name="radiologicalEvent">حدث إشعاعي</string>
+    <string name="earthQuake">زلزال</string>
+    <string name="tsunami">تحذير من تسونامي</string>
+    <string name="hostileAircraftIntrusion">اختراق طائرة معادية</string>
+    <string name="hazardousMaterials">حدث المواد الخطرة</string>
+    <string name="terroristInfiltration">تسلل إرهابي</string>
+    <string name="missilesDrill">تمرين: إطلاق صاروخ</string>
+    <string name="earthQuakeDrill">تمرين: زلزال</string>
+    <string name="radiologicalEventDrill">تمرين: حدث إشعاعي</string>
+    <string name="tsunamiDrill">تمرين: تحذير من تسونامي</string>
+    <string name="hostileAircraftIntrusionDrill">تمرين: اقتحام طائرة معادية</string>
+    <string name="hazardousMaterialsDrill">التمرين: حدث المواد الخطرة</string>
+    <string name="terroristInfiltrationDrill">تمرين: تسلل الإرهابيين</string>
+    <string name="unknown">تنبيه</string>
+    <string name="system">تنبيه النظام</string>
+
+    <!-- تعليمات التهديد -->
+    <string name="missilesInstructions">ادخل إلى المساحة المحمية وابق فيها لمدة ۱۰ دقائق.</string>
+    <string name="hostileAircraftIntrusionInstructions">ادخل إلى المساحة المحمية فورًا وابق فيها لمدة ۱۰ دقائق، ما لم يتم تلقي تنبيه آخر.</string>
+    <string name="earthQuakeInstructions">اخرج فورًا إلى العراء. إذا لم يكن ذلك ممكنا، أدخل الغرفة المحمية أو الدرج.</string>
+    <string name="radiologicalEventInstructions">ادخل المبنى وأغلق الأبواب والنوافذ.</string>
+    <string name="terroristInfiltrationInstructions">ادخل على الفور إلى مبنى مجاور، وأغلق الأبواب وأغلق النوافذ.</string>
+    <string name="tsunamiInstructions">تحرك على الفور بعيدًا عن الشاطئ لمسافة لا تقل عن كيلومتر واحد أو اصعد إلى الطابق الرابع أو أعلى.</string>
+    <string name="hazardousMaterialsInstructions">ادخل فورًا إلى مبنى مجاور وأغلق الأبواب والنوافذ.</string>
+
+    <!-- مربع حوار تحديد الصوت المخصص -->
+    <string name="selectCustomSound">حدد الصوت المخصص</string>
+    <string name="selectCustomSoundDesc">اختر الصوت الخاص بك عن طريق النقر على "الصوت" -> "الأصوات الخاصة بي" -> "+" -> "حفظ" في الشاشة التالية.</string>
+
+    <!-- مربع حوار تحسين البطارية -->
+    <string name="disableBatteryOptimizations">تعطيل تحسينات البطارية</string>
+    <string name="disableBatteryOptimizationsInstructions">لتلقي التنبيهات في الخلفية، يرجى ضبط \"البطارية\" على \"غير مقيد\" في الشاشة التالية.</string>
+    <string name="disableBatteryOptimizationsSamsungInstructions">لتلقي التنبيهات في الخلفية، حدد \"البطارية\" في الشاشة التالية -> \"تحسين استخدام البطارية\" -> \"التطبيقات غير محسنة\" -> \"الكل\" -> \"أحمر اللون\" -> قم بإيقاف تشغيل التحسين للتطبيق.</string>
+
+    <!-- إعداد التذكير بتحسين البطارية -->
+    <string name="disableBatteryOptimizationsReminder">هام: تعطيل تحسينات البطارية</string>
+    <string name="disableBatteryOptimizationsReminderDesc">لقد اكتشفنا أنك لم تقم بعد بتعطيل تحسينات البطارية لـ أحمر اللون. لتلقي التنبيهات في الوقت الفعلي أثناء تشغيل التطبيق في الخلفية، يجب عليك تعطيل تحسينات البطارية. انقر للحصول على التعليمات.</string>
+
+    <!-- مسح مربع حوار التنبيهات الأخيرة -->
+    <string name="clearRecentAlerts">هل تريد مسح التنبيهات الأخيرة؟</string>
+    <string name="clearRecentAlertsDesc">هل ترغب في مسح قائمة التنبيهات الأخيرة؟</string>
+</resources>

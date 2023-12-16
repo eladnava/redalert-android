@@ -6,6 +6,7 @@
         <item>@string/automatic</item>
         <item>@string/hebrew</item>
         <item>@string/english</item>
+        <item>@string/arabic</item>
         <item>@string/spanish</item>
         <item>@string/russian</item>
         <item>@string/italian</item>
@@ -16,6 +17,7 @@
         <item></item>
         <item>@string/hebrewCode</item>
         <item>@string/englishCode</item>
+        <item>@string/arabicCode</item>
         <item>@string/spanishCode</item>
         <item>@string/russianCode</item>
         <item>@string/italianCode</item>

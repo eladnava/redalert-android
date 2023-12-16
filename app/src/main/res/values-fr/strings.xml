@@ -51,7 +51,7 @@
     <string name="funny">Drôle</string>
     <string name="language">Language</string>
     <string name="langSelection">App language</string>
-    <string name="langSelectionDesc">Change the application\'s language</string>
+    <string name="langSelectionDesc">Change the application language</string>
     <string name="automatic">Automatic</string>
     <string name="selectedZones">Régions supplémentaires</string>
     <string name="selectedZonesDesc">Recevez des alertes sur des régions entières (en plus des villes)</string>

@@ -290,6 +290,7 @@
 
     <!-- Static Language Identifiers -->
     <string translatable="false" name="english">English</string>
+    <string translatable="false" name="arabic">Arabic</string>
     <string translatable="false" name="spanish">Español</string>
     <string translatable="false" name="russian">Pусский</string>
     <string translatable="false" name="hebrew">עברית</string>
@@ -361,11 +362,12 @@
 
     <!-- Locale Codes -->
     <string translatable="false" name="hebrewCode">iw</string>
+    <string translatable="false" name="hebrewCode2">he</string>
     <string translatable="false" name="englishCode">en</string>
+    <string translatable="false" name="arabicCode">ar</string>
     <string translatable="false" name="spanishCode">es</string>
     <string translatable="false" name="russianCode">ru</string>
     <string translatable="false" name="italianCode">it</string>
-    <string translatable="false" name="hebrewCode2">he</string>
     <string translatable="false" name="frenchCode">fr</string>
     <string translatable="false" name="germanCode">de</string>
 

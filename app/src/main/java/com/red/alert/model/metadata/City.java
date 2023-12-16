@@ -23,6 +23,9 @@ public class City {
     @JsonProperty("name_ru")
     public String nameRussian;
 
+    @JsonProperty("name_ar")
+    public String nameArabic;
+
     @JsonProperty("zone")
     public String zone;
 
@@ -31,6 +34,9 @@ public class City {
 
     @JsonProperty("zone_ru")
     public String zoneRussian;
+
+    @JsonProperty("zone_ar")
+    public String zoneArabic;
 
     @JsonProperty("value")
     public String value;
@@ -43,6 +49,9 @@ public class City {
 
     @JsonProperty("time_ru")
     public String timeRussian;
+
+    @JsonProperty("time_ar")
+    public String timeArabic;
 
     @JsonProperty("shelters")
     public int shelters;

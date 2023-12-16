@@ -11,8 +11,6 @@ import com.red.alert.config.Alerts;
 import com.red.alert.config.Logging;
 import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.config.ThreatTypes;
-import com.red.alert.logic.alerts.AlertTypes;
-import com.red.alert.model.Alert;
 import com.red.alert.model.metadata.City;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.formatting.StringUtils;
@@ -44,9 +42,6 @@ public class LocationData {
      */
 
     public static String[] getAllCityNames(Context context) {
-        // Check for english locale
-        boolean isHebrew = Localization.isHebrewLocale(context);
-
         // Get all city objects
         List<City> cities = getAllCities(context);
 
@@ -56,16 +51,22 @@ public class LocationData {
         // Loop over cities
         for (City city : cities) {
             // Hebrew?
-            if (isHebrew) {
-                // Add to list
+            if (Localization.isHebrew(context)) {
+                // Add Hebrew name to list
                 names.add(city.name);
             }
+            // Russian?
             else if (Localization.isRussian(context)) {
-                // Add russian name to list
+                // Add Russian name to list
                 names.add(city.nameRussian);
             }
+            // Arabic?
+            else if (Localization.isArabic(context)) {
+                // Add Arabic name to list
+                names.add(city.nameArabic);
+            }
             else {
-                // Add english name to list
+                // Add English name to list
                 names.add(city.nameEnglish);
             }
         }
@@ -92,9 +93,6 @@ public class LocationData {
     }
 
     public static String[] getAllCityZones(Context context) {
-        // Get user's locale
-        boolean isHebrew = Localization.isHebrewLocale(context);
-
         // Prepare cities array
         List<City> cities = getAllCities(context);
 
@@ -104,16 +102,22 @@ public class LocationData {
         // Loop over cities
         for (City city : cities) {
             // Hebrew?
-            if (isHebrew) {
-                // Add to list
+            if (Localization.isHebrew(context)) {
+                // Add Hebrew name to list
                 values.add(city.zone);
             }
-            else if (Localization.isRussian(context)) {
-                // Add russian name to list
+            // Russian?
+            if (Localization.isRussian(context)) {
+                // Add Russian name to list
                 values.add(city.zoneRussian);
             }
+            // Arabic?
+            else if (Localization.isArabic(context)) {
+                // Add Arabic name to list
+                values.add(city.zoneArabic);
+            }
             else {
-                // Add to list
+                // Add English name to list
                 values.add(city.zoneEnglish);
             }
         }
@@ -268,9 +272,6 @@ public class LocationData {
     }
 
     public static String getLocalizedZoneWithCountdown(String cityName, Context context) {
-        // Get user's locale
-        boolean isHebrew = Localization.isHebrewLocale(context);
-
         // Prepare cities array
         List<City> cities = getAllCities(context);
 
@@ -279,16 +280,20 @@ public class LocationData {
             // Got a match?
             if (city.name.equals(cityName)) {
                 // Hebrew?
-                if (isHebrew) {
-                    // Return area countdown
+                if (Localization.isHebrew(context)) {
+                    // Return area countdown in Hebrew
                     return city.zone + " (" + city.time + ")";
                 }
                 else if (Localization.isRussian(context)) {
-                    // Return area countdown in russian
+                    // Return area countdown in Russian
                     return city.zoneRussian  + " (" + city.timeRussian + ")";
                 }
+                else if (Localization.isArabic(context)) {
+                    // Return area countdown in Arabic
+                    return city.zoneArabic  + " (" + city.timeArabic + ")";
+                }
                 else {
-                    // Return area countdown in english
+                    // Return area countdown in English
                     return city.zoneEnglish  + " (" + city.timeEnglish + ")";
                 }
             }
@@ -316,14 +321,6 @@ public class LocationData {
     }
 
     public static String getLocalizedCityName(String cityName, Context context) {
-        // Get user's locale
-        boolean isHebrew = Localization.isHebrewLocale(context);
-
-        // Hebrew?
-        if (isHebrew) {
-            return cityName;
-        }
-
         // Prepare cities array
         List<City> cities = getAllCities(context);
 
@@ -331,12 +328,20 @@ public class LocationData {
         for (City city : cities) {
             // Got a match?
             if (city.name.equals(cityName)) {
-                // Check for russian first
-                if (Localization.isRussian(context)) {
+                // Hebrew?
+                if (Localization.isHebrew(context)) {
+                    return city.name;
+                }
+                // Russian?
+                else if (Localization.isRussian(context)) {
                     return city.nameRussian;
                 }
+                // Arabic?
+                else if (Localization.isArabic(context)) {
+                    return city.nameArabic;
+                }
 
-                // Return english name
+                // Return English name
                 return city.nameEnglish;
             }
         }
@@ -345,12 +350,12 @@ public class LocationData {
         return cityName;
     }
 
-    public static List<String> getEnglishZoneTopicNames(List<String> hebrewZoneNames, Context context) {
+    public static List<String> getEnglishZoneTopicNames(List<String> zoneNames, Context context) {
         // Output list
         List<String> output = new ArrayList<>();
 
         // Support for "all"
-        if (hebrewZoneNames.size() == 1 && hebrewZoneNames.get(0).equals("all")) {
+        if (zoneNames.size() == 1 && zoneNames.get(0).equals("all")) {
             output.add("all");
             return output;
         }
@@ -361,8 +366,8 @@ public class LocationData {
         // Loop over cities
         for (City city : cities) {
             // Got a match?
-            if (hebrewZoneNames.contains(city.zone)) {
-                // Add english zone name to output list
+            if (zoneNames.contains(city.zone)) {
+                // Add English zone name to output list
                 output.add(sanitizeTopicName(city.zoneEnglish));
             }
         }
@@ -376,12 +381,12 @@ public class LocationData {
         return topic.toLowerCase().replaceAll("[^a-z]", "_").replaceAll("_+", "_");
     }
 
-    public static List<String> getEnglishCityTopicNames(List<String> hebrewCityNames, Context context) {
+    public static List<String> getEnglishCityTopicNames(List<String> cityNames, Context context) {
         // Output list
         List<String> output = new ArrayList<>();
 
         // Support for "all"
-        if (hebrewCityNames.size() == 1 && hebrewCityNames.get(0).equals("all")) {
+        if (cityNames.size() == 1 && cityNames.get(0).equals("all")) {
             output.add("all");
             return output;
         }
@@ -392,8 +397,8 @@ public class LocationData {
         // Loop over cities
         for (City city : cities) {
             // Got a match?
-            if (hebrewCityNames.contains(city.name)) {
-                // Add english zone name to output list
+            if (cityNames.contains(city.name)) {
+                // Add English zone name to output list
                 output.add(sanitizeTopicName(city.nameEnglish));
             }
         }
@@ -578,9 +583,6 @@ public class LocationData {
     }
 
     public static String getNearbyCityNames(Location myLocation, Context context) {
-        // Get user's locale
-        boolean isHebrew = Localization.isHebrewLocale(context);
-
         // Prepare cities array
         List<City> cities = getAllCities(context);
 
@@ -605,12 +607,16 @@ public class LocationData {
             // Distance is less than max?
             if (distance <= maxDistance) {
                 // Hebrew?
-                if (isHebrew) {
+                if (Localization.isHebrew(context)) {
                     cityNames.add(city.name);
                 }
                 // Russian?
                 else if (Localization.isRussian(context)) {
                     cityNames.add(city.nameRussian);
+                }
+                // Arabic?
+                else if (Localization.isArabic(context)) {
+                    cityNames.add(city.nameArabic);
                 }
                 else {
                     // Revert to English
@@ -684,9 +690,6 @@ public class LocationData {
     }
 
     public static String getLocalizedZoneByCityName(String cityName, Context context) {
-        // Get user's locale
-        boolean isHebrew = Localization.isHebrewLocale(context);
-
         // Prepare cities array
         List<City> cities = getAllCities(context);
 
@@ -694,11 +697,17 @@ public class LocationData {
         for (City city : cities) {
             // Got a match?
             if (city.name.equals(cityName)) {
-                // Add localized zone
-                if (isHebrew) {
+                // Hebrew?
+                if (Localization.isHebrew(context)) {
                     return city.zone;
-                } else if (Localization.isRussian(context)) {
+                }
+                // Russian?
+                else if (Localization.isRussian(context)) {
                     return city.zoneRussian;
+                }
+                // Arabic?
+                else if (Localization.isArabic(context)) {
+                    return city.zoneArabic;
                 }
                 else {
                     return city.zoneEnglish;
@@ -721,7 +730,7 @@ public class LocationData {
 
             // Got a match?
             if (city != null) {
-                // Return english name
+                // Return English name
                 results.add(city.zoneEnglish.toLowerCase());
             }
         }
@@ -774,6 +783,9 @@ public class LocationData {
         dateString = dateString.replace(" 1 דקה", " דקה");
         dateString = dateString.replace(" 1 שעה", " שעה");
         dateString = dateString.replace(" 2 שעות", " שעתיים");
+
+        // Convert Arabic numerals to digits if needed
+        dateString = Localization.localizeDigits(dateString, context);
 
         // All done
         return dateString;

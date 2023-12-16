@@ -22,14 +22,14 @@ public class RTLSupport {
         // Must be Jellybean or newer
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             // Set RTL layout direction
-            activity.getWindow().getDecorView().setLayoutDirection(Localization.isHebrewLocale(activity) ? View.LAYOUT_DIRECTION_RTL : View.LAYOUT_DIRECTION_LTR);
+            activity.getWindow().getDecorView().setLayoutDirection(Localization.isRTLLocale(activity) ? View.LAYOUT_DIRECTION_RTL : View.LAYOUT_DIRECTION_LTR);
         }
     }
 
     @SuppressLint("NewApi")
     public static void mirrorDialog(Dialog dialog, Context context) {
-        // Hebrew only
-        if (!Localization.isHebrewLocale(context)) {
+        // RTL locale only
+        if (!Localization.isRTLLocale(context)) {
             return;
         }
 

@@ -54,7 +54,7 @@
     <string name="automatic">Automatic</string>
     <string name="language">Language</string>
     <string name="langSelection">App language</string>
-    <string name="langSelectionDesc">Change the application\'s language</string>
+    <string name="langSelectionDesc">Change the application language</string>
 
     <string name="selectedZones">Regioni aggiuntive</string>
     <string name="selectedZonesDesc">Ricevi avvisi su intere regioni (oltre alle città)</string>

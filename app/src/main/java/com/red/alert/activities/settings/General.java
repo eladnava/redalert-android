@@ -51,6 +51,7 @@ import com.red.alert.utils.backend.RedAlertAPI;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.feedback.Volume;
+import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.os.AndroidSettings;
 import com.red.alert.utils.marketing.GooglePlay;
 import com.red.alert.utils.metadata.AppVersion;
@@ -303,6 +304,12 @@ public class General extends AppCompatPreferenceActivity {
         mLanguageSelection.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object o) {
+                // Automatic selected?
+                if (o.equals("")) {
+                    // Restore default phone locale
+                    Localization.restoreDefaultLocale(General.this);
+                }
+
                 // Close settings activity
                 finish();
 
