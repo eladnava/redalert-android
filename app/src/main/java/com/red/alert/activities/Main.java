@@ -129,6 +129,9 @@ public class Main extends AppCompatActivity {
 
         // Always re-register FCM or Pushy on app start
         new RegisterPushAsync().execute();
+
+        // Handle notification click event (show alert popup)
+        handleNotificationClick(getIntent());
     }
 
     void showAppUpdateAvailableDialog() {
