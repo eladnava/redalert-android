@@ -2,7 +2,6 @@ package com.red.alert.utils.localization;
 
 import android.content.Context;
 import android.content.res.Configuration;
-import android.util.Log;
 
 import com.red.alert.R;
 import com.red.alert.utils.caching.Singleton;

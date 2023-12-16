@@ -14,6 +14,7 @@ import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.localization.DateTime;
+import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
 
 import java.util.Arrays;
@@ -25,6 +26,9 @@ public class AlertLogic {
         if (StringUtils.stringIsNullOrEmpty(citiesPSVString)) {
             return;
         }
+
+        // Ensure the right language is displayed
+        Localization.overridePhoneLocale(context);
 
         // Log the cities
         Log.i(Logging.TAG, "Received alert (" + threatType + "): " + citiesPSVString);
