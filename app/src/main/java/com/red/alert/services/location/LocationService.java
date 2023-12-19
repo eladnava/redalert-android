@@ -218,11 +218,13 @@ public class LocationService extends Service implements
     public void onConnected(Bundle dataBundle) {
         // No client?
         if (mClient == null || mLocationRequest == null) {
+            Log.e(Logging.TAG, "Location API client or request is null");
             return;
         }
 
         // One last permission check
         if (!LocationLogic.isLocationAccessGranted(this)) {
+            Log.e(Logging.TAG, "Location access not granted");
             return;
         }
 
@@ -251,11 +253,15 @@ public class LocationService extends Service implements
 
     @Override
     public void onConnectionSuspended(int i) {
-        // Should we do something in this case?
+        // Log error
+        Log.e(Logging.TAG, "Location API connection suspended");
     }
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
+        // Log error
+        Log.e(Logging.TAG, "Location API connection failed: " + connectionResult.getErrorMessage());
+
         // Try reconnecting
         reconnect();
     }
@@ -316,6 +322,9 @@ public class LocationService extends Service implements
             else {
                 // Show error message
                 text = getString(R.string.noNearbyCities);
+
+                // Write to log
+                Log.d(Logging.TAG, "No nearby cities");
             }
         }
 
