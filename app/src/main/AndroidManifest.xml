@@ -100,7 +100,7 @@
         </receiver>
 
         <!-- Location Updates Foreground Service -->
-        <service android:name=".services.location.LocationService" android:stopWithTask="false" />
+        <service android:name=".services.location.LocationService" android:foregroundServiceType="location" android:stopWithTask="false" />
 
         <!-- FCM Push Receiver -->
         <service
