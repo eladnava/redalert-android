@@ -34,6 +34,7 @@ import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.integration.GooglePlayServices;
+import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
 
 import androidx.core.app.NotificationCompat;
@@ -288,6 +289,9 @@ public class LocationService extends Service implements
     }
 
     Notification getForegroundNotification() {
+        // Ensure the right language is displayed
+        Localization.overridePhoneLocale(this);
+
         // Location alerts activity pending intent
         PendingIntent launcherIntent = PendingIntent.getActivity(this, 0, new Intent(this, LocationAlerts.class), PendingIntent.FLAG_IMMUTABLE);
 
