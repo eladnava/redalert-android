@@ -59,6 +59,11 @@ public class AppPreferences {
         Singleton.getSharedPreferences(context).edit().putBoolean(context.getString(R.string.tutorialPref), true).commit();
     }
 
+    public static void enableAlertPopups(Context context) {
+        // Update stored value
+        Singleton.getSharedPreferences(context).edit().putBoolean(context.getString(R.string.alertPopupPref), true).commit();
+    }
+
     public static long getLastSubscribedTimestamp(Context context) {
         // Fetch last subscribed timestamp
         return Singleton.getSharedPreferences(context).getLong(context.getString(R.string.lastSubscribed), 0);

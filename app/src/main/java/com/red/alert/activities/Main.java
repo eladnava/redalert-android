@@ -54,6 +54,7 @@ import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.model.Alert;
 import com.red.alert.model.res.VersionInfo;
 import com.red.alert.ui.adapters.AlertAdapter;
+import com.red.alert.ui.compatibility.AndroidTV;
 import com.red.alert.ui.compatibility.ProgressDialogCompat;
 import com.red.alert.ui.dialogs.AlertDialogBuilder;
 import com.red.alert.ui.dialogs.custom.UpdateDialogs;
@@ -377,6 +378,11 @@ public class Main extends AppCompatActivity {
     }
 
     void showBatteryExemptionDialog() {
+        // No battery exemption needed on Android TV
+        if (AndroidTV.isAndroidTV(this)) {
+            return;
+        }
+
         // Android M (6) and up only
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return;
@@ -442,6 +448,12 @@ public class Main extends AppCompatActivity {
     }
 
     void showAlertPopupPermissionDialog() {
+        // Running on Android TV?
+        if (AndroidTV.isAndroidTV(this)) {
+            // Enable alert popups automatically
+            AppPreferences.enableAlertPopups(this);
+        }
+
         // Android M (6) and up only
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return;
