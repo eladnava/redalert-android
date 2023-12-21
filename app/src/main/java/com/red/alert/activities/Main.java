@@ -295,6 +295,9 @@ public class Main extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        // Ensure RTL layouts are used if needed
+        Localization.overridePhoneLocale(this);
+
         // Save state
         mIsResumed = true;
 
