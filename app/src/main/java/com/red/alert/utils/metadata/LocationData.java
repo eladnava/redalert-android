@@ -107,7 +107,7 @@ public class LocationData {
                 values.add(city.zone);
             }
             // Russian?
-            if (Localization.isRussian(context)) {
+            else if (Localization.isRussian(context)) {
                 // Add Russian name to list
                 values.add(city.zoneRussian);
             }
