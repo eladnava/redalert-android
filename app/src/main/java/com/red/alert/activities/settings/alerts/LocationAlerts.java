@@ -406,7 +406,7 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         // Just granted location permission?
-        if (requestCode == LocationLogic.LOCATION_PERMISSION_REQUEST_CODE && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+        if (requestCode == LocationLogic.LOCATION_PERMISSION_REQUEST_CODE && grantResults.length > 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
             // Enable location alerts
             mLocationAlerts.setChecked(true);
             mLocationAlerts.getOnPreferenceChangeListener().onPreferenceChange(null, true);
