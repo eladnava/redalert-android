@@ -636,6 +636,9 @@ public class Main extends AppCompatActivity {
     }
 
     private int getRecentAlerts() {
+        // Ensure the right language is displayed
+        Localization.overridePhoneLocale(this);
+
         // Store JSON as string initially
         String alertsJSON;
 
