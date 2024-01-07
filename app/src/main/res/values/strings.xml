@@ -350,7 +350,9 @@
     <string name="defaultAlertVolume" translatable="false">1.0</string>
 
     <!-- Default GPS Values -->
+    <string translatable="false" name="minGPSDistance">0.03</string>
     <string translatable="false" name="defaultGPSMaxDistance">0.1</string>
+    <string translatable="false" name="minGPSPollingFrequency">0.03</string>
     <string translatable="false" name="defaultGPSPollingFrequency">0.09</string>
 
     <!-- MultiSelectSearchableListPreference Special Values -->

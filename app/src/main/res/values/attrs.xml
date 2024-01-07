@@ -8,5 +8,6 @@
     <!-- Copyright 2012 Jay Weisskopf Licensed under the MIT License (see LICENSE.txt) -->
     <declare-styleable name="SliderPreference">
         <attr name="android:summary" />
+        <attr name="android:min" />
     </declare-styleable>
 </resources>

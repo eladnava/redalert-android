@@ -14,6 +14,7 @@
             android:key="@string/gpsFrequencyPref"
             android:title="@string/gpsFrequency"
             android:summary="@string/gpsFrequencyDesc"
+            android:min="@string/minGPSPollingFrequency"
             android:defaultValue="@string/defaultGPSPollingFrequency"
             android:dialogMessage="@string/gpsFrequencyDesc"
             android:dependency="@string/locationAlertsPref"/>
@@ -21,6 +22,7 @@
             android:key="@string/maxDistancePref"
             android:title="@string/maxDistance"
             android:summary="@string/maxDistanceDesc"
+            android:min="@string/minGPSDistance"
             android:defaultValue="@string/defaultGPSMaxDistance"
             android:dialogMessage="@string/maxDistanceDesc"
             android:dependency="@string/locationAlertsPref"/>

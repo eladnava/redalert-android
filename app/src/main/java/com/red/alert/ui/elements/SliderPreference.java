@@ -8,8 +8,10 @@ package com.red.alert.ui.elements;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Build;
 import android.preference.DialogPreference;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -25,6 +27,7 @@ public class SliderPreference extends DialogPreference {
     protected final static int SEEKBAR_RESOLUTION = 10000;
 
     protected float mValue;
+    protected float minValue;
     protected int mSeekBarValue;
     protected CharSequence[] mSummaries;
     onSeekBarChangedListener seekBarChangedListener;
@@ -57,6 +60,14 @@ public class SliderPreference extends DialogPreference {
         catch (Exception e) {
             // Do nothing
         }
+
+        try {
+            minValue = a.getFloat(R.styleable.SliderPreference_android_min, 0);
+        }
+        catch (Exception e) {
+            // Do nothing
+        }
+
         a.recycle();
     }
 
@@ -156,11 +167,22 @@ public class SliderPreference extends DialogPreference {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser) {
-                    SliderPreference.this.mSeekBarValue = progress;
+                // Check if minimum allowed value is set for this SliderPreference
+                if (minValue > 0) {
+                    // Calculate min value allowed
+                    int minAllowed = (int) (minValue * SEEKBAR_RESOLUTION);
 
-                    reloadDialogSummary(message);
+                    // Progress bar set too low?
+                    if (progress < minAllowed) {
+                        // Increase progress to minimum value allowed
+                        progress = minAllowed;
+                        seekBar.setProgress(progress);
+                    }
                 }
+
+                // Update progress value and refresh dialog summary text
+                SliderPreference.this.mSeekBarValue = progress;
+                reloadDialogSummary(message);
             }
         });
 
