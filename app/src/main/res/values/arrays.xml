@@ -30,7 +30,7 @@
         <item>@string/siren3</item>
         <item>@string/siren4</item>
         <item>@string/siren5</item>
-        <item>@string/funny</item>
+        <item>@string/tzevaAdom</item>
         <item>@string/calm</item>
         <item>@string/calm2</item>
         <item>@string/calm3</item>
@@ -42,6 +42,7 @@
         <item>@string/tiny4</item>
         <item>@string/tiny5</item>
         <item>@string/tiny6</item>
+        <item>@string/funny</item>
         <item>@string/noSound</item>
         <item>@string/selectCustomSound</item>
     </string-array>
@@ -51,7 +52,7 @@
         <item>alarm3</item>
         <item>alarm4</item>
         <item>alarm5</item>
-        <item>funny</item>
+        <item>tzevaadom</item>
         <item>calm</item>
         <item>calm2</item>
         <item>calm3</item>
@@ -63,6 +64,7 @@
         <item>tiny4</item>
         <item>tiny5</item>
         <item>tiny6</item>
+        <item>funny</item>
         <item></item>
         <item>custom</item>
     </string-array>

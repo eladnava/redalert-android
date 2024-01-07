@@ -49,6 +49,7 @@
     <string name="tiny">Bref 1</string>
     <string name="calm">Relaxant 1</string>
     <string name="funny">Drôle</string>
+    <string name="tzevaAdom">Tzeva Adom</string>
     <string name="language">Language</string>
     <string name="langSelection">App language</string>
     <string name="langSelectionDesc">Change the application language</string>
