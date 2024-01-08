@@ -17,7 +17,7 @@ The app relays real-time safety alerts published by the Home Front Command (Piku
 
 ## Achievements
 
-* **3,500,000+** downloads
+* **3,000,000+** downloads
 * Published by **Geektime** as [the fastest rocket alert app](http://www.geektime.co.il/push-notifications-at-protective-edge/)
 * Featured by the Israeli government on their [Google+ page](https://plus.google.com/+Israel/posts/U3juWS1YPK4)
 * Ranked **1st place** on **Google Play's Top Free** in Israel for 4 weeks during Operation Protective Edge
