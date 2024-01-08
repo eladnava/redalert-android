@@ -35,6 +35,7 @@ import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.communication.broadcasts.LocationSelectionEvents;
 import com.red.alert.logic.communication.broadcasts.SelfTestEvents;
 import com.red.alert.logic.communication.broadcasts.SettingsEvents;
+import com.red.alert.logic.feedback.sound.SoundLogic;
 import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.logic.push.FCMRegistration;
 import com.red.alert.logic.push.PushManager;
@@ -488,7 +489,7 @@ public class General extends AppCompatPreferenceActivity {
         body += "user.id=" + RedAlertAPI.getUserId(this) + ", ";
         body += "user.hash=" + RedAlertAPI.getUserHash(this) + ", ";
         body += "primary.enabled=" + AppPreferences.getNotificationsEnabled(this) + ", ";
-        body += "secondary.enabled=" + AppPreferences.getNotificationsEnabled(this) + ", ";
+        body += "secondary.enabled=" + AppPreferences.getSecondaryNotificationsEnabled(this) + ", ";
         body += "location.enabled=" + AppPreferences.getLocationAlertsEnabled(this) + ", ";
 
         // Check if location alerts enabled
@@ -510,10 +511,15 @@ public class General extends AppCompatPreferenceActivity {
         // Add other params
         body += "volume.primary=" + AppPreferences.getPrimaryAlertVolume(this, -1) + ", ";
         body += "volume.secondary=" + AppPreferences.getSecondaryAlertVolume(this, -1) + ", ";
+        body += "sound.primary=" + SoundLogic.getAlertSoundName(AlertTypes.PRIMARY, null, this) + ", ";
+        body += "sound.secondary=" + SoundLogic.getAlertSoundName(AlertTypes.SECONDARY, null, this) + ", ";
+        body += "popup.enabled=" + AppPreferences.getPopupEnabled(this) + ", ";
+        body += "wakeScreen.enabled=" + AppPreferences.getWakeScreenEnabled(this) + ", ";
         body += "fcm=" + FCMRegistration.isRegistered(this) + ", ";
         body += "fcm.token=" + FCMRegistration.getRegistrationToken(this) + ", ";
         body += "pushy=" + PushyRegistration.isRegistered(this) + ", ";
         body += "pushy.token=" + PushyRegistration.getRegistrationToken(this) + ", ";
+        body += "pushy.foregroundServiceEnabled=" + AppPreferences.getForegroundServiceEnabled(this) + ", ";
         body += "android.sdk=" + Build.VERSION.SDK_INT + ", ";
         body += "android.version=" + Build.VERSION.RELEASE + ", ";
 
