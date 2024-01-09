@@ -169,7 +169,7 @@ public class AlertPopup extends AppCompatActivity {
 
         // Not a rocket fire alert?
         // Hide countdown timer
-        if (threatType != null && !threatType.contains(ThreatTypes.MISSILES)) {
+        if (threatType != null && !threatType.contains(ThreatTypes.MISSILES) && !threatType.contains(ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION)) {
             // Countdown is only relevant for rocket fire
             mCounter.setVisibility(View.GONE);
         }
