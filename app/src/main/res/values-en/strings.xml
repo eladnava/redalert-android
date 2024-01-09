@@ -229,6 +229,10 @@
     <string name="disableBatteryOptimizationsInstructions">To receive alerts in the background, please set \"Battery\" to \"Unrestricted\" in the next screen.</string>
     <string name="disableBatteryOptimizationsSamsungInstructions">To receive alerts in the background, select \"Battery\" on the next screen -> \"Optimize battery usage\" -> \"Apps not optimized\" -> \"All\" -> \"RedAlert\" -> Turn off optimization for the app.</string>
 
+    <!-- Hide GPS Foreground Notification Dialog -->
+    <string name="hideGPSForegroundNotification">Background location access</string>
+    <string name="hideGPSForegroundNotificationInstructions">RedAlert needs to display an ongoing notification so that it can keep accessing your location while the app is in the background.\n\nYou can hide it by turning off \"Show notifications\" on the next screen. The app will still be able to access your location in the background.</string>
+
     <!-- Battery Optimization Reminder Setting -->
     <string name="disableBatteryOptimizationsReminder">Important: Disable battery optimizations</string>
     <string name="disableBatteryOptimizationsReminderDesc">We\'ve detected that you have not yet disabled battery optimizations for RedAlert. To receive alerts in real-time while the app is running in the background, you must disable battery optimizations. Tap for instructions.</string>

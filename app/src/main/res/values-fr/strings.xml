@@ -229,6 +229,10 @@
     <string name="disableBatteryOptimizationsInstructions">Pour recevoir des alertes en arrière-plan, définissez \"Batterie\" sur \"Aucune restriction\" sur l\'écran suivant.</string>
     <string name="disableBatteryOptimizationsSamsungInstructions">Pour recevoir des alertes en arrière-plan, sélectionnez « Batterie » sur l\'écran suivant -> « Optimiser l\'utilisation de la batterie » -> « Applications non optimisées » -> « Toutes » -> « RedAlert » -> Désactiver l\'optimisation de l\'application.</string>
 
+    <!-- Hide GPS Foreground Notification Dialog -->
+    <string name="hideGPSForegroundNotification">Accès à l\'emplacement en arrière-plan</string>
+    <string name="hideGPSForegroundNotificationInstructions">RedAlert doit afficher une notification en cours afin de pouvoir continuer à accéder à votre position pendant que l\'application est en arrière-plan.\n\nVous pouvez la masquer en désactivant \"Afficher les notifications\" sur l\'écran suivant. L\'application pourra toujours accéder à votre position en arrière-plan.</string>
+
     <!-- Battery Optimization Reminder Setting -->
     <string name="disableBatteryOptimizationsReminder">Important: Désactivez les optimisations de la batterie</string>
     <string name="disableBatteryOptimizationsReminderDesc">Nous avons détecté que vous n\'avez pas encore désactivé les optimisations de batterie pour RedAlert. Pour recevoir des alertes en temps réel pendant que l\'application s\'exécute en arrière-plan, vous devez désactiver les optimisations de batterie. Appuyez sur pour obtenir des instructions.</string>

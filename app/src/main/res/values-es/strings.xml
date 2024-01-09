@@ -274,6 +274,10 @@
     <string name="disableBatteryOptimizationsInstructions">Para recibir alertas en segundo plano, configure \"Batería\" en \"Sin restricciones\" en la siguiente pantalla.</string>
     <string name="disableBatteryOptimizationsSamsungInstructions">Para recibir alertas en segundo plano, seleccione \"Batería\" en la siguiente pantalla -> \"Optimizar el uso de la batería\" -> \"Aplicaciones no optimizadas\" -> \"Todas\" -> \"RedAlert\" -> Desactive la optimización de la aplicación.</string>
 
+    <!-- Hide GPS Foreground Notification Dialog -->
+    <string name="hideGPSForegroundNotification">Acceso a la ubicación en segundo plano</string>
+    <string name="hideGPSForegroundNotificationInstructions">RedAlert necesita mostrar una notificación continua para poder seguir accediendo a tu ubicación mientras la aplicación está en segundo plano.\n\nPuedes ocultarla desactivando \"Mostrar notificaciones\" en la siguiente pantalla. La aplicación aún podrá acceder a tu ubicación en segundo plano.</string>
+
     <!-- Battery Optimization Reminder Setting -->
     <string name="disableBatteryOptimizationsReminder">Importante: Deshabilite las optimizaciones de batería</string>
     <string name="disableBatteryOptimizationsReminderDesc">Hemos detectado que aún no has desactivado las optimizaciones de batería para RedAlert. Para recibir alertas en tiempo real mientras la aplicación se ejecuta en segundo plano, debes desactivar las optimizaciones de la batería. Toque para obtener instrucciones.</string>

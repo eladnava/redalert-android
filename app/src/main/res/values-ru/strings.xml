@@ -278,6 +278,10 @@
     <string name="disableBatteryOptimizationsReminder">Важно: отключите оптимизацию батареи</string>
     <string name="disableBatteryOptimizationsReminderDesc">Мы обнаружили, что вы еще не отключили оптимизацию батареи для RedAlert. Чтобы получать оповещения в режиме реального времени, пока приложение работает в фоновом режиме, необходимо отключить оптимизацию батареи. Нажмите, чтобы просмотреть инструкции.</string>
 
+    <!-- Hide GPS Foreground Notification Dialog -->
+    <string name="hideGPSForegroundNotification">Доступ к фоновому местоположению</string>
+    <string name="hideGPSForegroundNotificationInstructions">RedAlert необходимо отображать постоянное уведомление, чтобы иметь доступ к вашему местоположению, пока приложение работает в фоновом режиме.\n\nВы можете скрыть его, отключив параметр «Показывать уведомления» на следующем экране. Приложение по-прежнему сможет получать доступ к вашему местоположению в фоновом режиме.</string>
+
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">Удалить недавние оповещения?</string>
     <string name="clearRecentAlertsDesc">Хотите очистить список последних оповещений?</string>

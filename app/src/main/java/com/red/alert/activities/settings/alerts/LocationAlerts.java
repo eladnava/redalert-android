@@ -15,11 +15,13 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.MenuItem;
 
 import com.red.alert.R;
 import com.red.alert.config.Logging;
+import com.red.alert.config.NotificationChannels;
 import com.red.alert.logic.communication.broadcasts.LocationAlertsEvents;
 import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.logic.push.PushManager;
@@ -397,6 +399,25 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
 
                 // Build the dialog
                 AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, getString(R.string.okay), null, false, LocationAlerts.this, null);
+            }
+            else {
+                // Location alerts enabled?
+                if (mLocationAlerts.isChecked()) {
+                    // Show dialog instructing user on how to hide the location alerts foreground service notification
+                    AlertDialogBuilder.showGenericDialog(getString(R.string.hideGPSForegroundNotification), getString(R.string.hideGPSForegroundNotificationInstructions), getString(R.string.okay), getString(R.string.notNow), true, LocationAlerts.this, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int which) {
+                            // Clicked okay?
+                            if (which == DialogInterface.BUTTON_POSITIVE) {
+                                // Open notification channel config to allow user to easily disable the notification channel
+                                Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+                                intent.putExtra(Settings.EXTRA_CHANNEL_ID, NotificationChannels.LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_ID);
+                                intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+                                startActivity(intent);
+                            }
+                        }
+                    });
+                }
             }
         }
     }

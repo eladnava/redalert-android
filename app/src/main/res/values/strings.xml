@@ -192,7 +192,7 @@
     <string name="locationAlerts">התרעות לפי מיקום</string>
     <string name="locationAlertsDesc">הגדר התרעות מבוססות מיקום כדי לקבל התרעות תוך כדי תנועה</string>
     <string name="gpsEnabled">התרעות לפי מיקום</string>
-    <string name="gpsEnabledDesc">קבל התרעות לפי מיקומך בזמן אמת\n\nלידיעתך: תוצג התרעה קבועה כדי שנוכל לאכן את מיקומך כשהאפליקציה ברקע</string>
+    <string name="gpsEnabledDesc">קבל התרעות לפי מיקומך בזמן אמת</string>
     <string name="maxDistance">מרחק מקסימלי</string>
     <string name="maxDistanceDesc">בחר את המרחק המקסימלי שלך מכל יישוב שמופעלת בו אזעקה</string>
     <string name="kilometer">ק\"מ</string>
@@ -273,6 +273,10 @@
     <string name="disableBatteryOptimizations">ביטול אופטימיזציות סוללה</string>
     <string name="disableBatteryOptimizationsInstructions">כדי לקבל התרעות צבע אדום בזמן אמת, בחר/י ״סוללה״ -> ״ללא הגבלות״ במסך הבא.</string>
     <string name="disableBatteryOptimizationsSamsungInstructions">כדי לקבל התרעות צבע אדום בזמן אמת, בחר/י ״סוללה״ במסך הבא -> ״מטב את השימוש בסוללה״ -> ״יישומים ללא מיטוב״ -> ״הכל״ -> ״צבע אדום״ -> כבה/י את המיטוב עבור האפליקציה.</string>
+
+    <!-- Hide GPS Foreground Notification Dialog -->
+    <string name="hideGPSForegroundNotification">איכון מיקום ברקע</string>
+    <string name="hideGPSForegroundNotificationInstructions">לידיעתך, האפליקציה צריכה להציג התראה קבועה כדי שהיא תוכל לאכן את מיקומך ברקע.\n\nאפשר להסתירה על-ידי כיבוי ״הצגת התראות״ במסך הבא. האפליקציה תמשיך לאכן את מיקומך ברקע.</string>
 
     <!-- Battery Optimization Reminder Setting -->
     <string name="disableBatteryOptimizationsReminder">חשוב: ביטול אופטימיזציות סוללה</string>

@@ -232,6 +232,10 @@
     <string name="disableBatteryOptimizationsInstructions">Per ricevere avvisi in background, imposta \"Batteria\" su \"Nessuna restrizione\" nella schermata successiva.</string>
     <string name="disableBatteryOptimizationsSamsungInstructions">Per ricevere avvisi in background, seleziona \"Batteria\" nella schermata successiva -> \"Ottimizza utilizzo batteria\" -> \"App non ottimizzate\" -> \"Tutte\" -> \"RedAlert\" -> Disattiva l\'ottimizzazione per l\'app.</string>
 
+    <!-- Hide GPS Foreground Notification Dialog -->
+    <string name="hideGPSForegroundNotification">Accesso alla posizione in background</string>
+    <string name="hideGPSForegroundNotificationInstructions">RedAlert deve visualizzare una notifica in corso in modo che possa continuare ad accedere alla tua posizione mentre l\'app è in background.\n\nPuoi nasconderla disattivando \"Mostra notifiche\" nella schermata successiva. L\'app sarà comunque in grado di accedere alla tua posizione in background.</string>
+
     <!-- Battery Optimization Reminder Setting -->
     <string name="disableBatteryOptimizationsReminder">Importante: Disabilita le ottimizzazioni della batteria</string>
     <string name="disableBatteryOptimizationsReminderDesc">Abbiamo rilevato che non hai ancora disabilitato le ottimizzazioni della batteria per RedAlert. Per ricevere avvisi in tempo reale mentre l\'app è in esecuzione in background, devi disattivare le ottimizzazioni della batteria. Tocca per istruzioni.</string>
