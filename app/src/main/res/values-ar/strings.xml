@@ -231,6 +231,10 @@
     <string name="hideGPSForegroundNotification">الوصول إلى الموقع في الخلفية</string>
     <string name="hideGPSForegroundNotificationInstructions">يحتاج RedAlert إلى عرض إشعار مستمر حتى يتمكن من الاستمرار في الوصول إلى موقعك أثناء وجود التطبيق في الخلفية.\n\nيمكنك إخفاءه عن طريق إيقاف تشغيل \"إظهار الإشعارات\" على الشاشة التالية. سيظل التطبيق قادرًا على الوصول إلى موقعك في الخلفية.</string>
 
+    <!-- إخفاء مربع حوار إعلام المقدمة انتهازي -->
+    <string name="hidePushyForegroundNotification">إخفاء الإخطار المستمر</string>
+    <string name="hidePushyForegroundNotificationInstructions">يحتاج RedAlert إلى عرض إشعار مستمر حتى يمكن مواصلة تشغيله أثناء وجود التطبيق في الخلفية.\n\nيمكنك إخفاءه عن طريق إيقاف تشغيل \"إظهار الإشعارات\" على الشاشة التالية. سيظل التطبيق قادرًا على العمل في الخلفية.</string>
+
     <!-- إعداد التذكير بتحسين البطارية -->
     <string name="disableBatteryOptimizationsReminder">هام: تعطيل تحسينات البطارية</string>
     <string name="disableBatteryOptimizationsReminderDesc">لقد اكتشفنا أنك لم تقم بعد بتعطيل تحسينات البطارية لـ أحمر اللون. لتلقي التنبيهات في الوقت الفعلي أثناء تشغيل التطبيق في الخلفية، يجب عليك تعطيل تحسينات البطارية. انقر للحصول على التعليمات.</string>

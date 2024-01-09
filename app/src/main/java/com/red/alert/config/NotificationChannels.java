@@ -16,4 +16,8 @@ public class NotificationChannels {
     public static final String LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_ID = "redalert_location";
     public static final String LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_NAME = "Location-based Alerts";
 
+    // Pushy foreground service foreground notification channel
+    public static final String PUSHY_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_ID = "pushy_foreground_service";
+
+
 }

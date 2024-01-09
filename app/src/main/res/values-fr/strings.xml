@@ -233,6 +233,10 @@
     <string name="hideGPSForegroundNotification">Accès à l\'emplacement en arrière-plan</string>
     <string name="hideGPSForegroundNotificationInstructions">RedAlert doit afficher une notification en cours afin de pouvoir continuer à accéder à votre position pendant que l\'application est en arrière-plan.\n\nVous pouvez la masquer en désactivant \"Afficher les notifications\" sur l\'écran suivant. L\'application pourra toujours accéder à votre position en arrière-plan.</string>
 
+    <!-- Hide Pushy Foreground Notification Dialog -->
+    <string name="hidePushyForegroundNotification">Masquer la notification en cours</string>
+    <string name="hidePushyForegroundNotificationInstructions">RedAlert doit afficher une notification en cours afin qu\'elle puisse continuer à s\'exécuter pendant que l\'application est en arrière-plan.\n\nVous pouvez la masquer en désactivant \"Afficher les notifications\" sur l\'écran suivant. L\'application pourra toujours s\'exécuter en arrière-plan.</string>
+
     <!-- Battery Optimization Reminder Setting -->
     <string name="disableBatteryOptimizationsReminder">Important: Désactivez les optimisations de la batterie</string>
     <string name="disableBatteryOptimizationsReminderDesc">Nous avons détecté que vous n\'avez pas encore désactivé les optimisations de batterie pour RedAlert. Pour recevoir des alertes en temps réel pendant que l\'application s\'exécute en arrière-plan, vous devez désactiver les optimisations de batterie. Appuyez sur pour obtenir des instructions.</string>

@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import com.red.alert.R;
 import com.red.alert.activities.settings.alerts.LocationAlerts;
 import com.red.alert.activities.settings.alerts.SecondaryAlerts;
+import com.red.alert.config.NotificationChannels;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.ui.activities.AppCompatPreferenceActivity;
 import com.red.alert.ui.dialogs.AlertDialogBuilder;
@@ -175,6 +176,24 @@ public class Advanced extends AppCompatPreferenceActivity {
                         PushyServiceManager.start(Advanced.this);
                     }
                 }, 2000);
+
+                // Enabled?
+                if ((boolean)value == true) {
+                    // Show dialog instructing user on how to hide the Pushy foreground service notification
+                    AlertDialogBuilder.showGenericDialog(getString(R.string.hidePushyForegroundNotification), getString(R.string.hidePushyForegroundNotificationInstructions), getString(R.string.okay), getString(R.string.notNow), true, Advanced.this, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int which) {
+                            // Clicked okay?
+                            if (which == DialogInterface.BUTTON_POSITIVE) {
+                                // Open notification channel config to allow user to easily disable the notification channel
+                                Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+                                intent.putExtra(Settings.EXTRA_CHANNEL_ID, NotificationChannels.PUSHY_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_ID);
+                                intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+                                startActivity(intent);
+                            }
+                        }
+                    });
+                }
 
                 // Tell Android to persist new checkbox value
                 return true;

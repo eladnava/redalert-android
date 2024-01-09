@@ -236,6 +236,10 @@
     <string name="hideGPSForegroundNotification">Accesso alla posizione in background</string>
     <string name="hideGPSForegroundNotificationInstructions">RedAlert deve visualizzare una notifica in corso in modo che possa continuare ad accedere alla tua posizione mentre l\'app è in background.\n\nPuoi nasconderla disattivando \"Mostra notifiche\" nella schermata successiva. L\'app sarà comunque in grado di accedere alla tua posizione in background.</string>
 
+    <!-- Hide Pushy Foreground Notification Dialog -->
+    <string name="hidePushyForegroundNotification">Nascondi la notifica in corso</string>
+    <string name="hidePushyForegroundNotificationInstructions">RedAlert deve visualizzare una notifica in corso in modo che possa continuare a essere eseguita mentre l\'app è in background.\n\nPuoi nasconderla disattivando \"Mostra notifiche\" nella schermata successiva. L\'app potrà comunque essere eseguita in background.</string>
+
     <!-- Battery Optimization Reminder Setting -->
     <string name="disableBatteryOptimizationsReminder">Importante: Disabilita le ottimizzazioni della batteria</string>
     <string name="disableBatteryOptimizationsReminderDesc">Abbiamo rilevato che non hai ancora disabilitato le ottimizzazioni della batteria per RedAlert. Per ricevere avvisi in tempo reale mentre l\'app è in esecuzione in background, devi disattivare le ottimizzazioni della batteria. Tocca per istruzioni.</string>

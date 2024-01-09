@@ -278,6 +278,10 @@
     <string name="hideGPSForegroundNotification">Acceso a la ubicación en segundo plano</string>
     <string name="hideGPSForegroundNotificationInstructions">RedAlert necesita mostrar una notificación continua para poder seguir accediendo a tu ubicación mientras la aplicación está en segundo plano.\n\nPuedes ocultarla desactivando \"Mostrar notificaciones\" en la siguiente pantalla. La aplicación aún podrá acceder a tu ubicación en segundo plano.</string>
 
+    <!-- Hide Pushy Foreground Notification Dialog -->
+    <string name="hidePushyForegroundNotification">Ocultar la notificación en curso</string>
+    <string name="hidePushyForegroundNotificationInstructions">RedAlert necesita mostrar una notificación en curso para que pueda continuar ejecutándose mientras la aplicación está en segundo plano.\n\nPuedes ocultarla desactivando \"Mostrar notificaciones\" en la siguiente pantalla. La aplicación aún podrá ejecutarse en segundo plano.</string>
+
     <!-- Battery Optimization Reminder Setting -->
     <string name="disableBatteryOptimizationsReminder">Importante: Deshabilite las optimizaciones de batería</string>
     <string name="disableBatteryOptimizationsReminderDesc">Hemos detectado que aún no has desactivado las optimizaciones de batería para RedAlert. Para recibir alertas en tiempo real mientras la aplicación se ejecuta en segundo plano, debes desactivar las optimizaciones de la batería. Toque para obtener instrucciones.</string>

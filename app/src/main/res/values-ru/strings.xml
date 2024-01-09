@@ -282,6 +282,10 @@
     <string name="hideGPSForegroundNotification">Доступ к фоновому местоположению</string>
     <string name="hideGPSForegroundNotificationInstructions">RedAlert необходимо отображать постоянное уведомление, чтобы иметь доступ к вашему местоположению, пока приложение работает в фоновом режиме.\n\nВы можете скрыть его, отключив параметр «Показывать уведомления» на следующем экране. Приложение по-прежнему сможет получать доступ к вашему местоположению в фоновом режиме.</string>
 
+    <!-- Hide Pushy Foreground Notification Dialog -->
+    <string name="hidePushyForegroundNotification">Скрыть текущее уведомление</string>
+    <string name="hidePushyForegroundNotificationInstructions">RedAlert необходимо отображать постоянное уведомление, чтобы оно могло продолжать работать, пока приложение находится в фоновом режиме.\n\nВы можете скрыть его, отключив параметр «Показывать уведомления» на следующем экране. Приложение по-прежнему сможет работать в фоновом режиме.</string>
+
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">Удалить недавние оповещения?</string>
     <string name="clearRecentAlertsDesc">Хотите очистить список последних оповещений?</string>
