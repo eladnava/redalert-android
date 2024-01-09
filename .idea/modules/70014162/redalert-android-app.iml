@@ -90,7 +90,7 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 33 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Gradle: me.pushy:sdk:1.0.101@jar" level="project" />
+    <orderEntry type="library" name="Gradle: me.pushy:sdk:1.0.102@jar" level="project" />
     <orderEntry type="library" name="Gradle: org.ocpsoft.prettytime:prettytime:4.0.4.Final@jar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.collection:collection:1.1.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.arch.core:core-common:2.1.0@jar" level="project" />
