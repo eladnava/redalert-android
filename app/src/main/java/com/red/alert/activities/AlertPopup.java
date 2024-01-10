@@ -245,7 +245,7 @@ public class AlertPopup extends AppCompatActivity {
         // Did rocket already impact?
         if (currentTimestamp <= impactTimestamp) {
             // Convert it
-            updateCountdownTimerText(seconds, R.color.countdown_pre_impact);
+            updateCountdownTimerText(seconds, R.color.colorCountdownPreImpact);
         }
         else if (currentTimestamp > impactTimestamp) {
             // Number of seconds to wait after impact
@@ -254,7 +254,7 @@ public class AlertPopup extends AppCompatActivity {
             // Stop counting after X minutes
             if (seconds >= postImpactSeconds) {
                 // Show green counter
-                updateCountdownTimerText(postImpactSeconds, R.color.countdown_post_impact_safe);
+                updateCountdownTimerText(postImpactSeconds, R.color.colorCountdownPostImpactSafe);
 
                 // Shut down activity after post impact + X seconds (padding)
                 if (seconds >= postImpactSeconds + Alerts.ALERT_POPUP_DONE_PADDING) {
@@ -267,7 +267,7 @@ public class AlertPopup extends AppCompatActivity {
             }
 
             // Convert it
-            updateCountdownTimerText(seconds, R.color.countdown_post_impact);
+            updateCountdownTimerText(seconds, R.color.colorCountdownPostImpact);
         }
     }
 

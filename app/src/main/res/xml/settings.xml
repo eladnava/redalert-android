@@ -84,7 +84,15 @@
             android:summary="@string/contactDesc"/>
     </PreferenceCategory>
     <PreferenceCategory
-        android:title="@string/language">
+        android:title="@string/languageAndTheme">
+        <ListPreference
+            android:textDirection="ltr"
+            android:title="@string/themeSelection"
+            android:key="@string/themePref"
+            android:summary="@string/themeSelectionDesc"
+            android:entries="@array/themeNames"
+            android:entryValues="@array/themeValues"
+            android:defaultValue="@string/lightThemeCode"/>
         <ListPreference
             android:textDirection="ltr"
             android:title="@string/langSelection"

@@ -51,9 +51,13 @@
     <string name="tzevaAdom">أحمر اللون</string>
     <string name="funny">مضحك</string>
     <string name="automatic">Automatic</string>
-    <string name="language">اللغة</string>
+    <string name="languageAndTheme">اللغة والمظهر</string>
     <string name="langSelection">لغة التطبيق (Language)</string>
     <string name="langSelectionDesc">تغيير لغة التطبيق</string>
+    <string name="themeSelection">موضوع التطبيق</string>
+    <string name="themeSelectionDesc">تخصيص موضوع التطبيق</string>
+    <string name="lightTheme">ضوء</string>
+    <string name="darkTheme">مظلم</string>
     <string name="selectedCities">المدن</string>
     <string name="selectedCitiesDesc">تلقي تنبيهات حول مدن وبلدات محددة</string>
     <string name="selectedZones">مناطق إضافية</string>

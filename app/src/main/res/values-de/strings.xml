@@ -51,9 +51,13 @@
     <string name="tzevaAdom">Tzeva Adom</string>
     <string name="funny">Lustig</string>
     <string name="automatic">Automatic</string>
-    <string name="language">Language</string>
+    <string name="languageAndTheme">Sprache und aussehen</string>
     <string name="langSelection">App language</string>
     <string name="langSelectionDesc">Change the application language</string>
+    <string name="themeSelection">App theme</string>
+    <string name="themeSelectionDesc">App design anpassen</string>
+    <string name="lightTheme">Licht</string>
+    <string name="darkTheme">Dunkel</string>
     <string name="selectedZones">Weitere Regionen</string>
     <string name="selectedZonesDesc">Erhalten Sie Benachrichtigungen über ganze Regionen (zusätzlich zu Städten)</string>
     <string name="silentOverride">Überschreibe den "Bitte nicht stören modus"</string>

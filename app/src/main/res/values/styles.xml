@@ -18,14 +18,13 @@
         <item name="colorAccent">#fff0f0f0</item>
     </style>
 
-    <style name="AppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="@style/Theme.AppCompat.DayNight.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
-    <style name="PopupDialog" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+    <style name="PopupDialog" parent="@style/Theme.AppCompat.DayNight.DarkActionBar">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>

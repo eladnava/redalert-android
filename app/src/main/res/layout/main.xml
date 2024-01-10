@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#e9e9e9"
+    android:background="@color/colorBackground"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -58,7 +58,7 @@
             android:textColor="#fff"
             android:textSize="18sp"
             android:text="@string/safe"
-            android:background="#ff4032"
+            android:background="@color/colorAccent"
             android:layout_height="50dp"
             android:layout_width="fill_parent"
             android:layout_centerHorizontal="true"

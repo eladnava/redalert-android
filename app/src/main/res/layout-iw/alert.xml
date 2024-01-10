@@ -26,12 +26,14 @@
                 android:textSize="18sp"
                 android:layout_marginBottom="5sp"
                 android:text="@string/placeHolder"
+                android:textColor="@color/colorTextPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         <TextView
                 android:id="@+id/alertDesc"
                 android:textSize="14sp"
                 android:text="@string/placeHolder"
+                android:textColor="@color/colorTextAccent"
                 android:gravity="right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -42,6 +44,7 @@
                 android:paddingTop="2dp"
                 android:singleLine="true"
                 android:text="@string/placeHolder"
+                android:textColor="@color/colorTextAccent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
     </LinearLayout>

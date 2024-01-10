@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="countdown_pre_impact">#ff4032</color>
-    <color name="countdown_post_impact">#464646</color>
-    <color name="countdown_post_impact_safe">#ff00a737</color>
-    <color name="pushy_foreground_service_color">#ff4032</color>
-    <color name="popup_background">#B3000000</color>
     <color name="colorPrimary">#222222</color>
     <color name="colorPrimaryDark">#000</color>
     <color name="colorAccent">#ff4032</color>
+    <color name="colorBackground">#e9e9e9</color>
+    <color name="colorTextPrimary">#222222</color>
+    <color name="colorTextAccent">#454545</color>
+    <color name="colorMapBackground">#e9e9e9</color>
+    <color name="colorTooltipBackground">#ffffff</color>
+    <color name="colorCountdownPreImpact">#ff4032</color>
+    <color name="colorCountdownPostImpact">#464646</color>
+    <color name="colorCountdownPostImpactSafe">#ff00a737</color>
+    <color name="pushy_foreground_service_color">#ff4032</color>
 </resources>

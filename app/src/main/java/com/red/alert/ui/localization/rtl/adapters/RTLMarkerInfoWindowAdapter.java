@@ -17,13 +17,12 @@ public class RTLMarkerInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
     }
 
     @Override
-    public View getInfoWindow(Marker Marker) {
-        // Do nothing
+    public View getInfoContents(Marker marker) {
         return null;
     }
 
     @Override
-    public View getInfoContents(Marker marker) {
+    public View getInfoWindow(Marker marker) {
         // Inflate custom view
         View popup = mInflater.inflate(R.layout.map_tooltip, null);
 

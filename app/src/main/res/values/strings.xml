@@ -129,13 +129,17 @@
     <string name="safeWhatsApp">שלח באמצעות WhatsApp</string>
     <string name="safeWhatsAppDesc">לחיצה על כפתור הדיווח תוביל ישירות לבחירת אנשי הקשר</string>
 
-    <!-- Languages -->
+    <!-- Language & Theme Selection -->
     <string name="automatic">אוטומטי</string>
-
-    <!-- Language Selection -->
-    <string name="language">שפה</string>
+    <string name="languageAndTheme">שפה ועיצוב</string>
     <string name="langSelection">בחירת שפה (Language)</string>
     <string name="langSelectionDesc">בחר שפה עבור ממשק האפליקציה</string>
+    <string name="themeSelection">בחירת עיצוב</string>
+    <string name="themeSelectionDesc">בחר עיצוב עבור ממשק האפליקציה</string>
+
+    <!-- Theme Name Identifiers -->
+    <string name="lightTheme">בהיר</string>
+    <string name="darkTheme">כהה</string>
 
     <!-- Contact -->
     <string name="contact">צור קשר</string>
@@ -310,6 +314,7 @@
     <!-- Preference Keys -->
     <string translatable="false" name="selfTestPref">test</string>
     <string translatable="false" name="langPref">lang</string>
+    <string translatable="false" name="themePref">theme</string>
     <string translatable="false" name="soundPref">sound</string>
     <string translatable="false" name="websitePref">website</string>
     <string translatable="false" name="fcmTokenPref">gcm_registration_token</string>
@@ -381,6 +386,11 @@
     <string translatable="false" name="italianCode">it</string>
     <string translatable="false" name="frenchCode">fr</string>
     <string translatable="false" name="germanCode">de</string>
+
+    <!-- App Theme Codes -->
+    <string translatable="false" name="lightThemeCode">light</string>
+    <string translatable="false" name="darkThemeCode">dark</string>
+    <string translatable="false" name="automaticThemeCode">auto</string>
 
     <!-- Sounds -->
     <string translatable="false" name="defaultSound">alarm1</string>

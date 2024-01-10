@@ -131,11 +131,17 @@
     <string name="safeWhatsApp">Отправлено через WhatsApp</string>
     <string name="safeWhatsAppDesc">При нажатии кнопки "Сообщить" напрямую выбрать контакты</string>
 
-    <!-- Languages -->
+    <!-- Language & Theme Selection -->
     <string name="automatic">Automatic</string>
-    <string name="language">Language</string>
+    <string name="languageAndTheme">Язык и внешний вид</string>
     <string name="langSelection">App language</string>
     <string name="langSelectionDesc">Change the application language</string>
+    <string name="themeSelection">Тема приложения</string>
+    <string name="themeSelectionDesc">Настроить тему приложения</string>
+
+    <!-- Theme Name Identifiers -->
+    <string name="lightTheme">Свет</string>
+    <string name="darkTheme">Темный</string>
 
     <!-- Contact -->
     <string name="contact">Для Связи</string>

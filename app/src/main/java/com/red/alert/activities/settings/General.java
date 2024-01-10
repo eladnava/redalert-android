@@ -8,15 +8,19 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.PowerManager;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
+
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.MenuItemCompat;
 
 import android.preference.PreferenceScreen;
@@ -81,6 +85,8 @@ public class General extends AppCompatPreferenceActivity {
 
     PreferenceCategory mMainCategory;
     PreferenceCategory mBatteryOptimizationCategory;
+
+    ListPreference mThemeSelection;
     ListPreference mLanguageSelection;
 
     SearchableMultiSelectPreference mCitySelection;
@@ -252,6 +258,7 @@ public class General extends AppCompatPreferenceActivity {
         mBatteryOptimizationCategory = (PreferenceCategory)findPreference(getString(R.string.batteryOptimizationCategory));
         mCitySelection = ((SearchableMultiSelectPreference) findPreference(getString(R.string.selectedCitiesPref)));
         mZoneSelection = ((SearchableMultiSelectPreference) findPreference(getString(R.string.selectedZonesPref)));
+        mThemeSelection = (ListPreference) findPreference(getString(R.string.themePref));
         mLanguageSelection = (ListPreference) findPreference(getString(R.string.langPref));
         mNotificationsEnabled = (CheckBoxPreference)findPreference(getString(R.string.enabledPref));
 
@@ -315,7 +322,22 @@ public class General extends AppCompatPreferenceActivity {
                 finish();
 
                 // Notify language changed
-                Broadcasts.publish(General.this, SettingsEvents.LANGUAGE_CHANGED);
+                Broadcasts.publish(General.this, SettingsEvents.THEME_OR_LANGUAGE_CHANGED);
+
+                // Update the preference
+                return true;
+            }
+        });
+
+        // Theme selection
+        mThemeSelection.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, final Object value) {
+                // Close settings activity
+                finish();
+
+                // Notify theme changed
+                Broadcasts.publish(General.this, SettingsEvents.THEME_OR_LANGUAGE_CHANGED);
 
                 // Update the preference
                 return true;

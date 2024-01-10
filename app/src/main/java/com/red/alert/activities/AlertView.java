@@ -3,17 +3,14 @@ package com.red.alert.activities;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.os.Bundle;
-
-import androidx.core.app.ActivityCompat;
-import androidx.core.view.MenuItemCompat;
-import androidx.appcompat.app.AppCompatActivity;
-import me.pushy.sdk.lib.jackson.core.type.TypeReference;
-
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -22,6 +19,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.red.alert.R;
@@ -43,12 +41,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.view.MenuItemCompat;
+import me.pushy.sdk.lib.jackson.core.type.TypeReference;
+
 public class AlertView extends AppCompatActivity {
     GoogleMap mMap;
     List<Alert> mAlerts;
 
     MenuItem mShareItem;
     MenuItem mLoadingItem;
+    RelativeLayout mMapCover;
 
     ArrayList<String> mLocalizedCityNames;
 
@@ -66,7 +70,8 @@ public class AlertView extends AppCompatActivity {
     void unpackExtras() {
         try {
             // Parse grouped alerts from JSON
-            mAlerts = Singleton.getJackson().readValue(getIntent().getStringExtra(AlertViewParameters.ALERTS), new TypeReference<List<Alert>>() {});
+            mAlerts = Singleton.getJackson().readValue(getIntent().getStringExtra(AlertViewParameters.ALERTS), new TypeReference<List<Alert>>() {
+            });
         } catch (IOException e) {
             // Show error dialog
             AlertDialogBuilder.showGenericDialog(getString(R.string.error), e.getMessage(), getString(R.string.okay), null, false, AlertView.this, null);
@@ -85,9 +90,9 @@ public class AlertView extends AppCompatActivity {
                 mMap.setInfoWindowAdapter(new RTLMarkerInfoWindowAdapter(getLayoutInflater()));
 
                 // Show my location button
-                 if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                     mMap.setMyLocationEnabled(true);
-                 }
+                if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    mMap.setMyLocationEnabled(true);
+                }
 
                 // Set activity title
                 setActivityTitle();
@@ -125,6 +130,14 @@ public class AlertView extends AppCompatActivity {
         if (mMap == null) {
             // Stop execution
             return;
+        }
+
+        // Check if night mode is enabled
+        if ((getResources().getConfiguration().uiMode &
+                Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES) {
+            // Use dark map styling
+            mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(
+                    this, R.raw.map_style_dark));
         }
 
         // Wait for map to load
@@ -268,8 +281,7 @@ public class AlertView extends AppCompatActivity {
                     });
                 }
             }, 500);
-        }
-        catch (Exception exc) {
+        } catch (Exception exc) {
             // Ignore exceptions
         }
     }
@@ -369,6 +381,9 @@ public class AlertView extends AppCompatActivity {
         // Set up UI
         setContentView(R.layout.alert_view);
 
+        // Store reference to map cover for later
+        mMapCover = (RelativeLayout) findViewById(R.id.mapCover);
+
         // Get map instance
         ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMapAsync(new OnMapReadyCallback() {
             @Override
@@ -425,6 +440,15 @@ public class AlertView extends AppCompatActivity {
 
             // Show share button
             mShareItem.setVisible(true);
+
+            // Delay by 200ms
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    // Prevent white flicker as map loads in dark mode
+                    mMapCover.setVisibility(View.GONE);
+                }
+            }, 200);
         }
     }
 }

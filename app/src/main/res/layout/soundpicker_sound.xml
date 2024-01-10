@@ -15,6 +15,7 @@
 
     <TextView
         android:id="@+id/label"
+        android:textColor="@color/colorTextPrimary"
         android:ellipsize="end"
         android:textSize="18sp"
         android:gravity="right"

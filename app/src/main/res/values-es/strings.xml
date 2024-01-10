@@ -123,11 +123,17 @@
     <string name="safeWhatsApp">Enviar mediante WhatsApp</string>
     <string name="safeWhatsAppDesc">Elegir contactos a los que desea enviar el mensaje</string>
 
-    <!-- Languages -->
+    <!-- Language & Theme Selection -->
     <string name="automatic">Automatic</string>
-    <string name="language">Language</string>
+    <string name="languageAndTheme">Idioma y apariencia</string>
     <string name="langSelection">App language</string>
     <string name="langSelectionDesc">Change the application language</string>
+    <string name="themeSelection">Tema de aplicación</string>
+    <string name="themeSelectionDesc">Personalizar el tema de la aplicación</string>
+
+    <!-- Theme Name Identifiers -->
+    <string name="lightTheme">Luz</string>
+    <string name="darkTheme">Oscuro</string>
 
     <!-- Contact -->
     <string name="contact">Contacto</string>

@@ -50,9 +50,13 @@
     <string name="calm">Relaxing 1</string>
     <string name="tzevaAdom">Tzeva Adom</string>
     <string name="funny">Funny</string>
-    <string name="language">Language</string>
+    <string name="languageAndTheme">Language &amp; theme</string>
     <string name="langSelection">App language</string>
     <string name="langSelectionDesc">Change the application language</string>
+    <string name="themeSelection">App theme</string>
+    <string name="themeSelectionDesc">Customize the app theme</string>
+    <string name="lightTheme">Light</string>
+    <string name="darkTheme">Dark</string>
     <string name="automatic">Automatic</string>
     <string name="selectedCities">Cities</string>
     <string name="selectedCitiesDesc">Receive alerts about specific cities and towns</string>

@@ -17,6 +17,7 @@ package com.red.alert.ui.activities;
  */
 
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import androidx.annotation.LayoutRes;
@@ -24,6 +25,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,13 +38,31 @@ import android.view.ViewGroup;
  * {@link android.preference.PreferenceActivity}.
  */
 public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
+    private int mThemeId = 0;
     private AppCompatDelegate mDelegate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getDelegate().installViewFactory();
         getDelegate().onCreate(savedInstanceState);
+        getDelegate().applyDayNight();
+
+        // Re-apply theme
+        if (Build.VERSION.SDK_INT >= 23) {
+            onApplyThemeResource(getTheme(), mThemeId, false);
+        } else {
+            setTheme(mThemeId);
+        }
+
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void setTheme(final int themeId) {
+        super.setTheme(themeId);
+
+        // Store theme ID for later
+        mThemeId = themeId;
     }
 
     @Override

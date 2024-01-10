@@ -50,7 +50,11 @@
     <string name="calm">Relaxant 1</string>
     <string name="funny">Drôle</string>
     <string name="tzevaAdom">Tzeva Adom</string>
-    <string name="language">Language</string>
+    <string name="languageAndTheme">Langue et apparence</string>
+    <string name="themeSelection">Thème de l\'application</string>
+    <string name="themeSelectionDesc">Personnaliser le thème de l\'application</string>
+    <string name="lightTheme">Lumière</string>
+    <string name="darkTheme">Sombre</string>
     <string name="langSelection">App language</string>
     <string name="langSelectionDesc">Change the application language</string>
     <string name="automatic">Automatic</string>

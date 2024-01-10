@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -102,8 +103,9 @@ public class Main extends AppCompatActivity {
             if (Key.equalsIgnoreCase(MainActivityParameters.RELOAD_RECENT_ALERTS)) {
                 reloadRecentAlerts();
             }
+
             // Language changed?
-            if (Key.equalsIgnoreCase(SettingsEvents.LANGUAGE_CHANGED)) {
+            if (Key.equalsIgnoreCase(SettingsEvents.THEME_OR_LANGUAGE_CHANGED)) {
                 // Reload activity
                 finish();
                 startActivity(new Intent(Main.this, Main.class));
@@ -114,6 +116,9 @@ public class Main extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Apply custom theme selection
+        Localization.applyThemeSelection(this);
 
         // Ensure RTL layouts are used if needed
         Localization.overridePhoneLocale(this);
@@ -284,7 +289,7 @@ public class Main extends AppCompatActivity {
     }
 
     @Override
-    public void onConfigurationChanged(android.content.res.Configuration newConfig) {
+    public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
         // Support for RTL languages
@@ -773,7 +778,7 @@ public class Main extends AppCompatActivity {
 
         try {
             // Convert JSON to object
-            updateInfo = Singleton.getJackson().readValue(updateJson, com.red.alert.model.res.VersionInfo.class);
+            updateInfo = Singleton.getJackson().readValue(updateJson, VersionInfo.class);
         }
         catch (Exception exc) {
             // Log it

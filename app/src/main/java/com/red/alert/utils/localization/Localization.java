@@ -9,6 +9,8 @@ import com.red.alert.utils.formatting.StringUtils;
 
 import java.util.Locale;
 
+import androidx.appcompat.app.AppCompatDelegate;
+
 public class Localization {
     static Locale mDefaultLocale;
 
@@ -28,6 +30,7 @@ public class Localization {
 
         // Create new configuration
         Configuration configuration = context.getResources().getConfiguration();
+        Configuration appConfiguration = context.getApplicationContext().getResources().getConfiguration();
 
         // Get new locale code
         String overrideLocale = Singleton.getSharedPreferences(context).getString(context.getString(R.string.langPref), "");
@@ -36,27 +39,50 @@ public class Localization {
         if (!StringUtils.stringIsNullOrEmpty(overrideLocale)) {
             // Set it
             configuration.locale = new Locale(overrideLocale);
+            appConfiguration.locale = new Locale(overrideLocale);
         }
         else {
             // Use default locale
             configuration.locale = Locale.getDefault();
+            appConfiguration.locale = Locale.getDefault();
         }
 
         // Apply the configuration
         context.getResources().updateConfiguration(configuration, context.getResources().getDisplayMetrics());
-        context.getApplicationContext().getResources().updateConfiguration(configuration, context.getResources().getDisplayMetrics());
+        context.getApplicationContext().getResources().updateConfiguration(appConfiguration, context.getResources().getDisplayMetrics());
+    }
+
+    public static void applyThemeSelection(Context context) {
+        // Load selected theme from SharedPreferences
+        String selectedTheme = Singleton.getSharedPreferences(context).getString(context.getString(R.string.themePref), context.getString(R.string.lightThemeCode));
+
+        // Automatic selected?
+        if (selectedTheme.equals(context.getString(R.string.automaticThemeCode))) {
+            // Follow system-wide setting
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        }
+        else if (selectedTheme.equals(context.getString(R.string.lightThemeCode))) {
+            // Light theme
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+        else if (selectedTheme.equals(context.getString(R.string.darkThemeCode))) {
+            // Dark theme
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
     }
 
     public static void restoreDefaultLocale(Context context) {
         // Create new configuration
         Configuration configuration = context.getResources().getConfiguration();
+        Configuration appConfiguration = context.getApplicationContext().getResources().getConfiguration();
 
         // Use default locale
         configuration.locale = mDefaultLocale;
+        appConfiguration.locale = mDefaultLocale;
 
         // Apply the configuration
         context.getResources().updateConfiguration(configuration, context.getResources().getDisplayMetrics());
-        context.getApplicationContext().getResources().updateConfiguration(configuration, context.getResources().getDisplayMetrics());
+        context.getApplicationContext().getResources().updateConfiguration(appConfiguration, context.getResources().getDisplayMetrics());
     }
 
     public static boolean isRussian(Context context) {

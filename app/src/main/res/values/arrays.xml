@@ -24,6 +24,16 @@
         <item>@string/frenchCode</item>
         <item>@string/germanCode</item>
     </string-array>
+    <string-array name="themeNames">
+        <item>@string/lightTheme</item>
+        <item>@string/darkTheme</item>
+        <item>@string/automatic</item>
+    </string-array>
+    <string-array name="themeValues">
+        <item>@string/lightThemeCode</item>
+        <item>@string/darkThemeCode</item>
+        <item>@string/automaticThemeCode</item>
+    </string-array>
     <string-array name="sounds">
         <item>@string/siren1</item>
         <item>@string/siren2</item>
