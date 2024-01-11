@@ -4,6 +4,6 @@
     <color name="colorTextPrimary">#FFFFFF</color>
     <color name="colorTextAccent">#DADADA</color>
     <color name="colorMapBackground">#303030</color>
-    <color name="colorTooltipBackground">#222222</color>
+    <color name="colorTooltipBackground">#3C3C3C</color>
     <color name="colorCountdownPostImpact">#e9e9e9</color>
 </resources>
