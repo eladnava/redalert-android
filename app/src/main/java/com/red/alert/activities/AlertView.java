@@ -54,8 +54,6 @@ public class AlertView extends AppCompatActivity {
     MenuItem mLoadingItem;
     RelativeLayout mMapCover;
 
-    ArrayList<String> mLocalizedCityNames;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,24 +102,15 @@ public class AlertView extends AppCompatActivity {
     }
 
     void setActivityTitle() {
-        // Initialize city names array list
-        mLocalizedCityNames = new ArrayList();
+        // Get first alert object
+        Alert firstAlert = mAlerts.get(0);
 
-        // Traverse alerts
-        for (Alert alert : mAlerts) {
-            // Add localized name
-            mLocalizedCityNames.add(alert.localizedCity);
-        }
-
-        // Set title manually after overriding locale
-        setTitle(TextUtils.join(", ", mLocalizedCityNames));
-
-        // Localize threat type
-        String threat = mAlerts.get(0).localizedThreat;
+        // Set title to alert relative time ago
+        setTitle(LocationData.getAlertRelativeTimeAgo(firstAlert.date, this));
 
         // Add localized threat type to title
-        if (!StringUtils.stringIsNullOrEmpty(threat)) {
-            setTitle(threat + ": " + getTitle());
+        if (!StringUtils.stringIsNullOrEmpty(firstAlert.localizedThreat)) {
+            setTitle(firstAlert.localizedThreat + ": " + getTitle());
         }
     }
 
@@ -299,8 +288,17 @@ public class AlertView extends AppCompatActivity {
     }
 
     private String getShareMessage() {
+        // Initialize city names array list
+        ArrayList<String> localizedCityNames = new ArrayList();
+
+        // Traverse alerts
+        for (Alert alert : mAlerts) {
+            // Add localized name
+            localizedCityNames.add(alert.localizedCity);
+        }
+
         // Construct share message
-        return getString(R.string.alertSoundedAt) + TextUtils.join(", ", mLocalizedCityNames) + " " + mAlerts.get(0).dateString + " " + getString(R.string.alertSentVia);
+        return getString(R.string.alertSoundedAt) + TextUtils.join(", ", localizedCityNames) + " " + mAlerts.get(0).dateString + " " + getString(R.string.alertSentVia);
     }
 
     void initializeShareButton(Menu OptionsMenu) {

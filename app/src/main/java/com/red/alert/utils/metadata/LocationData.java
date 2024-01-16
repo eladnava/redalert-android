@@ -758,7 +758,6 @@ public class LocationData {
     public static String getAlertDateTimeString(long timestamp, long firstAlertTimestamp, Context context) {
         // Initialize date format libraries
         SimpleDateFormat dateFormat = new SimpleDateFormat(Alerts.DATE_FORMAT);
-        PrettyTime relativeFormat = new PrettyTime(context.getResources().getConfiguration().locale);
 
         // Convert unix timestamp to Java Date
         Date date = new Date(timestamp * 1000);
@@ -772,12 +771,29 @@ public class LocationData {
             Date firstAlertDate = new Date(firstAlertTimestamp * 1000);
 
             // Prepare string with relative time ago and fixed HH:mm:ss with both the first and last alert times
-            dateString = StringUtils.capitalize(relativeFormat.format(date)) + " (" + dateFormat.format(firstAlertDate) + " - " + dateFormat.format(date) + ")";
+            dateString = getAlertRelativeTimeAgo(timestamp, context) + " (" + dateFormat.format(firstAlertDate) + " - " + dateFormat.format(date) + ")";
         }
         else {
             // Prepare string with relative time ago and fixed HH:mm:ss
-            dateString = StringUtils.capitalize(relativeFormat.format(date)) + " (" + dateFormat.format(date) + ")";
+            dateString = getAlertRelativeTimeAgo(timestamp, context) + " (" + dateFormat.format(date) + ")";
         }
+
+        // Convert Arabic numerals to digits if needed
+        dateString = Localization.localizeDigits(dateString, context);
+
+        // All done
+        return dateString;
+    }
+
+    public static String getAlertRelativeTimeAgo(long timestamp, Context context) {
+        // Initialize date format libraries
+        PrettyTime relativeFormat = new PrettyTime(context.getResources().getConfiguration().locale);
+
+        // Convert unix timestamp to Java Date
+        Date date = new Date(timestamp * 1000);
+
+        // Prepare string with relative time ago
+        String dateString = StringUtils.capitalize(relativeFormat.format(date));
 
         // Fix for Hebrew relative time typos (singular time ago)
         dateString = dateString.replace(" 1 דקה", " דקה");
