@@ -125,11 +125,11 @@
     <string name="safe">Отправить\"Я в убежище\"</string>
     <string name="safeCategory">\"Я в убежище\"</string>
     <string name="imSafeMessage">"Я в убежище" - Отправлено через Цева Адом Android - https://redalert.me</string>
-    <string name="imSafeDesc">Отправить \ "Я в убежище\"</string>
+    <string name="imSafeDesc">Отправить \"Я в убежище\"</string>
 
     <!-- I'm Safe - WhatsApp Integration -->
     <string name="safeWhatsApp">Отправлено через WhatsApp</string>
-    <string name="safeWhatsAppDesc">При нажатии кнопки "Сообщить" напрямую выбрать контакты</string>
+    <string name="safeWhatsAppDesc">При нажатии кнопки \"Сообщить\" напрямую выбрать контакты</string>
 
     <!-- Language & Theme Selection -->
     <string name="automatic">Automatic</string>
@@ -163,7 +163,7 @@
     <!-- Share the Application -->
     <string name="share">Поделиться</string>
     <string name="shareDesc">Поделиться приложением</string>
-    <string name="shareMessage">Я использую приложение \ "Цева Адом \" Android для получения оповещений в состоянии повышенной готовности - https://redalert.me</string>
+    <string name="shareMessage">Я использую приложение \"Цева Адом \" Android для получения оповещений в состоянии повышенной готовности - https://redalert.me</string>
 
     <!-- Error Messages -->
     <string name="notifyError">Был ошибка отображения предупреждение, вы можете перезагрузить телефон.</string>

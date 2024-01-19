@@ -171,7 +171,7 @@
     <string name="pushRegistrationFailed">Se produjo un error al firmar para arriba para las notificaciones de cohetes de empuje. Vamos a tratar de firmar para arriba de nuevo en el futuro.</string>
     <string name="apiRequestFailed">Una solicitud para recuperar información de nuestros servidores fallaron. Por favor, compruebe su conexión a Internet y vuelva a intentarlo.</string>
     <string name="registrationFailed">El registro al servicio de notificaciones no tuvo éxito. Por favor, intente más tarde.</string>
-    <string name="grantNotificationPermission">Habilite "Notificaciones" en la siguiente pantalla para recibir alertas en tiempo real.</string>
+    <string name="grantNotificationPermission">Habilite \"Notificaciones\" en la siguiente pantalla para recibir alertas en tiempo real.</string>
 
     <!-- Success Messages -->
     <string name="registrationID">Código de registro</string>
@@ -218,7 +218,7 @@
     <string name="showPopup">Mostrar popup</string>
     <string name="showPopupDesc">Alertas se mostrarán en una ventana emergente</string>
     <string name="grantOverlayPermission">Permitir visualización sobre otras aplicaciones</string>
-    <string name="grantOverlayPermissionInstructions">Seleccione "RedAlert" -> "Permitir visualización sobre otras aplicaciones" en la siguiente pantalla.</string>
+    <string name="grantOverlayPermissionInstructions">Seleccione \"RedAlert\" -> \"Permitir visualización sobre otras aplicaciones\" en la siguiente pantalla.</string>
 
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Mejorar la confiabilidad</string>
@@ -273,7 +273,7 @@
 
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">Seleccionar sonido personalizado</string>
-    <string name="selectCustomSoundDesc">Elija su propio sonido tocando "Sonido" -> "Mis sonidos" -> "+" -> "Guardar" en la siguiente pantalla.</string>
+    <string name="selectCustomSoundDesc">Elija su propio sonido tocando \"Sonido\" -> \"Mis sonidos\" -> \"+\" -> \"Guardar\" en la siguiente pantalla.</string>
 
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">Desactivar Optimizaciones de Batería</string>

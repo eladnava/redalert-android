@@ -10,7 +10,7 @@
     <string name="pushRegistrationFailed">Ein Fehler ist während der Anmeldung beim Push-service aufgetreten. bitte versuche es Später nocheinmal.</string>
     <string name="apiRequestFailed">Eine Abfrage von Informationen bei unserem Server ist fehlgeschlagen, Bitte überprüfe Deine Internetverbindung und versuche es erneut.</string>
     <string name="registrationFailed">Die anmeldung ist Fehlgeschlagen, versuches es zu einem Späteren zeitpung noch einmal.</string>
-    <string name="grantNotificationPermission">Bitte aktivieren Sie "Benachrichtigungen" auf dem nächsten Bildschirm, um Benachrichtigungen in Echtzeit zu erhalten.</string>
+    <string name="grantNotificationPermission">Bitte aktivieren Sie \"Benachrichtigungen\" auf dem nächsten Bildschirm, um Benachrichtigungen in Echtzeit zu erhalten.</string>
     <string name="settings">Einstellungen</string>
     <string name="advanced">Erweiterungen</string>
     <string name="advancedSettings">Erweiterte Einstellungen</string>
@@ -60,7 +60,7 @@
     <string name="darkTheme">Dunkel</string>
     <string name="selectedZones">Weitere Regionen</string>
     <string name="selectedZonesDesc">Erhalten Sie Benachrichtigungen über ganze Regionen (zusätzlich zu Städten)</string>
-    <string name="silentOverride">Überschreibe den "Bitte nicht stören modus"</string>
+    <string name="silentOverride">Überschreibe den \"Bitte nicht stören modus\"</string>
     <string name="silentOverrideDesc">Raketenwarnungen deaktivieren kurzzeitig den nicht stören Modus</string>
     <string name="selectedCities">Städte</string>
     <string name="testSuccessfulLong">Der Selbsttest ist erfolgreich abgeschlossen!</string>
@@ -170,7 +170,7 @@
     <string name="showPopup">Meldungen werden als Popup Anzeigen</string>
     <string name="showPopupDesc">Raketen Alamirungen werden in einem pop-up fenster Angezeigt</string>
     <string name="grantOverlayPermission">Anzeige über anderen Apps zulassen</string>
-    <string name="grantOverlayPermissionInstructions">Bitte wählen Sie im nächsten Bildschirm „RedAlert“ -> „Anzeige über anderen Apps zulassen“.</string>
+    <string name="grantOverlayPermissionInstructions">Bitte wählen Sie im nächsten Bildschirm \"RedAlert\" -> \"Anzeige über anderen Apps zulassen\".</string>
 
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Verbessern Sie die Zuverlässigkeit</string>
@@ -225,20 +225,20 @@
 
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">Wählen Sie benutzerdefinierten Sound</string>
-    <string name="selectCustomSoundDesc">Wählen Sie Ihren eigenen Sound, indem Sie im nächsten Bildschirm auf „Sound“ -> „Meine Sounds“ -> „+“ -> „Speichern“ klicken.</string>
+    <string name="selectCustomSoundDesc">Wählen Sie Ihren eigenen Sound, indem Sie im nächsten Bildschirm auf \"Sound\" -> \"Meine Sounds\" -> \"+\" -> \"Speichern\" klicken.</string>
 
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">Deaktivieren Sie die Batterieoptimierungen</string>
     <string name="disableBatteryOptimizationsInstructions">Um Benachrichtigungen im Hintergrund zu erhalten, stellen Sie bitte im nächsten Bildschirm \"Akku\" auf \"Uneingeschränkt\" ein.</string>
-    <string name="disableBatteryOptimizationsSamsungInstructions">Um Benachrichtigungen im Hintergrund zu erhalten, wählen Sie im nächsten Bildschirm \"Akku\" -> \"Akkuverbrauch optimieren\“ -> \"Apps nicht optimiert\“ -> \"Alle“ -> \"RedAlert“ -> Optimierung für die App deaktivieren.</string>
+    <string name="disableBatteryOptimizationsSamsungInstructions">Um Benachrichtigungen im Hintergrund zu erhalten, wählen Sie im nächsten Bildschirm \"Akku\" -> \"Akkuverbrauch optimieren\" -> \"Apps nicht optimiert\" -> \"Alle\" -> \"RedAlert\" -> Optimierung für die App deaktivieren.</string>
 
     <!-- Hide GPS Foreground Notification Dialog -->
     <string name="hideGPSForegroundNotification">Hintergrundstandortzugriff</string>
-    <string name="hideGPSForegroundNotificationInstructions">RedAlert muss eine laufende Benachrichtigung anzeigen, damit es weiterhin auf Ihren Standort zugreifen kann, während die App im Hintergrund läuft.\n\nSie können es ausblenden, indem Sie „Benachrichtigungen anzeigen“ auf dem nächsten Bildschirm deaktivieren. Die App kann weiterhin im Hintergrund auf Ihren Standort zugreifen.</string>
+    <string name="hideGPSForegroundNotificationInstructions">RedAlert muss eine laufende Benachrichtigung anzeigen, damit es weiterhin auf Ihren Standort zugreifen kann, während die App im Hintergrund läuft.\n\nSie können es ausblenden, indem Sie \"Benachrichtigungen anzeigen\" auf dem nächsten Bildschirm deaktivieren. Die App kann weiterhin im Hintergrund auf Ihren Standort zugreifen.</string>
 
     <!-- Hide Pushy Foreground Notification Dialog -->
     <string name="hidePushyForegroundNotification">Blenden Sie die laufende Benachrichtigung aus</string>
-    <string name="hidePushyForegroundNotificationInstructions">RedAlert muss eine laufende Benachrichtigung anzeigen, damit sie weiter ausgeführt werden kann, während die App im Hintergrund läuft.\n\nSie können sie ausblenden, indem Sie „Benachrichtigungen anzeigen“ auf dem nächsten Bildschirm deaktivieren. Die App kann weiterhin im Hintergrund ausgeführt werden.</string>
+    <string name="hidePushyForegroundNotificationInstructions">RedAlert muss eine laufende Benachrichtigung anzeigen, damit sie weiter ausgeführt werden kann, während die App im Hintergrund läuft.\n\nSie können sie ausblenden, indem Sie \"Benachrichtigungen anzeigen\" auf dem nächsten Bildschirm deaktivieren. Die App kann weiterhin im Hintergrund ausgeführt werden.</string>
 
     <!-- Battery Optimization Reminder Setting -->
     <string name="disableBatteryOptimizationsReminder">Wichtig: Deaktivieren Sie die Batterieoptimierungen</string>

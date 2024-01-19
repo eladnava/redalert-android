@@ -10,7 +10,7 @@
     <string name="pushRegistrationFailed">Une erreur s\'est produite lors de la signature de notifications push-rocket. Nous allons essayer de vous ré-inscrire ultérieurement.</string>
     <string name="apiRequestFailed">Une requête pour récupérer des informations de nos serveurs a échoué. Vérifiez votre connexion Internet et réessayez.</string>
     <string name="registrationFailed"> L\'enregistrement a échoué, réessayez ultérieurement.</string>
-    <string name="grantNotificationPermission">Veuillez activer "Notifications" sur l\'écran suivant pour recevoir des alertes en temps réel.</string>
+    <string name="grantNotificationPermission">Veuillez activer \"Notifications" sur l\'écran suivant pour recevoir des alertes en temps réel.</string>
     <string name="settings">Paramètres</string>
     <string name="advanced">Options</string>
     <string name="advancedSettings">Paramètres avancés</string>
@@ -226,7 +226,7 @@
 
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">Sélectionnez un son personnalisé</string>
-    <string name="selectCustomSoundDesc">Choisissez votre propre son en appuyant sur "Son" -> "Mes sons" -> "+" -> "Enregistrer" sur l\'écran suivant.</string>
+    <string name="selectCustomSoundDesc">Choisissez votre propre son en appuyant sur \"Son\" -> \"Mes sons\" -> \"+\" -> \"Enregistrer\" sur l\'écran suivant.</string>
 
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">Désactiver les Optimisations de la Batterie</string>

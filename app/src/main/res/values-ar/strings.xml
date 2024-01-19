@@ -224,7 +224,7 @@
 
     <!-- مربع حوار تحديد الصوت المخصص -->
     <string name="selectCustomSound">حدد الصوت المخصص</string>
-    <string name="selectCustomSoundDesc">اختر الصوت الخاص بك عن طريق النقر على "الصوت" -> "الأصوات الخاصة بي" -> "+" -> "حفظ" في الشاشة التالية.</string>
+    <string name="selectCustomSoundDesc">اختر الصوت الخاص بك عن طريق النقر على \"الصوت\" -> \"أصواتي\" -> \"+\" -> \"حفظ\" في الشاشة التالية.</string>
 
     <!-- مربع حوار تحسين البطارية -->
     <string name="disableBatteryOptimizations">تعطيل تحسينات البطارية</string>

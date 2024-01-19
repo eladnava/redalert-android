@@ -226,7 +226,7 @@
 
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">Select custom sound</string>
-    <string name="selectCustomSoundDesc">Choose your own sound by tapping "Sound" -> "My Sounds" -> "+" -> "Save" on the next screen.</string>
+    <string name="selectCustomSoundDesc">Choose your own sound by tapping \"Sound\" -> \"My Sounds\" -> \"+\" -> \"Save\" on the next screen.</string>
 
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">Disable battery optimizations</string>

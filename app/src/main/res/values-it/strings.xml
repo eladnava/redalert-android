@@ -10,7 +10,7 @@
     <string name="pushRegistrationFailed">L\'applicazione ha riscontrato un errore durante il collegamento per ricevere le notifiche push. Proveremo a collegarti nuovamente in futuro.</string>
     <string name="apiRequestFailed">Una richiesta di ricezione delle informazioni dai nostri server è fallita. Controlla che la connesione a internet sia funzionante e ritenta.</string>
     <string name="registrationFailed">Registrazione fallita, prova nuovamente più tardi.</string>
-    <string name="grantNotificationPermission">Abilita "Notifiche" nella schermata successiva per ricevere avvisi in tempo reale.</string>
+    <string name="grantNotificationPermission">Abilita \"Notifiche\" nella schermata successiva per ricevere avvisi in tempo reale.</string>
     <string name="settings">Impostazioni</string>
     <string name="advanced">Avanzate</string>
     <string name="advancedSettings">Impostazioni Avanzate</string>
@@ -175,7 +175,7 @@
     <string name="showPopup">Mostra popup</string>
     <string name="showPopupDesc">Le allerte verrano mostrate in un pop-up</string>
     <string name="grantOverlayPermission">Consenti la visualizzazione su altre app</string>
-    <string name="grantOverlayPermissionInstructions">Seleziona "RedAlert" -> "Consenti visualizzazione su altre app" nella schermata successiva.</string>
+    <string name="grantOverlayPermissionInstructions">Seleziona \"RedAlert\" -> \"Consenti visualizzazione su altre app\" nella schermata successiva.</string>
 
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Migliorare l\'affidabilità</string>
@@ -231,7 +231,7 @@
 
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">Seleziona il suono personalizzato</string>
-    <string name="selectCustomSoundDesc">Scegli il tuo suono toccando "Suono" -> "I miei suoni" -> "+" -> "Salva" nella schermata successiva.</string>
+    <string name="selectCustomSoundDesc">Scegli il tuo suono toccando \"Suono\" -> \"I miei suoni\" -> \"+\" -> \"Salva\" nella schermata successiva.</string>
 
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">Disattiva le Ottimizzazioni della Batteria</string>
