@@ -16,7 +16,7 @@ import com.red.alert.activities.settings.alerts.SecondaryAlerts;
 import com.red.alert.config.Sound;
 import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.feedback.sound.SoundLogic;
-import com.red.alert.logic.notifications.RocketNotifications;
+import com.red.alert.logic.notifications.Notifications;
 import com.red.alert.ui.dialogs.AlertDialogBuilder;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.ui.notifications.AppNotifications;
@@ -87,7 +87,7 @@ public class SoundListPreference extends ListPreference {
                         if (path.equals(Sound.CUSTOM_SOUND_NAME)) {
                             // Delete (hide) old notification channel
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                notificationManager.deleteNotificationChannel(RocketNotifications.getNotificationChannelId(alertSoundType, "alarm1", mContext));
+                                notificationManager.deleteNotificationChannel(Notifications.getNotificationChannelId(alertSoundType, "alarm1", mContext));
                             }
 
                             // Instruct user how to configure custom sound
@@ -97,10 +97,10 @@ public class SoundListPreference extends ListPreference {
                                     // Clicked okay?
                                     if (which == DialogInterface.BUTTON_POSITIVE) {
                                         // Get channel ID by alert type
-                                        String channelId = RocketNotifications.getNotificationChannelId(alertSoundType, Sound.CUSTOM_SOUND_NAME, mContext);
+                                        String channelId = Notifications.getNotificationChannelId(alertSoundType, Sound.CUSTOM_SOUND_NAME, mContext);
 
                                         // Ensure notification channel created
-                                        RocketNotifications.setNotificationChannel(alertSoundType, path, null, mContext);
+                                        Notifications.setNotificationChannel(alertSoundType, path, null, mContext);
 
                                         // Open notification channel config to allow user to select custom sound
                                         Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
@@ -125,7 +125,7 @@ public class SoundListPreference extends ListPreference {
                             // Selected built-in sound
                             // Delete (hide) custom notification channel
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                notificationManager.deleteNotificationChannel(RocketNotifications.getNotificationChannelId(alertSoundType, Sound.CUSTOM_SOUND_NAME, mContext));
+                                notificationManager.deleteNotificationChannel(Notifications.getNotificationChannelId(alertSoundType, Sound.CUSTOM_SOUND_NAME, mContext));
                             }
                         }
 
@@ -145,7 +145,7 @@ public class SoundListPreference extends ListPreference {
                         SoundLogic.stopSound(mContext);
 
                         // Dispatch test notification
-                        RocketNotifications.notify(mContext, Arrays.asList(new String[]{mContext.getString(R.string.appName)}), testAlertType, testAlertType, path);
+                        Notifications.notify(mContext, Arrays.asList(new String[]{mContext.getString(R.string.appName)}), testAlertType, testAlertType, path);
                     }
                 });
 

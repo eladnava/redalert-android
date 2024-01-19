@@ -8,7 +8,7 @@ import com.red.alert.R;
 import com.red.alert.config.Alerts;
 import com.red.alert.config.Logging;
 import com.red.alert.logic.location.LocationLogic;
-import com.red.alert.logic.notifications.RocketNotifications;
+import com.red.alert.logic.notifications.Notifications;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.formatting.StringUtils;
@@ -64,7 +64,7 @@ public class AlertLogic {
         // Any cities to alert about?
         if (relevantCities.size() > 0) {
             // Issue the notification
-            RocketNotifications.notify(context, relevantCities, alertType, threatType, null);
+            Notifications.notify(context, relevantCities, alertType, threatType, null);
         }
     }
 

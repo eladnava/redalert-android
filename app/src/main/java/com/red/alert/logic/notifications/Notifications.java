@@ -38,7 +38,7 @@ import com.red.alert.utils.metadata.LocationData;
 
 import java.util.List;
 
-public class RocketNotifications {
+public class Notifications {
     public static void notify(Context context, List<String> cities, String alertType, String threatType, String overrideSound) {
         // Localize threat type
         String localizedThreatType = LocationData.getLocalizedThreatType(threatType, context);
