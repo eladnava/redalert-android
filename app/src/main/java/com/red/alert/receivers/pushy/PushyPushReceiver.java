@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.red.alert.config.Logging;
 import com.red.alert.logic.alerts.AlertLogic;
+import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.communication.broadcasts.SelfTestEvents;
 import com.red.alert.logic.communication.push.PushParameters;
 import com.red.alert.utils.communication.Broadcasts;
@@ -29,7 +30,7 @@ public class PushyPushReceiver extends BroadcastReceiver {
         }
 
         // Test alert?
-        if (alertType.equals("test")) {
+        if (alertType.equals(AlertTypes.TEST)) {
             // Log success
             Log.d(Logging.TAG, "Pushy test passed");
 

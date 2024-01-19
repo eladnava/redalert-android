@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:id="@+id/threatType"
+            android:id="@+id/cities"
             android:textSize="20sp"
             android:gravity="center"
             android:layout_width="fill_parent"

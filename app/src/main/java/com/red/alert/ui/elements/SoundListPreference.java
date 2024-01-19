@@ -22,6 +22,8 @@ import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.ui.notifications.AppNotifications;
 import com.red.alert.utils.caching.Singleton;
 
+import java.util.Arrays;
+
 public class SoundListPreference extends ListPreference {
     static Context mContext;
 
@@ -143,7 +145,7 @@ public class SoundListPreference extends ListPreference {
                         SoundLogic.stopSound(mContext);
 
                         // Dispatch test notification
-                        RocketNotifications.notify(mContext, null, mContext.getString(R.string.appName), mContext.getString(R.string.testSound), testAlertType, null, path);
+                        RocketNotifications.notify(mContext, Arrays.asList(new String[]{mContext.getString(R.string.appName)}), testAlertType, testAlertType, path);
                     }
                 });
 

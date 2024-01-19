@@ -1072,14 +1072,14 @@ public class Main extends AppCompatActivity {
 
     void handleNotificationClick(Intent intent) {
         // Extract clicked notification params
-        String city = intent.getStringExtra(AlertPopupParameters.CITY);
+        String[] cities = intent.getStringArrayExtra(AlertPopupParameters.CITIES);
         String threatType = intent.getStringExtra(AlertPopupParameters.THREAT_TYPE);
         long timestamp = intent.getLongExtra(AlertPopupParameters.TIMESTAMP, 0);
 
         // Display popup if all necessary parameters are set
-        if (city != null && threatType != null && timestamp > 0) {
-            // Get countdown in seconds for city
-            int countdown = LocationData.getCityCountdown(city, this);
+        if (cities != null && cities.length > 0 && threatType != null && timestamp > 0) {
+            // Fetch highest priority countdown in seconds for given alert cities list
+            int countdown = LocationData.getPrioritizedCountdownForCities(cities, this);
 
             // Check for old (inactive) alert
             // Only display alert popup for currently active alerts (+ 10 minutes)
@@ -1094,7 +1094,7 @@ public class Main extends AppCompatActivity {
             popupIntent.setClass(this, AlertPopup.class);
 
             // Pass on city name, threat type, and alert received timestamp
-            popupIntent.putExtra(AlertPopupParameters.CITY, city);
+            popupIntent.putExtra(AlertPopupParameters.CITIES, cities);
             popupIntent.putExtra(AlertPopupParameters.TIMESTAMP, timestamp);
             popupIntent.putExtra(AlertPopupParameters.THREAT_TYPE, threatType);
 

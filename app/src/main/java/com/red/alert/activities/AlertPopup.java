@@ -28,11 +28,12 @@ import com.red.alert.logic.phone.PowerManagement;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.utils.feedback.Volume;
-import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.localization.DateTime;
 import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.ui.DensityUtil;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -41,14 +42,14 @@ public class AlertPopup extends AppCompatActivity {
 
     Timer mTimer;
 
+    TextView mCities;
     TextView mCounter;
-    TextView mThreatType;
     TextView mInstructions;
 
     Button mClose;
     Button mSilence;
 
-    public static void showAlertPopup(String alertType, String city, String threatType, Context context) {
+    public static void showAlertPopup(String alertType, List<String> cities, String threatType, Context context) {
         // User disabled this feature?
         if (!AppPreferences.getPopupEnabled(context)) {
             return;
@@ -73,9 +74,9 @@ public class AlertPopup extends AppCompatActivity {
         // Set class to popup activity
         popupIntent.setClass(context, AlertPopup.class);
 
-        // Pass on city name & threat type
-        popupIntent.putExtra(AlertPopupParameters.CITY, city);
+        // Pass on alert cities & threat type
         popupIntent.putExtra(AlertPopupParameters.THREAT_TYPE, threatType);
+        popupIntent.putExtra(AlertPopupParameters.CITIES, cities.toArray(new String[0]));
 
         // Clear top, set as new task
         popupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -117,9 +118,9 @@ public class AlertPopup extends AppCompatActivity {
 
         // Cache UI objects
         mClose = (Button) findViewById(R.id.close);
+        mCities = (TextView) findViewById(R.id.cities);
         mSilence = (Button) findViewById(R.id.silence);
         mCounter = (TextView) findViewById(R.id.counter);
-        mThreatType = (TextView) findViewById(R.id.threatType);
         mInstructions = (TextView) findViewById(R.id.instructions);
 
         // Set up listeners
@@ -151,31 +152,31 @@ public class AlertPopup extends AppCompatActivity {
 
     void initializeAlert(Intent intent) {
         // Get alert city, threat type, and alert timestamp
-        String city = intent.getStringExtra(AlertPopupParameters.CITY);
+        String[] cities = intent.getStringArrayExtra(AlertPopupParameters.CITIES);
         String threatType = intent.getStringExtra(AlertPopupParameters.THREAT_TYPE);
         long timestamp = intent.getLongExtra(AlertPopupParameters.TIMESTAMP, DateTime.getUnixTimestamp());
 
         // None given?
-        if (StringUtils.stringIsNullOrEmpty(city)) {
+        if (cities == null || cities.length == 0) {
             return;
         }
 
-        // Set title to city name
-        setTitle(LocationData.getLocalizedCityName(city, this));
+        // Set localized threat type as popup title
+        setTitle(LocationData.getLocalizedThreatType(threatType, this));
 
-        // Display threat type & safety instructions
-        mThreatType.setText(LocationData.getLocalizedThreatType(threatType, this));
+        // Display localized cities & safety instructions
+        mCities.setText(LocationData.getLocalizedCityNamesCSV(Arrays.asList(cities), this));
         mInstructions.setText(LocationData.getLocalizedThreatInstructions(threatType, this));
 
-        // Not a rocket fire alert?
+        // Not a missile / hostile aircraft intrusion alert?
         // Hide countdown timer
         if (threatType != null && !threatType.contains(ThreatTypes.MISSILES) && !threatType.contains(ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION)) {
             // Countdown is only relevant for rocket fire
             mCounter.setVisibility(View.GONE);
         }
         else {
-            // Get countdown in seconds
-            int countdown = LocationData.getCityCountdown(city, this);
+            // Fetch highest priority countdown in seconds for given alert cities list
+            int countdown = LocationData.getPrioritizedCountdownForCities(cities, this);
 
             // Start counting down
             scheduleRocketCountdown(timestamp, countdown);

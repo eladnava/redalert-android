@@ -7,7 +7,7 @@ import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.settings.AppPreferences;
 
 public class PowerManagement {
-    public static void wakeUpScreen(String alertType, String city, Context context) {
+    public static void wakeUpScreen(String alertType, Context context) {
         // User disabled this feature?
         if (!AppPreferences.getWakeScreenEnabled(context)) {
             // Stop execution

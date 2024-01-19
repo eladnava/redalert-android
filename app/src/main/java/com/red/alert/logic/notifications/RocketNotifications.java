@@ -20,6 +20,8 @@ import com.red.alert.activities.Main;
 import com.red.alert.config.Logging;
 import com.red.alert.config.NotificationChannels;
 import com.red.alert.config.Sound;
+import com.red.alert.config.ThreatTypes;
+import com.red.alert.logic.alerts.AlertLogic;
 import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.communication.intents.AlertPopupParameters;
 import com.red.alert.logic.communication.intents.MainActivityParameters;
@@ -33,18 +35,49 @@ import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.localization.DateTime;
 import com.red.alert.utils.metadata.LocationData;
 
+import java.util.List;
+
 public class RocketNotifications {
-    public static void notify(Context context, String city, String notificationTitle, String notificationContent, String alertType, String threatType, String overrideSound) {
+    public static void notify(Context context, List<String> cities, String alertType, String threatType, String overrideSound) {
+        // Localize threat type
+        String localizedThreatType = LocationData.getLocalizedThreatType(threatType, context);
+
+        // Prepare notification title with threat type and city name
+        String notificationTitle = localizedThreatType + ": " + LocationData.getLocalizedCityNamesCSV(cities, context);
+
+        // Prepare notification body with zone and countdown
+        String notificationContent = LocationData.getLocalizedCityZonesWithCountdownCSV(cities, context);
+
+        // Missile alert?
+        if (threatType.contains(ThreatTypes.MISSILES)) {
+            // Add line break if needed
+            if (!StringUtils.stringIsNullOrEmpty(notificationContent)) {
+                notificationContent += "\n";
+            }
+
+            // Add threat instructions to notification body in a new line after zone and countdown
+            notificationContent += LocationData.getLocalizedThreatInstructions(threatType, context);
+        } else if (!threatType.contains(ThreatTypes.TEST)) {
+            // For all other threat types, only display threat instructions in notification body (don't display zone / countdown)
+            notificationContent = LocationData.getLocalizedThreatInstructions(threatType, context);
+        }
+
         // Get notification manager
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
 
-        // In case there is no content
-        if (StringUtils.stringIsNullOrEmpty(notificationContent)) {
+        // In case there is no content (or system alert received)
+        if (StringUtils.stringIsNullOrEmpty(notificationContent) || alertType.equals(AlertTypes.SYSTEM)) {
             // Move title to content
             notificationContent = notificationTitle;
 
             // Set title as app name
             notificationTitle = context.getString(R.string.appName);
+
+            // Sound picker open?
+            if (alertType.contains(AlertTypes.TEST_SOUND)) {
+                // Set special notification description for sound testing notifications
+                notificationContent = context.getString(R.string.testSound);
+            }
         }
 
         // Create a new notification and style it
@@ -65,16 +98,22 @@ public class RocketNotifications {
         builder.setDeleteIntent(getNotificationDeletedReceiverIntent(context));
 
         // No click event for test notifications
-        if (!alertType.contains("test")) {
+        if (!alertType.contains(AlertTypes.TEST)) {
             // Handle notification click
-            builder.setContentIntent(getNotificationIntent(city, threatType, context));
+            builder.setContentIntent(getNotificationIntent(cities, threatType, context));
         }
 
-        // Generate a notification ID based on the unique hash-code of the alert zone
+        // Generate a notification ID based on the unique hash-code of the notification title string to avoid duplicates
         int notificationId = notificationTitle.hashCode();
 
-        // Cancel previous notification for same alert city
+        // Cancel previous notification with same exact notification title string
         notificationManager.cancel(notificationId);
+
+        // Secondary alert?
+        if (AlertLogic.isSecondaryAlert(alertType, cities, context)) {
+            // Override type
+            alertType = AlertTypes.SECONDARY;
+        }
 
         // Configure notification channel (if required)
         setNotificationChannel(alertType, overrideSound, builder, context);
@@ -84,8 +123,8 @@ public class RocketNotifications {
             notificationManager.notify(notificationId, builder.build());
         }
         catch (Exception exc) {
-            // Log it
-            Log.e(Logging.TAG, "Rocket notification failed", exc);
+            // Log error
+            Log.e(Logging.TAG, "Failed to create and display notification", exc);
         }
 
         // Vibrate (if applicable)
@@ -95,10 +134,10 @@ public class RocketNotifications {
         SoundLogic.playSound(alertType, overrideSound, context);
 
         // Wake up phone screen (if enabled)
-        PowerManagement.wakeUpScreen(alertType, city, context);
+        PowerManagement.wakeUpScreen(alertType, context);
 
         // Show alert popup (if applicable)
-        AlertPopup.showAlertPopup(alertType, city, threatType, context);
+        AlertPopup.showAlertPopup(alertType, cities, threatType, context);
 
         // Reload recent alerts (if main activity is open)
         Broadcasts.publish(context, MainActivityParameters.RELOAD_RECENT_ALERTS);
@@ -115,13 +154,13 @@ public class RocketNotifications {
         return PendingIntent.getBroadcast(context, 0, deleteIntent, PendingIntent.FLAG_IMMUTABLE);
     }
 
-    public static PendingIntent getNotificationIntent(String city, String threatType, Context context) {
+    public static PendingIntent getNotificationIntent(List<String> cities, String threatType, Context context) {
         // Prepare notification intent
         Intent notificationIntent = new Intent(context, Main.class);
 
         // Pass on city name, threat type, and alert received timestamp
-        notificationIntent.putExtra(AlertPopupParameters.CITY, city);
         notificationIntent.putExtra(AlertPopupParameters.THREAT_TYPE, threatType);
+        notificationIntent.putExtra(AlertPopupParameters.CITIES, cities.toArray(new String[0]));
         notificationIntent.putExtra(AlertPopupParameters.TIMESTAMP, DateTime.getUnixTimestamp());
 
         // Prepare pending intent

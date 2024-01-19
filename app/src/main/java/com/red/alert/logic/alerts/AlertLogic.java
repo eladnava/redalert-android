@@ -7,7 +7,6 @@ import android.util.Log;
 import com.red.alert.R;
 import com.red.alert.config.Alerts;
 import com.red.alert.config.Logging;
-import com.red.alert.config.ThreatTypes;
 import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.logic.notifications.RocketNotifications;
 import com.red.alert.logic.settings.AppPreferences;
@@ -17,6 +16,7 @@ import com.red.alert.utils.localization.DateTime;
 import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -36,21 +36,15 @@ public class AlertLogic {
         // Get alert cities as list
         List<String> cityList = LocationData.explodePSV(citiesPSVString);
 
+        // Prepare list of relevant cities to alert about
+        List<String> relevantCities = new ArrayList<>();
+
         // Loop over cities
         for (String city : cityList) {
-            // Store default alert type in variable, override it later
-            String overrideAlertType = alertType;
-
             // Is this a relevant city?
-            if (isRelevantCity(overrideAlertType, city, context)) {
-                // Secondary alert?
-                if (isSecondaryCity(overrideAlertType, city, context)) {
-                    // Set type
-                    overrideAlertType = AlertTypes.SECONDARY;
-                }
-
+            if (isRelevantCity(alertType, city, context)) {
                 // Not a test alert?
-                if (!overrideAlertType.contains("test")) {
+                if (!alertType.contains(AlertTypes.TEST)) {
                     // Did we recently notify for this city?
                     if (cityRecentlyNotified(city, context)) {
                         // Log that we're skipping this one
@@ -62,31 +56,15 @@ public class AlertLogic {
                     AppPreferences.setCityLastAlertTime(city, DateTime.getUnixTimestamp(), context);
                 }
 
-                // Localize city name
-                String localizedCityName = LocationData.getLocalizedCityName(city, context);
-
-                // Localize threat type
-                String localizedThreatType = LocationData.getLocalizedThreatType(threatType, context);
-
-                // Prepare notification title with threat type and city name
-                String notificationTitle = localizedThreatType + ": " + localizedCityName;
-
-                // Prepare notification body with zone and countdown
-                String notificationBody = LocationData.getLocalizedZoneWithCountdown(city, context);
-
-                // Rocket fire alert?
-                if (threatType.contains(ThreatTypes.MISSILES)) {
-                    // Add threat instructions to notification body in a new line after zone and countdown
-                    notificationBody += "\n" + LocationData.getLocalizedThreatInstructions(threatType, context);
-                }
-                else if (!threatType.contains(ThreatTypes.TEST)) {
-                    // For all other threat types, only display threat instructions in notification body (don't display zone / countdown)
-                    notificationBody = LocationData.getLocalizedThreatInstructions(threatType, context);
-                }
-
-                // Issue the notification
-                RocketNotifications.notify(context, city, notificationTitle, notificationBody, overrideAlertType, threatType, null);
+                // Add city to relevant alert cities
+                relevantCities.add(city);
             }
+        }
+
+        // Any cities to alert about?
+        if (relevantCities.size() > 0) {
+            // Issue the notification
+            RocketNotifications.notify(context, relevantCities, alertType, threatType, null);
         }
     }
 
@@ -100,7 +78,7 @@ public class AlertLogic {
 
     public static boolean isRelevantCity(String alertType, String city, Context context) {
         // Test or system message?
-        if (isSystemTestAlert(alertType, context)) {
+        if (isSystemTestAlert(alertType)) {
             return true;
         }
 
@@ -123,30 +101,36 @@ public class AlertLogic {
         return false;
     }
 
-    public static boolean isSecondaryCity(String alertType, String city, Context context) {
-        // System or test?
-        if (isSystemTestAlert(alertType, context)) {
+    public static boolean isSecondaryAlert(String alertType, List<String> cities, Context context) {
+        // System or test alert?
+        if (isSystemTestAlert(alertType)) {
             return false;
         }
 
-        // Did user select this area?
-        if (isCitySelectedPrimarily(city, context)) {
-            return false;
+        // By default, no secondary until proven otherwise
+        boolean secondaryFound = false;
+
+        // Traverse cities
+        for (String city : cities) {
+            // Did user select this area under primary city / zone selection?
+            if (isCitySelectedPrimarily(city, context)) {
+                return false;
+            }
+
+            // Location alerts enabled and city is nearby?
+            // It's a primary alert then, not a secondary alert
+            if (isNearby(city, context)) {
+                return false;
+            }
+
+            // Did user select this city under secondary city selection?
+            if (isSecondaryCitySelected(city, context)) {
+                secondaryFound = true;
+            }
         }
 
-        // Are we nearby?
-        // It's a primary alert then, not a secondary alert
-        if (isNearby(city, context)) {
-            return false;
-        }
-
-        // Did user select this city?
-        if (isSecondaryCitySelected(city, context)) {
-            return true;
-        }
-
-        // If we are here, not selected
-        return false;
+        // If we are still here, return secondaryFound flag
+        return secondaryFound;
     }
 
     public static boolean isCitySelectedPrimarily(String city, Context context) {
@@ -273,9 +257,9 @@ public class AlertLogic {
         return false;
     }
 
-    public static boolean isSystemTestAlert(String alertType, Context context) {
-        // Self-test?
-        if (alertType.equals(AlertTypes.TEST)) {
+    public static boolean isSystemTestAlert(String alertType) {
+        // Self-test (or sound test)?
+        if (alertType.contains(AlertTypes.TEST)) {
             return true;
         }
 

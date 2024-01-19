@@ -6,6 +6,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.red.alert.config.Logging;
 import com.red.alert.logic.alerts.AlertLogic;
+import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.communication.broadcasts.SelfTestEvents;
 import com.red.alert.logic.communication.push.PushParameters;
 import com.red.alert.logic.push.FCMRegistration;
@@ -60,7 +61,7 @@ public class FirebaseService extends FirebaseMessagingService {
         }
 
         // Test alert?
-        if (alertType.equals("test")) {
+        if (alertType.equals(AlertTypes.TEST)) {
             // Log success
             Log.d(Logging.TAG, "FCM test passed");
 

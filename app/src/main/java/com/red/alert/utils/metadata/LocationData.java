@@ -3,12 +3,14 @@ package com.red.alert.utils.metadata;
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationManager;
+import android.text.TextUtils;
 import android.util.Log;
 
 import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 import com.red.alert.R;
 import com.red.alert.config.Alerts;
 import com.red.alert.config.Logging;
+import com.red.alert.logic.alerts.AlertLogic;
 import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.config.ThreatTypes;
 import com.red.alert.model.metadata.City;
@@ -320,6 +322,40 @@ public class LocationData {
         return 0;
     }
 
+    public static int getPrioritizedCountdownForCities(String[] cities, Context context) {
+        // Default to highest possible countdown value (3 minutes)
+        int minCountdown = 180;
+
+        // Keep track of whether an alert exists for a primarily-selected city
+        boolean primaryFound = false;
+
+        // Traverse current alert cities to find primarily-selected / nearby city countdown, or default to shortest countdown
+        for (String city : cities) {
+            // Get countdown for current city in seconds
+            int countdown = LocationData.getCityCountdown(city, context);
+
+            // If city selected primarily (or it's nearby), just return its countdown value
+            if (AlertLogic.isCitySelectedPrimarily(city, context) || AlertLogic.isNearby(city, context)) {
+                // First primary encountered, or another primary with lower countdown?
+                if (!primaryFound || countdown < minCountdown) {
+                    minCountdown = countdown;
+                }
+
+                // Mark primary found
+                primaryFound = true;
+            }
+            else if (!primaryFound) {
+                // Current city's countdown is lower than current minimum?
+                if (countdown < minCountdown) {
+                    minCountdown = countdown;
+                }
+            }
+        }
+
+        // Return minimum / highest priority countdown
+        return minCountdown;
+    }
+
     public static String getLocalizedCityName(String cityName, Context context) {
         // Prepare cities array
         List<City> cities = getAllCities(context);
@@ -348,6 +384,40 @@ public class LocationData {
 
         // No match
         return cityName;
+    }
+
+    public static String getLocalizedCityNamesCSV(List<String> cities, Context context) {
+        // Prepare list of localized city names
+        List<String> localizedCityNames = new ArrayList<>();
+
+        // Traverse cities
+        for (String city : cities) {
+            // Localize city name and add to list
+            localizedCityNames.add(LocationData.getLocalizedCityName(city, context));
+        }
+
+        // Return localized cities as CSV
+        return TextUtils.join(", ", localizedCityNames);
+    }
+
+    public static String getLocalizedCityZonesWithCountdownCSV(List<String> cities, Context context) {
+        // Prepare list of localized zones
+        List<String> localizedZones = new ArrayList<>();
+
+        // Traverse cities
+        for (String city : cities) {
+            // Get zone and countdown as string
+            String zone = LocationData.getLocalizedZoneWithCountdown(city, context);
+
+            // Remove duplicates and empty results
+            if (!StringUtils.stringIsNullOrEmpty(zone) && !localizedZones.contains(zone)) {
+                // Add new city zone and countdown to list
+                localizedZones.add(zone);
+            }
+        }
+
+        // Return localized zones as CSV
+        return TextUtils.join(", ", localizedZones);
     }
 
     public static List<String> getEnglishZoneTopicNames(List<String> zoneNames, Context context) {
