@@ -7,6 +7,7 @@ import android.util.Log;
 import com.red.alert.R;
 import com.red.alert.config.Alerts;
 import com.red.alert.config.Logging;
+import com.red.alert.config.ThreatTypes;
 import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.logic.notifications.Notifications;
 import com.red.alert.logic.settings.AppPreferences;
@@ -25,6 +26,12 @@ public class AlertLogic {
         // No cities?
         if (StringUtils.stringIsNullOrEmpty(citiesPSVString)) {
             return;
+        }
+
+        // No threat specified?
+        if (StringUtils.stringIsNullOrEmpty(threatType)) {
+            // Default to system alert threat type
+            threatType = ThreatTypes.SYSTEM;
         }
 
         // Ensure the right language is displayed

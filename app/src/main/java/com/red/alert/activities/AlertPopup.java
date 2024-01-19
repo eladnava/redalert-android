@@ -15,6 +15,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.red.alert.R;
@@ -48,6 +49,8 @@ public class AlertPopup extends AppCompatActivity {
 
     Button mClose;
     Button mSilence;
+
+    ImageView mThreatIcon;
 
     public static void showAlertPopup(String alertType, List<String> cities, String threatType, Context context) {
         // User disabled this feature?
@@ -121,6 +124,7 @@ public class AlertPopup extends AppCompatActivity {
         mCities = (TextView) findViewById(R.id.cities);
         mSilence = (Button) findViewById(R.id.silence);
         mCounter = (TextView) findViewById(R.id.counter);
+        mThreatIcon = (ImageView) findViewById(R.id.threatIcon);
         mInstructions = (TextView) findViewById(R.id.instructions);
 
         // Set up listeners
@@ -164,9 +168,16 @@ public class AlertPopup extends AppCompatActivity {
         // Set localized threat type as popup title
         setTitle(LocationData.getLocalizedThreatType(threatType, this));
 
-        // Display localized cities & safety instructions
+        // Display threat icon, localized cities, safety instructions
+        mThreatIcon.setImageResource(LocationData.getThreatDrawable(threatType));
         mCities.setText(LocationData.getLocalizedCityNamesCSV(Arrays.asList(cities), this));
         mInstructions.setText(LocationData.getLocalizedThreatInstructions(threatType, this));
+
+        // Missile alert?
+        if (threatType.contains(ThreatTypes.MISSILES)) {
+            // Only display threat icon for non-missile threats
+            mThreatIcon.setVisibility(View.GONE);
+        }
 
         // System alert?
         if (threatType.equals(ThreatTypes.SYSTEM)) {
@@ -176,7 +187,7 @@ public class AlertPopup extends AppCompatActivity {
 
         // Not a missile / hostile aircraft intrusion alert?
         // Hide countdown timer
-        if (threatType != null && !threatType.contains(ThreatTypes.MISSILES) && !threatType.contains(ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION)) {
+        if (!threatType.contains(ThreatTypes.MISSILES) && !threatType.contains(ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION)) {
             // Countdown is only relevant for rocket fire
             mCounter.setVisibility(View.GONE);
         }
