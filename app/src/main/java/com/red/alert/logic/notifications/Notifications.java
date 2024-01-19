@@ -105,7 +105,7 @@ public class Notifications {
 
         // Only display large icon in case title is less than X characters long
         // as it causes the title to get truncated prematurely
-        if (notificationTitle.length() < 55) {
+        if (notificationTitle.length() < 55 || !threatType.contains(ThreatTypes.MISSILES)) {
             builder.setLargeIcon(BitmapFactory.decodeResource(context.getResources(), LocationData.getThreatDrawable(threatType)));
         }
 
