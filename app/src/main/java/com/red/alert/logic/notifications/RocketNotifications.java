@@ -101,8 +101,13 @@ public class RocketNotifications {
                 .setCategory(NotificationCompat.CATEGORY_ALARM)
                 .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setColor(context.getResources().getColor(R.color.colorAccent))
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(notificationContent))
-                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), LocationData.getThreatDrawable(threatType)));
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(notificationContent));
+
+        // Only display large icon in case title is less than X characters long
+        // as it causes the title to get truncated prematurely
+        if (notificationTitle.length() < 55) {
+            builder.setLargeIcon(BitmapFactory.decodeResource(context.getResources(), LocationData.getThreatDrawable(threatType)));
+        }
 
         // Handle notification delete
         builder.setDeleteIntent(getNotificationDeletedReceiverIntent(context));
