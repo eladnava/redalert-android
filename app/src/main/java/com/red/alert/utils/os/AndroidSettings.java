@@ -27,7 +27,7 @@ public class AndroidSettings {
 
     public static String getBatteryOptimizationWhitelistInstructions(Context context) {
         // Special instructions for Samsung devices
-        if (Build.MANUFACTURER.toLowerCase().contains("samsung")) {
+        if (Build.MANUFACTURER.toLowerCase().contains("samsung") && Build.VERSION.SDK_INT <= Build.VERSION_CODES.R) {
             return context.getString(R.string.disableBatteryOptimizationsSamsungInstructions);
         }
 
