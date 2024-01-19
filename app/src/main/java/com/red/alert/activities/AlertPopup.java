@@ -168,6 +168,12 @@ public class AlertPopup extends AppCompatActivity {
         mCities.setText(LocationData.getLocalizedCityNamesCSV(Arrays.asList(cities), this));
         mInstructions.setText(LocationData.getLocalizedThreatInstructions(threatType, this));
 
+        // System alert?
+        if (threatType.equals(ThreatTypes.SYSTEM)) {
+            // Hide instructions text as it's redundant
+            mInstructions.setVisibility(View.GONE);
+        }
+
         // Not a missile / hostile aircraft intrusion alert?
         // Hide countdown timer
         if (threatType != null && !threatType.contains(ThreatTypes.MISSILES) && !threatType.contains(ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION)) {

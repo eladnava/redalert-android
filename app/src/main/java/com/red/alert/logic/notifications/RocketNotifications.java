@@ -12,6 +12,7 @@ import androidx.core.app.NotificationCompat;
 
 import android.media.AudioAttributes;
 import android.os.Build;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.red.alert.R;
@@ -62,23 +63,32 @@ public class RocketNotifications {
             notificationContent = LocationData.getLocalizedThreatInstructions(threatType, context);
         }
 
-        // Get notification manager
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
-
-        // In case there is no content (or system alert received)
-        if (StringUtils.stringIsNullOrEmpty(notificationContent) || alertType.equals(AlertTypes.SYSTEM)) {
+        // In case there is no content
+        if (StringUtils.stringIsNullOrEmpty(notificationContent)) {
             // Move title to content
             notificationContent = notificationTitle;
 
             // Set title as app name
             notificationTitle = context.getString(R.string.appName);
-
-            // Sound picker open?
-            if (alertType.contains(AlertTypes.TEST_SOUND)) {
-                // Set special notification description for sound testing notifications
-                notificationContent = context.getString(R.string.testSound);
-            }
         }
+
+        // Sound picker open?
+        if (alertType.contains(AlertTypes.TEST_SOUND)) {
+            // Set special notification description for sound testing notifications
+            notificationContent = context.getString(R.string.testSound);
+        }
+
+        // System message?
+        if (alertType.equals(AlertTypes.SYSTEM)) {
+            // Set title to app name
+            notificationTitle = context.getString(R.string.appName);
+
+            // Set notification body to system message text contained in cities variable
+            notificationContent = TextUtils.join(", ", cities);
+        }
+
+        // Get notification manager
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
 
         // Create a new notification and style it
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
