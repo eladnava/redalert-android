@@ -155,10 +155,8 @@
 
     <!-- Alert Share -->
     <string name="shareAlert">Teile die Meldung</string>
-    <string name="alertSoundedAt">Ein code-red-Alarm hörte sich aus&#160;</string>
-    <string name="atTime">beim</string>
-    <string name="alertSentVia">- Gesendet mit  RedAlert für Android - https://redalert.me
-    </string>
+    <string name="alertSoundedAt">in&#160;</string>
+    <string name="alertSentVia">Gesendet mit  RedAlert für Android (https://redalert.me)</string>
 
     <!-- Wake Screen -->
     <string name="wakeScreen">Bildschirm einschalten</string>

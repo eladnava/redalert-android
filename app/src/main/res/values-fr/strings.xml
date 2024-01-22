@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="appName">Tzeva Adom</string>
+    <string name="appName">RedAlert</string>
     <string name="signing_up">Inscription pour les notifications push ... </string>
     <string name="okay">OK</string>
     <string name="yes">Oui</string>
@@ -155,11 +155,8 @@
 
     <!-- Alert Share -->
     <string name="shareAlert">Partager l\'alerte</string>
-    <string name="alertSoundedAt">Une alerte rouge retentit à&#160;</string>
-    <string name="atTime">à</string>
-    <string name="alertSentVia">- Envoyé via RedAlert pour Android -
-        https://redalert.me
-    </string>
+    <string name="alertSoundedAt">à&#160;</string>
+    <string name="alertSentVia">Envoyé via RedAlert pour Android (https://redalert.me)</string>
 
     <!-- Wake Screen -->
     <string name="wakeScreen">Allumer l\'écran</string>

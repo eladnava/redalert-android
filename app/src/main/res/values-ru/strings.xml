@@ -202,11 +202,8 @@
 
     <!-- Alert Share -->
     <string name="shareAlert">Дайте предупреждение</string>
-    <string name="alertSoundedAt">Код красная тревога звучала с в&#160;</string>
-    <string name="atTime">в</string>
-    <string name="alertSentVia">- Отправлено через Цева Адом Android -
-        https://redalert.me
-    </string>
+    <string name="alertSoundedAt">в&#160;</string>
+    <string name="alertSentVia">Отправлено через Цева Адом Android (https://redalert.me)</string>
 
     <!-- Wake Screen -->
     <string name="wakeScreen">Включить экран</string>

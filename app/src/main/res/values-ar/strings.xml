@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="appName">أحمر اللون</string>
+    <string name="appName">RedAlert</string>
     <string name="signing_up">الاشتراك في الإشعارات الفورية...</string>
     <string name="okay">موافق</string>
     <string name="yes">نعم</string>
@@ -155,9 +155,8 @@
 
     <!-- تنبيه بالمشاركة -->
     <string name="shareAlert">شارك التنبيه</string>
-    <string name="alertSoundedAt">إنطلق تنبيه باللون الأحمر في&#160;</string>
-    <string name="atTime">في</string>
-    <string name="alertSentVia">- تم الإرسال عبر أحمر اللون لنظام ذكري المظهر - https://redalert.me</string>
+    <string name="alertSoundedAt">في&#160;</string>
+    <string name="alertSentVia">تم الإرسال عبر أحمر اللون لنظام ذكري المظهر (https://redalert.me)</string>
 
     <!-- تنشيط الشاشة -->
     <string name="wakeScreen">تنشيط الشاشة</string>

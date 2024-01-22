@@ -216,11 +216,8 @@
 
     <!-- Alert Share -->
     <string name="shareAlert">שתף את האזעקה</string>
-    <string name="alertSoundedAt">אזעקת צבע אדום נשמעה ב</string>
-    <string name="atTime">בשעה</string>
-    <string name="alertSentVia">- נשלח באמצעות צבע אדום באנדרואיד -
-        https://redalert.me
-    </string>
+    <string name="alertSoundedAt">ב</string>
+    <string name="alertSentVia">נשלח באמצעות אפליקציית צבע אדום - התרעות בזמן אמת (https://redalert.me)</string>
 
     <!-- Wake Screen -->
     <string name="wakeScreen">הדלק מסך</string>

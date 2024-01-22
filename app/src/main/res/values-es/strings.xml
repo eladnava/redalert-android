@@ -2,7 +2,7 @@
 <resources>
 
     <!-- App Title -->
-    <string name="appName">Tzeva Adom</string>
+    <string name="appName">RedAlert</string>
 
     <!-- Registration Dialog -->
     <string name="signing_up">Registrándose al servicio de notificaciones de Tzeva Adom…</string>
@@ -202,11 +202,8 @@
 
     <!-- Alert Share -->
     <string name="shareAlert">Comparte la alerta</string>
-    <string name="alertSoundedAt">Una alerta de código rojo sonaba apagado en&#160;</string>
-    <string name="atTime">en</string>
-    <string name="alertSentVia">- Enviado desde Tzeva Adom en Android -
-        https://redalert.me
-    </string>
+    <string name="alertSoundedAt">en&#160;</string>
+    <string name="alertSentVia">Enviado desde RedAlert en Android (https://redalert.me)</string>
 
     <!-- Wake Screen -->
     <string name="wakeScreen">Encender la pantalla</string>

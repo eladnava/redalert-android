@@ -298,7 +298,7 @@ public class AlertView extends AppCompatActivity {
         }
 
         // Construct share message
-        return getString(R.string.alertSoundedAt) + TextUtils.join(", ", localizedCityNames) + " " + mAlerts.get(0).dateString + " " + getString(R.string.alertSentVia);
+        return mAlerts.get(0).localizedThreat + " " + getString(R.string.alertSoundedAt) + TextUtils.join(", ", localizedCityNames) + "\n" + mAlerts.get(0).dateString + "\n\n" + getString(R.string.alertSentVia);
     }
 
     void initializeShareButton(Menu OptionsMenu) {
