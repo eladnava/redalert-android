@@ -288,17 +288,8 @@ public class AlertView extends AppCompatActivity {
     }
 
     private String getShareMessage() {
-        // Initialize city names array list
-        ArrayList<String> localizedCityNames = new ArrayList();
-
-        // Traverse alerts
-        for (Alert alert : mAlerts) {
-            // Add localized name
-            localizedCityNames.add(alert.localizedCity);
-        }
-
         // Construct share message
-        return mAlerts.get(0).localizedThreat + " " + getString(R.string.alertSoundedAt) + TextUtils.join(", ", localizedCityNames) + "\n" + mAlerts.get(0).dateString + "\n\n" + getString(R.string.alertSentVia);
+        return mAlerts.get(0).localizedThreat + " " + getString(R.string.alertSoundedAt) + mAlerts.get(0).localizedCity + "\n" + mAlerts.get(0).dateString + "\n\n" + getString(R.string.alertSentVia);
     }
 
     void initializeShareButton(Menu OptionsMenu) {
