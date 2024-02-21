@@ -238,7 +238,7 @@ public class Main extends AppCompatActivity {
                 Intent alertView = new Intent();
 
                 // Set class
-                alertView.setClass(Main.this, AlertView.class);
+                alertView.setClass(Main.this, Map.class);
 
                 try {
                     // Pass grouped alerts as JSON
@@ -1091,7 +1091,7 @@ public class Main extends AppCompatActivity {
             final Intent popupIntent = new Intent();
 
             // Set class to popup activity
-            popupIntent.setClass(this, AlertPopup.class);
+            popupIntent.setClass(this, Popup.class);
 
             // Pass on city name, threat type, and alert received timestamp
             popupIntent.putExtra(AlertPopupParameters.CITIES, cities);

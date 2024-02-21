@@ -16,7 +16,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.red.alert.R;
-import com.red.alert.activities.AlertPopup;
+import com.red.alert.activities.Popup;
 import com.red.alert.activities.Main;
 import com.red.alert.config.Logging;
 import com.red.alert.config.NotificationChannels;
@@ -152,7 +152,7 @@ public class Notifications {
         PowerManagement.wakeUpScreen(alertType, context);
 
         // Show alert popup (if applicable)
-        AlertPopup.showAlertPopup(alertType, cities, threatType, context);
+        Popup.showAlertPopup(alertType, cities, threatType, context);
 
         // Reload recent alerts (if main activity is open)
         Broadcasts.publish(context, MainActivityParameters.RELOAD_RECENT_ALERTS);

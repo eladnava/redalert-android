@@ -38,7 +38,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class AlertPopup extends AppCompatActivity {
+public class Popup extends AppCompatActivity {
     boolean mIsDestroyed;
 
     Timer mTimer;
@@ -75,7 +75,7 @@ public class AlertPopup extends AppCompatActivity {
         Intent popupIntent = new Intent();
 
         // Set class to popup activity
-        popupIntent.setClass(context, AlertPopup.class);
+        popupIntent.setClass(context, Popup.class);
 
         // Pass on alert cities & threat type
         popupIntent.putExtra(AlertPopupParameters.THREAT_TYPE, threatType);
@@ -137,7 +137,7 @@ public class AlertPopup extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Stop the media service
-                SoundLogic.stopSound(AlertPopup.this);
+                SoundLogic.stopSound(Popup.this);
 
                 // Close popup
                 finish();
@@ -149,7 +149,7 @@ public class AlertPopup extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Stop the media service
-                SoundLogic.stopSound(AlertPopup.this);
+                SoundLogic.stopSound(Popup.this);
             }
         });
     }

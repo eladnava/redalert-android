@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -46,7 +45,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.view.MenuItemCompat;
 import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 
-public class AlertView extends AppCompatActivity {
+public class Map extends AppCompatActivity {
     GoogleMap mMap;
     List<Alert> mAlerts;
 
@@ -72,7 +71,7 @@ public class AlertView extends AppCompatActivity {
             });
         } catch (IOException e) {
             // Show error dialog
-            AlertDialogBuilder.showGenericDialog(getString(R.string.error), e.getMessage(), getString(R.string.okay), null, false, AlertView.this, null);
+            AlertDialogBuilder.showGenericDialog(getString(R.string.error), e.getMessage(), getString(R.string.okay), null, false, Map.this, null);
         }
     }
 
@@ -408,7 +407,7 @@ public class AlertView extends AppCompatActivity {
         @Override
         protected Integer doInBackground(Integer... Parameter) {
             // Load polygons data for all cities (execution takes roughly 1 second)
-            LocationData.getAllPolygons(AlertView.this);
+            LocationData.getAllPolygons(Map.this);
 
             // No errors
             return 0;

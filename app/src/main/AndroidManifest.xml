@@ -56,14 +56,14 @@
 
         <!-- Alert View -->
         <activity
-            android:name=".activities.AlertView"
+            android:name=".activities.Map"
             android:label=""
             android:theme="@style/AppTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
 
         <!-- Alert Popup -->
         <activity
-            android:name=".activities.AlertPopup"
+            android:name=".activities.Popup"
             android:label="@string/appName"
             android:launchMode="singleInstance"
             android:excludeFromRecents="true"
