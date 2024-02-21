@@ -168,7 +168,7 @@
     <string name="notifyError">Se ha producido un error al mostrar la alerta, es posible que desee para reiniciar el teléfono.</string>
     <string name="jsonFailed">Se produjo un error al intentar cargar los datos del servidor.</string>
     <string name="noGooglePlayServices">El teléfono no tiene una versión actualizada de Google Play Servicios instalados.</string>
-    <string name="pushRegistrationFailed">Se produjo un error al firmar para arriba para las notificaciones de cohetes de empuje. Vamos a tratar de firmar para arriba de nuevo en el futuro.</string>
+    <string name="pushRegistrationFailed">Se produjo un error al firmar para arriba para las notificaciones de empuje. Vamos a tratar de firmar para arriba de nuevo en el futuro.</string>
     <string name="apiRequestFailed">Una solicitud para recuperar información de nuestros servidores fallaron. Por favor, compruebe su conexión a Internet y vuelva a intentarlo.</string>
     <string name="registrationFailed">El registro al servicio de notificaciones no tuvo éxito. Por favor, intente más tarde.</string>
     <string name="grantNotificationPermission">Habilite \"Notificaciones\" en la siguiente pantalla para recibir alertas en tiempo real.</string>
@@ -184,7 +184,7 @@
     <string name="gpsEnabled">Ubicación alertas</string>
     <string name="gpsEnabledDesc">Recibe alertas basadas en la localización en tiempo real</string>
     <string name="maxDistance">Distancia máxima</string>
-    <string name="maxDistanceDesc">Deslice para seleccionar la distancia máxima de cada ciudad que recibe una alerta de cohetes</string>
+    <string name="maxDistanceDesc">Deslice para seleccionar la distancia máxima de cada ciudad que recibe una alerta</string>
     <string name="kilometer">km</string>
     <string name="nearbyCities">Ciudades cercanas</string>
     <string name="noLocation">No se pudo determinar la última ubicación conocida</string>
@@ -207,7 +207,7 @@
 
     <!-- Wake Screen -->
     <string name="wakeScreen">Encender la pantalla</string>
-    <string name="wakeScreenDesc">Las alertas de cohetes activarán la pantalla de tu teléfono</string>
+    <string name="wakeScreenDesc">Las alertas activarán la pantalla de tu teléfono</string>
 
     <!-- Alert Popup -->
     <string name="close">Cerrar</string>
@@ -242,14 +242,14 @@
     <string name="learnAboutLifeshieldDesc">Haga clic aquí para conocer más acerca de Operation Lifeshield, una organización sin fines de lucro que despliega refugios antiaéreos en Israel.</string>
 
     <!-- Threat Types -->
-    <string name="missiles">Fuego de cohete</string>
+    <string name="missiles">Misiles</string>
     <string name="radiologicalEvent">Evento radiológico</string>
     <string name="earthQuake">Terremoto</string>
     <string name="tsunami">Alerta de tsunami</string>
     <string name="hostileAircraftIntrusion">Intrusión de aeronaves hostiles</string>
     <string name="hazardousMaterials">Materiales peligrosos</string>
     <string name="terroristInfiltration">Infiltración terrorista</string>
-    <string name="missilesDrill">Ejercicio: Fuego de cohetes</string>
+    <string name="missilesDrill">Ejercicio: Misiles</string>
     <string name="earthQuakeDrill">Ejercicio: Terremoto</string>
     <string name="radiologicalEventDrill">Ejercicio: Evento radiológico</string>
     <string name="tsunamiDrill">Ejercicio: Alerta de tsunami</string>
