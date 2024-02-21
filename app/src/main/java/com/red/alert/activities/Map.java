@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -22,7 +24,10 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.red.alert.R;
+import com.red.alert.activities.settings.alerts.LocationAlerts;
+import com.red.alert.config.ThreatTypes;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
+import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.model.Alert;
 import com.red.alert.model.metadata.City;
 import com.red.alert.ui.dialogs.AlertDialogBuilder;
@@ -110,6 +115,11 @@ public class Map extends AppCompatActivity {
         // Add localized threat type to title
         if (!StringUtils.stringIsNullOrEmpty(firstAlert.localizedThreat)) {
             setTitle(firstAlert.localizedThreat + ": " + getTitle());
+        }
+
+        // Display special title for nearby cities display
+        if (firstAlert.threat.equals(ThreatTypes.NEARBY_CITIES_DISPLAY)) {
+            setTitle(getString(R.string.nearbyCities) + ": " + LocationLogic.getMaxDistanceKilometers(this, -1) + " " + getString(R.string.kilometer));
         }
     }
 
@@ -217,6 +227,12 @@ public class Map extends AppCompatActivity {
                 // Add shelter count if exists for this city
                 if (city.shelters > 0) {
                     tooltip += "\n" + getString(R.string.lifeshieldShelters) + " " + city.shelters;
+                }
+
+                // Custom tooltip for nearby cities display
+                if (alert.threat.equals(ThreatTypes.NEARBY_CITIES_DISPLAY)) {
+                    // Display current distance from city center
+                    tooltip = LocationData.getDistanceFromCity(city, this) + " " + getString(R.string.kilometer);
                 }
 
                 // Add marker to map

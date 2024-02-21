@@ -17,4 +17,5 @@ public class ThreatTypes {
     public static final String HAZARDOUS_MATERIALS_DRILL = "hazardousMaterialsDrill";
     public static final String TERRORIST_INFILTRATION_DRILL = "terroristInfiltrationDrill";
     public static final String SYSTEM = "system";
+    public static final String NEARBY_CITIES_DISPLAY = "nearbyCitiesDisplay";
 }

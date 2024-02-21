@@ -20,13 +20,17 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.red.alert.R;
+import com.red.alert.activities.Map;
 import com.red.alert.config.Logging;
 import com.red.alert.config.NotificationChannels;
+import com.red.alert.config.ThreatTypes;
 import com.red.alert.logic.communication.broadcasts.LocationAlertsEvents;
+import com.red.alert.logic.communication.intents.AlertViewParameters;
 import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.logic.push.PushManager;
 import com.red.alert.logic.services.ServiceManager;
 import com.red.alert.logic.settings.AppPreferences;
+import com.red.alert.model.Alert;
 import com.red.alert.services.location.LocationService;
 import com.red.alert.ui.activities.AppCompatPreferenceActivity;
 import com.red.alert.ui.compatibility.ProgressDialogCompat;
@@ -39,11 +43,16 @@ import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.feedback.Volume;
 import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.integration.GooglePlayServices;
+import com.red.alert.utils.localization.DateTime;
 import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import androidx.annotation.NonNull;
+import me.pushy.sdk.lib.jackson.core.JsonProcessingException;
 
 public class LocationAlerts extends AppCompatPreferenceActivity {
     Preference mNearbyCities;
@@ -240,6 +249,66 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
                 }, 200);
 
                 // Save value
+                return true;
+            }
+        });
+
+        // Nearby cities click listener
+        mNearbyCities.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                // Get current location
+                Location location = LocationLogic.getCurrentLocation(LocationAlerts.this);
+
+                // No location?
+                if (location == null) {
+                    return false;
+                }
+
+                // Get nearby cities
+                List<String> nearbyCities = LocationData.getNearbyCities(location, LocationAlerts.this);
+
+                // No nearby cities?
+                if (nearbyCities.size() == 0) {
+                    return false;
+                }
+
+                // Prepare mock alerts list for map activity
+                List<Alert> mockAlerts = new ArrayList<>();
+
+                // Travers nearby cities
+                for (String city : nearbyCities) {
+                    // Create mock alert object for map display
+                    Alert alert = new Alert();
+
+                    // Set mock alert params
+                    alert.city = city;
+                    alert.date = DateTime.getUnixTimestamp();
+                    alert.threat = ThreatTypes.NEARBY_CITIES_DISPLAY;
+
+                    // Add to list of mock alerts
+                    mockAlerts.add(alert);
+                }
+
+                // Create new intent
+                Intent map = new Intent();
+
+                // Set activity class
+                map.setClass(LocationAlerts.this, Map.class);
+
+                try {
+                    // Pass grouped alerts as JSON
+                    map.putExtra(AlertViewParameters.ALERTS, Singleton.getJackson().writer().writeValueAsString(mockAlerts));
+                } catch (JsonProcessingException e) {
+                    // Show error dialog
+                    AlertDialogBuilder.showGenericDialog(getString(R.string.error), e.getMessage(), getString(R.string.okay), null, false, LocationAlerts.this, null);
+                    return false;
+                }
+
+                // Open map
+                startActivity(map);
+
+                // Click was handled
                 return true;
             }
         });

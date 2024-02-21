@@ -8,6 +8,7 @@ import android.util.Log;
 
 import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 import com.red.alert.R;
+import com.red.alert.activities.settings.alerts.LocationAlerts;
 import com.red.alert.config.Alerts;
 import com.red.alert.config.Logging;
 import com.red.alert.logic.alerts.AlertLogic;
@@ -697,6 +698,61 @@ public class LocationData {
 
         // Join and add original code
         return StringUtils.implode(", ", cityNames);
+    }
+
+    public static String getDistanceFromCity(City city, Context context) {
+        // Get current location
+        Location myLocation = LocationLogic.getCurrentLocation(context);
+
+        // No location?
+        if (myLocation == null) {
+            return "";
+        }
+
+        // Create an empty location object
+        Location location = new Location(LocationManager.PASSIVE_PROVIDER);
+
+        // Set latitude & longitude
+        location.setLatitude(city.latitude);
+        location.setLongitude(city.longitude);
+
+        // Get distance to city in KM
+        float distance = location.distanceTo(myLocation) / 1000;
+
+        // Return distance as float rounded to 2 decimal places
+        return String.format("%.2f", distance);
+    }
+
+    public static List<String> getNearbyCities(Location myLocation, Context context) {
+        // Prepare cities array
+        List<City> cities = getAllCities(context);
+
+        // Output array
+        List<String> cityValues = new ArrayList<>();
+
+        // Calculate max distance
+        double maxDistance = LocationLogic.getMaxDistanceKilometers(context, -1);
+
+        // Traverse all cities
+        for (City city : cities) {
+            // Create an empty location object
+            Location location = new Location(LocationManager.PASSIVE_PROVIDER);
+
+            // Set latitude & longitude
+            location.setLatitude(city.latitude);
+            location.setLongitude(city.longitude);
+
+            // Get distance to city in KM
+            float distance = location.distanceTo(myLocation) / 1000;
+
+            // Distance is less than max?
+            if (distance <= maxDistance) {
+                cityValues.add(city.value);
+            }
+        }
+
+        // Return as list
+        return cityValues;
     }
 
     public static Location getCityLocation(String cityName, Context context) {
