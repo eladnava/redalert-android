@@ -38,7 +38,7 @@
         <!-- Google Maps v2 Public API Key -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyCoL_3SJ4Vlp7lP777Kp9pc1LIchdGM3og"/>
+            android:value="AIzaSyDaFsNETs"/>
 
         <!-- Main Activity -->
         <activity

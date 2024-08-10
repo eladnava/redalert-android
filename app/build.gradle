@@ -11,6 +11,9 @@ android {
         versionCode 10510
         versionName "1.0.51"
     }
+
+    namespace 'com.red.alert' // Добавьте это
+
     buildTypes {
         release {
             minifyEnabled false

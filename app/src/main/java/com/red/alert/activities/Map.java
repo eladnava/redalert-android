@@ -24,6 +24,7 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.red.alert.R;
+import com.red.alert.activities.settings.Utils;
 import com.red.alert.activities.settings.alerts.LocationAlerts;
 import com.red.alert.config.ThreatTypes;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
@@ -239,7 +240,14 @@ public class Map extends AppCompatActivity {
                 mMap.addMarker(new MarkerOptions()
                         .position(location)
                         .title(localizedName)
-                        .snippet(tooltip));
+                        .icon(Utils.bitmapDescriptorFromVector(
+                                this, // Контекст (возможно, вам понадобится другой)
+                                R.drawable.locationon, // Ресурс маркера
+                                "D12121", // Цвет маркера в шестнадцатеричном формате
+                                140, // Ширина маркера
+                                140  // Высота маркера
+                        )
+                ));
 
                 // Include location in zoom boundaries
                 builder.include(location);
