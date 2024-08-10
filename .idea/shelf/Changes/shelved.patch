@@ -1,0 +1,223 @@
+Index: .idea/runConfigurations.xml
+===================================================================
+diff --git a/.idea/runConfigurations.xml b/.idea/runConfigurations.xml
+deleted file mode 100644
+--- a/.idea/runConfigurations.xml	(revision 24f06bc1c4e96ceb3d7f62e9a167aa9f9d4b20ae)
++++ /dev/null	(revision 24f06bc1c4e96ceb3d7f62e9a167aa9f9d4b20ae)
+@@ -1,12 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="RunConfigurationProducerService">
+-    <option name="ignoredProducers">
+-      <set>
+-        <option value="org.jetbrains.plugins.gradle.execution.test.runner.AllInPackageGradleConfigurationProducer" />
+-        <option value="org.jetbrains.plugins.gradle.execution.test.runner.TestClassGradleConfigurationProducer" />
+-        <option value="org.jetbrains.plugins.gradle.execution.test.runner.TestMethodGradleConfigurationProducer" />
+-      </set>
+-    </option>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/modules/70014162/redalert-android-app.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<module external.linked.project.id=\":app\" external.linked.project.path=\"$USER_HOME$/Code/redalert-android/app\" external.root.project.path=\"$MODULE_DIR$/../../..\" external.system.id=\"GRADLE\" external.system.module.group=\"redalert-android\" external.system.module.version=\"unspecified\" type=\"JAVA_MODULE\" version=\"4\">\n  <component name=\"FacetManager\">\n    <facet type=\"android-gradle\" name=\"Android-Gradle\">\n      <configuration>\n        <option name=\"GRADLE_PROJECT_PATH\" value=\":app\" />\n        <option name=\"LAST_SUCCESSFUL_SYNC_AGP_VERSION\" value=\"3.2.0\" />\n        <option name=\"LAST_KNOWN_AGP_VERSION\" value=\"3.2.0\" />\n      </configuration>\n    </facet>\n    <facet type=\"android\" name=\"Android\">\n      <configuration>\n        <option name=\"SELECTED_BUILD_VARIANT\" value=\"debug\" />\n        <option name=\"ASSEMBLE_TASK_NAME\" value=\"assembleDebug\" />\n        <option name=\"COMPILE_JAVA_TASK_NAME\" value=\"compileDebugSources\" />\n        <afterSyncTasks>\n          <task>generateDebugSources</task>\n        </afterSyncTasks>\n        <option name=\"ALLOW_USER_CONFIGURATION\" value=\"false\" />\n        <option name=\"MANIFEST_FILE_RELATIVE_PATH\" value=\"/src/main/AndroidManifest.xml\" />\n        <option name=\"RES_FOLDER_RELATIVE_PATH\" value=\"/src/main/res\" />\n        <option name=\"RES_FOLDERS_RELATIVE_PATH\" value=\"file://$USER_HOME$$MODULE_DIR$/../../../../redalert-android/app/src/main/res;file://$USER_HOME$$MODULE_DIR$/../../../../redalert-android/app/src/debug/res;file://$USER_HOME$$MODULE_DIR$/../../../../redalert-android/app/build/generated/res/google-services/debug;file://$USER_HOME$$MODULE_DIR$/../../../../redalert-android/app/build/generated/res/rs/debug;file://$USER_HOME$$MODULE_DIR$/../../../../redalert-android/app/build/generated/res/resValues/debug\" />\n        <option name=\"TEST_RES_FOLDERS_RELATIVE_PATH\" value=\"file://$USER_HOME$$MODULE_DIR$/../../../../redalert-android/app/src/androidTest/res;file://$USER_HOME$$MODULE_DIR$/../../../../redalert-android/app/src/test/res;file://$USER_HOME$$MODULE_DIR$/../../../../redalert-android/app/src/androidTestDebug/res;file://$USER_HOME$$MODULE_DIR$/../../../../redalert-android/app/src/testDebug/res;file://$USER_HOME$$MODULE_DIR$/../../../../redalert-android/app/build/generated/res/rs/androidTest/debug;file://$USER_HOME$$MODULE_DIR$/../../../../redalert-android/app/build/generated/res/resValues/androidTest/debug\" />\n        <option name=\"ASSETS_FOLDER_RELATIVE_PATH\" value=\"/src/main/assets\" />\n      </configuration>\n    </facet>\n  </component>\n  <component name=\"NewModuleRootManager\" LANGUAGE_LEVEL=\"JDK_1_7\">\n    <output url=\"file://$USER_HOME$/Code/redalert-android/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes\" />\n    <output-test url=\"file://$USER_HOME$/Code/redalert-android/app/build/intermediates/javac/debugUnitTest/compileDebugUnitTestJavaWithJavac/classes\" />\n    <exclude-output />\n    <content url=\"file://$USER_HOME$/Code/redalert-android/app\">\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/build/generated/source/apt/debug\" isTestSource=\"false\" generated=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/build/generated/source/aidl/debug\" isTestSource=\"false\" generated=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/build/generated/source/buildConfig/debug\" isTestSource=\"false\" generated=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/build/generated/source/rs/debug\" isTestSource=\"false\" generated=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/build/generated/res/google-services/debug\" type=\"java-resource\" generated=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/build/generated/res/rs/debug\" type=\"java-resource\" generated=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/build/generated/res/resValues/debug\" type=\"java-resource\" generated=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/build/generated/source/apt/androidTest/debug\" isTestSource=\"true\" generated=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/build/generated/source/aidl/androidTest/debug\" isTestSource=\"true\" generated=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/build/generated/source/buildConfig/androidTest/debug\" isTestSource=\"true\" generated=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/build/generated/source/rs/androidTest/debug\" isTestSource=\"true\" generated=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/build/generated/res/rs/androidTest/debug\" type=\"java-test-resource\" generated=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/build/generated/res/resValues/androidTest/debug\" type=\"java-test-resource\" generated=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/build/generated/source/apt/test/debug\" isTestSource=\"true\" generated=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/debug/res\" type=\"java-resource\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/debug/resources\" type=\"java-resource\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/debug/assets\" type=\"java-resource\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/debug/aidl\" isTestSource=\"false\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/debug/java\" isTestSource=\"false\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/debug/rs\" isTestSource=\"false\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/debug/shaders\" isTestSource=\"false\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/androidTestDebug/res\" type=\"java-test-resource\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/androidTestDebug/resources\" type=\"java-test-resource\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/androidTestDebug/assets\" type=\"java-test-resource\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/androidTestDebug/aidl\" isTestSource=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/androidTestDebug/java\" isTestSource=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/androidTestDebug/rs\" isTestSource=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/androidTestDebug/shaders\" isTestSource=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/testDebug/res\" type=\"java-test-resource\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/testDebug/resources\" type=\"java-test-resource\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/testDebug/assets\" type=\"java-test-resource\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/testDebug/aidl\" isTestSource=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/testDebug/java\" isTestSource=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/testDebug/rs\" isTestSource=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/testDebug/shaders\" isTestSource=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/main/res\" type=\"java-resource\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/main/resources\" type=\"java-resource\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/main/assets\" type=\"java-resource\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/main/aidl\" isTestSource=\"false\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/main/java\" isTestSource=\"false\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/main/rs\" isTestSource=\"false\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/main/shaders\" isTestSource=\"false\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/androidTest/res\" type=\"java-test-resource\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/androidTest/resources\" type=\"java-test-resource\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/androidTest/assets\" type=\"java-test-resource\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/androidTest/aidl\" isTestSource=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/androidTest/java\" isTestSource=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/androidTest/rs\" isTestSource=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/androidTest/shaders\" isTestSource=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/test/res\" type=\"java-test-resource\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/test/resources\" type=\"java-test-resource\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/test/assets\" type=\"java-test-resource\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/test/aidl\" isTestSource=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/test/java\" isTestSource=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/test/rs\" isTestSource=\"true\" />\n      <sourceFolder url=\"file://$USER_HOME$/Code/redalert-android/app/src/test/shaders\" isTestSource=\"true\" />\n      <excludeFolder url=\"file://$USER_HOME$/Code/redalert-android/app/build\" />\n    </content>\n    <orderEntry type=\"jdk\" jdkName=\"Android API 33 Platform\" jdkType=\"Android SDK\" />\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\n    <orderEntry type=\"library\" name=\"Gradle: me.pushy:sdk:1.0.102@jar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: org.ocpsoft.prettytime:prettytime:4.0.4.Final@jar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.collection:collection:1.1.0@jar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.arch.core:core-common:2.1.0@jar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.lifecycle:lifecycle-common:2.1.0@jar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.annotation:annotation:1.1.0@jar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.dagger:dagger:2.24@jar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.auto.value:auto-value-annotations:1.6.5@jar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: javax.inject:javax.inject:1@jar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.appcompat:appcompat:1.2.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.firebase:firebase-messaging:20.2.4@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.android.gms:play-services-places:17.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.android.gms:play-services-location:17.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.cursoradapter:cursoradapter:1.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.appcompat:appcompat-resources:1.2.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.drawerlayout:drawerlayout:1.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.firebase:firebase-datatransport:17.0.3@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.firebase:firebase-iid:20.2.3@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.firebase:firebase-installations:16.3.3@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.firebase:firebase-common:19.3.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.firebase:firebase-components:16.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.android.datatransport:transport-backend-cct:2.2.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.firebase:firebase-encoders-json:16.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.vectordrawable:vectordrawable-animated:1.1.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.vectordrawable:vectordrawable:1.1.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.android.gms:play-services-stats:17.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.firebase:firebase-installations-interop:16.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.android.gms:play-services-maps:17.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.firebase:firebase-iid-interop:17.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.android.gms:play-services-base:17.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.android.gms:play-services-tasks:17.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.firebase:firebase-measurement-connector:18.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.android.gms:play-services-places-placereport:17.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.android.gms:play-services-basement:17.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.fragment:fragment:1.1.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.viewpager:viewpager:1.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.customview:customview:1.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.legacy:legacy-support-core-utils:1.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.interpolator:interpolator:1.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.documentfile:documentfile:1.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.loader:loader:1.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.localbroadcastmanager:localbroadcastmanager:1.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.print:print:1.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.lifecycle:lifecycle-livedata:2.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.lifecycle:lifecycle-livedata-core:2.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.arch.core:core-runtime:2.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.activity:activity:1.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.core:core:1.3.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.versionedparcelable:versionedparcelable:1.1.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.savedstate:savedstate:1.0.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.android.datatransport:transport-runtime:2.2.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.lifecycle:lifecycle-runtime:2.1.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: androidx.lifecycle:lifecycle-viewmodel:2.1.0@aar\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Gradle: com.google.android.datatransport:transport-api:2.2.0@aar\" level=\"project\" />\n  </component>\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules/70014162/redalert-android-app.iml b/.idea/modules/70014162/redalert-android-app.iml
+--- a/.idea/modules/70014162/redalert-android-app.iml	(revision 24f06bc1c4e96ceb3d7f62e9a167aa9f9d4b20ae)
++++ b/.idea/modules/70014162/redalert-android-app.iml	(date 1723288528928)
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<module external.linked.project.id=":app" external.linked.project.path="$USER_HOME$/Code/redalert-android/app" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="redalert-android" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
++<module version="4">
+   <component name="FacetManager">
+     <facet type="android-gradle" name="Android-Gradle">
+       <configuration>
+@@ -19,130 +19,10 @@
+         <option name="ALLOW_USER_CONFIGURATION" value="false" />
+         <option name="MANIFEST_FILE_RELATIVE_PATH" value="/src/main/AndroidManifest.xml" />
+         <option name="RES_FOLDER_RELATIVE_PATH" value="/src/main/res" />
+-        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$USER_HOME$$MODULE_DIR$/../../../../redalert-android/app/src/main/res;file://$USER_HOME$$MODULE_DIR$/../../../../redalert-android/app/src/debug/res;file://$USER_HOME$$MODULE_DIR$/../../../../redalert-android/app/build/generated/res/google-services/debug;file://$USER_HOME$$MODULE_DIR$/../../../../redalert-android/app/build/generated/res/rs/debug;file://$USER_HOME$$MODULE_DIR$/../../../../redalert-android/app/build/generated/res/resValues/debug" />
+-        <option name="TEST_RES_FOLDERS_RELATIVE_PATH" value="file://$USER_HOME$$MODULE_DIR$/../../../../redalert-android/app/src/androidTest/res;file://$USER_HOME$$MODULE_DIR$/../../../../redalert-android/app/src/test/res;file://$USER_HOME$$MODULE_DIR$/../../../../redalert-android/app/src/androidTestDebug/res;file://$USER_HOME$$MODULE_DIR$/../../../../redalert-android/app/src/testDebug/res;file://$USER_HOME$$MODULE_DIR$/../../../../redalert-android/app/build/generated/res/rs/androidTest/debug;file://$USER_HOME$$MODULE_DIR$/../../../../redalert-android/app/build/generated/res/resValues/androidTest/debug" />
++        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$USER_HOME$/Users/ilyaprokofev/Documents/redalert-android/app/src/main/res;file://$USER_HOME$/Users/ilyaprokofev/Documents/redalert-android/app/src/debug/res;file://$USER_HOME$/Users/ilyaprokofev/Documents/redalert-android/app/build/generated/res/google-services/debug;file://$USER_HOME$/Users/ilyaprokofev/Documents/redalert-android/app/build/generated/res/rs/debug;file://$USER_HOME$/Users/ilyaprokofev/Documents/redalert-android/app/build/generated/res/resValues/debug" />
++        <option name="TEST_RES_FOLDERS_RELATIVE_PATH" value="file://$USER_HOME$/Users/ilyaprokofev/Documents/redalert-android/app/src/androidTest/res;file://$USER_HOME$/Users/ilyaprokofev/Documents/redalert-android/app/src/test/res;file://$USER_HOME$/Users/ilyaprokofev/Documents/redalert-android/app/src/androidTestDebug/res;file://$USER_HOME$/Users/ilyaprokofev/Documents/redalert-android/app/src/testDebug/res;file://$USER_HOME$/Users/ilyaprokofev/Documents/redalert-android/app/build/generated/res/rs/androidTest/debug;file://$USER_HOME$/Users/ilyaprokofev/Documents/redalert-android/app/build/generated/res/resValues/androidTest/debug" />
+         <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/src/main/assets" />
+       </configuration>
+     </facet>
+   </component>
+-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7">
+-    <output url="file://$USER_HOME$/Code/redalert-android/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes" />
+-    <output-test url="file://$USER_HOME$/Code/redalert-android/app/build/intermediates/javac/debugUnitTest/compileDebugUnitTestJavaWithJavac/classes" />
+-    <exclude-output />
+-    <content url="file://$USER_HOME$/Code/redalert-android/app">
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/build/generated/source/apt/debug" isTestSource="false" generated="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/build/generated/source/aidl/debug" isTestSource="false" generated="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/build/generated/source/buildConfig/debug" isTestSource="false" generated="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/build/generated/source/rs/debug" isTestSource="false" generated="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/build/generated/res/google-services/debug" type="java-resource" generated="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/build/generated/res/rs/debug" type="java-resource" generated="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/build/generated/res/resValues/debug" type="java-resource" generated="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/build/generated/source/apt/androidTest/debug" isTestSource="true" generated="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/build/generated/source/aidl/androidTest/debug" isTestSource="true" generated="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/build/generated/source/buildConfig/androidTest/debug" isTestSource="true" generated="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/build/generated/source/rs/androidTest/debug" isTestSource="true" generated="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/build/generated/res/rs/androidTest/debug" type="java-test-resource" generated="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/build/generated/res/resValues/androidTest/debug" type="java-test-resource" generated="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/build/generated/source/apt/test/debug" isTestSource="true" generated="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/debug/res" type="java-resource" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/debug/resources" type="java-resource" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/debug/assets" type="java-resource" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/debug/aidl" isTestSource="false" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/debug/java" isTestSource="false" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/debug/rs" isTestSource="false" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/debug/shaders" isTestSource="false" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/androidTestDebug/res" type="java-test-resource" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/androidTestDebug/resources" type="java-test-resource" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/androidTestDebug/assets" type="java-test-resource" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/androidTestDebug/aidl" isTestSource="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/androidTestDebug/java" isTestSource="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/androidTestDebug/rs" isTestSource="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/androidTestDebug/shaders" isTestSource="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/testDebug/res" type="java-test-resource" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/testDebug/resources" type="java-test-resource" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/testDebug/assets" type="java-test-resource" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/testDebug/aidl" isTestSource="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/testDebug/java" isTestSource="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/testDebug/rs" isTestSource="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/testDebug/shaders" isTestSource="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/main/res" type="java-resource" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/main/resources" type="java-resource" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/main/assets" type="java-resource" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/main/aidl" isTestSource="false" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/main/java" isTestSource="false" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/main/rs" isTestSource="false" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/main/shaders" isTestSource="false" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/androidTest/res" type="java-test-resource" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/androidTest/resources" type="java-test-resource" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/androidTest/assets" type="java-test-resource" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/androidTest/aidl" isTestSource="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/androidTest/java" isTestSource="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/androidTest/rs" isTestSource="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/androidTest/shaders" isTestSource="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/test/res" type="java-test-resource" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/test/resources" type="java-test-resource" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/test/assets" type="java-test-resource" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/test/aidl" isTestSource="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/test/java" isTestSource="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/test/rs" isTestSource="true" />
+-      <sourceFolder url="file://$USER_HOME$/Code/redalert-android/app/src/test/shaders" isTestSource="true" />
+-      <excludeFolder url="file://$USER_HOME$/Code/redalert-android/app/build" />
+-    </content>
+-    <orderEntry type="jdk" jdkName="Android API 33 Platform" jdkType="Android SDK" />
+-    <orderEntry type="sourceFolder" forTests="false" />
+-    <orderEntry type="library" name="Gradle: me.pushy:sdk:1.0.102@jar" level="project" />
+-    <orderEntry type="library" name="Gradle: org.ocpsoft.prettytime:prettytime:4.0.4.Final@jar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.collection:collection:1.1.0@jar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.arch.core:core-common:2.1.0@jar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-common:2.1.0@jar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.annotation:annotation:1.1.0@jar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.dagger:dagger:2.24@jar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.auto.value:auto-value-annotations:1.6.5@jar" level="project" />
+-    <orderEntry type="library" name="Gradle: javax.inject:javax.inject:1@jar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.appcompat:appcompat:1.2.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-messaging:20.2.4@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-places:17.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-location:17.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.cursoradapter:cursoradapter:1.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.appcompat:appcompat-resources:1.2.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.drawerlayout:drawerlayout:1.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-datatransport:17.0.3@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-iid:20.2.3@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-installations:16.3.3@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-common:19.3.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-components:16.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.android.datatransport:transport-backend-cct:2.2.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-encoders-json:16.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.vectordrawable:vectordrawable-animated:1.1.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.vectordrawable:vectordrawable:1.1.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-stats:17.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-installations-interop:16.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-maps:17.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-iid-interop:17.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-base:17.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-tasks:17.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-measurement-connector:18.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-places-placereport:17.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-basement:17.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.fragment:fragment:1.1.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.viewpager:viewpager:1.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.customview:customview:1.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.legacy:legacy-support-core-utils:1.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.interpolator:interpolator:1.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.documentfile:documentfile:1.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.loader:loader:1.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.localbroadcastmanager:localbroadcastmanager:1.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.print:print:1.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-livedata:2.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-livedata-core:2.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.arch.core:core-runtime:2.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.activity:activity:1.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.core:core:1.3.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.versionedparcelable:versionedparcelable:1.1.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.savedstate:savedstate:1.0.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.android.datatransport:transport-runtime:2.2.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-runtime:2.1.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-viewmodel:2.1.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.google.android.datatransport:transport-api:2.2.0@aar" level="project" />
+-  </component>
+ </module>
+\ No newline at end of file
+Index: .idea/modules/1256594752/Code-redalert-android.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<module external.linked.project.id=\"redalert-android\" external.linked.project.path=\"$USER_HOME$/Code/redalert-android\" external.root.project.path=\"$MODULE_DIR$/../../..\" external.system.id=\"GRADLE\" external.system.module.group=\"\" external.system.module.version=\"unspecified\" type=\"JAVA_MODULE\" version=\"4\">\n  <component name=\"FacetManager\">\n    <facet type=\"java-gradle\" name=\"Java-Gradle\">\n      <configuration>\n        <option name=\"BUILD_FOLDER_PATH\" value=\"$USER_HOME$$MODULE_DIR$/../../../../redalert-android/build\" />\n        <option name=\"BUILDABLE\" value=\"false\" />\n      </configuration>\n    </facet>\n  </component>\n  <component name=\"NewModuleRootManager\" LANGUAGE_LEVEL=\"JDK_1_7\" inherit-compiler-output=\"true\">\n    <exclude-output />\n    <content url=\"file://$USER_HOME$/Code/redalert-android\">\n      <excludeFolder url=\"file://$USER_HOME$/Code/redalert-android/.gradle\" />\n    </content>\n    <orderEntry type=\"inheritedJdk\" />\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\n  </component>\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules/1256594752/Code-redalert-android.iml b/.idea/modules/1256594752/Code-redalert-android.iml
+--- a/.idea/modules/1256594752/Code-redalert-android.iml	(revision 24f06bc1c4e96ceb3d7f62e9a167aa9f9d4b20ae)
++++ b/.idea/modules/1256594752/Code-redalert-android.iml	(date 1723288528925)
+@@ -1,19 +1,11 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<module external.linked.project.id="redalert-android" external.linked.project.path="$USER_HOME$/Code/redalert-android" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
++<module version="4">
+   <component name="FacetManager">
+     <facet type="java-gradle" name="Java-Gradle">
+       <configuration>
+-        <option name="BUILD_FOLDER_PATH" value="$USER_HOME$$MODULE_DIR$/../../../../redalert-android/build" />
++        <option name="BUILD_FOLDER_PATH" value="$USER_HOME$/Users/ilyaprokofev/Documents/redalert-android/build" />
+         <option name="BUILDABLE" value="false" />
+       </configuration>
+     </facet>
+   </component>
+-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="true">
+-    <exclude-output />
+-    <content url="file://$USER_HOME$/Code/redalert-android">
+-      <excludeFolder url="file://$USER_HOME$/Code/redalert-android/.gradle" />
+-    </content>
+-    <orderEntry type="inheritedJdk" />
+-    <orderEntry type="sourceFolder" forTests="false" />
+-  </component>
+ </module>
+\ No newline at end of file
+Index: gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#Wed Sep 16 00:25:40 EDT 2020\ndistributionBase=GRADLE_USER_HOME\ndistributionPath=wrapper/dists\nzipStoreBase=GRADLE_USER_HOME\nzipStorePath=wrapper/dists\ndistributionUrl=https\\://services.gradle.org/distributions/gradle-4.6-all.zip\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/gradle/wrapper/gradle-wrapper.properties b/gradle/wrapper/gradle-wrapper.properties
+--- a/gradle/wrapper/gradle-wrapper.properties	(revision 24f06bc1c4e96ceb3d7f62e9a167aa9f9d4b20ae)
++++ b/gradle/wrapper/gradle-wrapper.properties	(date 1723288512723)
+@@ -1,6 +1,6 @@
+-#Wed Sep 16 00:25:40 EDT 2020
++#Sat Aug 10 14:15:12 MSK 2024
+ distributionBase=GRADLE_USER_HOME
+ distributionPath=wrapper/dists
++distributionUrl=https\://services.gradle.org/distributions/gradle-8.5-bin.zip
+ zipStoreBase=GRADLE_USER_HOME
+ zipStorePath=wrapper/dists
+-distributionUrl=https\://services.gradle.org/distributions/gradle-4.6-all.zip
