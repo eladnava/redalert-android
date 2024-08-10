@@ -26,11 +26,11 @@ public class Utils {
             if (vectorDrawable != null) {
                 Drawable drawable = DrawableCompat.wrap(vectorDrawable).mutate();
 
-                // Преобразуем цвет из строки в ARGB
+                // Convert color from string to ARGB
                 int color = fromHex(colorString);
 
                 DrawableCompat.setTint(drawable, color);
-                drawable.setBounds(0, 0, width, height); // Устанавливаем заданный размер
+                drawable.setBounds(0, 0, width, height); // Set the specified size
                 Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
                 Canvas canvas = new Canvas(bitmap);
                 drawable.draw(canvas);
@@ -41,28 +41,28 @@ public class Utils {
             Bitmap bitmap = Bitmap.createScaledBitmap(bitmapDrawable.getBitmap(), width, height, false);
             return BitmapDescriptorFactory.fromBitmap(bitmap);
         } else {
-            // Обработка других типов источников, если необходимо
+            // Handle other types of sources if needed
         }
 
-        // В случае ошибки возвращаем стандартный маркер
+        // Return a default marker in case of error
         return BitmapDescriptorFactory.defaultMarker();
     }
 
 
     public static int fromHex(String colorString) {
-        // Убираем #, если он есть
+        // Remove # if present
         String colorWithoutHash = colorString.startsWith("#") ? colorString.substring(1) : colorString;
 
-        // Проверяем длину строки
+        // Check the length of the string
         if (colorWithoutHash.length() != 6 && colorWithoutHash.length() != 8) {
             throw new IllegalArgumentException("Invalid hex color string: " + colorString);
         }
 
-        // Добавляем #, если его не было
+        // Add # if it was not present
         colorWithoutHash = colorWithoutHash.length() == 6 ? "FF" + colorWithoutHash : colorWithoutHash;
         String colorWithHash = "#" + colorWithoutHash;
 
-        // Преобразуем строку в цвет
+        // Convert string to color
         return Color.parseColor(colorWithHash);
     }
 }

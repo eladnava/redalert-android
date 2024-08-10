@@ -242,7 +242,7 @@ public class Map extends AppCompatActivity {
                         .title(localizedName)
                         .icon(Utils.bitmapDescriptorFromVector(
                                 this, // Контекст (возможно, вам понадобится другой)
-                                R.drawable.flag_24px, // Ресурс маркера
+                                R.drawable.locationon, // Ресурс маркера
                                 "D12121", // Цвет маркера в шестнадцатеричном формате
                                 140, // Ширина маркера
                                 140  // Высота маркера
