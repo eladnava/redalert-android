@@ -14,6 +14,7 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_REMOTE_MESSAGING" />
 
     <!-- Google Play Services Feature Declarations -->
     <uses-feature
@@ -154,7 +155,7 @@
 
         <!-- Pushy Socket Service -->
         <!-- Do not modify - internal service -->
-        <service android:name="me.pushy.sdk.services.PushySocketService" android:stopWithTask="false" />
+        <service android:name="me.pushy.sdk.services.PushySocketService" android:foregroundServiceType="remoteMessaging" android:stopWithTask="false" />
 
         <!-- Pushy Job Service (added in Pushy SDK 1.0.35) -->
         <!-- Do not modify - internal service -->
