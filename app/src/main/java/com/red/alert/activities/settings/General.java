@@ -22,6 +22,7 @@ import android.preference.PreferenceCategory;
 
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.MenuItemCompat;
+import me.pushy.sdk.Pushy;
 
 import android.preference.PreferenceScreen;
 import android.util.Log;
@@ -406,6 +407,9 @@ public class General extends AppCompatPreferenceActivity {
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 // Update notification preferences on the server-side
                 new UpdateNotificationsAsync().execute();
+
+                // Enable/disable Pushy service according to new value
+                Pushy.toggleNotifications((boolean)newValue, General.this);
 
                 // Tell Android to persist new checkbox value
                 return true;

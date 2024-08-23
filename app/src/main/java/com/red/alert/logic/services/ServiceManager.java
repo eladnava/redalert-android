@@ -51,7 +51,10 @@ public class ServiceManager {
         // Enable/disable foreground service
         Pushy.toggleForegroundService(AppPreferences.getForegroundServiceEnabled(context), context);
 
-        // Start external service
-        Pushy.listen(context);
+        // Alerts enabled?
+        if (AppPreferences.getNotificationsEnabled(context)) {
+            // Start external service
+            Pushy.listen(context);
+        }
     }
 }
