@@ -10,6 +10,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ServiceInfo;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
@@ -53,7 +54,12 @@ public class LocationService extends Service implements
         super.onCreate();
 
         // Start foreground service
-        startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification());
+        // API level 34 support
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification(), ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION);
+        } else {
+            startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification());
+        }
 
         // Must have Google Play Services
         if (!GooglePlayServices.isAvailable(this)) {
@@ -143,7 +149,12 @@ public class LocationService extends Service implements
     @Override
     public int onStartCommand(Intent Intent, int Flags, int StartId) {
         // Start foreground service
-        startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification());
+        // API level 34 support
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification(), ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION);
+        } else {
+            startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification());
+        }
 
         // Try connecting
         connectLocationClient();
