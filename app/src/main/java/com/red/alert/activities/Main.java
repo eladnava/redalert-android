@@ -977,41 +977,64 @@ public class Main extends AppCompatActivity {
             String previousPushyToken = PushyRegistration.getRegistrationToken(Main.this);
             String previousFirebaseToken = FCMRegistration.getRegistrationToken(Main.this);
 
-            try {
-                // Register for Pushy push notifications
-                String pushyToken = PushyRegistration.registerForPushNotifications(Main.this);
+            // Retry mechanism (for temporary network errors)
+            int tries = 0;
 
-                // Register for FCM push notifications
-                String fcmToken = FCMRegistration.registerForPushNotifications(Main.this);
+            // Retry up to 5 times
+            while (tries <= 5) {
+                try {
+                    // Increment tries
+                    tries++;
 
-                // First time registering with the API?
-                if (!RedAlertAPI.isRegistered(Main.this)) {
-                    // Register with RedAlert API and store user ID & hash
-                    RedAlertAPI.register(fcmToken, pushyToken,Main.this);
-                }
-                else {
-                    // FCM or Pushy token have changed?
-                    if (!previousFirebaseToken.equals(fcmToken) ||
-                    !previousPushyToken.equals(pushyToken)) {
-                        // Update token server-side
-                        RedAlertAPI.updatePushTokens(fcmToken, pushyToken, Main.this);
+                    // Register for Pushy push notifications
+                    String pushyToken = PushyRegistration.registerForPushNotifications(Main.this);
+
+                    // Register for FCM push notifications
+                    String fcmToken = FCMRegistration.registerForPushNotifications(Main.this);
+
+                    // First time registering with the API?
+                    if (!RedAlertAPI.isRegistered(Main.this)) {
+                        // Register with RedAlert API and store user ID & hash
+                        RedAlertAPI.register(fcmToken, pushyToken, Main.this);
+                    } else {
+                        // FCM or Pushy token have changed?
+                        if ((previousFirebaseToken != null && !previousFirebaseToken.equals(fcmToken)) ||
+                                (previousPushyToken != null && !previousPushyToken.equals(pushyToken))) {
+                            // Update token server-side
+                            RedAlertAPI.updatePushTokens(fcmToken, pushyToken, Main.this);
+                        }
+                    }
+
+                    // First time subscribing with the API?
+                    if (!RedAlertAPI.isSubscribed(Main.this)) {
+                        // Update Pub/Sub subscriptions
+                        PushManager.updateSubscriptions(Main.this);
+
+                        // Update notification preferences
+                        RedAlertAPI.updateNotificationPreferences(Main.this);
+
+                        // Subscribe for alerts based on current city/region selections
+                        RedAlertAPI.subscribe(Main.this);
+                    }
+
+                    // If we're here, success
+                    break;
+                } catch (Exception exc) {
+                    // Throw exception after 5 tries
+                    if (tries > 5) {
+                        return exc;
+                    }
+                    else {
+                        // Log error
+                        Log.e(Logging.TAG, "Push registration failed, retrying...", exc);
+
+                        try {
+                            // Wait a second and try again
+                            Thread.sleep(1000);
+                        }
+                        catch (InterruptedException e) {}
                     }
                 }
-
-                // First time subscribing with the API?
-                if (!RedAlertAPI.isSubscribed(Main.this)) {
-                    // Update Pub/Sub subscriptions
-                    PushManager.updateSubscriptions(Main.this);
-
-                    // Update notification preferences
-                    RedAlertAPI.updateNotificationPreferences(Main.this);
-
-                    // Subscribe for alerts based on current city/region selections
-                    RedAlertAPI.subscribe(Main.this);
-                }
-            }
-            catch (Exception exc) {
-                return exc;
             }
 
             // Success
