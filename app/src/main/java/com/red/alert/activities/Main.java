@@ -84,6 +84,7 @@ public class Main extends AppCompatActivity {
     boolean mIsDestroyed;
     boolean mIsReloading;
     boolean mCheckedForUpdates;
+    boolean mPushTokensRefreshed;
     boolean mPermissionDialogDisplayed;
 
     Button mImSafe;
@@ -132,9 +133,6 @@ public class Main extends AppCompatActivity {
 
         // Volume keys should control alert volume
         Volume.setVolumeKeysAction(this);
-
-        // Always re-register FCM or Pushy on app start
-        new RegisterPushAsync().execute();
 
         // Handle notification click event (show alert popup)
         handleNotificationClick(getIntent());
@@ -337,6 +335,11 @@ public class Main extends AppCompatActivity {
 
         // Restart the app services if needed
         ServiceManager.startAppServices(this);
+
+        // Always re-register FCM or Pushy on app start
+        if (!mPushTokensRefreshed || !FCMRegistration.isRegistered(Main.this) || !PushyRegistration.isRegistered(Main.this) || !RedAlertAPI.isRegistered(Main.this) || !RedAlertAPI.isSubscribed(Main.this)) {
+            new RegisterPushAsync().execute();
+        }
     }
 
     void requestNotificationPermission() {
@@ -951,6 +954,9 @@ public class Main extends AppCompatActivity {
         ProgressDialog mLoading;
 
         public RegisterPushAsync() {
+            // Set push tokens as refreshed
+            mPushTokensRefreshed = true;
+
             // Fix progress dialog appearance on old devices
             mLoading = ProgressDialogCompat.getStyledProgressDialog(Main.this);
 
