@@ -115,10 +115,11 @@ public class Main extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        // Apply custom theme selection
+        // Apply custom theme selection (make sure to invoke this before super.onCreate())
         Localization.applyThemeSelection(this);
+
+        // Call parent method
+        super.onCreate(savedInstanceState);
 
         // Ensure RTL layouts are used if needed
         Localization.overridePhoneLocale(this);
