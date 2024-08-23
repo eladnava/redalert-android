@@ -7,7 +7,7 @@
     <string name="no">No</string>
     <string name="error">Error</string>
     <string name="noGooglePlayServices">Your phone does not have an updated version of Google Play Services installed.</string>
-    <string name="pushRegistrationFailed">An error occurred while signing you up for push notifications. We\'ll try to sign you up again in the future.</string>
+    <string name="pushRegistrationFailed">A network error occurred while signing you up for push notifications.\n\nPlease check your Internet connection and try again.\n\nTechnical info:</string>
     <string name="apiRequestFailed">A request to retrieve information from our servers failed. Please check your Internet connection and try again.</string>
     <string name="registrationFailed">Registration failed, please try again later.</string>
     <string name="grantNotificationPermission">Please enable \"Notifications\" on the next screen to receive alerts in real time.</string>
