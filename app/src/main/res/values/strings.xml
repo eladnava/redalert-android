@@ -307,6 +307,7 @@
     <string translatable="false" name="italian">Italiano</string>
     <string translatable="false" name="french">Français</string>
     <string translatable="false" name="german">German</string>
+    <string translatable="false" name="portuguese">Português</string>
 
     <!-- Preference Keys -->
     <string translatable="false" name="selfTestPref">test</string>
@@ -383,6 +384,7 @@
     <string translatable="false" name="italianCode">it</string>
     <string translatable="false" name="frenchCode">fr</string>
     <string translatable="false" name="germanCode">de</string>
+    <string translatable="false" name="portugueseCode">pt</string>
 
     <!-- App Theme Codes -->
     <string translatable="false" name="lightThemeCode">light</string>

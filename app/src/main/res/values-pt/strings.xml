@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="appName">RedAlert</string>
+    <string name="signing_up">Cadastrando notificações por push...</string>
+    <string name="okay">OK</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+    <string name="error">Erro</string>
+    <string name="noGooglePlayServices">A versão do Google Play instalada no celular não está atualizada.</string>
+    <string name="pushRegistrationFailed">Ocorreu um erro de rede ao cadastrar você para notificações por push.\n\nVerifique sua conexão com a Internet e tente novamente.\n\nInformações técnicas:</string>
+    <string name="apiRequestFailed">Uma solicitação para recuperar informações de nossos servidores falhou. Verifique sua conexão com a Internet e tente novamente.</string>
+    <string name="registrationFailed">Cadastro falhou, tente novamente mais tarde.</string>
+    <string name="grantNotificationPermission">Ative \"Notificações\" na próxima tela para receber alertas em tempo real.</string>
+    <string name="settings">Configurações</string>
+    <string name="advanced">Avançado</string>
+    <string name="advancedSettings">Configurações avançadas</string>
+    <string name="advancedSettingsTitle">Configurações avançadas</string>
+    <string name="advancedSettingsDesc">Configure alertas secundários e modifique configurações avançadas</string>
+    <string name="notifications">Receber alertas</string>
+    <string name="notificationsDesc">Receber alertas em tempo real</string>
+    <string name="contact">Contato</string>
+    <string name="contactDesc">Contate o desenvolvedor do aplicativo</string>
+    <string name="reportProblem">Relatar um problema</string>
+    <string name="manualContact">Contate-me via e-mail em support@redalert.me</string>
+    <string name="jsonFailed">Ocorreu um erro ao carregar dados do servidor.</string>
+    <string name="notifyError">Ocorreu um erro ao exibir a notificação, reinicie seu celular.</string>
+    <string name="safeCategory">\"Estou seguro\"</string>
+    <string name="safe">Enviar \"Estou seguro\"</string>
+    <string name="imSafeMessage">Estou seguro - enviado via RedAlert para Android - https://redalert.me</string>
+    <string name="imSafeDesc">Enviar \"Estou seguro\"</string>
+    <string name="pushRegistrationSuccess">Selecione a cidade de residência</string>
+    <string name="pushRegistrationSuccessDesc">Selecione sua cidade ou município para receber alertas em tempo real.</string>
+    <string name="safeWhatsApp">Enviar via WhatsApp</string>
+    <string name="safeWhatsAppDesc">Clicar no botão \"Estou seguro\" abrirá a seleção de contatos do WhatsApp</string>
+    <string name="soundSelection">Som de alerta</string>
+    <string name="soundSelectionDesc">Selecione um som para alertas de entrada</string>
+    <string name="test">Auto-teste</string>
+    <string name="testDesc">Enviar um alerta de teste para verificar a conectividade</string>
+    <string name="testFailed">O auto-teste falhou completamente. Nenhum alerta foi recebido de nenhum gateway de notificação por push. Verifique sua conexão com a Internet e tente novamente mais tarde, e contate-nos se o problema persistir.</string>
+    <string name="reliability">Confiabilidade</string>
+    <string name="noAlerts">Nenhum alerta\nos últimos dias</string>
+    <string name="recentAlerts">Alertas recentes</string>
+    <string name="testSound">Teste de som</string>
+    <string name="siren1">Sirene 1</string>
+    <string name="siren2">Sirene 2</string>
+    <string name="siren3">Sirene 3</string>
+    <string name="siren4">Sirene 4</string>
+    <string name="siren5">Sirene 5</string>
+    <string name="tiny">Curto 1</string>
+    <string name="calm">Relaxante 1</string>
+    <string name="tzevaAdom">Tzeva Adom</string>
+    <string name="funny">Engraçado</string>
+    <string name="languageAndTheme">Idioma e tema</string>
+    <string name="langSelection">Idioma do aplicativo</string>
+    <string name="langSelectionDesc">Alterar o idioma do aplicativo</string>
+    <string name="themeSelection">Tema do aplicativo</string>
+    <string name="themeSelectionDesc">Personalizar o tema do aplicativo</string>
+    <string name="lightTheme">Claro</string>
+    <string name="darkTheme">Escuro</string>
+    <string name="automatic">Automático</string>
+    <string name="selectedCities">Cidades</string>
+    <string name="selectedCitiesDesc">Receber alertas de cidades e municípios específicos</string>
+    <string name="selectedZones">Regiões adicionais</string>
+    <string name="selectedZonesDesc">Receber alertas de regiões inteiras (além das cidades)</string>
+    <string name="silentOverride">Ignorar modo silencioso</string>
+    <string name="silentOverrideDesc">Alertas de entrada desativarão o modo silencioso</string>
+    <string name="testSuccessfulLong">O auto-teste foi concluído com sucesso!</string>
+    <string name="website">Visite nosso site</string>
+    <string name="websiteDesc">Visite nosso site oficial</string>
+    <string name="alertRegions">Áreas</string>
+    <string name="receiveSecondaryAlerts">Alertas secundários</string>
+    <string name="receiveSecondaryAlertsDesc">Receber alertas secundários em tempo real</string>
+    <string name="sounds">Sons</string>
+    <string name="share">Compartilhar</string>
+    <string name="shareDesc">Compartilhar o aplicativo</string>
+    <string name="shareMessage">Estou usando RedAlert para Android para receber alertas em tempo real - https://redalert.me</string>
+    <string name="vibrate">Ativar vibração</string>
+    <string name="vibrateDesc">Alertas de entrada farão o seu celular vibrar</string>
+    <string name="sentVia">Enviado usando</string>
+    <string name="problemDesc">Descrição do problema: </string>
+    <string name="noSound">Sem som</string>
+    <string name="search">Digite palavras-chave de busca...</string>
+    <string name="allString">Todos</string>
+    <string name="noneString">Nenhum</string>
+    <string name="registrationID">ID de registro</string>
+    <string name="calm2">Relaxante 2</string>
+    <string name="calm3">Relaxante 3</string>
+    <string name="calm4">Relaxante 4</string>
+    <string name="calm5">Relaxante 5</string>
+    <string name="tiny2">Curto 2</string>
+    <string name="tiny3">Curto 3</string>
+    <string name="tiny4">Curto 4</string>
+    <string name="tiny5">Curto 5</string>
+    <string name="tiny6">Curto 6</string>
+    
+    <!-- Secondary Alerts -->
+    <string name="secondaryAlerts">Alertas secundários</string>
+    <string name="secondaryAlertsTitle">Alertas Secundários</string>
+    <string name="secondaryAlertsDesc">Configure alertas secundários para se manter atualizado sobre alertas em outras áreas</string>
+
+    <!-- Secondary Sound -->
+    <string name="secondarySoundSelection">Som secundário</string>
+    <string name="secondarySoundSelectionDesc">Selecione um som para alertas secundários</string>
+
+    <!-- Secondary Vibration Mode -->
+    <string name="secondaryVibrate">Ativar vibração</string>
+    <string name="secondaryVibrateDesc">Alertas secundários farão seu telefone vibrar</string>
+
+    <!-- Secondary Silent Mode Override -->
+    <string name="secondarySilentOverride">Ignorar modo silencioso</string>
+    <string name="secondarySilentOverrideDesc">Alertas secundários ignorarão o modo silencioso</string>
+
+    <!-- Rate the App -->
+    <string name="rateApp">Avalie o aplicativo</string>
+    <string name="rateAppDesc">Avalie o aplicativo no Google Play</string>
+
+    <string name="update">Atualização Disponível</string>
+    <string name="updateDesc">Uma versão mais recente deste aplicativo está disponível (%s), por favor atualize.</string>
+    <string name="updatePositive">Atualizar</string>
+    <string name="notNow">Agora não</string>
+
+    <!-- Volume -->
+    <string name="volume">Nível de volume</string>
+    <string name="volumeDesc">Deslize para selecionar o volume desejado para alertas recebidos</string>
+
+    <!-- Secondary Volume -->
+    <string name="secondaryVolume">Nível de volume</string>
+    <string name="secondaryVolumeDesc">Deslize para selecionar o volume desejado para alertas secundários</string>
+
+    <!-- Secondary Cities -->
+    <string name="selectedSecondaryCities">Cidades secundárias</string>
+    <string name="selectedSecondaryCitiesDesc">Receber alertas secundários sobre cidades e vilas específicas</string>
+
+    <!-- GPS -->
+    <string name="locationAlerts">Alertas baseados em localização</string>
+    <string name="locationAlertsDesc">Configure alertas baseados em localização para receber alertas de emergência em movimento</string>
+    <string name="gpsEnabled">Alertas baseados em localização</string>
+    <string name="gpsEnabledDesc">Receber alertas baseados em localização em tempo real</string>
+    <string name="maxDistance">Distância máxima</string>
+    <string name="maxDistanceDesc">Deslize para selecionar a distância máxima de cada cidade que recebe um alerta de emergência</string>
+    <string name="kilometer">km</string>
+    <string name="nearbyCities">Cidades próximas</string>
+    <string name="noLocation">Falha ao determinar sua última localização conhecida</string>
+    <string name="noNearbyCities">Nenhuma cidade próxima, tente aumentar a distância máxima</string>
+
+    <!-- GPS Frequency -->
+    <string name="gpsFrequency">Intervalo de atualização</string>
+    <string name="gpsFrequencyDesc">Deslize para selecionar o intervalo, em minutos, para atualizações de localização</string>
+    <string name="every">A cada</string>
+    <string name="minutes">minutos</string>
+
+    <!-- GPS Notification -->
+    <string name="enableGPSDesc">Por favor, ative o GPS para receber alertas baseados em localização.</string>
+    <string name="enable">Ativar</string>
+
+    <!-- Alert Share -->
+    <string name="shareAlert">Compartilhar o alerta</string>
+    <string name="alertSoundedAt">em&#160;</string>
+    <string name="alertSentVia">Enviado via RedAlert para Android (https://redalert.me)</string>
+
+    <!-- Wake Screen -->
+    <string name="wakeScreen">Ativar tela</string>
+    <string name="wakeScreenDesc">Alertas recebidos ativarão a tela do seu telefone</string>
+
+    <!-- Alert Popup -->
+    <string name="close">Fechar</string>
+    <string name="silence">Silenciar</string>
+    <string name="showPopup">Mostrar pop-up</string>
+    <string name="showPopupDesc">Alertas recebidos serão exibidos em uma janela pop-up</string>
+    <string name="grantOverlayPermission">Permitir exibição sobre outros aplicativos</string>
+    <string name="grantOverlayPermissionInstructions">Por favor, selecione "RedAlert" -> "Permitir exibição sobre outros aplicativos" na próxima tela.</string>
+
+    <!-- Pushy Foreground Service -->
+    <string name="foregroundService">Melhorar confiabilidade</string>
+    <string name="foregroundServiceDesc">Exibir uma notificação persistente que impedirá o Android de encerrar o aplicativo em segundo plano</string>
+    <string name="pushy_foreground_service_title">@string/appName</string>
+    <string name="pushy_foreground_service_connected">Conectado ao serviço de notificação</string>
+    <string name="pushy_foreground_service_connecting">Conectando...</string>
+    <string name="pushy_foreground_service_disconnected">Não conectado ao serviço de notificação</string>
+
+    <!-- Miscellaneous -->
+    <string name="loading">Carregando...</string>
+    <string name="testingFCM">Testando gateway push... (1/2)</string>
+    <string name="testingPushy">Testando gateway push... (2/2)</string>
+    <string name="fcmTestFailed">O autoteste falhou parcialmente. Nenhum alerta foi recebido do gateway push do Google, mas um alerta foi recebido com sucesso via gateway push secundário. Por favor, tente novamente mais tarde.</string>
+    <string name="pushyTestFailed">O autoteste falhou parcialmente. Nenhum alerta foi recebido do gateway push secundário, mas um alerta foi recebido com sucesso via gateway push do Google. Por favor, tente novamente mais tarde.</string>
+    <string name="debugInfo">Informações Adicionais: </string>
+    <string name="testSuccessful">O teste foi concluído com sucesso!</string>
+    <string name="alerts">Alertas</string>
+    <string name="advancedAlerts">Alertas Avançados</string>
+
+    <!-- Operation Lifeshield -->
+    <string name="lifeshieldShelters">Abrigos Lifeshield:</string>
+    <string name="learnAboutLifeshield">Saiba mais sobre o Lifeshield</string>
+    <string name="learnAboutLifeshieldDesc">Saiba mais sobre a Operation Lifeshield, uma organização sem fins lucrativos que implanta abrigos antiaéreos em Israel.</string>
+
+    <!-- Threat Types -->
+    <string name="missiles">Disparo de Foguetes</string>
+    <string name="radiologicalEvent">Evento Radiológico</string>
+    <string name="earthQuake">Terremoto</string>
+    <string name="tsunami">Alerta de tsunami</string>
+    <string name="hostileAircraftIntrusion">Intrusão de Aeronave Hostil</string>
+    <string name="hazardousMaterials">Evento de Materiais Perigosos</string>
+    <string name="terroristInfiltration">Infiltração Terrorista</string>
+    <string name="missilesDrill">Treinamento: Disparo de Foguetes</string>
+    <string name="earthQuakeDrill">Treinamento: Terremoto</string>
+    <string name="radiologicalEventDrill">Treinamento: Evento Radiológico</string>
+    <string name="tsunamiDrill">Treinamento: Aviso de Tsunamig</string>
+    <string name="hostileAircraftIntrusionDrill">Treinamento: Intrusão de Aeronave Hostil</string>
+    <string name="hazardousMaterialsDrill">Treinamento: Evento com Materiais Perigosos</string>
+    <string name="terroristInfiltrationDrill">Treinamento: Infiltração Terrorista</string>
+    <string name="unknown">Alerta</string>
+    <string name="system">Alerta de Sistema</string>
+
+    <!-- Threat Instructions -->
+    <string name="missilesInstructions">Entre no espaço protegido e permaneça nele por 10 minuto.</string>
+    <string name="hostileAircraftIntrusionInstructions">Entre no espaço protegido imediatamente e permaneça nele por 10 minutos, a menos que outro alerta seja recebido.</string>
+    <string name="earthQuakeInstructions">Saia imediatamente para uma área aberta. Se não for possível, entre na sala protegida ou na escada</string>
+    <string name="radiologicalEventInstructions">Entre em um edifício feche as portas e janelas.</string>
+    <string name="terroristInfiltrationInstructions">Entre imediatamente em um prédio próximo, tranque as portas e feche as janelas.</string>
+    <string name="tsunamiInstructions">Mova-se imediatamente para pelo menos um quilômetro de distância da praia ou vá para um quarto andar ou superior</string>
+    <string name="hazardousMaterialsInstructions">Entre imediatamente em um prédio próximo feche as portas e janelas.</string>
+
+    <!-- Custom Sound Selection Dialog -->
+    <string name="selectCustomSound">Selecione som personalizado</string>
+    <string name="selectCustomSoundDesc">Escolha seu próprio som tocando \"Som\" -> \"Meus Sons\" -> \"+\" -> \"Salvar\" na próxima tela.</string>
+
+    <!-- Battery Optimization Dialog -->
+    <string name="disableBatteryOptimizations">Desativar otimizações de bateria</string>
+    <string name="disableBatteryOptimizationsInstructions">Para receber alertas em segundo plano, por favor, defina \"Bateria\" como \"Não restrito\" na próxima tela.</string>
+    <string name="disableBatteryOptimizationsSamsungInstructions">Para receber alertas em segundo plano, selecione \"Bateria\" na próxima tela -> \"Otimizar uso de bateria\" -> \"Aplicativos não otimizados\" -> \"Todos\" -> \"RedAlert\" -> Desligue a otimização para o aplicativo.</string>
+
+    <!-- Hide GPS Foreground Notification Dialog -->
+    <string name="hideGPSForegroundNotification">Acesso à localização em segundo plano</string>
+    <string name="hideGPSForegroundNotificationInstructions">RedAlert precisa exibir uma notificação contínua para que possa continuar acessando sua localização enquanto o aplicativo está em segundo plano.\n\nVocê pode escondê-la desativando \"Exibir notificações\" na próxima tela. O aplicativo ainda poderá acessar sua localização em segundo plano.</string>
+
+    <!-- Hide Pushy Foreground Notification Dialog -->
+    <string name="hidePushyForegroundNotification">Ocultar notificação contínua</string>
+    <string name="hidePushyForegroundNotificationInstructions">RedAlert precisa exibir uma notificação contínua para que possa continuar rodando enquanto o aplicativo está em segundo plano.\n\nVocê pode escondê-la desativando \"Exibir notificações\" na próxima tela. O aplicativo ainda poderá rodar em segundo plano.</string>
+
+    <!-- Battery Optimization Reminder Setting -->
+    <string name="disableBatteryOptimizationsReminder">Importante: Desativar otimizações de bateria</string>
+    <string name="disableBatteryOptimizationsReminderDesc">Detectamos que você ainda não desativou as otimizações de bateria para RedAlert. Para receber alertas em tempo real enquanto o aplicativo está rodando em segundo plano, você deve desativar as otimizações de bateria. Toque para obter instruções.</string>
+
+    <!-- Clear Recent Alerts Dialog -->
+    <string name="clearRecentAlerts">Limpar alertas recentes?</string>
+    <string name="clearRecentAlertsDesc">Deseja limpar a lista de alertas recentes?</string>
+
+</resources>

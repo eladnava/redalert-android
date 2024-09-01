@@ -12,6 +12,7 @@
         <item>@string/italian</item>
         <item>@string/french</item>
         <item>@string/german</item>
+        <item>@string/portuguese</item>
     </string-array>
     <string-array name="langValues">
         <item></item>
@@ -23,6 +24,7 @@
         <item>@string/italianCode</item>
         <item>@string/frenchCode</item>
         <item>@string/germanCode</item>
+        <item>@string/portugueseCode</item>
     </string-array>
     <string-array name="themeNames">
         <item>@string/lightTheme</item>

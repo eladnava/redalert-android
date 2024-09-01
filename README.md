@@ -38,7 +38,7 @@ The app relays real-time safety alerts published by the Home Front Command (Piku
 * Area selection - select preferred alert cities / regions by searching for them
 * Countdown - alerts will display the estimated time until impact
 * I'm safe - let your friends and family know you are safe by sending an "I'm safe" message via the app
-* Localization - the app has been translated to multiple languages (Hebrew, English, Arabic, Russian, Italian, Spanish, French, and German)
+* Localization - the app has been translated to multiple languages (Hebrew, English, Arabic, Russian, Italian, Spanish, French, German, and Portuguese)
 
 ## Requirements
 * Android SDK
@@ -65,6 +65,7 @@ Your donation is greatly appreciated.
 * Thanks to Rodolphe Moulin for the French translation
 * Thanks to Matteo Villosio for the Italian translation
 * Thanks to David Halbani for the German translation
+* Thanks to Rodrigo Sabino for the Portuguese translation
 * Thanks to Nathan Allenberg and Noam Hashmonai for the Spanish translation
 * Thanks to Eden Glant for the "Siren 1" and "Siren 2" sounds
 * Thanks to the developers of the Tzofar app for the map polygon data
