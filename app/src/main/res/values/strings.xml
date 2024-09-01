@@ -300,13 +300,13 @@
 
     <!-- Static Language Identifiers -->
     <string translatable="false" name="english">English</string>
-    <string translatable="false" name="arabic">Arabic</string>
+    <string translatable="false" name="arabic">عربي</string>
     <string translatable="false" name="spanish">Español</string>
     <string translatable="false" name="russian">Pусский</string>
     <string translatable="false" name="hebrew">עברית</string>
     <string translatable="false" name="italian">Italiano</string>
     <string translatable="false" name="french">Français</string>
-    <string translatable="false" name="german">German</string>
+    <string translatable="false" name="german">Deutsch</string>
     <string translatable="false" name="portuguese">Português</string>
 
     <!-- Preference Keys -->
