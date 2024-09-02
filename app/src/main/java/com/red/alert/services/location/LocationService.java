@@ -113,7 +113,14 @@ public class LocationService extends Service implements
         // Listen for GPS sensor enable/disable event
         IntentFilter filter = new IntentFilter(LocationManager.PROVIDERS_CHANGED_ACTION);
         filter.addAction(Intent.ACTION_PROVIDER_CHANGED);
-        registerReceiver(locationProvidersChangedReceiver, filter);
+
+        try {
+            // Try registering receiver (may fail on Android 14)
+            registerReceiver(locationProvidersChangedReceiver, filter);
+        }
+        catch (SecurityException err) {
+            // Ignore SecurityException on Android 14
+        }
 
         // Write to log
         Log.d(Logging.TAG, "LocationService started, polling every " + LocationLogic.getUpdateIntervalMilliseconds(this) / 1000 / 60 + " minute(s)");
