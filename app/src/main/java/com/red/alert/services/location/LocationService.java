@@ -114,12 +114,11 @@ public class LocationService extends Service implements
         IntentFilter filter = new IntentFilter(LocationManager.PROVIDERS_CHANGED_ACTION);
         filter.addAction(Intent.ACTION_PROVIDER_CHANGED);
 
-        try {
-            // Try registering receiver (may fail on Android 14)
+        // API level 34 support
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            registerReceiver(locationProvidersChangedReceiver, filter, RECEIVER_NOT_EXPORTED);
+        } else {
             registerReceiver(locationProvidersChangedReceiver, filter);
-        }
-        catch (SecurityException err) {
-            // Ignore SecurityException on Android 14
         }
 
         // Write to log
@@ -325,6 +324,7 @@ public class LocationService extends Service implements
             // Show error
             text = getString(R.string.enableGPSDesc);
         }
+        
         // No recent location?
         else if (location == null) {
             // Show error
