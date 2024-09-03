@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 
 import com.red.alert.config.push.PushyGateway;
+import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.services.location.LocationService;
 
@@ -23,6 +24,13 @@ public class ServiceManager {
     }
 
     public static void startLocationService(Context context) {
+        // API level 34 support
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE && !LocationLogic.isLocationPermissionGranted(context)) {
+            // Don't try to start a foreground service
+            // as it will throw a SecurityException
+            return;
+        }
+
         try {
             // Use foreground service on Android O+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
