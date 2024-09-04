@@ -53,14 +53,6 @@ public class LocationService extends Service implements
     public void onCreate() {
         super.onCreate();
 
-        // Start foreground service
-        // API level 34 support
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-            startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification(), ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION);
-        } else {
-            startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification());
-        }
-
         // Must have Google Play Services
         if (!GooglePlayServices.isAvailable(this)) {
             stopSelf();
@@ -84,6 +76,14 @@ public class LocationService extends Service implements
         if (!LocationLogic.isLocationAccessGranted(this)) {
             stopSelf();
             return;
+        }
+
+        // Start foreground service
+        // API level 34 support
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification(), ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION);
+        } else {
+            startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification());
         }
 
         // Initialize location polling
@@ -154,6 +154,13 @@ public class LocationService extends Service implements
 
     @Override
     public int onStartCommand(Intent Intent, int Flags, int StartId) {
+        // Check if the user revoked location permission
+        // Must have location permission to continue
+        if (!LocationLogic.isLocationAccessGranted(this)) {
+            stopSelf();
+            return START_NOT_STICKY;
+        }
+
         // Start foreground service
         // API level 34 support
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
