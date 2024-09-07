@@ -53,27 +53,8 @@ public class LocationService extends Service implements
     public void onCreate() {
         super.onCreate();
 
-        // Must have Google Play Services
-        if (!GooglePlayServices.isAvailable(this)) {
-            stopSelf();
-            return;
-        }
-
-        // Check if location alerts are enabled
-        if (!AppPreferences.getLocationAlertsEnabled(this)) {
-            stopSelf();
-            return;
-        }
-
-        // Interval set to 0?
-        if (LocationLogic.getUpdateIntervalMilliseconds(this) == 0) {
-            stopSelf();
-            return;
-        }
-
-        // Check if the user revoked location permission
-        // Must have location permission to continue
-        if (!LocationLogic.isLocationAccessGranted(this)) {
+        // Check if all prerequisites are met
+        if (!LocationLogic.canStartForegroundLocationService(this)) {
             stopSelf();
             return;
         }
@@ -154,9 +135,8 @@ public class LocationService extends Service implements
 
     @Override
     public int onStartCommand(Intent Intent, int Flags, int StartId) {
-        // Check if the user revoked location permission
-        // Must have location permission to continue
-        if (!LocationLogic.isLocationAccessGranted(this)) {
+        // Check if all prerequisites are met
+        if (!LocationLogic.canStartForegroundLocationService(this)) {
             stopSelf();
             return START_NOT_STICKY;
         }

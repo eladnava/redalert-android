@@ -16,18 +16,13 @@ public class ServiceManager {
         // Start the Pushy push service
         startPushyService(context);
 
-        // Location alerts enabled?
-        if (AppPreferences.getLocationAlertsEnabled(context)) {
-            // Start the location service
-            startLocationService(context);
-        }
+        // Start the location service
+        startLocationService(context);
     }
 
     public static void startLocationService(Context context) {
-        // API level 34 support
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE && !LocationLogic.isLocationAccessGranted(context)) {
-            // Don't try to start a foreground service
-            // as it will throw a SecurityException
+        // Check if all prerequisites are met
+        if (!LocationLogic.canStartForegroundLocationService(context)) {
             return;
         }
 

@@ -16,8 +16,10 @@ import android.provider.Settings;
 
 import com.red.alert.R;
 import com.red.alert.config.LocationAlerts;
+import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.ui.dialogs.AlertDialogBuilder;
 import com.red.alert.utils.caching.Singleton;
+import com.red.alert.utils.integration.GooglePlayServices;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -154,6 +156,40 @@ public class LocationLogic {
     public static boolean isLocationAccessGranted(Context context) {
         // Check if GPS sensor enabled and location permissions are granted (Android 10+)
         return isGPSEnabled(context) && isLocationPermissionGranted(context);
+    }
+
+    public static boolean canStartForegroundLocationService(Context context) {
+        // Must have Google Play Services
+        if (!GooglePlayServices.isAvailable(context)) {
+            return false;
+        }
+
+        // Check if location alerts are enabled
+        if (!AppPreferences.getLocationAlertsEnabled(context)) {
+            return false;
+        }
+
+        // Interval set to 0?
+        if (LocationLogic.getUpdateIntervalMilliseconds(context) == 0) {
+            return false;
+        }
+
+        // GPS sensor disabled?
+        // API level 34 specific behavior
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE && !LocationLogic.isGPSEnabled(context)) {
+            // Don't try to start a foreground service
+            // as it will throw a SecurityException
+            return false;
+        }
+
+        // Check if the user revoked location permission
+        // Must have location permission to continue
+        if (!LocationLogic.isLocationPermissionGranted(context)) {
+            return false;
+        }
+
+        // We should be good to go
+        return true;
     }
 
     public static void showLocationAccessRequestDialog(final Activity context) {
