@@ -18,12 +18,8 @@ public class BootReceiver extends WakefulBroadcastReceiver {
 
             // Location alerts enabled?
             if (AppPreferences.getLocationAlertsEnabled(context)) {
-                // Unfortunately, we can't start a foreground location service via boot receiver on API level 34+
-                // Wait for users to manually open the app to restart the foreground service
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-                    // Start the location service
-                    ServiceManager.startLocationService(context);
-                }
+                // Start the location service
+                ServiceManager.startLocationService(context);
             }
         }
     }
