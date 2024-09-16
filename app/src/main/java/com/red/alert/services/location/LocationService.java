@@ -60,7 +60,17 @@ public class LocationService extends Service implements
         // Start foreground service
         // API level 34 support
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-            startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification(), ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION);
+            try {
+                startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification(), ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION);
+            }
+            catch (Exception exc) {
+                // Android 14 may still occasionally throw a
+                // SecurityException or ForegroundServiceStartNotAllowedException
+                // Even throw we have all required permissions
+                // And we're starting the service from an allowed place
+                stopSelf();
+                return;
+            }
         } else {
             startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification());
         }
@@ -142,7 +152,17 @@ public class LocationService extends Service implements
         // Start foreground service
         // API level 34 support
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-            startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification(), ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION);
+            try {
+                startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification(), ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION);
+            }
+            catch (Exception exc) {
+                // Android 14 may still occasionally throw a
+                // SecurityException or ForegroundServiceStartNotAllowedException
+                // Even throw we have all required permissions
+                // And we're starting the service from an allowed place
+                stopSelf();
+                return START_NOT_STICKY;
+            }
         } else {
             startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification());
         }
