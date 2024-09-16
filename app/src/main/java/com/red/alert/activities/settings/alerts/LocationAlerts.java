@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -472,20 +473,23 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
             else {
                 // Location alerts enabled?
                 if (mLocationAlerts.isChecked()) {
-                    // Show dialog instructing user on how to hide the location alerts foreground service notification
-                    AlertDialogBuilder.showGenericDialog(getString(R.string.hideGPSForegroundNotification), getString(R.string.hideGPSForegroundNotificationInstructions), getString(R.string.okay), getString(R.string.notNow), true, LocationAlerts.this, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int which) {
-                            // Clicked okay?
-                            if (which == DialogInterface.BUTTON_POSITIVE) {
-                                // Open notification channel config to allow user to easily disable the notification channel
-                                Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
-                                intent.putExtra(Settings.EXTRA_CHANNEL_ID, NotificationChannels.LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_ID);
-                                intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
-                                startActivity(intent);
-                            }
-                        }
-                    });
+                    // Android O and newer required for notification channels
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        // Show dialog instructing user on how to hide the location alerts foreground service notification
+                        AlertDialogBuilder.showGenericDialog(getString(R.string.hideGPSForegroundNotification), getString(R.string.hideGPSForegroundNotificationInstructions), getString(R.string.okay), getString(R.string.notNow), true, LocationAlerts.this, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int which) {
+                                // Clicked okay?
+                                if (which == DialogInterface.BUTTON_POSITIVE) {
+                                    // Open notification channel config to allow user to easily disable the notification channel
+                                    Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+                                    intent.putExtra(Settings.EXTRA_CHANNEL_ID, NotificationChannels.LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_ID);
+                                    intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+                                    startActivity(intent);
+                                }
+                                }
+                        });
+                    }
                 }
             }
         }
