@@ -33,6 +33,7 @@
 
     <!-- RedAlert -->
     <application
+        android:name=".App"
         android:supportsRtl="true"
         android:label="@string/appName"
         android:icon="@drawable/ic_launcher">
