@@ -31,10 +31,8 @@ import com.red.alert.config.Logging;
 import com.red.alert.config.NotificationChannels;
 import com.red.alert.logic.communication.broadcasts.LocationAlertsEvents;
 import com.red.alert.logic.location.LocationLogic;
-import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.formatting.StringUtils;
-import com.red.alert.utils.integration.GooglePlayServices;
 import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
 
@@ -340,11 +338,17 @@ public class LocationService extends Service implements
         // Android O and newer requires notification channel to be created prior to dispatching a notification
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Create channel
-            NotificationChannel channel = new NotificationChannel(NotificationChannels.LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_ID, NotificationChannels.LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_NAME, NotificationManager.IMPORTANCE_MIN);
+            NotificationChannel channel = new NotificationChannel(NotificationChannels.LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_ID, NotificationChannels.LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_NAME, NotificationManager.IMPORTANCE_LOW);
+
+            // Some devices may need us to explicitly disable sound, even for IMPORTANCE_LOW
+            channel.setSound(null, null);
 
             // Register the channel with the system
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
+
+            // Delete old notification channel
+            notificationManager.deleteNotificationChannel(NotificationChannels.LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_OLD_ID);
         }
 
         // Create foreground notification
@@ -356,6 +360,7 @@ public class LocationService extends Service implements
                 .setColor(Color.TRANSPARENT)
                 .setPriority(Notification.PRIORITY_LOW)
                 .setContentIntent(launcherIntent)
+                .setSound(null)
                 .build();
 
         // All done
