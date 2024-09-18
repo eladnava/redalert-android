@@ -30,6 +30,7 @@
     <string name="imSafeDesc">Enviar \"Estou seguro\"</string>
     <string name="pushRegistrationSuccess">Selecione a cidade de residência</string>
     <string name="pushRegistrationSuccessDesc">Selecione sua cidade ou município para receber alertas em tempo real.</string>
+    <string name="pushRegistrationReselectDesc">Selecione novamente a sua cidade ou município para receber alertas em tempo real.</string>
     <string name="safeWhatsApp">Enviar via WhatsApp</string>
     <string name="safeWhatsAppDesc">Clicar no botão \"Estou seguro\" abrirá a seleção de contatos do WhatsApp</string>
     <string name="soundSelection">Som de alerta</string>

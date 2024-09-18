@@ -30,6 +30,7 @@
     <string name="imSafeDesc">Manda il messaggio \"Sono salvo\"</string>
     <string name="pushRegistrationSuccess">Seleziona la tua Città</string>
     <string name="pushRegistrationSuccessDesc">Seleziona la tua città o paese per ricevere avvisi in tempo reale.</string>
+    <string name="pushRegistrationReselectDesc">Seleziona nuovamente la tua città o località per ricevere avvisi in tempo reale.</string>
     <string name="safeWhatsApp">Manda con WhatsApp</string>
     <string name="safeWhatsAppDesc">Toccando il bottone \"Sono salvo\" verrà automaticamente mandato un messaggio tramite WhatsApp</string>
     <string name="soundSelection">Suono notifica di attacco</string>

@@ -30,6 +30,7 @@
     <string name="imSafeDesc">أرسل \"أنا آمن\"</string>
     <string name="pushRegistrationSuccess">حدد مدينة الإقامة</string>
     <string name="pushRegistrationSuccessDesc">يُرجى تحديد مدينتك أو بلدتك لتلقي التنبيهات في الوقت الفعلي.</string>
+    <string name="pushRegistrationReselectDesc">يرجى إعادة تحديد مدينتك أو بلدتك لتلقي التنبيهات في الوقت الحقيقي.</string>
     <string name="safeWhatsApp">إرسال عبر واتساب</string>
     <string name="safeWhatsAppDesc">سيؤدي النقر على زر \"أنا آمن\" إلى فتح اختيار جهة اتصال واتساب</string>
     <string name="soundSelection">صوت التنبيه</string>

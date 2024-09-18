@@ -30,6 +30,7 @@
     <string name="imSafeDesc">Sende \"ich bin in Sicherheit\"</string>
     <string name="pushRegistrationSuccess">Wählen Sie Ihre Stadt aus</string>
     <string name="pushRegistrationSuccessDesc">Bitte wählen Sie Ihre Stadt oder Gemeinde aus, um Echtzeitbenachrichtigungen zu erhalten.</string>
+    <string name="pushRegistrationReselectDesc">Bitte erneut auswählen Sie Ihre Stadt oder Gemeinde aus, um Echtzeitbenachrichtigungen zu erhalten.</string>
     <string name="safeWhatsApp">Senden über WhatsApp</string>
     <string name="safeWhatsAppDesc">Drücke auf den \"ich bin in Sicherheit\" Button, dann wird eine Automatische Nachricht über WhatsApp verschickt</string>
     <string name="soundSelection">Raketen Alarmierungston</string>

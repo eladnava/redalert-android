@@ -177,6 +177,7 @@
     <string name="registrationID">Código de registro</string>
     <string name="pushRegistrationSuccess">Selecciona tu Ciudad</string>
     <string name="pushRegistrationSuccessDesc">Seleccione su ciudad o pueblo para recibir alertas en tiempo real.</string>
+    <string name="pushRegistrationReselectDesc">Vuelva a seleccionar su ciudad o pueblo para recibir alertas en tiempo real.</string>
 
     <!-- GPS -->
     <string name="locationAlerts">Ubicación alertas</string>

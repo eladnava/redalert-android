@@ -177,6 +177,7 @@
     <!-- Success Messages -->
     <string name="pushRegistrationSuccess">Выберите свой город</string>
     <string name="pushRegistrationSuccessDesc">Пожалуйста, выберите свой город или поселок, чтобы получать оповещения в режиме реального времени.</string>
+    <string name="pushRegistrationReselectDesc">Пожалуйста, выберите свой город повторно, чтобы получать оповещения в режиме реального времени.</string>
 
     <!-- GPS -->
     <string name="locationAlerts">Оповещения о местоположениях</string>

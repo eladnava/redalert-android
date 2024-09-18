@@ -191,6 +191,7 @@
     <string name="registrationID">קוד הרשמה</string>
     <string name="pushRegistrationSuccess">בחר עיר מגורים</string>
     <string name="pushRegistrationSuccessDesc">עליך לבחור יישוב או עיר מגורים כדי לקבל התרעות בזמן אמת.</string>
+    <string name="pushRegistrationReselectDesc">בגלל שינויים של פיקוד העורף, עליך לבחור מחדש יישוב או עיר מגורים כדי לקבל התרעות בזמן אמת.</string>
 
     <!-- GPS -->
     <string name="locationAlerts">התרעות לפי מיקום</string>
@@ -317,7 +318,7 @@
     <string translatable="false" name="websitePref">website</string>
     <string translatable="false" name="fcmTokenPref">gcm_registration_token</string>
     <string translatable="false" name="pushyTokenPref">pushy_registration_token_v2</string>
-    <string translatable="false" name="tutorialPref">tutorial_1_0_22</string>
+    <string translatable="false" name="tutorialPref">tutorial_1_0_23</string>
     <string translatable="false" name="ratePref">rating</string>
     <string translatable="false" name="lifeshieldPref">lifeshield</string>
     <string translatable="false" name="contactPref">contact</string>

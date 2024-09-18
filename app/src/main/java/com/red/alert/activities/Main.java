@@ -901,8 +901,17 @@ public class Main extends AppCompatActivity {
             return;
         }
 
+        // Ask user to select their city
+        String desc = getString(R.string.pushRegistrationSuccessDesc);
+
+        // Check if upgrading from previous version
+        if (Singleton.getSharedPreferences(this).getBoolean("tutorial_1_0_22", false)) {
+            // Ask user to reselect
+            desc = getString(R.string.pushRegistrationReselectDesc);
+        }
+
         // Build the dialog
-        AlertDialogBuilder.showGenericDialog(getString(R.string.pushRegistrationSuccess), getString(R.string.pushRegistrationSuccessDesc), getString(R.string.okay), null, false, this, new DialogInterface.OnClickListener() {
+        AlertDialogBuilder.showGenericDialog(getString(R.string.pushRegistrationSuccess), desc, getString(R.string.okay), null, false, this, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 // Start settings activity

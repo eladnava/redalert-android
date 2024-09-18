@@ -30,6 +30,7 @@
     <string name="imSafeDesc">Send \"I\'m safe\"</string>
     <string name="pushRegistrationSuccess">Select City of Residence</string>
     <string name="pushRegistrationSuccessDesc">Please select your city or town to receive real-time alerts.</string>
+    <string name="pushRegistrationReselectDesc">Please re-select your city or town to receive real-time alerts.</string>
     <string name="safeWhatsApp">Send via WhatsApp</string>
     <string name="safeWhatsAppDesc">Tapping the \"I\'m safe\" button will open up WhatsApp contact selection</string>
     <string name="soundSelection">Alert sound</string>
