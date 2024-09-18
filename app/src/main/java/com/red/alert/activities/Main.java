@@ -738,7 +738,14 @@ public class Main extends AppCompatActivity {
 
                 // Add current alert zone if new
                 if (!lastAlert.desc.contains(currentAlert.localizedZone)) {
-                    lastAlert.desc += ", " + currentAlert.desc;
+                    // Support for unknown city (no prefixing with comma)
+                    if (StringUtils.stringIsNullOrEmpty(lastAlert.desc)) {
+                        lastAlert.desc = currentAlert.desc;
+                    }
+                    else {
+                        // Comma-separated zones and countdowns
+                        lastAlert.desc += ", " + currentAlert.desc;
+                    }
                 }
 
                 // Add current alert to last alert's group
