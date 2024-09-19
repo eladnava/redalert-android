@@ -51,6 +51,9 @@ public class ServiceManager {
         // Set custom heartbeat interval before calling Pushy.listen()
         Pushy.setHeartbeatInterval(PushyGateway.SOCKET_HEARTBEAT_INTERVAL, context);
 
+        // Enable variable keep alive
+        Pushy.toggleVariableKeepAlive(true, context);
+
         // Enable/disable foreground service
         Pushy.toggleForegroundService(AppPreferences.getForegroundServiceEnabled(context), context);
 
