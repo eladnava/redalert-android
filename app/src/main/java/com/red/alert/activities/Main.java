@@ -84,6 +84,7 @@ public class Main extends AppCompatActivity {
     boolean mIsResumed;
     boolean mIsDestroyed;
     boolean mIsReloading;
+    boolean mIsRegistering;
     boolean mCheckedForUpdates;
     boolean mPushTokensRefreshed;
     boolean mPermissionDialogDisplayed;
@@ -344,7 +345,10 @@ public class Main extends AppCompatActivity {
 
         // Always re-register FCM or Pushy on app start
         if (!mPushTokensRefreshed || !FCMRegistration.isRegistered(Main.this) || !PushyRegistration.isRegistered(Main.this) || !RedAlertAPI.isRegistered(Main.this) || !RedAlertAPI.isSubscribed(Main.this)) {
-            new RegisterPushAsync().execute();
+            // Prevent concurrent registration
+            if (!mIsRegistering) {
+                new RegisterPushAsync().execute();
+            }
         }
     }
 
@@ -1030,6 +1034,9 @@ public class Main extends AppCompatActivity {
         ProgressDialog mLoading;
 
         public RegisterPushAsync() {
+            // Prevent concurrent registration
+            mIsRegistering = true;
+
             // Set push tokens as refreshed
             mPushTokensRefreshed = true;
 
@@ -1126,6 +1133,9 @@ public class Main extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Exception exc) {
+            // No longer registering
+            mIsRegistering = false;
+
             // Activity dead?
             if (isFinishing() || mIsDestroyed) {
                 return;
