@@ -326,16 +326,15 @@ public class Main extends AppCompatActivity {
         // Ensure notification permission has been granted
         requestNotificationPermission();
 
-        // Android 12+
-        // Ask user to allow setting exact alarms if canScheduleExactAlarms() is false (usually only false on Android 14+, but can be disabled manually since Android 12)
-        // There's more chance the user will consent to this than battery exemption, as it's easier than whitelisting from battery optimizations
-        showScheduleExactAlarmsPermissionDialog();
-
         // Ask user to whitelist app from battery optimizations
         showBatteryExemptionDialog();
 
         // Ask user to enable location permission if necessary
         showLocationPermissionDialog();
+
+        // Android 12+
+        // Ask user to allow setting exact alarms if canScheduleExactAlarms() is false (usually only false on Android 13+, but can be disabled manually since Android 12)
+        showScheduleExactAlarmsPermissionDialog();
 
         // Ask user to grant app overlay permission if revoked
         showAlertPopupPermissionDialog();
@@ -394,6 +393,11 @@ public class Main extends AppCompatActivity {
     }
 
     void showScheduleExactAlarmsPermissionDialog() {
+        // Already displayed a permission dialog for this activity?
+        if (mPermissionDialogDisplayed) {
+            return;
+        }
+
         // Haven't displayed tutorial?
         if (!AppPreferences.getTutorialDisplayed(this)) {
             return;
@@ -404,13 +408,16 @@ public class Main extends AppCompatActivity {
             return;
         }
 
-        // Already displayed a permission dialog for this activity?
-        if (mPermissionDialogDisplayed) {
+        // Only Android 12 and up allows revoking schedule exact alarms permission
+        if (Build.VERSION.SDK_INT < 31) {
             return;
         }
 
-        // Only Android 12 and up allows revoking schedule exact alarms permission
-        if (Build.VERSION.SDK_INT < 31) {
+        // Get power manager instance
+        PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+
+        // This dialog should only be displayed after user disabled battery optimizations
+        if (!powerManager.isIgnoringBatteryOptimizations(getPackageName())) {
             return;
         }
 
