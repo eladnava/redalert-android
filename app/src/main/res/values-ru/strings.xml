@@ -218,6 +218,10 @@
     <string name="grantOverlayPermission">Разрешить отображение поверх других приложений</string>
     <string name="grantOverlayPermissionInstructions">Пожалуйста, выберите «RedAlert» -> «Разрешить отображение поверх других приложений» на следующем экране.</string>
 
+    <!-- Schedule Exact Alarms -->
+    <string name="allowSettingExactAlarms">Разрешить установку будильников и напоминаний</string>
+    <string name="allowSettingExactAlarmsInstructions">Чтобы получать уведомления в фоновом режиме, разрешите установку будильников и напоминаний на следующем экране.</string>
+
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Повышение надежности</string>
     <string name="foregroundServiceDesc">Отобразите постоянное уведомление, которое не позволит Android завершить работу приложения в фоновом режиме</string>

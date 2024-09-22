@@ -171,6 +171,10 @@
     <string name="grantOverlayPermission">Autoriser l\'affichage sur d\'autres applications</string>
     <string name="grantOverlayPermissionInstructions">Veuillez sélectionner « RedAlert » -> « Autoriser l\'affichage sur d\'autres applications » dans l\'écran suivant.</string>
 
+    <!-- Schedule Exact Alarms -->
+    <string name="allowSettingExactAlarms">Autoriser le réglage des alarmes et des rappels</string>
+    <string name="allowSettingExactAlarmsInstructions">Pour recevoir des notifications en arrière-plan, veuillez autoriser le réglage des alarmes et des rappels dans l\'écran suivant.</string>
+
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Améliorer la fiabilité</string>
     <string name="foregroundServiceDesc">Affichez une notification en cours qui empêchera Android de supprimer l\'application en arrière-plan</string>

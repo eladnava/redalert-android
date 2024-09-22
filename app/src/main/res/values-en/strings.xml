@@ -171,6 +171,10 @@
     <string name="grantOverlayPermission">Allow displaying over other apps</string>
     <string name="grantOverlayPermissionInstructions">Please select \"RedAlert\" -> \"Allow display over other apps\" in the next screen.</string>
 
+    <!-- Schedule Exact Alarms -->
+    <string name="allowSettingExactAlarms">Allow setting alarms and reminders</string>
+    <string name="allowSettingExactAlarmsInstructions">To receive notifications in the background, please allow setting alarms and reminders in the next screen.</string>
+
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Improve reliability</string>
     <string name="foregroundServiceDesc">Display an ongoing notification that will prevent Android from killing the app in the background</string>

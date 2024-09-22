@@ -218,6 +218,10 @@
     <string name="grantOverlayPermission">Permitir visualización sobre otras aplicaciones</string>
     <string name="grantOverlayPermissionInstructions">Seleccione \"RedAlert\" -> \"Permitir visualización sobre otras aplicaciones\" en la siguiente pantalla.</string>
 
+    <!-- Schedule Exact Alarms -->
+    <string name="allowSettingExactAlarms">Permitir configurar alarmas y recordatorios</string>
+    <string name="allowSettingExactAlarmsInstructions">Para recibir notificaciones en segundo plano, permita configurar alarmas y recordatorios en la siguiente pantalla.</string>
+
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Mejorar la confiabilidad</string>
     <string name="foregroundServiceDesc">Muestra una notificación continua que evitará que Android cierre la aplicación en segundo plano</string>

@@ -1,5 +1,6 @@
 package com.red.alert.activities;
 
+import android.app.AlarmManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -321,6 +322,11 @@ public class Main extends AppCompatActivity {
         // Ensure notification permission has been granted
         requestNotificationPermission();
 
+        // Android 12+
+        // Ask user to allow setting exact alarms if canScheduleExactAlarms() is false (usually only false on Android 14+, but can be disabled manually since Android 12)
+        // There's more chance the user will consent to this than battery exemption, as it's easier than whitelisting from battery optimizations
+        showScheduleExactAlarmsPermissionDialog();
+
         // Ask user to whitelist app from battery optimizations
         showBatteryExemptionDialog();
 
@@ -378,6 +384,57 @@ public class Main extends AppCompatActivity {
             // Prevent other dialogs from being displayed
             mPermissionDialogDisplayed = true;
         }
+    }
+
+    void showScheduleExactAlarmsPermissionDialog() {
+        // Haven't displayed tutorial?
+        if (!AppPreferences.getTutorialDisplayed(this)) {
+            return;
+        }
+
+        // Haven't registered for notifications?
+        if (!FCMRegistration.isRegistered(this) || !PushyRegistration.isRegistered(this)) {
+            return;
+        }
+
+        // Already displayed a permission dialog for this activity?
+        if (mPermissionDialogDisplayed) {
+            return;
+        }
+
+        // Only Android 12 and up allows revoking schedule exact alarms permission
+        if (Build.VERSION.SDK_INT < 31) {
+            return;
+        }
+
+        // Get alarm manager instance
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+        // Check if user has already granted permission
+        if (alarmManager.canScheduleExactAlarms()) {
+            return;
+        }
+
+        // Show a dialog to the user
+        AlertDialogBuilder.showGenericDialog(getString(R.string.allowSettingExactAlarms), getString(R.string.allowSettingExactAlarmsInstructions), getString(R.string.okay), getString(R.string.notNow), true, this, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                // Clicked okay?
+                if (which == DialogInterface.BUTTON_POSITIVE) {
+                    // Open alarms and reminders settings screen for this app
+                    Intent intent = new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
+
+                    // Set package to current package
+                    intent.setData(Uri.fromParts("package", getPackageName(), null));
+
+                    // Start settings activity
+                    startActivity(intent);
+                }
+            }
+        });
+
+        // Prevent other dialogs from being displayed
+        mPermissionDialogDisplayed = true;
     }
 
     @Override

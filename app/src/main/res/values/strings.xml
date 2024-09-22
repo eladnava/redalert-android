@@ -232,6 +232,10 @@
     <string name="grantOverlayPermission">אפשר הצגה מעל אפליקציות אחרות</string>
     <string name="grantOverlayPermissionInstructions">בחר/י ״צבע אדום״ -> ״הצגה מעל אפליקציות אחרות״ במסך הבא.</string>
 
+    <!-- Schedule Exact Alarms -->
+    <string name="allowSettingExactAlarms">אשר הגדרת שעונים מעוררים ותזכורות</string>
+    <string name="allowSettingExactAlarmsInstructions">כדי לקבל התרעות צבע אדום בזמן אמת, אשר/י ״הגדרת שעונים מעוררים ותזכורות״ במסך הבא.</string>
+
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">שפר אמינות</string>
     <string name="foregroundServiceDesc">הצג התראה קבועה שתמנע ממערכת ההפעלה לכבות את האפליקציה ברקע</string>

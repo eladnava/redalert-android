@@ -175,6 +175,10 @@
     <string name="grantOverlayPermission">Consenti la visualizzazione su altre app</string>
     <string name="grantOverlayPermissionInstructions">Seleziona \"RedAlert\" -> \"Consenti visualizzazione su altre app\" nella schermata successiva.</string>
 
+    <!-- Schedule Exact Alarms -->
+    <string name="allowSettingExactAlarms">Consenti l\'impostazione di allarmi e promemoria</string>
+    <string name="allowSettingExactAlarmsInstructions">Per ricevere le notifiche in background, consenti l\'impostazione di allarmi e promemoria nella schermata successiva.</string>
+
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Migliorare l\'affidabilità</string>
     <string name="foregroundServiceDesc">Visualizza una notifica continua che impedirà ad Android di terminare l\'app in background</string>
