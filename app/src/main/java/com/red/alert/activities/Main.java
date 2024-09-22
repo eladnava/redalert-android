@@ -307,6 +307,9 @@ public class Main extends AppCompatActivity {
         // Save state
         mIsResumed = true;
 
+        // Allow other dialogs to be displayed
+        mPermissionDialogDisplayed = false;
+
         // Reload alerts manually
         reloadRecentAlerts();
 
