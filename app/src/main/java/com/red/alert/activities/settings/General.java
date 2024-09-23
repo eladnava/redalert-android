@@ -1,5 +1,6 @@
 package com.red.alert.activities.settings;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -552,6 +553,11 @@ public class General extends AppCompatPreferenceActivity {
         // Add battery optimizations whitelist status
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             body += "android.isIgnoringBatteryOptimizations=" + ((PowerManager) getSystemService(Context.POWER_SERVICE)).isIgnoringBatteryOptimizations(getPackageName()) + ", ";
+        }
+
+        // Add schedule exact alarms permission status
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            body += "android.canScheduleExactAlarms=" + ((AlarmManager) getSystemService(Context.ALARM_SERVICE)).canScheduleExactAlarms() + ", ";
         }
 
         body += "phone.manufacturer=" + Build.MANUFACTURER + ", ";
