@@ -5,7 +5,7 @@
     <string name="appName">RedAlert</string>
 
     <!-- Registration Dialog -->
-    <string name="signing_up">Registrándose al servicio de notificaciones de Tzeva Adom…</string>
+    <string name="signing_up">Registrándose al servicio de notificaciones…</string>
 
     <!-- Dialog Buttons -->
     <string name="okay">Ok</string>
@@ -67,14 +67,14 @@
 
     <!-- Self-test -->
     <string name="test">Prueba</string>
-    <string name="testDesc">Enviarme una notificación que simula una alarma \(Tzeva Adom\)</string>
+    <string name="testDesc">Enviarme una notificación que simula una alarma</string>
     <string name="testFailed">La auto-prueba ha fallado por completo. Sin alerta fue recibida de cualquier pasarela de empuje. Compruebe su conexión a Internet y vuelva a intentarlo más tarde, y ponerse en contacto con nosotros si el problema persiste.</string>
     <string name="reliability">Fiabilidad</string>
     <string name="testSuccessfulLong">El auto-test ha completado con éxito!</string>
 
     <!-- Sound Selection -->
     <string name="sounds">Sonidos</string>
-    <string name="soundSelection">Sonido de alarma Tzeva Adom</string>
+    <string name="soundSelection">Sonido de alarma</string>
     <string name="soundSelectionDesc">Seleccionar el sonido de la notificación de alarma</string>
     <string name="testSound">Probar el sonido de notificación</string>
     <string name="siren1">Sirena 1</string>
@@ -99,7 +99,7 @@
 
     <!-- Vibration Mode -->
     <string name="vibrate">Activar vibración</string>
-    <string name="vibrateDesc">Hacer vibrar el dispositivo cuando suena la alarma Tzeva Adom</string>
+    <string name="vibrateDesc">Hacer vibrar el dispositivo cuando suena la alarma</string>
 
     <!-- Secondary Vibration Mode -->
     <string name="secondaryVibrate">Activar vibración</string>
@@ -107,7 +107,7 @@
 
     <!-- Silent Mode Override -->
     <string name="silentOverride">Cancelar modo silencioso</string>
-    <string name="silentOverrideDesc">Cancelar el modo silencioso cuando suena la alarma Tzeva Adom</string>
+    <string name="silentOverrideDesc">Cancelar el modo silencioso cuando suena la alarma</string>
 
     <!-- Silent Mode Override -->
     <string name="secondarySilentOverride">Cancelar modo silencioso</string>
@@ -116,7 +116,7 @@
     <!-- I'm Safe -->
     <string name="safe">Enviar  \"Estoy en el área protegida\"</string>
     <string name="safeCategory">\"Estoy en el área protegida\"</string>
-    <string name="imSafeMessage">Estoy en el área protegida - Enviado desde Tzeva Adom en Android - https://redalert.me</string>
+    <string name="imSafeMessage">Estoy en el área protegida - Enviado desde RedAlert en Android - https://redalert.me</string>
     <string name="imSafeDesc">Enviar \"Estoy en el área protegida\"</string>
 
     <!-- I'm Safe - WhatsApp Integration -->
@@ -162,7 +162,7 @@
     <!-- Share the Application -->
     <string name="share">Compartir</string>
     <string name="shareDesc">Comparta la aplicación</string>
-    <string name="shareMessage">Yo uso la aplicación \"Tzeva Adom\" en Android para recibir notificaciones en tiempo-real de alarmas Tzeva Adom - https://redalert.me</string>
+    <string name="shareMessage">Yo uso la aplicación \"RedAlert\" en Android para recibir notificaciones en tiempo-real de alarmas - https://redalert.me</string>
 
     <!-- Error Messages -->
     <string name="notifyError">Se ha producido un error al mostrar la alerta, es posible que desee para reiniciar el teléfono.</string>
@@ -180,10 +180,10 @@
     <string name="pushRegistrationReselectDesc">Vuelva a seleccionar su ciudad o pueblo para recibir alertas en tiempo real.</string>
 
     <!-- GPS -->
-    <string name="locationAlerts">Ubicación alertas</string>
-    <string name="locationAlertsDesc">Configure alertas basadas en la ubicación y reciba alertas de emergencia en la lata</string>
-    <string name="gpsEnabled">Ubicación alertas</string>
-    <string name="gpsEnabledDesc">Recibe alertas basadas en la localización en tiempo real</string>
+    <string name="locationAlerts">Alertas por ubicación</string>
+    <string name="locationAlertsDesc">Configurar alertas por ubicación para recibir alertas de emergencia mientras está en movimiento</string>
+    <string name="gpsEnabled">Alertas por ubicación</string>
+    <string name="gpsEnabledDesc">Recibe alertas por ubicación en tiempo real</string>
     <string name="maxDistance">Distancia máxima</string>
     <string name="maxDistanceDesc">Deslice para seleccionar la distancia máxima de cada ciudad que recibe una alerta</string>
     <string name="kilometer">km</string>
@@ -198,7 +198,7 @@
     <string name="minutes">minutos</string>
 
     <!-- GPS Notification -->
-    <string name="enableGPSDesc">Por favor, activa el GPS para recibir alertas basadas en la localización.</string>
+    <string name="enableGPSDesc">Por favor, activa el GPS para recibir alertas por ubicación.</string>
     <string name="enable">Habilitar</string>
 
     <!-- Alert Share -->
