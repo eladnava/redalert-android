@@ -282,28 +282,54 @@ public class LocationData {
         for (City city : cities) {
             // Got a match?
             if (city.name.equals(cityName)) {
+                // Localize time to shelter
+                String localizedCountdown = getLocalizedCountdown(city.countdown, context);
+
                 // Hebrew?
                 if (Localization.isHebrew(context)) {
-                    // Return area countdown in Hebrew
-                    return city.zone + " (" + city.time + ")";
+                    // Return zone + countdown in Hebrew
+                    return city.zone + " (" + localizedCountdown + ")";
                 }
                 else if (Localization.isRussian(context)) {
-                    // Return area countdown in Russian
-                    return city.zoneRussian  + " (" + city.timeRussian + ")";
+                    // Return zone + countdown in Russian
+                    return city.zoneRussian  + " (" + localizedCountdown + ")";
                 }
                 else if (Localization.isArabic(context)) {
-                    // Return area countdown in Arabic
-                    return city.zoneArabic  + " (" + city.timeArabic + ")";
+                    // Return zone + countdown in Arabic
+                    return city.zoneArabic  + " (" + localizedCountdown + ")";
                 }
                 else {
-                    // Return area countdown in English
-                    return city.zoneEnglish  + " (" + city.timeEnglish + ")";
+                    // Return zone + countdown in English
+                    return city.zoneEnglish  + " (" + localizedCountdown + ")";
                 }
             }
         }
 
         // No match
         return "";
+    }
+
+    public static String getLocalizedCountdown(int countdown, Context context) {
+        // Return localized string based on countdown seconds
+        switch (countdown) {
+            case 0:
+                return context.getString(R.string.immediately);
+            case 15:
+                return context.getString(R.string.fifteenSeconds);
+            case 30:
+                return context.getString(R.string.thirtySeconds);
+            case 45:
+                return context.getString(R.string.fortyFiveSeconds);
+            case 60:
+                return context.getString(R.string.oneMinute);
+            case 90:
+                return context.getString(R.string.oneMinuteAndAHalf);
+            case 180:
+                return context.getString(R.string.threeMinutes);
+        }
+
+        // Fallback to immediately on unexpected countdown value
+        return context.getString(R.string.immediately);
     }
 
     public static int getCityCountdown(String cityName, Context context) {

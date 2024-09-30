@@ -199,6 +199,15 @@
     <string name="learnAboutLifeshield">Learn about Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Learn more about Operation Lifeshield, a nonprofit that deploys air raid shelters in Israel.</string>
 
+    <!-- Time To Shelter -->
+    <string name="immediately">Immediately</string>
+    <string name="fifteenSeconds">15 seconds</string>
+    <string name="thirtySeconds">30 seconds</string>
+    <string name="fortyFiveSeconds">45 seconds</string>
+    <string name="oneMinute">A ​​minute</string>
+    <string name="oneMinuteAndAHalf">A minute and a half</string>
+    <string name="threeMinutes">3 minutes</string>
+
     <!-- Threat Types -->
     <string name="missiles">Rocket fire</string>
     <string name="radiologicalEvent">Radiological event</string>

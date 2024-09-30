@@ -199,6 +199,15 @@
     <string name="learnAboutLifeshield">تعرف على Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">تعرف على المزيد حول Operation Lifeshield، وهي منظمة غير ربحية تنشر ملاجئ الغارات الجوية في إسرائيل.</string>
 
+    <!-- Time To Shelter -->
+    <string name="immediately">في الحال</string>
+    <string name="fifteenSeconds">۱٥ ثانية</string>
+    <string name="thirtySeconds">۳۰ ثانية</string>
+    <string name="fortyFiveSeconds">٤٥ ثانية</string>
+    <string name="oneMinute">دقيقة</string>
+    <string name="oneMinuteAndAHalf">دقيقة ونصف</string>
+    <string name="threeMinutes">۳ دقائق</string>
+
     <!-- أنواع التهديدات -->
     <string name="missiles">إطلاق الصواريخ</string>
     <string name="radiologicalEvent">حدث إشعاعي</string>

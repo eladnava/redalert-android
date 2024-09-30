@@ -199,6 +199,15 @@
     <string name="learnAboutLifeshield">Saiba mais sobre o Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Saiba mais sobre a Operation Lifeshield, uma organização sem fins lucrativos que implanta abrigos antiaéreos em Israel.</string>
 
+    <!-- Time to Shelter -->
+    <string name="immediately">Imediatamente</string>
+    <string name="fifteenSeconds">15 segundos</string>
+    <string name="thirtySeconds">30 segundos</string>
+    <string name="fortyFiveSeconds">45 segundos</string>
+    <string name="oneMinute">Um minuto</string>
+    <string name="oneMinuteAndAHalf">Um minuto e meio</string>
+    <string name="threeMinutes">3 minutos</string>
+
     <!-- Threat Types -->
     <string name="missiles">Disparo de Foguetes</string>
     <string name="radiologicalEvent">Evento Radiológico</string>

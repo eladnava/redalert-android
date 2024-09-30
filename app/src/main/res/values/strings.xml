@@ -301,6 +301,15 @@
     <string name="learnAboutLifeshield">למד עוד על לייפשילד</string>
     <string name="learnAboutLifeshieldDesc">למד עוד על לייפשילד, ארגון ללא מטרות רווח המציב מקלטים ברחבי ישראל.</string>
 
+    <!-- Time To Shelter -->
+    <string name="immediately">מיידי</string>
+    <string name="fifteenSeconds">15 שניות</string>
+    <string name="thirtySeconds">30 שניות</string>
+    <string name="fortyFiveSeconds">45 שניות</string>
+    <string name="oneMinute">דקה</string>
+    <string name="oneMinuteAndAHalf">דקה וחצי</string>
+    <string name="threeMinutes">3 דקות</string>
+
     <!-- Do not translate from here on down -->
 
     <!-- Static Language Identifiers -->

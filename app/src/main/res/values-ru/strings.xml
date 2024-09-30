@@ -246,6 +246,15 @@
     <string name="learnAboutLifeshield">Узнать о Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Нажмите здесь, чтобы узнать больше об Операции Lifeshield, некоммерческой организации, которая развертывает убежища для воздушных налетов в Израиле.</string>
 
+    <!-- Time To Shelter -->
+    <string name="immediately">Немедленно</string>
+    <string name="fifteenSeconds">15 секунд</string>
+    <string name="thirtySeconds">30 секунд</string>
+    <string name="fortyFiveSeconds">45 секунд</string>
+    <string name="oneMinute">Минута</string>
+    <string name="oneMinuteAndAHalf">Полторы минуты</string>
+    <string name="threeMinutes">3 минуты</string>
+
     <!-- Threat Types -->
     <string name="missiles">Pакетный обстрел</string>
     <string name="radiologicalEvent">Радиологическое событие</string>
