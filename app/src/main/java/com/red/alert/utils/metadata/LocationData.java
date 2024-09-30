@@ -27,6 +27,7 @@ import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -102,10 +103,19 @@ public class LocationData {
         // Prepare array
         List<String> values = new ArrayList<String>();
 
+        // Get localized zone names and Hebrew values
+        List<String> zoneNames = Arrays.asList(context.getResources().getStringArray(R.array.zoneNames));
+        List<String> zoneValues =  Arrays.asList(context.getResources().getStringArray(R.array.zoneValues));
+
         // Loop over cities
         for (City city : cities) {
+            // Found zone in XML?
+            if (zoneValues.indexOf(city.zone) != -1) {
+                // Add localized name to list
+                values.add(zoneNames.get(zoneValues.indexOf(city.zone)));
+            }
             // Hebrew?
-            if (Localization.isHebrew(context)) {
+            else if (Localization.isHebrew(context)) {
                 // Add Hebrew name to list
                 values.add(city.zone);
             }
@@ -278,6 +288,10 @@ public class LocationData {
         // Prepare cities array
         List<City> cities = getAllCities(context);
 
+        // Get localized zone names and Hebrew values
+        List<String> zoneNames = Arrays.asList(context.getResources().getStringArray(R.array.zoneNames));
+        List<String> zoneValues =  Arrays.asList(context.getResources().getStringArray(R.array.zoneValues));
+
         // Loop over cities
         for (City city : cities) {
             // Got a match?
@@ -285,8 +299,13 @@ public class LocationData {
                 // Localize time to shelter
                 String localizedCountdown = getLocalizedCountdown(city.countdown, context);
 
+                // Found zone in XML?
+                if (zoneValues.indexOf(city.zone) != -1) {
+                    // Return localized zone + localized countdown
+                    return zoneNames.get(zoneValues.indexOf(city.zone)) + " (" + localizedCountdown + ")";
+                }
                 // Hebrew?
-                if (Localization.isHebrew(context)) {
+                else if (Localization.isHebrew(context)) {
                     // Return zone + countdown in Hebrew
                     return city.zone + " (" + localizedCountdown + ")";
                 }
@@ -845,12 +864,21 @@ public class LocationData {
         // Prepare cities array
         List<City> cities = getAllCities(context);
 
+        // Get localized zone names and Hebrew values
+        List<String> zoneNames = Arrays.asList(context.getResources().getStringArray(R.array.zoneNames));
+        List<String> zoneValues =  Arrays.asList(context.getResources().getStringArray(R.array.zoneValues));
+
         // Loop over cities
         for (City city : cities) {
             // Got a match?
             if (city.name.equals(cityName)) {
+                // Found zone in XML?
+                if (zoneValues.indexOf(city.zone) != -1) {
+                    // Return localized zone
+                    return zoneNames.get(zoneValues.indexOf(city.zone));
+                }
                 // Hebrew?
-                if (Localization.isHebrew(context)) {
+                else if (Localization.isHebrew(context)) {
                     return city.zone;
                 }
                 // Russian?
