@@ -108,7 +108,7 @@ public class SearchableMultiSelectPreference extends ListPreference {
     protected void onPrepareDialogBuilder(Builder builder) {
         final CharSequence[] entries = getEntries();
         final CharSequence[] entryValues = getEntryValues();
-        final String[] areaCodes = LocationData.getAllCityZones(getContext());
+        final String[] zoneNames = LocationData.getAllCityZones(getContext());
 
         if (entries == null || entryValues == null || entries.length != entryValues.length) {
             throw new IllegalStateException(
@@ -120,7 +120,7 @@ public class SearchableMultiSelectPreference extends ListPreference {
         final List<ListItemWithIndex> allItems = new ArrayList<ListItemWithIndex>();
         final List<ListItemWithIndex> filteredItems = new ArrayList<ListItemWithIndex>();
 
-        final boolean isCitySelection = entryValues.length == areaCodes.length;
+        final boolean isCitySelection = entryValues.length == zoneNames.length;
 
         for (int i = 0; i < entries.length; i++) {
             final Object obj = entries[i];
@@ -128,13 +128,20 @@ public class SearchableMultiSelectPreference extends ListPreference {
             boolean isDefault = i == 0;
             boolean checked = mClickedDialogEntryIndices[i];
 
-            String areaCode = null;
+            String zone = null;
 
             if (isCitySelection) {
-                areaCode = areaCodes[i];
+                zone = zoneNames[i];
             }
 
-            final ListItemWithIndex listItemWithIndex = new ListItemWithIndex(i, obj.toString(), areaCode, checked, isDefault);
+            String value = obj.toString();
+
+            // Localize "select all" preference
+            if (value.equals("Select All") || value.equals("בחר הכל")) {
+                value = getContext().getResources().getStringArray(R.array.zoneNames)[0];
+            }
+
+            final ListItemWithIndex listItemWithIndex = new ListItemWithIndex(i, value, zone, checked, isDefault);
             allItems.add(listItemWithIndex);
             filteredItems.add(listItemWithIndex);
         }
@@ -167,7 +174,7 @@ public class SearchableMultiSelectPreference extends ListPreference {
 
                 final ListItemWithIndex item = filteredItems.get(position);
                 final String name = item.value;
-                final String code = item.areaCode;
+                final String code = item.zone;
 
                 viewHolder.label.setText(name);
                 viewHolder.subLabel.setText(code);
@@ -273,7 +280,7 @@ public class SearchableMultiSelectPreference extends ListPreference {
                             final String objStr = obj.toString().toLowerCase();
                             if (StringUtils.stringIsNullOrEmpty(filterString)
                                     || objStr.contains(filterString)
-                                    || (obj.areaCode != null && obj.areaCode.toLowerCase().contains(filterString))
+                                    || (obj.zone != null && obj.zone.toLowerCase().contains(filterString))
                                     ) {
                                 list.add(obj);
                             }
@@ -462,13 +469,13 @@ public class SearchableMultiSelectPreference extends ListPreference {
 
         public int index;
         public String value;
-        public String areaCode;
+        public String zone;
 
-        public ListItemWithIndex(int index, String value, String areaCode, boolean checked, boolean isDefault) {
+        public ListItemWithIndex(int index, String value, String zone, boolean checked, boolean isDefault) {
             super();
             this.index = index;
             this.value = value;
-            this.areaCode = areaCode;
+            this.zone = zone;
             this.checked = checked;
             this.isDefault = isDefault;
         }

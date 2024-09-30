@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="zoneNames">
-        <item>alle Auswählen</item>
+        <item>Alle Auswählen</item>
         <item>Eilat</item>
         <item>Bika\'a</item>
         <item>Beit She\'an Valley</item>
