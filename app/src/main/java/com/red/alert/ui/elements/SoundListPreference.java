@@ -13,7 +13,6 @@ import android.provider.Settings;
 import android.util.AttributeSet;
 
 import com.red.alert.R;
-import com.red.alert.activities.settings.General;
 import com.red.alert.activities.settings.alerts.SecondaryAlerts;
 import com.red.alert.config.Sound;
 import com.red.alert.logic.alerts.AlertTypes;
@@ -110,7 +109,7 @@ public class SoundListPreference extends ListPreference {
                                         intent.putExtra(Settings.EXTRA_APP_PACKAGE, mContext.getPackageName());
 
                                         try {
-                                            getDialog().getContext().startActivity(intent);
+                                            mContext.startActivity(intent);
                                         }
                                         catch (ActivityNotFoundException err) {
                                             // On Android 7 and below, there is no option to set custom sound currently
