@@ -2,6 +2,7 @@ package com.red.alert.ui.elements;
 
 import android.app.AlertDialog;
 import android.app.NotificationManager;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.provider.Settings;
 import android.util.AttributeSet;
 
 import com.red.alert.R;
+import com.red.alert.activities.settings.General;
 import com.red.alert.activities.settings.alerts.SecondaryAlerts;
 import com.red.alert.config.Sound;
 import com.red.alert.logic.alerts.AlertTypes;
@@ -106,7 +108,16 @@ public class SoundListPreference extends ListPreference {
                                         Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
                                         intent.putExtra(Settings.EXTRA_CHANNEL_ID, channelId);
                                         intent.putExtra(Settings.EXTRA_APP_PACKAGE, mContext.getPackageName());
-                                        getDialog().getContext().startActivity(intent);
+
+                                        try {
+                                            getDialog().getContext().startActivity(intent);
+                                        }
+                                        catch (ActivityNotFoundException err) {
+                                            // On Android 7 and below, there is no option to set custom sound currently
+                                            // As there is no notification channel support
+                                            // Show error dialog
+                                            AlertDialogBuilder.showGenericDialog(mContext.getString(R.string.error), err.getMessage(), mContext.getString(R.string.okay), null, false, mContext, null);
+                                        }
 
                                         // Save custom sound selection
                                         Singleton.getSharedPreferences(mContext).edit().putString(getKey(), path).commit();
