@@ -132,6 +132,9 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
 
         // Register for broadcasts
         Broadcasts.subscribe(this, mBroadcastListener);
+
+        // Refresh nearby cities display
+        refreshSummaries();
     }
 
     @Override
