@@ -5,6 +5,11 @@ android {
     compileSdkVersion 34
     buildToolsVersion '28.0.3'
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     defaultConfig {
         applicationId "com.red.alert"
         minSdkVersion 21
@@ -30,7 +35,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
 
     // Firebase Cloud Messaging
-    implementation "com.google.firebase:firebase-messaging:20.2.4"
+    implementation "com.google.firebase:firebase-messaging:24.0.2"
 
     // Google Maps & Location APIs
     implementation 'com.google.android.gms:play-services-maps:19.0.0'
