@@ -1,15 +1,13 @@
 package com.red.alert.receivers;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
-
-import androidx.legacy.content.WakefulBroadcastReceiver;
 
 import com.red.alert.logic.services.ServiceManager;
 import com.red.alert.logic.settings.AppPreferences;
 
-public class BootReceiver extends WakefulBroadcastReceiver {
+public class BootReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         // Got boot completed event?
         if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
