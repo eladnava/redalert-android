@@ -385,6 +385,9 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
 
         // Update summary text
         mNearbyCities.setSummary(nearby);
+
+        // Disable/enable nearby cities setting based on checkbox value
+        mNearbyCities.setEnabled(mLocationAlerts.isChecked());
     }
 
     public boolean onOptionsItemSelected(final MenuItem Item) {
