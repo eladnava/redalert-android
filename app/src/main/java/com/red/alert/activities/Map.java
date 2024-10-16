@@ -4,10 +4,9 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,7 +14,9 @@ import android.widget.RelativeLayout;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.OnMapsSdkInitializedCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
@@ -24,11 +25,10 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.red.alert.R;
-import com.red.alert.activities.settings.alerts.LocationAlerts;
+import com.red.alert.config.Logging;
 import com.red.alert.config.ThreatTypes;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
 import com.red.alert.logic.location.LocationLogic;
-import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.model.Alert;
 import com.red.alert.model.metadata.City;
 import com.red.alert.ui.dialogs.AlertDialogBuilder;
@@ -46,12 +46,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.view.MenuItemCompat;
 import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 
-public class Map extends AppCompatActivity {
+public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallback {
     GoogleMap mMap;
     List<Alert> mAlerts;
 
@@ -63,11 +64,19 @@ public class Map extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Use legacy maps renderer to fix blank map bug for 1% of users
+        useLegacyRenderer();
+
         // Initialize alert
         unpackExtras();
 
         // Initialize UI
         initializeUI();
+    }
+
+    void useLegacyRenderer() {
+        // Use legacy maps renderer
+        MapsInitializer.initialize(this, MapsInitializer.Renderer.LEGACY, this);
     }
 
     void unpackExtras() {
@@ -420,6 +429,11 @@ public class Map extends AppCompatActivity {
 
         // Hide by default
         mLoadingItem.setVisible(false);
+    }
+
+    @Override
+    public void onMapsSdkInitialized(@NonNull MapsInitializer.Renderer renderer) {
+        // Do nothing
     }
 
     public class LoadPolygonData extends AsyncTaskAdapter<Integer, String, Integer> {
