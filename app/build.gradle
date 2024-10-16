@@ -32,8 +32,8 @@ dependencies {
     // Firebase Cloud Messaging
     implementation "com.google.firebase:firebase-messaging:20.2.4"
 
-    // Google Location & Places APIs
-    implementation 'com.google.android.gms:play-services-places:17.0.0'
+    // Google Maps & Location APIs
+    implementation 'com.google.android.gms:play-services-maps:19.0.0'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
 
     // All .jar files in ./libs
