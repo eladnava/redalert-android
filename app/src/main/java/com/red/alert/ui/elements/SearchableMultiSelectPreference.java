@@ -5,6 +5,7 @@ import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.TypedArray;
+import android.os.Handler;
 import android.preference.ListPreference;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -25,6 +27,7 @@ import android.widget.TextView;
 
 import com.red.alert.R;
 import com.red.alert.logic.communication.broadcasts.LocationSelectionEvents;
+import com.red.alert.ui.dialogs.AlertDialogBuilder;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.metadata.LocationData;
@@ -330,6 +333,61 @@ public class SearchableMultiSelectPreference extends ListPreference {
         listView.setAdapter(objectsAdapter);
 
         builder.setView(parent);
+
+        // Delay invocation by 300ms for dialog to be created
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Dialog created?
+                if (getDialog() != null) {
+                    // Get positive button
+                    Button button = ((AlertDialog) getDialog()).getButton(AlertDialog.BUTTON_POSITIVE);
+
+                    // Positive button created?
+                    if (button != null) {
+                        // Override onClick listener to enforce max item selection limit
+                        button.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                // Get all possible values
+                                CharSequence[] entryValues = getEntryValues();
+
+                                // ArrayList of selected values
+                                ArrayList<String> values = new ArrayList<String>();
+
+                                // Cities selected?
+                                for (int i = 0; i < entryValues.length; i++) {
+                                    if (mClickedDialogEntryIndices[i] == true) {
+                                        // Don't save the state of check all option - if any
+                                        String val = (String) entryValues[i];
+                                        if (checkAllKey == null || (val.equals(checkAllKey) == false)) {
+                                            values.add(val);
+                                        }
+                                    }
+                                }
+
+                                // Exceeded limit of 35 items?
+                                if (values.size() > 35) {
+                                    // Didn't check all?
+                                    if (mClickedDialogEntryIndices[0] != true) {
+                                        // Show error dialog
+                                        AlertDialogBuilder.showGenericDialog(getContext().getString(R.string.error), getContext().getString(R.string.citySelectionLimitError), getContext().getString(R.string.okay), null, false, getContext(), null);
+                                        return;
+                                    }
+                                }
+
+                                // Less than or equal to 35 selected
+                                // Set button clicked as positive
+                                SearchableMultiSelectPreference.this.onClick(getDialog(), AlertDialog.BUTTON_POSITIVE);
+
+                                // Dismiss dialog
+                                getDialog().dismiss();
+                            }
+                        });
+                    }
+                }
+            }
+        }, 300);
 
         //builder.setView()
         /*builder.setMultiChoiceItems(entries, mClickedDialogEntryIndices,

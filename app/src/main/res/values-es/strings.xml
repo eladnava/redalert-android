@@ -172,6 +172,7 @@
     <string name="apiRequestFailed">Una solicitud para recuperar información de nuestros servidores fallaron. Por favor, compruebe su conexión a Internet y vuelva a intentarlo.</string>
     <string name="registrationFailed">El registro al servicio de notificaciones no tuvo éxito. Por favor, intente más tarde.</string>
     <string name="grantNotificationPermission">Habilite \"Notificaciones\" en la siguiente pantalla para recibir alertas en tiempo real.</string>
+    <string name="citySelectionLimitError">Por favor no seleccione más de 35 ciudades.</string>
 
     <!-- Success Messages -->
     <string name="registrationID">Código de registro</string>

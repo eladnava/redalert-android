@@ -11,6 +11,7 @@
     <string name="apiRequestFailed">Uma solicitação para recuperar informações de nossos servidores falhou. Verifique sua conexão com a Internet e tente novamente.</string>
     <string name="registrationFailed">Cadastro falhou, tente novamente mais tarde.</string>
     <string name="grantNotificationPermission">Ative \"Notificações\" na próxima tela para receber alertas em tempo real.</string>
+    <string name="citySelectionLimitError">Por favor não seleccione mais de 35 cidades.</string>
     <string name="settings">Configurações</string>
     <string name="advanced">Avançado</string>
     <string name="advancedSettings">Configurações avançadas</string>

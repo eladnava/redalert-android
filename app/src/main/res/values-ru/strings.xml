@@ -173,6 +173,7 @@
     <string name="apiRequestFailed">Запрос для получения информации из наших серверов не удалось. Пожалуйста, проверьте подключение к Интернету и повторите попытку.</string>
     <string name="registrationFailed">Регистрация на автоматические уведомления не прошла. Пожалуйста, повторите попытку позже.</string>
     <string name="grantNotificationPermission">Включите «Уведомления» на следующем экране, чтобы получать оповещения в режиме реального времени.</string>
+    <string name="citySelectionLimitError">Пожалуйста не выбирайте более 35 городов.</string>
 
     <!-- Success Messages -->
     <string name="pushRegistrationSuccess">Выберите свой город</string>
