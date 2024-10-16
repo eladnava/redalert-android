@@ -52,7 +52,6 @@ import com.red.alert.utils.threading.AsyncTaskAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.NonNull;
 import me.pushy.sdk.lib.jackson.core.JsonProcessingException;
 
 public class LocationAlerts extends AppCompatPreferenceActivity {
@@ -497,7 +496,7 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         // Just granted location permission?

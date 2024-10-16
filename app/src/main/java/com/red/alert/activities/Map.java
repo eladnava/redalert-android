@@ -46,7 +46,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.view.MenuItemCompat;
@@ -432,7 +431,7 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
     }
 
     @Override
-    public void onMapsSdkInitialized(@NonNull MapsInitializer.Renderer renderer) {
+    public void onMapsSdkInitialized(MapsInitializer.Renderer renderer) {
         // Do nothing
     }
 
