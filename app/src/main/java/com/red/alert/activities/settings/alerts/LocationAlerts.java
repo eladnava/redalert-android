@@ -269,11 +269,6 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
                 // Get nearby cities
                 List<String> nearbyCities = LocationData.getNearbyCities(location, LocationAlerts.this);
 
-                // No nearby cities?
-                if (nearbyCities.size() == 0) {
-                    return false;
-                }
-
                 // Prepare mock alerts list for map activity
                 List<Alert> mockAlerts = new ArrayList<>();
 

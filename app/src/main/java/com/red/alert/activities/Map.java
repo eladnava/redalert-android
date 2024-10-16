@@ -28,6 +28,7 @@ import com.red.alert.activities.settings.alerts.LocationAlerts;
 import com.red.alert.config.ThreatTypes;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
 import com.red.alert.logic.location.LocationLogic;
+import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.model.Alert;
 import com.red.alert.model.metadata.City;
 import com.red.alert.ui.dialogs.AlertDialogBuilder;
@@ -106,20 +107,27 @@ public class Map extends AppCompatActivity {
     }
 
     void setActivityTitle() {
-        // Get first alert object
-        Alert firstAlert = mAlerts.get(0);
+        // Have at least one alert?
+        if (mAlerts.size() > 0) {
+            // Get first alert object
+            Alert firstAlert = mAlerts.get(0);
 
-        // Set title to alert relative time ago
-        setTitle(LocationData.getAlertRelativeTimeAgo(firstAlert.date, this));
+            // Set title to alert relative time ago
+            setTitle(LocationData.getAlertRelativeTimeAgo(firstAlert.date, this));
 
-        // Add localized threat type to title
-        if (!StringUtils.stringIsNullOrEmpty(firstAlert.localizedThreat)) {
-            setTitle(firstAlert.localizedThreat + ": " + getTitle());
+            // Add localized threat type to title
+            if (!StringUtils.stringIsNullOrEmpty(firstAlert.localizedThreat)) {
+                setTitle(firstAlert.localizedThreat + ": " + getTitle());
+            }
+
+            // Display special title for nearby cities display
+            if (firstAlert.threat.equals(ThreatTypes.NEARBY_CITIES_DISPLAY)) {
+                setTitle(getString(R.string.nearbyCities) + ": " + LocationLogic.getMaxDistanceKilometers(this, -1) + " " + getString(R.string.kilometer));
+            }
         }
-
-        // Display special title for nearby cities display
-        if (firstAlert.threat.equals(ThreatTypes.NEARBY_CITIES_DISPLAY)) {
-            setTitle(getString(R.string.nearbyCities) + ": " + LocationLogic.getMaxDistanceKilometers(this, -1) + " " + getString(R.string.kilometer));
+        else {
+            // Nearby cities display and no nearby cities
+            setTitle(getString(R.string.noNearbyCities));
         }
     }
 
