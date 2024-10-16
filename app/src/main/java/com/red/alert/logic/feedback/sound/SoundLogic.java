@@ -190,7 +190,7 @@ public class SoundLogic {
         return false;
     }
 
-    public static void playSound(String alertType, String overrideSound, Context context) {
+    public static void playSound(final String alertType, String overrideSound, final Context context) {
         // Should we play it?
         if (!shouldPlayAlertSound(alertType, context)) {
             return;
@@ -213,10 +213,16 @@ public class SoundLogic {
         }
 
         // Convert to resource URI
-        Uri alertSoundURI = getAlertSoundURI(alertSoundName, context);
+        final Uri alertSoundURI = getAlertSoundURI(alertSoundName, context);
 
-        // Play sound
-        playSoundURI(alertSoundURI, alertType, context);
+        // Use background thread to avoid ANR in MediaPlayer.setDataSource()
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // Play sound
+                playSoundURI(alertSoundURI, alertType, context);
+            }
+        }).start();
     }
 
     public static void stopSound(Context context) {
