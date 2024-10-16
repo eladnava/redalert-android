@@ -16,8 +16,11 @@ public class ServiceManager {
         // Start the Pushy push service
         startPushyService(context);
 
-        // Start the location service
-        startLocationService(context);
+        // Location alerts enabled?
+        if (AppPreferences.getLocationAlertsEnabled(context)) {
+            // Start the location service
+            ServiceManager.startLocationService(context);
+        }
     }
 
     public static void startLocationService(Context context) {

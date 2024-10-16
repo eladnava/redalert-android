@@ -1246,8 +1246,11 @@ public class Main extends AppCompatActivity {
 
         // Just granted location permission?
         if (requestCode == LocationLogic.LOCATION_PERMISSION_REQUEST_CODE && grantResults.length > 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-            // Start the location service
-            ServiceManager.startLocationService(this);
+            // Location alerts enabled?
+            if (AppPreferences.getLocationAlertsEnabled(this)) {
+                // Start the location service
+                ServiceManager.startLocationService(this);
+            }
         }
     }
 }

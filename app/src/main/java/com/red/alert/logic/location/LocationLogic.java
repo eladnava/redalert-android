@@ -164,11 +164,6 @@ public class LocationLogic {
             return false;
         }
 
-        // Check if location alerts are enabled
-        if (!AppPreferences.getLocationAlertsEnabled(context)) {
-            return false;
-        }
-
         // Interval set to 0?
         if (LocationLogic.getUpdateIntervalMilliseconds(context) == 0) {
             return false;
