@@ -100,6 +100,7 @@
         <activity
             android:name=".activities.settings.alerts.LocationAlerts"
             android:label="@string/locationAlerts"
+            android:launchMode="singleTask"
             android:theme="@style/AppTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
 
