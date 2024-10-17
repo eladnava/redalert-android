@@ -90,12 +90,12 @@ public class AlertLogic {
         }
 
         // Did user select this city? Either via entire zones or cities
-        if (isCitySelectedPrimarily(city, context)) {
+        if (isCitySelectedPrimarily(city, false, context)) {
             return true;
         }
 
         // Did user select this city?
-        if (isSecondaryCitySelected(city, context)) {
+        if (isSecondaryCitySelected(city, false, context)) {
             return true;
         }
 
@@ -120,7 +120,7 @@ public class AlertLogic {
         // Traverse cities
         for (String city : cities) {
             // Did user select this area under primary city / zone selection?
-            if (isCitySelectedPrimarily(city, context)) {
+            if (isCitySelectedPrimarily(city, false, context)) {
                 return false;
             }
 
@@ -131,7 +131,7 @@ public class AlertLogic {
             }
 
             // Did user select this city under secondary city selection?
-            if (isSecondaryCitySelected(city, context)) {
+            if (isSecondaryCitySelected(city, false, context)) {
                 secondaryFound = true;
             }
         }
@@ -140,7 +140,7 @@ public class AlertLogic {
         return secondaryFound;
     }
 
-    public static boolean isCitySelectedPrimarily(String city, Context context) {
+    public static boolean isCitySelectedPrimarily(String city, boolean ignoreAllSelection, Context context) {
         // Get enabled / disabled setting
         boolean notificationsEnabled = AppPreferences.getNotificationsEnabled(context);
 
@@ -153,7 +153,7 @@ public class AlertLogic {
         String selectedZones = Singleton.getSharedPreferences(context).getString(context.getString(R.string.selectedZonesPref), context.getString(R.string.none));
 
         // All are selected?
-        if (StringUtils.stringIsNullOrEmpty(selectedZones) || selectedZones.equals(context.getString(R.string.all))) {
+        if (!ignoreAllSelection && (StringUtils.stringIsNullOrEmpty(selectedZones) || selectedZones.equals(context.getString(R.string.all)))) {
             return true;
         }
 
@@ -189,7 +189,7 @@ public class AlertLogic {
         return false;
     }
 
-    public static boolean isSecondaryCitySelected(String city, Context context) {
+    public static boolean isSecondaryCitySelected(String city, boolean ignoreAllSelection, Context context) {
         // Get main enabled setting
         boolean notificationsEnabled = AppPreferences.getNotificationsEnabled(context);
 
@@ -210,7 +210,7 @@ public class AlertLogic {
         String secondaryCities = Singleton.getSharedPreferences(context).getString(context.getString(R.string.selectedSecondaryCitiesPref), context.getString(R.string.none));
 
         // All selected?
-        if (StringUtils.stringIsNullOrEmpty(secondaryCities) || secondaryCities.equals(context.getString(R.string.all))) {
+        if (!ignoreAllSelection && (StringUtils.stringIsNullOrEmpty(secondaryCities) || secondaryCities.equals(context.getString(R.string.all)))) {
             return true;
         }
 

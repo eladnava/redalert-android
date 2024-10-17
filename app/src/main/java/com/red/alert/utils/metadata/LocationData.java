@@ -381,7 +381,7 @@ public class LocationData {
             int countdown = LocationData.getCityCountdown(city, context);
 
             // If city selected primarily (or it's nearby), just return its countdown value
-            if (AlertLogic.isCitySelectedPrimarily(city, context) || AlertLogic.isNearby(city, context)) {
+            if (AlertLogic.isCitySelectedPrimarily(city, false, context) || AlertLogic.isNearby(city, context)) {
                 // First primary encountered, or another primary with lower countdown?
                 if (!primaryFound || countdown < minCountdown) {
                     minCountdown = countdown;

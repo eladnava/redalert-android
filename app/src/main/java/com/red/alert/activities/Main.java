@@ -42,6 +42,7 @@ import com.red.alert.config.Logging;
 import com.red.alert.config.RecentAlerts;
 import com.red.alert.config.Safety;
 import com.red.alert.config.ThreatTypes;
+import com.red.alert.logic.alerts.AlertLogic;
 import com.red.alert.logic.communication.broadcasts.SettingsEvents;
 import com.red.alert.logic.communication.intents.AlertPopupParameters;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
@@ -769,6 +770,13 @@ public class Main extends AppCompatActivity {
             alert.localizedCity = LocationData.getLocalizedCityName(alert.city, this);
             alert.localizedZone = LocationData.getLocalizedZoneByCityName(alert.city, this);
             alert.localizedThreat = LocationData.getLocalizedThreatType(alert.threat, this);
+
+            // If selected, make it bold
+            if (AlertLogic.isCitySelectedPrimarily(alert.city, true, this)
+                    || AlertLogic.isNearby(alert.city, this)
+                    || AlertLogic.isSecondaryCitySelected(alert.city, true, this)) {
+                alert.localizedCity = "<b>" + alert.localizedCity + "</b>";
+            }
         }
 
         // Group alerts with same timestamp
