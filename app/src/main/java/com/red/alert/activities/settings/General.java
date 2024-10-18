@@ -75,8 +75,6 @@ public class General extends AppCompatPreferenceActivity {
     String mPreviousZones;
     String mPreviousCities;
 
-    MenuItem mLoadingItem;
-
     Preference mRate;
     Preference mWebsite;
     Preference mContact;
@@ -664,32 +662,8 @@ public class General extends AppCompatPreferenceActivity {
         return mPushyTestPassed;
     }
 
-    void toggleProgressBarVisibility(boolean visibility) {
-        // Set loading visibility
-        if (mLoadingItem != null) {
-            mLoadingItem.setVisible(visibility);
-        }
-    }
-
-    void initializeLoadingIndicator(Menu OptionsMenu) {
-        // Add refresh in Action Bar
-        mLoadingItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.signing_up));
-
-        // Set up the view
-        MenuItemCompat.setActionView(mLoadingItem, R.layout.loading);
-
-        // Specify the show flags
-        MenuItemCompat.setShowAsAction(mLoadingItem, MenuItem.SHOW_AS_ACTION_ALWAYS);
-
-        // Hide by default
-        mLoadingItem.setVisible(false);
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu OptionsMenu) {
-        // Add loading indicator
-        initializeLoadingIndicator(OptionsMenu);
-
         // Add settings button
         initializeShareButton(OptionsMenu);
 
@@ -860,9 +834,6 @@ public class General extends AppCompatPreferenceActivity {
             if (mLoading.isShowing()) {
                 mLoading.dismiss();
             }
-
-            // Hide loading indicator
-            toggleProgressBarVisibility(false);
 
             // Show result dialog
             selfTestCompleted(result);
