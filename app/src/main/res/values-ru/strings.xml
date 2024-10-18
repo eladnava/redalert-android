@@ -306,5 +306,5 @@
 
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">Удалить недавние оповещения?</string>
-    <string name="clearRecentAlertsDesc">Хотите очистить список последних оповещений?</string>
+    <string name="clearRecentAlertsDesc">Хотите удалить все недавние оповещения?</string>
 </resources>

@@ -203,7 +203,7 @@ public class Main extends AppCompatActivity {
         mLoading = (ProgressBar) findViewById(R.id.loading);
         mNoAlerts = (LinearLayout) findViewById(R.id.noAlerts);
 
-        // Initialize alert list
+        // Initialize alert lists
         mNewAlerts = new ArrayList<>();
         mDisplayAlerts = new ArrayList<>();
 
@@ -351,6 +351,12 @@ public class Main extends AppCompatActivity {
             if (!mIsRegistering) {
                 new RegisterPushAsync().execute();
             }
+        }
+
+        // Already loaded recent alerts?
+        if (mNewAlerts.size() > 0) {
+            // Refresh alerts relative time
+            invalidateAlertList();
         }
     }
 
@@ -621,6 +627,70 @@ public class Main extends AppCompatActivity {
         });
     }
 
+    void initializeLiveMapButton(Menu OptionsMenu) {
+        // Add live map button
+        MenuItem mapItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.alerts));
+
+        // Set map icon
+        mapItem.setIcon(R.drawable.ic_map);
+
+        // Specify the show flags
+        MenuItemCompat.setShowAsAction(mapItem, MenuItem.SHOW_AS_ACTION_ALWAYS);
+
+        // On click, open Map activity in live mode
+        mapItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                // Start live map activity
+                openLiveMap();
+
+                // Consume event
+                return true;
+            }
+        });
+    }
+
+    void openLiveMap() {
+        // Prepare new intent
+        Intent mapIntent = new Intent();
+
+        // Set map activity class
+        mapIntent.setClass(Main.this, Map.class);
+
+        // Set live mode
+        mapIntent.putExtra(AlertViewParameters.LIVE, true);
+
+        // Ungrouped alerts
+        List<Alert> mAllAlerts = new ArrayList<>();
+
+        // Traverse all alerts
+        for (Alert alert: mNewAlerts) {
+            // Any grouped alerts?
+            if (alert.groupedAlerts.size() > 0) {
+                // Add grouped alerts
+                for (Alert grouped : alert.groupedAlerts) {
+                    mAllAlerts.add(grouped);
+                }
+            }
+            else {
+                // Not grouped, add single alert to list
+                mAllAlerts.add(alert);
+            }
+        }
+
+        try {
+            // Pass all currently-displayed alerts to map activity
+            mapIntent.putExtra(AlertViewParameters.ALERTS, Singleton.getJackson().writer().writeValueAsString(mAllAlerts));
+        } catch (JsonProcessingException e) {
+            // Show error dialog
+            AlertDialogBuilder.showGenericDialog(getString(R.string.error), e.getMessage(), getString(R.string.okay), null, false, Main.this, null);
+            return;
+        }
+
+        // Start map activity
+        startActivity(mapIntent);
+    }
+
     void initializeClearRecentAlertsButton(Menu OptionsMenu) {
         // Add clear item
         mClearRecentAlertsItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.clearRecentAlerts));
@@ -691,7 +761,7 @@ public class Main extends AppCompatActivity {
         mLoadingItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.loading));
 
         // Set up the view
-        MenuItemCompat.setActionView(mLoadingItem, R.layout.loading);
+        MenuItemCompat.setActionView(mLoadingItem, R.layout.loading_small);
 
         // Specify the show flags
         MenuItemCompat.setShowAsAction(mLoadingItem, MenuItem.SHOW_AS_ACTION_ALWAYS);
@@ -704,6 +774,9 @@ public class Main extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu OptionsMenu) {
         // Add loading indicator
         initializeLoadingIndicator(OptionsMenu);
+
+        // Add live map button
+        initializeLiveMapButton(OptionsMenu);
 
         // Add clear recent alerts button
         initializeClearRecentAlertsButton(OptionsMenu);

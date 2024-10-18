@@ -1,7 +1,9 @@
 package com.red.alert.activities;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -10,7 +12,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -26,9 +30,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.red.alert.R;
 import com.red.alert.config.Logging;
+import com.red.alert.config.RecentAlerts;
 import com.red.alert.config.ThreatTypes;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
+import com.red.alert.logic.communication.intents.MainActivityParameters;
 import com.red.alert.logic.location.LocationLogic;
+import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.model.Alert;
 import com.red.alert.model.metadata.City;
 import com.red.alert.ui.dialogs.AlertDialogBuilder;
@@ -36,15 +43,19 @@ import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.ui.localization.rtl.adapters.RTLMarkerInfoWindowAdapter;
 import com.red.alert.ui.notifications.AppNotifications;
 import com.red.alert.utils.caching.Singleton;
+import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.formatting.StringUtils;
+import com.red.alert.utils.localization.DateTime;
 import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
+import com.red.alert.utils.networking.HTTP;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -53,11 +64,22 @@ import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 
 public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallback {
     GoogleMap mMap;
-    List<Alert> mAlerts;
 
+    List<Alert> mAlerts;
+    List<Alert> mDisplayAlerts;
+
+    boolean mLiveMap;
+    boolean mIsResumed;
+    boolean mIsDestroyed;
+    boolean mIsReloading;
+
+    int mDisplayedAlertsCount;
+
+    ImageView mAppIcon;
     MenuItem mShareItem;
     MenuItem mLoadingItem;
     RelativeLayout mMapCover;
+    MenuItem mClearRecentAlertsItem;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -79,11 +101,13 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
     }
 
     void unpackExtras() {
+        // Live map mode
+        mLiveMap = getIntent().getBooleanExtra(AlertViewParameters.LIVE, false);
+
         try {
             // Parse grouped alerts from JSON
-            mAlerts = Singleton.getJackson().readValue(getIntent().getStringExtra(AlertViewParameters.ALERTS), new TypeReference<List<Alert>>() {
-            });
-        } catch (IOException e) {
+            mAlerts = Singleton.getJackson().readValue(getIntent().getStringExtra(AlertViewParameters.ALERTS), new TypeReference<List<Alert>>() {});
+        } catch (Exception e) {
             // Show error dialog
             AlertDialogBuilder.showGenericDialog(getString(R.string.error), e.getMessage(), getString(R.string.okay), null, false, Map.this, null);
         }
@@ -112,11 +136,22 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                 new LoadPolygonData().execute();
             }
         });
+
+        // Live map?
+        if (mLiveMap) {
+            pollRecentAlerts();
+        }
     }
 
     void setActivityTitle() {
+        // Live map?
+        if (mLiveMap) {
+            // Set recent alerts title
+            setTitle(getString(R.string.recentAlerts));
+        }
+
         // Have at least one alert?
-        if (mAlerts.size() > 0) {
+        else if (mAlerts.size() > 0) {
             // Get first alert object
             Alert firstAlert = mAlerts.get(0);
 
@@ -158,7 +193,13 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
         mapLoadedListener();
     }
 
-    void addOverlays() {
+    void redrawOverlays() {
+        // Clear currently-displayed alerts list
+        mDisplayAlerts.clear();
+
+        // Clear all existing map annotations
+        mMap.clear();
+
         // Prepare a boundary with all geo-located cities
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
 
@@ -171,8 +212,19 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
         // Get polygons data for all cities (execution takes roughly 1 second)
         HashMap<String, ArrayList<ArrayList<Double>>> polygons = LocationData.getAllPolygons(this);
 
+        // List of processed cities
+        List<String> cityNames = new ArrayList<String>();
+
+        // Check if user cleared the recent alerts
+        long cutoffTimestamp = AppPreferences.getRecentAlertsCutoffTimestamp(this);
+
         // Traverse alerts
         for (Alert alert : mAlerts) {
+            // Remove alerts that occurred before the cutoff
+            if (mLiveMap && cutoffTimestamp > 0 && alert.date <= cutoffTimestamp) {
+                continue;
+            }
+
             // Get city object
             City city = LocationData.getCityByName(alert.city, this);
 
@@ -180,6 +232,14 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
             if (city == null) {
                 continue;
             }
+
+            // Only display one marker for each city
+            if (cityNames.contains(alert.city)) {
+                continue;
+            }
+
+            // Keep track of city name to avoid duplicates
+            cityNames.add(alert.city);
 
             // Check if we have polygon data for this city
             if (polygons.containsKey(String.valueOf(city.id))) {
@@ -228,12 +288,6 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                 // Get localized city and zone names
                 String localizedName = LocationData.getLocalizedCityName(city.name, this) + " (" + LocationData.getLocalizedZoneByCityName(city.name, this) + ")";
 
-                // Already have a marker with these exact coordinates?
-                while (uniqueCoordinates.indexOf(city.latitude + "-" + city.longitude) != -1) {
-                    city.latitude += 0.01;
-                    city.longitude += 0.01;
-                }
-
                 // Create LatLng location object
                 LatLng location = new LatLng(city.latitude, city.longitude);
 
@@ -266,12 +320,27 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                 // Avoid adding another marker at these exact coordinates
                 uniqueCoordinates.add(city.latitude + "-" + city.longitude);
             }
+
+            // Add to display alerts
+            mDisplayAlerts.add(alert);
         }
+
+        // Update displayed icon according to how many alerts are being displayed
+        updateClearAlertsButton(cutoffTimestamp);
 
         // Geolocation failure?
         if (!cityFound) {
             return;
         }
+
+        // Live map?
+        // Don't move map if no change in alerts
+        if (mLiveMap && mDisplayAlerts.size() == mDisplayedAlertsCount) {
+            return;
+        }
+
+        // Keep track of currently displayed alert count
+        mDisplayedAlertsCount = mDisplayAlerts.size();
 
         // Build a boundary for the map positioning
         final LatLngBounds bounds = builder.build();
@@ -308,6 +377,9 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
 
     @Override
     public boolean onCreateOptionsMenu(Menu OptionsMenu) {
+        // Add clear recent alerts button
+        initializeClearRecentAlertsButton(OptionsMenu);
+
         // Add share button
         initializeShareButton(OptionsMenu);
 
@@ -318,7 +390,72 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
         return true;
     }
 
+    void initializeClearRecentAlertsButton(Menu OptionsMenu) {
+        // Only display button in live map mode
+        if (!mLiveMap) {
+            return;
+        }
+
+        // Add clear item
+        mClearRecentAlertsItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.clearRecentAlerts));
+
+        // Set default icon
+        mClearRecentAlertsItem.setIcon(R.drawable.ic_clear);
+
+        // Specify the show flags
+        MenuItemCompat.setShowAsAction(mClearRecentAlertsItem, MenuItem.SHOW_AS_ACTION_ALWAYS);
+
+        // On click, toggle clearing recent alerts
+        mClearRecentAlertsItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                // Clear currently displayed alerts
+                if (mDisplayAlerts.size() > 0) {
+                    // Show a dialog to the user
+                    AlertDialogBuilder.showGenericDialog(getString(R.string.clearRecentAlerts), getString(R.string.clearRecentAlertsDesc), getString(R.string.yes), getString(R.string.no), true, Map.this, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int which) {
+                            // Clicked okay?
+                            if (which == DialogInterface.BUTTON_POSITIVE) {
+                                // Set recent alerts cutoff timestamp to now
+                                AppPreferences.updateRecentAlertsCutoffTimestamp(DateTime.getUnixTimestamp(), Map.this);
+
+                                // Redraw map overlays
+                                redrawOverlays();
+
+                                // Clear app notifications
+                                AppNotifications.clearAll(Map.this);
+                            }
+                        }
+                    });
+                }
+                else {
+                    // No alerts displayed, so display all of them
+                    AppPreferences.updateRecentAlertsCutoffTimestamp(0, Map.this);
+
+                    // Redraw map overlays
+                    redrawOverlays();
+                }
+
+                // Consume event
+                return true;
+            }
+        });
+
+        // No alerts?
+        if (mDisplayAlerts.size() == 0) {
+            // By default, hide button until alerts are returned by the server
+            mClearRecentAlertsItem.setVisible(false);
+        }
+    }
+
     private String getShareMessage() {
+        // Live map mode?
+        if (mLiveMap) {
+            // Return generic app share message
+            return getString(R.string.shareMessage);
+        }
+
         // Construct share message
         return mAlerts.get(0).localizedThreat + " " + getString(R.string.alertSoundedAt) + mAlerts.get(0).localizedCity + "\n" + mAlerts.get(0).dateString + "\n\n" + getString(R.string.alertSentVia);
     }
@@ -373,11 +510,25 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
     protected void onResume() {
         super.onResume();
 
+        // Save state
+        mIsResumed = true;
+
         // Support for RTL languages
         RTLSupport.mirrorActionBar(this);
 
         // Clear notifications and stop sound from playing
         AppNotifications.clearAll(this);
+
+        // Register for broadcasts
+        Broadcasts.subscribe(this, mBroadcastListener);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        // Save state
+        mIsResumed = false;
     }
 
     @Override
@@ -389,6 +540,9 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
     }
 
     void initializeUI() {
+        // Initialize display alerts list
+        mDisplayAlerts = new ArrayList<>();
+
         // Ensure the right language is displayed
         Localization.overridePhoneLocale(this);
 
@@ -401,8 +555,14 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
         // Set up UI
         setContentView(R.layout.alert_view);
 
-        // Store reference to map cover for later
+        // Store reference to app icon & map cover for later
+        mAppIcon = (ImageView) findViewById(R.id.appIcon);
         mMapCover = (RelativeLayout) findViewById(R.id.mapCover);
+
+        // Align app icon based on whether language is RTL to avoid hiding Google logo
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mAppIcon.getLayoutParams();
+        params.addRule(Localization.isRTLLocale(this) ? RelativeLayout.ALIGN_PARENT_LEFT : RelativeLayout.ALIGN_PARENT_RIGHT);
+        mAppIcon.setLayoutParams(params);
 
         // Get map instance
         ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMapAsync(new OnMapReadyCallback() {
@@ -458,7 +618,7 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
             }
 
             // Add city polygons and markers
-            addOverlays();
+            redrawOverlays();
 
             // Hide loading indicator
             mLoadingItem.setVisible(false);
@@ -474,6 +634,190 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                     mMapCover.setVisibility(View.GONE);
                 }
             }, 200);
+        }
+    }
+
+    SharedPreferences.OnSharedPreferenceChangeListener mBroadcastListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences Preferences, String Key) {
+            // Asked for reload?
+            if (Key.equalsIgnoreCase(MainActivityParameters.RELOAD_RECENT_ALERTS)) {
+                reloadRecentAlerts();
+            }
+        }
+    };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        // Activity destroyed
+        mIsDestroyed = true;
+
+        // Unregister for broadcasts
+        Broadcasts.unsubscribe(this, mBroadcastListener);
+    }
+
+    void pollRecentAlerts() {
+        // Schedule a new timer
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // App is running?
+                        if (mIsResumed) {
+                            // Reload every X seconds
+                            reloadRecentAlerts();
+                        }
+                    }
+                });
+            }
+        }, 1000 * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC, 1000 * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC);
+    }
+
+    void reloadRecentAlerts() {
+        // Not already reloading?
+        if (!mIsReloading) {
+            // Get recent alerts async
+            new GetRecentAlertsAsync().execute();
+        }
+    }
+
+    public class GetRecentAlertsAsync extends AsyncTaskAdapter<Integer, String, Integer> {
+        public GetRecentAlertsAsync() {
+            // Prevent concurrent reload
+            mIsReloading = true;
+
+            // Show loading indicator
+            mLoadingItem.setVisible(true);
+
+            // Hide share button
+            mShareItem.setVisible(false);
+        }
+
+        @Override
+        protected Integer doInBackground(Integer... Parameter) {
+            // Try to get recent alerts
+            return getRecentAlerts();
+        }
+
+        @Override
+        protected void onPostExecute(Integer errorStringResource) {
+            // No longer reloading
+            mIsReloading = false;
+
+            // Activity dead?
+            if (isFinishing() || mIsDestroyed) {
+                return;
+            }
+
+            // Hide loading
+            mLoadingItem.setVisible(false);
+
+            // Success?
+            if (errorStringResource == 0) {
+                // Redraw map overlays
+                redrawOverlays();
+
+                // Show share button
+                mShareItem.setVisible(true);
+
+                // Prevent white flicker as map loads in dark mode
+                mMapCover.setVisibility(View.GONE);
+            }
+            else {
+                // Show error toast
+                Toast.makeText(Map.this, getString(errorStringResource), Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    private int getRecentAlerts() {
+        // Ensure the right language is displayed
+        Localization.overridePhoneLocale(this);
+
+        // Store JSON as string initially
+        String alertsJSON;
+
+        try {
+            // Get it from /alerts
+            alertsJSON = HTTP.get("/alerts");
+        }
+        catch (Exception exc) {
+            // Log it
+            Log.e(Logging.TAG, "Get recent alerts request failed", exc);
+
+            // Return error code
+            return R.string.apiRequestFailed;
+        }
+
+        // Prepare tmp object list
+        List<Alert> recentAlerts;
+
+        try {
+            // Convert JSON to object
+            recentAlerts = Singleton.getJackson().readValue(alertsJSON, new TypeReference<List<Alert>>() {});
+        }
+        catch (Exception exc) {
+            // Log it
+            Log.e(Logging.TAG, "Get recent alerts request failed", exc);
+
+            // Return error code
+            return R.string.jsonFailed;
+        }
+
+        // Loop over alerts
+        for (Alert alert : recentAlerts) {
+            // Prepare string with relative time ago and fixed HH:mm:ss
+            alert.dateString = LocationData.getAlertDateTimeString(alert.date, 0, this);
+
+            // Prepare localized zone & countdown for display
+            alert.desc = LocationData.getLocalizedZoneWithCountdown(alert.city, this);
+
+            // Localize it
+            alert.localizedCity = LocationData.getLocalizedCityName(alert.city, this);
+            alert.localizedZone = LocationData.getLocalizedZoneByCityName(alert.city, this);
+        }
+
+        // Clear global list
+        mAlerts.clear();
+
+        // Add all the new alerts
+        mAlerts.addAll(recentAlerts);
+
+        // Success
+        return 0;
+    }
+
+    void updateClearAlertsButton(long cutoffTimestamp) {
+        // Do nothing if not in live map mode
+        if (!mLiveMap) {
+            return;
+        }
+
+        // Null pointer check
+        if (mClearRecentAlertsItem == null) {
+            return;
+        }
+
+        // By default, show clear button
+        mClearRecentAlertsItem.setVisible(true);
+
+        // In case no alerts are being displayed but alerts were returned
+        if (cutoffTimestamp > 0 && mAlerts.size() > 0 && mDisplayAlerts.size() == 0) {
+            // Show restore icon to allow user to restore all recent alerts
+            mClearRecentAlertsItem.setIcon(R.drawable.ic_restore);
+        }
+        // In case there are no alerts in the past 24 hours
+        else if (mAlerts.size() == 0) {
+            // Hide clear button
+            mClearRecentAlertsItem.setVisible(false);
+        }
+        else {
+            // There are alerts, show default clear icon
+            mClearRecentAlertsItem.setIcon(R.drawable.ic_clear);
         }
     }
 }

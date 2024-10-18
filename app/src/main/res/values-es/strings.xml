@@ -306,5 +306,5 @@
 
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">¿Borrar alertas recientes?</string>
-    <string name="clearRecentAlertsDesc">¿Le gustaría borrar la lista de alertas recientes?</string>
+    <string name="clearRecentAlertsDesc">¿Le gustaría borrar todas las alertas recientes?</string>
 </resources>

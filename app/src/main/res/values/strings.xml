@@ -295,7 +295,7 @@
 
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">מחק התרעות אחרונות?</string>
-    <string name="clearRecentAlertsDesc">האם תרצה לאפס את רשימת ההתרעות האחרונות?</string>
+    <string name="clearRecentAlertsDesc">האם תרצה למחוק את כל ההתרעות האחרונות?</string>
 
     <!-- Operation Lifeshield -->
     <string name="lifeshieldShelters">מקלטי לייפשילד:</string>

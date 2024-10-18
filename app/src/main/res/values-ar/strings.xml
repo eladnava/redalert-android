@@ -259,5 +259,5 @@
 
     <!-- مسح مربع حوار التنبيهات الأخيرة -->
     <string name="clearRecentAlerts">هل تريد مسح التنبيهات الأخيرة؟</string>
-    <string name="clearRecentAlertsDesc">هل ترغب في مسح قائمة التنبيهات الأخيرة؟</string>
+    <string name="clearRecentAlertsDesc">هل ترغب في مسح كافة التنبيهات الأخيرة؟</string>
 </resources>

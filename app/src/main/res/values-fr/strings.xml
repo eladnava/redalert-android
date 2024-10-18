@@ -259,5 +259,5 @@
 
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">Effacer les alertes récentes?</string>
-    <string name="clearRecentAlertsDesc">Souhaitez-vous effacer la liste des alertes récentes?</string>
+    <string name="clearRecentAlertsDesc">Souhaitez-vous effacer toutes les alertes récentes?</string>
 </resources>

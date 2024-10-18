@@ -259,5 +259,5 @@
 
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">Aktuelle Benachrichtigungen löschen?</string>
-    <string name="clearRecentAlertsDesc">Möchten Sie die Liste der letzten Benachrichtigungen löschen?</string>
+    <string name="clearRecentAlertsDesc">Möchten Sie alle aktuellen Warnmeldungen löschen?</string>
 </resources>
