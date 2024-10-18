@@ -20,8 +20,6 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
-import androidx.annotation.LayoutRes;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
@@ -75,7 +73,7 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
         return getDelegate().getSupportActionBar();
     }
 
-    public void setSupportActionBar(@Nullable Toolbar toolbar) {
+    public void setSupportActionBar(Toolbar toolbar) {
         getDelegate().setSupportActionBar(toolbar);
     }
 
@@ -85,7 +83,7 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
     }
 
     @Override
-    public void setContentView(@LayoutRes int layoutResID) {
+    public void setContentView(int layoutResID) {
         getDelegate().setContentView(layoutResID);
     }
 
