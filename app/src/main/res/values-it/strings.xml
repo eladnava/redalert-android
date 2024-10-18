@@ -11,7 +11,7 @@
     <string name="apiRequestFailed">Una richiesta di ricezione delle informazioni dai nostri server è fallita. Controlla che la connesione a internet sia funzionante e ritenta.</string>
     <string name="registrationFailed">Registrazione fallita, prova nuovamente più tardi.</string>
     <string name="grantNotificationPermission">Abilita \"Notifiche\" nella schermata successiva per ricevere avvisi in tempo reale.</string>
-    <string name="citySelectionLimitError">Per favore non selezionare più di 35 città.</string>
+    <string name="citySelectionLimitError">Per favore non selezionare più di 100 città.</string>
     <string name="settings">Impostazioni</string>
     <string name="advanced">Avanzate</string>
     <string name="advancedSettings">Impostazioni Avanzate</string>

@@ -366,8 +366,8 @@ public class SearchableMultiSelectPreference extends ListPreference {
                                     }
                                 }
 
-                                // Exceeded limit of 35 items?
-                                if (values.size() > 35) {
+                                // Exceeded limit of 100 items?
+                                if (values.size() > 100) {
                                     // Didn't check all?
                                     if (mClickedDialogEntryIndices[0] != true) {
                                         // Show error dialog
@@ -376,7 +376,7 @@ public class SearchableMultiSelectPreference extends ListPreference {
                                     }
                                 }
 
-                                // Less than or equal to 35 selected
+                                // Less than or equal to 100 selected
                                 // Set button clicked as positive
                                 SearchableMultiSelectPreference.this.onClick(getDialog(), AlertDialog.BUTTON_POSITIVE);
 

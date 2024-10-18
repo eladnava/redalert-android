@@ -11,7 +11,7 @@
     <string name="apiRequestFailed">Une requête pour récupérer des informations de nos serveurs a échoué. Vérifiez votre connexion Internet et réessayez.</string>
     <string name="registrationFailed"> L\'enregistrement a échoué, réessayez ultérieurement.</string>
     <string name="grantNotificationPermission">Veuillez activer \"Notifications" sur l\'écran suivant pour recevoir des alertes en temps réel.</string>
-    <string name="citySelectionLimitError">Veuillez ne pas sélectionner plus de 35 villes.</string>
+    <string name="citySelectionLimitError">Veuillez ne pas sélectionner plus de 100 villes.</string>
     <string name="settings">Paramètres</string>
     <string name="advanced">Options</string>
     <string name="advancedSettings">Paramètres avancés</string>

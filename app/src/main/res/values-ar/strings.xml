@@ -11,7 +11,7 @@
     <string name="apiRequestFailed">فشل طلب استرداد المعلومات من خوادمنا. الرجاء التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى.</string>
     <string name="registrationFailed">فشل التسجيل، يرجى المحاولة مرة أخرى لاحقًا.</string>
     <string name="grantNotificationPermission">يُرجى تمكين \"الإشعارات\" على الشاشة التالية لتلقي التنبيهات في الوقت الفعلي.</string>
-    <string name="citySelectionLimitError">لا يمكن تحديد أكثر من ٣٥ مدينة.</string>
+    <string name="citySelectionLimitError">لا يمكن تحديد أكثر من ١٠٠ مدينة.</string>
     <string name="settings">الإعدادات</string>
     <string name="advanced">متقدم</string>
     <string name="advancedSettings">الإعدادات المتقدمة</string>

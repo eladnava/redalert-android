@@ -11,7 +11,7 @@
     <string name="apiRequestFailed">Eine Abfrage von Informationen bei unserem Server ist fehlgeschlagen, Bitte überprüfe Deine Internetverbindung und versuche es erneut.</string>
     <string name="registrationFailed">Die anmeldung ist Fehlgeschlagen, versuches es zu einem Späteren zeitpung noch einmal.</string>
     <string name="grantNotificationPermission">Bitte aktivieren Sie \"Benachrichtigungen\" auf dem nächsten Bildschirm, um Benachrichtigungen in Echtzeit zu erhalten.</string>
-    <string name="citySelectionLimitError">Bitte wählen Sie nicht mehr als 35 Städte aus.</string>
+    <string name="citySelectionLimitError">Bitte wählen Sie nicht mehr als 100 Städte aus.</string>
     <string name="settings">Einstellungen</string>
     <string name="advanced">Erweiterungen</string>
     <string name="advancedSettings">Erweiterte Einstellungen</string>

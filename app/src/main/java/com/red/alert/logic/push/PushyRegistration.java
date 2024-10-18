@@ -63,10 +63,23 @@ public class PushyRegistration {
         // Get new subscriptions list
         List<String> subscriptions = AppPreferences.getSubscriptions(context);
 
+        // Get total subscription count
+        int totalSubscriptions = subscriptions.size();
+
         // Got any?
-        if (subscriptions.size() > 0) {
-            // Subscribe to new topics
-            Pushy.subscribe(subscriptions.toArray(new String[0]), context);
+        if (totalSubscriptions > 0) {
+            // More than 100?
+            if (totalSubscriptions > 100) {
+                // Split into batches
+                for (int i = 0; i < totalSubscriptions; i += 100) {
+                    // Create a sublist of size batchSize or smaller if it's the last batch
+                    Pushy.subscribe(subscriptions.subList(i, Math.min(i + 100, totalSubscriptions)).toArray(new String[0]), context);
+                }
+            }
+            else {
+                // Subscribe to new topics (<= 100)
+                Pushy.subscribe(subscriptions.toArray(new String[0]), context);
+            }
 
             // Log it
             Log.d(Logging.TAG, "Pushy subscribe success: " + TextUtils.join(", ", subscriptions));
