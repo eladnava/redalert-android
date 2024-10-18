@@ -39,7 +39,7 @@ dependencies {
 
     // Google Maps & Location APIs
     implementation 'com.google.android.gms:play-services-maps:19.0.0'
-    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:19.0.0'
 
     // All .jar files in ./libs
     implementation fileTree(dir: 'libs', include: ['*.jar'])
