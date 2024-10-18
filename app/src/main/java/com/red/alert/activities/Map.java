@@ -450,22 +450,16 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
     }
 
     private String getShareMessage() {
-        // Live map mode?
-        if (mLiveMap) {
+        // Live map mode or no alerts?
+        if (mLiveMap || mAlerts.size() == 0) {
             // Return generic app share message
             return getString(R.string.shareMessage);
         }
 
-        // Have alerts?
-        if (mAlerts.size() > 0) {
-            // Get first alert object
-            Alert firstAlert = mAlerts.get(0);
-
-            // Nearby cities display?
-            if (firstAlert.threat.equals(ThreatTypes.NEARBY_CITIES_DISPLAY)) {
-                // Return generic app share message
-                return getString(R.string.shareMessage);
-            }
+        // Nearby cities display?
+        if (mAlerts.size() > 0 && mAlerts.get(0).threat.equals(ThreatTypes.NEARBY_CITIES_DISPLAY)) {
+            // Return generic app share message
+            return getString(R.string.shareMessage);
         }
 
         // Construct share message
