@@ -194,6 +194,12 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
     }
 
     void redrawOverlays() {
+        // Workaround for ConcurrentModificationException
+        // Wait for reloading to complete
+        if (mIsReloading) {
+            return;
+        }
+
         // Clear currently-displayed alerts list
         mDisplayAlerts.clear();
 
