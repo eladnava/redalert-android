@@ -198,6 +198,11 @@ public class Notifications {
         if (SoundLogic.getAlertSoundName(alertType, overrideSound, context).equals(Sound.CUSTOM_SOUND_NAME)) {
             channelId += NotificationChannels.CUSTOM_SOUND_NOTIFICATION_CHANNEL_SUFFIX;
         }
+        else {
+            // No custom sound
+            // Add version suffix to work around sound resource bug
+            channelId += "_v2";
+        }
 
         // All done
         return channelId;
