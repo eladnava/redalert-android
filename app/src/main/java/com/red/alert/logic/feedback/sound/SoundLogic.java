@@ -1,5 +1,6 @@
 package com.red.alert.logic.feedback.sound;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -110,14 +111,8 @@ public class SoundLogic {
     }
 
     public static Uri getAppSoundByResourceName(String resourceName, Context context) {
-        // Convert to resource ID
-        int resourceID = context.getResources().getIdentifier("raw/" + resourceName, "raw", context.getPackageName());
-
-        // Finally, get path to sound file
-        Uri alarmSoundURI = Uri.parse("android.resource://" + context.getPackageName() + "/" + resourceID);
-
-        // Return sound URI
-        return alarmSoundURI;
+        // Get path to sound file
+        return Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + context.getPackageName() + "/raw/" + resourceName);
     }
 
     static String getDefaultSound(String alertType, Context context) {

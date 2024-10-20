@@ -209,6 +209,13 @@ public class Notifications {
             return;
         }
 
+        // Get notification manager instance
+        NotificationManager manager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
+
+        // Delete old (bugged) channels because notification channels persist sound resource IDs which change between builds
+        manager.deleteNotificationChannel(NotificationChannels.OLD_PRIMARY_ALERT_NOTIFICATION_CHANNEL_ID);
+        manager.deleteNotificationChannel(NotificationChannels.OLD_SECONDARY_ALERT_NOTIFICATION_CHANNEL_ID);
+
         // Determine notification channel ID
         String channelId = getNotificationChannelId(alertType, overrideSound, context);
 
@@ -219,9 +226,6 @@ public class Notifications {
         if (alertType.equals(AlertTypes.SECONDARY) || alertType.equals(AlertTypes.TEST_SECONDARY_SOUND)) {
             channelName = NotificationChannels.SECONDARY_ALERT_NOTIFICATION_CHANNEL_NAME;
         }
-
-        // Get notification manager instance
-        NotificationManager manager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
 
         // Initialize channel (set high importance)
         NotificationChannel channel = new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH);
