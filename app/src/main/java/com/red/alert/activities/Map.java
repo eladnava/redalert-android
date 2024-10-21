@@ -59,6 +59,7 @@ import java.util.TimerTask;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.text.HtmlCompat;
 import androidx.core.view.MenuItemCompat;
 import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 
@@ -468,8 +469,14 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
             return getString(R.string.shareMessage);
         }
 
+        // Get city name or cities if grouped
+        String cities = mAlerts.get(0).localizedCity;
+
+        // Remove HTML entities (<b>)
+        cities = HtmlCompat.fromHtml(cities, HtmlCompat.FROM_HTML_MODE_LEGACY).toString();
+
         // Construct share message
-        return mAlerts.get(0).localizedThreat + " " + getString(R.string.alertSoundedAt) + mAlerts.get(0).localizedCity + "\n" + mAlerts.get(0).dateString + "\n\n" + getString(R.string.alertSentVia);
+        return mAlerts.get(0).localizedThreat + " " + getString(R.string.alertSoundedAt) + cities + "\n" + mAlerts.get(0).dateString + "\n\n" + getString(R.string.alertSentVia);
     }
 
     void initializeShareButton(Menu OptionsMenu) {
