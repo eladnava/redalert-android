@@ -329,9 +329,17 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                 uniqueCoordinates.add(city.latitude + "-" + city.longitude);
             }
 
+            // Set to threat drawable (unless in live map mode)
+            if (!mLiveMap) {
+                mAppIcon.setImageResource(LocationData.getThreatDrawable(alert.threat));
+            }
+
             // Add to display alerts
             mDisplayAlerts.add(alert);
         }
+
+        // Reveal icon
+        mAppIcon.setVisibility(View.VISIBLE);
 
         // Update displayed icon according to how many alerts are being displayed
         updateClearAlertsButton(cutoffTimestamp);
