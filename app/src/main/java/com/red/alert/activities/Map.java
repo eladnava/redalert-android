@@ -616,8 +616,11 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
 
     public class LoadPolygonData extends AsyncTaskAdapter<Integer, String, Integer> {
         public LoadPolygonData() {
-            // Show loading indicator
-            mLoadingItem.setVisible(true);
+            // Null check
+            if (mLoadingItem != null) {
+                // Show loading indicator
+                mLoadingItem.setVisible(true);
+            }
         }
 
         @Override
@@ -639,11 +642,17 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
             // Add city polygons and markers
             redrawOverlays();
 
-            // Hide loading indicator
-            mLoadingItem.setVisible(false);
+            // Null check
+            if (mLoadingItem != null) {
+                // Hide loading indicator
+                mLoadingItem.setVisible(false);
+            }
 
-            // Show share button
-            mShareItem.setVisible(true);
+            // Null check
+            if (mShareItem != null) {
+                // Show share button
+                mShareItem.setVisible(true);
+            }
 
             // Delay by 200ms
             new Handler().postDelayed(new Runnable() {
@@ -712,11 +721,17 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
             // Prevent concurrent reload
             mIsReloading = true;
 
-            // Show loading indicator
-            mLoadingItem.setVisible(true);
+            // Null check
+            if (mLoadingItem != null) {
+                // Show loading indicator
+                mLoadingItem.setVisible(true);
+            }
 
-            // Hide share button
-            mShareItem.setVisible(false);
+            // Null check
+            if (mShareItem != null) {
+                // Hide share button
+                mShareItem.setVisible(false);
+            }
         }
 
         @Override
