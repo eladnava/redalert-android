@@ -70,6 +70,7 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
     List<Alert> mDisplayAlerts;
 
     boolean mLiveMap;
+    boolean mIsMapReady;
     boolean mIsResumed;
     boolean mIsDestroyed;
     boolean mIsReloading;
@@ -197,7 +198,7 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
     void redrawOverlays() {
         // Workaround for ConcurrentModificationException
         // Wait for reloading to complete
-        if (mIsReloading) {
+        if (mIsReloading || !mIsMapReady) {
             return;
         }
 
@@ -588,6 +589,9 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
             @Override
             public void onMapReady(GoogleMap googleMap) {
                 mMap = googleMap;
+
+                // Map ready flag
+                mIsMapReady = true;
 
                 // Initialize map
                 initializeMap();
