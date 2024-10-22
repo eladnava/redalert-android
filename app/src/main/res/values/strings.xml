@@ -208,7 +208,7 @@
 
     <!-- GPS Frequency -->
     <string name="gpsFrequency">קצב דגימה</string>
-    <string name="gpsFrequencyDesc">הגדר את הקצב שבו האפליקציה תאכן את מיקומך דרך אנטנות סלולריות</string>
+    <string name="gpsFrequencyDesc">הגדר את הקצב שבו האפליקציה תאכן את מיקומך</string>
     <string name="every">כל</string>
     <string name="minutes">דקות</string>
 
