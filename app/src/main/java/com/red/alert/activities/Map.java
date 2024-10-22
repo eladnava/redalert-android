@@ -661,7 +661,10 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
         public void onSharedPreferenceChanged(SharedPreferences Preferences, String Key) {
             // Asked for reload?
             if (Key.equalsIgnoreCase(MainActivityParameters.RELOAD_RECENT_ALERTS)) {
-                reloadRecentAlerts();
+                // Live map?
+                if (mLiveMap) {
+                    reloadRecentAlerts();
+                }
             }
         }
     };
