@@ -367,11 +367,11 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
         // Set max zoom for animation to 13
         mMap.setMaxZoomPreference(13);
 
-        try {
-            // Delay animation by 500ms
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
+        // Delay animation by 500ms
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                try {
                     // Animate nicely
                     mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding), 1500, new GoogleMap.CancelableCallback() {
                         @Override
@@ -384,11 +384,11 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                         public void onCancel() {
                         }
                     });
+                } catch (Exception exc) {
+                    // Ignore rare exception "View size is too small after padding is applied"
                 }
-            }, 500);
-        } catch (Exception exc) {
-            // Ignore exceptions
-        }
+            }
+        }, 500);
     }
 
     @Override
