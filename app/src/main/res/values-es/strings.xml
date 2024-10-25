@@ -218,6 +218,7 @@
     <string name="showPopupDesc">Alertas se mostrarán en una ventana emergente</string>
     <string name="grantOverlayPermission">Permitir visualización sobre otras aplicaciones</string>
     <string name="grantOverlayPermissionInstructions">Seleccione \"RedAlert\" -> \"Permitir visualización sobre otras aplicaciones\" en la siguiente pantalla.</string>
+    <string name="showSecondaryAlertPopupDesc">Alertas secundarias se mostrarán en una ventana emergente</string>
 
     <!-- Schedule Exact Alarms -->
     <string name="allowSettingExactAlarms">Permitir configurar alarmas y recordatorios</string>

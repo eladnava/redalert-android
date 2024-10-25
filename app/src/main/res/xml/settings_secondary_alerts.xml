@@ -54,5 +54,11 @@
             android:summary="@string/secondarySilentOverrideDesc"
             android:defaultValue="true"
             android:dependency="@string/secondaryEnabledPref"/>
+        <CheckBoxPreference
+            android:textDirection="rtl"
+            android:key="@string/secondaryAlertPopupPref"
+            android:title="@string/showPopup"
+            android:summary="@string/showSecondaryAlertPopupDesc"
+            android:defaultValue="false"/>
     </PreferenceCategory>
 </PreferenceScreen>

@@ -536,8 +536,8 @@ public class Main extends AppCompatActivity {
             return;
         }
 
-        // Check if alert popup disabled
-        if (!AppPreferences.getPopupEnabled(this)) {
+        // Check if alert popup disabled (primary/secondary)
+        if (!AppPreferences.getPopupEnabled(this) && !AppPreferences.getSecondaryPopupEnabled(this)) {
             return;
         }
 

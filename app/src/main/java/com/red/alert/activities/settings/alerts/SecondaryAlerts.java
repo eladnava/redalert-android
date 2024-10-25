@@ -1,16 +1,21 @@
 package com.red.alert.activities.settings.alerts;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.MenuItem;
 
 import com.red.alert.R;
-import com.red.alert.activities.Main;
+import com.red.alert.activities.settings.Advanced;
 import com.red.alert.config.Logging;
 import com.red.alert.logic.communication.broadcasts.LocationSelectionEvents;
 import com.red.alert.logic.push.PushManager;
@@ -31,8 +36,11 @@ import com.red.alert.utils.threading.AsyncTaskAdapter;
 public class SecondaryAlerts extends AppCompatPreferenceActivity {
     String mPreviousSecondaryCities;
     SliderPreference mSecondaryVolume;
+    CheckBoxPreference mSecondaryAlertPopup;
     CheckBoxPreference mSecondaryNotificationsEnabled;
     SearchableMultiSelectPreference mSecondaryCitySelection;
+
+    static final int ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE = 1001;
 
     SharedPreferences.OnSharedPreferenceChangeListener mBroadcastListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
         @Override
@@ -95,6 +103,7 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
 
         // Cache resource IDs
         mSecondaryVolume = ((SliderPreference) findPreference(getString(R.string.secondaryVolumePref)));
+        mSecondaryAlertPopup = (CheckBoxPreference)findPreference(getString(R.string.secondaryAlertPopupPref));
         mSecondaryCitySelection = ((SearchableMultiSelectPreference) findPreference(getString(R.string.selectedSecondaryCitiesPref)));
         mSecondaryNotificationsEnabled = (CheckBoxPreference)findPreference(getString(R.string.secondaryEnabledPref));
 
@@ -156,6 +165,46 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
                 return true;
             }
         });
+
+        // Secondary alert popup checkbox listener
+        mSecondaryAlertPopup.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                // Android M+: Check if we have permission to draw over other apps
+                if ((boolean)newValue == true && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(SecondaryAlerts.this)) {
+                    // Show permission request dialog
+                    AlertDialogBuilder.showGenericDialog(getString(R.string.grantOverlayPermission), getString(R.string.grantOverlayPermissionInstructions), getString(R.string.okay), getString(R.string.notNow), true, SecondaryAlerts.this, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int which) {
+                            // Clicked okay?
+                            if (which == DialogInterface.BUTTON_POSITIVE) {
+                                // Bring user to relevant settings activity to grant the app overlay permission
+                                startActivityForResult(new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName())), ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE);
+                            }
+                        }
+                    });
+
+                    // Tell Android *not* to persist new checkbox value
+                    return false;
+                }
+
+                // Tell Android to persist new checkbox value
+                return true;
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // User returned from manage overlay permission activity?
+        if (requestCode == ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE) {
+            // Android M+: Check if we have permission to draw over other apps
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && Settings.canDrawOverlays(SecondaryAlerts.this)) {
+                mSecondaryAlertPopup.setChecked(true);
+            }
+        }
     }
 
     public boolean onOptionsItemSelected(final MenuItem Item) {

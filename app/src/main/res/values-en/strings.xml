@@ -171,6 +171,7 @@
     <string name="showPopupDesc">Incoming alerts will be displayed in a pop-up window</string>
     <string name="grantOverlayPermission">Allow displaying over other apps</string>
     <string name="grantOverlayPermissionInstructions">Please select \"RedAlert\" -> \"Allow display over other apps\" in the next screen.</string>
+    <string name="showSecondaryAlertPopupDesc">Secondary alerts will be displayed in a pop-up window</string>
 
     <!-- Schedule Exact Alarms -->
     <string name="allowSettingExactAlarms">Allow setting alarms and reminders</string>

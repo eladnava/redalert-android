@@ -215,9 +215,10 @@
     <string name="close">Закрыть</string>
     <string name="silence">Тишина</string>
     <string name="showPopup">Показать всплывающее</string>
-    <string name="showPopupDesc">Оповещения Rocket будет отображаться в всплывающем окне</string>
+    <string name="showPopupDesc">Оповещения будет отображаться в всплывающем окне</string>
     <string name="grantOverlayPermission">Разрешить отображение поверх других приложений</string>
     <string name="grantOverlayPermissionInstructions">Пожалуйста, выберите «RedAlert» -> «Разрешить отображение поверх других приложений» на следующем экране.</string>
+    <string name="showSecondaryAlertPopupDesc">Вторичные оповещения будут отображаться во всплывающем окне</string>
 
     <!-- Schedule Exact Alarms -->
     <string name="allowSettingExactAlarms">Разрешить установку будильников и напоминаний</string>

@@ -168,9 +168,10 @@
     <string name="close">Fermer</string>
     <string name="silence">Silence</string>
     <string name="showPopup">Afficher la popup</string>
-    <string name="showPopupDesc">Les alertes de roquettes s\'affichera dans une popup</string>
+    <string name="showPopupDesc">Les alertes s\'affichera dans une popup</string>
     <string name="grantOverlayPermission">Autoriser l\'affichage sur d\'autres applications</string>
     <string name="grantOverlayPermissionInstructions">Veuillez sélectionner « RedAlert » -> « Autoriser l\'affichage sur d\'autres applications » dans l\'écran suivant.</string>
+    <string name="showSecondaryAlertPopupDesc">Les alertes secondaires s\'affichera dans une popup</string>
 
     <!-- Schedule Exact Alarms -->
     <string name="allowSettingExactAlarms">Autoriser le réglage des alarmes et des rappels</string>

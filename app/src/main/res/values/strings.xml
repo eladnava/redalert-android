@@ -232,6 +232,7 @@
     <string name="showPopupDesc">כאשר תתקבל אזעקת אמת, יוצג פופאפ עם ספירה לאחור עד לזמן הנפילה המשוער</string>
     <string name="grantOverlayPermission">אפשר הצגה מעל אפליקציות אחרות</string>
     <string name="grantOverlayPermissionInstructions">בחר/י ״צבע אדום״ -> ״הצגה מעל אפליקציות אחרות״ במסך הבא.</string>
+    <string name="showSecondaryAlertPopupDesc">כאשר תתקבל התרעת משנה, יוצג פופאפ עם ספירה לאחור עד לזמן הנפילה המשוער</string>
 
     <!-- Schedule Exact Alarms -->
     <string name="allowSettingExactAlarms">אשר הגדרת שעונים מעוררים ותזכורות</string>
@@ -351,6 +352,7 @@
     <string translatable="false" name="nearbyCitiesPref">nearby_cities</string>
     <string translatable="false" name="secondaryVolumePref">secondary_volume</string>
     <string translatable="false" name="alertPopupPref">alert_popup_v2</string>
+    <string translatable="false" name="secondaryAlertPopupPref">secondary_alert_popup_v2</string>
     <string translatable="false" name="foregroundServicePref">foreground_service</string>
     <string translatable="false" name="wakeScreenPref">wake_screen</string>
     <string translatable="false" name="silentOverridePref">override</string>

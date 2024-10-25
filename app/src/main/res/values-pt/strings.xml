@@ -171,6 +171,7 @@
     <string name="showPopupDesc">Alertas recebidos serão exibidos em uma janela pop-up</string>
     <string name="grantOverlayPermission">Permitir exibição sobre outros aplicativos</string>
     <string name="grantOverlayPermissionInstructions">Por favor, selecione "RedAlert" -> "Permitir exibição sobre outros aplicativos" na próxima tela.</string>
+    <string name="showSecondaryAlertPopupDesc">Alertas secundários serão exibidos em uma janela pop-up</string>
 
     <!-- Schedule Exact Alarms -->
     <string name="allowSettingExactAlarms">Alarmes e lembretes com configuração baixa</string>

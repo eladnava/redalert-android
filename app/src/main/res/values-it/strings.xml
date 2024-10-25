@@ -172,9 +172,10 @@
     <string name="close">Chiudere</string>
     <string name="silence">Silenzio</string>
     <string name="showPopup">Mostra popup</string>
-    <string name="showPopupDesc">Le allerte verrano mostrate in un pop-up</string>
+    <string name="showPopupDesc">Le allerte verranno mostrate in un pop-up</string>
     <string name="grantOverlayPermission">Consenti la visualizzazione su altre app</string>
     <string name="grantOverlayPermissionInstructions">Seleziona \"RedAlert\" -> \"Consenti visualizzazione su altre app\" nella schermata successiva.</string>
+    <string name="showSecondaryAlertPopupDesc">Le allerte secundario verranno mostrate in un pop-up</string>
 
     <!-- Schedule Exact Alarms -->
     <string name="allowSettingExactAlarms">Consenti l\'impostazione di allarmi e promemoria</string>

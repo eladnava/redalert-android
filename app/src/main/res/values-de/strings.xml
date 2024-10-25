@@ -168,9 +168,10 @@
     <string name="close">Schließen</string>
     <string name="silence">Stumm</string>
     <string name="showPopup">Meldungen werden als Popup Anzeigen</string>
-    <string name="showPopupDesc">Raketen Alamirungen werden in einem pop-up fenster Angezeigt</string>
+    <string name="showPopupDesc">Alamirungen werden in einem pop-up fenster Angezeigt</string>
     <string name="grantOverlayPermission">Anzeige über anderen Apps zulassen</string>
     <string name="grantOverlayPermissionInstructions">Bitte wählen Sie im nächsten Bildschirm \"RedAlert\" -> \"Anzeige über anderen Apps zulassen\".</string>
+    <string name="showSecondaryAlertPopupDesc">Sekundäre alamirungen werden in einem pop-up fenster Angezeigt</string>
 
     <!-- Schedule Exact Alarms -->
     <string name="allowSettingExactAlarms">Erlaubt das Einstellen von Alarmen und Erinnerungen</string>

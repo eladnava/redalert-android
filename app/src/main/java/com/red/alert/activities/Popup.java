@@ -53,13 +53,13 @@ public class Popup extends AppCompatActivity {
     ImageView mThreatIcon;
 
     public static void showAlertPopup(String alertType, List<String> cities, String threatType, Context context) {
-        // User disabled this feature?
-        if (!AppPreferences.getPopupEnabled(context)) {
+        // User hasn't enabled popup for primary alerts?
+        if (alertType.equals(AlertTypes.PRIMARY) && !AppPreferences.getPopupEnabled(context)) {
             return;
         }
 
-        // Type must be an "alert"
-        if (!alertType.equals(AlertTypes.PRIMARY)) {
+        // User hasn't enabled popup for secondary alerts?
+        if (alertType.equals(AlertTypes.SECONDARY) && !AppPreferences.getSecondaryPopupEnabled(context)) {
             return;
         }
 

@@ -171,6 +171,7 @@
     <string name="showPopupDesc">سيتم عرض التنبيهات الواردة في نافذة منبثقة</string>
     <string name="grantOverlayPermission">السماح بالعرض فوق التطبيقات الأخرى</string>
     <string name="grantOverlayPermissionInstructions">يُرجى تحديد \"أحمر اللون\" -> \"السماح بالعرض فوق التطبيقات الأخرى\" في الشاشة التالية.</string>
+    <string name="showSecondaryAlertPopupDesc">سيتم عرض التنبيهات الثانوية في نافذة منبثقة</string>
 
     <!-- Schedule Exact Alarms -->
     <string name="allowSettingExactAlarms">السماح بإعداد التنبيهات والتذكيرات</string>

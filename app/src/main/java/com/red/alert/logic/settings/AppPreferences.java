@@ -43,6 +43,11 @@ public class AppPreferences {
         return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.alertPopupPref), false);
     }
 
+    public static boolean getSecondaryPopupEnabled(Context context) {
+        // Get saved preference
+        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.secondaryAlertPopupPref), false);
+    }
+
     public static boolean getForegroundServiceEnabled(Context context) {
         // Get saved preference
         return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.foregroundServicePref), false);
