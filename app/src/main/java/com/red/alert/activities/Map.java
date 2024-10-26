@@ -72,7 +72,6 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
     boolean mLiveMap;
     boolean mIsMapReady;
     boolean mIsResumed;
-    boolean mIsDestroyed;
     boolean mIsReloading;
 
     int mDisplayedAlertsCount;
@@ -647,7 +646,7 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
         @Override
         protected void onPostExecute(Integer error) {
             // Activity dead?
-            if (isFinishing()) {
+            if (isFinishing() || isDestroyed()) {
                 return;
             }
 
@@ -693,9 +692,6 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
-        // Activity destroyed
-        mIsDestroyed = true;
 
         // Unregister for broadcasts
         Broadcasts.unsubscribe(this, mBroadcastListener);
@@ -758,7 +754,7 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
             mIsReloading = false;
 
             // Activity dead?
-            if (isFinishing() || mIsDestroyed) {
+            if (isFinishing() || isDestroyed()) {
                 return;
             }
 

@@ -39,8 +39,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Popup extends AppCompatActivity {
-    boolean mIsDestroyed;
-
     Timer mTimer;
 
     TextView mCities;
@@ -238,7 +236,7 @@ public class Popup extends AppCompatActivity {
                     @Override
                     public void run() {
                         // Activity died?
-                        if (isFinishing() || mIsDestroyed) {
+                        if (isFinishing() || isDestroyed()) {
                             return;
                         }
 
@@ -248,14 +246,6 @@ public class Popup extends AppCompatActivity {
                 });
             }
         }, 0, 100);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        // Avoid hiding invalid dialogs
-        mIsDestroyed = true;
     }
 
     void updateCountdownTimer(long impactTimestamp) {

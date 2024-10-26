@@ -82,7 +82,6 @@ import java.util.TimerTask;
 
 public class Main extends AppCompatActivity {
     boolean mIsResumed;
-    boolean mIsDestroyed;
     boolean mIsReloading;
     boolean mIsRegistering;
     boolean mCheckedForUpdates;
@@ -981,9 +980,6 @@ public class Main extends AppCompatActivity {
 
         // Unregister for broadcasts
         Broadcasts.unsubscribe(this, mBroadcastListener);
-
-        // Avoid hiding invalid dialogs
-        mIsDestroyed = true;
     }
 
     void invalidateAlertList() {
@@ -1098,7 +1094,7 @@ public class Main extends AppCompatActivity {
             mIsReloading = false;
 
             // Activity dead?
-            if (isFinishing() || mIsDestroyed) {
+            if (isFinishing() || isDestroyed()) {
                 return;
             }
 
@@ -1227,7 +1223,7 @@ public class Main extends AppCompatActivity {
             mIsRegistering = false;
 
             // Activity dead?
-            if (isFinishing() || mIsDestroyed) {
+            if (isFinishing() || isDestroyed()) {
                 return;
             }
 
@@ -1264,7 +1260,7 @@ public class Main extends AppCompatActivity {
         @Override
         protected void onPostExecute(String newVersion) {
             // Activity dead?
-            if (isFinishing() || mIsDestroyed) {
+            if (isFinishing() || isDestroyed()) {
                 return;
             }
 

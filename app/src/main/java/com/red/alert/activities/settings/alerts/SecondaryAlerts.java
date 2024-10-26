@@ -271,19 +271,13 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
             }
 
             // Activity dead?
-            if (isFinishing()) {
+            if (isFinishing() || isDestroyed()) {
                 return;
             }
 
             // Hide loading dialog
             if (mLoading.isShowing()) {
-                try {
-                    mLoading.dismiss();
-                }
-                catch (Exception exc2) {
-                    // Most likely, activity was destroyed
-                    return;
-                }
+                mLoading.dismiss();
             }
 
             // Show error if failed
@@ -357,7 +351,7 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
             }
 
             // Activity dead?
-            if (isFinishing()) {
+            if (isFinishing() || isDestroyed()) {
                 return;
             }
 

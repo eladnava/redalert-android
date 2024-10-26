@@ -450,7 +450,7 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
             }
 
             // Activity dead?
-            if (isFinishing()) {
+            if (isFinishing() || isDestroyed()) {
                 return;
             }
 

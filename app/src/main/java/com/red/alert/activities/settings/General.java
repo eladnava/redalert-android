@@ -65,7 +65,6 @@ import com.red.alert.utils.threading.AsyncTaskAdapter;
 
 public class General extends AppCompatPreferenceActivity {
     boolean mIsTesting;
-    boolean mIsDestroyed;
     boolean mFcmTestPassed;
     boolean mPushyTestPassed;
 
@@ -155,15 +154,6 @@ public class General extends AppCompatPreferenceActivity {
         Broadcasts.unsubscribe(this, mBroadcastListener);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        // Avoid hiding invalid dialogs
-        mIsDestroyed = true;
-    }
-
-    @Override
     protected void onResume() {
         super.onResume();
 
@@ -824,7 +814,7 @@ public class General extends AppCompatPreferenceActivity {
             mIsTesting = false;
 
             // Activity dead?
-            if (isFinishing() || mIsDestroyed) {
+            if (isFinishing() || isDestroyed()) {
                 return;
             }
 
@@ -892,7 +882,7 @@ public class General extends AppCompatPreferenceActivity {
             }
 
             // Activity dead?
-            if (isFinishing() || mIsDestroyed) {
+            if (isFinishing() || isDestroyed()) {
                 return;
             }
 
@@ -972,7 +962,7 @@ public class General extends AppCompatPreferenceActivity {
             }
 
             // Activity dead?
-            if (isFinishing() || mIsDestroyed) {
+            if (isFinishing() || isDestroyed()) {
                 return;
             }
 
