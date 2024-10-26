@@ -53,6 +53,11 @@ public class Popup extends AppCompatActivity {
     ImageView mThreatIcon;
 
     public static void showAlertPopup(String alertType, List<String> cities, String threatType, Context context) {
+        // Only display popup for primary/secondary alerts (no test/sound/system notifications)
+        if (!alertType.equals(AlertTypes.PRIMARY) && !alertType.equals(AlertTypes.SECONDARY)) {
+            return;
+        }
+
         // User hasn't enabled popup for primary alerts?
         if (alertType.equals(AlertTypes.PRIMARY) && !AppPreferences.getPopupEnabled(context)) {
             return;
