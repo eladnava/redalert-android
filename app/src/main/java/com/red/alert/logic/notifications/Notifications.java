@@ -47,7 +47,7 @@ public class Notifications {
         String notificationTitle = localizedThreatType + ": " + LocationData.getLocalizedCityNamesCSV(cities, context);
 
         // Prepare notification body with zone and countdown
-        String notificationContent = LocationData.getLocalizedCityZonesWithCountdownCSV(cities, context);
+        String notificationContent = LocationData.getLocalizedCityZonesWithCountdownCSV(cities, threatType, context);
 
         // Missile alert?
         if (threatType.contains(ThreatTypes.MISSILES)) {

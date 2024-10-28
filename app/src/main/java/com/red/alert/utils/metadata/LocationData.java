@@ -284,7 +284,7 @@ public class LocationData {
         return displayText;
     }
 
-    public static String getLocalizedZoneWithCountdown(String cityName, Context context) {
+    public static String getLocalizedZoneWithCountdown(String cityName, String threatType, Context context) {
         // Prepare cities array
         List<City> cities = getAllCities(context);
 
@@ -297,7 +297,7 @@ public class LocationData {
             // Got a match?
             if (city.name.equals(cityName)) {
                 // Localize time to shelter
-                String localizedCountdown = getLocalizedCountdown(city.countdown, context);
+                String localizedCountdown = getLocalizedCountdown(city.countdown, threatType, context);
 
                 // Found zone in XML?
                 if (zoneValues.indexOf(city.zone) != -1) {
@@ -328,7 +328,12 @@ public class LocationData {
         return "";
     }
 
-    public static String getLocalizedCountdown(int countdown, Context context) {
+    public static String getLocalizedCountdown(int countdown, String threatType, Context context) {
+        // Return "Immediately" for threats which aren't missile or hostile aircaft intrustion
+        if (threatType != null && !threatType.equals(ThreatTypes.MISSILES) && !threatType.equals(ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION)) {
+            return context.getString(R.string.immediately);
+        }
+
         // Return localized string based on countdown seconds
         switch (countdown) {
             case 0:
@@ -446,14 +451,14 @@ public class LocationData {
         return TextUtils.join(", ", localizedCityNames);
     }
 
-    public static String getLocalizedCityZonesWithCountdownCSV(List<String> cities, Context context) {
+    public static String getLocalizedCityZonesWithCountdownCSV(List<String> cities, String threatType, Context context) {
         // Prepare list of localized zones
         List<String> localizedZones = new ArrayList<>();
 
         // Traverse cities
         for (String city : cities) {
             // Get zone and countdown as string
-            String zone = LocationData.getLocalizedZoneWithCountdown(city, context);
+            String zone = LocationData.getLocalizedZoneWithCountdown(city, threatType, context);
 
             // Remove duplicates and empty results
             if (!StringUtils.stringIsNullOrEmpty(zone) && !localizedZones.contains(zone)) {

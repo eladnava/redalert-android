@@ -819,7 +819,7 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
             alert.dateString = LocationData.getAlertDateTimeString(alert.date, 0, this);
 
             // Prepare localized zone & countdown for display
-            alert.desc = LocationData.getLocalizedZoneWithCountdown(alert.city, this);
+            alert.desc = LocationData.getLocalizedZoneWithCountdown(alert.city, alert.threat, this);
 
             // Localize it
             alert.localizedCity = LocationData.getLocalizedCityName(alert.city, this);
