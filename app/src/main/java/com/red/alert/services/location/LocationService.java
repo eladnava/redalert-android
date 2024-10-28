@@ -363,6 +363,9 @@ public class LocationService extends Service implements
             // Some devices may need us to explicitly disable sound, even for IMPORTANCE_LOW
             channel.setSound(null, null);
 
+            // Disable badge number
+            channel.setShowBadge(false);
+
             // Register the channel with the system
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
