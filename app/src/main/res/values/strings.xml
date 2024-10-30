@@ -251,14 +251,14 @@
     <string name="radiologicalEvent">אירוע רדיולוגי</string>
     <string name="earthQuake">רעידת אדמה</string>
     <string name="tsunami">סכנת צונאמי</string>
-    <string name="hostileAircraftIntrusion">חדירת כלי טיס עוינים</string>
+    <string name="hostileAircraftIntrusion">חדירת כלי טיס</string>
     <string name="hazardousMaterials">אירוע חומרים מסוכנים</string>
     <string name="terroristInfiltration">חדירת מחבלים</string>
     <string name="missilesDrill">תרגיל: ירי רקטות</string>
     <string name="earthQuakeDrill">תרגיל: רעידת אדמה</string>
     <string name="radiologicalEventDrill">תרגיל: אירוע רדיולוגי</string>
     <string name="tsunamiDrill">תרגיל: סכנת צונאמי</string>
-    <string name="hostileAircraftIntrusionDrill">תרגיל: חדירת כלי טיס עוינים</string>
+    <string name="hostileAircraftIntrusionDrill">תרגיל: חדירת כלי טיס</string>
     <string name="hazardousMaterialsDrill">תרגיל: אירוע חומרים מסוכנים</string>
     <string name="terroristInfiltrationDrill">תרגיל: חדירת מחבלים</string>
     <string name="unknown">אזעקה</string>
