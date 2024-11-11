@@ -121,8 +121,10 @@ public class SoundListPreference extends ListPreference {
                                         // Save custom sound selection
                                         Singleton.getSharedPreferences(mContext).edit().putString(getKey(), path).commit();
 
-                                        // Dismiss dialog
-                                        getDialog().dismiss();
+                                        // Dismiss dialog if not null
+                                        if (getDialog() != null) {
+                                            getDialog().dismiss();
+                                        }
                                     }
                                     else {
                                         // Clicked not now, stop playing custom sound
