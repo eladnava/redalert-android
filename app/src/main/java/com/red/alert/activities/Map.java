@@ -97,8 +97,14 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
     }
 
     void useLegacyRenderer() {
-        // Use legacy maps renderer
-        MapsInitializer.initialize(this, MapsInitializer.Renderer.LEGACY, this);
+        // Use background thread to avoid ANR
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // Use legacy maps renderer
+                MapsInitializer.initialize(Map.this, MapsInitializer.Renderer.LEGACY, Map.this);
+            }
+        }).start();
     }
 
     void unpackExtras() {
