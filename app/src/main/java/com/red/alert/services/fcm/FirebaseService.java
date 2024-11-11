@@ -47,6 +47,7 @@ public class FirebaseService extends FirebaseMessagingService {
         Map<String, String> data = remoteMessage.getData();
 
         // Grab push data from extras
+        String alertId = data.get(PushParameters.ALERT_ID);
         String alertType = data.get(PushParameters.ALERT_TYPE);
         String threatType = data.get(PushParameters.THREAT_TYPE);
         String alertCities = data.get(PushParameters.ALERT_CITIES);
@@ -76,6 +77,6 @@ public class FirebaseService extends FirebaseMessagingService {
         Log.d(Logging.TAG, "Received push via FCM gateway");
 
         // Receive the alert
-        AlertLogic.processIncomingAlert(threatType, alertCities, alertType, this);
+        AlertLogic.processIncomingAlert(threatType, alertCities, alertType, alertId, this);
     }
 }

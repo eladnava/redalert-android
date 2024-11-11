@@ -22,7 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AlertLogic {
-    public static void processIncomingAlert(String threatType, String citiesPSVString, String alertType, Context context) {
+    public static void processIncomingAlert(String threatType, String citiesPSVString, String alertType, String alertId, Context context) {
         // No cities?
         if (StringUtils.stringIsNullOrEmpty(citiesPSVString)) {
             return;
@@ -59,6 +59,13 @@ public class AlertLogic {
                         continue;
                     }
 
+                    // Did we already notify for this city and alert ID combination?
+                    if (cityAlreadyNotifiedForAlertId(city, alertId, context)) {
+                        // Log that we're skipping this one
+                        Log.i(Logging.TAG, "Ignoring already notified alert ID " + alertId + " for city: " + city);
+                        continue;
+                    }
+
                     // Save city last alert timestamp to prevent duplicate alerts
                     AppPreferences.setCityLastAlertTime(city, DateTime.getUnixTimestamp(), context);
                 }
@@ -81,6 +88,27 @@ public class AlertLogic {
 
         // Check that enough time passed
         return AppPreferences.getCityLastAlert(city, context) > recentCutoffTimestamp;
+    }
+
+    static boolean cityAlreadyNotifiedForAlertId(String city, String alertId, Context context) {
+        // No alert ID?
+        if (StringUtils.stringIsNullOrEmpty(alertId)) {
+            return false;
+        }
+
+        // Build SharedPreference key comprising of city name (in Hebrew) and alert ID
+        String key = city + "-" + alertId;
+
+        // Check for a SharedPreference key with this city name and alert ID
+        if (Singleton.getSharedPreferences(context).getBoolean(key, false)) {
+            return true;
+        }
+
+        // Store as already processed
+        Singleton.getSharedPreferences(context).edit().putBoolean(key, true).commit();
+
+        // First time encountering this city & alert ID combo
+        return false;
     }
 
     public static boolean isRelevantCity(String alertType, String city, Context context) {

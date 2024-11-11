@@ -259,7 +259,7 @@ public class Main extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // DEBUG ONLY
-                //AlertLogic.processIncomingAlert("missiles", "נהריה", "alert", Main.this);
+                //AlertLogic.processIncomingAlert("missiles", "נהריה", "alert", null, Main.this);
             }
         });
 

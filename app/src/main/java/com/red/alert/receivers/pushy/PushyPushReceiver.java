@@ -16,6 +16,7 @@ public class PushyPushReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         // Grab push data from extras
+        String alertId = intent.getStringExtra(PushParameters.ALERT_ID);
         String alertType = intent.getStringExtra(PushParameters.ALERT_TYPE);
         String threatType = intent.getStringExtra(PushParameters.THREAT_TYPE);
         String alertCities = intent.getStringExtra(PushParameters.ALERT_CITIES);
@@ -45,6 +46,6 @@ public class PushyPushReceiver extends BroadcastReceiver {
         Log.d(Logging.TAG, "Received push via Pushy gateway");
 
         // Receive the alert
-        AlertLogic.processIncomingAlert(threatType, alertCities, alertType, context);
+        AlertLogic.processIncomingAlert(threatType, alertCities, alertType, alertId, context);
     }
 }
