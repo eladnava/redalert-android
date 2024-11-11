@@ -662,6 +662,11 @@ public class Main extends AppCompatActivity {
         // Ungrouped alerts
         List<Alert> mAllAlerts = new ArrayList<>();
 
+        // Workaround for ConcurrentModificationException
+        if (mIsReloading) {
+            return;
+        }
+
         // Traverse all alerts
         for (Alert alert: mNewAlerts) {
             // Any grouped alerts?
@@ -983,6 +988,12 @@ public class Main extends AppCompatActivity {
     }
 
     void invalidateAlertList() {
+        // Workaround for ConcurrentModificationException
+        // Wait for reloading to complete
+        if (mIsReloading) {
+            return;
+        }
+
         // Clear global list
         mDisplayAlerts.clear();
 
