@@ -4,10 +4,11 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.location.Location;
-import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,11 +26,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.red.alert.R;
 import com.red.alert.activities.settings.Utils;
-import com.red.alert.activities.settings.alerts.LocationAlerts;
 import com.red.alert.config.ThreatTypes;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
 import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.model.Alert;
+import com.red.alert.model.Modelfortest.Locations;
 import com.red.alert.model.metadata.City;
 import com.red.alert.ui.dialogs.AlertDialogBuilder;
 import com.red.alert.ui.localization.rtl.RTLSupport;
@@ -59,6 +60,9 @@ public class Map extends AppCompatActivity {
     MenuItem mLoadingItem;
     RelativeLayout mMapCover;
 
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +72,10 @@ public class Map extends AppCompatActivity {
 
         // Initialize UI
         initializeUI();
+
+
+
+
     }
 
     void unpackExtras() {
@@ -236,18 +244,40 @@ public class Map extends AppCompatActivity {
                     tooltip = LocationData.getDistanceFromCity(city, this) + " " + getString(R.string.kilometer);
                 }
 
-                // Add marker to map
-                mMap.addMarker(new MarkerOptions()
-                        .position(location)
-                        .title(localizedName)
-                        .icon(Utils.bitmapDescriptorFromVector(
-                                this, // Контекст (возможно, вам понадобится другой)
-                                R.drawable.locationon, // Ресурс маркера
-                                "D12121", // Цвет маркера в шестнадцатеричном формате
-                                140, // Ширина маркера
-                                140  // Высота маркера
-                        )
-                ));
+                // Получаем список меток
+                List<Pair<LatLng, String>> locations = Locations.getLocations();
+
+                // Замеряем время начала
+                long startTime = System.currentTimeMillis();
+
+                /*// Перебираем все метки и добавляем их на карту
+                for (Pair<LatLng, String> locationPair : locations) {
+                    LatLng locationnew = locationPair.first;
+                    String localizedNamenew = locationPair.second;
+
+                    // Добавляем маркер на карту
+                    mMap.addMarker(new MarkerOptions()
+                            .position(locationnew)
+                            .title(localizedNamenew)
+                            .icon(Utils.bitmapDescriptorFromVector(
+                                    this, // Контекст
+                                    R.drawable.locationon, // Ресурс маркера
+                                    "D12121", // Цвет маркера
+                                    120, // Ширина маркера
+                                    120  // Высота маркера
+                            )));
+                }
+
+                // Замеряем время окончания
+                long endTime = System.nanoTime(); // Время окончания
+
+                // Рассчитываем время, затраченное на отрисовку
+                long duration = (endTime - startTime) / 1000000; // Переводим в миллисекунды
+
+                // Выводим в лог
+                Log.d("MarkersPerformance", "Время отрисовки " + locations.size() + " маркеров: " + duration + " миллисекунд.");
+
+*/
 
                 // Include location in zoom boundaries
                 builder.include(location);
@@ -404,9 +434,60 @@ public class Map extends AppCompatActivity {
 
                 // Initialize map
                 initializeMap();
+                List<Pair<LatLng, String>> locations = Locations.getLocations();
+                // Начинаем добавление маркеров в асинхронном потоке
+                new AddMarkersTask().execute(locations);
             }
         });
     }
+
+    // Асинхронная задача для добавления маркеров
+    private class AddMarkersTask extends AsyncTask<List<Pair<LatLng, String>>, Void, Void> {
+        @Override
+        protected Void doInBackground(List<Pair<LatLng, String>>... params) {
+            List<Pair<LatLng, String>> locations = params[0];
+
+            // Замер времени начала
+            long startTime = System.currentTimeMillis();
+
+            // Отложенное добавление маркеров
+            for (Pair<LatLng, String> locationPair : locations) {
+                final LatLng location = locationPair.first;
+                final String localizedName = locationPair.second;
+
+                // Добавляем маркер на карту
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mMap.addMarker(new MarkerOptions()
+                                .position(location)
+                                .title(localizedName)
+                                .icon(Utils.bitmapDescriptorFromVector(
+                                        Map.this, // Контекст
+                                        R.drawable.locationon, // Ресурс маркера
+                                        "D12121", // Цвет маркера
+                                        120, // Ширина маркера
+                                        120  // Высота маркера
+                                )
+
+                                ));
+                    }
+                });
+            }
+
+            // Замер времени окончания
+            long endTime = System.currentTimeMillis();
+
+            // Вычисление времени отрисовки
+            long duration = endTime - startTime;
+
+            // Логируем время
+            Log.d("MarkersPerformance", "Время отрисовки " + locations.size() + " маркеров: " + duration + " миллисекунд.");
+
+            return null;
+        }
+    }
+
 
     void initializeLoadingIndicator(Menu OptionsMenu) {
         // Add loading spinner to Action Bar
