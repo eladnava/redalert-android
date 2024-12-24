@@ -469,7 +469,7 @@ public class Map extends AppCompatActivity {
                                         120, // Ширина маркера
                                         120  // Высота маркера
                                 )
-
+                                        // new
                                 ));
                     }
                 });
