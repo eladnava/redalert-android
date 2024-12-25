@@ -244,40 +244,39 @@ public class Map extends AppCompatActivity {
                     tooltip = LocationData.getDistanceFromCity(city, this) + " " + getString(R.string.kilometer);
                 }
 
-                // Получаем список меток
-                List<Pair<LatLng, String>> locations = Locations.getLocations();
 
-                // Замеряем время начала
-                long startTime = System.currentTimeMillis();
+            // Создаем переменную для подсчета общего времени
+                 double totalTime = 0;
 
-                /*// Перебираем все метки и добавляем их на карту
-                for (Pair<LatLng, String> locationPair : locations) {
-                    LatLng locationnew = locationPair.first;
-                    String localizedNamenew = locationPair.second;
+// В коде добавления метки:
+                long startTime = System.nanoTime();
 
-                    // Добавляем маркер на карту
-                    mMap.addMarker(new MarkerOptions()
-                            .position(locationnew)
-                            .title(localizedNamenew)
-                            .icon(Utils.bitmapDescriptorFromVector(
-                                    this, // Контекст
-                                    R.drawable.locationon, // Ресурс маркера
-                                    "D12121", // Цвет маркера
-                                    120, // Ширина маркера
-                                    120  // Высота маркера
-                            )));
-                }
+// Добавляем маркер на карту
+                mMap.addMarker(new MarkerOptions()
+                        .position(location)
+                        .title(localizedName)
+                        .icon(Utils.bitmapDescriptorFromVector(
+                                this, // Контекст
+                                R.drawable.locationon, // Ресурс маркера
+                                "D12121", // Цвет маркера
+                                120, // Ширина маркера
+                                120  // Высота маркера
+                        ))
+                );
 
-                // Замеряем время окончания
-                long endTime = System.nanoTime(); // Время окончания
+                long endTime = System.nanoTime();
+                long duration = endTime - startTime;
+                double durationInSeconds = duration / 1_000_000_000.0;
 
-                // Рассчитываем время, затраченное на отрисовку
-                long duration = (endTime - startTime) / 1000000; // Переводим в миллисекунды
+// Суммируем время
+                totalTime += durationInSeconds;
 
-                // Выводим в лог
-                Log.d("MarkersPerformance", "Время отрисовки " + locations.size() + " маркеров: " + duration + " миллисекунд.");
+// Выводим время для текущей метки
+                Log.d("MarkerTime", "Time to add marker: " + durationInSeconds + " seconds");
 
-*/
+// Если это последняя метка, выводим общее время
+                Log.d("MarkerTime", "Total time to add all markers: " + totalTime + " seconds");
+
 
                 // Include location in zoom boundaries
                 builder.include(location);
@@ -434,9 +433,9 @@ public class Map extends AppCompatActivity {
 
                 // Initialize map
                 initializeMap();
-                List<Pair<LatLng, String>> locations = Locations.getLocations();
+                /*List<Pair<LatLng, String>> locations = Locations.getLocations();
                 // Начинаем добавление маркеров в асинхронном потоке
-                new AddMarkersTask().execute(locations);
+                new AddMarkersTask().execute(locations);*/
             }
         });
     }
