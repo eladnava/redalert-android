@@ -26,6 +26,7 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.red.alert.R;
+import com.red.alert.activities.settings.MarkerIconCache;
 import com.red.alert.activities.settings.Utils;
 import com.red.alert.config.ThreatTypes;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
@@ -256,14 +257,16 @@ public class Map extends AppCompatActivity {
                 mMap.addMarker(new MarkerOptions()
                         .position(location)
                         .title(localizedName)
-                        .icon(Utils.bitmapDescriptorFromVector(
-                                this, // Контекст
-                                R.drawable.locationon, // Ресурс маркера
-                                Color.parseColor("#FF0000"), // Красный цвет
-                                120, // Ширина маркера
-                                120  // Высота маркера
+                        .icon(MarkerIconCache.getMarkerIcon(
+                                this,
+                                R.drawable.locationon,
+                                Color.parseColor("#FF0000"),
+                                120,
+                                120
                         ))
                 );
+        /*
+        * I started caching tags on the krat in memory and this allowed them to be rendered faster. I also wrote special methods so that the program could work on all devices.*/
 
                 long endTime = System.nanoTime();
                 long duration = endTime - startTime;
