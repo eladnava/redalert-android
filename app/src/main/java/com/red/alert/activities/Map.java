@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -258,7 +259,7 @@ public class Map extends AppCompatActivity {
                         .icon(Utils.bitmapDescriptorFromVector(
                                 this, // Контекст
                                 R.drawable.locationon, // Ресурс маркера
-                                "D12121", // Цвет маркера
+                                Color.parseColor("#FF0000"), // Красный цвет
                                 120, // Ширина маркера
                                 120  // Высота маркера
                         ))
@@ -464,12 +465,12 @@ public class Map extends AppCompatActivity {
                                 .icon(Utils.bitmapDescriptorFromVector(
                                         Map.this, // Контекст
                                         R.drawable.locationon, // Ресурс маркера
-                                        "D12121", // Цвет маркера
+                                        Color.parseColor("#FF0000"), // Красный цвет
                                         120, // Ширина маркера
                                         120  // Высота маркера
-                                )
-                                        // new commit
-                                ));
+                                ))
+
+                        );
                     }
                 });
             }

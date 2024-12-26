@@ -16,7 +16,7 @@ public class Utils {
     public static BitmapDescriptor bitmapDescriptorFromVector(
             Context context,
             Object icon,
-            String colorString,
+            int color, // Цвет передается как int
             int width,
             int height
     ) {
@@ -26,11 +26,9 @@ public class Utils {
             if (vectorDrawable != null) {
                 Drawable drawable = DrawableCompat.wrap(vectorDrawable).mutate();
 
-                // Convert color from string to ARGB
-                int color = fromHex(colorString);
-
+                // Применяем цвет
                 DrawableCompat.setTint(drawable, color);
-                drawable.setBounds(0, 0, width, height); // Set the specified size
+                drawable.setBounds(0, 0, width, height); // Устанавливаем указанные размеры
                 Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
                 Canvas canvas = new Canvas(bitmap);
                 drawable.draw(canvas);
@@ -40,29 +38,10 @@ public class Utils {
             BitmapDrawable bitmapDrawable = (BitmapDrawable) icon;
             Bitmap bitmap = Bitmap.createScaledBitmap(bitmapDrawable.getBitmap(), width, height, false);
             return BitmapDescriptorFactory.fromBitmap(bitmap);
-        } else {
-            // Handle other types of sources if needed
         }
 
-        // Return a default marker in case of error
+        // Возвращаем маркер по умолчанию в случае ошибки
         return BitmapDescriptorFactory.defaultMarker();
     }
-
-
-    public static int fromHex(String colorString) {
-        // Remove # if present
-        String colorWithoutHash = colorString.startsWith("#") ? colorString.substring(1) : colorString;
-
-        // Check the length of the string
-        if (colorWithoutHash.length() != 6 && colorWithoutHash.length() != 8) {
-            throw new IllegalArgumentException("Invalid hex color string: " + colorString);
-        }
-
-        // Add # if it was not present
-        colorWithoutHash = colorWithoutHash.length() == 6 ? "FF" + colorWithoutHash : colorWithoutHash;
-        String colorWithHash = "#" + colorWithoutHash;
-
-        // Convert string to color
-        return Color.parseColor(colorWithHash);
-    }
 }
+
