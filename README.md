@@ -1,3 +1,47 @@
+Custom Map Markers
+
+Hello! I am Ilya Prokofiev, a developer from Russia with a strong desire to help everyone suffering from the consequences of war.
+
+This project provides a small piece of code that simplifies rendering custom markers on a map. It allows you to:
+
+Render any markers in XML format based on Google Icons.
+
+Customize marker size and color to suit your needs.
+
+Enjoy faster rendering using efficient system methods with lightweight image caching.
+
+Features
+
+Customizable Markers: Easily adjust the size and color of the markers.
+
+Performance Optimization: Markers are rendered quickly thanks to system-based drawing methods and caching.
+
+Versatile Usage: Perfect for enhancing navigation with visually distinct markers.
+
+Examples
+
+Here are some examples of how the markers look:
+
+Example 1
+![image](https://github.com/user-attachments/assets/bb01e023-c8ab-4c80-914c-8b99a36d3a42)
+
+
+Example 2
+
+![image](https://github.com/user-attachments/assets/a1bd6485-c54c-4a8a-b7e5-fb3c943624f8)
+
+Example 3
+
+
+![Screenshot_1735324300](https://github.com/user-attachments/assets/b1f4f336-e3bc-45a6-8a01-3ff7a1b49761)
+How It Works
+
+Here’s a visual guide to drawing your markers:
+
+
+![image](https://github.com/user-attachments/assets/b4dd46c9-7df9-441a-a3a3-a11e595db121)
+
+
 <h1> <a href="https://redalert.me/" target="_blank"><img src="img/logo_big.png" align="right" height="40"></a> RedAlert for Android</h1>
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/eladnava/redalert-android?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
