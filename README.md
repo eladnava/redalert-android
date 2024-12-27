@@ -15,23 +15,24 @@
     <li><strong>Performance Optimization:</strong> Markers are rendered quickly thanks to system-based drawing methods and caching.</li>
     <li><strong>Versatile Usage:</strong> Perfect for enhancing navigation with visually distinct markers.</li>
 </ul>
-<h2>Examples</h2>
+
 <p>Here are some examples of how the markers look:</p>
 
-<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
-    <div style="margin: 10px;">
+<div style="display: flex; overflow-x: auto; gap: 20px; padding: 10px 0;">
+    <div style="flex: 0 0 auto;">
         <h3>Example 1</h3>
-        <img src="https://github.com/user-attachments/assets/bb01e023-c8ab-4c80-914c-8b99a36d3a42" width="200" height="200" alt="Example 1">
+        <img src="https://github.com/user-attachments/assets/bb01e023-c8ab-4c80-914c-8b99a36d3a42" width="300" height="533" alt="Example 1">
     </div>
-    <div style="margin: 10px;">
+    <div style="flex: 0 0 auto;">
         <h3>Example 2</h3>
-        <img src="https://github.com/user-attachments/assets/a1bd6485-c54c-4a8a-b7e5-fb3c943624f8" width="200" height="200" alt="Example 2">
+        <img src="https://github.com/user-attachments/assets/a1bd6485-c54c-4a8a-b7e5-fb3c943624f8" width="300" height="533" alt="Example 2">
     </div>
-    <div style="margin: 10px;">
+    <div style="flex: 0 0 auto;">
         <h3>Example 3</h3>
-        <img src="https://github.com/user-attachments/assets/b1f4f336-e3bc-45a6-8a01-3ff7a1b49761" width="200" height="200" alt="Example 3">
+        <img src="https://github.com/user-attachments/assets/b1f4f336-e3bc-45a6-8a01-3ff7a1b49761" width="300" height="533" alt="Example 3">
     </div>
 </div>
+
 
 How It Works
 
