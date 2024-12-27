@@ -247,13 +247,8 @@ public class Map extends AppCompatActivity {
                 }
 
 
-            // Создаем переменную для подсчета общего времени
-                 double totalTime = 0;
 
-// В коде добавления метки:
-                long startTime = System.nanoTime();
 
-// Добавляем маркер на карту
                 mMap.addMarker(new MarkerOptions()
                         .position(location)
                         .title(localizedName)
@@ -268,18 +263,6 @@ public class Map extends AppCompatActivity {
         /*
         * I started caching tags on the krat in memory and this allowed them to be rendered faster. I also wrote special methods so that the program could work on all devices.*/
 
-                long endTime = System.nanoTime();
-                long duration = endTime - startTime;
-                double durationInSeconds = duration / 1_000_000_000.0;
-
-// Суммируем время
-                totalTime += durationInSeconds;
-
-// Выводим время для текущей метки
-                Log.d("MarkerTime", "Time to add marker: " + durationInSeconds + " seconds");
-
-// Если это последняя метка, выводим общее время
-                Log.d("MarkerTime", "Total time to add all markers: " + totalTime + " seconds");
 
 
                 // Include location in zoom boundaries
@@ -438,13 +421,13 @@ public class Map extends AppCompatActivity {
                 // Initialize map
                 initializeMap();
                 /*List<Pair<LatLng, String>> locations = Locations.getLocations();
-                // Начинаем добавление маркеров в асинхронном потоке
+
                 new AddMarkersTask().execute(locations);*/
             }
         });
     }
 
-    // Асинхронная задача для добавления маркеров
+
     private class AddMarkersTask extends AsyncTask<List<Pair<LatLng, String>>, Void, Void> {
         @Override
         protected Void doInBackground(List<Pair<LatLng, String>>... params) {
@@ -465,12 +448,12 @@ public class Map extends AppCompatActivity {
                         mMap.addMarker(new MarkerOptions()
                                 .position(location)
                                 .title(localizedName)
-                                .icon(Utils.bitmapDescriptorFromVector(
-                                        Map.this, // Контекст
-                                        R.drawable.locationon, // Ресурс маркера
-                                        Color.parseColor("#FF0000"), // Красный цвет
-                                        120, // Ширина маркера
-                                        120  // Высота маркера
+                                .icon(MarkerIconCache.getMarkerIcon(
+                                        Map.this,
+                                        R.drawable.locationon,
+                                        Color.parseColor("#FF0000"),
+                                        120,
+                                        120
                                 ))
 
                         );
