@@ -11,7 +11,7 @@
             android:title="@string/receiveSecondaryAlerts"
             android:summary="@string/receiveSecondaryAlertsDesc"
             android:defaultValue="false"/>
-        <com.red.alert.ui.elements.SearchableMultiSelectPreference
+        <com.github.timboode.NYP_alert_android.ui.elements.SearchableMultiSelectPreference
             redalert:checkAll="@string/all"
             redalert:separator="|"
             android:defaultValue="@string/none"
@@ -20,7 +20,7 @@
             android:title="@string/selectedSecondaryCities"
             android:summary="@string/selectedSecondaryCitiesDesc"
             android:dependency="@string/secondaryEnabledPref"/>
-        <com.red.alert.ui.elements.SoundListPreference
+        <com.github.timboode.NYP_alert_android.ui.elements.SoundListPreference
             android:key="@string/secondarySoundPref"
             android:title="@string/secondarySoundSelection"
             android:summary="@string/secondarySoundSelectionDesc"
@@ -33,7 +33,7 @@
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/secondaryAlertsTitle">
-        <com.red.alert.ui.elements.SliderPreference
+        <com.github.timboode.NYP_alert_android.ui.elements.SliderPreference
             android:key="@string/secondaryVolumePref"
             android:title="@string/secondaryVolume"
             android:summary="@string/secondaryVolumeDesc"

@@ -66,7 +66,7 @@
     <string name="silentOverrideDesc">Les alertes à la roquette passeront outre le mode silencieux</string>
     <string name="selectedCities">Villes</string>
     <string name="testSuccessfulLong">Le test s\'est terminé avec succès!</string>
-    <string name="selectedCitiesDesc">Recevez des alertes sur des villes et villages spécifiques</string>
+    <string name="selectedTopicsDesc">Recevez des alertes sur des villes et villages spécifiques</string>
     <string name="website">Visitez notre site web</string>
     <string name="websiteDesc">Cliquez ici pour visiter notre site officiel</string>
     <string name="alertRegions">Zones</string>

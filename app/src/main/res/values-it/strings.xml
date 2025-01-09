@@ -71,7 +71,7 @@
     <string name="silentOverrideDesc">Le allerte disabiliteranno la modalità silenziosa</string>
     <string name="selectedCities">Città</string>
     <string name="testSuccessfulLong">Il test è stato completato con successo!</string>
-    <string name="selectedCitiesDesc">Ricevi avvisi su città e paesi specifici</string>
+    <string name="selectedTopicsDesc">Ricevi avvisi su città e paesi specifici</string>
     <string name="website">Visita il nostro sito</string>
     <string name="websiteDesc">Tocca qui per visita il nostro sito ufficiale</string>
     <string name="alertRegions">Aree</string>

@@ -1,318 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- App Title -->
-    <string name="appName">צבע אדום</string>
-
-    <!-- Loading Dialog -->
-    <string name="loading">אנא המתן...</string>
-
-    <!-- Registration Dialog -->
-    <string name="signing_up">נרשם לשירות עדכוני צבע אדום...</string>
-
-    <!-- Dialog Buttons -->
-    <string name="yes">כן</string>
-    <string name="no">לא</string>
-    <string name="okay">אוקי</string>
-    <string name="error">שגיאה</string>
-
-    <!-- Update Dialog -->
-    <string name="update">עדכון גרסה</string>
-    <string name="updateDesc">יצאה גרסה חדשה יותר של האפליקציה (%s), מומלץ לעדכן.</string>
-    <string name="updatePositive">עדכן</string>
-    <string name="notNow">לא עכשיו</string>
-
-    <!-- Recent Alerts -->
-    <string name="noAlerts">אין התרעות\nמהיום האחרון</string>
-    <string name="recentAlerts">התרעות אחרונות</string>
-
-    <!-- Settings -->
-    <string name="settings">הגדרות</string>
-    <string name="advanced">אפשרויות</string>
-    <string name="alerts">התרעות</string>
-    <string name="advancedAlerts">התרעות מתקדמות</string>
-    <string name="advancedSettings">הגדרות מתקדמות</string>
-
-    <!-- Advanced Settings -->
-    <string name="advancedSettingsTitle">הגדרות מתקדמות</string>
-    <string name="advancedSettingsDesc">ערוך הגדרות התרעה מתקדמות</string>
-
-    <!-- Enable/Disable Notifications -->
-    <string name="notifications">התרעות בזמן אמת</string>
-    <string name="notificationsDesc">קבל התרעות צבע אדום בזמן אמת</string>
-
-    <!-- Area Selection -->
-    <string name="alertRegions">אזורי התרעה</string>
-    <string name="search">הקלד מילות חיפוש...</string>
-    <string name="allString">הכל</string>
-    <string name="noneString">כבוי</string>
+    <string name="appName">NYP EAS</string>
+    <string name="signing_up">Signing up for push notifications...</string>
+    <string name="okay">OK</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="error">Error</string>
+    <string name="noGooglePlayServices">Your phone does not have an updated version of Google Play Services installed.</string>
+    <string name="pushRegistrationFailed">A network error occurred while signing you up for push notifications.\n\nPlease check your Internet connection and try again.\n\nTechnical info:</string>
+    <string name="apiRequestFailed">A request to retrieve information from our servers failed. Please check your Internet connection and try again.</string>
+    <string name="registrationFailed">Registration failed, please try again later.</string>
+    <string name="grantNotificationPermission">Please enable \"Notifications\" on the next screen to receive alerts in real time.</string>
+    <string name="citySelectionLimitError">Please do not select more than 100 cities.</string>
+    <string name="settings">Settings</string>
+    <string name="advanced">Advanced</string>
+    <string name="advancedSettings">Advanced settings</string>
+    <string name="advancedSettingsTitle">Advanced Settings</string>
+    <string name="advancedSettingsDesc">Configure secondary alerts and modify advanced settings</string>
+    <string name="notifications">Receive alerts</string>
+    <string name="notificationsDesc">Receive alerts in real time</string>
+    <string name="contact">Contact</string>
+    <string name="contactDesc">Contact the app developer</string>
+    <string name="reportProblem">Report a problem</string>
+    <string name="manualContact">Contact me via e-mail at support@redalert.me</string>
+    <string name="jsonFailed">An error occurred while loading data from the server.</string>
+    <string name="notifyError">An error occurred while displaying the notification, please restart your phone.</string>
+    <string name="safeCategory">\"I\'m safe\"</string>
+    <string name="safe">Send \"I\'m safe\"</string>
+    <string name="imSafeMessage">I\'m safe - sent via RedAlert for Android - https://redalert.me</string>
+    <string name="imSafeDesc">Send \"I\'m safe\"</string>
+    <string name="pushRegistrationSuccess">Select City of Residence</string>
+    <string name="pushRegistrationSuccessDesc">Please select your city or town to receive real-time alerts.</string>
+    <string name="pushRegistrationReselectDesc">Please re-select your city or town to receive real-time alerts.</string>
+    <string name="safeWhatsApp">Send via WhatsApp</string>
+    <string name="safeWhatsAppDesc">Tapping the \"I\'m safe\" button will open up WhatsApp contact selection</string>
+    <string name="soundSelection">Alert sound</string>
+    <string name="soundSelectionDesc">Select a sound for incoming alerts</string>
+    <string name="test">Self-test</string>
+    <string name="testDesc">Send a test alert to verify connectivity</string>
+    <string name="testFailed">The self-test failed completely. No alert was received from any push notification gateway. Check your Internet connection and try again later, and contact us if the problem persists.</string>
+    <string name="reliability">Reliability</string>
+    <string name="noAlerts">No alerts\nin the past day</string>
+    <string name="recentAlerts">Recent Alerts</string>
+    <string name="testSound">Sound test</string>
+    <string name="siren1">Siren 1</string>
+    <string name="siren2">Siren 2</string>
+    <string name="siren3">Siren 3</string>
+    <string name="siren4">Siren 4</string>
+    <string name="siren5">Siren 5</string>
+    <string name="tiny">Short 1</string>
+    <string name="calm">Relaxing 1</string>
+    <string name="tzevaAdom">Tzeva Adom</string>
+    <string name="funny">Funny</string>
+    <string name="languageAndTheme">Language &amp; theme</string>
+    <string name="langSelection">App language</string>
+    <string name="langSelectionDesc">Change the application language</string>
+    <string name="themeSelection">App theme</string>
+    <string name="themeSelectionDesc">Customize the app theme</string>
+    <string name="lightTheme">Light</string>
+    <string name="darkTheme">Dark</string>
+    <string name="automatic">Automatic</string>
+    <string name="selectedCities">Cities</string>
+    <string name="selectedTopicsDesc">Receive alerts about specific cities and towns</string>
+    <string name="selectedZones">Additional regions</string>
+    <string name="selectedZonesDesc">Receive alerts about entire regions (in addition to cities)</string>
+    <string name="silentOverride">Override silent mode</string>
+    <string name="silentOverrideDesc">Incoming alerts will disable silent mode</string>
+    <string name="testSuccessfulLong">The self-test has completed successfully!</string>
+    <string name="website">Visit our website</string>
+    <string name="websiteDesc">Visit our official website</string>
+    <string name="alertRegions">Areas</string>
+    <string name="receiveSecondaryAlerts">Secondary alerts</string>
+    <string name="receiveSecondaryAlertsDesc">Receive secondary alerts in real-time</string>
+    <string name="sounds">Sounds</string>
+    <string name="share">Share</string>
+    <string name="shareDesc">Share the app</string>
+    <string name="shareMessage">I\'m using RedAlert for Android to get real-time alerts - https://redalert.me</string>
+    <string name="vibrate">Enable vibration</string>
+    <string name="vibrateDesc">Incoming alerts will vibrate your phone</string>
+    <string name="sentVia">Sent using</string>
+    <string name="problemDesc">Problem description: </string>
+    <string name="noSound">No sound</string>
+    <string name="search">Enter search keywords...</string>
+    <string name="allString">All</string>
+    <string name="noneString">None</string>
+    <string name="registrationID">Registration ID</string>
+    <string name="calm2">Relaxing 2</string>
+    <string name="calm3">Relaxing 3</string>
+    <string name="calm4">Relaxing 4</string>
+    <string name="calm5">Relaxing 5</string>
+    <string name="tiny2">Short 2</string>
+    <string name="tiny3">Short 3</string>
+    <string name="tiny4">Short 4</string>
+    <string name="tiny5">Short 5</string>
+    <string name="tiny6">Short 6</string>
 
     <!-- Secondary Alerts -->
-    <string name="secondaryAlerts">התרעות משנה</string>
-    <string name="secondaryAlertsTitle">התרעות משנה</string>
-    <string name="secondaryAlertsDesc">הגדר התרעות משנה כדי להתעדכן על אזורים אחרים במקביל</string>
-
-    <!-- Enable Secondary Alerts -->
-    <string name="receiveSecondaryAlerts">התרעות משנה</string>
-    <string name="receiveSecondaryAlertsDesc">קבל התרעות משנה בזמן אמת</string>
+    <string name="secondaryAlerts">Secondary alerts</string>
+    <string name="secondaryAlertsTitle">Secondary Alerts</string>
+    <string name="secondaryAlertsDesc">Configure secondary alerts to stay updated about alerts in other areas</string>
 
     <!-- Secondary Sound -->
-    <string name="secondarySoundSelection">צליל משנה</string>
-    <string name="secondarySoundSelectionDesc">בחר צליל שיושמע כאשר תתקבל התרעת משנה</string>
-
-    <!-- Secondary Cities -->
-    <string name="selectedSecondaryCities">יישובי משנה</string>
-    <string name="selectedSecondaryCitiesDesc">בחר יישובים וערים עבורם יתקבלו התרעות משנה</string>
-
-    <!-- Region Selection -->
-    <string name="selectedZones">מרחבים נוספים</string>
-    <string name="selectedZonesDesc">בחר מרחבים שלמים עבורם יתקבלו התרעות בנוסף ליישובים</string>
-
-    <!-- City Selection -->
-    <string name="selectedCities">יישובים</string>
-    <string name="selectedCitiesDesc">בחר יישובים וערים עבורם יתקבלו התרעות בזמן אמת</string>
-
-    <!-- Self-test -->
-    <string name="test">בדיקה עצמית</string>
-    <string name="testDesc">שלח התרעה המדמה אזעקת צבע אדום</string>
-    <string name="reliability">אמינות</string>
-    <string name="testSuccessfulLong">הבדיקה העצמית הסתיימה בהצלחה!</string>
-    <string name="testSuccessful">הבדיקה הסתיימה בהצלחה!</string>
-
-    <!-- Sound Selection -->
-    <string name="sounds">צלילים</string>
-    <string name="soundSelection">צליל אזעקת אמת</string>
-    <string name="soundSelectionDesc">בחר צליל שיושמע כאשר תתקבל התרעת צבע אדום</string>
-    <string name="testSound">בדיקת צליל התרעה</string>
-    <string name="siren1">סירנה 1</string>
-    <string name="siren2">סירנה 2</string>
-    <string name="siren3">סירנה 3</string>
-    <string name="siren4">סירנה 4</string>
-    <string name="siren5">סירנה 5</string>
-    <string name="tiny">קצר 1</string>
-    <string name="calm">רגוע 1</string>
-    <string name="tzevaAdom">צבע אדום</string>
-    <string name="funny">מצחיק</string>
-    <string name="calm2">רגוע 2</string>
-    <string name="calm3">רגוע 3</string>
-    <string name="calm4">רגוע 4</string>
-    <string name="calm5">רגוע 5</string>
-    <string name="tiny2">קצר 2</string>
-    <string name="tiny3">קצר 3</string>
-    <string name="tiny4">קצר 4</string>
-    <string name="tiny5">קצר 5</string>
-    <string name="tiny6">קצר 6</string>
-    <string name="noSound">שקט</string>
-
-    <!-- Vibration Mode -->
-    <string name="vibrate">הפעל רטט</string>
-    <string name="vibrateDesc">כאשר תתקבל אזעקת אמת, המכשיר ירטוט</string>
+    <string name="secondarySoundSelection">Secondary sound</string>
+    <string name="secondarySoundSelectionDesc">Select a sound for secondary alerts</string>
 
     <!-- Secondary Vibration Mode -->
-    <string name="secondaryVibrate">הפעל רטט</string>
-    <string name="secondaryVibrateDesc">כאשר תתקבל התרעת משנה, המכשיר ירטוט</string>
+    <string name="secondaryVibrate">Enable vibration</string>
+    <string name="secondaryVibrateDesc">Secondary alerts will vibrate your phone</string>
 
-    <!-- Silent Mode Override -->
-    <string name="silentOverride">עקוף מצב שקט</string>
-    <string name="silentOverrideDesc">כאשר תתקבל אזעקת אמת, מצב שקט לא יחסום אותה</string>
-
-    <!-- Silent Mode Override -->
-    <string name="secondarySilentOverride">עקוף מצב שקט</string>
-    <string name="secondarySilentOverrideDesc">כאשר תתקבל התרעת משנה, מצב שקט לא יחסום אותה</string>
-
-    <!-- I'm Safe -->
-    <string name="safe">שלח \"אני במרחב מוגן\" </string>
-    <string name="safeCategory">\"אני במרחב מוגן\"</string>
-    <string name="imSafeMessage">אני במרחב מוגן - נשלח באמצעות צבע אדום באנדרואיד - https://redalert.me</string>
-    <string name="imSafeDesc">שלח \"אני במרחב מוגן\"</string>
-
-    <!-- I'm Safe - WhatsApp Integration -->
-    <string name="safeWhatsApp">שלח באמצעות WhatsApp</string>
-    <string name="safeWhatsAppDesc">לחיצה על כפתור הדיווח תוביל ישירות לבחירת אנשי הקשר</string>
-
-    <!-- Language & Theme Selection -->
-    <string name="automatic">אוטומטי</string>
-    <string name="languageAndTheme">שפה ועיצוב</string>
-    <string name="langSelection">בחירת שפה (Language)</string>
-    <string name="langSelectionDesc">בחר שפה עבור ממשק האפליקציה</string>
-    <string name="themeSelection">בחירת עיצוב</string>
-    <string name="themeSelectionDesc">בחר עיצוב עבור ממשק האפליקציה</string>
-
-    <!-- Theme Name Identifiers -->
-    <string name="lightTheme">בהיר</string>
-    <string name="darkTheme">כהה</string>
-
-    <!-- Contact -->
-    <string name="contact">צור קשר</string>
-    <string name="sentVia">נשלח באמצעות</string>
-    <string name="problemDesc">תיאור התקלה: </string>
-    <string name="debugInfo">מיעד נוסף</string>
-    <string name="contactDesc">צור איתנו קשר על-ידי שליחת אימייל</string>
-    <string name="reportProblem">דווח על תקלה</string>
-    <string name="manualContact">צור קשר בכתובת https://redalert.me</string>
+    <!-- Secondary Silent Mode Override -->
+    <string name="secondarySilentOverride">Override silent mode</string>
+    <string name="secondarySilentOverrideDesc">Secondary alerts will override silent mode</string>
 
     <!-- Rate the App -->
-    <string name="rateApp">דרג את האפליקציה</string>
-    <string name="rateAppDesc">דרג אותנו בחנות של גוגל</string>
+    <string name="rateApp">Rate the app</string>
+    <string name="rateAppDesc">Rate the app on Google Play</string>
+
+    <string name="update">Update Available</string>
+    <string name="updateDesc">A newer version of this application is available (%s), please update.</string>
+    <string name="updatePositive">Update</string>
+    <string name="notNow">Not now</string>
 
     <!-- Volume -->
-    <string name="volume">עוצמת צליל</string>
-    <string name="volumeDesc">בחר עוצמת צליל לאזעקות אמת</string>
+    <string name="volume">Volume level</string>
+    <string name="volumeDesc">Slide to select the desired volume for incoming alerts</string>
 
     <!-- Secondary Volume -->
-    <string name="secondaryVolume">עוצמת צליל</string>
-    <string name="secondaryVolumeDesc">בחר עוצמת צליל להתרעות משנה</string>
+    <string name="secondaryVolume">Volume level</string>
+    <string name="secondaryVolumeDesc">Slide to select the desired volume for secondary alerts</string>
 
-    <!-- Website -->
-    <string name="website">בקר באתר שלנו</string>
-    <string name="websiteDesc">בקר באתר הרשמי של האפליקציה</string>
-
-    <!-- Share the Application -->
-    <string name="share">שיתוף</string>
-    <string name="shareDesc">שתף את האפליקציה</string>
-    <string name="shareMessage">אני משתמש באפליקציית \"צבע אדום\" באנדרואיד כדי לקבל התרעות על אזעקות צבע אדום  - https://redalert.me</string>
-
-    <!-- Self Test Result Dialogs -->
-    <string name="testingFCM">שולח התרעת בדיקה... (1/2)</string>
-    <string name="testingPushy">שולח התרעת בדיקה... (2/2)</string>
-    <string name="testFailed">הבדיקה העצמית נכשלה לחלוטין. לא התקבלה התרעת בדיקה מאף שירות התרעות. בדוק את החיבור לאינטרנט ונסה מאוחר יותר, וצור איתנו קשר אם התקלה אינה חולפת.</string>
-    <string name="fcmTestFailed">הבדיקה העצמית נכשלה חלקית. לא התקבלה התרעה דרך שרת ההתרעות של גוגל, אך כן התקבלה התרעה דרך שרת ההתרעות המשני. נסה שוב מאוחר יותר.</string>
-    <string name="pushyTestFailed">הבדיקה העצמית נכשלה חלקית. לא התקבלה התרעה דרך שרת ההתרעות המשני, אך כן התקבלה התרעה דרך שרת ההתרעות של גוגל. נסה שוב מאוחר יותר.</string>
-
-    <!-- Error Messages -->
-    <string name="notifyError">ארעה שגיאה בהצגת ההתרעה, מומלץ להפעיל מחדש את הטלפון.</string>
-    <string name="jsonFailed">ארעה שגיאה בטעינת נתונים מהשרת.</string>
-    <string name="noGooglePlayServices">הטלפון שלך אינו מכיל גרסה עדכנית של Google Play Services.</string>
-    <string name="pushRegistrationFailed">ארעה שגיאת תקשורת בהרשמה לשירות העדכונים של האפליקציה.\n\nיש לבדוק שהחיבור לאינטרנט תקין.\n\nמידע טכני עקב התקלה:</string>
-    <string name="apiRequestFailed">ארעה שגיאת תקשורת בטעינת נתונים מהשרת. בדוק את החיבור לאינטרנט ונסה שנית.</string>
-    <string name="registrationFailed">ההרשמה לשירות העדכונים נכשלה. אנא נסה מאוחר יותר.</string>
-    <string name="grantNotificationPermission">יש לאפשר קבלת התראות מהאפליקציה במסך הבא.</string>
-    <string name="citySelectionLimitError">לא ניתן לבחור יותר מ-100 יישובים.</string>
-
-    <!-- Success Messages -->
-    <string name="registrationID">קוד הרשמה</string>
-    <string name="pushRegistrationSuccess">בחר עיר מגורים</string>
-    <string name="pushRegistrationSuccessDesc">עליך לבחור יישוב או עיר מגורים כדי לקבל התרעות בזמן אמת.</string>
-    <string name="pushRegistrationReselectDesc">בגלל שינויים של פיקוד העורף, עליך לבחור מחדש יישוב או עיר מגורים כדי לקבל התרעות בזמן אמת.</string>
+    <!-- Secondary Cities -->
+    <string name="selectedSecondaryCities">Secondary cities</string>
+    <string name="selectedSecondaryCitiesDesc">Receive secondary alerts about specific cities and towns</string>
 
     <!-- GPS -->
-    <string name="locationAlerts">התרעות לפי מיקום</string>
-    <string name="locationAlertsDesc">הגדר התרעות מבוססות מיקום כדי לקבל התרעות תוך כדי תנועה</string>
-    <string name="gpsEnabled">התרעות לפי מיקום</string>
-    <string name="gpsEnabledDesc">קבל התרעות לפי מיקומך בזמן אמת</string>
-    <string name="maxDistance">מרחק מקסימלי</string>
-    <string name="maxDistanceDesc">בחר את המרחק המקסימלי שלך מכל יישוב שמופעלת בו אזעקה</string>
-    <string name="kilometer">ק\"מ</string>
-    <string name="nearbyCities">יישובים בקרבתך</string>
-    <string name="noLocation">ארעה שגיאה בקבלת מיקומך האחרון</string>
-    <string name="noNearbyCities">אין יישובים בקרבתך, נסה להגדיל את המרחק המקסימלי</string>
+    <string name="locationAlerts">Location-based alerts</string>
+    <string name="locationAlertsDesc">Configure location-based alerts to receive emergency alerts on the move</string>
+    <string name="gpsEnabled">Location-based alerts</string>
+    <string name="gpsEnabledDesc">Receive location-based alerts in real-time</string>
+    <string name="maxDistance">Max distance</string>
+    <string name="maxDistanceDesc">Slide to select the maximum distance from every city that receives an emergency alert</string>
+    <string name="kilometer">km</string>
+    <string name="nearbyCities">Nearby cities</string>
+    <string name="noLocation">Failed to determine your last known location</string>
+    <string name="noNearbyCities">No nearby cities, try increasing the max distance</string>
 
     <!-- GPS Frequency -->
-    <string name="gpsFrequency">קצב דגימה</string>
-    <string name="gpsFrequencyDesc">הגדר את הקצב שבו האפליקציה תאכן את מיקומך</string>
-    <string name="every">כל</string>
-    <string name="minutes">דקות</string>
+    <string name="gpsFrequency">Update interval</string>
+    <string name="gpsFrequencyDesc">Slide to select the interval, in minutes, for location updates</string>
+    <string name="every">Every</string>
+    <string name="minutes">minutes</string>
 
     <!-- GPS Notification -->
-    <string name="enableGPSDesc">יש להפעיל את חיישן ה-GPS כדי לקבל התרעות לפי מיקום.</string>
-    <string name="enable">הפעל</string>
+    <string name="enableGPSDesc">Please enable GPS to receive location-based alerts.</string>
+    <string name="enable">Enable</string>
 
     <!-- Alert Share -->
-    <string name="shareAlert">שתף את האזעקה</string>
-    <string name="alertSoundedAt">ב</string>
-    <string name="alertSentVia">נשלח באמצעות אפליקציית צבע אדום - התרעות בזמן אמת (https://redalert.me)</string>
+    <string name="shareAlert">Share the alert</string>
+    <string name="alertSoundedAt">in&#160;</string>
+    <string name="alertSentVia">Sent via RedAlert for Android (https://redalert.me)</string>
 
     <!-- Wake Screen -->
-    <string name="wakeScreen">הדלק מסך</string>
-    <string name="wakeScreenDesc">כאשר תתקבל אזעקת אמת, מסך הטלפון ידלק</string>
+    <string name="wakeScreen">Wake screen</string>
+    <string name="wakeScreenDesc">Incoming alerts will wake your phone screen</string>
 
     <!-- Alert Popup -->
-    <string name="close">סגור</string>
-    <string name="silence">השתק</string>
-    <string name="showPopup">הצג פופאפ</string>
-    <string name="showPopupDesc">כאשר תתקבל אזעקת אמת, יוצג פופאפ עם ספירה לאחור עד לזמן הנפילה המשוער</string>
-    <string name="grantOverlayPermission">אפשר הצגה מעל אפליקציות אחרות</string>
-    <string name="grantOverlayPermissionInstructions">בחר/י ״צבע אדום״ -> ״הצגה מעל אפליקציות אחרות״ במסך הבא.</string>
-    <string name="showSecondaryAlertPopupDesc">כאשר תתקבל התרעת משנה, יוצג פופאפ עם ספירה לאחור עד לזמן הנפילה המשוער</string>
+    <string name="close">Close</string>
+    <string name="silence">Silence</string>
+    <string name="showPopup">Show popup</string>
+    <string name="showPopupDesc">Incoming alerts will be displayed in a pop-up window</string>
+    <string name="grantOverlayPermission">Allow displaying over other apps</string>
+    <string name="grantOverlayPermissionInstructions">Please select \"RedAlert\" -> \"Allow display over other apps\" in the next screen.</string>
+    <string name="showSecondaryAlertPopupDesc">Secondary alerts will be displayed in a pop-up window</string>
 
     <!-- Schedule Exact Alarms -->
-    <string name="allowSettingExactAlarms">אשר הגדרת שעונים מעוררים ותזכורות</string>
-    <string name="allowSettingExactAlarmsInstructions">כדי לקבל התרעות צבע אדום בזמן אמת, אשר/י ״הגדרת שעונים מעוררים ותזכורות״ במסך הבא.</string>
+    <string name="allowSettingExactAlarms">Allow setting alarms and reminders</string>
+    <string name="allowSettingExactAlarmsInstructions">To receive notifications in the background, please allow setting alarms and reminders in the next screen.</string>
 
     <!-- Pushy Foreground Service -->
-    <string name="foregroundService">שפר אמינות</string>
-    <string name="foregroundServiceDesc">הצג התראה קבועה שתמנע ממערכת ההפעלה לכבות את האפליקציה ברקע</string>
-    <string name="pushy_foreground_service_title">צבע אדום</string>
-    <string name="pushy_foreground_service_connected">מחובר לשירות ההתרעות</string>
-    <string name="pushy_foreground_service_connecting">מתחבר לשירות ההתרעות</string>
-    <string name="pushy_foreground_service_disconnected">לא מחובר לשירות ההתרעות</string>
+    <string name="foregroundService">Improve reliability</string>
+    <string name="foregroundServiceDesc">Display an ongoing notification that will prevent Android from killing the app in the background</string>
+    <string name="pushy_foreground_service_title">@string/appName</string>
+    <string name="pushy_foreground_service_connected">Connected to the notification service</string>
+    <string name="pushy_foreground_service_connecting">Connecting...</string>
+    <string name="pushy_foreground_service_disconnected">Not connected to the notification service</string>
 
-    <!-- Threat Types -->
-    <string name="missiles">ירי רקטות</string>
-    <string name="radiologicalEvent">אירוע רדיולוגי</string>
-    <string name="earthQuake">רעידת אדמה</string>
-    <string name="tsunami">סכנת צונאמי</string>
-    <string name="hostileAircraftIntrusion">חדירת כלי טיס</string>
-    <string name="hazardousMaterials">אירוע חומרים מסוכנים</string>
-    <string name="terroristInfiltration">חדירת מחבלים</string>
-    <string name="missilesDrill">תרגיל: ירי רקטות</string>
-    <string name="earthQuakeDrill">תרגיל: רעידת אדמה</string>
-    <string name="radiologicalEventDrill">תרגיל: אירוע רדיולוגי</string>
-    <string name="tsunamiDrill">תרגיל: סכנת צונאמי</string>
-    <string name="hostileAircraftIntrusionDrill">תרגיל: חדירת כלי טיס</string>
-    <string name="hazardousMaterialsDrill">תרגיל: אירוע חומרים מסוכנים</string>
-    <string name="terroristInfiltrationDrill">תרגיל: חדירת מחבלים</string>
-    <string name="unknown">אזעקה</string>
-    <string name="system">הודעת מערכת</string>
-
-    <!-- Threat Instructions -->
-    <string name="missilesInstructions">היכנסו למרחב המוגן ושהו בו 10 דקות.</string>
-    <string name="hostileAircraftIntrusionInstructions">היכנסו מיד למרחב המוגן ושהו בו למשך 10 דקות, אלא אם ניתנה התרעה נוספת.</string>
-    <string name="earthQuakeInstructions">צאו מיד לשטח פתוח. אם לא ניתן, היכנסו לממ"ד או לחדר מדרגות.</string>
-    <string name="radiologicalEventInstructions">היכנסו למבנה וסגרו את הדלתות והחלונות.</string>
-    <string name="terroristInfiltrationInstructions">היכנסו מיד למבנה וסגרו את הדלתות והחלונות.</string>
-    <string name="tsunamiInstructions">התרחקו מיד מחוף הים קילומטר אחד לפחות או עלו לקומה רביעית ומעלה.</string>
-    <string name="hazardousMaterialsInstructions">היכנסו מיד למבנה וסגרו את הדלתות והחלונות.</string>
-
-    <!-- Custom Sound Selection Dialog -->
-    <string name="selectCustomSound">בחר צליל מהטלפון</string>
-    <string name="selectCustomSoundDesc">בחר/י צליל משלך על ידי לחיצה על ״צליל״ -> ״הצלילים שלי״ -> ״+״ -> ״שמירה״ במסך הבא.</string>
-
-    <!-- Battery Optimization Dialog -->
-    <string name="disableBatteryOptimizations">ביטול אופטימיזציות סוללה</string>
-    <string name="disableBatteryOptimizationsInstructions">כדי לקבל התרעות צבע אדום בזמן אמת, בחר/י ״סוללה״ -> ״ללא הגבלות״ במסך הבא.</string>
-    <string name="disableBatteryOptimizationsSamsungInstructions">כדי לקבל התרעות צבע אדום בזמן אמת, בחר/י ״סוללה״ במסך הבא -> ״מטב את השימוש בסוללה״ -> ״יישומים ללא מיטוב״ -> ״הכל״ -> ״צבע אדום״ -> כבה/י את המיטוב עבור האפליקציה.</string>
-
-    <!-- Hide GPS Foreground Notification Dialog -->
-    <string name="hideGPSForegroundNotification">איכון מיקום ברקע</string>
-    <string name="hideGPSForegroundNotificationInstructions">לידיעתך, האפליקציה צריכה להציג התראה קבועה כדי שהיא תוכל לאכן את מיקומך ברקע.\n\nאפשר להסתירה על-ידי כיבוי ״הצגת התראות״ במסך הבא. האפליקציה תמשיך לאכן את מיקומך ברקע גם לאחר הסתרת ההתראה.</string>
-
-    <!-- Hide Pushy Foreground Notification Dialog -->
-    <string name="hidePushyForegroundNotification">הסתרת ההתראה הקבועה</string>
-    <string name="hidePushyForegroundNotificationInstructions">לידיעתך, האפליקציה צריכה להציג התראה קבועה כדי שהיא תוכל להמשיך לרוץ ברקע.\n\nאפשר להסתירה על-ידי כיבוי ״הצגת התראות״ במסך הבא. האפליקציה תמשיך לרוץ ברקע גם לאחר הסתרת ההתראה.</string>
-
-    <!-- Battery Optimization Reminder Setting -->
-    <string name="disableBatteryOptimizationsReminder">חשוב: ביטול אופטימיזציות סוללה</string>
-    <string name="disableBatteryOptimizationsReminderDesc">זיהינו כי עוד לא ביטלת אופטימיזציות סוללה עבור האפליקציה. כדי לקבל התרעות צבע אדום בזמן אמת, יש לבטל אופטימיזציות סוללה. לחץ כאן למידע נוסף.</string>
-
-    <!-- Clear Recent Alerts Dialog -->
-    <string name="clearRecentAlerts">מחק התרעות אחרונות?</string>
-    <string name="clearRecentAlertsDesc">האם תרצה למחוק את כל ההתרעות האחרונות?</string>
+    <!-- Miscellaneous -->
+    <string name="loading">Loading...</string>
+    <string name="testingFCM">Testing push gateway... (1/2)</string>
+    <string name="testingPushy">Testing push gateway... (2/2)</string>
+    <string name="fcmTestFailed">The self-test failed partially. No alert was received from Google\'s push gateway, but an alert was successfully received via the secondary push gateway. Please try again later.</string>
+    <string name="pushyTestFailed">The self-test failed partially. No alert was received from the secondary push gateway, but an alert was successfully received via Google\'s push gateway. Please try again later.</string>
+    <string name="debugInfo">Additional Info: </string>
+    <string name="testSuccessful">The test has completed successfully!</string>
+    <string name="alerts">Alerts</string>
+    <string name="advancedAlerts">Advanced Alerts</string>
 
     <!-- Operation Lifeshield -->
-    <string name="lifeshieldShelters">מקלטי לייפשילד:</string>
-    <string name="learnAboutLifeshield">למד עוד על לייפשילד</string>
-    <string name="learnAboutLifeshieldDesc">למד עוד על לייפשילד, ארגון ללא מטרות רווח המציב מקלטים ברחבי ישראל.</string>
+    <string name="lifeshieldShelters">Lifeshield Shelters:</string>
+    <string name="learnAboutLifeshield">Learn about Lifeshield</string>
+    <string name="learnAboutLifeshieldDesc">Learn more about Operation Lifeshield, a nonprofit that deploys air raid shelters in Israel.</string>
 
     <!-- Time To Shelter -->
-    <string name="immediately">מיידי</string>
-    <string name="fifteenSeconds">15 שניות</string>
-    <string name="thirtySeconds">30 שניות</string>
-    <string name="fortyFiveSeconds">45 שניות</string>
-    <string name="oneMinute">דקה</string>
-    <string name="oneMinuteAndAHalf">דקה וחצי</string>
-    <string name="threeMinutes">3 דקות</string>
+    <string name="immediately">Immediately</string>
+    <string name="fifteenSeconds">15 seconds</string>
+    <string name="thirtySeconds">30 seconds</string>
+    <string name="fortyFiveSeconds">45 seconds</string>
+    <string name="oneMinute">A ​​minute</string>
+    <string name="oneMinuteAndAHalf">A minute and a half</string>
+    <string name="threeMinutes">3 minutes</string>
 
-    <!-- Do not translate from here on down -->
+    <!-- Threat Types -->
+    <string name="missiles">Rocket fire</string>
+    <string name="radiologicalEvent">Radiological event</string>
+    <string name="earthQuake">Earthquake</string>
+    <string name="tsunami">Tsunami warning</string>
+    <string name="hostileAircraftIntrusion">Hostile aircraft intrusion</string>
+    <string name="hazardousMaterials">Hazardous materials event</string>
+    <string name="terroristInfiltration">Terrorist infiltration</string>
+    <string name="missilesDrill">Drill: Rocket fire</string>
+    <string name="earthQuakeDrill">Drill: Earthquake</string>
+    <string name="radiologicalEventDrill">Drill: Radiological event</string>
+    <string name="tsunamiDrill">Drill: Tsunami warning</string>
+    <string name="hostileAircraftIntrusionDrill">Drill: Hostile aircraft intrusion</string>
+    <string name="hazardousMaterialsDrill">Drill: Hazardous materials event</string>
+    <string name="terroristInfiltrationDrill">Drill: Terrorist infiltration</string>
+    <string name="unknown">Alert</string>
+    <string name="system">System Alert</string>
+
+    <!-- Threat Instructions -->
+    <string name="missilesInstructions">Enter the protected space and stay in it for 10 minutes.</string>
+    <string name="hostileAircraftIntrusionInstructions">Enter the protected space immediately and stay in it for 10 minutes, unless another alert is received.</string>
+    <string name="earthQuakeInstructions">Immediately go out into the open. If not possible, enter the protected room or stairwell.</string>
+    <string name="radiologicalEventInstructions">Enter a building and close the doors and windows.</string>
+    <string name="terroristInfiltrationInstructions">Immediately enter a nearby building, lock the doors and close the windows.</string>
+    <string name="tsunamiInstructions">Immediately move at least one kilometer away from the beach or go up to a fourth floor and higher.</string>
+    <string name="hazardousMaterialsInstructions">Immediately enter a nearby building and close the doors and windows.</string>
+
+    <!-- Custom Sound Selection Dialog -->
+    <string name="selectCustomSound">Select custom sound</string>
+    <string name="selectCustomSoundDesc">Choose your own sound by tapping \"Sound\" -> \"My Sounds\" -> \"+\" -> \"Save\" on the next screen.</string>
+
+    <!-- Battery Optimization Dialog -->
+    <string name="disableBatteryOptimizations">Disable battery optimizations</string>
+    <string name="disableBatteryOptimizationsInstructions">To receive alerts in the background, please set \"Battery\" to \"Unrestricted\" in the next screen.</string>
+    <string name="disableBatteryOptimizationsSamsungInstructions">To receive alerts in the background, select \"Battery\" on the next screen -> \"Optimize battery usage\" -> \"Apps not optimized\" -> \"All\" -> \"RedAlert\" -> Turn off optimization for the app.</string>
+
+    <!-- Hide GPS Foreground Notification Dialog -->
+    <string name="hideGPSForegroundNotification">Background location access</string>
+    <string name="hideGPSForegroundNotificationInstructions">RedAlert needs to display an ongoing notification so that it can keep accessing your location while the app is in the background.\n\nYou can hide it by turning off \"Show notifications\" on the next screen. The app will still be able to access your location in the background.</string>
+
+    <!-- Hide Pushy Foreground Notification Dialog -->
+    <string name="hidePushyForegroundNotification">Hide ongoing notification</string>
+    <string name="hidePushyForegroundNotificationInstructions">RedAlert needs to display an ongoing notification so that it can continue to run while the app is in the background.\n\nYou can hide it by turning off \"Show notifications\" on the next screen. The app will still be able to run in the background.</string>
+
+    <!-- Battery Optimization Reminder Setting -->
+    <string name="disableBatteryOptimizationsReminder">Important: Disable battery optimizations</string>
+    <string name="disableBatteryOptimizationsReminderDesc">We\'ve detected that you have not yet disabled battery optimizations for RedAlert. To receive alerts in real-time while the app is running in the background, you must disable battery optimizations. Tap for instructions.</string>
+
+    <!-- Clear Recent Alerts Dialog -->
+    <string name="clearRecentAlerts">Clear recent alerts?</string>
+    <string name="clearRecentAlertsDesc">Would you like to clear all recent alerts?</string>
+    <string name="alert_title">NYPREPPER EMERGENCY ALERT</string>
 
     <!-- Static Language Identifiers -->
     <string translatable="false" name="english">English</string>

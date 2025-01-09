@@ -61,7 +61,7 @@
     <string name="darkTheme">Escuro</string>
     <string name="automatic">Automático</string>
     <string name="selectedCities">Cidades</string>
-    <string name="selectedCitiesDesc">Receber alertas de cidades e municípios específicos</string>
+    <string name="selectedTopicsDesc">Receber alertas de cidades e municípios específicos</string>
     <string name="selectedZones">Regiões adicionais</string>
     <string name="selectedZonesDesc">Receber alertas de regiões inteiras (além das cidades)</string>
     <string name="silentOverride">Ignorar modo silencioso</string>

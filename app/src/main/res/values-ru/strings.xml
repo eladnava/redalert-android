@@ -59,7 +59,7 @@
 
     <!-- City Selection -->
     <string name="selectedCities">Города</string>
-    <string name="selectedCitiesDesc">Получайте оповещения о конкретных городах и поселках</string>
+    <string name="selectedTopicsDesc">Получайте оповещения о конкретных городах и поселках</string>
 
     <!-- Self-test -->
     <string name="test">Проверка</string>

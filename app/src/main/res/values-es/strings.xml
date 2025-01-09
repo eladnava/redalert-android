@@ -63,7 +63,7 @@
 
     <!-- City Selection -->
     <string name="selectedCities">Ciudades</string>
-    <string name="selectedCitiesDesc">Reciba alertas sobre ciudades y pueblos específicos</string>
+    <string name="selectedTopicsDesc">Reciba alertas sobre ciudades y pueblos específicos</string>
 
     <!-- Self-test -->
     <string name="test">Prueba</string>

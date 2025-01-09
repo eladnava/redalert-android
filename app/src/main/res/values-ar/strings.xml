@@ -61,7 +61,7 @@
     <string name="lightTheme">ضوء</string>
     <string name="darkTheme">مظلم</string>
     <string name="selectedCities">المدن</string>
-    <string name="selectedCitiesDesc">تلقي تنبيهات حول مدن وبلدات محددة</string>
+    <string name="selectedTopicsDesc">تلقي تنبيهات حول مدن وبلدات محددة</string>
     <string name="selectedZones">مناطق إضافية</string>
     <string name="selectedZonesDesc">تلقي تنبيهات حول مناطق بأكملها (بالإضافة إلى المدن)</string>
     <string name="silentOverride">تجاوز الوضع الصامت</string>

@@ -10,7 +10,7 @@
             android:title="@string/gpsEnabled"
             android:summary="@string/gpsEnabledDesc"
             android:defaultValue="false"/>
-        <com.red.alert.ui.elements.SliderPreference
+        <com.github.timboode.NYP_alert_android.ui.elements.SliderPreference
             android:key="@string/gpsFrequencyPref"
             android:title="@string/gpsFrequency"
             android:summary="@string/gpsFrequencyDesc"
@@ -18,7 +18,7 @@
             android:defaultValue="@string/defaultGPSPollingFrequency"
             android:dialogMessage="@string/gpsFrequencyDesc"
             android:dependency="@string/locationAlertsPref"/>
-        <com.red.alert.ui.elements.SliderPreference
+        <com.github.timboode.NYP_alert_android.ui.elements.SliderPreference
             android:key="@string/maxDistancePref"
             android:title="@string/maxDistance"
             android:summary="@string/maxDistanceDesc"

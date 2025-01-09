@@ -66,7 +66,7 @@
     <string name="silentOverrideDesc">Raketenwarnungen deaktivieren kurzzeitig den nicht stören Modus</string>
     <string name="selectedCities">Städte</string>
     <string name="testSuccessfulLong">Der Selbsttest ist erfolgreich abgeschlossen!</string>
-    <string name="selectedCitiesDesc">Erhalten Sie Benachrichtigungen über bestimmte Städte und Gemeinden</string>
+    <string name="selectedTopicsDesc">Erhalten Sie Benachrichtigungen über bestimmte Städte und Gemeinden</string>
     <string name="website">Besuche unsere Website</string>
     <string name="websiteDesc">Klick hier zum Besuchen der offiziellen Webseite</string>
     <string name="alertRegions">Bereiche</string>

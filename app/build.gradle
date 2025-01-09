@@ -1,49 +1,50 @@
-apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
 
 android {
-    compileSdkVersion 34
-    buildToolsVersion '28.0.3'
+    compileSdk 35
+    buildToolsVersion = '35.0.0'
+
+    namespace "com.github.timboode.NYP_alert_android"
+    defaultConfig {
+        applicationId "com.github.timboode.NYP_alert_android"
+        versionName "0.1.0"
+        versionCode 1
+
+        minSdk 17
+        targetSdk 35
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
-    defaultConfig {
-        applicationId "com.red.alert"
-        minSdkVersion 21
-        targetSdkVersion 34
-        versionCode 10750
-        versionName "1.0.75"
-    }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    buildFeatures {
+        buildConfig true
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
     }
 }
 
 dependencies {
-    // Pushy Android SDK
-    implementation 'me.pushy:sdk:1.0.121'
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
 
-    // PrettyTime
-    implementation 'org.ocpsoft.prettytime:prettytime:4.0.4.Final'
-
-    // AppCompat v7 Dependency
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-
-    // Firebase Cloud Messaging
-    implementation "com.google.firebase:firebase-messaging:24.0.2"
-
-    // Google Maps & Location APIs
-    implementation 'com.google.android.gms:play-services-maps:19.0.0'
-    implementation 'com.google.android.gms:play-services-location:19.0.0'
-
-    // Google Play Billing Library
-    implementation "com.android.billingclient:billing:7.1.1"
-
-    // All .jar files in ./libs
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
+    <string-array name="langNames">
+        <item>@string/automatic</item>
+        <item>@string/hebrew</item>
+        <item>@string/english</item>
+        <item>@string/arabic</item>
+        <item>@string/spanish</item>
+        <item>@string/russian</item>
+        <item>@string/italian</item>
+        <item>@string/french</item>
+        <item>@string/german</item>
+        <item>@string/portuguese</item>
+    </string-array>
+    <string-array name="langValues">
+        <item></item>
+        <item>@string/hebrewCode</item>
+        <item>@string/englishCode</item>
+        <item>@string/arabicCode</item>
+        <item>@string/spanishCode</item>
+        <item>@string/russianCode</item>
+        <item>@string/italianCode</item>
+        <item>@string/frenchCode</item>
+        <item>@string/germanCode</item>
+        <item>@string/portugueseCode</item>
+    </string-array>
+    <string-array name="themeNames">
+        <item>@string/lightTheme</item>
+        <item>@string/darkTheme</item>
+        <item>@string/automatic</item>
+    </string-array>
+    <string-array name="themeValues">
+        <item>@string/lightThemeCode</item>
+        <item>@string/darkThemeCode</item>
+        <item>@string/automaticThemeCode</item>
+    </string-array>
+    <string-array name="sounds">
+        <item>@string/siren1</item>
+        <item>@string/siren2</item>
+        <item>@string/siren3</item>
+        <item>@string/siren4</item>
+        <item>@string/siren5</item>
+        <item>@string/tzevaAdom</item>
+        <item>@string/calm</item>
+        <item>@string/calm2</item>
+        <item>@string/calm3</item>
+        <item>@string/calm4</item>
+        <item>@string/calm5</item>
+        <item>@string/tiny</item>
+        <item>@string/tiny2</item>
+        <item>@string/tiny3</item>
+        <item>@string/tiny4</item>
+        <item>@string/tiny5</item>
+        <item>@string/tiny6</item>
+        <item>@string/funny</item>
+        <item>@string/noSound</item>
+        <item>@string/selectCustomSound</item>
+    </string-array>
+    <string-array translatable="false" name="soundValues">
+        <item>alarm1</item>
+        <item>alarm2</item>
+        <item>alarm3</item>
+        <item>alarm4</item>
+        <item>alarm5</item>
+        <item>tzevaadom</item>
+        <item>calm</item>
+        <item>calm2</item>
+        <item>calm3</item>
+        <item>calm4</item>
+        <item>calm5</item>
+        <item>tiny</item>
+        <item>tiny2</item>
+        <item>tiny3</item>
+        <item>tiny4</item>
+        <item>tiny5</item>
+        <item>tiny6</item>
+        <item>funny</item>
+        <item></item>
+        <item>custom</item>
+    </string-array>
+    <string-array name="zoneNames">
+        <item>בחר הכל</item>
+        <item>אילת</item>
+        <item>בקעה</item>
+        <item>בקעת בית שאן</item>
+        <item>גולן דרום</item>
+        <item>גולן צפון</item>
+        <item>גליל עליון</item>
+        <item>גליל תחתון</item>
+        <item>דן</item>
+        <item>דרום הנגב</item>
+        <item>הכרמל</item>
+        <item>המפרץ</item>
+        <item>העמקים</item>
+        <item>השפלה</item>
+        <item>ואדי ערה</item>
+        <item>יהודה</item>
+        <item>ים המלח</item>
+        <item>ירושלים</item>
+        <item>ירקון</item>
+        <item>לכיש</item>
+        <item>מנשה</item>
+        <item>מערב הנגב</item>
+        <item>מערב לכיש</item>
+        <item>מרכז הגליל</item>
+        <item>מרכז הנגב</item>
+        <item>עוטף עזה</item>
+        <item>ערבה</item>
+        <item>קו העימות</item>
+        <item>שומרון</item>
+        <item>שפלת יהודה</item>
+        <item>שרון</item>
+    </string-array>
+    <string-array translatable="false" name="zoneValues">
+        <item>all</item>
+        <item>אילת</item>
+        <item>בקעה</item>
+        <item>בקעת בית שאן</item>
+        <item>גולן דרום</item>
+        <item>גולן צפון</item>
+        <item>גליל עליון</item>
+        <item>גליל תחתון</item>
+        <item>דן</item>
+        <item>דרום הנגב</item>
+        <item>הכרמל</item>
+        <item>המפרץ</item>
+        <item>העמקים</item>
+        <item>השפלה</item>
+        <item>ואדי ערה</item>
+        <item>יהודה</item>
+        <item>ים המלח</item>
+        <item>ירושלים</item>
+        <item>ירקון</item>
+        <item>לכיש</item>
+        <item>מנשה</item>
+        <item>מערב הנגב</item>
+        <item>מערב לכיש</item>
+        <item>מרכז הגליל</item>
+        <item>מרכז הנגב</item>
+        <item>עוטף עזה</item>
+        <item>ערבה</item>
+        <item>קו העימות</item>
+        <item>שומרון</item>
+        <item>שפלת יהודה</item>
+        <item>שרון</item>
+    </string-array>
+</resources>

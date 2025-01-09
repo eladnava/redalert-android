@@ -28,7 +28,7 @@
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/alertRegions">
-        <com.red.alert.ui.elements.SearchableMultiSelectPreference
+        <com.github.timboode.NYP_alert_android.ui.elements.SearchableMultiSelectPreference
             redalert:checkAll="@string/all"
             redalert:separator="|"
             android:defaultValue="@string/none"
@@ -36,8 +36,8 @@
             android:dialogTitle="@string/selectedCities"
             android:title="@string/selectedCities"
             android:dependency="@string/enabledPref"
-            android:summary="@string/selectedCitiesDesc"/>
-        <com.red.alert.ui.elements.SearchableMultiSelectPreference
+            android:summary="@string/selectedTopicsDesc"/>
+        <com.github.timboode.NYP_alert_android.ui.elements.SearchableMultiSelectPreference
             redalert:checkAll="@string/all"
             redalert:separator="|"
             android:defaultValue="@string/none"
@@ -49,7 +49,7 @@
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/sounds">
-        <com.red.alert.ui.elements.SoundListPreference
+        <com.github.timboode.NYP_alert_android.ui.elements.SoundListPreference
             android:title="@string/soundSelection"
             android:key="@string/soundPref"
             android:summary="@string/soundSelectionDesc"
