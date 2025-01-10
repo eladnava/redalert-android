@@ -18,7 +18,7 @@ public class BootReceiver extends BroadcastReceiver {
             // Location alerts enabled?
             if (AppPreferences.getLocationAlertsEnabled(context)) {
                 // Start the location service
-                ServiceManager.startLocationService(context);
+                ServiceManager.startPushNotificationService(context);
             }
         }
     }

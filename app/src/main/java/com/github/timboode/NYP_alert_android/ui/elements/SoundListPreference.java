@@ -145,19 +145,19 @@ public class SoundListPreference extends ListPreference {
                         mSelectedItem = which;
 
                         // Get test type
-                        String testAlertType = AlertTypes.TEST_SOUND;
+                        String testAlertType = AlertTypes.TEST;
 
                         // Secondary notification?
                         if (mContext.getClass().getName().equals(SecondaryAlerts.class.getName())) {
                             // Override type
-                            testAlertType = AlertTypes.TEST_SECONDARY_SOUND;
+                            testAlertType = AlertTypes.TEST;
                         }
 
                         // Stop any previously-selected sound
                         SoundLogic.stopSound(mContext);
 
                         // Dispatch test notification
-                        Notifications.notify(mContext, Arrays.asList(new String[]{mContext.getString(R.string.appName)}), testAlertType, testAlertType, path);
+                        Notifications.notify(mContext, mContext.getString(R.string.appName), testAlertType, testAlertType, path);
                     }
                 });
 

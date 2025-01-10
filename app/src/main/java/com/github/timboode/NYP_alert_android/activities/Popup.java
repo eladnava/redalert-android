@@ -49,7 +49,7 @@ public class Popup extends AppCompatActivity {
 
     ImageView mThreatIcon;
 
-    public static void showAlertPopup(String alertType, List<String> cities, String threatType, Context context) {
+    public static void showAlertPopup(String alertType, String message, String threatType, Context context) {
         // Only display popup for primary/secondary alerts (no test/sound/system notifications)
         if (!alertType.equals(AlertTypes.PRIMARY) && !alertType.equals(AlertTypes.SECONDARY)) {
             return;
@@ -81,7 +81,7 @@ public class Popup extends AppCompatActivity {
 
         // Pass on alert cities & threat type
         popupIntent.putExtra(AlertPopupParameters.THREAT_TYPE, threatType);
-        popupIntent.putExtra(AlertPopupParameters.CITIES, cities.toArray(new String[0]));
+        popupIntent.putExtra(AlertPopupParameters.THREAT_MESSAGE, message);
 
         // Clear top, set as new task
         popupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

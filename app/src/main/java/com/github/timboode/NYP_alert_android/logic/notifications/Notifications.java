@@ -34,57 +34,35 @@ import com.github.timboode.NYP_alert_android.receivers.NotificationDeletedReceiv
 import com.github.timboode.NYP_alert_android.utils.communication.Broadcasts;
 import com.github.timboode.NYP_alert_android.utils.formatting.StringUtils;
 import com.github.timboode.NYP_alert_android.utils.localization.DateTime;
-import com.github.timboode.NYP_alert_android.utils.metadata.LocationData;
 
 import java.util.List;
 
 public class Notifications {
-    public static void notify(Context context, List<String> cities, String alertType, String threatType, String overrideSound) {
-        // Localize threat type
-        String localizedThreatType = LocationData.getLocalizedThreatType(threatType, context);
-
-        // Prepare notification title with threat type and city name
-        String notificationTitle = localizedThreatType + ": " + LocationData.getLocalizedCityNamesCSV(cities, context);
-
-        // Prepare notification body with zone and countdown
-        String notificationContent = LocationData.getLocalizedCityZonesWithCountdownCSV(cities, threatType, context);
-
-        // Missile alert?
-        if (threatType.contains(ThreatTypes.MISSILES)) {
-            // Add line break if needed
-            if (!StringUtils.stringIsNullOrEmpty(notificationContent)) {
-                notificationContent += "\n";
-            }
-
-            // Add threat instructions to notification body in a new line after zone and countdown
-            notificationContent += LocationData.getLocalizedThreatInstructions(threatType, context);
-        } else if (!threatType.contains(ThreatTypes.TEST)) {
+    public static void notify(Context context, String title, String message, String threatType, String overrideSound) {
+        if (!threatType.contains(ThreatTypes.TEST)) {
             // For all other threat types, only display threat instructions in notification body (don't display zone / countdown)
-            notificationContent = LocationData.getLocalizedThreatInstructions(threatType, context);
+            message = "TEST -> " + message;
         }
 
         // In case there is no content
-        if (StringUtils.stringIsNullOrEmpty(notificationContent)) {
+        if (StringUtils.stringIsNullOrEmpty(message)) {
             // Move title to content
-            notificationContent = notificationTitle;
+            message = title;
 
             // Set title as app name
-            notificationTitle = context.getString(R.string.appName);
+            title = context.getString(R.string.appName);
         }
 
         // Sound picker open?
-        if (alertType.contains(AlertTypes.TEST_SOUND)) {
+        if (threatType.contains(AlertTypes.TEST_SOUND)) {
             // Set special notification description for sound testing notifications
-            notificationContent = context.getString(R.string.testSound);
+            message = context.getString(R.string.testSound);
         }
 
         // System message?
-        if (alertType.equals(AlertTypes.SYSTEM)) {
+        if (threatType.equals(AlertTypes.SYSTEM)) {
             // Set title to app name
-            notificationTitle = context.getString(R.string.appName);
-
-            // Set notification body to system message text contained in cities variable
-            notificationContent = TextUtils.join(", ", cities);
+            title = context.getString(R.string.appName);
         }
 
         // Get notification manager
@@ -92,46 +70,40 @@ public class Notifications {
 
         // Create a new notification and style it
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
-                .setTicker(notificationContent)
+                .setTicker(message)
                 .setAutoCancel(true)
-                .setContentTitle(notificationTitle)
-                .setContentText(notificationContent)
+                .setContentTitle(title)
+                .setContentText(message)
                 .setLights(Color.RED, 1000, 1000)
                 .setSmallIcon(R.drawable.ic_notify)
                 .setCategory(NotificationCompat.CATEGORY_ALARM)
                 .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setColor(context.getResources().getColor(R.color.colorAccent))
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(notificationContent));
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(message));
 
         // Only display large icon in case title is less than X characters long
         // as it causes the title to get truncated prematurely
-        if (notificationTitle.length() < 55 || !threatType.contains(ThreatTypes.MISSILES)) {
-            builder.setLargeIcon(BitmapFactory.decodeResource(context.getResources(), LocationData.getThreatDrawable(threatType)));
+        if (title.length() < 55 || !threatType.contains(ThreatTypes.MISSILES)) {
+            builder.setLargeIcon(BitmapFactory.decodeResource(context.getResources(), ThreatTypeDrawableMapper.ThreatTypeToDrawable(threatType)));
         }
 
         // Handle notification delete
         builder.setDeleteIntent(getNotificationDeletedReceiverIntent(context));
 
         // No click event for test notifications
-        if (!alertType.contains(AlertTypes.TEST)) {
+        if (!threatType.contains(AlertTypes.TEST)) {
             // Handle notification click
-            builder.setContentIntent(getNotificationIntent(cities, threatType, context));
+            builder.setContentIntent(getNotificationIntent(threatType, context));
         }
 
         // Generate a notification ID based on the unique hash-code of the notification title string to avoid duplicates
-        int notificationId = notificationTitle.hashCode();
+        int notificationId = message.hashCode();
 
         // Cancel previous notification with same exact notification title string
         notificationManager.cancel(notificationId);
 
-        // Secondary alert?
-        if (AlertLogic.isSecondaryAlert(alertType, cities, context)) {
-            // Override type
-            alertType = AlertTypes.SECONDARY;
-        }
-
         // Configure notification channel (if required)
-        setNotificationChannel(alertType, overrideSound, builder, context);
+        setNotificationChannel(threatType, overrideSound, builder, context);
 
         try {
             // Issue the notification
@@ -143,16 +115,16 @@ public class Notifications {
         }
 
         // Vibrate (if applicable)
-        VibrationLogic.issueVibration(alertType, context);
+        VibrationLogic.issueVibration(threatType, context);
 
         // Play alert sound (if applicable)
-        SoundLogic.playSound(alertType, overrideSound, context);
+        SoundLogic.playSound(threatType, overrideSound, context);
 
         // Wake up phone screen (if enabled)
-        PowerManagement.wakeUpScreen(alertType, context);
+        PowerManagement.wakeUpScreen(threatType, context);
 
         // Show alert popup (if applicable)
-        Popup.showAlertPopup(alertType, cities, threatType, context);
+        Popup.showAlertPopup(threatType, message, threatType, context);
 
         // Reload recent alerts (if main activity is open)
         Broadcasts.publish(context, MainActivityParameters.RELOAD_RECENT_ALERTS);
@@ -169,13 +141,12 @@ public class Notifications {
         return PendingIntent.getBroadcast(context, 0, deleteIntent, PendingIntent.FLAG_IMMUTABLE);
     }
 
-    public static PendingIntent getNotificationIntent(List<String> cities, String threatType, Context context) {
+    public static PendingIntent getNotificationIntent(String threatType, Context context) {
         // Prepare notification intent
         Intent notificationIntent = new Intent(context, Main.class);
 
         // Pass on city name, threat type, and alert received timestamp
         notificationIntent.putExtra(AlertPopupParameters.THREAT_TYPE, threatType);
-        notificationIntent.putExtra(AlertPopupParameters.CITIES, cities.toArray(new String[0]));
         notificationIntent.putExtra(AlertPopupParameters.TIMESTAMP, DateTime.getUnixTimestamp());
 
         // Prepare pending intent

@@ -34,7 +34,6 @@ import com.github.timboode.NYP_alert_android.logic.alerts.AlertTypes;
 import com.github.timboode.NYP_alert_android.logic.communication.broadcasts.LocationSelectionEvents;
 import com.github.timboode.NYP_alert_android.logic.communication.broadcasts.SettingsEvents;
 import com.github.timboode.NYP_alert_android.logic.feedback.sound.SoundLogic;
-import com.github.timboode.NYP_alert_android.logic.location.LocationLogic;
 import com.github.timboode.NYP_alert_android.logic.push.PushManager;
 import com.github.timboode.NYP_alert_android.logic.settings.AppPreferences;
 import com.github.timboode.NYP_alert_android.ui.activities.AppCompatPreferenceActivity;
@@ -446,22 +445,6 @@ public class General extends AppCompatPreferenceActivity {
         body += "primary.enabled=" + AppPreferences.getNotificationsEnabled(this) + ", ";
         body += "secondary.enabled=" + AppPreferences.getSecondaryNotificationsEnabled(this) + ", ";
         body += "location.enabled=" + AppPreferences.getLocationAlertsEnabled(this) + ", ";
-
-        // Check if location alerts enabled
-        if (AppPreferences.getLocationAlertsEnabled(this)) {
-            // Get current location
-            Location location = LocationLogic.getCurrentLocation(this);
-
-            // Null check
-            if (location != null) {
-                // Add topics for debugging purposes
-                body += "topics=" + "TODO" + ", "; // TODO: Populate topics
-            }
-
-            // Add max distance and update interval
-            body += "location.maxDistance=" + LocationLogic.getMaxDistanceKilometers(this, -1) + "km, ";
-            body += "location.updateInterval=every " + LocationLogic.getUpdateIntervalMilliseconds(this) / 1000 / 60 + " minute(s), ";
-        }
 
         // Add other params
         body += "volume.primary=" + AppPreferences.getPrimaryAlertVolume(this, -1) + ", ";

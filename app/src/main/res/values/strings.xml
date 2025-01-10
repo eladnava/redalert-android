@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="appName">NYP EAS</string>
+    <string name="appName">NYPrepper Emergency Alert System</string>
     <string name="signing_up">Signing up for push notifications...</string>
     <string name="okay">OK</string>
     <string name="yes">Yes</string>
@@ -261,7 +261,7 @@
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">Clear recent alerts?</string>
     <string name="clearRecentAlertsDesc">Would you like to clear all recent alerts?</string>
-    <string name="alert_title">NYPREPPER EMERGENCY ALERT</string>
+    <string name="alert_title" translatable="false">NYPREPPER EMERGENCY ALERT</string>
 
     <!-- Static Language Identifiers -->
     <string translatable="false" name="english">English</string>

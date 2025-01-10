@@ -39,7 +39,6 @@ import com.github.timboode.NYP_alert_android.config.ThreatTypes;
 import com.github.timboode.NYP_alert_android.logic.communication.broadcasts.SettingsEvents;
 import com.github.timboode.NYP_alert_android.logic.communication.intents.AlertPopupParameters;
 import com.github.timboode.NYP_alert_android.logic.communication.intents.MainActivityParameters;
-import com.github.timboode.NYP_alert_android.logic.location.LocationLogic;
 import com.github.timboode.NYP_alert_android.logic.permissions.AndroidPermissions;
 import com.github.timboode.NYP_alert_android.logic.services.ServiceManager;
 import com.github.timboode.NYP_alert_android.logic.settings.AppPreferences;
@@ -127,11 +126,6 @@ public class Main extends AppCompatActivity {
     void showAppUpdateAvailableDialog() {
         // Haven't displayed tutorial?
         if (!AppPreferences.getTutorialDisplayed(this)) {
-            return;
-        }
-
-        // Not registered?
-        if (!RedAlertAPI.isRegistered(Main.this)) {
             return;
         }
 
@@ -296,9 +290,6 @@ public class Main extends AppCompatActivity {
         // Ask user to whitelist app from battery optimizations
         showBatteryExemptionDialog();
 
-        // Ask user to enable location permission if necessary
-        showLocationPermissionDialog();
-
         // Android 12+
         // Ask user to allow setting exact alarms if canScheduleExactAlarms() is false (usually only false on Android 13+, but can be disabled manually since Android 12)
         showScheduleExactAlarmsPermissionDialog();
@@ -313,7 +304,7 @@ public class Main extends AppCompatActivity {
         ServiceManager.startAppServices(this);
 
         // Always re-register FCM or Pushy on app start
-        if (!mPushTokensRefreshed || TODO_INSERT_REGISTRATION_CHECK || !RedAlertAPI.isRegistered(Main.this) || !RedAlertAPI.isSubscribed(Main.this)) { // TODO: Replace TODO_INSERT_REGISTRATION_CHECK with a push notification registration check
+        if (!mPushTokensRefreshed || TODO_INSERT_REGISTRATION_CHECK) { // TODO: Replace TODO_INSERT_REGISTRATION_CHECK with a push notification registration check
             // Prevent concurrent registration
             if (!mIsRegistering) {
                 new RegisterPushAsync().execute();
@@ -341,27 +332,6 @@ public class Main extends AppCompatActivity {
                     AndroidSettings.openAppInfoPage(Main.this);
                 }
             });
-        }
-    }
-
-    void showLocationPermissionDialog() {
-        // Location alerts disabled?
-        if (!AppPreferences.getLocationAlertsEnabled(this)) {
-            return;
-        }
-
-        // Already displayed a permission dialog for this activity?
-        if (mPermissionDialogDisplayed) {
-            return;
-        }
-
-        // Can we access the user's location?
-        if (!LocationLogic.isLocationAccessGranted(this)) {
-            // Request permission via dialog
-            LocationLogic.showLocationAccessRequestDialog(this);
-
-            // Prevent other dialogs from being displayed
-            mPermissionDialogDisplayed = true;
         }
     }
 
@@ -797,24 +767,6 @@ public class Main extends AppCompatActivity {
             return;
         }
 
-        // Ask user to select their city
-        String desc = getString(R.string.pushRegistrationSuccessDesc);
-
-        // Check if upgrading from previous version
-        if (Singleton.getSharedPreferences(this).getBoolean("tutorial_1_0_22", false)) {
-            // Ask user to reselect
-            desc = getString(R.string.pushRegistrationReselectDesc);
-        }
-
-        // Build the dialog
-        AlertDialogBuilder.showGenericDialog(getString(R.string.pushRegistrationSuccess), desc, getString(R.string.okay), null, false, this, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                // Start settings activity
-                goToSettings(true);
-            }
-        });
-
         // Tutorial was displayed
         AppPreferences.setTutorialDisplayed(this);
     }
@@ -1002,11 +954,11 @@ public class Main extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         // Just granted location permission?
-        if (requestCode == LocationLogic.LOCATION_PERMISSION_REQUEST_CODE && grantResults.length > 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+        if (grantResults.length > 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
             // Location alerts enabled?
             if (AppPreferences.getLocationAlertsEnabled(this)) {
                 // Start the location service
-                ServiceManager.startLocationService(this);
+                ServiceManager.startPushNotificationService(this);
             }
         }
     }
