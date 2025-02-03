@@ -2,13 +2,9 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 34
-    buildToolsVersion '28.0.3'
+    namespace 'com.red.alert'
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+    compileSdkVersion 34
 
     defaultConfig {
         applicationId "com.red.alert"
