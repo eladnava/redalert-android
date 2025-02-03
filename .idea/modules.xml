@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1256594752/Code-redalert-android.iml" filepath="$PROJECT_DIR$/.idea/modules/1256594752/Code-redalert-android.iml" group="redalert-android" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/70014162/redalert-android-app.iml" filepath="$PROJECT_DIR$/.idea/modules/70014162/redalert-android-app.iml" group="redalert-android/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/redalert-android.iml" filepath="$PROJECT_DIR$/.idea/modules/redalert-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/redalert-android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/redalert-android.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/redalert-android.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/redalert-android.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/redalert-android.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/redalert-android.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/redalert-android.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/redalert-android.app.unitTest.iml" />
     </modules>
   </component>
 </project>
