@@ -11,9 +11,6 @@
         <option value="com.intellij.execution.junit.testDiscovery.JUnitTestDiscoveryConfigurationProducer" />
         <option value="org.jetbrains.kotlin.idea.junit.KotlinJUnitRunConfigurationProducer" />
         <option value="org.jetbrains.kotlin.idea.junit.KotlinPatternConfigurationProducer" />
-        <option value="org.jetbrains.plugins.gradle.execution.test.runner.AllInPackageGradleConfigurationProducer" />
-        <option value="org.jetbrains.plugins.gradle.execution.test.runner.TestClassGradleConfigurationProducer" />
-        <option value="org.jetbrains.plugins.gradle.execution.test.runner.TestMethodGradleConfigurationProducer" />
       </set>
     </option>
   </component>
