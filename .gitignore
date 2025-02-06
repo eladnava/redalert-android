@@ -4,6 +4,7 @@
 /build
 /captures
 output.json
+output-metadata.json
 
 .idea/caches
 .idea/codeStyles
