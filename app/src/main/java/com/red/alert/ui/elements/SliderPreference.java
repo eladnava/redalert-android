@@ -150,7 +150,7 @@ public class SliderPreference extends DialogPreference {
         mSeekBarValue = (int) (mValue * SEEKBAR_RESOLUTION);
         View view = super.onCreateDialogView();
 
-        final TextView message = (TextView) view.findViewById(android.R.id.message);
+        final TextView message = (TextView) view.findViewById(R.id.message);
         final SeekBar seekbar = (SeekBar) view.findViewById(R.id.slider_preference_seekbar);
 
         seekbar.setMax(SEEKBAR_RESOLUTION);
