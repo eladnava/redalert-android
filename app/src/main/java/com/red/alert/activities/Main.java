@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.provider.Settings;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -76,6 +77,7 @@ import com.red.alert.utils.networking.HTTP;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -881,21 +883,34 @@ public class Main extends AppCompatActivity {
             // Current element
             Alert currentAlert = alerts.get(i);
 
-            // Initialize city names list for map display
+            // Initialize grouped alerts lists
+            currentAlert.groupedDescriptions = new ArrayList<>();
             currentAlert.groupedAlerts = new ArrayList<>();
+            currentAlert.groupedLocalizedCities = new ArrayList<>();
+
+            // Add current alert object to grouped alerts list
             currentAlert.groupedAlerts.add(currentAlert);
+
+            // If current alert desc is not empty, add it to grouped desc list
+            if (!StringUtils.stringIsNullOrEmpty(currentAlert.desc)) {
+                currentAlert.groupedDescriptions.add(currentAlert.desc);
+            }
+
+            // Add current localized city name to grouped cities list
+            currentAlert.groupedLocalizedCities.add(currentAlert.localizedCity);
 
             // Check whether this new alert can be grouped with the previous one
             // (Same region + 15 second cutoff threshold in either direction)
             if (lastAlert != null && currentAlert.date >= lastAlert.date - 15 && currentAlert.date <= lastAlert.date + 15) {
                 // Group with previous alert list item
-                lastAlert.localizedCity += ", " + currentAlert.localizedCity;
+                lastAlert.groupedLocalizedCities.add(currentAlert.localizedCity);
 
                 // Add current alert zone if new
                 if (!lastAlert.desc.contains(currentAlert.localizedZone)) {
                     // Support for unknown city (no prefixing with comma)
                     if (StringUtils.stringIsNullOrEmpty(lastAlert.desc) && !StringUtils.stringIsNullOrEmpty(currentAlert.desc)) {
                         lastAlert.desc = currentAlert.desc;
+                        lastAlert.groupedDescriptions.add(currentAlert.desc);
                     }
                     else if (StringUtils.stringIsNullOrEmpty(currentAlert.desc)) {
                         // Do nothing
@@ -903,6 +918,7 @@ public class Main extends AppCompatActivity {
                     else {
                         // Comma-separated zones and countdowns
                         lastAlert.desc += ", " + currentAlert.desc;
+                        lastAlert.groupedDescriptions.add(currentAlert.desc);
                     }
                 }
 
@@ -920,6 +936,17 @@ public class Main extends AppCompatActivity {
                 groupedAlerts.add(currentAlert);
                 lastAlert = currentAlert;
             }
+        }
+
+        // Sort all grouped alerts
+        for (Alert alert : groupedAlerts) {
+            // Sort city & zone names alphabetically
+            Collections.sort(alert.groupedDescriptions);
+            Collections.sort(alert.groupedLocalizedCities);
+
+            // Join lists into CSV strings
+            alert.desc = TextUtils.join(", ", alert.groupedDescriptions);
+            alert.localizedCity = TextUtils.join(", ", alert.groupedLocalizedCities);
         }
 
         // Hooray
