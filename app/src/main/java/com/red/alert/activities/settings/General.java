@@ -532,6 +532,7 @@ public class General extends AppCompatPreferenceActivity {
         body += "fcm.token=" + FCMRegistration.getRegistrationToken(this) + ", ";
         body += "pushy=" + PushyRegistration.isRegistered(this) + ", ";
         body += "pushy.token=" + PushyRegistration.getRegistrationToken(this) + ", ";
+        body += "pushy.isConnected=" + Pushy.isConnected() + ", ";
         body += "pushy.foregroundServiceEnabled=" + AppPreferences.getForegroundServiceEnabled(this) + ", ";
         body += "android.sdk=" + Build.VERSION.SDK_INT + ", ";
         body += "android.version=" + Build.VERSION.RELEASE + ", ";
