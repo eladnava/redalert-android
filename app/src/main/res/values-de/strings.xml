@@ -196,6 +196,13 @@
     <string name="alerts">Alarmierungen</string>
     <string name="advancedAlerts">Erweiterte Alarmierung</string>
 
+    <!-- Spenden -->
+    <string name="donate">Unterstützen Sie unsere Sache</string>
+    <string name="donateInstructions">Wählen Sie den gewünschten Spendenbetrag (in ILS):</string>
+    <string name="donateDesc">Ihre Spende trägt zur Deckung der Server- und Entwicklungskosten bei</string>
+    <string name="donateSuccess">Vielen Dank für Ihre Spende!</string>
+    <string name="donateSuccessDesc">Wir freuen uns sehr über Ihre Spende und helfen Ihnen, die Server- und Entwicklungskosten zu decken.</string>
+
     <!-- Operation Lifeshield -->
     <string name="lifeshieldShelters">Lifeshield Unterstände:</string>
     <string name="learnAboutLifeshield">Erfahren Sie mehr über Lifeshield</string>

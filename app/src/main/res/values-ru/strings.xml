@@ -243,6 +243,13 @@
     <string name="alerts">Оповещения</string>
     <string name="advancedAlerts">Расширенный агент</string>
 
+    <!-- Пожертвовать -->
+    <string name="donate">Поддержите наше дело</string>
+    <string name="donateInstructions">Выберите желаемую сумму пожертвования (в израильских шекелях):</string>
+    <string name="donateDesc">Ваше пожертвование поможет покрыть расходы на сервер и разработку</string>
+    <string name="donateSuccess">Спасибо за ваше пожертвование!</string>
+    <string name="donateSuccessDesc">Ваше пожертвование будет высоко оценено и поможет покрыть расходы на сервер и разработку.</string>
+
     <!-- Operation Lifeshield -->
     <string name="lifeshieldShelters">Приюты Lifeshield:</string>
     <string name="learnAboutLifeshield">Узнать о Lifeshield</string>

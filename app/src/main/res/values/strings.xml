@@ -150,6 +150,13 @@
     <string name="reportProblem">דווח על תקלה</string>
     <string name="manualContact">צור קשר בכתובת https://redalert.me</string>
 
+    <!-- Donate -->
+    <string name="donate">תרומות יתקבלו בברכה</string>
+    <string name="donateInstructions">בחר סכום לתרומה בשקלים:</string>
+    <string name="donateDesc">כל תרומה תעזור בכיסוי עלויות הפיתוח והשרתים</string>
+    <string name="donateSuccess">תודה רבה על תרומתך!</string>
+    <string name="donateSuccessDesc">תרומתך מוערכת מאוד ותעזור בכיסוי עלויות הפיתוח והשרתים.</string>
+
     <!-- Rate the App -->
     <string name="rateApp">דרג את האפליקציה</string>
     <string name="rateAppDesc">דרג אותנו בחנות של גוגל</string>
@@ -314,6 +321,13 @@
 
     <!-- Do not translate from here on down -->
 
+    <!-- Donation Amounts -->
+    <string name="donation_10">₪10</string>
+    <string name="donation_20">₪20</string>
+    <string name="donation_50">₪50</string>
+    <string name="donation_100">₪100</string>
+    <string name="donation_200">₪200</string>
+
     <!-- Static Language Identifiers -->
     <string translatable="false" name="english">English</string>
     <string translatable="false" name="arabic">عربي</string>
@@ -334,6 +348,7 @@
     <string translatable="false" name="fcmTokenPref">gcm_registration_token</string>
     <string translatable="false" name="pushyTokenPref">pushy_registration_token_v2</string>
     <string translatable="false" name="tutorialPref">tutorial_1_0_23</string>
+    <string translatable="false" name="donatePref">donate</string>
     <string translatable="false" name="ratePref">rating</string>
     <string translatable="false" name="lifeshieldPref">lifeshield</string>
     <string translatable="false" name="contactPref">contact</string>

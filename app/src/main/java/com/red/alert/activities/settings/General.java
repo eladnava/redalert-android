@@ -19,6 +19,8 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.view.MenuItemCompat;
 import me.pushy.sdk.Pushy;
 
@@ -28,8 +30,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.android.billingclient.api.BillingClient;
+import com.android.billingclient.api.BillingClientStateListener;
+import com.android.billingclient.api.BillingFlowParams;
+import com.android.billingclient.api.BillingResult;
+import com.android.billingclient.api.ConsumeParams;
+import com.android.billingclient.api.ConsumeResponseListener;
+import com.android.billingclient.api.PendingPurchasesParams;
+import com.android.billingclient.api.ProductDetails;
+import com.android.billingclient.api.Purchase;
+import com.android.billingclient.api.PurchasesUpdatedListener;
+import com.android.billingclient.api.QueryProductDetailsParams;
 import com.red.alert.R;
 import com.red.alert.config.API;
+import com.red.alert.config.Donations;
 import com.red.alert.config.Logging;
 import com.red.alert.config.Support;
 import com.red.alert.config.Testing;
@@ -63,6 +77,11 @@ import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.networking.HTTP;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 public class General extends AppCompatPreferenceActivity {
     boolean mIsTesting;
     boolean mFcmTestPassed;
@@ -72,6 +91,7 @@ public class General extends AppCompatPreferenceActivity {
     String mPreviousCities;
 
     Preference mRate;
+    Preference mDonate;
     Preference mWebsite;
     Preference mContact;
     Preference mAdvanced;
@@ -84,6 +104,8 @@ public class General extends AppCompatPreferenceActivity {
 
     ListPreference mThemeSelection;
     ListPreference mLanguageSelection;
+
+    BillingClient mBillingClient;
 
     SearchableMultiSelectPreference mCitySelection;
     SearchableMultiSelectPreference mZoneSelection;
@@ -236,6 +258,7 @@ public class General extends AppCompatPreferenceActivity {
 
         // Cache resource IDs
         mRate = findPreference(getString(R.string.ratePref));
+        mDonate = findPreference(getString(R.string.donatePref));
         mWebsite = findPreference(getString(R.string.websitePref));
         mContact = findPreference(getString(R.string.contactPref));
         mAdvanced = findPreference(getString(R.string.advancedPref));
@@ -408,6 +431,18 @@ public class General extends AppCompatPreferenceActivity {
             public boolean onPreferenceClick(Preference preference) {
                 // Open app page
                 GooglePlay.openAppListingPage(General.this);
+
+                // Consume event
+                return true;
+            }
+        });
+
+        // Donate button
+        mDonate.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                // Show popup dialog with instructions and possible donation amounts
+                showDonationDialog();
 
                 // Consume event
                 return true;
@@ -984,5 +1019,222 @@ public class General extends AppCompatPreferenceActivity {
             // Refresh checkbox with new value
             mNotificationsEnabled.setChecked(AppPreferences.getNotificationsEnabled(General.this));
         }
+    }
+
+
+    void showDonationDialog() {
+        // Only initialize one billing client
+        if (mBillingClient != null && mBillingClient.isReady()) {
+            showProducts();
+            return;
+        }
+
+        // Wait for existing client to finish initialization
+        else if (mBillingClient != null) {
+            return;
+        }
+
+        // Enable one time product display
+        PendingPurchasesParams params = PendingPurchasesParams.newBuilder()
+                .enableOneTimeProducts()
+                .build();
+
+        // Create billing client
+        mBillingClient = BillingClient.newBuilder(this)
+                .enablePendingPurchases(params)
+                .setListener(new PurchasesUpdatedListener() {
+                    @Override
+                    public void onPurchasesUpdated(@NonNull BillingResult billingResult, @Nullable List<Purchase> list) {
+                        // Successful purchase?
+                        if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK && list != null) {
+                            // Traverse all successful purchases
+                            for (Purchase purchase : list) {
+                                // Item state is purchased?
+                                if (purchase.getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
+                                    // Consume the purchase (so same item can be repurchased in the future) to acknowledge it
+                                    consumePurchase(purchase);
+                                }
+                            }
+
+                            // Show thanks dialog
+                            AlertDialogBuilder.showGenericDialog(getString(R.string.donateSuccess), getString(R.string.donateSuccessDesc), getString(R.string.okay), null, false, General.this, null);
+                        }
+                    }
+                }).build();
+
+        // Start the connection after initializing the billing client
+        establishConnection();
+    }
+
+    private void consumePurchase(Purchase purchase) {
+        // Params to consume the purchased consumable item by passing in the purchase token
+        ConsumeParams consumeParams = ConsumeParams.newBuilder()
+                .setPurchaseToken(purchase.getPurchaseToken())
+                .build();
+
+        // Consume item
+        mBillingClient.consumeAsync(consumeParams, new ConsumeResponseListener() {
+            @Override
+            public void onConsumeResponse(@NonNull BillingResult billingResult, @NonNull String purchaseToken) {
+                // Success?
+                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                    // The consumable was successfully consumed, so the user can now repurchase it
+                    Log.d(Logging.TAG, "Donation consumed successfully!");
+                } else {
+                    // Log any errors when consuming the product
+                    Log.d(Logging.TAG, "Error consuming donation: " + billingResult.getDebugMessage());
+                }
+            }
+        });
+    }
+    void establishConnection() {
+        // Connect billing client
+        mBillingClient.startConnection(new BillingClientStateListener() {
+            @Override
+            public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
+                // Connection success
+                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                    // Query for available products
+                    showProducts();
+                }
+            }
+
+            @Override
+            public void onBillingServiceDisconnected() {
+                // Try to restart the connection on the next request to Google Play
+                establishConnection();
+            }
+        });
+    }
+
+    void showProducts() {
+        // Prepare ArrayList of products to query for
+        List<QueryProductDetailsParams.Product> productList = new ArrayList<>();
+
+        // Traverse product IDs
+        for (String productId : Donations.DONATION_PRODUCT_IDS) {
+            // Create product objects with ID populated
+            productList.add(
+                    QueryProductDetailsParams.Product.newBuilder()
+                            .setProductId(productId)
+                            .setProductType(BillingClient.ProductType.INAPP)
+                            .build()
+            );
+        }
+
+        // Prepare product query params with product list
+        QueryProductDetailsParams params = QueryProductDetailsParams.newBuilder()
+                .setProductList(productList)
+                .build();
+
+        // Query product details asynchronously
+        mBillingClient.queryProductDetailsAsync(params, (billingResult, prodDetailsList) -> {
+            // Success?
+            if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                // Sort list of products by price ASC
+                Collections.sort(prodDetailsList, new Comparator<ProductDetails>() {
+                    @Override
+                    public int compare(ProductDetails p1, ProductDetails p2) {
+                        // Compare prices
+                        return Double.compare(p1.getOneTimePurchaseOfferDetails().getPriceAmountMicros(), p2.getOneTimePurchaseOfferDetails().getPriceAmountMicros());
+                    }
+                });
+
+                // Show dialog with sorted products
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Activity still running?
+                        if (!isFinishing()) {
+                            // Show dialog
+                            showProductDialog(prodDetailsList);
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    private void showProductDialog(List<ProductDetails> productList) {
+        // Prepare AlertDialog with items list
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        // Set dialgo title
+        builder.setTitle(R.string.donate);
+
+        // Convert ProductDetails to CharSequence Array (with an additional item for the instructions)
+        CharSequence[] items = new CharSequence[productList.size() + 1];
+
+        // Add dialog instructions (instruct user to select product)
+        items[0] = getString(R.string.donateInstructions);
+
+        // Traverse products list
+        for (int i = 0; i < productList.size(); i++) {
+            // Get product name
+            String name = productList.get(i).getName();
+
+            // Localize product name based on product ID
+            if (productList.get(i).getProductId().equals("donation_10")) {
+                name = getString(R.string.donation_10);
+            }
+            else if (productList.get(i).getProductId().equals("donation_20")) {
+                name = getString(R.string.donation_20);
+            }
+            else if (productList.get(i).getProductId().equals("donation_50")) {
+                name = getString(R.string.donation_50);
+            }
+            else if (productList.get(i).getProductId().equals("donation_100")) {
+                name = getString(R.string.donation_100);
+            }
+            else if (productList.get(i).getProductId().equals("donation_200")) {
+                name = getString(R.string.donation_200);
+            }
+
+            // Set item value to localized item name
+            items[i + 1] = name;
+        }
+
+        // Set AlertDialog items list
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Ignore instructions click event
+                if (which == 0) {
+                    return;
+                }
+
+                // Get selected product based on index of tapped product
+                ProductDetails selectedProduct = productList.get(which - 1);
+
+                // Launch Google Play purchase flow
+                launchPurchaseFlow(selectedProduct);
+            }
+        });
+
+        // Allow canceling the dialog
+        builder.setNegativeButton(R.string.notNow, null);
+
+        // Build dialog
+        Dialog dialog = builder.create();
+
+        // Show dialog
+        dialog.show();
+
+        // Support for RTL languages
+        RTLSupport.mirrorDialog(dialog, this);
+    }
+
+    private void launchPurchaseFlow(ProductDetails product) {
+        // Prepare billing flow params by passing in product object
+        BillingFlowParams params = BillingFlowParams.newBuilder()
+                .setProductDetailsParamsList(
+                        Collections.singletonList(
+                                BillingFlowParams.ProductDetailsParams.newBuilder()
+                                        .setProductDetails(product)
+                                        .build()))
+                .build();
+
+        // Let Google Play handle the billing flow
+        mBillingClient.launchBillingFlow(this, params);
     }
 }

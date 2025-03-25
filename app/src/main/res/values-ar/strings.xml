@@ -196,6 +196,13 @@
     <string name="alerts">التنبيهات</string>
     <string name="advancedAlerts">التنبيهات المتقدمة</string>
 
+    <!-- تبرع -->
+    <string name="donate">ادعم قضيتنا</string>
+    <string name="donateInstructions">حدد مبلغ التبرع المطلوب (بالدينار الأردني):</string>
+    <string name="donateDesc">تبرعك سيساهم في تغطية تكاليف الخادم والتطوير</string>
+    <string name="donateSuccess">شكرًا لتبرعك!</string>
+    <string name="donateSuccessDesc">نقدر تبرعك كثيرًا، وسيساهم في تغطية تكاليف الخادم والتطوير.</string>
+
     <!-- عملية درع النجاة -->
     <string name="lifeshieldShelters">ملاجئ Lifeshield:</string>
     <string name="learnAboutLifeshield">تعرف على Lifeshield</string>

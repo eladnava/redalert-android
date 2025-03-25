@@ -201,6 +201,13 @@
     <string name="advancedAlerts"> Allerte Avanzate</string>
     <string name="secondarySilentOverrideDesc">Le allerte secondarie disabiliteranno la modalità silenziosa</string>
 
+    <!-- Dona -->
+    <string name="donate">Sostieni la nostra causa</string>
+    <string name="donateInstructions">Seleziona l\'importo desiderato per la donazione (in ILS):</string>
+    <string name="donateDesc">La tua donazione contribuirà a coprire i costi del server e dello sviluppo</string>
+    <string name="donateSuccess">Grazie per la tua donazione!</string>
+    <string name="donateSuccessDesc">La tua donazione è molto apprezzata e contribuirà a coprire i costi del server e dello sviluppo.</string>
+
     <!-- Operation Lifeshield -->
     <string name="lifeshieldShelters">Rifugi Lifeshield:</string>
     <string name="learnAboutLifeshield">Ulteriori informazioni su Lifeshield</string>

@@ -82,6 +82,10 @@
             android:key="@string/contactPref"
             android:title="@string/reportProblem"
             android:summary="@string/contactDesc"/>
+        <Preference
+            android:key="@string/donatePref"
+            android:title="@string/donate"
+            android:summary="@string/donateDesc"/>
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/languageAndTheme">

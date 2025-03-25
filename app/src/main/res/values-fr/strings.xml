@@ -196,6 +196,13 @@
     <string name="alerts">Alertes</string>
     <string name="advancedAlerts">Alertes avancées</string>
 
+    <!-- Faire un don -->
+    <string name="donate">Soutenez notre cause</string>
+    <string name="donateInstructions">Sélectionnez le montant de votre don (en ILS) :</string>
+    <string name="donateDesc">Votre don contribuera à couvrir les frais de serveur et de développement</string>
+    <string name="donateSuccess">Merci pour votre don !</string>
+    <string name="donateSuccessDesc">Votre don est grandement apprécié et contribuera à couvrir les frais de serveur et de développement.</string>
+
     <!-- Operation Lifeshield -->
     <string name="lifeshieldShelters">Abris Lifeshield:</string>
     <string name="learnAboutLifeshield">En savoir plus sur Lifeshield</string>

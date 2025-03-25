@@ -196,6 +196,13 @@
     <string name="alerts">Alerts</string>
     <string name="advancedAlerts">Advanced Alerts</string>
 
+    <!-- Donate -->
+    <string name="donate">Support our cause</string>
+    <string name="donateInstructions">Select a desired donation amount (in ILS):</string>
+    <string name="donateDesc">Your donation will help cover server &amp; development costs</string>
+    <string name="donateSuccess">Thanks for your donation!</string>
+    <string name="donateSuccessDesc">Your donation is greatly appreciated and will help cover server and development costs.</string>
+
     <!-- Operation Lifeshield -->
     <string name="lifeshieldShelters">Lifeshield Shelters:</string>
     <string name="learnAboutLifeshield">Learn about Lifeshield</string>
