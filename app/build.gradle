@@ -28,7 +28,7 @@ dependencies {
     implementation 'org.ocpsoft.prettytime:prettytime:4.0.4.Final'
 
     // AppCompat v7 Dependency
-    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
 
     // Firebase Cloud Messaging
     implementation "com.google.firebase:firebase-messaging:24.1.1"
