@@ -17,3 +17,4 @@ output-metadata.json
 .idea/gradle.xml
 .idea/inspectionProfiles/
 .idea/gradle.xml
+*.dm
