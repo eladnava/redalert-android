@@ -31,7 +31,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
 
     // Firebase Cloud Messaging
-    implementation "com.google.firebase:firebase-messaging:24.0.2"
+    implementation "com.google.firebase:firebase-messaging:24.1.1"
 
     // Google Maps & Location APIs
     implementation 'com.google.android.gms:play-services-maps:19.0.0'
