@@ -34,7 +34,7 @@ dependencies {
     implementation "com.google.firebase:firebase-messaging:24.1.1"
 
     // Google Maps & Location APIs
-    implementation 'com.google.android.gms:play-services-maps:19.0.0'
+    implementation 'com.google.android.gms:play-services-maps:19.1.0'
     implementation 'com.google.android.gms:play-services-location:19.0.0'
 
     // Google Play Billing Library
