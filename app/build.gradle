@@ -35,7 +35,7 @@ dependencies {
 
     // Google Maps & Location APIs
     implementation 'com.google.android.gms:play-services-maps:19.1.0'
-    implementation 'com.google.android.gms:play-services-location:19.0.0'
+    implementation 'com.google.android.gms:play-services-location:21.3.0'
 
     // Google Play Billing Library
     implementation "com.android.billingclient:billing:7.1.1"
