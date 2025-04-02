@@ -16,7 +16,6 @@ import android.view.MenuItem;
 import com.red.alert.R;
 import com.red.alert.activities.settings.alerts.LocationAlerts;
 import com.red.alert.activities.settings.alerts.SecondaryAlerts;
-import com.red.alert.config.NotificationChannels;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.ui.activities.AppCompatPreferenceActivity;
 import com.red.alert.ui.dialogs.AlertDialogBuilder;
@@ -26,7 +25,6 @@ import com.red.alert.utils.feedback.Volume;
 
 import me.pushy.sdk.Pushy;
 import me.pushy.sdk.config.PushyForegroundService;
-import me.pushy.sdk.services.PushySocketService;
 import me.pushy.sdk.util.PushyServiceManager;
 
 public class Advanced extends AppCompatPreferenceActivity {

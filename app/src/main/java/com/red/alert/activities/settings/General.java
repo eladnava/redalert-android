@@ -18,17 +18,15 @@ import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.view.MenuItemCompat;
-import me.pushy.sdk.Pushy;
-
 import android.preference.PreferenceScreen;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.view.MenuItemCompat;
 
 import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.BillingClientStateListener;
@@ -70,11 +68,11 @@ import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.feedback.Volume;
 import com.red.alert.utils.localization.Localization;
-import com.red.alert.utils.os.AndroidSettings;
 import com.red.alert.utils.marketing.GooglePlay;
 import com.red.alert.utils.metadata.AppVersion;
 import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.networking.HTTP;
+import com.red.alert.utils.os.AndroidSettings;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
 
 import java.util.ArrayList;
@@ -82,6 +80,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
+
+import me.pushy.sdk.Pushy;
 
 public class General extends AppCompatPreferenceActivity {
     boolean mIsTesting;

@@ -7,17 +7,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-
-import androidx.core.app.NotificationCompat;
-
 import android.media.AudioAttributes;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.core.app.NotificationCompat;
+
 import com.red.alert.R;
-import com.red.alert.activities.Popup;
 import com.red.alert.activities.Main;
+import com.red.alert.activities.Popup;
 import com.red.alert.config.Logging;
 import com.red.alert.config.NotificationChannels;
 import com.red.alert.config.Sound;

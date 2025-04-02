@@ -11,11 +11,6 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.core.app.NotificationManagerCompat;
-import androidx.core.view.MenuItemCompat;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Handler;
 import android.os.PowerManager;
 import android.provider.Settings;
@@ -31,10 +26,9 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import me.pushy.sdk.Pushy;
-import me.pushy.sdk.lib.jackson.core.JsonProcessingException;
-import me.pushy.sdk.lib.jackson.core.type.TypeReference;
-import me.pushy.sdk.util.PushyAuthentication;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.view.MenuItemCompat;
 
 import com.red.alert.R;
 import com.red.alert.activities.settings.General;
@@ -68,12 +62,12 @@ import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.feedback.Volume;
 import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.integration.GooglePlayServices;
-import com.red.alert.utils.os.AndroidSettings;
 import com.red.alert.utils.localization.DateTime;
 import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.AppVersion;
 import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.networking.HTTP;
+import com.red.alert.utils.os.AndroidSettings;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
 
 import java.util.ArrayList;
@@ -81,6 +75,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import me.pushy.sdk.Pushy;
+import me.pushy.sdk.lib.jackson.core.JsonProcessingException;
+import me.pushy.sdk.lib.jackson.core.type.TypeReference;
+import me.pushy.sdk.util.PushyAuthentication;
 
 public class Main extends AppCompatActivity {
     boolean mIsResumed;

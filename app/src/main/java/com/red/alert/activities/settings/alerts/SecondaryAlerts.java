@@ -15,7 +15,6 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.red.alert.R;
-import com.red.alert.activities.settings.Advanced;
 import com.red.alert.config.Logging;
 import com.red.alert.logic.communication.broadcasts.LocationSelectionEvents;
 import com.red.alert.logic.push.PushManager;

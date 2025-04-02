@@ -14,15 +14,14 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.provider.Settings;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.red.alert.R;
 import com.red.alert.config.LocationAlerts;
-import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.ui.dialogs.AlertDialogBuilder;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.integration.GooglePlayServices;
-
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 public class LocationLogic {
     public static int LOCATION_PERMISSION_REQUEST_CODE = 1000;

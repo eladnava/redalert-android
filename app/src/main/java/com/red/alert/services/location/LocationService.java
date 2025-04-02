@@ -20,6 +20,8 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 
+import androidx.core.app.NotificationCompat;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -36,7 +38,6 @@ import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
 
-import androidx.core.app.NotificationCompat;
 import me.pushy.sdk.config.PushyForegroundService;
 
 public class LocationService extends Service implements

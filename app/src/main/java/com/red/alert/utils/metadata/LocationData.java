@@ -6,14 +6,12 @@ import android.location.LocationManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 import com.red.alert.R;
-import com.red.alert.activities.settings.alerts.LocationAlerts;
 import com.red.alert.config.Alerts;
 import com.red.alert.config.Logging;
+import com.red.alert.config.ThreatTypes;
 import com.red.alert.logic.alerts.AlertLogic;
 import com.red.alert.logic.location.LocationLogic;
-import com.red.alert.config.ThreatTypes;
 import com.red.alert.model.metadata.City;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.formatting.StringUtils;
@@ -27,10 +25,11 @@ import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+
+import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 
 public class LocationData {
     private static List<City> mCities;

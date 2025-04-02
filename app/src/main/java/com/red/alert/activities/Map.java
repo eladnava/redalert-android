@@ -16,6 +16,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.text.HtmlCompat;
+import androidx.core.view.MenuItemCompat;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapsInitializer;
@@ -57,10 +62,6 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.text.HtmlCompat;
-import androidx.core.view.MenuItemCompat;
 import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 
 public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallback {
