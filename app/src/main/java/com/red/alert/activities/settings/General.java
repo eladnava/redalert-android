@@ -81,6 +81,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 public class General extends AppCompatPreferenceActivity {
     boolean mIsTesting;
@@ -1188,6 +1189,11 @@ public class General extends AppCompatPreferenceActivity {
             }
             else if (productList.get(i).getProductId().equals("donation_200")) {
                 name = getString(R.string.donation_200);
+            }
+
+            // Display local currency amounts in parenthesis
+            if (!Objects.requireNonNull(productList.get(i).getOneTimePurchaseOfferDetails()).getPriceCurrencyCode().equals("ILS")) {
+                name += " (" + Objects.requireNonNull(productList.get(i).getOneTimePurchaseOfferDetails()).getFormattedPrice() + ")";
             }
 
             // Set item value to localized item name
