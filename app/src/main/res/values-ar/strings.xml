@@ -112,6 +112,15 @@
     <string name="secondarySilentOverride">تجاوز الوضع الصامت</string>
     <string name="secondarySilentOverrideDesc">ستتجاوز التنبيهات الثانوية الوضع الصامت</string>
 
+    <!-- التحذيرات المبكرة -->
+    <string name="earlyWarnings">التحذيرات المبكرة</string>
+    <string name="earlyWarningsDesc">ضبط التحذيرات المبكرة ليتم استلامها قبل 3-5 دقائق</string>
+    <string name="receiveEarlyWarningsDesc">استلام التحذيرات المبكرة قبل 3-5 دقائق</string>
+
+    <!-- صوت التحذير المبكر -->
+    <string name="earlyWarningsSoundSelection">صوت التحذير المبكر</string>
+    <string name="earlyWarningsSoundSelectionDesc">اختر صوتًا لتشغيله عند استلام تحذير مبكر</string>
+
     <!-- تقييم التطبيق -->
     <string name="rateApp">تقييم التطبيق</string>
     <string name="rateAppDesc">تقييم التطبيق على تطبيقات جوجل</string>
@@ -221,6 +230,7 @@
     <string name="missiles">إطلاق الصواريخ</string>
     <string name="radiologicalEvent">حدث إشعاعي</string>
     <string name="earthQuake">زلزال</string>
+    <string name="earlyWarning">الإنذار المبكر</string>
     <string name="tsunami">تحذير من تسونامي</string>
     <string name="hostileAircraftIntrusion">اختراق طائرة معادية</string>
     <string name="hazardousMaterials">حدث المواد الخطرة</string>
@@ -239,6 +249,7 @@
     <string name="missilesInstructions">ادخل إلى المساحة المحمية وابق فيها لمدة ۱۰ دقائق.</string>
     <string name="hostileAircraftIntrusionInstructions">ادخل إلى المساحة المحمية فورًا وابق فيها لمدة ۱۰ دقائق، ما لم يتم تلقي تنبيه آخر.</string>
     <string name="earthQuakeInstructions">اخرج فورًا إلى العراء. إذا لم يكن ذلك ممكنا، أدخل الغرفة المحمية أو الدرج.</string>
+    <string name="earlyWarningInstructions">من المتوقع وصول تنبيه خلال الدقائق القليلة القادمة. عليك إيجاد مكان أفضل يوفر أفضل حماية في منطقتك. في حال استلام تنبيه، ادخل إلى المكان المحمي وابق فيه لمدة 10 دقائق.</string>
     <string name="radiologicalEventInstructions">ادخل المبنى وأغلق الأبواب والنوافذ.</string>
     <string name="terroristInfiltrationInstructions">ادخل على الفور إلى مبنى مجاور، وأغلق الأبواب وأغلق النوافذ.</string>
     <string name="tsunamiInstructions">تحرك على الفور بعيدًا عن الشاطئ لمسافة لا تقل عن كيلومتر واحد أو اصعد إلى الطابق الرابع أو أعلى.</string>

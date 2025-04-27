@@ -14,6 +14,7 @@ import android.provider.Settings;
 import android.view.MenuItem;
 
 import com.red.alert.R;
+import com.red.alert.activities.settings.alerts.EarlyWarnings;
 import com.red.alert.activities.settings.alerts.LocationAlerts;
 import com.red.alert.activities.settings.alerts.SecondaryAlerts;
 import com.red.alert.logic.settings.AppPreferences;
@@ -28,6 +29,7 @@ import me.pushy.sdk.config.PushyForegroundService;
 import me.pushy.sdk.util.PushyServiceManager;
 
 public class Advanced extends AppCompatPreferenceActivity {
+    Preference mEarlyWarnings;
     Preference mLocationAlerts;
     Preference mSecondaryAlerts;
     SliderPreference mVolumeSelection;
@@ -73,6 +75,7 @@ public class Advanced extends AppCompatPreferenceActivity {
 
         // Cache resource IDs
         mLocationAlerts = findPreference(getString(R.string.locationPref));
+        mEarlyWarnings = findPreference(getString(R.string.earlyWarningsPref));
         mSecondaryAlerts = findPreference(getString(R.string.secondaryPref));
         mVolumeSelection = (SliderPreference) findPreference(getString(R.string.volumePref));
         mAlertPopup = (CheckBoxPreference)findPreference(getString(R.string.alertPopupPref));
@@ -107,6 +110,24 @@ public class Advanced extends AppCompatPreferenceActivity {
 
                 // Take user to Secondary Alerts settings page
                 startActivity(secondaryAlerts);
+
+                // Consume event
+                return true;
+            }
+        });
+
+        // Set up early warnings click listener
+        mEarlyWarnings.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                // Prepare new intent
+                Intent earlyWarnings = new Intent();
+
+                // Set class
+                earlyWarnings.setClass(Advanced.this, EarlyWarnings.class);
+
+                // Take user to Early Warning settings page
+                startActivity(earlyWarnings);
 
                 // Consume event
                 return true;

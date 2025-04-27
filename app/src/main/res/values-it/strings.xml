@@ -201,6 +201,15 @@
     <string name="advancedAlerts"> Allerte Avanzate</string>
     <string name="secondarySilentOverrideDesc">Le allerte secondarie disabiliteranno la modalità silenziosa</string>
 
+    <!-- Avvisi Precoci -->
+    <string name="earlyWarnings">Avvisi Precoci</string>
+    <string name="earlyWarningsDesc">Configura i preavvisi da ricevere con 3-5 minuti di anticipo</string>
+    <string name="receiveEarlyWarningsDesc">Ricevi i preavvisi con 3-5 minuti di anticipo</string>
+
+    <!-- Suono Preavviso -->
+    <string name="earlyWarningsSoundSelection">Suono Preavviso</string>
+    <string name="earlyWarningsSoundSelectionDesc">Seleziona un suono da riprodurre quando viene ricevuto un preavviso</string>
+
     <!-- Dona -->
     <string name="donate">Sostieni la nostra causa</string>
     <string name="donateInstructions">Seleziona l\'importo desiderato per la donazione (in ILS):</string>
@@ -226,6 +235,7 @@
     <string name="missiles">Fuoco di razzi</string>
     <string name="radiologicalEvent">Evento radiologico</string>
     <string name="earthQuake">Terremoto</string>
+    <string name="earlyWarning">Allerta precoce</string>
     <string name="tsunami">Allarme tsunami</string>
     <string name="hostileAircraftIntrusion">Intrusione di aerei ostili</string>
     <string name="hazardousMaterials">Materiali pericolosi</string>
@@ -244,6 +254,7 @@
     <string name="missilesInstructions">Entra nello spazio protetto e rimani lì per 10 minuti.</string>
     <string name="hostileAircraftIntrusionInstructions">Entra immediatamente nell\'area protetta e rimani lì per 10 minuti, a meno che non venga dato un ulteriore avviso.</string>
     <string name="earthQuakeInstructions">Esci immediatamente in un\'area aperta. Se ciò non è possibile, inserisci l\'MMD o una scala.</string>
+    <string name="earlyWarningInstructions">È previsto un avviso nei prossimi minuti. È necessario trovare una posizione migliore che offra la massima protezione nella propria zona. Se si riceve un avviso, entrare nell\'area protetta e rimanervi per 10 minuti.</string>
     <string name="radiologicalEventInstructions">Entra nell\'edificio e chiudi porte e finestre.</string>
     <string name="terroristInfiltrationInstructions">Entra immediatamente nell\'edificio e chiudi porte e finestre.</string>
     <string name="tsunamiInstructions">Allontanarsi immediatamente dalla spiaggia di almeno un chilometro o salire al quarto piano o superiore.</string>

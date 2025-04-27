@@ -119,6 +119,15 @@
     <string name="secondarySilentOverride">עקוף מצב שקט</string>
     <string name="secondarySilentOverrideDesc">כאשר תתקבל התרעת משנה, מצב שקט לא יחסום אותה</string>
 
+    <!-- Early Warnings -->
+    <string name="earlyWarnings">התרעות מקדימות</string>
+    <string name="earlyWarningsDesc">הגדר התרעות מקדימות שיתקבלו 3-5 דקות לפני התרעות אמת</string>
+    <string name="receiveEarlyWarningsDesc">קבל התרעות מקדימות 3-5 דקות לפני התרעות אמת</string>
+
+    <!-- Early Warning Sound -->
+    <string name="earlyWarningsSoundSelection">צליל התרעות מקדימות</string>
+    <string name="earlyWarningsSoundSelectionDesc">בחר צליל שיושמע כאשר תתקבל התרעה מקדימה</string>
+
     <!-- I'm Safe -->
     <string name="safe">שלח \"אני במרחב מוגן\" </string>
     <string name="safeCategory">\"אני במרחב מוגן\"</string>
@@ -257,6 +266,7 @@
     <string name="missiles">ירי רקטות</string>
     <string name="radiologicalEvent">אירוע רדיולוגי</string>
     <string name="earthQuake">רעידת אדמה</string>
+    <string name="earlyWarning">התרעה מקדימה</string>
     <string name="tsunami">סכנת צונאמי</string>
     <string name="hostileAircraftIntrusion">חדירת כלי טיס</string>
     <string name="hazardousMaterials">אירוע חומרים מסוכנים</string>
@@ -275,6 +285,7 @@
     <string name="missilesInstructions">היכנסו למרחב המוגן ושהו בו 10 דקות.</string>
     <string name="hostileAircraftIntrusionInstructions">היכנסו מיד למרחב המוגן ושהו בו למשך 10 דקות, אלא אם ניתנה התרעה נוספת.</string>
     <string name="earthQuakeInstructions">צאו מיד לשטח פתוח. אם לא ניתן, היכנסו לממ"ד או לחדר מדרגות.</string>
+    <string name="earlyWarningInstructions">בדקות הקרובות צפויה להתקבל התרעת אמת. עליך לשפר את מיקומך למיגון המיטבי בקרבתך. במקרה של קבלת התרעה, יש להיכנס למרחב המוגן ולשהות בו 10 דקות.</string>
     <string name="radiologicalEventInstructions">היכנסו למבנה וסגרו את הדלתות והחלונות.</string>
     <string name="terroristInfiltrationInstructions">היכנסו מיד למבנה וסגרו את הדלתות והחלונות.</string>
     <string name="tsunamiInstructions">התרחקו מיד מחוף הים קילומטר אחד לפחות או עלו לקומה רביעית ומעלה.</string>
@@ -378,8 +389,11 @@
     <string translatable="false" name="batteryOptimizationCategory">battery_optimization_category</string>
     <string translatable="false" name="selectedCitiesPref">selected_cities</string>
     <string translatable="false" name="secondaryPref">secondary</string>
+    <string translatable="false" name="earlyWarningsPref">early</string>
     <string translatable="false" name="imSafeWhatsAppPref">safe_whatsapp</string>
     <string translatable="false" name="secondarySilentOverridePref">secondary_override</string>
+    <string translatable="false" name="earlyWarningsEnabledPref">early_warning_alerts</string>
+    <string translatable="false" name="earlyWarningsSoundPref">early_warning_sound</string>
     <string translatable="false" name="secondaryEnabledPref">secondary_alerts</string>
     <string translatable="false" name="secondarySoundPref">secondary_sound</string>
     <string translatable="false" name="selectedSecondaryCitiesPref">selected_secondary_cities</string>
@@ -426,6 +440,7 @@
     <!-- Sounds -->
     <string translatable="false" name="defaultSound">alarm1</string>
     <string translatable="false" name="defaultSecondarySound">tiny</string>
+    <string translatable="false" name="defaultEarlyWarningSound">tiny</string>
 
     <!-- Default Map Location & Zoom (Center of Israel) -->
     <string translatable="false" name="defaultZoom">7.8</string>

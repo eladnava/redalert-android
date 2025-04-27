@@ -559,8 +559,8 @@ public class General extends AppCompatPreferenceActivity {
         // Add other params
         body += "volume.primary=" + AppPreferences.getPrimaryAlertVolume(this, -1) + ", ";
         body += "volume.secondary=" + AppPreferences.getSecondaryAlertVolume(this, -1) + ", ";
-        body += "sound.primary=" + SoundLogic.getAlertSoundName(AlertTypes.PRIMARY, null, this) + ", ";
-        body += "sound.secondary=" + SoundLogic.getAlertSoundName(AlertTypes.SECONDARY, null, this) + ", ";
+        body += "sound.primary=" + SoundLogic.getAlertSoundName(AlertTypes.PRIMARY, null, null, this) + ", ";
+        body += "sound.secondary=" + SoundLogic.getAlertSoundName(AlertTypes.SECONDARY, null, null, this) + ", ";
         body += "popup.enabled=" + AppPreferences.getPopupEnabled(this) + ", ";
         body += "secondaryPopup.enabled=" + AppPreferences.getSecondaryPopupEnabled(this) + ", ";
         body += "wakeScreen.enabled=" + AppPreferences.getWakeScreenEnabled(this) + ", ";

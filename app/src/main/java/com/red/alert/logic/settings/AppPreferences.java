@@ -28,6 +28,11 @@ public class AppPreferences {
         return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.secondaryEnabledPref), false);
     }
 
+    public static boolean getEarlyWarningNotificationsEnabled(Context context) {
+        // Get saved preference
+        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.earlyWarningsEnabledPref), true);
+    }
+
     public static boolean getTutorialDisplayed(Context context) {
         // No regions/cities selected?
         if (AppPreferences.getNotificationsEnabled(context) && AppPreferences.getSubscriptions(context).size() == 0) {

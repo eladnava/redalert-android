@@ -112,6 +112,15 @@
     <string name="secondarySilentOverride">Überschreibe den bitte nicht stören Modus</string>
     <string name="secondarySilentOverrideDesc">Sekundäre Raketenwarnungen überschreiben kurtzeitig den bitte nicht Stören Modus</string>
 
+    <!-- Frühwarnungen -->
+    <string name="earlyWarnings">Frühwarnungen</string>
+    <string name="earlyWarningsDesc">Frühwarnungen 3–5 Minuten im Voraus konfigurieren</string>
+    <string name="receiveEarlyWarningsDesc">Frühwarnungen 3–5 Minuten im Voraus erhalten</string>
+
+    <!-- Frühwarnton -->
+    <string name="earlyWarningsSoundSelection">Frühwarnton</string>
+    <string name="earlyWarningsSoundSelectionDesc">Ton auswählen, der bei einer Frühwarnung abgespielt werden soll</string>
+
     <!-- Rate the App -->
     <string name="rateApp">Bewerte die App</string>
     <string name="rateAppDesc">Klick hier zum Bewerten der App in Google Play</string>
@@ -221,6 +230,7 @@
     <string name="missiles">Raketenfeuer</string>
     <string name="radiologicalEvent">Radiologisches ereignis</string>
     <string name="earthQuake">Erdbeben</string>
+    <string name="earlyWarning">Vorwarnung</string>
     <string name="tsunami">Tsunami warnung</string>
     <string name="hostileAircraftIntrusion">Eindringen feindlicher flugzeuge</string>
     <string name="hazardousMaterials">Veranstaltung zu gefährlichen stoffen</string>
@@ -239,6 +249,7 @@
     <string name="missilesInstructions">Betreten Sie den geschützten Bereich und bleiben Sie dort 10 Minuten lang.</string>
     <string name="hostileAircraftIntrusionInstructions">Betreten Sie sofort den geschützten Bereich und bleiben Sie dort 10 Minuten lang, sofern keine weitere Warnung erfolgt.</string>
     <string name="earthQuakeInstructions">Begeben Sie sich sofort in einen offenen Bereich. Sollte dies nicht möglich sein, betreten Sie das MMD oder ein Treppenhaus.</string>
+    <string name="earlyWarningInstructions">In den nächsten Minuten wird eine Warnung erwartet. Sie müssen einen besseren Standort finden, der Ihnen in Ihrer Gegend den besten Schutz bietet. Betreten Sie im Falle einer Warnung den geschützten Bereich und bleiben Sie dort 10 Minuten lang.</string>
     <string name="radiologicalEventInstructions">Betreten Sie das Gebäude und schließen Sie die Türen und Fenster.</string>
     <string name="terroristInfiltrationInstructions">Betreten Sie sofort das Gebäude und schließen Sie die Türen und Fenster.</string>
     <string name="tsunamiInstructions">Entfernen Sie sich sofort mindestens einen Kilometer vom Strand oder begeben Sie sich in die vierte Etage oder höher.</string>

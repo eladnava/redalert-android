@@ -6,6 +6,7 @@ public class ThreatTypes {
     public static final String RADIOLOGICAL_EVENT = "radiologicalEvent";
     public static final String EARTHQUAKE = "earthQuake";
     public static final String TSUNAMI = "tsunami";
+    public static final String EARLY_WARNING = "earlyWarning";
     public static final String HOSTILE_AIRCRAFT_INTRUSION = "hostileAircraftIntrusion";
     public static final String HAZARDOUS_MATERIALS = "hazardousMaterials";
     public static final String TERRORIST_INFILTRATION = "terroristInfiltration";

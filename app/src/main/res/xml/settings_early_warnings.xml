@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/earlyWarnings">
+    <PreferenceCategory
+        android:title="@string/settings">
+        <CheckBoxPreference
+            android:textDirection="rtl"
+            android:key="@string/earlyWarningsEnabledPref"
+            android:title="@string/earlyWarnings"
+            android:summary="@string/receiveEarlyWarningsDesc"
+            android:defaultValue="true"/>
+        <com.red.alert.ui.elements.SoundListPreference
+            android:key="@string/earlyWarningsSoundPref"
+            android:title="@string/earlyWarningsSoundSelection"
+            android:summary="@string/earlyWarningsSoundSelectionDesc"
+            android:entries="@array/sounds"
+            android:entryValues="@array/soundValues"
+            android:defaultValue="@string/defaultEarlyWarningSound"
+            android:showSilent="true"
+            android:ringtoneType="all"
+            android:dependency="@string/earlyWarningsEnabledPref"/>
+    </PreferenceCategory>
+</PreferenceScreen>

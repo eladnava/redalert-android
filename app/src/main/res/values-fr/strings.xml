@@ -112,6 +112,15 @@
     <string name="secondarySilentOverride">Passer outre le mode silencieux</string>
     <string name="secondarySilentOverrideDesc">Les alertes de roquette secondaire passeront outre le mode silencieux</string>
 
+    <!-- Alertes précoces -->
+    <string name="earlyWarnings">Alertes précoces</string>
+    <string name="earlyWarningsDesc">Configurer les alertes précoces pour une réception 3 à 5 minutes à l\'avance</string>
+    <string name="receiveEarlyWarningsDesc">Recevoir les alertes précoces 3 à 5 minutes à l\'avance</string>
+
+    <!-- Son d'alerte précoce -->
+    <string name="earlyWarningsSoundSelection">Son d\'alerte précoce</string>
+    <string name="earlyWarningsSoundSelectionDesc">Sélectionner un son à émettre lors de la réception d\'une alerte précoce</string>
+
     <!-- Rate the App -->
     <string name="rateApp">Notez l\'application</string>
     <string name="rateAppDesc">Evaluer l\'application sur Google Play</string>
@@ -221,6 +230,7 @@
     <string name="missiles">Tir de roquette</string>
     <string name="radiologicalEvent">Événement radiologique</string>
     <string name="earthQuake">Tremblement de terre</string>
+    <string name="earlyWarning">Alerte précoce</string>
     <string name="tsunami">Alerte au tsunami</string>
     <string name="hostileAircraftIntrusion">Intrusion d\'aéronefs hostiles</string>
     <string name="hazardousMaterials">Matières dangereuses</string>
@@ -239,6 +249,7 @@
     <string name="missilesInstructions">Entrez dans l\'espace protégé et restez-y pendant 10 minutes.</string>
     <string name="hostileAircraftIntrusionInstructions">Entrez immédiatement dans la zone protégée et restez-y pendant 10 minutes, à moins qu\'un nouvel avertissement ne soit donné.</string>
     <string name="earthQuakeInstructions">Sortez immédiatement dans une zone dégagée. Si cela n\'est pas possible, entrez dans le MMD ou dans une cage d\'escalier.</string>
+    <string name="earlyWarningInstructions">Une alerte est attendue dans les prochaines minutes. Vous devez trouver un meilleur emplacement offrant la meilleure protection dans votre zone. Si une alerte est reçue, entrez dans l\'espace protégé et restez-y pendant 10 minutes.</string>
     <string name="radiologicalEventInstructions">Entrez dans le bâtiment et fermez les portes et les fenêtres.</string>
     <string name="terroristInfiltrationInstructions">Entrez immédiatement dans le bâtiment et fermez les portes et les fenêtres.</string>
     <string name="tsunamiInstructions">Éloignez-vous immédiatement de la plage d\'au moins un kilomètre ou montez au quatrième étage ou plus.</string>

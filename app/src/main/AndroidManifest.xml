@@ -96,6 +96,13 @@
             android:theme="@style/AppTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
 
+        <!-- Early Warnings -->
+        <activity
+            android:name=".activities.settings.alerts.EarlyWarnings"
+            android:label="@string/earlyWarnings"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
+
         <!-- Location Alerts Settings -->
         <activity
             android:name=".activities.settings.alerts.LocationAlerts"

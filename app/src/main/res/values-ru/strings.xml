@@ -121,6 +121,15 @@
     <string name="secondarySilentOverride">Выключите бесшумный режим</string>
     <string name="secondarySilentOverrideDesc">При вторичный сигнале тревоги, тихий режим будет отменен</string>
 
+    <!-- Ранние предупреждения -->
+    <string name="earlyWarnings">Ранние предупреждения</string>
+    <string name="earlyWarningsDesc">Настройте ранние предупреждения на получение за 3–5 минут</string>
+    <string name="receiveEarlyWarningsDesc">Получать ранние предупреждения за 3–5 минут</string>
+
+    <!-- Звук раннего предупреждения -->
+    <string name="earlyWarningsSoundSelection">Звук раннего предупреждения</string>
+    <string name="earlyWarningsSoundSelectionDesc">Выберите звук для воспроизведения при получении раннего предупреждения</string>
+
     <!-- I'm Safe -->
     <string name="safe">Отправить\"Я в убежище\"</string>
     <string name="safeCategory">\"Я в убежище\"</string>
@@ -268,6 +277,7 @@
     <string name="missiles">Pакетный обстрел</string>
     <string name="radiologicalEvent">Радиологическое событие</string>
     <string name="earthQuake">Землетрясение</string>
+    <string name="earlyWarning">Раннее предупреждение</string>
     <string name="tsunami">Предупреждение о цунами</string>
     <string name="hostileAircraftIntrusion">Нарушение воздушного пространства</string>
     <string name="hazardousMaterials">Опасные материалы</string>
@@ -286,6 +296,7 @@
     <string name="missilesInstructions">Войдите в защищённое пространство и оставайтесь в нём 10 минут.</string>
     <string name="hostileAircraftIntrusionInstructions">Немедленно войдите в защищённое пространство и оставайтесь в нём на протяжении 10 минут, кроме случаев получения дополнительного оповещения.</string>
     <string name="earthQuakeInstructions">Немедленно выйдите на открытое пространство. Если это невозможно, войдите в МАМАД или выйдите на лестничную клетку.</string>
+    <string name="earlyWarningInstructions">В ближайшие несколько минут ожидается оповещение. Вам необходимо найти лучшее место, которое обеспечит наилучшую защиту в вашем районе. Если получено оповещение, войдите в защищенное пространство и оставайтесь там в течение 10 минут.</string>
     <string name="radiologicalEventInstructions">Войдите в здание, закройте двери и окна.</string>
     <string name="terroristInfiltrationInstructions">Немедленно войдите в здание, закройте двери и окна.</string>
     <string name="tsunamiInstructions">Немедленно удалитесь от пляжа как минимум на 1 км или поднимитесь на 4 этаж и выше.</string>

@@ -48,6 +48,10 @@
             android:title="@string/secondaryAlerts"
             android:summary="@string/secondaryAlertsDesc"/>
         <Preference
+            android:key="@string/earlyWarningsPref"
+            android:title="@string/earlyWarnings"
+            android:summary="@string/earlyWarningsDesc"/>
+        <Preference
             android:key="@string/locationPref"
             android:title="@string/locationAlerts"
             android:summary="@string/locationAlertsDesc"/>

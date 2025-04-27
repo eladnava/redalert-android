@@ -545,6 +545,9 @@ public class LocationData {
             case ThreatTypes.EARTHQUAKE:
                 result = R.string.earthQuake;
                 break;
+            case ThreatTypes.EARLY_WARNING:
+                result = R.string.earlyWarning;
+                break;
             case ThreatTypes.TSUNAMI:
                 result = R.string.tsunami;
                 break;
@@ -640,6 +643,9 @@ public class LocationData {
                 break;
             case ThreatTypes.EARTHQUAKE:
                 result = R.string.earthQuakeInstructions;
+                break;
+            case ThreatTypes.EARLY_WARNING:
+                result = R.string.earlyWarningInstructions;
                 break;
             case ThreatTypes.TSUNAMI:
                 result = R.string.tsunamiInstructions;

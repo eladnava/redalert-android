@@ -40,6 +40,15 @@ public class AlertLogic {
         // Log the cities
         Log.i(Logging.TAG, "Received alert (" + threatType + "): " + citiesPSVString);
 
+        // Early warning?
+        if (threatType.equals(ThreatTypes.EARLY_WARNING)) {
+            // Disabled by user?
+            if (!AppPreferences.getEarlyWarningNotificationsEnabled(context)) {
+                Log.i(Logging.TAG, "User disabled early warnings, ignoring alert");
+                return;
+            }
+        }
+
         // Get alert cities as list
         List<String> cityList = LocationData.explodePSV(citiesPSVString);
 

@@ -88,7 +88,7 @@ public class SoundListPreference extends ListPreference {
                         if (path.equals(Sound.CUSTOM_SOUND_NAME)) {
                             // Delete (hide) old notification channel
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                notificationManager.deleteNotificationChannel(Notifications.getNotificationChannelId(alertSoundType, "alarm1", mContext));
+                                notificationManager.deleteNotificationChannel(Notifications.getNotificationChannelId(alertSoundType, null, "alarm1", mContext));
                             }
 
                             // Instruct user how to configure custom sound
@@ -98,10 +98,10 @@ public class SoundListPreference extends ListPreference {
                                     // Clicked okay?
                                     if (which == DialogInterface.BUTTON_POSITIVE) {
                                         // Get channel ID by alert type
-                                        String channelId = Notifications.getNotificationChannelId(alertSoundType, Sound.CUSTOM_SOUND_NAME, mContext);
+                                        String channelId = Notifications.getNotificationChannelId(alertSoundType, null, Sound.CUSTOM_SOUND_NAME, mContext);
 
                                         // Ensure notification channel created
-                                        Notifications.setNotificationChannel(alertSoundType, path, null, mContext);
+                                        Notifications.setNotificationChannel(alertSoundType, null, path, null, mContext);
 
                                         // Open notification channel config to allow user to select custom sound
                                         Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
@@ -137,7 +137,7 @@ public class SoundListPreference extends ListPreference {
                             // Selected built-in sound
                             // Delete (hide) custom notification channel
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                notificationManager.deleteNotificationChannel(Notifications.getNotificationChannelId(alertSoundType, Sound.CUSTOM_SOUND_NAME, mContext));
+                                notificationManager.deleteNotificationChannel(Notifications.getNotificationChannelId(alertSoundType, null, Sound.CUSTOM_SOUND_NAME, mContext));
                             }
                         }
 
