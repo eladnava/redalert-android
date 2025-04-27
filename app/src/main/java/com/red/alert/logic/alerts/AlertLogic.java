@@ -75,8 +75,11 @@ public class AlertLogic {
                         continue;
                     }
 
+                    // Not an early warning?
                     // Save city last alert timestamp to prevent duplicate alerts
-                    AppPreferences.setCityLastAlertTime(city, DateTime.getUnixTimestamp(), context);
+                    if (!threatType.equals(ThreatTypes.EARLY_WARNING)) {
+                        AppPreferences.setCityLastAlertTime(city, DateTime.getUnixTimestamp(), context);
+                    }
                 }
 
                 // Add city to relevant alert cities
