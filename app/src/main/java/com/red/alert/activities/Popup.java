@@ -190,7 +190,7 @@ public class Popup extends AppCompatActivity {
 
         // Not a missile / hostile aircraft intrusion alert?
         // Hide countdown timer
-        if (!threatType.contains(ThreatTypes.MISSILES) && !threatType.contains(ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION)) {
+        if (!threatType.contains(ThreatTypes.MISSILES) && !threatType.contains(ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION) && !threatType.equals(ThreatTypes.EARLY_WARNING)) {
             // Countdown is only relevant for rocket fire
             mCounter.setVisibility(View.GONE);
         }
@@ -200,6 +200,12 @@ public class Popup extends AppCompatActivity {
 
             // Start counting down
             scheduleRocketCountdown(timestamp, countdown);
+
+            // Hide countdown text for Early Warnings
+            if (threatType.equals(ThreatTypes.EARLY_WARNING)) {
+                // Countdown is only relevant for rocket fire
+                mCounter.setVisibility(View.GONE);
+            }
         }
     }
 
