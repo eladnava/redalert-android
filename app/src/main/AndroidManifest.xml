@@ -13,7 +13,10 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_REMOTE_MESSAGING" />
 
     <!-- Google Play Services Feature Declarations -->
     <uses-feature
@@ -31,6 +34,7 @@
 
     <!-- RedAlert -->
     <application
+        android:name=".App"
         android:supportsRtl="true"
         android:label="@string/appName"
         android:icon="@drawable/ic_launcher">
@@ -92,10 +96,18 @@
             android:theme="@style/AppTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
 
+        <!-- Early Warnings -->
+        <activity
+            android:name=".activities.settings.alerts.EarlyWarnings"
+            android:label="@string/earlyWarnings"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
+
         <!-- Location Alerts Settings -->
         <activity
             android:name=".activities.settings.alerts.LocationAlerts"
             android:label="@string/locationAlerts"
+            android:launchMode="singleTask"
             android:theme="@style/AppTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
 
@@ -154,7 +166,7 @@
 
         <!-- Pushy Socket Service -->
         <!-- Do not modify - internal service -->
-        <service android:name="me.pushy.sdk.services.PushySocketService" android:stopWithTask="false" />
+        <service android:name="me.pushy.sdk.services.PushySocketService" android:foregroundServiceType="remoteMessaging" android:stopWithTask="false" />
 
         <!-- Pushy Job Service (added in Pushy SDK 1.0.35) -->
         <!-- Do not modify - internal service -->

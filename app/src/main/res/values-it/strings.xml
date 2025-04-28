@@ -11,6 +11,7 @@
     <string name="apiRequestFailed">Una richiesta di ricezione delle informazioni dai nostri server è fallita. Controlla che la connesione a internet sia funzionante e ritenta.</string>
     <string name="registrationFailed">Registrazione fallita, prova nuovamente più tardi.</string>
     <string name="grantNotificationPermission">Abilita \"Notifiche\" nella schermata successiva per ricevere avvisi in tempo reale.</string>
+    <string name="citySelectionLimitError">Per favore non selezionare più di 100 città.</string>
     <string name="settings">Impostazioni</string>
     <string name="advanced">Avanzate</string>
     <string name="advancedSettings">Impostazioni Avanzate</string>
@@ -30,6 +31,7 @@
     <string name="imSafeDesc">Manda il messaggio \"Sono salvo\"</string>
     <string name="pushRegistrationSuccess">Seleziona la tua Città</string>
     <string name="pushRegistrationSuccessDesc">Seleziona la tua città o paese per ricevere avvisi in tempo reale.</string>
+    <string name="pushRegistrationReselectDesc">Seleziona nuovamente la tua città o località per ricevere avvisi in tempo reale.</string>
     <string name="safeWhatsApp">Manda con WhatsApp</string>
     <string name="safeWhatsAppDesc">Toccando il bottone \"Sono salvo\" verrà automaticamente mandato un messaggio tramite WhatsApp</string>
     <string name="soundSelection">Suono notifica di attacco</string>
@@ -170,9 +172,14 @@
     <string name="close">Chiudere</string>
     <string name="silence">Silenzio</string>
     <string name="showPopup">Mostra popup</string>
-    <string name="showPopupDesc">Le allerte verrano mostrate in un pop-up</string>
+    <string name="showPopupDesc">Le allerte verranno mostrate in un pop-up</string>
     <string name="grantOverlayPermission">Consenti la visualizzazione su altre app</string>
     <string name="grantOverlayPermissionInstructions">Seleziona \"RedAlert\" -> \"Consenti visualizzazione su altre app\" nella schermata successiva.</string>
+    <string name="showSecondaryAlertPopupDesc">Le allerte secundario verranno mostrate in un pop-up</string>
+
+    <!-- Schedule Exact Alarms -->
+    <string name="allowSettingExactAlarms">Consenti l\'impostazione di allarmi e promemoria</string>
+    <string name="allowSettingExactAlarmsInstructions">Per ricevere le notifiche in background, consenti l\'impostazione di allarmi e promemoria nella schermata successiva.</string>
 
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Migliorare l\'affidabilità</string>
@@ -194,15 +201,41 @@
     <string name="advancedAlerts"> Allerte Avanzate</string>
     <string name="secondarySilentOverrideDesc">Le allerte secondarie disabiliteranno la modalità silenziosa</string>
 
+    <!-- Avvisi Precoci -->
+    <string name="earlyWarnings">Avvisi Precoci</string>
+    <string name="earlyWarningsDesc">Configura i preavvisi da ricevere con 3-5 minuti di anticipo</string>
+    <string name="receiveEarlyWarningsDesc">Ricevi i preavvisi con 3-5 minuti di anticipo</string>
+
+    <!-- Suono Preavviso -->
+    <string name="earlyWarningsSoundSelection">Suono Preavviso</string>
+    <string name="earlyWarningsSoundSelectionDesc">Seleziona un suono da riprodurre quando viene ricevuto un preavviso</string>
+
+    <!-- Dona -->
+    <string name="donate">Sostieni la nostra causa</string>
+    <string name="donateInstructions">Seleziona l\'importo desiderato per la donazione (in ILS):</string>
+    <string name="donateDesc">La tua donazione contribuirà a coprire i costi del server e dello sviluppo</string>
+    <string name="donateSuccess">Grazie per la tua donazione!</string>
+    <string name="donateSuccessDesc">La tua donazione è molto apprezzata e contribuirà a coprire i costi del server e dello sviluppo.</string>
+
     <!-- Operation Lifeshield -->
     <string name="lifeshieldShelters">Rifugi Lifeshield:</string>
     <string name="learnAboutLifeshield">Ulteriori informazioni su Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Clicca qui per saperne di più su Operation Lifeshield, un\'organizzazione no profit che utilizza rifugi antiaerei in Israele.</string>
 
+    <!-- Time to Shelter -->
+    <string name="immediately">Immediatamente</string>
+    <string name="fifteenSeconds">15 secondi</string>
+    <string name="thirtySeconds">30 secondi</string>
+    <string name="fortyFiveSeconds">45 secondi</string>
+    <string name="oneMinute">Un minuto</string>
+    <string name="oneMinuteAndAHalf">Un minuto e mezzo</string>
+    <string name="threeMinutes">3 minuti</string>
+
     <!-- Threat Types -->
     <string name="missiles">Fuoco di razzi</string>
     <string name="radiologicalEvent">Evento radiologico</string>
     <string name="earthQuake">Terremoto</string>
+    <string name="earlyWarning">Allerta precoce</string>
     <string name="tsunami">Allarme tsunami</string>
     <string name="hostileAircraftIntrusion">Intrusione di aerei ostili</string>
     <string name="hazardousMaterials">Materiali pericolosi</string>
@@ -221,6 +254,7 @@
     <string name="missilesInstructions">Entra nello spazio protetto e rimani lì per 10 minuti.</string>
     <string name="hostileAircraftIntrusionInstructions">Entra immediatamente nell\'area protetta e rimani lì per 10 minuti, a meno che non venga dato un ulteriore avviso.</string>
     <string name="earthQuakeInstructions">Esci immediatamente in un\'area aperta. Se ciò non è possibile, inserisci l\'MMD o una scala.</string>
+    <string name="earlyWarningInstructions">È previsto un avviso nei prossimi minuti. È necessario trovare una posizione migliore che offra la massima protezione nella propria zona. Se si riceve un avviso, entrare nell\'area protetta e rimanervi per 10 minuti.</string>
     <string name="radiologicalEventInstructions">Entra nell\'edificio e chiudi porte e finestre.</string>
     <string name="terroristInfiltrationInstructions">Entra immediatamente nell\'edificio e chiudi porte e finestre.</string>
     <string name="tsunamiInstructions">Allontanarsi immediatamente dalla spiaggia di almeno un chilometro o salire al quarto piano o superiore.</string>
@@ -249,5 +283,5 @@
 
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">Cancellare gli avvisi recenti?</string>
-    <string name="clearRecentAlertsDesc">Vuoi cancellare l\'elenco degli avvisi recenti?</string>
+    <string name="clearRecentAlertsDesc">Vuoi cancellare tutti gli avvisi recenti?</string>
 </resources>

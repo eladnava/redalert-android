@@ -8,10 +8,8 @@ package com.red.alert.ui.elements;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.os.Build;
 import android.preference.DialogPreference;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -150,7 +148,7 @@ public class SliderPreference extends DialogPreference {
         mSeekBarValue = (int) (mValue * SEEKBAR_RESOLUTION);
         View view = super.onCreateDialogView();
 
-        final TextView message = (TextView) view.findViewById(android.R.id.message);
+        final TextView message = (TextView) view.findViewById(R.id.message);
         final SeekBar seekbar = (SeekBar) view.findViewById(R.id.slider_preference_seekbar);
 
         seekbar.setMax(SEEKBAR_RESOLUTION);

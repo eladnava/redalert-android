@@ -11,6 +11,7 @@
     <string name="apiRequestFailed">Une requête pour récupérer des informations de nos serveurs a échoué. Vérifiez votre connexion Internet et réessayez.</string>
     <string name="registrationFailed"> L\'enregistrement a échoué, réessayez ultérieurement.</string>
     <string name="grantNotificationPermission">Veuillez activer \"Notifications" sur l\'écran suivant pour recevoir des alertes en temps réel.</string>
+    <string name="citySelectionLimitError">Veuillez ne pas sélectionner plus de 100 villes.</string>
     <string name="settings">Paramètres</string>
     <string name="advanced">Options</string>
     <string name="advancedSettings">Paramètres avancés</string>
@@ -30,6 +31,7 @@
     <string name="imSafeDesc">Envoyer \"Je suis en sécurité\"</string>
     <string name="pushRegistrationSuccess">Sélectionnez votre Ville</string>
     <string name="pushRegistrationSuccessDesc">Veuillez sélectionner votre ville ou village pour recevoir des alertes en temps réel.</string>
+    <string name="pushRegistrationReselectDesc">Veuillez resélectionner votre ville ou village pour recevoir des alertes en temps réel.</string>
     <string name="safeWhatsApp">Envoyer via WhatsApp</string>
     <string name="safeWhatsAppDesc">En cliquant sur le bouton \"Je suis en sécurité\", le message sera envoyé via WhatsApp automatiquement</string>
     <string name="soundSelection">Sonnerie de l\'alerte à la roquette</string>
@@ -110,6 +112,15 @@
     <string name="secondarySilentOverride">Passer outre le mode silencieux</string>
     <string name="secondarySilentOverrideDesc">Les alertes de roquette secondaire passeront outre le mode silencieux</string>
 
+    <!-- Alertes précoces -->
+    <string name="earlyWarnings">Alertes précoces</string>
+    <string name="earlyWarningsDesc">Configurer les alertes précoces pour une réception 3 à 5 minutes à l\'avance</string>
+    <string name="receiveEarlyWarningsDesc">Recevoir les alertes précoces 3 à 5 minutes à l\'avance</string>
+
+    <!-- Son d'alerte précoce -->
+    <string name="earlyWarningsSoundSelection">Son d\'alerte précoce</string>
+    <string name="earlyWarningsSoundSelectionDesc">Sélectionner un son à émettre lors de la réception d\'une alerte précoce</string>
+
     <!-- Rate the App -->
     <string name="rateApp">Notez l\'application</string>
     <string name="rateAppDesc">Evaluer l\'application sur Google Play</string>
@@ -166,9 +177,14 @@
     <string name="close">Fermer</string>
     <string name="silence">Silence</string>
     <string name="showPopup">Afficher la popup</string>
-    <string name="showPopupDesc">Les alertes de roquettes s\'affichera dans une popup</string>
+    <string name="showPopupDesc">Les alertes s\'affichera dans une popup</string>
     <string name="grantOverlayPermission">Autoriser l\'affichage sur d\'autres applications</string>
     <string name="grantOverlayPermissionInstructions">Veuillez sélectionner « RedAlert » -> « Autoriser l\'affichage sur d\'autres applications » dans l\'écran suivant.</string>
+    <string name="showSecondaryAlertPopupDesc">Les alertes secondaires s\'affichera dans une popup</string>
+
+    <!-- Schedule Exact Alarms -->
+    <string name="allowSettingExactAlarms">Autoriser le réglage des alarmes et des rappels</string>
+    <string name="allowSettingExactAlarmsInstructions">Pour recevoir des notifications en arrière-plan, veuillez autoriser le réglage des alarmes et des rappels dans l\'écran suivant.</string>
 
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Améliorer la fiabilité</string>
@@ -189,15 +205,32 @@
     <string name="alerts">Alertes</string>
     <string name="advancedAlerts">Alertes avancées</string>
 
+    <!-- Faire un don -->
+    <string name="donate">Soutenez notre cause</string>
+    <string name="donateInstructions">Sélectionnez le montant de votre don (en ILS) :</string>
+    <string name="donateDesc">Votre don contribuera à couvrir les frais de serveur et de développement</string>
+    <string name="donateSuccess">Merci pour votre don !</string>
+    <string name="donateSuccessDesc">Votre don est grandement apprécié et contribuera à couvrir les frais de serveur et de développement.</string>
+
     <!-- Operation Lifeshield -->
     <string name="lifeshieldShelters">Abris Lifeshield:</string>
     <string name="learnAboutLifeshield">En savoir plus sur Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Cliquez ici pour en savoir plus sur Operation Lifeshield, un organisme sans but lucratif qui déploie des abris anti-aériens en Israël.</string>
 
+    <!-- Time to Shelter -->
+    <string name="immediately">Immédiatement</string>
+    <string name="fifteenSeconds">15 secondes</string>
+    <string name="thirtySeconds">30 secondes</string>
+    <string name="fortyFiveSeconds">45 secondes</string>
+    <string name="oneMinute">Une minute</string>
+    <string name="oneMinuteAndAHalf">Une minute et demie</string>
+    <string name="threeMinutes">3 minutes</string>
+
     <!-- Threat Types -->
     <string name="missiles">Tir de roquette</string>
     <string name="radiologicalEvent">Événement radiologique</string>
     <string name="earthQuake">Tremblement de terre</string>
+    <string name="earlyWarning">Alerte précoce</string>
     <string name="tsunami">Alerte au tsunami</string>
     <string name="hostileAircraftIntrusion">Intrusion d\'aéronefs hostiles</string>
     <string name="hazardousMaterials">Matières dangereuses</string>
@@ -216,6 +249,7 @@
     <string name="missilesInstructions">Entrez dans l\'espace protégé et restez-y pendant 10 minutes.</string>
     <string name="hostileAircraftIntrusionInstructions">Entrez immédiatement dans la zone protégée et restez-y pendant 10 minutes, à moins qu\'un nouvel avertissement ne soit donné.</string>
     <string name="earthQuakeInstructions">Sortez immédiatement dans une zone dégagée. Si cela n\'est pas possible, entrez dans le MMD ou dans une cage d\'escalier.</string>
+    <string name="earlyWarningInstructions">Une alerte est attendue dans les prochaines minutes. Vous devez trouver un meilleur emplacement offrant la meilleure protection dans votre zone. Si une alerte est reçue, entrez dans l\'espace protégé et restez-y pendant 10 minutes.</string>
     <string name="radiologicalEventInstructions">Entrez dans le bâtiment et fermez les portes et les fenêtres.</string>
     <string name="terroristInfiltrationInstructions">Entrez immédiatement dans le bâtiment et fermez les portes et les fenêtres.</string>
     <string name="tsunamiInstructions">Éloignez-vous immédiatement de la plage d\'au moins un kilomètre ou montez au quatrième étage ou plus.</string>
@@ -244,5 +278,5 @@
 
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">Effacer les alertes récentes?</string>
-    <string name="clearRecentAlertsDesc">Souhaitez-vous effacer la liste des alertes récentes?</string>
+    <string name="clearRecentAlertsDesc">Souhaitez-vous effacer toutes les alertes récentes?</string>
 </resources>

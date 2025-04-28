@@ -4,6 +4,7 @@
 /build
 /captures
 output.json
+output-metadata.json
 
 .idea/caches
 .idea/codeStyles
@@ -16,3 +17,4 @@ output.json
 .idea/gradle.xml
 .idea/inspectionProfiles/
 .idea/gradle.xml
+*.dm

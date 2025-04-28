@@ -121,6 +121,15 @@
     <string name="secondarySilentOverride">Выключите бесшумный режим</string>
     <string name="secondarySilentOverrideDesc">При вторичный сигнале тревоги, тихий режим будет отменен</string>
 
+    <!-- Ранние предупреждения -->
+    <string name="earlyWarnings">Ранние предупреждения</string>
+    <string name="earlyWarningsDesc">Настройте ранние предупреждения на получение за 3–5 минут</string>
+    <string name="receiveEarlyWarningsDesc">Получать ранние предупреждения за 3–5 минут</string>
+
+    <!-- Звук раннего предупреждения -->
+    <string name="earlyWarningsSoundSelection">Звук раннего предупреждения</string>
+    <string name="earlyWarningsSoundSelectionDesc">Выберите звук для воспроизведения при получении раннего предупреждения</string>
+
     <!-- I'm Safe -->
     <string name="safe">Отправить\"Я в убежище\"</string>
     <string name="safeCategory">\"Я в убежище\"</string>
@@ -173,10 +182,12 @@
     <string name="apiRequestFailed">Запрос для получения информации из наших серверов не удалось. Пожалуйста, проверьте подключение к Интернету и повторите попытку.</string>
     <string name="registrationFailed">Регистрация на автоматические уведомления не прошла. Пожалуйста, повторите попытку позже.</string>
     <string name="grantNotificationPermission">Включите «Уведомления» на следующем экране, чтобы получать оповещения в режиме реального времени.</string>
+    <string name="citySelectionLimitError">Пожалуйста не выбирайте более 100 городов.</string>
 
     <!-- Success Messages -->
     <string name="pushRegistrationSuccess">Выберите свой город</string>
     <string name="pushRegistrationSuccessDesc">Пожалуйста, выберите свой город или поселок, чтобы получать оповещения в режиме реального времени.</string>
+    <string name="pushRegistrationReselectDesc">Пожалуйста, выберите свой город повторно, чтобы получать оповещения в режиме реального времени.</string>
 
     <!-- GPS -->
     <string name="locationAlerts">Оповещения о местоположениях</string>
@@ -213,9 +224,14 @@
     <string name="close">Закрыть</string>
     <string name="silence">Тишина</string>
     <string name="showPopup">Показать всплывающее</string>
-    <string name="showPopupDesc">Оповещения Rocket будет отображаться в всплывающем окне</string>
+    <string name="showPopupDesc">Оповещения будет отображаться в всплывающем окне</string>
     <string name="grantOverlayPermission">Разрешить отображение поверх других приложений</string>
     <string name="grantOverlayPermissionInstructions">Пожалуйста, выберите «RedAlert» -> «Разрешить отображение поверх других приложений» на следующем экране.</string>
+    <string name="showSecondaryAlertPopupDesc">Вторичные оповещения будут отображаться во всплывающем окне</string>
+
+    <!-- Schedule Exact Alarms -->
+    <string name="allowSettingExactAlarms">Разрешить установку будильников и напоминаний</string>
+    <string name="allowSettingExactAlarmsInstructions">Чтобы получать уведомления в фоновом режиме, разрешите установку будильников и напоминаний на следующем экране.</string>
 
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Повышение надежности</string>
@@ -236,24 +252,41 @@
     <string name="alerts">Оповещения</string>
     <string name="advancedAlerts">Расширенный агент</string>
 
+    <!-- Пожертвовать -->
+    <string name="donate">Поддержите наше дело</string>
+    <string name="donateInstructions">Выберите желаемую сумму пожертвования (в израильских шекелях):</string>
+    <string name="donateDesc">Ваше пожертвование поможет покрыть расходы на сервер и разработку</string>
+    <string name="donateSuccess">Спасибо за ваше пожертвование!</string>
+    <string name="donateSuccessDesc">Ваше пожертвование будет высоко оценено и поможет покрыть расходы на сервер и разработку.</string>
+
     <!-- Operation Lifeshield -->
     <string name="lifeshieldShelters">Приюты Lifeshield:</string>
     <string name="learnAboutLifeshield">Узнать о Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Нажмите здесь, чтобы узнать больше об Операции Lifeshield, некоммерческой организации, которая развертывает убежища для воздушных налетов в Израиле.</string>
 
+    <!-- Time To Shelter -->
+    <string name="immediately">Немедленно</string>
+    <string name="fifteenSeconds">15 секунд</string>
+    <string name="thirtySeconds">30 секунд</string>
+    <string name="fortyFiveSeconds">45 секунд</string>
+    <string name="oneMinute">Минута</string>
+    <string name="oneMinuteAndAHalf">Полторы минуты</string>
+    <string name="threeMinutes">3 минуты</string>
+
     <!-- Threat Types -->
     <string name="missiles">Pакетный обстрел</string>
     <string name="radiologicalEvent">Радиологическое событие</string>
     <string name="earthQuake">Землетрясение</string>
+    <string name="earlyWarning">Раннее предупреждение</string>
     <string name="tsunami">Предупреждение о цунами</string>
-    <string name="hostileAircraftIntrusion">Вторжение вражеских самолетов</string>
+    <string name="hostileAircraftIntrusion">Нарушение воздушного пространства</string>
     <string name="hazardousMaterials">Опасные материалы</string>
     <string name="terroristInfiltration">Террористическое проникновение</string>
     <string name="missilesDrill">Упражнение: Pакетный обстрел</string>
     <string name="earthQuakeDrill">Упражнение: Землетрясение</string>
     <string name="radiologicalEventDrill">Упражнение: радиационное событие</string>
     <string name="tsunamiDrill">Упражнение: предупреждение о цунами</string>
-    <string name="hostileAircraftIntrusionDrill">Упражнение: Вторжение вражеских самолетов</string>
+    <string name="hostileAircraftIntrusionDrill">Упражнение: Нарушение воздушного пространства</string>
     <string name="hazardousMaterialsDrill">Упражнение: опасные материалы</string>
     <string name="terroristInfiltrationDrill">Упражнение: проникновение террористов</string>
     <string name="unknown">Оповещен</string>
@@ -263,6 +296,7 @@
     <string name="missilesInstructions">Войдите в защищённое пространство и оставайтесь в нём 10 минут.</string>
     <string name="hostileAircraftIntrusionInstructions">Немедленно войдите в защищённое пространство и оставайтесь в нём на протяжении 10 минут, кроме случаев получения дополнительного оповещения.</string>
     <string name="earthQuakeInstructions">Немедленно выйдите на открытое пространство. Если это невозможно, войдите в МАМАД или выйдите на лестничную клетку.</string>
+    <string name="earlyWarningInstructions">В ближайшие несколько минут ожидается оповещение. Вам необходимо найти лучшее место, которое обеспечит наилучшую защиту в вашем районе. Если получено оповещение, войдите в защищенное пространство и оставайтесь там в течение 10 минут.</string>
     <string name="radiologicalEventInstructions">Войдите в здание, закройте двери и окна.</string>
     <string name="terroristInfiltrationInstructions">Немедленно войдите в здание, закройте двери и окна.</string>
     <string name="tsunamiInstructions">Немедленно удалитесь от пляжа как минимум на 1 км или поднимитесь на 4 этаж и выше.</string>
@@ -291,5 +325,5 @@
 
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">Удалить недавние оповещения?</string>
-    <string name="clearRecentAlertsDesc">Хотите очистить список последних оповещений?</string>
+    <string name="clearRecentAlertsDesc">Хотите удалить все недавние оповещения?</string>
 </resources>

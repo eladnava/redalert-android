@@ -2,14 +2,16 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 33
+    namespace 'com.red.alert'
+
+    compileSdkVersion 34
 
     defaultConfig {
         applicationId "com.red.alert"
-        minSdkVersion 16
-        targetSdkVersion 33
-        versionCode 10510
-        versionName "1.0.51"
+        minSdkVersion 21
+        targetSdkVersion 34
+        versionCode 10790
+        versionName "1.0.79"
     }
     buildTypes {
         release {
@@ -20,20 +22,23 @@ android {
 
 dependencies {
     // Pushy Android SDK
-    implementation 'me.pushy:sdk:1.0.102'
+    implementation 'me.pushy:sdk:1.0.121'
 
     // PrettyTime
     implementation 'org.ocpsoft.prettytime:prettytime:4.0.4.Final'
 
     // AppCompat v7 Dependency
-    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
 
     // Firebase Cloud Messaging
-    implementation "com.google.firebase:firebase-messaging:20.2.4"
+    implementation "com.google.firebase:firebase-messaging:24.1.1"
 
-    // Google Location & Places APIs
-    implementation 'com.google.android.gms:play-services-places:17.0.0'
-    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    // Google Maps & Location APIs
+    implementation 'com.google.android.gms:play-services-maps:19.1.0'
+    implementation 'com.google.android.gms:play-services-location:21.3.0'
+
+    // Google Play Billing Library
+    implementation "com.android.billingclient:billing:7.1.1"
 
     // All .jar files in ./libs
     implementation fileTree(dir: 'libs', include: ['*.jar'])

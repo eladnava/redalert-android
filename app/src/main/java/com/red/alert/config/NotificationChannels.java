@@ -13,11 +13,12 @@ public class NotificationChannels {
     public static final String CUSTOM_SOUND_NOTIFICATION_CHANNEL_SUFFIX = "_custom";
 
     // Location service foreground notification channel
-    public static final String LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_ID = "redalert_location";
-    public static final String LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_NAME = "Location-based Alerts";
+    public static final String LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_ID = "redalert_location_v2";
+    public static final String LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_OLD_ID = "redalert_location";
+    public static final String LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_NAME = "Location Service";
 
-    // Pushy foreground service foreground notification channel
-    public static final String PUSHY_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_ID = "pushy_foreground_service";
-
+    // Old channels that should be deleted due to resource ID bug
+    public static final String OLD_PRIMARY_ALERT_NOTIFICATION_CHANNEL_ID = "redalert";
+    public static final String OLD_SECONDARY_ALERT_NOTIFICATION_CHANNEL_ID = "redalert_secondary";
 
 }

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.widget.Toast;
 
-import com.red.alert.R;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.utils.formatting.StringUtils;
 

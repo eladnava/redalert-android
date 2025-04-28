@@ -11,6 +11,7 @@
     <string name="apiRequestFailed">فشل طلب استرداد المعلومات من خوادمنا. الرجاء التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى.</string>
     <string name="registrationFailed">فشل التسجيل، يرجى المحاولة مرة أخرى لاحقًا.</string>
     <string name="grantNotificationPermission">يُرجى تمكين \"الإشعارات\" على الشاشة التالية لتلقي التنبيهات في الوقت الفعلي.</string>
+    <string name="citySelectionLimitError">لا يمكن تحديد أكثر من ١٠٠ مدينة.</string>
     <string name="settings">الإعدادات</string>
     <string name="advanced">متقدم</string>
     <string name="advancedSettings">الإعدادات المتقدمة</string>
@@ -30,6 +31,7 @@
     <string name="imSafeDesc">أرسل \"أنا آمن\"</string>
     <string name="pushRegistrationSuccess">حدد مدينة الإقامة</string>
     <string name="pushRegistrationSuccessDesc">يُرجى تحديد مدينتك أو بلدتك لتلقي التنبيهات في الوقت الفعلي.</string>
+    <string name="pushRegistrationReselectDesc">يرجى إعادة تحديد مدينتك أو بلدتك لتلقي التنبيهات في الوقت الحقيقي.</string>
     <string name="safeWhatsApp">إرسال عبر واتساب</string>
     <string name="safeWhatsAppDesc">سيؤدي النقر على زر \"أنا آمن\" إلى فتح اختيار جهة اتصال واتساب</string>
     <string name="soundSelection">صوت التنبيه</string>
@@ -110,6 +112,15 @@
     <string name="secondarySilentOverride">تجاوز الوضع الصامت</string>
     <string name="secondarySilentOverrideDesc">ستتجاوز التنبيهات الثانوية الوضع الصامت</string>
 
+    <!-- التحذيرات المبكرة -->
+    <string name="earlyWarnings">التحذيرات المبكرة</string>
+    <string name="earlyWarningsDesc">ضبط التحذيرات المبكرة ليتم استلامها قبل 3-5 دقائق</string>
+    <string name="receiveEarlyWarningsDesc">استلام التحذيرات المبكرة قبل 3-5 دقائق</string>
+
+    <!-- صوت التحذير المبكر -->
+    <string name="earlyWarningsSoundSelection">صوت التحذير المبكر</string>
+    <string name="earlyWarningsSoundSelectionDesc">اختر صوتًا لتشغيله عند استلام تحذير مبكر</string>
+
     <!-- تقييم التطبيق -->
     <string name="rateApp">تقييم التطبيق</string>
     <string name="rateAppDesc">تقييم التطبيق على تطبيقات جوجل</string>
@@ -169,6 +180,11 @@
     <string name="showPopupDesc">سيتم عرض التنبيهات الواردة في نافذة منبثقة</string>
     <string name="grantOverlayPermission">السماح بالعرض فوق التطبيقات الأخرى</string>
     <string name="grantOverlayPermissionInstructions">يُرجى تحديد \"أحمر اللون\" -> \"السماح بالعرض فوق التطبيقات الأخرى\" في الشاشة التالية.</string>
+    <string name="showSecondaryAlertPopupDesc">سيتم عرض التنبيهات الثانوية في نافذة منبثقة</string>
+
+    <!-- Schedule Exact Alarms -->
+    <string name="allowSettingExactAlarms">السماح بإعداد التنبيهات والتذكيرات</string>
+    <string name="allowSettingExactAlarmsInstructions">لتلقي الإشعارات في الخلفية، يرجى السماح بتعيين التنبيهات والتذكيرات في الشاشة التالية.</string>
 
     <!-- خدمة مقدمة انتهازية -->
     <string name="foregroundService">تحسين الموثوقية</string>
@@ -189,15 +205,32 @@
     <string name="alerts">التنبيهات</string>
     <string name="advancedAlerts">التنبيهات المتقدمة</string>
 
+    <!-- تبرع -->
+    <string name="donate">ادعم قضيتنا</string>
+    <string name="donateInstructions">حدد مبلغ التبرع المطلوب (بالدينار الأردني):</string>
+    <string name="donateDesc">تبرعك سيساهم في تغطية تكاليف الخادم والتطوير</string>
+    <string name="donateSuccess">شكرًا لتبرعك!</string>
+    <string name="donateSuccessDesc">نقدر تبرعك كثيرًا، وسيساهم في تغطية تكاليف الخادم والتطوير.</string>
+
     <!-- عملية درع النجاة -->
     <string name="lifeshieldShelters">ملاجئ Lifeshield:</string>
     <string name="learnAboutLifeshield">تعرف على Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">تعرف على المزيد حول Operation Lifeshield، وهي منظمة غير ربحية تنشر ملاجئ الغارات الجوية في إسرائيل.</string>
 
+    <!-- Time To Shelter -->
+    <string name="immediately">في الحال</string>
+    <string name="fifteenSeconds">۱٥ ثانية</string>
+    <string name="thirtySeconds">۳۰ ثانية</string>
+    <string name="fortyFiveSeconds">٤٥ ثانية</string>
+    <string name="oneMinute">دقيقة</string>
+    <string name="oneMinuteAndAHalf">دقيقة ونصف</string>
+    <string name="threeMinutes">۳ دقائق</string>
+
     <!-- أنواع التهديدات -->
     <string name="missiles">إطلاق الصواريخ</string>
     <string name="radiologicalEvent">حدث إشعاعي</string>
     <string name="earthQuake">زلزال</string>
+    <string name="earlyWarning">الإنذار المبكر</string>
     <string name="tsunami">تحذير من تسونامي</string>
     <string name="hostileAircraftIntrusion">اختراق طائرة معادية</string>
     <string name="hazardousMaterials">حدث المواد الخطرة</string>
@@ -216,6 +249,7 @@
     <string name="missilesInstructions">ادخل إلى المساحة المحمية وابق فيها لمدة ۱۰ دقائق.</string>
     <string name="hostileAircraftIntrusionInstructions">ادخل إلى المساحة المحمية فورًا وابق فيها لمدة ۱۰ دقائق، ما لم يتم تلقي تنبيه آخر.</string>
     <string name="earthQuakeInstructions">اخرج فورًا إلى العراء. إذا لم يكن ذلك ممكنا، أدخل الغرفة المحمية أو الدرج.</string>
+    <string name="earlyWarningInstructions">من المتوقع وصول تنبيه خلال الدقائق القليلة القادمة. عليك إيجاد مكان أفضل يوفر أفضل حماية في منطقتك. في حال استلام تنبيه، ادخل إلى المكان المحمي وابق فيه لمدة 10 دقائق.</string>
     <string name="radiologicalEventInstructions">ادخل المبنى وأغلق الأبواب والنوافذ.</string>
     <string name="terroristInfiltrationInstructions">ادخل على الفور إلى مبنى مجاور، وأغلق الأبواب وأغلق النوافذ.</string>
     <string name="tsunamiInstructions">تحرك على الفور بعيدًا عن الشاطئ لمسافة لا تقل عن كيلومتر واحد أو اصعد إلى الطابق الرابع أو أعلى.</string>
@@ -244,5 +278,5 @@
 
     <!-- مسح مربع حوار التنبيهات الأخيرة -->
     <string name="clearRecentAlerts">هل تريد مسح التنبيهات الأخيرة؟</string>
-    <string name="clearRecentAlertsDesc">هل ترغب في مسح قائمة التنبيهات الأخيرة؟</string>
+    <string name="clearRecentAlertsDesc">هل ترغب في مسح كافة التنبيهات الأخيرة؟</string>
 </resources>

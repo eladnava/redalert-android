@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="zoneNames">
+        <item>Selecionar Tudo</item>
+        <item>Eilat</item>
+        <item>Bika\'a</item>
+        <item>Vale Beit She\'an</item>
+        <item>Sul do Golan</item>
+        <item>Golan Norte</item>
+        <item>Alta Galileia</item>
+        <item>Baixa Galileia</item>
+        <item>Dan</item>
+        <item>Sul do Neguev</item>
+        <item>HaCarmel</item>
+        <item>HaMifratz</item>
+        <item>HaAmakim</item>
+        <item>HaShfela</item>
+        <item>Wadi Ara</item>
+        <item>Yehudá</item>
+        <item>Mar Morto</item>
+        <item>Jerusalém</item>
+        <item>Yarkon</item>
+        <item>Laquis</item>
+        <item>Menashe</item>
+        <item>Neguev Ocidental</item>
+        <item>Laquis Ocidental</item>
+        <item>Centro da Galileia</item>
+        <item>Centro de Negev</item>
+        <item>Envelope de Gaza</item>
+        <item>Arava</item>
+        <item>Linha de Confronto</item>
+        <item>Shomron</item>
+        <item>Shfelat Yehuda</item>
+        <item>Sharon</item>
+    </string-array>
+</resources>

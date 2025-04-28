@@ -19,4 +19,12 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
+    <ImageView
+        android:id="@+id/appIcon"
+        android:visibility="gone"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@drawable/ic_launcher"
+        android:layout_margin="10dp"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

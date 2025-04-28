@@ -1,5 +1,6 @@
 package com.red.alert.logic.feedback.sound;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -10,6 +11,7 @@ import android.util.Log;
 import com.red.alert.R;
 import com.red.alert.config.Logging;
 import com.red.alert.config.Sound;
+import com.red.alert.config.ThreatTypes;
 import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.feedback.VibrationLogic;
 import com.red.alert.utils.caching.Singleton;
@@ -64,17 +66,17 @@ public class SoundLogic {
         return Sound.STREAM_TYPE;
     }
 
-    public static String getAlertSoundName(String alertType, String overrideSound, Context context) {
+    public static String getAlertSoundName(String alertType, String threatType, String overrideSound, Context context) {
         // Override sound selection?
         if (overrideSound != null) {
             return overrideSound;
         }
 
         // Get sound preference name (based on alert type being primary/secondary)
-        String soundPreference = getSoundPreference(alertType, context);
+        String soundPreference = getSoundPreference(alertType, threatType, context);
 
         // Return selected sound file name
-        return Singleton.getSharedPreferences(context).getString(soundPreference, getDefaultSound(alertType, context));
+        return Singleton.getSharedPreferences(context).getString(soundPreference, getDefaultSound(alertType, threatType, context));
     }
 
     static Uri getAlertSoundURI(String uri, Context context) {
@@ -110,17 +112,11 @@ public class SoundLogic {
     }
 
     public static Uri getAppSoundByResourceName(String resourceName, Context context) {
-        // Convert to resource ID
-        int resourceID = context.getResources().getIdentifier("raw/" + resourceName, "raw", context.getPackageName());
-
-        // Finally, get path to sound file
-        Uri alarmSoundURI = Uri.parse("android.resource://" + context.getPackageName() + "/" + resourceID);
-
-        // Return sound URI
-        return alarmSoundURI;
+        // Get path to sound file
+        return Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + context.getPackageName() + "/raw/" + resourceName);
     }
 
-    static String getDefaultSound(String alertType, Context context) {
+    static String getDefaultSound(String alertType, String threatType, Context context) {
         // By default, regular sound
         String soundDefault = context.getString(R.string.defaultSound);
 
@@ -130,11 +126,17 @@ public class SoundLogic {
             soundDefault = context.getString(R.string.defaultSecondarySound);
         }
 
+        // Early warning alert?
+        if (threatType != null && threatType.equals(ThreatTypes.EARLY_WARNING)) {
+            // Use early warning default sound
+            soundDefault = context.getString(R.string.defaultEarlyWarningSound);
+        }
+
         // Return default sound
         return soundDefault;
     }
 
-    static String getSoundPreference(String alertType, Context context) {
+    static String getSoundPreference(String alertType, String threatType, Context context) {
         // By default, primary preference
         String soundPreference = context.getString(R.string.soundPref);
 
@@ -142,6 +144,12 @@ public class SoundLogic {
         if (alertType.equals(AlertTypes.SECONDARY)) {
             // Set new pref
             soundPreference = context.getString(R.string.secondarySoundPref);
+        }
+
+        // Early warning alert?
+        if (threatType != null && threatType.equals(ThreatTypes.EARLY_WARNING)) {
+            // Use early warning sound pref
+            soundPreference = context.getString(R.string.earlyWarningsSoundPref);
         }
 
         // Return default pref
@@ -190,7 +198,7 @@ public class SoundLogic {
         return false;
     }
 
-    public static void playSound(String alertType, String overrideSound, Context context) {
+    public static void playSound(String alertType, String threatType, String overrideSound, final Context context) {
         // Should we play it?
         if (!shouldPlayAlertSound(alertType, context)) {
             return;
@@ -205,7 +213,7 @@ public class SoundLogic {
         VolumeLogic.setStreamVolume(alertType, context);
 
         // Get alert sound name
-        String alertSoundName = getAlertSoundName(alertType, overrideSound, context);
+        String alertSoundName = getAlertSoundName(alertType, threatType, overrideSound, context);
 
         // Invalid sound name (or custom sound selected)?
         if (StringUtils.stringIsNullOrEmpty(alertSoundName) || alertSoundName.equals(Sound.CUSTOM_SOUND_NAME)) {
@@ -213,10 +221,16 @@ public class SoundLogic {
         }
 
         // Convert to resource URI
-        Uri alertSoundURI = getAlertSoundURI(alertSoundName, context);
+        final Uri alertSoundURI = getAlertSoundURI(alertSoundName, context);
 
-        // Play sound
-        playSoundURI(alertSoundURI, alertType, context);
+        // Use background thread to avoid ANR in MediaPlayer.setDataSource()
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // Play sound
+                playSoundURI(alertSoundURI, alertType, context);
+            }
+        }).start();
     }
 
     public static void stopSound(Context context) {

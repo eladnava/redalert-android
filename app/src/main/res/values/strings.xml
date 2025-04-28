@@ -119,6 +119,15 @@
     <string name="secondarySilentOverride">עקוף מצב שקט</string>
     <string name="secondarySilentOverrideDesc">כאשר תתקבל התרעת משנה, מצב שקט לא יחסום אותה</string>
 
+    <!-- Early Warnings -->
+    <string name="earlyWarnings">התרעות מקדימות</string>
+    <string name="earlyWarningsDesc">הגדר התרעות מקדימות שיתקבלו 3-5 דקות לפני התרעות אמת</string>
+    <string name="receiveEarlyWarningsDesc">קבל התרעות מקדימות 3-5 דקות לפני התרעות אמת</string>
+
+    <!-- Early Warning Sound -->
+    <string name="earlyWarningsSoundSelection">צליל התרעות מקדימות</string>
+    <string name="earlyWarningsSoundSelectionDesc">בחר צליל שיושמע כאשר תתקבל התרעה מקדימה</string>
+
     <!-- I'm Safe -->
     <string name="safe">שלח \"אני במרחב מוגן\" </string>
     <string name="safeCategory">\"אני במרחב מוגן\"</string>
@@ -149,6 +158,13 @@
     <string name="contactDesc">צור איתנו קשר על-ידי שליחת אימייל</string>
     <string name="reportProblem">דווח על תקלה</string>
     <string name="manualContact">צור קשר בכתובת https://redalert.me</string>
+
+    <!-- Donate -->
+    <string name="donate">תרומות יתקבלו בברכה</string>
+    <string name="donateInstructions">בחר סכום לתרומה בשקלים:</string>
+    <string name="donateDesc">כל תרומה תעזור בכיסוי עלויות הפיתוח והשרתים</string>
+    <string name="donateSuccess">תודה רבה על תרומתך!</string>
+    <string name="donateSuccessDesc">תרומתך מוערכת מאוד ותעזור בכיסוי עלויות הפיתוח והשרתים.</string>
 
     <!-- Rate the App -->
     <string name="rateApp">דרג את האפליקציה</string>
@@ -182,15 +198,17 @@
     <string name="notifyError">ארעה שגיאה בהצגת ההתרעה, מומלץ להפעיל מחדש את הטלפון.</string>
     <string name="jsonFailed">ארעה שגיאה בטעינת נתונים מהשרת.</string>
     <string name="noGooglePlayServices">הטלפון שלך אינו מכיל גרסה עדכנית של Google Play Services.</string>
-    <string name="pushRegistrationFailed">ארעה שגיאה בהרשמה לשירות עדכוני הדחיפה של האפליקציה. ננסה לרשום אותך שוב מאוחר יותר.</string>
+    <string name="pushRegistrationFailed">ארעה שגיאת תקשורת בהרשמה לשירות העדכונים של האפליקציה.\n\nיש לבדוק שהחיבור לאינטרנט תקין.\n\nמידע טכני עקב התקלה:</string>
     <string name="apiRequestFailed">ארעה שגיאת תקשורת בטעינת נתונים מהשרת. בדוק את החיבור לאינטרנט ונסה שנית.</string>
     <string name="registrationFailed">ההרשמה לשירות העדכונים נכשלה. אנא נסה מאוחר יותר.</string>
     <string name="grantNotificationPermission">יש לאפשר קבלת התראות מהאפליקציה במסך הבא.</string>
+    <string name="citySelectionLimitError">לא ניתן לבחור יותר מ-100 יישובים.</string>
 
     <!-- Success Messages -->
     <string name="registrationID">קוד הרשמה</string>
     <string name="pushRegistrationSuccess">בחר עיר מגורים</string>
     <string name="pushRegistrationSuccessDesc">עליך לבחור יישוב או עיר מגורים כדי לקבל התרעות בזמן אמת.</string>
+    <string name="pushRegistrationReselectDesc">בגלל שינויים של פיקוד העורף, עליך לבחור מחדש יישוב או עיר מגורים כדי לקבל התרעות בזמן אמת.</string>
 
     <!-- GPS -->
     <string name="locationAlerts">התרעות לפי מיקום</string>
@@ -206,7 +224,7 @@
 
     <!-- GPS Frequency -->
     <string name="gpsFrequency">קצב דגימה</string>
-    <string name="gpsFrequencyDesc">הגדר את הקצב שבו האפליקציה תאכן את מיקומך דרך אנטנות סלולריות</string>
+    <string name="gpsFrequencyDesc">הגדר את הקצב שבו האפליקציה תאכן את מיקומך</string>
     <string name="every">כל</string>
     <string name="minutes">דקות</string>
 
@@ -230,6 +248,11 @@
     <string name="showPopupDesc">כאשר תתקבל אזעקת אמת, יוצג פופאפ עם ספירה לאחור עד לזמן הנפילה המשוער</string>
     <string name="grantOverlayPermission">אפשר הצגה מעל אפליקציות אחרות</string>
     <string name="grantOverlayPermissionInstructions">בחר/י ״צבע אדום״ -> ״הצגה מעל אפליקציות אחרות״ במסך הבא.</string>
+    <string name="showSecondaryAlertPopupDesc">כאשר תתקבל התרעת משנה, יוצג פופאפ עם ספירה לאחור עד לזמן הנפילה המשוער</string>
+
+    <!-- Schedule Exact Alarms -->
+    <string name="allowSettingExactAlarms">אשר הגדרת שעונים מעוררים ותזכורות</string>
+    <string name="allowSettingExactAlarmsInstructions">כדי לקבל התרעות צבע אדום בזמן אמת, אשר/י ״הגדרת שעונים מעוררים ותזכורות״ במסך הבא.</string>
 
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">שפר אמינות</string>
@@ -243,15 +266,16 @@
     <string name="missiles">ירי רקטות</string>
     <string name="radiologicalEvent">אירוע רדיולוגי</string>
     <string name="earthQuake">רעידת אדמה</string>
+    <string name="earlyWarning">התרעה מקדימה</string>
     <string name="tsunami">סכנת צונאמי</string>
-    <string name="hostileAircraftIntrusion">חדירת כלי טיס עוינים</string>
+    <string name="hostileAircraftIntrusion">חדירת כלי טיס</string>
     <string name="hazardousMaterials">אירוע חומרים מסוכנים</string>
     <string name="terroristInfiltration">חדירת מחבלים</string>
     <string name="missilesDrill">תרגיל: ירי רקטות</string>
     <string name="earthQuakeDrill">תרגיל: רעידת אדמה</string>
     <string name="radiologicalEventDrill">תרגיל: אירוע רדיולוגי</string>
     <string name="tsunamiDrill">תרגיל: סכנת צונאמי</string>
-    <string name="hostileAircraftIntrusionDrill">תרגיל: חדירת כלי טיס עוינים</string>
+    <string name="hostileAircraftIntrusionDrill">תרגיל: חדירת כלי טיס</string>
     <string name="hazardousMaterialsDrill">תרגיל: אירוע חומרים מסוכנים</string>
     <string name="terroristInfiltrationDrill">תרגיל: חדירת מחבלים</string>
     <string name="unknown">אזעקה</string>
@@ -261,6 +285,7 @@
     <string name="missilesInstructions">היכנסו למרחב המוגן ושהו בו 10 דקות.</string>
     <string name="hostileAircraftIntrusionInstructions">היכנסו מיד למרחב המוגן ושהו בו למשך 10 דקות, אלא אם ניתנה התרעה נוספת.</string>
     <string name="earthQuakeInstructions">צאו מיד לשטח פתוח. אם לא ניתן, היכנסו לממ"ד או לחדר מדרגות.</string>
+    <string name="earlyWarningInstructions">בדקות הקרובות צפויה להתקבל התרעת אמת. עליך לשפר את מיקומך למיגון המיטבי בקרבתך. במקרה של קבלת התרעה, יש להיכנס למרחב המוגן ולשהות בו 10 דקות.</string>
     <string name="radiologicalEventInstructions">היכנסו למבנה וסגרו את הדלתות והחלונות.</string>
     <string name="terroristInfiltrationInstructions">היכנסו מיד למבנה וסגרו את הדלתות והחלונות.</string>
     <string name="tsunamiInstructions">התרחקו מיד מחוף הים קילומטר אחד לפחות או עלו לקומה רביעית ומעלה.</string>
@@ -289,24 +314,41 @@
 
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">מחק התרעות אחרונות?</string>
-    <string name="clearRecentAlertsDesc">האם תרצה לאפס את רשימת ההתרעות האחרונות?</string>
+    <string name="clearRecentAlertsDesc">האם תרצה למחוק את כל ההתרעות האחרונות?</string>
 
     <!-- Operation Lifeshield -->
     <string name="lifeshieldShelters">מקלטי לייפשילד:</string>
     <string name="learnAboutLifeshield">למד עוד על לייפשילד</string>
     <string name="learnAboutLifeshieldDesc">למד עוד על לייפשילד, ארגון ללא מטרות רווח המציב מקלטים ברחבי ישראל.</string>
 
+    <!-- Time To Shelter -->
+    <string name="immediately">מיידי</string>
+    <string name="fifteenSeconds">15 שניות</string>
+    <string name="thirtySeconds">30 שניות</string>
+    <string name="fortyFiveSeconds">45 שניות</string>
+    <string name="oneMinute">דקה</string>
+    <string name="oneMinuteAndAHalf">דקה וחצי</string>
+    <string name="threeMinutes">3 דקות</string>
+
     <!-- Do not translate from here on down -->
+
+    <!-- Donation Amounts -->
+    <string name="donation_10">₪10</string>
+    <string name="donation_20">₪20</string>
+    <string name="donation_50">₪50</string>
+    <string name="donation_100">₪100</string>
+    <string name="donation_200">₪200</string>
 
     <!-- Static Language Identifiers -->
     <string translatable="false" name="english">English</string>
-    <string translatable="false" name="arabic">Arabic</string>
+    <string translatable="false" name="arabic">عربي</string>
     <string translatable="false" name="spanish">Español</string>
     <string translatable="false" name="russian">Pусский</string>
     <string translatable="false" name="hebrew">עברית</string>
     <string translatable="false" name="italian">Italiano</string>
     <string translatable="false" name="french">Français</string>
-    <string translatable="false" name="german">German</string>
+    <string translatable="false" name="german">Deutsch</string>
+    <string translatable="false" name="portuguese">Português</string>
 
     <!-- Preference Keys -->
     <string translatable="false" name="selfTestPref">test</string>
@@ -316,7 +358,8 @@
     <string translatable="false" name="websitePref">website</string>
     <string translatable="false" name="fcmTokenPref">gcm_registration_token</string>
     <string translatable="false" name="pushyTokenPref">pushy_registration_token_v2</string>
-    <string translatable="false" name="tutorialPref">tutorial_1_0_22</string>
+    <string translatable="false" name="tutorialPref">tutorial_1_0_23</string>
+    <string translatable="false" name="donatePref">donate</string>
     <string translatable="false" name="ratePref">rating</string>
     <string translatable="false" name="lifeshieldPref">lifeshield</string>
     <string translatable="false" name="contactPref">contact</string>
@@ -335,6 +378,7 @@
     <string translatable="false" name="nearbyCitiesPref">nearby_cities</string>
     <string translatable="false" name="secondaryVolumePref">secondary_volume</string>
     <string translatable="false" name="alertPopupPref">alert_popup_v2</string>
+    <string translatable="false" name="secondaryAlertPopupPref">secondary_alert_popup_v2</string>
     <string translatable="false" name="foregroundServicePref">foreground_service</string>
     <string translatable="false" name="wakeScreenPref">wake_screen</string>
     <string translatable="false" name="silentOverridePref">override</string>
@@ -345,8 +389,11 @@
     <string translatable="false" name="batteryOptimizationCategory">battery_optimization_category</string>
     <string translatable="false" name="selectedCitiesPref">selected_cities</string>
     <string translatable="false" name="secondaryPref">secondary</string>
+    <string translatable="false" name="earlyWarningsPref">early</string>
     <string translatable="false" name="imSafeWhatsAppPref">safe_whatsapp</string>
     <string translatable="false" name="secondarySilentOverridePref">secondary_override</string>
+    <string translatable="false" name="earlyWarningsEnabledPref">early_warning_alerts</string>
+    <string translatable="false" name="earlyWarningsSoundPref">early_warning_sound</string>
     <string translatable="false" name="secondaryEnabledPref">secondary_alerts</string>
     <string translatable="false" name="secondarySoundPref">secondary_sound</string>
     <string translatable="false" name="selectedSecondaryCitiesPref">selected_secondary_cities</string>
@@ -383,6 +430,7 @@
     <string translatable="false" name="italianCode">it</string>
     <string translatable="false" name="frenchCode">fr</string>
     <string translatable="false" name="germanCode">de</string>
+    <string translatable="false" name="portugueseCode">pt</string>
 
     <!-- App Theme Codes -->
     <string translatable="false" name="lightThemeCode">light</string>
@@ -392,6 +440,7 @@
     <!-- Sounds -->
     <string translatable="false" name="defaultSound">alarm1</string>
     <string translatable="false" name="defaultSecondarySound">tiny</string>
+    <string translatable="false" name="defaultEarlyWarningSound">tiny</string>
 
     <!-- Default Map Location & Zoom (Center of Israel) -->
     <string translatable="false" name="defaultZoom">7.8</string>

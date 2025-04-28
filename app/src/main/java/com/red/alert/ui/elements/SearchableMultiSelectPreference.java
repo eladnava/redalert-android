@@ -5,6 +5,7 @@ import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.TypedArray;
+import android.os.Handler;
 import android.preference.ListPreference;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -25,6 +27,7 @@ import android.widget.TextView;
 
 import com.red.alert.R;
 import com.red.alert.logic.communication.broadcasts.LocationSelectionEvents;
+import com.red.alert.ui.dialogs.AlertDialogBuilder;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.metadata.LocationData;
@@ -108,7 +111,7 @@ public class SearchableMultiSelectPreference extends ListPreference {
     protected void onPrepareDialogBuilder(Builder builder) {
         final CharSequence[] entries = getEntries();
         final CharSequence[] entryValues = getEntryValues();
-        final String[] areaCodes = LocationData.getAllCityZones(getContext());
+        final String[] zoneNames = LocationData.getAllCityZones(getContext());
 
         if (entries == null || entryValues == null || entries.length != entryValues.length) {
             throw new IllegalStateException(
@@ -120,7 +123,7 @@ public class SearchableMultiSelectPreference extends ListPreference {
         final List<ListItemWithIndex> allItems = new ArrayList<ListItemWithIndex>();
         final List<ListItemWithIndex> filteredItems = new ArrayList<ListItemWithIndex>();
 
-        final boolean isCitySelection = entryValues.length == areaCodes.length;
+        final boolean isCitySelection = entryValues.length == zoneNames.length;
 
         for (int i = 0; i < entries.length; i++) {
             final Object obj = entries[i];
@@ -128,13 +131,20 @@ public class SearchableMultiSelectPreference extends ListPreference {
             boolean isDefault = i == 0;
             boolean checked = mClickedDialogEntryIndices[i];
 
-            String areaCode = null;
+            String zone = null;
 
             if (isCitySelection) {
-                areaCode = areaCodes[i];
+                zone = zoneNames[i];
             }
 
-            final ListItemWithIndex listItemWithIndex = new ListItemWithIndex(i, obj.toString(), areaCode, checked, isDefault);
+            String value = obj.toString();
+
+            // Localize "select all" preference
+            if (value.equals("Select All") || value.equals("בחר הכל")) {
+                value = getContext().getResources().getStringArray(R.array.zoneNames)[0];
+            }
+
+            final ListItemWithIndex listItemWithIndex = new ListItemWithIndex(i, value, zone, checked, isDefault);
             allItems.add(listItemWithIndex);
             filteredItems.add(listItemWithIndex);
         }
@@ -167,7 +177,7 @@ public class SearchableMultiSelectPreference extends ListPreference {
 
                 final ListItemWithIndex item = filteredItems.get(position);
                 final String name = item.value;
-                final String code = item.areaCode;
+                final String code = item.zone;
 
                 viewHolder.label.setText(name);
                 viewHolder.subLabel.setText(code);
@@ -273,7 +283,7 @@ public class SearchableMultiSelectPreference extends ListPreference {
                             final String objStr = obj.toString().toLowerCase();
                             if (StringUtils.stringIsNullOrEmpty(filterString)
                                     || objStr.contains(filterString)
-                                    || (obj.areaCode != null && obj.areaCode.toLowerCase().contains(filterString))
+                                    || (obj.zone != null && obj.zone.toLowerCase().contains(filterString))
                                     ) {
                                 list.add(obj);
                             }
@@ -323,6 +333,61 @@ public class SearchableMultiSelectPreference extends ListPreference {
         listView.setAdapter(objectsAdapter);
 
         builder.setView(parent);
+
+        // Delay invocation by 300ms for dialog to be created
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Dialog created?
+                if (getDialog() != null) {
+                    // Get positive button
+                    Button button = ((AlertDialog) getDialog()).getButton(AlertDialog.BUTTON_POSITIVE);
+
+                    // Positive button created?
+                    if (button != null) {
+                        // Override onClick listener to enforce max item selection limit
+                        button.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                // Get all possible values
+                                CharSequence[] entryValues = getEntryValues();
+
+                                // ArrayList of selected values
+                                ArrayList<String> values = new ArrayList<String>();
+
+                                // Cities selected?
+                                for (int i = 0; i < entryValues.length; i++) {
+                                    if (mClickedDialogEntryIndices[i] == true) {
+                                        // Don't save the state of check all option - if any
+                                        String val = (String) entryValues[i];
+                                        if (checkAllKey == null || (val.equals(checkAllKey) == false)) {
+                                            values.add(val);
+                                        }
+                                    }
+                                }
+
+                                // Exceeded limit of 100 items?
+                                if (values.size() > 100) {
+                                    // Didn't check all?
+                                    if (mClickedDialogEntryIndices[0] != true) {
+                                        // Show error dialog
+                                        AlertDialogBuilder.showGenericDialog(getContext().getString(R.string.error), getContext().getString(R.string.citySelectionLimitError), getContext().getString(R.string.okay), null, false, getContext(), null);
+                                        return;
+                                    }
+                                }
+
+                                // Less than or equal to 100 selected
+                                // Set button clicked as positive
+                                SearchableMultiSelectPreference.this.onClick(getDialog(), AlertDialog.BUTTON_POSITIVE);
+
+                                // Dismiss dialog
+                                getDialog().dismiss();
+                            }
+                        });
+                    }
+                }
+            }
+        }, 300);
 
         //builder.setView()
         /*builder.setMultiChoiceItems(entries, mClickedDialogEntryIndices,
@@ -462,13 +527,13 @@ public class SearchableMultiSelectPreference extends ListPreference {
 
         public int index;
         public String value;
-        public String areaCode;
+        public String zone;
 
-        public ListItemWithIndex(int index, String value, String areaCode, boolean checked, boolean isDefault) {
+        public ListItemWithIndex(int index, String value, String zone, boolean checked, boolean isDefault) {
             super();
             this.index = index;
             this.value = value;
-            this.areaCode = areaCode;
+            this.zone = zone;
             this.checked = checked;
             this.isDefault = isDefault;
         }

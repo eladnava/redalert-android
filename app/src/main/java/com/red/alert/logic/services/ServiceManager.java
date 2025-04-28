@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 
 import com.red.alert.config.push.PushyGateway;
+import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.services.location.LocationService;
 
@@ -18,11 +19,16 @@ public class ServiceManager {
         // Location alerts enabled?
         if (AppPreferences.getLocationAlertsEnabled(context)) {
             // Start the location service
-            startLocationService(context);
+            ServiceManager.startLocationService(context);
         }
     }
 
     public static void startLocationService(Context context) {
+        // Check if all prerequisites are met
+        if (!LocationLogic.canStartForegroundLocationService(context)) {
+            return;
+        }
+
         try {
             // Use foreground service on Android O+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -48,10 +54,16 @@ public class ServiceManager {
         // Set custom heartbeat interval before calling Pushy.listen()
         Pushy.setHeartbeatInterval(PushyGateway.SOCKET_HEARTBEAT_INTERVAL, context);
 
+        // Enable variable keep alive
+        Pushy.toggleVariableKeepAlive(true, context);
+
         // Enable/disable foreground service
         Pushy.toggleForegroundService(AppPreferences.getForegroundServiceEnabled(context), context);
 
-        // Start external service
-        Pushy.listen(context);
+        // Alerts enabled?
+        if (AppPreferences.getNotificationsEnabled(context)) {
+            // Start external service
+            Pushy.listen(context);
+        }
     }
 }

@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -51,7 +52,6 @@ import com.red.alert.utils.threading.AsyncTaskAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.NonNull;
 import me.pushy.sdk.lib.jackson.core.JsonProcessingException;
 
 public class LocationAlerts extends AppCompatPreferenceActivity {
@@ -131,6 +131,9 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
 
         // Register for broadcasts
         Broadcasts.subscribe(this, mBroadcastListener);
+
+        // Refresh nearby cities display
+        refreshSummaries();
     }
 
     @Override
@@ -268,11 +271,6 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
                 // Get nearby cities
                 List<String> nearbyCities = LocationData.getNearbyCities(location, LocationAlerts.this);
 
-                // No nearby cities?
-                if (nearbyCities.size() == 0) {
-                    return false;
-                }
-
                 // Prepare mock alerts list for map activity
                 List<Alert> mockAlerts = new ArrayList<>();
 
@@ -384,6 +382,9 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
 
         // Update summary text
         mNearbyCities.setSummary(nearby);
+
+        // Disable/enable nearby cities setting based on checkbox value
+        mNearbyCities.setEnabled(mLocationAlerts.isChecked());
     }
 
     public boolean onOptionsItemSelected(final MenuItem Item) {
@@ -449,7 +450,7 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
             }
 
             // Activity dead?
-            if (isFinishing()) {
+            if (isFinishing() || isDestroyed()) {
                 return;
             }
 
@@ -472,27 +473,30 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
             else {
                 // Location alerts enabled?
                 if (mLocationAlerts.isChecked()) {
-                    // Show dialog instructing user on how to hide the location alerts foreground service notification
-                    AlertDialogBuilder.showGenericDialog(getString(R.string.hideGPSForegroundNotification), getString(R.string.hideGPSForegroundNotificationInstructions), getString(R.string.okay), getString(R.string.notNow), true, LocationAlerts.this, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int which) {
-                            // Clicked okay?
-                            if (which == DialogInterface.BUTTON_POSITIVE) {
-                                // Open notification channel config to allow user to easily disable the notification channel
-                                Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
-                                intent.putExtra(Settings.EXTRA_CHANNEL_ID, NotificationChannels.LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_ID);
-                                intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
-                                startActivity(intent);
-                            }
-                        }
-                    });
+                    // Android O and newer required for notification channels
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        // Show dialog instructing user on how to hide the location alerts foreground service notification
+                        AlertDialogBuilder.showGenericDialog(getString(R.string.hideGPSForegroundNotification), getString(R.string.hideGPSForegroundNotificationInstructions), getString(R.string.okay), getString(R.string.notNow), true, LocationAlerts.this, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int which) {
+                                // Clicked okay?
+                                if (which == DialogInterface.BUTTON_POSITIVE) {
+                                    // Open notification channel config to allow user to easily disable the notification channel
+                                    Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+                                    intent.putExtra(Settings.EXTRA_CHANNEL_ID, NotificationChannels.LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_ID);
+                                    intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+                                    startActivity(intent);
+                                }
+                                }
+                        });
+                    }
                 }
             }
         }
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         // Just granted location permission?

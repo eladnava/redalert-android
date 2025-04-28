@@ -7,17 +7,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-
-import androidx.core.app.NotificationCompat;
-
 import android.media.AudioAttributes;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.core.app.NotificationCompat;
+
 import com.red.alert.R;
-import com.red.alert.activities.Popup;
 import com.red.alert.activities.Main;
+import com.red.alert.activities.Popup;
 import com.red.alert.config.Logging;
 import com.red.alert.config.NotificationChannels;
 import com.red.alert.config.Sound;
@@ -47,7 +46,7 @@ public class Notifications {
         String notificationTitle = localizedThreatType + ": " + LocationData.getLocalizedCityNamesCSV(cities, context);
 
         // Prepare notification body with zone and countdown
-        String notificationContent = LocationData.getLocalizedCityZonesWithCountdownCSV(cities, context);
+        String notificationContent = LocationData.getLocalizedCityZonesWithCountdownCSV(cities, threatType, context);
 
         // Missile alert?
         if (threatType.contains(ThreatTypes.MISSILES)) {
@@ -131,7 +130,7 @@ public class Notifications {
         }
 
         // Configure notification channel (if required)
-        setNotificationChannel(alertType, overrideSound, builder, context);
+        setNotificationChannel(alertType, threatType, overrideSound, builder, context);
 
         try {
             // Issue the notification
@@ -146,7 +145,7 @@ public class Notifications {
         VibrationLogic.issueVibration(alertType, context);
 
         // Play alert sound (if applicable)
-        SoundLogic.playSound(alertType, overrideSound, context);
+        SoundLogic.playSound(alertType, threatType, overrideSound, context);
 
         // Wake up phone screen (if enabled)
         PowerManagement.wakeUpScreen(alertType, context);
@@ -185,7 +184,7 @@ public class Notifications {
         return pendingIntent;
     }
 
-    public static String getNotificationChannelId(String alertType, String overrideSound, Context context) {
+    public static String getNotificationChannelId(String alertType, String threatType, String overrideSound, Context context) {
         // Initialize notification channel params
         String channelId = NotificationChannels.PRIMARY_ALERT_NOTIFICATION_CHANNEL_ID;
 
@@ -195,22 +194,34 @@ public class Notifications {
         }
 
         // Using custom sound?
-        if (SoundLogic.getAlertSoundName(alertType, overrideSound, context).equals(Sound.CUSTOM_SOUND_NAME)) {
+        if (SoundLogic.getAlertSoundName(alertType, threatType, overrideSound, context).equals(Sound.CUSTOM_SOUND_NAME)) {
             channelId += NotificationChannels.CUSTOM_SOUND_NOTIFICATION_CHANNEL_SUFFIX;
+        }
+        else {
+            // No custom sound
+            // Add version suffix to work around sound resource bug
+            channelId += "_v2";
         }
 
         // All done
         return channelId;
     }
 
-    public static void setNotificationChannel(String alertType, String overrideSound, NotificationCompat.Builder builder, Context context) {
+    public static void setNotificationChannel(String alertType, String threatType, String overrideSound, NotificationCompat.Builder builder, Context context) {
         // Android O and up
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
             return;
         }
 
+        // Get notification manager instance
+        NotificationManager manager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
+
+        // Delete old (bugged) channels because notification channels persist sound resource IDs which change between builds
+        manager.deleteNotificationChannel(NotificationChannels.OLD_PRIMARY_ALERT_NOTIFICATION_CHANNEL_ID);
+        manager.deleteNotificationChannel(NotificationChannels.OLD_SECONDARY_ALERT_NOTIFICATION_CHANNEL_ID);
+
         // Determine notification channel ID
-        String channelId = getNotificationChannelId(alertType, overrideSound, context);
+        String channelId = getNotificationChannelId(alertType, threatType, overrideSound, context);
 
         // Get notification channel name
         String channelName = NotificationChannels.PRIMARY_ALERT_NOTIFICATION_CHANNEL_NAME;
@@ -219,9 +230,6 @@ public class Notifications {
         if (alertType.equals(AlertTypes.SECONDARY) || alertType.equals(AlertTypes.TEST_SECONDARY_SOUND)) {
             channelName = NotificationChannels.SECONDARY_ALERT_NOTIFICATION_CHANNEL_NAME;
         }
-
-        // Get notification manager instance
-        NotificationManager manager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
 
         // Initialize channel (set high importance)
         NotificationChannel channel = new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH);

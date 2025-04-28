@@ -1,5 +1,6 @@
 package com.red.alert.activities;
 
+import android.app.AlarmManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,15 +11,10 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.core.app.NotificationManagerCompat;
-import androidx.core.view.MenuItemCompat;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Handler;
 import android.os.PowerManager;
 import android.provider.Settings;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,10 +26,9 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import me.pushy.sdk.Pushy;
-import me.pushy.sdk.lib.jackson.core.JsonProcessingException;
-import me.pushy.sdk.lib.jackson.core.type.TypeReference;
-import me.pushy.sdk.util.PushyAuthentication;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.view.MenuItemCompat;
 
 import com.red.alert.R;
 import com.red.alert.activities.settings.General;
@@ -42,6 +37,7 @@ import com.red.alert.config.Logging;
 import com.red.alert.config.RecentAlerts;
 import com.red.alert.config.Safety;
 import com.red.alert.config.ThreatTypes;
+import com.red.alert.logic.alerts.AlertLogic;
 import com.red.alert.logic.communication.broadcasts.SettingsEvents;
 import com.red.alert.logic.communication.intents.AlertPopupParameters;
 import com.red.alert.logic.communication.intents.AlertViewParameters;
@@ -66,24 +62,31 @@ import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.feedback.Volume;
 import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.integration.GooglePlayServices;
-import com.red.alert.utils.os.AndroidSettings;
 import com.red.alert.utils.localization.DateTime;
 import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.AppVersion;
 import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.networking.HTTP;
+import com.red.alert.utils.os.AndroidSettings;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import me.pushy.sdk.Pushy;
+import me.pushy.sdk.lib.jackson.core.JsonProcessingException;
+import me.pushy.sdk.lib.jackson.core.type.TypeReference;
+import me.pushy.sdk.util.PushyAuthentication;
+
 public class Main extends AppCompatActivity {
     boolean mIsResumed;
-    boolean mIsDestroyed;
     boolean mIsReloading;
+    boolean mIsRegistering;
     boolean mCheckedForUpdates;
+    boolean mPushTokensRefreshed;
     boolean mPermissionDialogDisplayed;
 
     Button mImSafe;
@@ -115,10 +118,11 @@ public class Main extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        // Apply custom theme selection
+        // Apply custom theme selection (make sure to invoke this before super.onCreate())
         Localization.applyThemeSelection(this);
+
+        // Call parent method
+        super.onCreate(savedInstanceState);
 
         // Ensure RTL layouts are used if needed
         Localization.overridePhoneLocale(this);
@@ -131,9 +135,6 @@ public class Main extends AppCompatActivity {
 
         // Volume keys should control alert volume
         Volume.setVolumeKeysAction(this);
-
-        // Always re-register FCM or Pushy on app start
-        new RegisterPushAsync().execute();
 
         // Handle notification click event (show alert popup)
         handleNotificationClick(getIntent());
@@ -202,7 +203,7 @@ public class Main extends AppCompatActivity {
         mLoading = (ProgressBar) findViewById(R.id.loading);
         mNoAlerts = (LinearLayout) findViewById(R.id.noAlerts);
 
-        // Initialize alert list
+        // Initialize alert lists
         mNewAlerts = new ArrayList<>();
         mDisplayAlerts = new ArrayList<>();
 
@@ -259,7 +260,7 @@ public class Main extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // DEBUG ONLY
-                //AlertLogic.processIncomingAlert("missiles", "נהריה", "alert", Main.this);
+                //AlertLogic.processIncomingAlert("missiles", "נהריה", "alert", null, Main.this);
             }
         });
 
@@ -306,6 +307,9 @@ public class Main extends AppCompatActivity {
         // Save state
         mIsResumed = true;
 
+        // Allow other dialogs to be displayed
+        mPermissionDialogDisplayed = false;
+
         // Reload alerts manually
         reloadRecentAlerts();
 
@@ -328,6 +332,10 @@ public class Main extends AppCompatActivity {
         // Ask user to enable location permission if necessary
         showLocationPermissionDialog();
 
+        // Android 12+
+        // Ask user to allow setting exact alarms if canScheduleExactAlarms() is false (usually only false on Android 13+, but can be disabled manually since Android 12)
+        showScheduleExactAlarmsPermissionDialog();
+
         // Ask user to grant app overlay permission if revoked
         showAlertPopupPermissionDialog();
 
@@ -336,6 +344,20 @@ public class Main extends AppCompatActivity {
 
         // Restart the app services if needed
         ServiceManager.startAppServices(this);
+
+        // Always re-register FCM or Pushy on app start
+        if (!mPushTokensRefreshed || !FCMRegistration.isRegistered(Main.this) || !PushyRegistration.isRegistered(Main.this) || !RedAlertAPI.isRegistered(Main.this) || !RedAlertAPI.isSubscribed(Main.this)) {
+            // Prevent concurrent registration
+            if (!mIsRegistering) {
+                new RegisterPushAsync().execute();
+            }
+        }
+
+        // Already loaded recent alerts?
+        if (mNewAlerts.size() > 0) {
+            // Refresh alerts relative time
+            invalidateAlertList();
+        }
     }
 
     void requestNotificationPermission() {
@@ -374,6 +396,65 @@ public class Main extends AppCompatActivity {
             // Prevent other dialogs from being displayed
             mPermissionDialogDisplayed = true;
         }
+    }
+
+    void showScheduleExactAlarmsPermissionDialog() {
+        // Already displayed a permission dialog for this activity?
+        if (mPermissionDialogDisplayed) {
+            return;
+        }
+
+        // Haven't displayed tutorial?
+        if (!AppPreferences.getTutorialDisplayed(this)) {
+            return;
+        }
+
+        // Haven't registered for notifications?
+        if (!FCMRegistration.isRegistered(this) || !PushyRegistration.isRegistered(this)) {
+            return;
+        }
+
+        // Only Android 12 and up allows revoking schedule exact alarms permission
+        if (Build.VERSION.SDK_INT < 31) {
+            return;
+        }
+
+        // Get power manager instance
+        PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+
+        // This dialog should only be displayed after user disabled battery optimizations
+        if (!powerManager.isIgnoringBatteryOptimizations(getPackageName())) {
+            return;
+        }
+
+        // Get alarm manager instance
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+        // Check if user has already granted permission
+        if (alarmManager.canScheduleExactAlarms()) {
+            return;
+        }
+
+        // Show a dialog to the user
+        AlertDialogBuilder.showGenericDialog(getString(R.string.allowSettingExactAlarms), getString(R.string.allowSettingExactAlarmsInstructions), getString(R.string.okay), getString(R.string.notNow), true, this, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                // Clicked okay?
+                if (which == DialogInterface.BUTTON_POSITIVE) {
+                    // Open alarms and reminders settings screen for this app
+                    Intent intent = new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
+
+                    // Set package to current package
+                    intent.setData(Uri.fromParts("package", getPackageName(), null));
+
+                    // Start settings activity
+                    startActivity(intent);
+                }
+            }
+        });
+
+        // Prevent other dialogs from being displayed
+        mPermissionDialogDisplayed = true;
     }
 
     @Override
@@ -455,8 +536,8 @@ public class Main extends AppCompatActivity {
             return;
         }
 
-        // Check if alert popup disabled
-        if (!AppPreferences.getPopupEnabled(this)) {
+        // Check if alert popup disabled (primary/secondary)
+        if (!AppPreferences.getPopupEnabled(this) && !AppPreferences.getSecondaryPopupEnabled(this)) {
             return;
         }
 
@@ -546,6 +627,75 @@ public class Main extends AppCompatActivity {
         });
     }
 
+    void initializeLiveMapButton(Menu OptionsMenu) {
+        // Add live map button
+        MenuItem mapItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.alerts));
+
+        // Set map icon
+        mapItem.setIcon(R.drawable.ic_map);
+
+        // Specify the show flags
+        MenuItemCompat.setShowAsAction(mapItem, MenuItem.SHOW_AS_ACTION_ALWAYS);
+
+        // On click, open Map activity in live mode
+        mapItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                // Start live map activity
+                openLiveMap();
+
+                // Consume event
+                return true;
+            }
+        });
+    }
+
+    void openLiveMap() {
+        // Prepare new intent
+        Intent mapIntent = new Intent();
+
+        // Set map activity class
+        mapIntent.setClass(Main.this, Map.class);
+
+        // Set live mode
+        mapIntent.putExtra(AlertViewParameters.LIVE, true);
+
+        // Ungrouped alerts
+        List<Alert> mAllAlerts = new ArrayList<>();
+
+        // Workaround for ConcurrentModificationException
+        if (mIsReloading) {
+            return;
+        }
+
+        // Traverse all alerts
+        for (Alert alert: mNewAlerts) {
+            // Any grouped alerts?
+            if (alert.groupedAlerts.size() > 0) {
+                // Add grouped alerts
+                for (Alert grouped : alert.groupedAlerts) {
+                    mAllAlerts.add(grouped);
+                }
+            }
+            else {
+                // Not grouped, add single alert to list
+                mAllAlerts.add(alert);
+            }
+        }
+
+        try {
+            // Pass all currently-displayed alerts to map activity
+            mapIntent.putExtra(AlertViewParameters.ALERTS, Singleton.getJackson().writer().writeValueAsString(mAllAlerts));
+        } catch (JsonProcessingException e) {
+            // Show error dialog
+            AlertDialogBuilder.showGenericDialog(getString(R.string.error), e.getMessage(), getString(R.string.okay), null, false, Main.this, null);
+            return;
+        }
+
+        // Start map activity
+        startActivity(mapIntent);
+    }
+
     void initializeClearRecentAlertsButton(Menu OptionsMenu) {
         // Add clear item
         mClearRecentAlertsItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.clearRecentAlerts));
@@ -616,7 +766,7 @@ public class Main extends AppCompatActivity {
         mLoadingItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.loading));
 
         // Set up the view
-        MenuItemCompat.setActionView(mLoadingItem, R.layout.loading);
+        MenuItemCompat.setActionView(mLoadingItem, R.layout.loading_small);
 
         // Specify the show flags
         MenuItemCompat.setShowAsAction(mLoadingItem, MenuItem.SHOW_AS_ACTION_ALWAYS);
@@ -629,6 +779,9 @@ public class Main extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu OptionsMenu) {
         // Add loading indicator
         initializeLoadingIndicator(OptionsMenu);
+
+        // Add live map button
+        initializeLiveMapButton(OptionsMenu);
 
         // Add clear recent alerts button
         initializeClearRecentAlertsButton(OptionsMenu);
@@ -689,12 +842,19 @@ public class Main extends AppCompatActivity {
             alert.dateString = LocationData.getAlertDateTimeString(alert.date, 0, this);
 
             // Prepare localized zone & countdown for display
-            alert.desc = LocationData.getLocalizedZoneWithCountdown(alert.city, this);
+            alert.desc = LocationData.getLocalizedZoneWithCountdown(alert.city, alert.threat, this);
 
             // Localize it
             alert.localizedCity = LocationData.getLocalizedCityName(alert.city, this);
             alert.localizedZone = LocationData.getLocalizedZoneByCityName(alert.city, this);
             alert.localizedThreat = LocationData.getLocalizedThreatType(alert.threat, this);
+
+            // If selected, make it bold
+            if (AlertLogic.isCitySelectedPrimarily(alert.city, true, this)
+                    || AlertLogic.isNearby(alert.city, this)
+                    || AlertLogic.isSecondaryCitySelected(alert.city, true, this)) {
+                alert.localizedCity = "<b>" + alert.localizedCity + "</b>";
+            }
         }
 
         // Group alerts with same timestamp
@@ -722,19 +882,43 @@ public class Main extends AppCompatActivity {
             // Current element
             Alert currentAlert = alerts.get(i);
 
-            // Initialize city names list for map display
+            // Initialize grouped alerts lists
+            currentAlert.groupedDescriptions = new ArrayList<>();
             currentAlert.groupedAlerts = new ArrayList<>();
+            currentAlert.groupedLocalizedCities = new ArrayList<>();
+
+            // Add current alert object to grouped alerts list
             currentAlert.groupedAlerts.add(currentAlert);
+
+            // If current alert desc is not empty, add it to grouped desc list
+            if (!StringUtils.stringIsNullOrEmpty(currentAlert.desc)) {
+                currentAlert.groupedDescriptions.add(currentAlert.desc);
+            }
+
+            // Add current localized city name to grouped cities list
+            currentAlert.groupedLocalizedCities.add(currentAlert.localizedCity);
 
             // Check whether this new alert can be grouped with the previous one
             // (Same region + 15 second cutoff threshold in either direction)
             if (lastAlert != null && currentAlert.date >= lastAlert.date - 15 && currentAlert.date <= lastAlert.date + 15) {
                 // Group with previous alert list item
-                lastAlert.localizedCity += ", " + currentAlert.localizedCity;
+                lastAlert.groupedLocalizedCities.add(currentAlert.localizedCity);
 
                 // Add current alert zone if new
                 if (!lastAlert.desc.contains(currentAlert.localizedZone)) {
-                    lastAlert.desc += ", " + currentAlert.desc;
+                    // Support for unknown city (no prefixing with comma)
+                    if (StringUtils.stringIsNullOrEmpty(lastAlert.desc) && !StringUtils.stringIsNullOrEmpty(currentAlert.desc)) {
+                        lastAlert.desc = currentAlert.desc;
+                        lastAlert.groupedDescriptions.add(currentAlert.desc);
+                    }
+                    else if (StringUtils.stringIsNullOrEmpty(currentAlert.desc)) {
+                        // Do nothing
+                    }
+                    else {
+                        // Comma-separated zones and countdowns
+                        lastAlert.desc += ", " + currentAlert.desc;
+                        lastAlert.groupedDescriptions.add(currentAlert.desc);
+                    }
                 }
 
                 // Add current alert to last alert's group
@@ -751,6 +935,17 @@ public class Main extends AppCompatActivity {
                 groupedAlerts.add(currentAlert);
                 lastAlert = currentAlert;
             }
+        }
+
+        // Sort all grouped alerts
+        for (Alert alert : groupedAlerts) {
+            // Sort city & zone names alphabetically
+            Collections.sort(alert.groupedDescriptions);
+            Collections.sort(alert.groupedLocalizedCities);
+
+            // Join lists into CSV strings
+            alert.desc = TextUtils.join(", ", alert.groupedDescriptions);
+            alert.localizedCity = TextUtils.join(", ", alert.groupedLocalizedCities);
         }
 
         // Hooray
@@ -816,12 +1011,15 @@ public class Main extends AppCompatActivity {
 
         // Unregister for broadcasts
         Broadcasts.unsubscribe(this, mBroadcastListener);
-
-        // Avoid hiding invalid dialogs
-        mIsDestroyed = true;
     }
 
     void invalidateAlertList() {
+        // Workaround for ConcurrentModificationException
+        // Wait for reloading to complete
+        if (mIsReloading) {
+            return;
+        }
+
         // Clear global list
         mDisplayAlerts.clear();
 
@@ -890,8 +1088,17 @@ public class Main extends AppCompatActivity {
             return;
         }
 
+        // Ask user to select their city
+        String desc = getString(R.string.pushRegistrationSuccessDesc);
+
+        // Check if upgrading from previous version
+        if (Singleton.getSharedPreferences(this).getBoolean("tutorial_1_0_22", false)) {
+            // Ask user to reselect
+            desc = getString(R.string.pushRegistrationReselectDesc);
+        }
+
         // Build the dialog
-        AlertDialogBuilder.showGenericDialog(getString(R.string.pushRegistrationSuccess), getString(R.string.pushRegistrationSuccessDesc), getString(R.string.okay), null, false, this, new DialogInterface.OnClickListener() {
+        AlertDialogBuilder.showGenericDialog(getString(R.string.pushRegistrationSuccess), desc, getString(R.string.okay), null, false, this, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 // Start settings activity
@@ -924,7 +1131,7 @@ public class Main extends AppCompatActivity {
             mIsReloading = false;
 
             // Activity dead?
-            if (isFinishing() || mIsDestroyed) {
+            if (isFinishing() || isDestroyed()) {
                 return;
             }
 
@@ -950,6 +1157,12 @@ public class Main extends AppCompatActivity {
         ProgressDialog mLoading;
 
         public RegisterPushAsync() {
+            // Prevent concurrent registration
+            mIsRegistering = true;
+
+            // Set push tokens as refreshed
+            mPushTokensRefreshed = true;
+
             // Fix progress dialog appearance on old devices
             mLoading = ProgressDialogCompat.getStyledProgressDialog(Main.this);
 
@@ -977,41 +1190,64 @@ public class Main extends AppCompatActivity {
             String previousPushyToken = PushyRegistration.getRegistrationToken(Main.this);
             String previousFirebaseToken = FCMRegistration.getRegistrationToken(Main.this);
 
-            try {
-                // Register for Pushy push notifications
-                String pushyToken = PushyRegistration.registerForPushNotifications(Main.this);
+            // Retry mechanism (for temporary network errors)
+            int tries = 0;
 
-                // Register for FCM push notifications
-                String fcmToken = FCMRegistration.registerForPushNotifications(Main.this);
+            // Retry up to 5 times
+            while (tries <= 5) {
+                try {
+                    // Increment tries
+                    tries++;
 
-                // First time registering with the API?
-                if (!RedAlertAPI.isRegistered(Main.this)) {
-                    // Register with RedAlert API and store user ID & hash
-                    RedAlertAPI.register(fcmToken, pushyToken,Main.this);
-                }
-                else {
-                    // FCM or Pushy token have changed?
-                    if (!previousFirebaseToken.equals(fcmToken) ||
-                    !previousPushyToken.equals(pushyToken)) {
-                        // Update token server-side
-                        RedAlertAPI.updatePushTokens(fcmToken, pushyToken, Main.this);
+                    // Register for Pushy push notifications
+                    String pushyToken = PushyRegistration.registerForPushNotifications(Main.this);
+
+                    // Register for FCM push notifications
+                    String fcmToken = FCMRegistration.registerForPushNotifications(Main.this);
+
+                    // First time registering with the API?
+                    if (!RedAlertAPI.isRegistered(Main.this)) {
+                        // Register with RedAlert API and store user ID & hash
+                        RedAlertAPI.register(fcmToken, pushyToken, Main.this);
+                    } else {
+                        // FCM or Pushy token have changed?
+                        if ((previousFirebaseToken != null && !previousFirebaseToken.equals(fcmToken)) ||
+                                (previousPushyToken != null && !previousPushyToken.equals(pushyToken))) {
+                            // Update token server-side
+                            RedAlertAPI.updatePushTokens(fcmToken, pushyToken, Main.this);
+                        }
+                    }
+
+                    // First time subscribing with the API?
+                    if (!RedAlertAPI.isSubscribed(Main.this)) {
+                        // Update Pub/Sub subscriptions
+                        PushManager.updateSubscriptions(Main.this);
+
+                        // Update notification preferences
+                        RedAlertAPI.updateNotificationPreferences(Main.this);
+
+                        // Subscribe for alerts based on current city/region selections
+                        RedAlertAPI.subscribe(Main.this);
+                    }
+
+                    // If we're here, success
+                    break;
+                } catch (Exception exc) {
+                    // Throw exception after 5 tries
+                    if (tries > 5) {
+                        return exc;
+                    }
+                    else {
+                        // Log error
+                        Log.e(Logging.TAG, "Push registration failed, retrying...", exc);
+
+                        try {
+                            // Wait a second and try again
+                            Thread.sleep(1000);
+                        }
+                        catch (InterruptedException e) {}
                     }
                 }
-
-                // First time subscribing with the API?
-                if (!RedAlertAPI.isSubscribed(Main.this)) {
-                    // Update Pub/Sub subscriptions
-                    PushManager.updateSubscriptions(Main.this);
-
-                    // Update notification preferences
-                    RedAlertAPI.updateNotificationPreferences(Main.this);
-
-                    // Subscribe for alerts based on current city/region selections
-                    RedAlertAPI.subscribe(Main.this);
-                }
-            }
-            catch (Exception exc) {
-                return exc;
             }
 
             // Success
@@ -1020,8 +1256,11 @@ public class Main extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Exception exc) {
+            // No longer registering
+            mIsRegistering = false;
+
             // Activity dead?
-            if (isFinishing() || mIsDestroyed) {
+            if (isFinishing() || isDestroyed()) {
                 return;
             }
 
@@ -1058,7 +1297,7 @@ public class Main extends AppCompatActivity {
         @Override
         protected void onPostExecute(String newVersion) {
             // Activity dead?
-            if (isFinishing() || mIsDestroyed) {
+            if (isFinishing() || isDestroyed()) {
                 return;
             }
 
@@ -1115,7 +1354,7 @@ public class Main extends AppCompatActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         // Just granted location permission?

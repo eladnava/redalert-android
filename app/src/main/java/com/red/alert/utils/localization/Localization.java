@@ -3,13 +3,13 @@ package com.red.alert.utils.localization;
 import android.content.Context;
 import android.content.res.Configuration;
 
+import androidx.appcompat.app.AppCompatDelegate;
+
 import com.red.alert.R;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.formatting.StringUtils;
 
 import java.util.Locale;
-
-import androidx.appcompat.app.AppCompatDelegate;
 
 public class Localization {
     static Locale mDefaultLocale;

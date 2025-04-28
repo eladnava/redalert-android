@@ -7,7 +7,7 @@ import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.red.alert.R;
 import com.red.alert.config.Logging;
@@ -19,13 +19,12 @@ import com.red.alert.utils.networking.HTTP;
 
 import java.util.List;
 
-import androidx.annotation.NonNull;
 import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 
 public class FCMRegistration {
     public static String registerForPushNotifications(final Context context) throws Exception {
         // Get an FCM registration token
-        final String token = FirebaseInstanceId.getInstance().getToken(FCMGateway.SENDER_ID, FCMGateway.SCOPE);
+        String token = getFCMTokenSync();
 
         // Persist FCM token locally
         saveRegistrationToken(context, token);
@@ -35,6 +34,22 @@ public class FCMRegistration {
 
         // Return token for saving and processing
         return token;
+    }
+
+    public static String getFCMTokenSync() throws Exception {
+        // Task to query for the most up-to-date FCM device token
+        Task<String> task = FirebaseMessaging.getInstance().getToken();
+
+        // Wait for task to finish (blocks the thread)
+        Tasks.await(task);
+
+        // Task failed?
+        if (!task.isSuccessful()) {
+            throw task.getException();
+        }
+
+        // Return task result
+        return task.getResult();
     }
 
     public static String getRegistrationToken(Context context) {
@@ -118,7 +133,7 @@ public class FCMRegistration {
             Task subscribe = FirebaseMessaging.getInstance().subscribeToTopic(topic)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
-                        public void onComplete(@NonNull Task<Void> task) {
+                        public void onComplete(Task<Void> task) {
                             if (!task.isSuccessful()) {
                                 Log.e(Logging.TAG, "FCM subscribe failed: ", task.getException());
                                 return;
@@ -151,7 +166,7 @@ public class FCMRegistration {
             Task unsubscribe = FirebaseMessaging.getInstance().unsubscribeFromTopic(topic)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
-                        public void onComplete(@NonNull Task<Void> task) {
+                        public void onComplete(Task<Void> task) {
                             if (!task.isSuccessful()) {
                                 Log.e(Logging.TAG, "FCM unsubscribe failed: ", task.getException());
                                 return;

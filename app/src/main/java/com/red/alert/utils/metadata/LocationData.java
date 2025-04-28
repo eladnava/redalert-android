@@ -6,14 +6,12 @@ import android.location.LocationManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 import com.red.alert.R;
-import com.red.alert.activities.settings.alerts.LocationAlerts;
 import com.red.alert.config.Alerts;
 import com.red.alert.config.Logging;
+import com.red.alert.config.ThreatTypes;
 import com.red.alert.logic.alerts.AlertLogic;
 import com.red.alert.logic.location.LocationLogic;
-import com.red.alert.config.ThreatTypes;
 import com.red.alert.model.metadata.City;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.formatting.StringUtils;
@@ -30,6 +28,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+
+import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 
 public class LocationData {
     private static List<City> mCities;
@@ -102,10 +102,19 @@ public class LocationData {
         // Prepare array
         List<String> values = new ArrayList<String>();
 
+        // Get localized zone names and Hebrew values
+        List<String> zoneNames = Arrays.asList(context.getResources().getStringArray(R.array.zoneNames));
+        List<String> zoneValues =  Arrays.asList(context.getResources().getStringArray(R.array.zoneValues));
+
         // Loop over cities
         for (City city : cities) {
+            // Found zone in XML?
+            if (zoneValues.indexOf(city.zone) != -1) {
+                // Add localized name to list
+                values.add(zoneNames.get(zoneValues.indexOf(city.zone)));
+            }
             // Hebrew?
-            if (Localization.isHebrew(context)) {
+            else if (Localization.isHebrew(context)) {
                 // Add Hebrew name to list
                 values.add(city.zone);
             }
@@ -274,36 +283,76 @@ public class LocationData {
         return displayText;
     }
 
-    public static String getLocalizedZoneWithCountdown(String cityName, Context context) {
+    public static String getLocalizedZoneWithCountdown(String cityName, String threatType, Context context) {
         // Prepare cities array
         List<City> cities = getAllCities(context);
+
+        // Get localized zone names and Hebrew values
+        List<String> zoneNames = Arrays.asList(context.getResources().getStringArray(R.array.zoneNames));
+        List<String> zoneValues =  Arrays.asList(context.getResources().getStringArray(R.array.zoneValues));
 
         // Loop over cities
         for (City city : cities) {
             // Got a match?
             if (city.name.equals(cityName)) {
+                // Localize time to shelter
+                String localizedCountdown = getLocalizedCountdown(city.countdown, threatType, context);
+
+                // Found zone in XML?
+                if (zoneValues.indexOf(city.zone) != -1) {
+                    // Return localized zone + localized countdown
+                    return zoneNames.get(zoneValues.indexOf(city.zone)) + " (" + localizedCountdown + ")";
+                }
                 // Hebrew?
-                if (Localization.isHebrew(context)) {
-                    // Return area countdown in Hebrew
-                    return city.zone + " (" + city.time + ")";
+                else if (Localization.isHebrew(context)) {
+                    // Return zone + countdown in Hebrew
+                    return city.zone + " (" + localizedCountdown + ")";
                 }
                 else if (Localization.isRussian(context)) {
-                    // Return area countdown in Russian
-                    return city.zoneRussian  + " (" + city.timeRussian + ")";
+                    // Return zone + countdown in Russian
+                    return city.zoneRussian  + " (" + localizedCountdown + ")";
                 }
                 else if (Localization.isArabic(context)) {
-                    // Return area countdown in Arabic
-                    return city.zoneArabic  + " (" + city.timeArabic + ")";
+                    // Return zone + countdown in Arabic
+                    return city.zoneArabic  + " (" + localizedCountdown + ")";
                 }
                 else {
-                    // Return area countdown in English
-                    return city.zoneEnglish  + " (" + city.timeEnglish + ")";
+                    // Return zone + countdown in English
+                    return city.zoneEnglish  + " (" + localizedCountdown + ")";
                 }
             }
         }
 
         // No match
         return "";
+    }
+
+    public static String getLocalizedCountdown(int countdown, String threatType, Context context) {
+        // Return "Immediately" for threats which aren't missile or hostile aircaft intrustion
+        if (threatType != null && !threatType.equals(ThreatTypes.MISSILES) && !threatType.equals(ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION)) {
+            return context.getString(R.string.immediately);
+        }
+
+        // Return localized string based on countdown seconds
+        switch (countdown) {
+            case 0:
+                return context.getString(R.string.immediately);
+            case 15:
+                return context.getString(R.string.fifteenSeconds);
+            case 30:
+                return context.getString(R.string.thirtySeconds);
+            case 45:
+                return context.getString(R.string.fortyFiveSeconds);
+            case 60:
+                return context.getString(R.string.oneMinute);
+            case 90:
+                return context.getString(R.string.oneMinuteAndAHalf);
+            case 180:
+                return context.getString(R.string.threeMinutes);
+        }
+
+        // Fallback to immediately on unexpected countdown value
+        return context.getString(R.string.immediately);
     }
 
     public static int getCityCountdown(String cityName, Context context) {
@@ -336,7 +385,7 @@ public class LocationData {
             int countdown = LocationData.getCityCountdown(city, context);
 
             // If city selected primarily (or it's nearby), just return its countdown value
-            if (AlertLogic.isCitySelectedPrimarily(city, context) || AlertLogic.isNearby(city, context)) {
+            if (AlertLogic.isCitySelectedPrimarily(city, false, context) || AlertLogic.isNearby(city, context)) {
                 // First primary encountered, or another primary with lower countdown?
                 if (!primaryFound || countdown < minCountdown) {
                     minCountdown = countdown;
@@ -401,14 +450,14 @@ public class LocationData {
         return TextUtils.join(", ", localizedCityNames);
     }
 
-    public static String getLocalizedCityZonesWithCountdownCSV(List<String> cities, Context context) {
+    public static String getLocalizedCityZonesWithCountdownCSV(List<String> cities, String threatType, Context context) {
         // Prepare list of localized zones
         List<String> localizedZones = new ArrayList<>();
 
         // Traverse cities
         for (String city : cities) {
             // Get zone and countdown as string
-            String zone = LocationData.getLocalizedZoneWithCountdown(city, context);
+            String zone = LocationData.getLocalizedZoneWithCountdown(city, threatType, context);
 
             // Remove duplicates and empty results
             if (!StringUtils.stringIsNullOrEmpty(zone) && !localizedZones.contains(zone)) {
@@ -495,6 +544,9 @@ public class LocationData {
                 break;
             case ThreatTypes.EARTHQUAKE:
                 result = R.string.earthQuake;
+                break;
+            case ThreatTypes.EARLY_WARNING:
+                result = R.string.earlyWarning;
                 break;
             case ThreatTypes.TSUNAMI:
                 result = R.string.tsunami;
@@ -591,6 +643,9 @@ public class LocationData {
                 break;
             case ThreatTypes.EARTHQUAKE:
                 result = R.string.earthQuakeInstructions;
+                break;
+            case ThreatTypes.EARLY_WARNING:
+                result = R.string.earlyWarningInstructions;
                 break;
             case ThreatTypes.TSUNAMI:
                 result = R.string.tsunamiInstructions;
@@ -819,12 +874,21 @@ public class LocationData {
         // Prepare cities array
         List<City> cities = getAllCities(context);
 
+        // Get localized zone names and Hebrew values
+        List<String> zoneNames = Arrays.asList(context.getResources().getStringArray(R.array.zoneNames));
+        List<String> zoneValues =  Arrays.asList(context.getResources().getStringArray(R.array.zoneValues));
+
         // Loop over cities
         for (City city : cities) {
             // Got a match?
             if (city.name.equals(cityName)) {
+                // Found zone in XML?
+                if (zoneValues.indexOf(city.zone) != -1) {
+                    // Return localized zone
+                    return zoneNames.get(zoneValues.indexOf(city.zone));
+                }
                 // Hebrew?
-                if (Localization.isHebrew(context)) {
+                else if (Localization.isHebrew(context)) {
                     return city.zone;
                 }
                 // Russian?

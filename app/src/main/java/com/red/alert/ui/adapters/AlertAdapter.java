@@ -2,6 +2,7 @@ package com.red.alert.ui.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,8 +65,8 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
 
         // Got an alert?
         if (alert != null) {
-            // Set area localized zone
-            viewHolder.title.setText(alert.localizedCity);
+            // Set localized city name (HTML for using <b> tag for selected cities)
+            viewHolder.title.setText(Html.fromHtml(alert.localizedCity));
 
             // System alert?
             if (alert.threat.equals(ThreatTypes.SYSTEM)) {

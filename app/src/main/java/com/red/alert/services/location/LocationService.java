@@ -10,6 +10,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ServiceInfo;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
@@ -18,6 +19,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
+
+import androidx.core.app.NotificationCompat;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -30,14 +33,11 @@ import com.red.alert.config.Logging;
 import com.red.alert.config.NotificationChannels;
 import com.red.alert.logic.communication.broadcasts.LocationAlertsEvents;
 import com.red.alert.logic.location.LocationLogic;
-import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.formatting.StringUtils;
-import com.red.alert.utils.integration.GooglePlayServices;
 import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
 
-import androidx.core.app.NotificationCompat;
 import me.pushy.sdk.config.PushyForegroundService;
 
 public class LocationService extends Service implements
@@ -52,32 +52,28 @@ public class LocationService extends Service implements
     public void onCreate() {
         super.onCreate();
 
+        // Check if all prerequisites are met
+        if (!LocationLogic.canStartForegroundLocationService(this)) {
+            stopSelf();
+            return;
+        }
+
         // Start foreground service
-        startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification());
-
-        // Must have Google Play Services
-        if (!GooglePlayServices.isAvailable(this)) {
-            stopSelf();
-            return;
-        }
-
-        // Check if location alerts are enabled
-        if (!AppPreferences.getLocationAlertsEnabled(this)) {
-            stopSelf();
-            return;
-        }
-
-        // Interval set to 0?
-        if (LocationLogic.getUpdateIntervalMilliseconds(this) == 0) {
-            stopSelf();
-            return;
-        }
-
-        // Check if the user revoked location permission
-        // Must have location permission to continue
-        if (!LocationLogic.isLocationAccessGranted(this)) {
-            stopSelf();
-            return;
+        // API level 34 support
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            try {
+                startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification(), ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION);
+            }
+            catch (Exception exc) {
+                // Android 14 may still occasionally throw a
+                // SecurityException or ForegroundServiceStartNotAllowedException
+                // Even throw we have all required permissions
+                // And we're starting the service from an allowed place
+                stopSelf();
+                return;
+            }
+        } else {
+            startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification());
         }
 
         // Initialize location polling
@@ -107,7 +103,13 @@ public class LocationService extends Service implements
         // Listen for GPS sensor enable/disable event
         IntentFilter filter = new IntentFilter(LocationManager.PROVIDERS_CHANGED_ACTION);
         filter.addAction(Intent.ACTION_PROVIDER_CHANGED);
-        registerReceiver(locationProvidersChangedReceiver, filter);
+
+        // API level 34 support
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            registerReceiver(locationProvidersChangedReceiver, filter, RECEIVER_NOT_EXPORTED);
+        } else {
+            registerReceiver(locationProvidersChangedReceiver, filter);
+        }
 
         // Write to log
         Log.d(Logging.TAG, "LocationService started, polling every " + LocationLogic.getUpdateIntervalMilliseconds(this) / 1000 / 60 + " minute(s)");
@@ -142,8 +144,29 @@ public class LocationService extends Service implements
 
     @Override
     public int onStartCommand(Intent Intent, int Flags, int StartId) {
+        // Check if all prerequisites are met
+        if (!LocationLogic.canStartForegroundLocationService(this)) {
+            stopSelf();
+            return START_NOT_STICKY;
+        }
+
         // Start foreground service
-        startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification());
+        // API level 34 support
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            try {
+                startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification(), ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION);
+            }
+            catch (Exception exc) {
+                // Android 14 may still occasionally throw a
+                // SecurityException or ForegroundServiceStartNotAllowedException
+                // Even throw we have all required permissions
+                // And we're starting the service from an allowed place
+                stopSelf();
+                return START_NOT_STICKY;
+            }
+        } else {
+            startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification());
+        }
 
         // Try connecting
         connectLocationClient();
@@ -307,6 +330,7 @@ public class LocationService extends Service implements
             // Show error
             text = getString(R.string.enableGPSDesc);
         }
+        
         // No recent location?
         else if (location == null) {
             // Show error
@@ -335,11 +359,20 @@ public class LocationService extends Service implements
         // Android O and newer requires notification channel to be created prior to dispatching a notification
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Create channel
-            NotificationChannel channel = new NotificationChannel(NotificationChannels.LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_ID, NotificationChannels.LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_NAME, NotificationManager.IMPORTANCE_MIN);
+            NotificationChannel channel = new NotificationChannel(NotificationChannels.LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_ID, NotificationChannels.LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_NAME, NotificationManager.IMPORTANCE_LOW);
+
+            // Some devices may need us to explicitly disable sound, even for IMPORTANCE_LOW
+            channel.setSound(null, null);
+
+            // Disable badge number
+            channel.setShowBadge(false);
 
             // Register the channel with the system
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
+
+            // Delete old notification channel
+            notificationManager.deleteNotificationChannel(NotificationChannels.LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_OLD_ID);
         }
 
         // Create foreground notification
@@ -351,6 +384,7 @@ public class LocationService extends Service implements
                 .setColor(Color.TRANSPARENT)
                 .setPriority(Notification.PRIORITY_LOW)
                 .setContentIntent(launcherIntent)
+                .setSound(null)
                 .build();
 
         // All done

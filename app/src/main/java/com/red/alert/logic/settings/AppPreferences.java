@@ -8,7 +8,6 @@ import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.metadata.LocationData;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -29,6 +28,11 @@ public class AppPreferences {
         return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.secondaryEnabledPref), false);
     }
 
+    public static boolean getEarlyWarningNotificationsEnabled(Context context) {
+        // Get saved preference
+        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.earlyWarningsEnabledPref), true);
+    }
+
     public static boolean getTutorialDisplayed(Context context) {
         // No regions/cities selected?
         if (AppPreferences.getNotificationsEnabled(context) && AppPreferences.getSubscriptions(context).size() == 0) {
@@ -42,6 +46,11 @@ public class AppPreferences {
     public static boolean getPopupEnabled(Context context) {
         // Get saved preference
         return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.alertPopupPref), false);
+    }
+
+    public static boolean getSecondaryPopupEnabled(Context context) {
+        // Get saved preference
+        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.secondaryAlertPopupPref), false);
     }
 
     public static boolean getForegroundServiceEnabled(Context context) {

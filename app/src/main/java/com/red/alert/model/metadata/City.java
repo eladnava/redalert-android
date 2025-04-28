@@ -2,8 +2,6 @@ package com.red.alert.model.metadata;
 
 import me.pushy.sdk.lib.jackson.annotation.JsonProperty;
 
-import java.util.List;
-
 public class City {
     @JsonProperty("id")
     public int id;
@@ -40,18 +38,6 @@ public class City {
 
     @JsonProperty("value")
     public String value;
-
-    @JsonProperty("time")
-    public String time;
-
-    @JsonProperty("time_en")
-    public String timeEnglish;
-
-    @JsonProperty("time_ru")
-    public String timeRussian;
-
-    @JsonProperty("time_ar")
-    public String timeArabic;
 
     @JsonProperty("shelters")
     public int shelters;

@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="zoneNames">
-        <item>Tout sélectionner</item>
+        <item>Tout Sélectionner</item>
         <item>Eilat</item>
         <item>Bika\'a</item>
-        <item>Beit She\'an Valley</item>
-        <item>South Golan</item>
-        <item>North Golan</item>
-        <item>Upper Galilee</item>
-        <item>Lower Galilee</item>
+        <item>Vallée de Beit She\'an</item>
+        <item>Sud du Golan</item>
+        <item>Nord du Golan</item>
+        <item>Haute Galilée</item>
+        <item>Basse Galilée</item>
         <item>Dan</item>
-        <item>South Negev</item>
+        <item>Sud du Néguev</item>
         <item>HaCarmel</item>
         <item>HaMifratz</item>
         <item>HaAmakim</item>
         <item>HaShfela</item>
         <item>Wadi Ara</item>
         <item>Yehuda</item>
-        <item>Dead Sea</item>
-        <item>Jerusalem</item>
+        <item>Mer Morte</item>
+        <item>Jérusalem</item>
         <item>Yarkon</item>
         <item>Lachish</item>
         <item>Menashe</item>
-        <item>West Negev</item>
-        <item>West Lachish</item>
-        <item>Center Galilee</item>
-        <item>Center Negev</item>
-        <item>Gaza Envelope</item>
+        <item>Ouest du Néguev</item>
+        <item>Ouest de Lakish</item>
+        <item>Centre de la Galilée</item>
+        <item>Centre du Néguev</item>
+        <item>Enveloppe de Gaza</item>
         <item>Arava</item>
-        <item>Confrontation Line</item>
+        <item>Ligne de Confrontation</item>
         <item>Shomron</item>
         <item>Shfelat Yehuda</item>
         <item>Sharon</item>

@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.provider.Settings;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -17,6 +15,8 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.red.alert.R;
 import com.red.alert.config.Alerts;
@@ -39,8 +39,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Popup extends AppCompatActivity {
-    boolean mIsDestroyed;
-
     Timer mTimer;
 
     TextView mCities;
@@ -53,13 +51,18 @@ public class Popup extends AppCompatActivity {
     ImageView mThreatIcon;
 
     public static void showAlertPopup(String alertType, List<String> cities, String threatType, Context context) {
-        // User disabled this feature?
-        if (!AppPreferences.getPopupEnabled(context)) {
+        // Only display popup for primary/secondary alerts (no test/sound/system notifications)
+        if (!alertType.equals(AlertTypes.PRIMARY) && !alertType.equals(AlertTypes.SECONDARY)) {
             return;
         }
 
-        // Type must be an "alert"
-        if (!alertType.equals(AlertTypes.PRIMARY)) {
+        // User hasn't enabled popup for primary alerts?
+        if (alertType.equals(AlertTypes.PRIMARY) && !AppPreferences.getPopupEnabled(context)) {
+            return;
+        }
+
+        // User hasn't enabled popup for secondary alerts?
+        if (alertType.equals(AlertTypes.SECONDARY) && !AppPreferences.getSecondaryPopupEnabled(context)) {
             return;
         }
 
@@ -187,7 +190,7 @@ public class Popup extends AppCompatActivity {
 
         // Not a missile / hostile aircraft intrusion alert?
         // Hide countdown timer
-        if (!threatType.contains(ThreatTypes.MISSILES) && !threatType.contains(ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION)) {
+        if (!threatType.contains(ThreatTypes.MISSILES) && !threatType.contains(ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION) && !threatType.equals(ThreatTypes.EARLY_WARNING)) {
             // Countdown is only relevant for rocket fire
             mCounter.setVisibility(View.GONE);
         }
@@ -197,6 +200,12 @@ public class Popup extends AppCompatActivity {
 
             // Start counting down
             scheduleRocketCountdown(timestamp, countdown);
+
+            // Hide countdown text for Early Warnings
+            if (threatType.equals(ThreatTypes.EARLY_WARNING)) {
+                // Countdown is only relevant for rocket fire
+                mCounter.setVisibility(View.GONE);
+            }
         }
     }
 
@@ -233,7 +242,7 @@ public class Popup extends AppCompatActivity {
                     @Override
                     public void run() {
                         // Activity died?
-                        if (isFinishing() || mIsDestroyed) {
+                        if (isFinishing() || isDestroyed()) {
                             return;
                         }
 
@@ -243,14 +252,6 @@ public class Popup extends AppCompatActivity {
                 });
             }
         }, 0, 100);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        // Avoid hiding invalid dialogs
-        mIsDestroyed = true;
     }
 
     void updateCountdownTimer(long impactTimestamp) {

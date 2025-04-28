@@ -5,7 +5,7 @@
     <string name="appName">RedAlert</string>
 
     <!-- Registration Dialog -->
-    <string name="signing_up">Registrándose al servicio de notificaciones de Tzeva Adom…</string>
+    <string name="signing_up">Registrándose al servicio de notificaciones…</string>
 
     <!-- Dialog Buttons -->
     <string name="okay">Ok</string>
@@ -67,14 +67,14 @@
 
     <!-- Self-test -->
     <string name="test">Prueba</string>
-    <string name="testDesc">Enviarme una notificación que simula una alarma \(Tzeva Adom\)</string>
+    <string name="testDesc">Enviarme una notificación que simula una alarma</string>
     <string name="testFailed">La auto-prueba ha fallado por completo. Sin alerta fue recibida de cualquier pasarela de empuje. Compruebe su conexión a Internet y vuelva a intentarlo más tarde, y ponerse en contacto con nosotros si el problema persiste.</string>
     <string name="reliability">Fiabilidad</string>
     <string name="testSuccessfulLong">El auto-test ha completado con éxito!</string>
 
     <!-- Sound Selection -->
     <string name="sounds">Sonidos</string>
-    <string name="soundSelection">Sonido de alarma Tzeva Adom</string>
+    <string name="soundSelection">Sonido de alarma</string>
     <string name="soundSelectionDesc">Seleccionar el sonido de la notificación de alarma</string>
     <string name="testSound">Probar el sonido de notificación</string>
     <string name="siren1">Sirena 1</string>
@@ -99,7 +99,7 @@
 
     <!-- Vibration Mode -->
     <string name="vibrate">Activar vibración</string>
-    <string name="vibrateDesc">Hacer vibrar el dispositivo cuando suena la alarma Tzeva Adom</string>
+    <string name="vibrateDesc">Hacer vibrar el dispositivo cuando suena la alarma</string>
 
     <!-- Secondary Vibration Mode -->
     <string name="secondaryVibrate">Activar vibración</string>
@@ -107,16 +107,25 @@
 
     <!-- Silent Mode Override -->
     <string name="silentOverride">Cancelar modo silencioso</string>
-    <string name="silentOverrideDesc">Cancelar el modo silencioso cuando suena la alarma Tzeva Adom</string>
+    <string name="silentOverrideDesc">Cancelar el modo silencioso cuando suena la alarma</string>
 
     <!-- Silent Mode Override -->
     <string name="secondarySilentOverride">Cancelar modo silencioso</string>
     <string name="secondarySilentOverrideDesc">Cancelar el modo silencioso cuando se recibe una notificación secundaria</string>
 
+    <!-- Alertas tempranas -->
+    <string name="earlyWarnings">Alertas tempranas</string>
+    <string name="earlyWarningsDesc">Configurar las alertas tempranas para que se reciban con 3 a 5 minutos de antelación</string>
+    <string name="receiveEarlyWarningsDesc">Recibir alertas tempranas con 3 a 5 minutos de antelación</string>
+
+    <!-- Sonido de alerta temprana -->
+    <string name="earlyWarningsSoundSelection">Sonido de alerta temprana</string>
+    <string name="earlyWarningsSoundSelectionDesc">Seleccionar un sonido para que se reproduzca al recibir una alerta temprana</string>
+
     <!-- I'm Safe -->
     <string name="safe">Enviar  \"Estoy en el área protegida\"</string>
     <string name="safeCategory">\"Estoy en el área protegida\"</string>
-    <string name="imSafeMessage">Estoy en el área protegida - Enviado desde Tzeva Adom en Android - https://redalert.me</string>
+    <string name="imSafeMessage">Estoy en el área protegida - Enviado desde RedAlert en Android - https://redalert.me</string>
     <string name="imSafeDesc">Enviar \"Estoy en el área protegida\"</string>
 
     <!-- I'm Safe - WhatsApp Integration -->
@@ -162,7 +171,7 @@
     <!-- Share the Application -->
     <string name="share">Compartir</string>
     <string name="shareDesc">Comparta la aplicación</string>
-    <string name="shareMessage">Yo uso la aplicación \"Tzeva Adom\" en Android para recibir notificaciones en tiempo-real de alarmas Tzeva Adom - https://redalert.me</string>
+    <string name="shareMessage">Yo uso la aplicación \"RedAlert\" en Android para recibir notificaciones en tiempo-real de alarmas - https://redalert.me</string>
 
     <!-- Error Messages -->
     <string name="notifyError">Se ha producido un error al mostrar la alerta, es posible que desee para reiniciar el teléfono.</string>
@@ -172,17 +181,19 @@
     <string name="apiRequestFailed">Una solicitud para recuperar información de nuestros servidores fallaron. Por favor, compruebe su conexión a Internet y vuelva a intentarlo.</string>
     <string name="registrationFailed">El registro al servicio de notificaciones no tuvo éxito. Por favor, intente más tarde.</string>
     <string name="grantNotificationPermission">Habilite \"Notificaciones\" en la siguiente pantalla para recibir alertas en tiempo real.</string>
+    <string name="citySelectionLimitError">Por favor no seleccione más de 100 ciudades.</string>
 
     <!-- Success Messages -->
     <string name="registrationID">Código de registro</string>
     <string name="pushRegistrationSuccess">Selecciona tu Ciudad</string>
     <string name="pushRegistrationSuccessDesc">Seleccione su ciudad o pueblo para recibir alertas en tiempo real.</string>
+    <string name="pushRegistrationReselectDesc">Vuelva a seleccionar su ciudad o pueblo para recibir alertas en tiempo real.</string>
 
     <!-- GPS -->
-    <string name="locationAlerts">Ubicación alertas</string>
-    <string name="locationAlertsDesc">Configure alertas basadas en la ubicación y reciba alertas de emergencia en la lata</string>
-    <string name="gpsEnabled">Ubicación alertas</string>
-    <string name="gpsEnabledDesc">Recibe alertas basadas en la localización en tiempo real</string>
+    <string name="locationAlerts">Alertas por ubicación</string>
+    <string name="locationAlertsDesc">Configurar alertas por ubicación para recibir alertas de emergencia mientras está en movimiento</string>
+    <string name="gpsEnabled">Alertas por ubicación</string>
+    <string name="gpsEnabledDesc">Recibe alertas por ubicación en tiempo real</string>
     <string name="maxDistance">Distancia máxima</string>
     <string name="maxDistanceDesc">Deslice para seleccionar la distancia máxima de cada ciudad que recibe una alerta</string>
     <string name="kilometer">km</string>
@@ -197,7 +208,7 @@
     <string name="minutes">minutos</string>
 
     <!-- GPS Notification -->
-    <string name="enableGPSDesc">Por favor, activa el GPS para recibir alertas basadas en la localización.</string>
+    <string name="enableGPSDesc">Por favor, activa el GPS para recibir alertas por ubicación.</string>
     <string name="enable">Habilitar</string>
 
     <!-- Alert Share -->
@@ -216,6 +227,11 @@
     <string name="showPopupDesc">Alertas se mostrarán en una ventana emergente</string>
     <string name="grantOverlayPermission">Permitir visualización sobre otras aplicaciones</string>
     <string name="grantOverlayPermissionInstructions">Seleccione \"RedAlert\" -> \"Permitir visualización sobre otras aplicaciones\" en la siguiente pantalla.</string>
+    <string name="showSecondaryAlertPopupDesc">Alertas secundarias se mostrarán en una ventana emergente</string>
+
+    <!-- Schedule Exact Alarms -->
+    <string name="allowSettingExactAlarms">Permitir configurar alarmas y recordatorios</string>
+    <string name="allowSettingExactAlarmsInstructions">Para recibir notificaciones en segundo plano, permita configurar alarmas y recordatorios en la siguiente pantalla.</string>
 
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Mejorar la confiabilidad</string>
@@ -236,15 +252,32 @@
     <string name="alerts">Alertas</string>
     <string name="advancedAlerts">Alertas Avanzadas</string>
 
+    <!-- Donar -->
+    <string name="donate">Apoya nuestra causa</string>
+    <string name="donateInstructions">Selecciona el monto de tu donación (en ILS):</string>
+    <string name="donateDesc">Tu donación ayudará a cubrir los costos del servidor y desarrollo</string>
+    <string name="donateSuccess">¡Gracias por tu donación!</string>
+    <string name="donateSuccessDesc">Agradecemos enormemente tu donación, que ayudará a cubrir los costos del servidores y desarrollo.</string>
+
     <!-- Operation Lifeshield -->
     <string name="lifeshieldShelters">Refugios de Lifeshield:</string>
     <string name="learnAboutLifeshield">Aprende sobre Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Haga clic aquí para conocer más acerca de Operation Lifeshield, una organización sin fines de lucro que despliega refugios antiaéreos en Israel.</string>
 
+    <!-- Time to Shelter -->
+    <string name="immediately">Inmediatamente</string>
+    <string name="fifteenSeconds">15 segundos</string>
+    <string name="thirtySeconds">30 segundos</string>
+    <string name="fortyFiveSeconds">45 segundos</string>
+    <string name="oneMinute">Un minuto</string>
+    <string name="oneMinuteAndAHalf">Un minuto y medio</string>
+    <string name="threeMinutes">3 minutos</string>
+
     <!-- Threat Types -->
     <string name="missiles">Misiles</string>
     <string name="radiologicalEvent">Evento radiológico</string>
     <string name="earthQuake">Terremoto</string>
+    <string name="earlyWarning">Alerta temprana</string>
     <string name="tsunami">Alerta de tsunami</string>
     <string name="hostileAircraftIntrusion">Intrusión de aeronaves hostiles</string>
     <string name="hazardousMaterials">Materiales peligrosos</string>
@@ -263,6 +296,7 @@
     <string name="missilesInstructions">Ingrese al espacio protegido y permanezca allí durante 10 minutos.</string>
     <string name="hostileAircraftIntrusionInstructions">Ingrese al área protegida inmediatamente y permanezca allí durante 10 minutos, a menos que reciba más advertencias.</string>
     <string name="earthQuakeInstructions">Salga inmediatamente a un área abierta. Si esto no es posible, ingrese al MMD o al hueco de una escalera.</string>
+    <string name="earlyWarningInstructions">Se espera una alerta en los próximos minutos. Necesita encontrar una ubicación más segura que le brinde la mejor protección en su zona. Si recibe una alerta, entre al espacio protegido y permanezca allí durante 10 minutos.</string>
     <string name="radiologicalEventInstructions">Entre al edificio y cierre las puertas y ventanas.</string>
     <string name="terroristInfiltrationInstructions">Entre al edificio inmediatamente y cierre las puertas y ventanas.</string>
     <string name="tsunamiInstructions">Aléjese inmediatamente de la playa al menos un kilómetro o suba al cuarto piso o más.</string>
@@ -291,5 +325,5 @@
 
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">¿Borrar alertas recientes?</string>
-    <string name="clearRecentAlertsDesc">¿Le gustaría borrar la lista de alertas recientes?</string>
+    <string name="clearRecentAlertsDesc">¿Le gustaría borrar todas las alertas recientes?</string>
 </resources>

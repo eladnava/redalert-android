@@ -25,6 +25,12 @@ public class Alert {
     @JsonIgnore
     public List<Alert> groupedAlerts;
 
+    @JsonIgnore
+    public List<String> groupedDescriptions;
+
+    @JsonIgnore
+    public List<String> groupedLocalizedCities;
+
     @Override
     public String toString() {
         return city;

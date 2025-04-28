@@ -1,5 +1,6 @@
 package com.red.alert.activities.settings;
 
+import android.app.NotificationManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -13,9 +14,9 @@ import android.provider.Settings;
 import android.view.MenuItem;
 
 import com.red.alert.R;
+import com.red.alert.activities.settings.alerts.EarlyWarnings;
 import com.red.alert.activities.settings.alerts.LocationAlerts;
 import com.red.alert.activities.settings.alerts.SecondaryAlerts;
-import com.red.alert.config.NotificationChannels;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.ui.activities.AppCompatPreferenceActivity;
 import com.red.alert.ui.dialogs.AlertDialogBuilder;
@@ -24,10 +25,11 @@ import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.utils.feedback.Volume;
 
 import me.pushy.sdk.Pushy;
-import me.pushy.sdk.services.PushySocketService;
+import me.pushy.sdk.config.PushyForegroundService;
 import me.pushy.sdk.util.PushyServiceManager;
 
 public class Advanced extends AppCompatPreferenceActivity {
+    Preference mEarlyWarnings;
     Preference mLocationAlerts;
     Preference mSecondaryAlerts;
     SliderPreference mVolumeSelection;
@@ -73,6 +75,7 @@ public class Advanced extends AppCompatPreferenceActivity {
 
         // Cache resource IDs
         mLocationAlerts = findPreference(getString(R.string.locationPref));
+        mEarlyWarnings = findPreference(getString(R.string.earlyWarningsPref));
         mSecondaryAlerts = findPreference(getString(R.string.secondaryPref));
         mVolumeSelection = (SliderPreference) findPreference(getString(R.string.volumePref));
         mAlertPopup = (CheckBoxPreference)findPreference(getString(R.string.alertPopupPref));
@@ -107,6 +110,24 @@ public class Advanced extends AppCompatPreferenceActivity {
 
                 // Take user to Secondary Alerts settings page
                 startActivity(secondaryAlerts);
+
+                // Consume event
+                return true;
+            }
+        });
+
+        // Set up early warnings click listener
+        mEarlyWarnings.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                // Prepare new intent
+                Intent earlyWarnings = new Intent();
+
+                // Set class
+                earlyWarnings.setClass(Advanced.this, EarlyWarnings.class);
+
+                // Take user to Early Warning settings page
+                startActivity(earlyWarnings);
 
                 // Consume event
                 return true;
@@ -179,20 +200,47 @@ public class Advanced extends AppCompatPreferenceActivity {
 
                 // Enabled?
                 if ((boolean)value == true) {
-                    // Show dialog instructing user on how to hide the Pushy foreground service notification
-                    AlertDialogBuilder.showGenericDialog(getString(R.string.hidePushyForegroundNotification), getString(R.string.hidePushyForegroundNotificationInstructions), getString(R.string.okay), getString(R.string.notNow), true, Advanced.this, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int which) {
-                            // Clicked okay?
-                            if (which == DialogInterface.BUTTON_POSITIVE) {
-                                // Open notification channel config to allow user to easily disable the notification channel
-                                Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
-                                intent.putExtra(Settings.EXTRA_CHANNEL_ID, NotificationChannels.PUSHY_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_ID);
-                                intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
-                                startActivity(intent);
+                    // Android O and newer required for notification channels
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        // Show dialog instructing user on how to hide the Pushy foreground service notification
+                        AlertDialogBuilder.showGenericDialog(getString(R.string.hidePushyForegroundNotification), getString(R.string.hidePushyForegroundNotificationInstructions), getString(R.string.okay), getString(R.string.notNow), true, Advanced.this, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int which) {
+                                // Clicked okay?
+                                if (which == DialogInterface.BUTTON_POSITIVE) {
+                                    // Background thread
+                                    new Thread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            // Get notification manager
+                                            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+
+                                            // Wait some time for notification channel to be created
+                                            while (notificationManager.getNotificationChannel(PushyForegroundService.FOREGROUND_NOTIFICATION_CHANNEL) == null) {
+                                                try {
+                                                    Thread.sleep(200);
+                                                }
+                                                catch (Exception exc) {
+                                                    // Ignore exceptions
+                                                }
+                                            }
+
+                                            // Activity destroyed?
+                                            if (isDestroyed() || isFinishing()) {
+                                                return;
+                                            }
+
+                                            // Open notification channel config to allow user to easily disable the notification channel
+                                            Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+                                            intent.putExtra(Settings.EXTRA_CHANNEL_ID, PushyForegroundService.FOREGROUND_NOTIFICATION_CHANNEL);
+                                            intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+                                            startActivity(intent);
+                                        }
+                                    }).start();
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
                 }
 
                 // Tell Android to persist new checkbox value

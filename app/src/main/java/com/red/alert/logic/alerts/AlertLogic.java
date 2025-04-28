@@ -22,7 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AlertLogic {
-    public static void processIncomingAlert(String threatType, String citiesPSVString, String alertType, Context context) {
+    public static void processIncomingAlert(String threatType, String citiesPSVString, String alertType, String alertId, Context context) {
         // No cities?
         if (StringUtils.stringIsNullOrEmpty(citiesPSVString)) {
             return;
@@ -39,6 +39,15 @@ public class AlertLogic {
 
         // Log the cities
         Log.i(Logging.TAG, "Received alert (" + threatType + "): " + citiesPSVString);
+
+        // Early warning?
+        if (threatType.equals(ThreatTypes.EARLY_WARNING)) {
+            // Disabled by user?
+            if (!AppPreferences.getEarlyWarningNotificationsEnabled(context)) {
+                Log.i(Logging.TAG, "User disabled early warnings, ignoring alert");
+                return;
+            }
+        }
 
         // Get alert cities as list
         List<String> cityList = LocationData.explodePSV(citiesPSVString);
@@ -59,8 +68,18 @@ public class AlertLogic {
                         continue;
                     }
 
+                    // Did we already notify for this city and alert ID combination?
+                    if (cityAlreadyNotifiedForAlertId(city, alertId, context)) {
+                        // Log that we're skipping this one
+                        Log.i(Logging.TAG, "Ignoring already notified alert ID " + alertId + " for city: " + city);
+                        continue;
+                    }
+
+                    // Not an early warning?
                     // Save city last alert timestamp to prevent duplicate alerts
-                    AppPreferences.setCityLastAlertTime(city, DateTime.getUnixTimestamp(), context);
+                    if (!threatType.equals(ThreatTypes.EARLY_WARNING)) {
+                        AppPreferences.setCityLastAlertTime(city, DateTime.getUnixTimestamp(), context);
+                    }
                 }
 
                 // Add city to relevant alert cities
@@ -83,6 +102,27 @@ public class AlertLogic {
         return AppPreferences.getCityLastAlert(city, context) > recentCutoffTimestamp;
     }
 
+    static boolean cityAlreadyNotifiedForAlertId(String city, String alertId, Context context) {
+        // No alert ID?
+        if (StringUtils.stringIsNullOrEmpty(alertId)) {
+            return false;
+        }
+
+        // Build SharedPreference key comprising of city name (in Hebrew) and alert ID
+        String key = city + "-" + alertId;
+
+        // Check for a SharedPreference key with this city name and alert ID
+        if (Singleton.getSharedPreferences(context).getBoolean(key, false)) {
+            return true;
+        }
+
+        // Store as already processed
+        Singleton.getSharedPreferences(context).edit().putBoolean(key, true).commit();
+
+        // First time encountering this city & alert ID combo
+        return false;
+    }
+
     public static boolean isRelevantCity(String alertType, String city, Context context) {
         // Test or system message?
         if (isSystemTestAlert(alertType)) {
@@ -90,12 +130,12 @@ public class AlertLogic {
         }
 
         // Did user select this city? Either via entire zones or cities
-        if (isCitySelectedPrimarily(city, context)) {
+        if (isCitySelectedPrimarily(city, false, context)) {
             return true;
         }
 
         // Did user select this city?
-        if (isSecondaryCitySelected(city, context)) {
+        if (isSecondaryCitySelected(city, false, context)) {
             return true;
         }
 
@@ -120,7 +160,7 @@ public class AlertLogic {
         // Traverse cities
         for (String city : cities) {
             // Did user select this area under primary city / zone selection?
-            if (isCitySelectedPrimarily(city, context)) {
+            if (isCitySelectedPrimarily(city, false, context)) {
                 return false;
             }
 
@@ -131,7 +171,7 @@ public class AlertLogic {
             }
 
             // Did user select this city under secondary city selection?
-            if (isSecondaryCitySelected(city, context)) {
+            if (isSecondaryCitySelected(city, false, context)) {
                 secondaryFound = true;
             }
         }
@@ -140,7 +180,7 @@ public class AlertLogic {
         return secondaryFound;
     }
 
-    public static boolean isCitySelectedPrimarily(String city, Context context) {
+    public static boolean isCitySelectedPrimarily(String city, boolean ignoreAllSelection, Context context) {
         // Get enabled / disabled setting
         boolean notificationsEnabled = AppPreferences.getNotificationsEnabled(context);
 
@@ -153,7 +193,7 @@ public class AlertLogic {
         String selectedZones = Singleton.getSharedPreferences(context).getString(context.getString(R.string.selectedZonesPref), context.getString(R.string.none));
 
         // All are selected?
-        if (StringUtils.stringIsNullOrEmpty(selectedZones) || selectedZones.equals(context.getString(R.string.all))) {
+        if (!ignoreAllSelection && (StringUtils.stringIsNullOrEmpty(selectedZones) || selectedZones.equals(context.getString(R.string.all)))) {
             return true;
         }
 
@@ -189,7 +229,7 @@ public class AlertLogic {
         return false;
     }
 
-    public static boolean isSecondaryCitySelected(String city, Context context) {
+    public static boolean isSecondaryCitySelected(String city, boolean ignoreAllSelection, Context context) {
         // Get main enabled setting
         boolean notificationsEnabled = AppPreferences.getNotificationsEnabled(context);
 
@@ -210,7 +250,7 @@ public class AlertLogic {
         String secondaryCities = Singleton.getSharedPreferences(context).getString(context.getString(R.string.selectedSecondaryCitiesPref), context.getString(R.string.none));
 
         // All selected?
-        if (StringUtils.stringIsNullOrEmpty(secondaryCities) || secondaryCities.equals(context.getString(R.string.all))) {
+        if (!ignoreAllSelection && (StringUtils.stringIsNullOrEmpty(secondaryCities) || secondaryCities.equals(context.getString(R.string.all)))) {
             return true;
         }
 
