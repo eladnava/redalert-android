@@ -31,6 +31,7 @@ import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.utils.feedback.Volume;
 import com.red.alert.utils.localization.DateTime;
+import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.ui.DensityUtil;
 
@@ -136,6 +137,13 @@ public class Popup extends AppCompatActivity {
 
         // Set up listeners
         initializeListeners();
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        // Reapply locale
+        Localization.overridePhoneLocale(base);
+        super.attachBaseContext(base);
     }
 
     void initializeListeners() {

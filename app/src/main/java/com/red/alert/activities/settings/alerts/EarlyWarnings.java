@@ -1,5 +1,6 @@
 package com.red.alert.activities.settings.alerts;
 
+import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -15,6 +16,9 @@ public class EarlyWarnings extends AppCompatPreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Support for RTL languages
+        RTLSupport.mirrorActionBar(this);
+
         // Load UI elements
         initializeUI();
 
@@ -28,6 +32,13 @@ public class EarlyWarnings extends AppCompatPreferenceActivity {
 
         // Support for RTL languages
         RTLSupport.mirrorActionBar(this);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        // Reapply locale
+        Localization.overridePhoneLocale(base);
+        super.attachBaseContext(base);
     }
 
     @Override

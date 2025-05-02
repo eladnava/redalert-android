@@ -151,6 +151,13 @@ public class General extends AppCompatPreferenceActivity {
         Volume.setVolumeKeysAction(this);
     }
 
+    @Override
+    protected void attachBaseContext(Context base) {
+        // Reapply locale
+        Localization.overridePhoneLocale(base);
+        super.attachBaseContext(base);
+    }
+
     void handleIntentExtras() {
         // Get extras
         Bundle extras = getIntent().getExtras();

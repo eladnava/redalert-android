@@ -1,11 +1,13 @@
 package com.red.alert.activities;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -87,6 +89,9 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Support for RTL languages
+        RTLSupport.mirrorActionBar(this);
+
         // Use legacy maps renderer to fix blank map bug for 1% of users
         useLegacyRenderer();
 
@@ -95,6 +100,14 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
 
         // Initialize UI
         initializeUI();
+    }
+
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        // Reapply locale
+        Localization.overridePhoneLocale(base);
+        super.attachBaseContext(base);
     }
 
     void useLegacyRenderer() {
@@ -577,14 +590,8 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
         // Initialize display alerts list
         mDisplayAlerts = new ArrayList<>();
 
-        // Ensure the right language is displayed
-        Localization.overridePhoneLocale(this);
-
         // Allow click on home button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        // RTL action bar hack
-        RTLSupport.mirrorActionBar(this);
 
         // Set up UI
         setContentView(R.layout.alert_view);

@@ -1,6 +1,7 @@
 package com.red.alert.activities.settings;
 
 import android.app.NotificationManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -23,6 +24,7 @@ import com.red.alert.ui.dialogs.AlertDialogBuilder;
 import com.red.alert.ui.elements.SliderPreference;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.utils.feedback.Volume;
+import com.red.alert.utils.localization.Localization;
 
 import me.pushy.sdk.Pushy;
 import me.pushy.sdk.config.PushyForegroundService;
@@ -43,11 +45,20 @@ public class Advanced extends AppCompatPreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Support for RTL languages
+        RTLSupport.mirrorActionBar(this);
+
         // Load UI elements
         initializeUI();
 
         // Volume keys should control alert volume
         Volume.setVolumeKeysAction(this);
+    }
+    @Override
+    protected void attachBaseContext(Context base) {
+        // Reapply locale
+        Localization.overridePhoneLocale(base);
+        super.attachBaseContext(base);
     }
 
     @Override

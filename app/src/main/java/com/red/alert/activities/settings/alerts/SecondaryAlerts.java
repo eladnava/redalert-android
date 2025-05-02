@@ -1,6 +1,7 @@
 package com.red.alert.activities.settings.alerts;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,6 +30,7 @@ import com.red.alert.utils.backend.RedAlertAPI;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.feedback.Volume;
+import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
 
@@ -58,6 +60,9 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Support for RTL languages
+        RTLSupport.mirrorActionBar(this);
 
         // Load UI elements
         initializeUI();
@@ -91,6 +96,13 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
 
         // Support for RTL languages
         RTLSupport.mirrorActionBar(this);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        // Reapply locale
+        Localization.overridePhoneLocale(base);
+        super.attachBaseContext(base);
     }
 
     void initializeUI() {

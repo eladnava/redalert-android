@@ -117,6 +117,13 @@ public class Main extends AppCompatActivity {
     };
 
     @Override
+    protected void attachBaseContext(Context base) {
+        // Reapply locale
+        Localization.overridePhoneLocale(base);
+        super.attachBaseContext(base);
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         // Apply custom theme selection (make sure to invoke this before super.onCreate())
         Localization.applyThemeSelection(this);
@@ -301,8 +308,8 @@ public class Main extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        // Ensure RTL layouts are used if needed
-        Localization.overridePhoneLocale(this);
+        // Support for RTL languages
+        RTLSupport.mirrorActionBar(this);
 
         // Save state
         mIsResumed = true;
@@ -312,9 +319,6 @@ public class Main extends AppCompatActivity {
 
         // Reload alerts manually
         reloadRecentAlerts();
-
-        // Support for RTL languages
-        RTLSupport.mirrorActionBar(this);
 
         // Clear app notifications
         AppNotifications.clearAll(this);

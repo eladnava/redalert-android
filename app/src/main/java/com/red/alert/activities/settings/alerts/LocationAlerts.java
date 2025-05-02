@@ -75,8 +75,8 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Ensure RTL layouts are used if needed
-        Localization.overridePhoneLocale(this);
+        // Support for RTL languages
+        RTLSupport.mirrorActionBar(this);
 
         // Load UI elements
         initializeUI();
@@ -142,6 +142,13 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
 
         // Support for RTL languages
         RTLSupport.mirrorActionBar(this);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        // Reapply locale
+        Localization.overridePhoneLocale(base);
+        super.attachBaseContext(base);
     }
 
     private void initializeUI() {
