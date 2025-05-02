@@ -180,12 +180,6 @@ public class Popup extends AppCompatActivity {
         mCities.setText(LocationData.getLocalizedCityNamesCSV(Arrays.asList(cities), this));
         mInstructions.setText(LocationData.getLocalizedThreatInstructions(threatType, this));
 
-        // Missile alert?
-        if (threatType.contains(ThreatTypes.MISSILES)) {
-            // Only display threat icon for non-missile threats
-            mThreatIcon.setVisibility(View.GONE);
-        }
-
         // System alert?
         if (threatType.equals(ThreatTypes.SYSTEM)) {
             // Hide instructions text as it's redundant
