@@ -200,7 +200,7 @@
     <string name="testingPushy">Push Gateway wird Getestet... (2/2)</string>
     <string name="fcmTestFailed">Der Selbsttest scheiterte teilweise. Es wurde keine Warnung vom Google-Push-Gateway empfangen, aber eine Warnung wurde erfolgreich über das sekundäre Push-Gateway empfangen. Bitte versuchen Sie es später noch einmal.</string>
     <string name="pushyTestFailed">Der Selbsttest scheiterte teilweise. Es wurde kein Alarm vom sekundären Push-Gateway empfangen, aber eine Warnung wurde erfolgreich über das Google-Push-Gateway empfangen. Bitte versuchen Sie es später noch einmal.</string>
-    <string name="debugInfo">Zusätzliche Informationen: </string>
+    <string name="debugInfo">Zusätzliche Informationen</string>
     <string name="testSuccessful">Der Test wurde erfolgreich abgeschlossen!</string>
     <string name="alerts">Alarmierungen</string>
     <string name="advancedAlerts">Erweiterte Alarmierung</string>

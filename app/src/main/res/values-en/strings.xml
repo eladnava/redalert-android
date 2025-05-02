@@ -200,7 +200,7 @@
     <string name="testingPushy">Testing push gateway... (2/2)</string>
     <string name="fcmTestFailed">The self-test failed partially. No alert was received from Google\'s push gateway, but an alert was successfully received via the secondary push gateway. Please try again later.</string>
     <string name="pushyTestFailed">The self-test failed partially. No alert was received from the secondary push gateway, but an alert was successfully received via Google\'s push gateway. Please try again later.</string>
-    <string name="debugInfo">Additional Info: </string>
+    <string name="debugInfo">Additional Info</string>
     <string name="testSuccessful">The test has completed successfully!</string>
     <string name="alerts">Alerts</string>
     <string name="advancedAlerts">Advanced Alerts</string>

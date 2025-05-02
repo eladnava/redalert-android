@@ -247,7 +247,7 @@
     <string name="testingPushy">Тестирование толчок шлюз... (2/2)</string>
     <string name="fcmTestFailed">Самодиагностика удалось частично. Оповещение не было получено от нажимной шлюза Google, но тревога была успешно получил через вторичный толчок шлюза. Пожалуйста, повторите попытку позже.</string>
     <string name="pushyTestFailed">Самодиагностика удалось частично. Оповещение не было получено из вторичного толчок шлюза, но тревога была успешно получены через Google, толчок шлюза. Пожалуйста, повторите попытку позже.</string>
-    <string name="debugInfo">Дополнительная информация:</string>
+    <string name="debugInfo">Дополнительная информация</string>
     <string name="testSuccessful">Самодиагностика успешно завершила!</string>
     <string name="alerts">Оповещения</string>
     <string name="advancedAlerts">Расширенный агент</string>

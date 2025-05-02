@@ -200,7 +200,7 @@
     <string name="testingPushy">Testando gateway push... (2/2)</string>
     <string name="fcmTestFailed">O autoteste falhou parcialmente. Nenhum alerta foi recebido do gateway push do Google, mas um alerta foi recebido com sucesso via gateway push secundário. Por favor, tente novamente mais tarde.</string>
     <string name="pushyTestFailed">O autoteste falhou parcialmente. Nenhum alerta foi recebido do gateway push secundário, mas um alerta foi recebido com sucesso via gateway push do Google. Por favor, tente novamente mais tarde.</string>
-    <string name="debugInfo">Informações Adicionais: </string>
+    <string name="debugInfo">Informações Adicionais</string>
     <string name="testSuccessful">O teste foi concluído com sucesso!</string>
     <string name="alerts">Alertas</string>
     <string name="advancedAlerts">Alertas Avançados</string>

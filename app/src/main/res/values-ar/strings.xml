@@ -200,7 +200,7 @@
     <string name="testingPushy">اختبار بوابة الدفع... (۲/۲)</string>
     <string name="fcmTestFailed">فشل الاختبار الذاتي جزئيًا. لم يتم تلقي أي تنبيه من بوابة الدفع الخاصة بـ جوجل، ولكن تم استلام التنبيه بنجاح عبر بوابة الدفع الثانوية. يرجى المحاولة مرة أخرى لاحقًا.</string>
     <string name="pushyTestFailed">فشل الاختبار الذاتي جزئيًا. لم يتم تلقي أي تنبيه من بوابة الدفع الثانوية، ولكن تم استلام التنبيه بنجاح عبر بوابة الدفع الخاصة بـ جوجل. يرجى المحاولة مرة أخرى لاحقًا.</string>
-    <string name="debugInfo">معلومات إضافية: </string>
+    <string name="debugInfo">معلومات إضافية</string>
     <string name="testSuccessful">اكتمل الاختبار بنجاح!</string>
     <string name="alerts">التنبيهات</string>
     <string name="advancedAlerts">التنبيهات المتقدمة</string>
