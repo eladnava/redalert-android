@@ -127,7 +127,7 @@ public class SoundLogic {
         }
 
         // Early warning alert?
-        if (threatType != null && threatType.equals(ThreatTypes.EARLY_WARNING)) {
+        if (alertType.equals(AlertTypes.PRIMARY) && threatType != null && threatType.equals(ThreatTypes.EARLY_WARNING)) {
             // Use early warning default sound
             soundDefault = context.getString(R.string.defaultEarlyWarningSound);
         }
@@ -147,7 +147,7 @@ public class SoundLogic {
         }
 
         // Early warning alert?
-        if (threatType != null && threatType.equals(ThreatTypes.EARLY_WARNING)) {
+        if (alertType.equals(AlertTypes.PRIMARY) && threatType != null && threatType.equals(ThreatTypes.EARLY_WARNING)) {
             // Use early warning sound pref
             soundPreference = context.getString(R.string.earlyWarningsSoundPref);
         }
