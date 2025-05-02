@@ -37,6 +37,9 @@
             android:id="@+id/cities"
             android:textSize="20sp"
             android:gravity="center"
+            android:maxLines="5"
+            android:scrollbars="vertical"
+            android:scrollbarDefaultDelayBeforeFade="1000"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
 

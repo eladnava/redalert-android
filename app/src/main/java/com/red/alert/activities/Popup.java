@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -129,6 +130,9 @@ public class Popup extends AppCompatActivity {
         mCounter = (TextView) findViewById(R.id.counter);
         mThreatIcon = (ImageView) findViewById(R.id.threatIcon);
         mInstructions = (TextView) findViewById(R.id.instructions);
+
+        // Allow scrolling on cities list
+        mCities.setMovementMethod(new ScrollingMovementMethod());
 
         // Set up listeners
         initializeListeners();
