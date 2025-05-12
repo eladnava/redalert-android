@@ -367,7 +367,7 @@
     <string translatable="false" name="advancedPref">advanced</string>
     <string translatable="false" name="enabledPref">enabled</string>
     <string translatable="false" name="vibratePref">vibrate</string>
-    <string translatable="false" name="batteryOptimizationWarningDisplayedCountPref">battery_optimization_warning_displayed_counter</string>
+    <string translatable="false" name="batteryOptimizationWarningDisplayedCountPref">battery_optimization_warning_displayed_counter_v2</string>
     <string translatable="false" name="locationAlertsPref">location_alerts_v2</string>
     <string translatable="false" name="gpsFrequencyPref">gps_frequency_v2</string>
     <string translatable="false" name="latitudePref">latitude</string>
