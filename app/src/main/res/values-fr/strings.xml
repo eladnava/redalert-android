@@ -262,7 +262,7 @@
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">Désactiver les Optimisations de la Batterie</string>
     <string name="disableBatteryOptimizationsInstructions">Pour recevoir des alertes en arrière-plan, définissez \"Batterie\" sur \"Aucune restriction\" sur l\'écran suivant.</string>
-    <string name="disableBatteryOptimizationsInstructionsAndroid15">Pour recevoir des alertes en arrière-plan, veuillez visiter \"Utilisation de la batterie de l\'application\" -> \"Autoriser l\'utilisation en arrière-plan\" -> sélectionnez \"Illimité\" dans l'écran suivant.</string>
+    <string name="disableBatteryOptimizationsInstructionsAndroid15">Pour recevoir des alertes en arrière-plan, veuillez visiter \"Utilisation de la batterie de l\'application\" -> \"Autoriser l\'utilisation en arrière-plan\" -> sélectionnez \"Illimité\" dans l\'écran suivant.</string>
     <string name="disableBatteryOptimizationsSamsungInstructions">Pour recevoir des alertes en arrière-plan, sélectionnez « Batterie » sur l\'écran suivant -> « Optimiser l\'utilisation de la batterie » -> « Applications non optimisées » -> « Toutes » -> « RedAlert » -> Désactiver l\'optimisation de l\'application.</string>
 
     <!-- Hide GPS Foreground Notification Dialog -->
