@@ -262,6 +262,7 @@
     <!-- مربع حوار تحسين البطارية -->
     <string name="disableBatteryOptimizations">تعطيل تحسينات البطارية</string>
     <string name="disableBatteryOptimizationsInstructions">لتلقي التنبيهات في الخلفية، يرجى ضبط \"البطارية\" على \"غير مقيد\" في الشاشة التالية.</string>
+    <string name="disableBatteryOptimizationsInstructionsAndroid15">لتلقي التنبيهات في الخلفية، يرجى زيارة \"استخدام بطارية التطبيق\" -> \"السماح بالاستخدام في الخلفية\" -> حدد \"غير مقيد\" في الشاشة التالية.</string>
     <string name="disableBatteryOptimizationsSamsungInstructions">لتلقي التنبيهات في الخلفية، حدد \"البطارية\" في الشاشة التالية -> \"تحسين استخدام البطارية\" -> \"التطبيقات غير محسنة\" -> \"الكل\" -> \"أحمر اللون\" -> قم بإيقاف تشغيل التحسين للتطبيق.</string>
 
     <!-- إخفاء مربع حوار الإشعارات الأمامية لنظام تحديد المواقع العالمي (GPS) -->

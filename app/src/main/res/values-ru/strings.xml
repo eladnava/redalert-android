@@ -309,6 +309,7 @@
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">Отключить оптимизацию батареи</string>
     <string name="disableBatteryOptimizationsInstructions">Чтобы получать оповещения в фоновом режиме, на следующем экране установите для параметра «Батарея» значение «Неограниченно».</string>
+    <string name="disableBatteryOptimizationsInstructionsAndroid15">Чтобы получать оповещения в фоновом режиме, перейдите в раздел «Использование батареи приложениями» -> «Разрешить фоновое использование» -> выберите «Без ограничений» на следующем экране.</string>
     <string name="disableBatteryOptimizationsSamsungInstructions">Чтобы получать оповещения в фоновом режиме, выберите «Батарея» на следующем экране -> «Оптимизировать использование батареи» -> «Приложения не оптимизированы» -> «Все» -> «RedAlert» -> Отключить оптимизацию для приложения.</string>
 
     <!-- Battery Optimization Reminder Setting -->

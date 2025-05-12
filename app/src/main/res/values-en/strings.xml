@@ -262,6 +262,7 @@
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">Disable battery optimizations</string>
     <string name="disableBatteryOptimizationsInstructions">To receive alerts in the background, please set \"Battery\" to \"Unrestricted\" in the next screen.</string>
+    <string name="disableBatteryOptimizationsInstructionsAndroid15">To receive alerts in the background, please visit \"App battery usage\" -> \"Allow background usage\" -> select \"Unrestricted\" in the next screen.</string>
     <string name="disableBatteryOptimizationsSamsungInstructions">To receive alerts in the background, select \"Battery\" on the next screen -> \"Optimize battery usage\" -> \"Apps not optimized\" -> \"All\" -> \"RedAlert\" -> Turn off optimization for the app.</string>
 
     <!-- Hide GPS Foreground Notification Dialog -->

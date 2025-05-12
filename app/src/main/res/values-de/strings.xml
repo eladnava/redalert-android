@@ -262,6 +262,7 @@
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">Deaktivieren Sie die Batterieoptimierungen</string>
     <string name="disableBatteryOptimizationsInstructions">Um Benachrichtigungen im Hintergrund zu erhalten, stellen Sie bitte im nächsten Bildschirm \"Akku\" auf \"Uneingeschränkt\" ein.</string>
+    <string name="disableBatteryOptimizationsInstructionsAndroid15">Um Warnmeldungen im Hintergrund zu erhalten, gehen Sie bitte zu \"App-Akkunutzung\" -> \"Hintergrundnutzung zulassen\" -> wählen Sie im nächsten Bildschirm \"Uneingeschränkt\".</string>
     <string name="disableBatteryOptimizationsSamsungInstructions">Um Benachrichtigungen im Hintergrund zu erhalten, wählen Sie im nächsten Bildschirm \"Akku\" -> \"Akkuverbrauch optimieren\" -> \"Apps nicht optimiert\" -> \"Alle\" -> \"RedAlert\" -> Optimierung für die App deaktivieren.</string>
 
     <!-- Hide GPS Foreground Notification Dialog -->

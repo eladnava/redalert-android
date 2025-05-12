@@ -31,6 +31,11 @@ public class AndroidSettings {
             return context.getString(R.string.disableBatteryOptimizationsSamsungInstructions);
         }
 
+        // Special instructions on Android 15+
+        if (Build.VERSION.SDK_INT >= 35) {
+            return context.getString(R.string.disableBatteryOptimizationsInstructionsAndroid15);
+        }
+
         // Display stock Android instructions
         return context.getString(R.string.disableBatteryOptimizationsInstructions);
     }

@@ -298,6 +298,7 @@
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">ביטול אופטימיזציות סוללה</string>
     <string name="disableBatteryOptimizationsInstructions">כדי לקבל התרעות צבע אדום בזמן אמת, בחר/י ״סוללה״ -> ״ללא הגבלות״ במסך הבא.</string>
+    <string name="disableBatteryOptimizationsInstructionsAndroid15">כדי לקבל התרעות צבע אדום בזמן אמת, בחר/י ״שימוש בסוללה לאפליקציה״ -> ״הרשאה לשימוש ברקע״ -> סמנ/י ״ללא הגבלות״ במסך הבא.</string>
     <string name="disableBatteryOptimizationsSamsungInstructions">כדי לקבל התרעות צבע אדום בזמן אמת, בחר/י ״סוללה״ במסך הבא -> ״מטב את השימוש בסוללה״ -> ״יישומים ללא מיטוב״ -> ״הכל״ -> ״צבע אדום״ -> כבה/י את המיטוב עבור האפליקציה.</string>
 
     <!-- Hide GPS Foreground Notification Dialog -->
