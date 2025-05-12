@@ -10,6 +10,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -579,6 +581,18 @@ public class General extends AppCompatPreferenceActivity {
         body += "pushy.foregroundServiceEnabled=" + AppPreferences.getForegroundServiceEnabled(this) + ", ";
         body += "android.sdk=" + Build.VERSION.SDK_INT + ", ";
         body += "android.version=" + Build.VERSION.RELEASE + ", ";
+
+        // Add Wi-Fi connectivity status
+        ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+
+        // Connected?
+        if (mWifi != null && mWifi.isConnected()) {
+            body += "wifi.isConnected=true, ";
+        }
+        else {
+            body += "wifi.isConnected=false, ";
+        }
 
         // Add battery optimizations whitelist status
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
