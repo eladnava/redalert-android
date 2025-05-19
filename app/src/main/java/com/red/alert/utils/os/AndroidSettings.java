@@ -26,13 +26,13 @@ public class AndroidSettings {
     }
 
     public static String getBatteryOptimizationWhitelistInstructions(Context context) {
-        // Special instructions for Samsung devices
+        // Special instructions for Samsung devices (Android 11 and lower)
         if (Build.MANUFACTURER.toLowerCase().contains("samsung") && Build.VERSION.SDK_INT <= Build.VERSION_CODES.R) {
             return context.getString(R.string.disableBatteryOptimizationsSamsungInstructions);
         }
 
-        // Special instructions on Android 15+
-        if (Build.VERSION.SDK_INT >= 35) {
+        // Special instructions for non-Samsung Android 15+ devices
+        if (!Build.MANUFACTURER.toLowerCase().contains("samsung") && Build.VERSION.SDK_INT >= 35) {
             return context.getString(R.string.disableBatteryOptimizationsInstructionsAndroid15);
         }
 
