@@ -30,6 +30,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.view.MenuItemCompat;
 
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.installations.FirebaseInstallations;
 import com.red.alert.R;
 import com.red.alert.activities.settings.General;
 import com.red.alert.config.Integrations;
@@ -73,8 +76,10 @@ import com.red.alert.utils.threading.AsyncTaskAdapter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ExecutionException;
 
 import me.pushy.sdk.Pushy;
 import me.pushy.sdk.lib.jackson.core.JsonProcessingException;
@@ -1237,6 +1242,17 @@ public class Main extends AppCompatActivity {
                     // If we're here, success
                     break;
                 } catch (Exception exc) {
+                    // Workaround for FCM error "Invalid argument for the given fid"
+                    if (exc.getMessage() != null && exc.getMessage().contains("Invalid argument for the given fid")) {
+                        try {
+                            // Try to delete Firebase Installations ID
+                            Tasks.await(FirebaseInstallations.getInstance().delete());
+                        } catch (Exception e) {
+                            // Log failure
+                            Log.e(Logging.TAG, "Firebase installation deletion failed", e);
+                        }
+                    }
+
                     // Throw exception after 5 tries
                     if (tries > 5) {
                         return exc;
