@@ -301,14 +301,8 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
                 // Set activity class
                 map.setClass(LocationAlerts.this, Map.class);
 
-                try {
-                    // Pass grouped alerts as JSON
-                    map.putExtra(AlertViewParameters.ALERTS, Singleton.getJackson().writer().writeValueAsString(mockAlerts));
-                } catch (JsonProcessingException e) {
-                    // Show error dialog
-                    AlertDialogBuilder.showGenericDialog(getString(R.string.error), e.getMessage(), getString(R.string.okay), null, false, LocationAlerts.this, null);
-                    return false;
-                }
+                // Pass alerts directly to map activity
+                Map.mAlerts = mockAlerts;
 
                 // Open map
                 startActivity(map);

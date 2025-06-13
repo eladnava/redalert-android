@@ -69,7 +69,6 @@ import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallback {
     GoogleMap mMap;
 
-    List<Alert> mAlerts;
     List<Alert> mDisplayAlerts;
 
     boolean mLiveMap;
@@ -84,6 +83,9 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
     MenuItem mLoadingItem;
     RelativeLayout mMapCover;
     MenuItem mClearRecentAlertsItem;
+
+    // Singleton alerts
+    public static List<Alert> mAlerts = new ArrayList<Alert>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -124,14 +126,6 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
     void unpackExtras() {
         // Live map mode
         mLiveMap = getIntent().getBooleanExtra(AlertViewParameters.LIVE, false);
-
-        try {
-            // Parse grouped alerts from JSON
-            mAlerts = Singleton.getJackson().readValue(getIntent().getStringExtra(AlertViewParameters.ALERTS), new TypeReference<List<Alert>>() {});
-        } catch (Exception e) {
-            // Show error dialog
-            AlertDialogBuilder.showGenericDialog(getString(R.string.error), e.getMessage(), getString(R.string.okay), null, false, Map.this, null);
-        }
     }
 
     void mapLoadedListener() {

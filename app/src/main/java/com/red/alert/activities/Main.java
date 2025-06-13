@@ -253,14 +253,8 @@ public class Main extends AppCompatActivity {
                 // Set class
                 alertView.setClass(Main.this, Map.class);
 
-                try {
-                    // Pass grouped alerts as JSON
-                    alertView.putExtra(AlertViewParameters.ALERTS, Singleton.getJackson().writer().writeValueAsString(alert.groupedAlerts));
-                } catch (JsonProcessingException e) {
-                    // Show error dialog
-                    AlertDialogBuilder.showGenericDialog(getString(R.string.error), e.getMessage(), getString(R.string.okay), null, false, Main.this, null);
-                    return;
-                }
+                // Pass alerts directly to map activity
+                Map.mAlerts = alert.groupedAlerts;
 
                 // Show it
                 startActivity(alertView);
@@ -692,14 +686,8 @@ public class Main extends AppCompatActivity {
             }
         }
 
-        try {
-            // Pass all currently-displayed alerts to map activity
-            mapIntent.putExtra(AlertViewParameters.ALERTS, Singleton.getJackson().writer().writeValueAsString(mAllAlerts));
-        } catch (JsonProcessingException e) {
-            // Show error dialog
-            AlertDialogBuilder.showGenericDialog(getString(R.string.error), e.getMessage(), getString(R.string.okay), null, false, Main.this, null);
-            return;
-        }
+        // Pass all currently-displayed alerts to map activity
+        Map.mAlerts = mAllAlerts;
 
         // Start map activity
         startActivity(mapIntent);
