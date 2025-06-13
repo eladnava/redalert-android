@@ -22,7 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AlertLogic {
-    public static void processIncomingAlert(String threatType, String citiesPSVString, String alertType, String alertId, Context context) {
+    public static void processIncomingAlert(String threatType, String citiesPSVString, String alertType, String alertId, String instructions, Context context) {
         // No cities?
         if (StringUtils.stringIsNullOrEmpty(citiesPSVString)) {
             return;
@@ -90,7 +90,7 @@ public class AlertLogic {
         // Any cities to alert about?
         if (relevantCities.size() > 0) {
             // Issue the notification
-            Notifications.notify(context, relevantCities, alertType, threatType, null);
+            Notifications.notify(context, relevantCities, alertType, threatType, null, instructions);
         }
     }
 

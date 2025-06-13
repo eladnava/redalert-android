@@ -230,7 +230,7 @@
     <string name="missiles">Rocket fire</string>
     <string name="radiologicalEvent">Radiological event</string>
     <string name="earthQuake">Earthquake</string>
-    <string name="earlyWarning">Early warning</string>
+    <string name="earlyWarning">Update</string>
     <string name="tsunami">Tsunami warning</string>
     <string name="hostileAircraftIntrusion">Hostile aircraft intrusion</string>
     <string name="hazardousMaterials">Hazardous materials event</string>

@@ -30,6 +30,7 @@ import com.red.alert.logic.phone.PowerManagement;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.utils.feedback.Volume;
+import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.localization.DateTime;
 import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
@@ -52,7 +53,7 @@ public class Popup extends AppCompatActivity {
 
     ImageView mThreatIcon;
 
-    public static void showAlertPopup(String alertType, List<String> cities, String threatType, Context context) {
+    public static void showAlertPopup(String alertType, List<String> cities, String threatType, String instructions, Context context) {
         // Only display popup for primary/secondary alerts (no test/sound/system notifications)
         if (!alertType.equals(AlertTypes.PRIMARY) && !alertType.equals(AlertTypes.SECONDARY)) {
             return;
@@ -84,6 +85,7 @@ public class Popup extends AppCompatActivity {
 
         // Pass on alert cities & threat type
         popupIntent.putExtra(AlertPopupParameters.THREAT_TYPE, threatType);
+        popupIntent.putExtra(AlertPopupParameters.INSTRUCTIONS, instructions);
         popupIntent.putExtra(AlertPopupParameters.CITIES, cities.toArray(new String[0]));
 
         // Clear top, set as new task
@@ -173,6 +175,7 @@ public class Popup extends AppCompatActivity {
         // Get alert city, threat type, and alert timestamp
         String[] cities = intent.getStringArrayExtra(AlertPopupParameters.CITIES);
         String threatType = intent.getStringExtra(AlertPopupParameters.THREAT_TYPE);
+        String instructions = intent.getStringExtra(AlertPopupParameters.INSTRUCTIONS);
         long timestamp = intent.getLongExtra(AlertPopupParameters.TIMESTAMP, DateTime.getUnixTimestamp());
 
         // None given?
@@ -187,6 +190,11 @@ public class Popup extends AppCompatActivity {
         mThreatIcon.setImageResource(LocationData.getThreatDrawable(threatType));
         mCities.setText(LocationData.getLocalizedCityNamesCSV(Arrays.asList(cities), this));
         mInstructions.setText(LocationData.getLocalizedThreatInstructions(threatType, this));
+
+        // HFC update with instructions?
+        if (threatType.equals(ThreatTypes.EARLY_WARNING) && !StringUtils.stringIsNullOrEmpty(instructions)) {
+            mInstructions.setText(instructions);
+        }
 
         // System alert?
         if (threatType.equals(ThreatTypes.SYSTEM)) {

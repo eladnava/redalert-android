@@ -38,7 +38,7 @@ import com.red.alert.utils.metadata.LocationData;
 import java.util.List;
 
 public class Notifications {
-    public static void notify(Context context, List<String> cities, String alertType, String threatType, String overrideSound) {
+    public static void notify(Context context, List<String> cities, String alertType, String threatType, String overrideSound, String instructions) {
         // Localize threat type
         String localizedThreatType = LocationData.getLocalizedThreatType(threatType, context);
 
@@ -60,6 +60,11 @@ public class Notifications {
         } else if (!threatType.contains(ThreatTypes.TEST)) {
             // For all other threat types, only display threat instructions in notification body (don't display zone / countdown)
             notificationContent = LocationData.getLocalizedThreatInstructions(threatType, context);
+        }
+
+        // HFC update with instructions?
+        if (threatType.equals(ThreatTypes.EARLY_WARNING) && !StringUtils.stringIsNullOrEmpty(instructions)) {
+            notificationContent = instructions;
         }
 
         // In case there is no content
@@ -114,7 +119,7 @@ public class Notifications {
         // No click event for test notifications
         if (!alertType.contains(AlertTypes.TEST)) {
             // Handle notification click
-            builder.setContentIntent(getNotificationIntent(cities, threatType, context));
+            builder.setContentIntent(getNotificationIntent(cities, threatType, instructions, context));
         }
 
         // Generate a notification ID based on the unique hash-code of the notification title string to avoid duplicates
@@ -151,7 +156,7 @@ public class Notifications {
         PowerManagement.wakeUpScreen(alertType, context);
 
         // Show alert popup (if applicable)
-        Popup.showAlertPopup(alertType, cities, threatType, context);
+        Popup.showAlertPopup(alertType, cities, threatType, instructions, context);
 
         // Reload recent alerts (if main activity is open)
         Broadcasts.publish(context, MainActivityParameters.RELOAD_RECENT_ALERTS);
@@ -168,12 +173,13 @@ public class Notifications {
         return PendingIntent.getBroadcast(context, 0, deleteIntent, PendingIntent.FLAG_IMMUTABLE);
     }
 
-    public static PendingIntent getNotificationIntent(List<String> cities, String threatType, Context context) {
+    public static PendingIntent getNotificationIntent(List<String> cities, String threatType, String instructions, Context context) {
         // Prepare notification intent
         Intent notificationIntent = new Intent(context, Main.class);
 
         // Pass on city name, threat type, and alert received timestamp
         notificationIntent.putExtra(AlertPopupParameters.THREAT_TYPE, threatType);
+        notificationIntent.putExtra(AlertPopupParameters.INSTRUCTIONS, instructions);
         notificationIntent.putExtra(AlertPopupParameters.CITIES, cities.toArray(new String[0]));
         notificationIntent.putExtra(AlertPopupParameters.TIMESTAMP, DateTime.getUnixTimestamp());
 

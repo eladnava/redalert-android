@@ -1321,6 +1321,7 @@ public class Main extends AppCompatActivity {
         // Extract clicked notification params
         String[] cities = intent.getStringArrayExtra(AlertPopupParameters.CITIES);
         String threatType = intent.getStringExtra(AlertPopupParameters.THREAT_TYPE);
+        String instructions = intent.getStringExtra(AlertPopupParameters.INSTRUCTIONS);
         long timestamp = intent.getLongExtra(AlertPopupParameters.TIMESTAMP, 0);
 
         // Display popup if all necessary parameters are set
@@ -1330,7 +1331,7 @@ public class Main extends AppCompatActivity {
 
             // Check for old (inactive) alert
             // Only display alert popup for currently active alerts (+ 10 minutes)
-            if (timestamp < (DateTime.getUnixTimestamp() - countdown - (Safety.POST_IMPACT_WAIT_MINUTES * 60)) ) {
+            if (!threatType.equals(ThreatTypes.EARLY_WARNING) && timestamp < (DateTime.getUnixTimestamp() - countdown - (Safety.POST_IMPACT_WAIT_MINUTES * 60)) ) {
                 return;
             }
 
@@ -1344,6 +1345,7 @@ public class Main extends AppCompatActivity {
             popupIntent.putExtra(AlertPopupParameters.CITIES, cities);
             popupIntent.putExtra(AlertPopupParameters.TIMESTAMP, timestamp);
             popupIntent.putExtra(AlertPopupParameters.THREAT_TYPE, threatType);
+            popupIntent.putExtra(AlertPopupParameters.INSTRUCTIONS, instructions);
 
             // Clear top, set as new task
             popupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
