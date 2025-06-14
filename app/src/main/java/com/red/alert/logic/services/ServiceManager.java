@@ -17,7 +17,7 @@ public class ServiceManager {
         startPushyService(context);
 
         // Location alerts enabled?
-        if (AppPreferences.getLocationAlertsEnabled(context)) {
+        if (AppPreferences.getNotificationsEnabled(context) && AppPreferences.getLocationAlertsEnabled(context)) {
             // Start the location service
             ServiceManager.startLocationService(context);
         }

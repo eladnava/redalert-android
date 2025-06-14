@@ -42,6 +42,7 @@ import com.android.billingclient.api.Purchase;
 import com.android.billingclient.api.PurchasesUpdatedListener;
 import com.android.billingclient.api.QueryProductDetailsParams;
 import com.red.alert.R;
+import com.red.alert.activities.settings.alerts.LocationAlerts;
 import com.red.alert.config.API;
 import com.red.alert.config.Donations;
 import com.red.alert.config.Logging;
@@ -57,6 +58,7 @@ import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.logic.push.FCMRegistration;
 import com.red.alert.logic.push.PushManager;
 import com.red.alert.logic.push.PushyRegistration;
+import com.red.alert.logic.services.ServiceManager;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.model.req.SelfTestRequest;
 import com.red.alert.ui.activities.AppCompatPreferenceActivity;
@@ -429,6 +431,19 @@ public class General extends AppCompatPreferenceActivity {
 
                 // Enable/disable Pushy service according to new value
                 Pushy.toggleNotifications((boolean)newValue, General.this);
+
+                // Enable/disable location service according to new value
+                if (AppPreferences.getLocationAlertsEnabled(General.this)) {
+                    // Enabled alerts?
+                    if ((boolean)newValue) {
+                        // Start the location service
+                        ServiceManager.startLocationService(General.this);
+                    }
+                    else {
+                        // Stop the location service
+                        ServiceManager.stopLocationService(General.this);
+                    }
+                }
 
                 // Tell Android to persist new checkbox value
                 return true;
