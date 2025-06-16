@@ -143,11 +143,6 @@ public class AlertLogic {
             return true;
         }
 
-        // Alert applies for all cities?
-        if (city.equals("ברחבי הארץ")) {
-            return true;
-        }
-
         // Did user select this city? Either via entire zones or cities
         if (isCitySelectedPrimarily(city, false, context)) {
             return true;
