@@ -239,7 +239,7 @@
     <string name="missiles">Tir de roquette</string>
     <string name="radiologicalEvent">Événement radiologique</string>
     <string name="earthQuake">Tremblement de terre</string>
-    <string name="earlyWarning">Mise à jour</string>
+    <string name="earlyWarning">Avertissement préalable</string>
     <string name="leaveShelter">Quitter l\'abri</string>
     <string name="tsunami">Alerte au tsunami</string>
     <string name="hostileAircraftIntrusion">Intrusion d\'aéronefs hostiles</string>

@@ -239,7 +239,7 @@
     <string name="missiles">Raketenfeuer</string>
     <string name="radiologicalEvent">Radiologisches ereignis</string>
     <string name="earthQuake">Erdbeben</string>
-    <string name="earlyWarning">Update</string>
+    <string name="earlyWarning">Vorwarnung</string>
     <string name="leaveShelter">Schutzraum verlassen</string>
     <string name="tsunami">Tsunami warnung</string>
     <string name="hostileAircraftIntrusion">Eindringen feindlicher flugzeuge</string>
