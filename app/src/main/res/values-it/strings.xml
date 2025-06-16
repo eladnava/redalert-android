@@ -277,6 +277,9 @@
     <string name="hostileAircraftIntrusionThreatEndInstructions">Intrusione di aeromobili ostili - Evento terminato</string>
     <string name="leaveShelterButStayNearbyInstructions">Puoi lasciare il rifugio, ma devi rimanere nelle vicinanze</string>
 
+    <!-- Allerta Nazionale -->
+    <string name="countryWideAlert">Tutto Israele</string>
+
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">Seleziona il suono personalizzato</string>
     <string name="selectCustomSoundDesc">Scegli il tuo suono toccando \"Suono\" -> \"I miei suoni\" -> \"+\" -> \"Salva\" nella schermata successiva.</string>

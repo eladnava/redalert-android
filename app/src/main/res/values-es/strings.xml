@@ -319,6 +319,9 @@
     <string name="hostileAircraftIntrusionThreatEndInstructions">Intrusión de aeronave hostil - Evento finalizado</string>
     <string name="leaveShelterButStayNearbyInstructions">Puedes salir del refugio, pero debes permanecer cerca.</string>
 
+    <!-- Alerta Nacional -->
+    <string name="countryWideAlert">Todo Israel</string>
+
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">Seleccionar sonido personalizado</string>
     <string name="selectCustomSoundDesc">Elija su propio sonido tocando \"Sonido\" -> \"Mis sonidos\" -> \"+\" -> \"Guardar\" en la siguiente pantalla.</string>

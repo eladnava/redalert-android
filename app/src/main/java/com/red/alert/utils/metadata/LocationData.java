@@ -407,6 +407,11 @@ public class LocationData {
     }
 
     public static String getLocalizedCityName(String cityName, Context context) {
+        // Localize country-wide alerts
+        if (cityName.equals("ברחבי הארץ")) {
+            return context.getString(R.string.countryWideAlert);
+        }
+
         // Prepare cities array
         List<City> cities = getAllCities(context);
 

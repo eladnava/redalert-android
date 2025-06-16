@@ -272,6 +272,9 @@
     <string name="hostileAircraftIntrusionThreatEndInstructions">Eindringen in feindliche Flugzeuge – Ereignis beendet</string>
     <string name="leaveShelterButStayNearbyInstructions">Sie können die Unterkunft verlassen, müssen aber in der Nähe bleiben</string>
 
+    <!-- Landesweite Warnung -->
+    <string name="countryWideAlert">Ganz Israel</string>
+
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">Wählen Sie benutzerdefinierten Sound</string>
     <string name="selectCustomSoundDesc">Wählen Sie Ihren eigenen Sound, indem Sie im nächsten Bildschirm auf \"Sound\" -> \"Meine Sounds\" -> \"+\" -> \"Speichern\" klicken.</string>

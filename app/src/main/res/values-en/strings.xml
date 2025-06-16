@@ -272,6 +272,9 @@
     <string name="hostileAircraftIntrusionThreatEndInstructions">Hostile Aircraft Intrusion - Threat Eliminated</string>
     <string name="leaveShelterButStayNearbyInstructions">You can leave the shelter but you must stay nearby</string>
 
+    <!-- Country-Wide Alert -->
+    <string name="countryWideAlert">All of Israel</string>
+
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">Select custom sound</string>
     <string name="selectCustomSoundDesc">Choose your own sound by tapping \"Sound\" -> \"My Sounds\" -> \"+\" -> \"Save\" on the next screen.</string>

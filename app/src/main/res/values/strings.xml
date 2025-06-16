@@ -308,6 +308,9 @@
     <string name="hostileAircraftIntrusionThreatEndInstructions">חדירת כלי טיס עוין - האירוע הסתיים</string>
     <string name="leaveShelterButStayNearbyInstructions">ניתן לצאת מהמרחב המוגן אך יש להישאר בקרבתו</string>
 
+    <!-- Country-Wide Alert -->
+    <string name="countryWideAlert">ברחבי הארץ</string>
+
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">בחר צליל מהטלפון</string>
     <string name="selectCustomSoundDesc">בחר/י צליל משלך על ידי לחיצה על ״צליל״ -> ״הצלילים שלי״ -> ״+״ -> ״שמירה״ במסך הבא.</string>

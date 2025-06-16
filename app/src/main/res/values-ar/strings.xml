@@ -272,6 +272,9 @@
     <string name="hostileAircraftIntrusionThreatEndInstructions">انتهاء الحدث باقتحام طائرة معادية</string>
     <string name="leaveShelterButStayNearbyInstructions">يمكنك مغادرة الملجأ ولكن يجب عليك البقاء بالقرب منه</string>
 
+    <!-- تنبيه على مستوى البلاد -->
+    <string name="countryWideAlert">كل إسرائيل</string>
+
     <!-- مربع حوار تحديد الصوت المخصص -->
     <string name="selectCustomSound">حدد الصوت المخصص</string>
     <string name="selectCustomSoundDesc">اختر الصوت الخاص بك عن طريق النقر على \"الصوت\" -> \"أصواتي\" -> \"+\" -> \"حفظ\" في الشاشة التالية.</string>

@@ -319,6 +319,9 @@
     <string name="hostileAircraftIntrusionThreatEndInstructions">Вторжение вражеского воздушного судна — событие завершено</string>
     <string name="leaveShelterButStayNearbyInstructions">Вы можете покинуть убежище, но вы должны оставаться поблизости</string>
 
+    <!-- Национальное оповещение -->
+    <string name="countryWideAlert">Весь Израиль</string>
+
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">Выберите собственный звук</string>
     <string name="selectCustomSoundDesc">Выберите свой собственный звук, нажав «Звук» -> «Мои звуки» -> «+» -> «Сохранить» на следующем экране.</string>
