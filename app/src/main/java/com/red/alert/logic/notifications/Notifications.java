@@ -64,6 +64,10 @@ public class Notifications {
 
         // HFC update with instructions?
         if ((threatType.equals(ThreatTypes.EARLY_WARNING) || threatType.equals(ThreatTypes.LEAVE_SHELTER)) && !StringUtils.stringIsNullOrEmpty(instructions)) {
+            // Try to localize HFC instructions
+            instructions = LocationData.getLocalizedInstructions(instructions, context);
+
+            // Set notification body as instructions
             notificationContent = instructions;
         }
 

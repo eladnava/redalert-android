@@ -266,6 +266,12 @@
     <string name="tsunamiInstructions">Mova-se imediatamente para pelo menos um quilômetro de distância da praia ou vá para um quarto andar ou superior</string>
     <string name="hazardousMaterialsInstructions">Entre imediatamente em um prédio próximo feche as portas e janelas.</string>
 
+    <!-- Instruções de Notícias Localizadas -->
+    <string name="stayNearbyShelterInstructions">Permanecendo perto do abrigo</string>
+    <string name="endStayNearbyShelterInstructions">Encerrando a permanência perto do abrigo</string>
+    <string name="hostileAircraftIntrusionThreatEndInstructions">Intrusão de Aeronave Hostil - Evento Encerrado</string>
+    <string name="leaveShelterButStayNearbyInstructions">Você pode sair do abrigo, mas deve permanecer por perto</string>
+
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">Selecione som personalizado</string>
     <string name="selectCustomSoundDesc">Escolha seu próprio som tocando \"Som\" -> \"Meus Sons\" -> \"+\" -> \"Salvar\" na próxima tela.</string>

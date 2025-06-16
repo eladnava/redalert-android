@@ -698,6 +698,42 @@ public class LocationData {
         return context.getString(result);
     }
 
+    public static String getLocalizedInstructions(String instructions, Context context) {
+        // Result string
+        String result;
+
+        // Remove whitespace
+        instructions = instructions.trim();
+
+        // Get localized instructions using known strings
+        switch (instructions) {
+            case "חדירת כלי טיס עוין - האירוע הסתיים":
+                result = context.getString(R.string.hostileAircraftIntrusionThreatEndInstructions);
+                break;
+            case "בדקות הקרובות צפויות להתקבל התרעות באזורך":
+                result = context.getString(R.string.earlyWarningInstructions);
+                break;
+            case "ניתן לצאת מהמרחב המוגן":
+                result = context.getString(R.string.leaveShelterInstructions);
+                break;
+            case "שהייה בסמיכות למרחב מוגן":
+                result = context.getString(R.string.stayNearbyShelterInstructions);
+                break;
+            case "סיום שהייה בסמיכות למרחב המוגן":
+                result = context.getString(R.string.endStayNearbyShelterInstructions);
+                break;
+            case "ניתן לצאת מהמרחב המוגן אך יש להישאר בקרבתו":
+                result = context.getString(R.string.leaveShelterButStayNearbyInstructions);
+                break;
+            default:
+                result = instructions;
+                break;
+        }
+
+        // Convert to string
+        return result;
+    }
+
     public static City getCityByName(String cityName, Context context) {
         // Prepare cities array
         List<City> cities = getAllCities(context);

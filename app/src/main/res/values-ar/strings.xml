@@ -266,6 +266,12 @@
     <string name="tsunamiInstructions">تحرك على الفور بعيدًا عن الشاطئ لمسافة لا تقل عن كيلومتر واحد أو اصعد إلى الطابق الرابع أو أعلى.</string>
     <string name="hazardousMaterialsInstructions">ادخل فورًا إلى مبنى مجاور وأغلق الأبواب والنوافذ.</string>
 
+    <!-- تعليمات عاجلة محلية -->
+    <string name="stayNearbyShelterInstructions">البقاء بالقرب من الملجأ</string>
+    <string name="endStayNearbyShelterInstructions">إنهاء البقاء بالقرب من الملجأ</string>
+    <string name="hostileAircraftIntrusionThreatEndInstructions">انتهاء الحدث باقتحام طائرة معادية</string>
+    <string name="leaveShelterButStayNearbyInstructions">يمكنك مغادرة الملجأ ولكن يجب عليك البقاء بالقرب منه</string>
+
     <!-- مربع حوار تحديد الصوت المخصص -->
     <string name="selectCustomSound">حدد الصوت المخصص</string>
     <string name="selectCustomSoundDesc">اختر الصوت الخاص بك عن طريق النقر على \"الصوت\" -> \"أصواتي\" -> \"+\" -> \"حفظ\" في الشاشة التالية.</string>

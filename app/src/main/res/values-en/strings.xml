@@ -266,6 +266,12 @@
     <string name="tsunamiInstructions">Immediately move at least one kilometer away from the beach or go up to a fourth floor and higher.</string>
     <string name="hazardousMaterialsInstructions">Immediately enter a nearby building and close the doors and windows.</string>
 
+    <!-- Localized News Flash Instructions -->
+    <string name="stayNearbyShelterInstructions">Stay near protective shelter</string>
+    <string name="endStayNearbyShelterInstructions">End of stay near protective shelter</string>
+    <string name="hostileAircraftIntrusionThreatEndInstructions">Hostile Aircraft Intrusion - Threat Eliminated</string>
+    <string name="leaveShelterButStayNearbyInstructions">You can leave the shelter but you must stay nearby</string>
+
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">Select custom sound</string>
     <string name="selectCustomSoundDesc">Choose your own sound by tapping \"Sound\" -> \"My Sounds\" -> \"+\" -> \"Save\" on the next screen.</string>

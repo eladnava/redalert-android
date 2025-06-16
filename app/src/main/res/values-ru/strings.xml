@@ -313,6 +313,12 @@
     <string name="tsunamiInstructions">Немедленно удалитесь от пляжа как минимум на 1 км или поднимитесь на 4 этаж и выше.</string>
     <string name="hazardousMaterialsInstructions">Немедленно войдите в здание, закройте двери и окна.</string>
 
+    <!-- Локализованные инструкции по экстренным новостям -->
+    <string name="stayNearbyShelterInstructions">Оставаемся возле убежища</string>
+    <string name="endStayNearbyShelterInstructions">Завершаем пребывание возле убежища</string>
+    <string name="hostileAircraftIntrusionThreatEndInstructions">Вторжение вражеского воздушного судна — событие завершено</string>
+    <string name="leaveShelterButStayNearbyInstructions">Вы можете покинуть убежище, но вы должны оставаться поблизости</string>
+
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">Выберите собственный звук</string>
     <string name="selectCustomSoundDesc">Выберите свой собственный звук, нажав «Звук» -> «Мои звуки» -> «+» -> «Сохранить» на следующем экране.</string>

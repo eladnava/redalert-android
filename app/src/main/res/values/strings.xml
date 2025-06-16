@@ -302,6 +302,12 @@
     <string name="tsunamiInstructions">התרחקו מיד מחוף הים קילומטר אחד לפחות או עלו לקומה רביעית ומעלה.</string>
     <string name="hazardousMaterialsInstructions">היכנסו מיד למבנה וסגרו את הדלתות והחלונות.</string>
 
+    <!-- Localized News Flash Instructions -->
+    <string name="stayNearbyShelterInstructions">שהייה בסמיכות למרחב מוגן</string>
+    <string name="endStayNearbyShelterInstructions">סיום שהייה בסמיכות למרחב מוגן</string>
+    <string name="hostileAircraftIntrusionThreatEndInstructions">חדירת כלי טיס עוין - האירוע הסתיים</string>
+    <string name="leaveShelterButStayNearbyInstructions">ניתן לצאת מהמרחב המוגן אך יש להישאר בקרבתו</string>
+
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">בחר צליל מהטלפון</string>
     <string name="selectCustomSoundDesc">בחר/י צליל משלך על ידי לחיצה על ״צליל״ -> ״הצלילים שלי״ -> ״+״ -> ״שמירה״ במסך הבא.</string>

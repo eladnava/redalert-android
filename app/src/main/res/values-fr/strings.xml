@@ -266,6 +266,12 @@
     <string name="tsunamiInstructions">Éloignez-vous immédiatement de la plage d\'au moins un kilomètre ou montez au quatrième étage ou plus.</string>
     <string name="hazardousMaterialsInstructions">Entrez immédiatement dans le bâtiment et fermez les portes et les fenêtres.</string>
 
+    <!-- Instructions pour les flashs d'information localisés -->
+    <string name="stayNearbyShelterInstructions">Rester à proximité de l\'abri</string>
+    <string name="endStayNearbyShelterInstructions">Fin de la présence à proximité de l\'abri</string>
+    <string name="hostileAircraftIntrusionThreatEndInstructions">Intrusion aérienne hostile - Événement terminé</string>
+    <string name="leaveShelterButStayNearbyInstructions">Vous pouvez quitter le refuge mais vous devez rester à proximité</string>
+
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">Sélectionnez un son personnalisé</string>
     <string name="selectCustomSoundDesc">Choisissez votre propre son en appuyant sur \"Son\" -> \"Mes sons\" -> \"+\" -> \"Enregistrer\" sur l\'écran suivant.</string>

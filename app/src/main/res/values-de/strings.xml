@@ -266,6 +266,12 @@
     <string name="tsunamiInstructions">Entfernen Sie sich sofort mindestens einen Kilometer vom Strand oder begeben Sie sich in die vierte Etage oder höher.</string>
     <string name="hazardousMaterialsInstructions">Betreten Sie sofort das Gebäude und schließen Sie die Türen und Fenster.</string>
 
+    <!-- Lokalisierte Kurzmeldungen -->
+    <string name="stayNearbyShelterInstructions">In der Nähe des Schutzraums bleiben</string>
+    <string name="endStayNearbyShelterInstructions">In der Nähe des Schutzraums bleiben</string>
+    <string name="hostileAircraftIntrusionThreatEndInstructions">Eindringen in feindliche Flugzeuge – Ereignis beendet</string>
+    <string name="leaveShelterButStayNearbyInstructions">Sie können die Unterkunft verlassen, müssen aber in der Nähe bleiben</string>
+
     <!-- Custom Sound Selection Dialog -->
     <string name="selectCustomSound">Wählen Sie benutzerdefinierten Sound</string>
     <string name="selectCustomSoundDesc">Wählen Sie Ihren eigenen Sound, indem Sie im nächsten Bildschirm auf \"Sound\" -> \"Meine Sounds\" -> \"+\" -> \"Speichern\" klicken.</string>
