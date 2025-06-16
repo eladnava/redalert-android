@@ -76,7 +76,7 @@ public class AlertLogic {
                 // Not a test alert?
                 if (!alertType.contains(AlertTypes.TEST)) {
                     // Did we recently notify for this city?
-                    if (cityRecentlyNotified(city, context)) {
+                    if (cityRecentlyNotified(city, threatType, context)) {
                         // Log that we're skipping this one
                         Log.i(Logging.TAG, "Ignoring recently notified city: " + city);
                         continue;
@@ -108,7 +108,12 @@ public class AlertLogic {
         }
     }
 
-    static boolean cityRecentlyNotified(String city, Context context) {
+    static boolean cityRecentlyNotified(String city, String threatType, Context context) {
+        // Unlimited early warnings / leave shelter alerts
+        if (threatType.equals(ThreatTypes.EARLY_WARNING) || threatType.equals(ThreatTypes.LEAVE_SHELTER)) {
+            return false;
+        }
+
         // Buffer time in between alerts for same city (to prevent duplicate alerts)
         long recentCutoffTimestamp = DateTime.getUnixTimestamp() - Alerts.DUPLICATE_ALERTS_PADDING_TIME;
 
