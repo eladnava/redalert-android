@@ -121,6 +121,15 @@
     <string name="earlyWarningsSoundSelection">Son d\'alerte précoce</string>
     <string name="earlyWarningsSoundSelectionDesc">Sélectionner un son à émettre lors de la réception d\'une alerte précoce</string>
 
+    <!-- Alertes de sortie du refuge -->
+    <string name="leaveShelterAlerts">Alertes de sortie du refuge</string>
+    <string name="leaveShelterDesc">Configurer les alertes de sortie du refuge</string>
+    <string name="receiveLeaveShelterAlertsDesc">Recevoir des alertes de sortie du refuge</string>
+
+    <!-- Son des alertes de sortie du refuge -->
+    <string name="leaveShelterAlertsSoundSelection">Son d\'alerte de sortie du refuge</string>
+    <string name="leaveShelterAlertsSoundSelectionDesc">Sélectionner un son à diffuser lorsqu\'il est temps de quitter le refuge</string>
+
     <!-- Rate the App -->
     <string name="rateApp">Notez l\'application</string>
     <string name="rateAppDesc">Evaluer l\'application sur Google Play</string>
@@ -231,6 +240,7 @@
     <string name="radiologicalEvent">Événement radiologique</string>
     <string name="earthQuake">Tremblement de terre</string>
     <string name="earlyWarning">Mise à jour</string>
+    <string name="leaveShelter">Quitter l\'abri</string>
     <string name="tsunami">Alerte au tsunami</string>
     <string name="hostileAircraftIntrusion">Intrusion d\'aéronefs hostiles</string>
     <string name="hazardousMaterials">Matières dangereuses</string>
@@ -250,6 +260,7 @@
     <string name="hostileAircraftIntrusionInstructions">Entrez immédiatement dans la zone protégée et restez-y pendant 10 minutes, à moins qu\'un nouvel avertissement ne soit donné.</string>
     <string name="earthQuakeInstructions">Sortez immédiatement dans une zone dégagée. Si cela n\'est pas possible, entrez dans le MMD ou dans une cage d\'escalier.</string>
     <string name="earlyWarningInstructions">Une alerte est attendue dans les prochaines minutes. Vous devez trouver un meilleur emplacement offrant la meilleure protection dans votre zone. Si une alerte est reçue, entrez dans l\'espace protégé et restez-y pendant 10 minutes.</string>
+    <string name="leaveShelterInstructions">Vous pouvez maintenant quitter le refuge.</string>
     <string name="radiologicalEventInstructions">Entrez dans le bâtiment et fermez les portes et les fenêtres.</string>
     <string name="terroristInfiltrationInstructions">Entrez immédiatement dans le bâtiment et fermez les portes et les fenêtres.</string>
     <string name="tsunamiInstructions">Éloignez-vous immédiatement de la plage d\'au moins un kilomètre ou montez au quatrième étage ou plus.</string>

@@ -192,7 +192,7 @@ public class Popup extends AppCompatActivity {
         mInstructions.setText(LocationData.getLocalizedThreatInstructions(threatType, this));
 
         // HFC update with instructions?
-        if (threatType.equals(ThreatTypes.EARLY_WARNING) && !StringUtils.stringIsNullOrEmpty(instructions)) {
+        if ((threatType.equals(ThreatTypes.EARLY_WARNING) || threatType.equals(ThreatTypes.LEAVE_SHELTER)) && !StringUtils.stringIsNullOrEmpty(instructions)) {
             mInstructions.setText(instructions);
         }
 
@@ -204,7 +204,7 @@ public class Popup extends AppCompatActivity {
 
         // Not a missile / hostile aircraft intrusion alert?
         // Hide countdown timer
-        if (!threatType.contains(ThreatTypes.MISSILES) && !threatType.contains(ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION) && !threatType.equals(ThreatTypes.EARLY_WARNING)) {
+        if (!threatType.contains(ThreatTypes.MISSILES) && !threatType.contains(ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION) && !threatType.equals(ThreatTypes.EARLY_WARNING) && !threatType.equals(ThreatTypes.LEAVE_SHELTER)) {
             // Countdown is only relevant for rocket fire
             mCounter.setVisibility(View.GONE);
         }
@@ -215,8 +215,8 @@ public class Popup extends AppCompatActivity {
             // Start counting down
             scheduleRocketCountdown(timestamp, countdown);
 
-            // Hide countdown text for Early Warnings
-            if (threatType.equals(ThreatTypes.EARLY_WARNING)) {
+            // Hide countdown text for Early Warnings / Leave Shelter Alerts
+            if (threatType.equals(ThreatTypes.EARLY_WARNING) || threatType.equals(ThreatTypes.LEAVE_SHELTER)) {
                 // Countdown is only relevant for rocket fire
                 mCounter.setVisibility(View.GONE);
             }

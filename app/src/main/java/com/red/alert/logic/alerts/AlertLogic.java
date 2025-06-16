@@ -22,7 +22,12 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AlertLogic {
-    public static void processIncomingAlert(String threatType, String citiesPSVString, String alertType, String alertId, String instructions, Context context) {
+    public static void processIncomingAlert(String threatType, String citiesPSVString, String alertType, String alertId, String instructions, String leaveShelter, Context context) {
+        // Override threat type in case leaveShelter === "1" (sent as earlyWarning for backwards-compatibility)
+        if (leaveShelter != null && leaveShelter.equals("1")) {
+            threatType = ThreatTypes.LEAVE_SHELTER;
+        }
+
         // No cities?
         if (StringUtils.stringIsNullOrEmpty(citiesPSVString)) {
             return;
@@ -45,6 +50,15 @@ public class AlertLogic {
             // Disabled by user?
             if (!AppPreferences.getEarlyWarningNotificationsEnabled(context)) {
                 Log.i(Logging.TAG, "User disabled early warnings, ignoring alert");
+                return;
+            }
+        }
+
+        // Leave shelter alert?
+        if (threatType.equals(ThreatTypes.LEAVE_SHELTER)) {
+            // Disabled by user?
+            if (!AppPreferences.getLeaveShelterNotificationsEnabled(context)) {
+                Log.i(Logging.TAG, "User disabled leave shelter alerts, ignoring alert");
                 return;
             }
         }
@@ -77,7 +91,7 @@ public class AlertLogic {
 
                     // Not an early warning?
                     // Save city last alert timestamp to prevent duplicate alerts
-                    if (!threatType.equals(ThreatTypes.EARLY_WARNING)) {
+                    if (!threatType.equals(ThreatTypes.EARLY_WARNING) && !threatType.equals(ThreatTypes.LEAVE_SHELTER)) {
                         AppPreferences.setCityLastAlertTime(city, DateTime.getUnixTimestamp(), context);
                     }
                 }

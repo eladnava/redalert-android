@@ -63,7 +63,7 @@ public class Notifications {
         }
 
         // HFC update with instructions?
-        if (threatType.equals(ThreatTypes.EARLY_WARNING) && !StringUtils.stringIsNullOrEmpty(instructions)) {
+        if ((threatType.equals(ThreatTypes.EARLY_WARNING) || threatType.equals(ThreatTypes.LEAVE_SHELTER)) && !StringUtils.stringIsNullOrEmpty(instructions)) {
             notificationContent = instructions;
         }
 

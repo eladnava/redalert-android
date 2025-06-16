@@ -103,6 +103,13 @@
             android:theme="@style/AppTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
 
+        <!-- Leave Shelter Alerts -->
+        <activity
+            android:name=".activities.settings.alerts.LeaveShelterAlerts"
+            android:label="@string/leaveShelterAlerts"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"/>
+
         <!-- Location Alerts Settings -->
         <activity
             android:name=".activities.settings.alerts.LocationAlerts"

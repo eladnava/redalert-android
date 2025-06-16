@@ -122,6 +122,15 @@
     <string name="earlyWarningsSoundSelection">Sonido de alerta temprana</string>
     <string name="earlyWarningsSoundSelectionDesc">Seleccionar un sonido para que se reproduzca al recibir una alerta temprana</string>
 
+    <!-- Alertas de salida del refugio -->
+    <string name="leaveShelterAlerts">Alertas de salida del refugio</string>
+    <string name="leaveShelterDesc">Configurar alertas para salir del refugio</string>
+    <string name="receiveLeaveShelterAlertsDesc">Recibir alertas para salir del refugio</string>
+
+    <!-- Sonido de alertas de salida del refugio -->
+    <string name="leaveShelterAlertsSoundSelection">Sonido de alerta de salida del refugio</string>
+    <string name="leaveShelterAlertsSoundSelectionDesc">Seleccionar un sonido para que suene cuando sea hora de salir del refugio</string>
+
     <!-- I'm Safe -->
     <string name="safe">Enviar  \"Estoy en el área protegida\"</string>
     <string name="safeCategory">\"Estoy en el área protegida\"</string>
@@ -278,6 +287,7 @@
     <string name="radiologicalEvent">Evento radiológico</string>
     <string name="earthQuake">Terremoto</string>
     <string name="earlyWarning">Actualización</string>
+    <string name="leaveShelter">Salir del refugio</string>
     <string name="tsunami">Alerta de tsunami</string>
     <string name="hostileAircraftIntrusion">Intrusión de aeronaves hostiles</string>
     <string name="hazardousMaterials">Materiales peligrosos</string>
@@ -297,6 +307,7 @@
     <string name="hostileAircraftIntrusionInstructions">Ingrese al área protegida inmediatamente y permanezca allí durante 10 minutos, a menos que reciba más advertencias.</string>
     <string name="earthQuakeInstructions">Salga inmediatamente a un área abierta. Si esto no es posible, ingrese al MMD o al hueco de una escalera.</string>
     <string name="earlyWarningInstructions">Se espera una alerta en los próximos minutos. Necesita encontrar una ubicación más segura que le brinde la mejor protección en su zona. Si recibe una alerta, entre al espacio protegido y permanezca allí durante 10 minutos.</string>
+    <string name="leaveShelterInstructions">Ahora puedes abandonar el refugio.</string>
     <string name="radiologicalEventInstructions">Entre al edificio y cierre las puertas y ventanas.</string>
     <string name="terroristInfiltrationInstructions">Entre al edificio inmediatamente y cierre las puertas y ventanas.</string>
     <string name="tsunamiInstructions">Aléjese inmediatamente de la playa al menos un kilómetro o suba al cuarto piso o más.</string>

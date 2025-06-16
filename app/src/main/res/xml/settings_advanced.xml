@@ -52,6 +52,10 @@
             android:title="@string/earlyWarnings"
             android:summary="@string/earlyWarningsDesc"/>
         <Preference
+            android:key="@string/leaveShelterAlertsPref"
+            android:title="@string/leaveShelterAlerts"
+            android:summary="@string/leaveShelterDesc"/>
+        <Preference
             android:key="@string/locationPref"
             android:title="@string/locationAlerts"
             android:summary="@string/locationAlertsDesc"/>

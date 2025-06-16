@@ -548,6 +548,9 @@ public class LocationData {
             case ThreatTypes.EARLY_WARNING:
                 result = R.string.earlyWarning;
                 break;
+            case ThreatTypes.LEAVE_SHELTER:
+                result = R.string.leaveShelter;
+                break;
             case ThreatTypes.TSUNAMI:
                 result = R.string.tsunami;
                 break;
@@ -646,6 +649,9 @@ public class LocationData {
                 break;
             case ThreatTypes.EARLY_WARNING:
                 result = R.string.earlyWarningInstructions;
+                break;
+            case ThreatTypes.LEAVE_SHELTER:
+                result = R.string.leaveShelterInstructions;
                 break;
             case ThreatTypes.TSUNAMI:
                 result = R.string.tsunamiInstructions;

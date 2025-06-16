@@ -121,6 +121,15 @@
     <string name="earlyWarningsSoundSelection">Som de alerta antecipado</string>
     <string name="earlyWarningsSoundSelectionDesc">Selecionar um som para tocar quando um alerta antecipado for recebido</string>
 
+    <!-- Alertas de saída do abrigo -->
+    <string name="leaveShelterAlerts">Alertas de saída do abrigo</string>
+    <string name="leaveShelterDesc">Configurar alertas para sair do abrigo</string>
+    <string name="receiveLeaveShelterAlertsDesc">Receber alertas para sair do abrigo</string>
+
+    <!-- Som de alerta de saída do abrigo -->
+    <string name="leaveShelterAlertsSoundSelection">Som de alerta de saída do abrigo</string>
+    <string name="leaveShelterAlertsSoundSelectionDesc">Selecione um som para tocar quando for a hora de sair do abrigo</string>
+
     <!-- Rate the App -->
     <string name="rateApp">Avalie o aplicativo</string>
     <string name="rateAppDesc">Avalie o aplicativo no Google Play</string>
@@ -231,6 +240,7 @@
     <string name="radiologicalEvent">Evento Radiológico</string>
     <string name="earthQuake">Terremoto</string>
     <string name="earlyWarning">Atualização</string>
+    <string name="leaveShelter">Sair do abrigo</string>
     <string name="tsunami">Alerta de tsunami</string>
     <string name="hostileAircraftIntrusion">Intrusão de Aeronave Hostil</string>
     <string name="hazardousMaterials">Evento de Materiais Perigosos</string>
@@ -250,6 +260,7 @@
     <string name="hostileAircraftIntrusionInstructions">Entre no espaço protegido imediatamente e permaneça nele por 10 minutos, a menos que outro alerta seja recebido.</string>
     <string name="earthQuakeInstructions">Saia imediatamente para uma área aberta. Se não for possível, entre na sala protegida ou na escada</string>
     <string name="earlyWarningInstructions">Um alerta é esperado nos próximos minutos. Você precisa encontrar um local melhor que ofereça a melhor proteção na sua área. Se receber um alerta, entre no espaço protegido e permaneça lá por 10 minutos.</string>
+    <string name="leaveShelterInstructions">Agora você pode sair do abrigo.</string>
     <string name="radiologicalEventInstructions">Entre em um edifício feche as portas e janelas.</string>
     <string name="terroristInfiltrationInstructions">Entre imediatamente em um prédio próximo, tranque as portas e feche as janelas.</string>
     <string name="tsunamiInstructions">Mova-se imediatamente para pelo menos um quilômetro de distância da praia ou vá para um quarto andar ou superior</string>

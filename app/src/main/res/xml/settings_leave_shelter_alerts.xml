@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/leaveShelterAlerts">
+    <PreferenceCategory
+        android:title="@string/settings">
+        <CheckBoxPreference
+            android:textDirection="rtl"
+            android:key="@string/leaveShelterAlertsEnabledPref"
+            android:title="@string/leaveShelterAlerts"
+            android:summary="@string/receiveLeaveShelterAlertsDesc"
+            android:defaultValue="true"/>
+        <com.red.alert.ui.elements.SoundListPreference
+            android:key="@string/leaveShelterAlertsSoundPref"
+            android:title="@string/leaveShelterAlertsSoundSelection"
+            android:summary="@string/leaveShelterAlertsSoundSelectionDesc"
+            android:entries="@array/sounds"
+            android:entryValues="@array/soundValues"
+            android:defaultValue="@string/defaultLeaveShelterSound"
+            android:showSilent="true"
+            android:ringtoneType="all"
+            android:dependency="@string/leaveShelterAlertsEnabledPref"/>
+    </PreferenceCategory>
+</PreferenceScreen>

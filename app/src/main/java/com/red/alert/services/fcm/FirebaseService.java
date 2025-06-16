@@ -52,6 +52,7 @@ public class FirebaseService extends FirebaseMessagingService {
         String threatType = data.get(PushParameters.THREAT_TYPE);
         String alertCities = data.get(PushParameters.ALERT_CITIES);
         String instructions = data.get(PushParameters.ALERT_INSTRUCTIONS);
+        String leaveShelter = data.get(PushParameters.ALERT_LEAVE_SHELTER);
 
         // Bad push?
         if (alertType == null || alertCities == null) {
@@ -78,6 +79,6 @@ public class FirebaseService extends FirebaseMessagingService {
         Log.d(Logging.TAG, "Received push via FCM gateway");
 
         // Receive the alert
-        AlertLogic.processIncomingAlert(threatType, alertCities, alertType, alertId, instructions, this);
+        AlertLogic.processIncomingAlert(threatType, alertCities, alertType, alertId, instructions, leaveShelter, this);
     }
 }

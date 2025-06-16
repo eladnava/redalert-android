@@ -210,6 +210,15 @@
     <string name="earlyWarningsSoundSelection">Suono Preavviso</string>
     <string name="earlyWarningsSoundSelectionDesc">Seleziona un suono da riprodurre quando viene ricevuto un preavviso</string>
 
+    <!-- Avvisi di uscita dal rifugio -->
+    <string name="leaveShelterAlerts">Avvisi di uscita dal rifugio</string>
+    <string name="leaveShelterDesc">Configura gli avvisi per l\'uscita dal rifugio</string>
+    <string name="receiveLeaveShelterAlertsDesc">Ricevi gli avvisi per l\'uscita dal rifugio</string>
+
+    <!-- Suono degli avvisi di uscita dal rifugio -->
+    <string name="leaveShelterAlertsSoundSelection">Suono di avviso di uscita dal rifugio</string>
+    <string name="leaveShelterAlertsSoundSelectionDesc">Seleziona un suono da riprodurre quando è il momento di uscire dal rifugio</string>
+
     <!-- Dona -->
     <string name="donate">Sostieni la nostra causa</string>
     <string name="donateInstructions">Seleziona l\'importo desiderato per la donazione (in ILS):</string>
@@ -236,6 +245,7 @@
     <string name="radiologicalEvent">Evento radiologico</string>
     <string name="earthQuake">Terremoto</string>
     <string name="earlyWarning">Aggiornamento</string>
+    <string name="leaveShelter">Lascia il rifugio</string>
     <string name="tsunami">Allarme tsunami</string>
     <string name="hostileAircraftIntrusion">Intrusione di aerei ostili</string>
     <string name="hazardousMaterials">Materiali pericolosi</string>
@@ -255,6 +265,7 @@
     <string name="hostileAircraftIntrusionInstructions">Entra immediatamente nell\'area protetta e rimani lì per 10 minuti, a meno che non venga dato un ulteriore avviso.</string>
     <string name="earthQuakeInstructions">Esci immediatamente in un\'area aperta. Se ciò non è possibile, inserisci l\'MMD o una scala.</string>
     <string name="earlyWarningInstructions">È previsto un avviso nei prossimi minuti. È necessario trovare una posizione migliore che offra la massima protezione nella propria zona. Se si riceve un avviso, entrare nell\'area protetta e rimanervi per 10 minuti.</string>
+    <string name="leaveShelterInstructions">Ora puoi lasciare il rifugio.</string>
     <string name="radiologicalEventInstructions">Entra nell\'edificio e chiudi porte e finestre.</string>
     <string name="terroristInfiltrationInstructions">Entra immediatamente nell\'edificio e chiudi porte e finestre.</string>
     <string name="tsunamiInstructions">Allontanarsi immediatamente dalla spiaggia di almeno un chilometro o salire al quarto piano o superiore.</string>

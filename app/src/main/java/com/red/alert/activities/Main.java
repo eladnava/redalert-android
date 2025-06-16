@@ -30,7 +30,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.view.MenuItemCompat;
 
-import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.installations.FirebaseInstallations;
 import com.red.alert.R;
@@ -76,13 +75,10 @@ import com.red.alert.utils.threading.AsyncTaskAdapter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.ExecutionException;
 
 import me.pushy.sdk.Pushy;
-import me.pushy.sdk.lib.jackson.core.JsonProcessingException;
 import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 import me.pushy.sdk.util.PushyAuthentication;
 
@@ -1331,7 +1327,7 @@ public class Main extends AppCompatActivity {
 
             // Check for old (inactive) alert
             // Only display alert popup for currently active alerts (+ 10 minutes)
-            if (!threatType.equals(ThreatTypes.EARLY_WARNING) && timestamp < (DateTime.getUnixTimestamp() - countdown - (Safety.POST_IMPACT_WAIT_MINUTES * 60)) ) {
+            if (!threatType.equals(ThreatTypes.EARLY_WARNING) && !threatType.equals(ThreatTypes.LEAVE_SHELTER) && timestamp < (DateTime.getUnixTimestamp() - countdown - (Safety.POST_IMPACT_WAIT_MINUTES * 60)) ) {
                 return;
             }
 

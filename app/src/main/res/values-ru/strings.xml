@@ -130,6 +130,15 @@
     <string name="earlyWarningsSoundSelection">Звук раннего предупреждения</string>
     <string name="earlyWarningsSoundSelectionDesc">Выберите звук для воспроизведения при получении раннего предупреждения</string>
 
+    <!-- Оповещения о выходе из убежища -->
+    <string name="leaveShelterAlerts">Оповещения о выходе из убежища</string>
+    <string name="leaveShelterDesc">Настроить оповещения о выходе из убежища</string>
+    <string name="receiveLeaveShelterAlertsDesc">Получать оповещения о выходе из убежища</string>
+
+    <!-- Звук оповещения о выходе из убежища -->
+    <string name="leaveShelterAlertsSoundSelection">Звук оповещения о выходе из убежища</string>
+    <string name="leaveShelterAlertsSoundSelectionDesc">Выбрать звук, который будет воспроизводиться, когда придет время покидать убежище</string>
+
     <!-- I'm Safe -->
     <string name="safe">Отправить\"Я в убежище\"</string>
     <string name="safeCategory">\"Я в убежище\"</string>
@@ -278,6 +287,7 @@
     <string name="radiologicalEvent">Радиологическое событие</string>
     <string name="earthQuake">Землетрясение</string>
     <string name="earlyWarning">Обновление</string>
+    <string name="leaveShelter">Покинуть убежище</string>
     <string name="tsunami">Предупреждение о цунами</string>
     <string name="hostileAircraftIntrusion">Нарушение воздушного пространства</string>
     <string name="hazardousMaterials">Опасные материалы</string>
@@ -297,6 +307,7 @@
     <string name="hostileAircraftIntrusionInstructions">Немедленно войдите в защищённое пространство и оставайтесь в нём на протяжении 10 минут, кроме случаев получения дополнительного оповещения.</string>
     <string name="earthQuakeInstructions">Немедленно выйдите на открытое пространство. Если это невозможно, войдите в МАМАД или выйдите на лестничную клетку.</string>
     <string name="earlyWarningInstructions">В ближайшие несколько минут ожидается оповещение. Вам необходимо найти лучшее место, которое обеспечит наилучшую защиту в вашем районе. Если получено оповещение, войдите в защищенное пространство и оставайтесь там в течение 10 минут.</string>
+    <string name="leaveShelterInstructions">Теперь вы можете покинуть убежище.</string>
     <string name="radiologicalEventInstructions">Войдите в здание, закройте двери и окна.</string>
     <string name="terroristInfiltrationInstructions">Немедленно войдите в здание, закройте двери и окна.</string>
     <string name="tsunamiInstructions">Немедленно удалитесь от пляжа как минимум на 1 км или поднимитесь на 4 этаж и выше.</string>

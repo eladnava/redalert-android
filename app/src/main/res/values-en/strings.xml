@@ -121,6 +121,15 @@
     <string name="earlyWarningsSoundSelection">Early warning sound</string>
     <string name="earlyWarningsSoundSelectionDesc">Select a sound to play when an early warning is received</string>
 
+    <!-- Leave Shelter Alerts -->
+    <string name="leaveShelterAlerts">Leave shelter alerts</string>
+    <string name="leaveShelterDesc">Configure alerts for leaving the shelter</string>
+    <string name="receiveLeaveShelterAlertsDesc">Receive alerts to leave the shelter</string>
+
+    <!-- Leave Shelter Alerts Sound -->
+    <string name="leaveShelterAlertsSoundSelection">Leave shelter alert sound</string>
+    <string name="leaveShelterAlertsSoundSelectionDesc">Select a sound to play when it\'s time to leave the shelter</string>
+
     <!-- Rate the App -->
     <string name="rateApp">Rate the app</string>
     <string name="rateAppDesc">Rate the app on Google Play</string>
@@ -231,6 +240,7 @@
     <string name="radiologicalEvent">Radiological event</string>
     <string name="earthQuake">Earthquake</string>
     <string name="earlyWarning">Update</string>
+    <string name="leaveShelter">Leave shelter</string>
     <string name="tsunami">Tsunami warning</string>
     <string name="hostileAircraftIntrusion">Hostile aircraft intrusion</string>
     <string name="hazardousMaterials">Hazardous materials event</string>
@@ -250,6 +260,7 @@
     <string name="hostileAircraftIntrusionInstructions">Enter the protected space immediately and stay in it for 10 minutes, unless another alert is received.</string>
     <string name="earthQuakeInstructions">Immediately go out into the open. If not possible, enter the protected room or stairwell.</string>
     <string name="earlyWarningInstructions">An alert is expected in the next few minutes. You need to find a better location that will provide the best protection in your area. If an alert is received, enter the protected space and stay there for 10 minutes.</string>
+    <string name="leaveShelterInstructions">You may now leave the shelter.</string>
     <string name="radiologicalEventInstructions">Enter a building and close the doors and windows.</string>
     <string name="terroristInfiltrationInstructions">Immediately enter a nearby building, lock the doors and close the windows.</string>
     <string name="tsunamiInstructions">Immediately move at least one kilometer away from the beach or go up to a fourth floor and higher.</string>

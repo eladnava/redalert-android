@@ -132,6 +132,12 @@ public class SoundLogic {
             soundDefault = context.getString(R.string.defaultEarlyWarningSound);
         }
 
+        // Leave shelter alert?
+        if (alertType.equals(AlertTypes.PRIMARY) && threatType != null && threatType.equals(ThreatTypes.LEAVE_SHELTER)) {
+            // Use leave shelter default sound
+            soundDefault = context.getString(R.string.defaultLeaveShelterSound);
+        }
+
         // Return default sound
         return soundDefault;
     }
@@ -150,6 +156,12 @@ public class SoundLogic {
         if (alertType.equals(AlertTypes.PRIMARY) && threatType != null && threatType.equals(ThreatTypes.EARLY_WARNING)) {
             // Use early warning sound pref
             soundPreference = context.getString(R.string.earlyWarningsSoundPref);
+        }
+
+        // Leave shelter alert?
+        if (alertType.equals(AlertTypes.PRIMARY) && threatType != null && threatType.equals(ThreatTypes.LEAVE_SHELTER)) {
+            // Use leave shelter alerts sound pref
+            soundPreference = context.getString(R.string.leaveShelterAlertsSoundPref);
         }
 
         // Return default pref
