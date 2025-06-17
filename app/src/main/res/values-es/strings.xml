@@ -316,7 +316,8 @@
     <!-- Instrucciones de noticias locales -->
     <string name="stayNearbyShelterInstructions">Permanecer cerca del refugio</string>
     <string name="endStayNearbyShelterInstructions">Fin de la permanencia cerca del refugio</string>
-    <string name="hostileAircraftIntrusionThreatEndInstructions">Intrusión de aeronave hostil - Evento finalizado</string>
+    <string name="missileThreatEndInstructions">Misiles - evento finalizado</string>
+    <string name="hostileAircraftIntrusionThreatEndInstructions">Intrusión de aeronave hostil - evento finalizado</string>
     <string name="leaveShelterButStayNearbyInstructions">Puedes salir del refugio, pero debes permanecer cerca.</string>
 
     <!-- Alerta Nacional -->

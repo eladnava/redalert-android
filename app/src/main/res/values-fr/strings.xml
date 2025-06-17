@@ -269,7 +269,8 @@
     <!-- Instructions pour les flashs d'information localisés -->
     <string name="stayNearbyShelterInstructions">Rester à proximité de l\'abri</string>
     <string name="endStayNearbyShelterInstructions">Fin de la présence à proximité de l\'abri</string>
-    <string name="hostileAircraftIntrusionThreatEndInstructions">Intrusion aérienne hostile - Événement terminé</string>
+    <string name="missileThreatEndInstructions">Tir de roquettes - événement terminé</string>
+    <string name="hostileAircraftIntrusionThreatEndInstructions">Intrusion aérienne hostile - événement terminé</string>
     <string name="leaveShelterButStayNearbyInstructions">Vous pouvez quitter le refuge mais vous devez rester à proximité</string>
 
     <!-- Alerte nationale -->

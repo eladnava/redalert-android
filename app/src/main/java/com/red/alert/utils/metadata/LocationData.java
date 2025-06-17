@@ -715,6 +715,12 @@ public class LocationData {
             case "חדירת כלי טיס עוין - האירוע הסתיים":
                 result = context.getString(R.string.hostileAircraftIntrusionThreatEndInstructions);
                 break;
+            case "ירי רקטות וטילים -  האירוע הסתיים":
+                result = context.getString(R.string.missileThreatEndInstructions);
+                break;
+            case "ירי רקטות וטילים - האירוע הסתיים":
+                result = context.getString(R.string.missileThreatEndInstructions);
+                break;
             case "בדקות הקרובות צפויות להתקבל התרעות באזורך":
                 result = context.getString(R.string.earlyWarningInstructions);
                 break;

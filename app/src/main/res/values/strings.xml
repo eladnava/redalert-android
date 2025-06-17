@@ -305,6 +305,7 @@
     <!-- Localized News Flash Instructions -->
     <string name="stayNearbyShelterInstructions">שהייה בסמיכות למרחב מוגן</string>
     <string name="endStayNearbyShelterInstructions">סיום שהייה בסמיכות למרחב מוגן</string>
+    <string name="missileThreatEndInstructions">ירי רקטות וטילים - האירוע הסתיים</string>
     <string name="hostileAircraftIntrusionThreatEndInstructions">חדירת כלי טיס עוין - האירוע הסתיים</string>
     <string name="leaveShelterButStayNearbyInstructions">ניתן לצאת מהמרחב המוגן אך יש להישאר בקרבתו</string>
 

@@ -269,7 +269,8 @@
     <!-- Instruções de Notícias Localizadas -->
     <string name="stayNearbyShelterInstructions">Permanecendo perto do abrigo</string>
     <string name="endStayNearbyShelterInstructions">Encerrando a permanência perto do abrigo</string>
-    <string name="hostileAircraftIntrusionThreatEndInstructions">Intrusão de Aeronave Hostil - Evento Encerrado</string>
+    <string name="missileThreatEndInstructions">Disparo de foguete - evento encerrado</string>
+    <string name="hostileAircraftIntrusionThreatEndInstructions">Intrusão de aeronave hostil - evento encerrado</string>
     <string name="leaveShelterButStayNearbyInstructions">Você pode sair do abrigo, mas deve permanecer por perto</string>
 
     <!-- Alerta Nacional -->

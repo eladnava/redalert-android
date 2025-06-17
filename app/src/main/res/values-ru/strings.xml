@@ -316,6 +316,7 @@
     <!-- Локализованные инструкции по экстренным новостям -->
     <string name="stayNearbyShelterInstructions">Оставаемся возле убежища</string>
     <string name="endStayNearbyShelterInstructions">Завершаем пребывание возле убежища</string>
+    <string name="missileThreatEndInstructions">Ракетный обстрел - событие завершено</string>
     <string name="hostileAircraftIntrusionThreatEndInstructions">Вторжение вражеского воздушного судна — событие завершено</string>
     <string name="leaveShelterButStayNearbyInstructions">Вы можете покинуть убежище, но вы должны оставаться поблизости</string>
 

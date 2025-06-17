@@ -269,7 +269,8 @@
     <!-- Localized News Flash Instructions -->
     <string name="stayNearbyShelterInstructions">Stay near protective shelter</string>
     <string name="endStayNearbyShelterInstructions">End of stay near protective shelter</string>
-    <string name="hostileAircraftIntrusionThreatEndInstructions">Hostile Aircraft Intrusion - Threat Eliminated</string>
+    <string name="missileThreatEndInstructions">Rocket fire - event ended</string>
+    <string name="hostileAircraftIntrusionThreatEndInstructions">Hostile aircraft intrusion - event ended</string>
     <string name="leaveShelterButStayNearbyInstructions">You can leave the shelter but you must stay nearby</string>
 
     <!-- Country-Wide Alert -->
