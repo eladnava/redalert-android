@@ -259,7 +259,7 @@
     <string name="missilesInstructions">Entrez dans l\'espace protégé et restez-y jusqu\'à nouvel ordre.</string>
     <string name="hostileAircraftIntrusionInstructions">Entrez dans l\'espace protégé et restez-y jusqu\'à nouvel ordre.</string>
     <string name="earthQuakeInstructions">Sortez immédiatement dans une zone dégagée. Si cela n\'est pas possible, entrez dans le MMD ou dans une cage d\'escalier.</string>
-    <string name="earlyWarningInstructions">Une alerte est attendue dans les prochaines minutes. Vous devez trouver un espace protégé offrant la meilleure protection dans votre zone. Si une alerte est reçue, entrez dans l\'espace protégé et restez-y jusqu'à nouvel ordre.</string>
+    <string name="earlyWarningInstructions">Une alerte est attendue dans les prochaines minutes. Vous devez trouver un espace protégé offrant la meilleure protection dans votre zone. Si une alerte est reçue, entrez dans l\'espace protégé et restez-y jusqu\'à nouvel ordre.</string>
     <string name="leaveShelterInstructions">Vous pouvez maintenant quitter le refuge.</string>
     <string name="radiologicalEventInstructions">Entrez dans le bâtiment et fermez les portes et les fenêtres.</string>
     <string name="terroristInfiltrationInstructions">Entrez immédiatement dans le bâtiment et fermez les portes et les fenêtres.</string>

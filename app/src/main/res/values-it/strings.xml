@@ -264,7 +264,7 @@
     <string name="missilesInstructions">Entra nello spazio protetto e rimani lì fino a nuovo avviso.</string>
     <string name="hostileAircraftIntrusionInstructions">Entra nello spazio protetto e rimani lì fino a nuovo avviso.</string>
     <string name="earthQuakeInstructions">Esci immediatamente in un\'area aperta. Se ciò non è possibile, inserisci l\'MMD o una scala.</string>
-    <string name="earlyWarningInstructions">È previsto un avviso nei prossimi minuti. È necessario trovare un\'area protetta che offra la migliore protezione nella propria zona. Se si riceve un avviso, accedere all'area protetta e rimanervi fino a nuovo avviso.</string>
+    <string name="earlyWarningInstructions">È previsto un avviso nei prossimi minuti. È necessario trovare un\'area protetta che offra la migliore protezione nella propria zona. Se si riceve un avviso, accedere all\'area protetta e rimanervi fino a nuovo avviso.</string>
     <string name="leaveShelterInstructions">Ora puoi lasciare il rifugio.</string>
     <string name="radiologicalEventInstructions">Entra nell\'edificio e chiudi porte e finestre.</string>
     <string name="terroristInfiltrationInstructions">Entra immediatamente nell\'edificio e chiudi porte e finestre.</string>
