@@ -256,10 +256,10 @@
     <string name="system">Systemhinweis</string>
 
     <!-- Threat Instructions -->
-    <string name="missilesInstructions">Betreten Sie den geschützten Bereich und bleiben Sie dort 10 Minuten lang.</string>
-    <string name="hostileAircraftIntrusionInstructions">Betreten Sie sofort den geschützten Bereich und bleiben Sie dort 10 Minuten lang, sofern keine weitere Warnung erfolgt.</string>
+    <string name="missilesInstructions">Betreten Sie den geschützten Bereich und bleiben Sie dort bis auf Weiteres.</string>
+    <string name="hostileAircraftIntrusionInstructions">Betreten Sie den geschützten Bereich und bleiben Sie dort bis auf Weiteres.</string>
     <string name="earthQuakeInstructions">Begeben Sie sich sofort in einen offenen Bereich. Sollte dies nicht möglich sein, betreten Sie das MMD oder ein Treppenhaus.</string>
-    <string name="earlyWarningInstructions">In den nächsten Minuten wird eine Warnung erwartet. Sie müssen einen besseren Standort finden, der Ihnen in Ihrer Gegend den besten Schutz bietet. Betreten Sie im Falle einer Warnung den geschützten Bereich und bleiben Sie dort 10 Minuten lang.</string>
+    <string name="earlyWarningInstructions">In den nächsten Minuten wird ein Alarm erwartet. Sie müssen einen geschützten Bereich finden, der Ihnen in Ihrer Gegend den besten Schutz bietet. Betreten Sie im Falle eines Alarms den geschützten Bereich und bleiben Sie dort bis auf Weiteres.</string>
     <string name="leaveShelterInstructions">Sie können den Schutzraum nun verlassen.</string>
     <string name="radiologicalEventInstructions">Betreten Sie das Gebäude und schließen Sie die Türen und Fenster.</string>
     <string name="terroristInfiltrationInstructions">Betreten Sie sofort das Gebäude und schließen Sie die Türen und Fenster.</string>

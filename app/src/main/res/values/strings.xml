@@ -292,10 +292,10 @@
     <string name="system">הודעת מערכת</string>
 
     <!-- Threat Instructions -->
-    <string name="missilesInstructions">היכנסו למרחב המוגן ושהו בו 10 דקות.</string>
-    <string name="hostileAircraftIntrusionInstructions">היכנסו מיד למרחב המוגן ושהו בו למשך 10 דקות, אלא אם ניתנה התרעה נוספת.</string>
+    <string name="missilesInstructions">היכנסו למרחב המוגן ושהו בו עד להודעה חדשה.</string>
+    <string name="hostileAircraftIntrusionInstructions">היכנסו מיד למרחב המוגן ושהו בו עד להודעה חדשה.</string>
     <string name="earthQuakeInstructions">צאו מיד לשטח פתוח. אם לא ניתן, היכנסו לממ"ד או לחדר מדרגות.</string>
-    <string name="earlyWarningInstructions">בדקות הקרובות צפויה להתקבל התרעת אמת. עליך לשפר את מיקומך למיגון המיטבי בקרבתך. במקרה של קבלת התרעה, יש להיכנס למרחב המוגן ולשהות בו 10 דקות.</string>
+    <string name="earlyWarningInstructions">בדקות הקרובות צפויה להתקבל התרעת אמת. עליך לשפר את מיקומך למיגון המיטבי בקרבתך. במקרה של קבלת התרעה, יש להיכנס למרחב המוגן ולשהות בו עד להודעה חדשה.</string>
     <string name="leaveShelterInstructions">ניתן לצאת מהמרחב המוגן.</string>
     <string name="radiologicalEventInstructions">היכנסו למבנה וסגרו את הדלתות והחלונות.</string>
     <string name="terroristInfiltrationInstructions">היכנסו מיד למבנה וסגרו את הדלתות והחלונות.</string>

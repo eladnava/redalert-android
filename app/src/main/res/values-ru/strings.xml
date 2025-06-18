@@ -303,10 +303,10 @@
     <string name="system">Системное оповещение</string>
 
     <!-- Threat Instructions -->
-    <string name="missilesInstructions">Войдите в защищённое пространство и оставайтесь в нём 10 минут.</string>
-    <string name="hostileAircraftIntrusionInstructions">Немедленно войдите в защищённое пространство и оставайтесь в нём на протяжении 10 минут, кроме случаев получения дополнительного оповещения.</string>
+    <string name="missilesInstructions">Войдите в защищенное пространство и оставайтесь там до дальнейшего уведомления.</string>
+    <string name="hostileAircraftIntrusionInstructions">Войдите в защищенное пространство и оставайтесь там до дальнейшего уведомления.</string>
     <string name="earthQuakeInstructions">Немедленно выйдите на открытое пространство. Если это невозможно, войдите в МАМАД или выйдите на лестничную клетку.</string>
-    <string name="earlyWarningInstructions">В ближайшие несколько минут ожидается оповещение. Вам необходимо найти лучшее место, которое обеспечит наилучшую защиту в вашем районе. Если получено оповещение, войдите в защищенное пространство и оставайтесь там в течение 10 минут.</string>
+    <string name="earlyWarningInstructions">Ожидается оповещение в ближайшие несколько минут. Вам необходимо найти защищенное пространство, которое обеспечит наилучшую защиту в вашем районе. Если получено оповещение, войдите в защищенное пространство и оставайтесь там до дальнейшего уведомления.</string>
     <string name="leaveShelterInstructions">Теперь вы можете покинуть убежище.</string>
     <string name="radiologicalEventInstructions">Войдите в здание, закройте двери и окна.</string>
     <string name="terroristInfiltrationInstructions">Немедленно войдите в здание, закройте двери и окна.</string>

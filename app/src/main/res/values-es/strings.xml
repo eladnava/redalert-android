@@ -303,10 +303,10 @@
     <string name="system">Aviso del Sistema</string>
 
     <!-- Threat Instructions -->
-    <string name="missilesInstructions">Ingrese al espacio protegido y permanezca allí durante 10 minutos.</string>
-    <string name="hostileAircraftIntrusionInstructions">Ingrese al área protegida inmediatamente y permanezca allí durante 10 minutos, a menos que reciba más advertencias.</string>
+    <string name="missilesInstructions">Ingrese al espacio protegido y permanezca allí hasta nuevo aviso.</string>
+    <string name="hostileAircraftIntrusionInstructions">Ingrese al espacio protegido y permanezca allí hasta nuevo aviso.</string>
     <string name="earthQuakeInstructions">Salga inmediatamente a un área abierta. Si esto no es posible, ingrese al MMD o al hueco de una escalera.</string>
-    <string name="earlyWarningInstructions">Se espera una alerta en los próximos minutos. Necesita encontrar una ubicación más segura que le brinde la mejor protección en su zona. Si recibe una alerta, entre al espacio protegido y permanezca allí durante 10 minutos.</string>
+    <string name="earlyWarningInstructions">Se espera una alerta en los próximos minutos. Necesita encontrar un espacio protegido que ofrezca la mejor protección en su zona. Si recibe una alerta, entre al espacio protegido y permanezca allí hasta nuevo aviso.</string>
     <string name="leaveShelterInstructions">Ahora puedes abandonar el refugio.</string>
     <string name="radiologicalEventInstructions">Entre al edificio y cierre las puertas y ventanas.</string>
     <string name="terroristInfiltrationInstructions">Entre al edificio inmediatamente y cierre las puertas y ventanas.</string>

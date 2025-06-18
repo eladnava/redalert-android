@@ -256,10 +256,10 @@
     <string name="system">تنبيه النظام</string>
 
     <!-- تعليمات التهديد -->
-    <string name="missilesInstructions">ادخل إلى المساحة المحمية وابق فيها لمدة ۱۰ دقائق.</string>
-    <string name="hostileAircraftIntrusionInstructions">ادخل إلى المساحة المحمية فورًا وابق فيها لمدة ۱۰ دقائق، ما لم يتم تلقي تنبيه آخر.</string>
+    <string name="missilesInstructions">ادخل إلى المساحة المحمية وابق هناك حتى إشعار آخر.</string>
+    <string name="hostileAircraftIntrusionInstructions">ادخل إلى المساحة المحمية وابق هناك حتى إشعار آخر.</string>
     <string name="earthQuakeInstructions">اخرج فورًا إلى العراء. إذا لم يكن ذلك ممكنا، أدخل الغرفة المحمية أو الدرج.</string>
-    <string name="earlyWarningInstructions">من المتوقع وصول تنبيه خلال الدقائق القليلة القادمة. عليك إيجاد مكان أفضل يوفر أفضل حماية في منطقتك. في حال استلام تنبيه، ادخل إلى المكان المحمي وابق فيه لمدة 10 دقائق.</string>
+    <string name="earlyWarningInstructions">من المتوقع صدور تنبيه خلال الدقائق القليلة القادمة. عليك إيجاد مكان آمن يوفر أفضل حماية في منطقتك. في حال استلام تنبيه، ادخل المكان الآمن وابق فيه حتى إشعار آخر.</string>
     <string name="leaveShelterInstructions">يمكنك الآن مغادرة الملجأ.</string>
     <string name="radiologicalEventInstructions">ادخل المبنى وأغلق الأبواب والنوافذ.</string>
     <string name="terroristInfiltrationInstructions">ادخل على الفور إلى مبنى مجاور، وأغلق الأبواب وأغلق النوافذ.</string>

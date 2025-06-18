@@ -256,10 +256,10 @@
     <string name="system">Alerta de Sistema</string>
 
     <!-- Threat Instructions -->
-    <string name="missilesInstructions">Entre no espaço protegido e permaneça nele por 10 minuto.</string>
-    <string name="hostileAircraftIntrusionInstructions">Entre no espaço protegido imediatamente e permaneça nele por 10 minutos, a menos que outro alerta seja recebido.</string>
+    <string name="missilesInstructions">Entre no espaço protegido e permaneça lá até novo aviso.</string>
+    <string name="hostileAircraftIntrusionInstructions">Entre no espaço protegido e permaneça lá até novo aviso.</string>
     <string name="earthQuakeInstructions">Saia imediatamente para uma área aberta. Se não for possível, entre na sala protegida ou na escada</string>
-    <string name="earlyWarningInstructions">Um alerta é esperado nos próximos minutos. Você precisa encontrar um local melhor que ofereça a melhor proteção na sua área. Se receber um alerta, entre no espaço protegido e permaneça lá por 10 minutos.</string>
+    <string name="earlyWarningInstructions">Um alerta é esperado nos próximos minutos. Você precisa encontrar um espaço protegido que ofereça a melhor proteção em sua área. Se receber um alerta, entre no espaço protegido e permaneça lá até novo aviso.</string>
     <string name="leaveShelterInstructions">Agora você pode sair do abrigo.</string>
     <string name="radiologicalEventInstructions">Entre em um edifício feche as portas e janelas.</string>
     <string name="terroristInfiltrationInstructions">Entre imediatamente em um prédio próximo, tranque as portas e feche as janelas.</string>
