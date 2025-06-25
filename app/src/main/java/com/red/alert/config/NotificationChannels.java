@@ -5,6 +5,12 @@ public class NotificationChannels {
     public static final String PRIMARY_ALERT_NOTIFICATION_CHANNEL_ID = "redalert";
     public static final String PRIMARY_ALERT_NOTIFICATION_CHANNEL_NAME = "Alerts";
 
+    public static final String PRIMARY_ALERT_EARLY_WARNING_NOTIFICATION_CHANNEL_ID = "redalert_early_warnings";
+    public static final String PRIMARY_ALERT_EARLY_WARNING_NOTIFICATION_CHANNEL_NAME = "Early Warnings";
+
+    public static final String PRIMARY_ALERT_LEAVE_SHELTER_NOTIFICATION_CHANNEL_ID = "redalert_leave_shelter";
+    public static final String PRIMARY_ALERT_LEAVE_SHELTER_NOTIFICATION_CHANNEL_NAME = "Leave Shelter Alerts";
+
     // Secondary alerts notification channel config
     public static final String SECONDARY_ALERT_NOTIFICATION_CHANNEL_ID = "redalert_secondary";
     public static final String SECONDARY_ALERT_NOTIFICATION_CHANNEL_NAME = "Secondary Alerts";

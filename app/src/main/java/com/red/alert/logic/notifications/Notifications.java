@@ -202,6 +202,19 @@ public class Notifications {
         if (alertType.equals(AlertTypes.SECONDARY) || alertType.equals(AlertTypes.TEST_SECONDARY_SOUND)) {
             channelId = NotificationChannels.SECONDARY_ALERT_NOTIFICATION_CHANNEL_ID;
         }
+        else {
+            // Threat type defined?
+            if (threatType != null) {
+                // Early Warning
+                if (threatType.equals(ThreatTypes.EARLY_WARNING)) {
+                    channelId = NotificationChannels.PRIMARY_ALERT_EARLY_WARNING_NOTIFICATION_CHANNEL_ID;
+                }
+                // Leave Shelter Alert
+                else if (threatType.equals(ThreatTypes.LEAVE_SHELTER)) {
+                    channelId = NotificationChannels.PRIMARY_ALERT_LEAVE_SHELTER_NOTIFICATION_CHANNEL_ID;
+                }
+            }
+        }
 
         // Using custom sound?
         if (SoundLogic.getAlertSoundName(alertType, threatType, overrideSound, context).equals(Sound.CUSTOM_SOUND_NAME)) {
@@ -239,6 +252,19 @@ public class Notifications {
         // Secondary alert?
         if (alertType.equals(AlertTypes.SECONDARY) || alertType.equals(AlertTypes.TEST_SECONDARY_SOUND)) {
             channelName = NotificationChannels.SECONDARY_ALERT_NOTIFICATION_CHANNEL_NAME;
+        }
+        else {
+            // Threat type defined?
+            if (threatType != null) {
+                // Early Warning
+                if (threatType.equals(ThreatTypes.EARLY_WARNING)) {
+                    channelName = NotificationChannels.PRIMARY_ALERT_EARLY_WARNING_NOTIFICATION_CHANNEL_NAME;
+                }
+                // Leave Shelter Alert
+                else if (threatType.equals(ThreatTypes.LEAVE_SHELTER)) {
+                    channelName = NotificationChannels.PRIMARY_ALERT_LEAVE_SHELTER_NOTIFICATION_CHANNEL_NAME;
+                }
+            }
         }
 
         // Initialize channel (set high importance)

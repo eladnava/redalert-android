@@ -15,6 +15,7 @@ import android.util.AttributeSet;
 import com.red.alert.R;
 import com.red.alert.activities.settings.alerts.SecondaryAlerts;
 import com.red.alert.config.Sound;
+import com.red.alert.config.ThreatTypes;
 import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.feedback.sound.SoundLogic;
 import com.red.alert.logic.notifications.Notifications;
@@ -84,11 +85,27 @@ public class SoundListPreference extends ListPreference {
                         // Determine channel ID (primary/secondary)
                         final String alertSoundType = getKey().equals(mContext.getString(R.string.secondarySoundPref)) ? AlertTypes.SECONDARY : AlertTypes.PRIMARY;
 
+                        // Determine threat type (primary/seconcdary)
+                        String soundThreatType = (mContext.getClass().getName().equals(SecondaryAlerts.class.getName())) ? AlertTypes.TEST_SECONDARY_SOUND : AlertTypes.TEST_SOUND;
+
+                        // Early Warning sound selection?
+                        if (getKey().equals(mContext.getString(R.string.earlyWarningsSoundPref))) {
+                            soundThreatType = ThreatTypes.EARLY_WARNING;
+                        }
+
+                        // Leave Shelter sound selection?
+                        if (getKey().equals(mContext.getString(R.string.leaveShelterAlertsSoundPref))) {
+                            soundThreatType = ThreatTypes.LEAVE_SHELTER;
+                        }
+
+                        // Convert to final
+                        final String alertThreatType = soundThreatType;
+
                         // Custom sound option selected?
                         if (path.equals(Sound.CUSTOM_SOUND_NAME)) {
                             // Delete (hide) old notification channel
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                notificationManager.deleteNotificationChannel(Notifications.getNotificationChannelId(alertSoundType, null, "alarm1", mContext));
+                                notificationManager.deleteNotificationChannel(Notifications.getNotificationChannelId(alertSoundType, alertThreatType, "alarm1", mContext));
                             }
 
                             // Instruct user how to configure custom sound
@@ -98,10 +115,10 @@ public class SoundListPreference extends ListPreference {
                                     // Clicked okay?
                                     if (which == DialogInterface.BUTTON_POSITIVE) {
                                         // Get channel ID by alert type
-                                        String channelId = Notifications.getNotificationChannelId(alertSoundType, null, Sound.CUSTOM_SOUND_NAME, mContext);
+                                        String channelId = Notifications.getNotificationChannelId(alertSoundType, alertThreatType, Sound.CUSTOM_SOUND_NAME, mContext);
 
                                         // Ensure notification channel created
-                                        Notifications.setNotificationChannel(alertSoundType, null, path, null, mContext);
+                                        Notifications.setNotificationChannel(alertSoundType, alertThreatType, path, null, mContext);
 
                                         // Open notification channel config to allow user to select custom sound
                                         Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
@@ -137,7 +154,7 @@ public class SoundListPreference extends ListPreference {
                             // Selected built-in sound
                             // Delete (hide) custom notification channel
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                notificationManager.deleteNotificationChannel(Notifications.getNotificationChannelId(alertSoundType, null, Sound.CUSTOM_SOUND_NAME, mContext));
+                                notificationManager.deleteNotificationChannel(Notifications.getNotificationChannelId(alertSoundType, alertThreatType, Sound.CUSTOM_SOUND_NAME, mContext));
                             }
                         }
 
@@ -157,7 +174,7 @@ public class SoundListPreference extends ListPreference {
                         SoundLogic.stopSound(mContext);
 
                         // Dispatch test notification
-                        Notifications.notify(mContext, Arrays.asList(new String[]{mContext.getString(R.string.appName)}), testAlertType, testAlertType, path, null);
+                        Notifications.notify(mContext, Arrays.asList(new String[]{mContext.getString(R.string.appName)}), testAlertType, alertThreatType, path, null);
                     }
                 });
 
