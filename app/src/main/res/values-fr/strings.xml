@@ -268,8 +268,11 @@
 
     <!-- Instructions pour les flashs d'information localisés -->
     <string name="stayNearbyShelterInstructions">Rester à proximité de l\'abri</string>
+    <string name="continueStayingInsideShelterInstructions">Continuez à rester à l’intérieur de l’abri de protection</string>
     <string name="endStayNearbyShelterInstructions">Fin de la présence à proximité de l\'abri</string>
     <string name="missileThreatEndInstructions">Tir de roquettes - événement terminé</string>
+    <string name="terroristInfiltrationThreatEndInstructions">Infiltration terroriste – événement terminé – vous pouvez maintenant quitter l’abri</string>
+    <string name="terroristInfiltrationConcernLiftedInstructions">Infiltration terroriste - inquiétude levée</string>
     <string name="hostileAircraftIntrusionThreatEndInstructions">Intrusion aérienne hostile - événement terminé</string>
     <string name="leaveShelterButStayNearbyInstructions">Vous pouvez quitter le refuge mais vous devez rester à proximité</string>
 
