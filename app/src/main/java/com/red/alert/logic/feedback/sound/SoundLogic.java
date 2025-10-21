@@ -319,6 +319,10 @@ public class SoundLogic {
         }
     }
 
+    public static boolean isNoAlarmsOnSilentPolicy() {
+        return android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R && android.os.Build.MANUFACTURER.equalsIgnoreCase("samsung");
+    }
+
     /* Declare custom MediaPlayer class to store alert sound type */
     static class Player extends MediaPlayer {
         String mSoundType;

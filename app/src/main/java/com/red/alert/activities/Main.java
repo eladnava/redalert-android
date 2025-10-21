@@ -34,6 +34,7 @@ import androidx.core.view.MenuItemCompat;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.installations.FirebaseInstallations;
 import com.red.alert.R;
+import com.red.alert.logic.feedback.sound.SoundLogic;
 import com.red.alert.activities.settings.General;
 import com.red.alert.config.Integrations;
 import com.red.alert.config.Logging;
@@ -582,7 +583,7 @@ public class Main extends AppCompatActivity {
 
     void requestDNDAccessPermission() {
         // Check if device is Samsung and android R version or above.
-        if(android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.R || !android.os.Build.MANUFACTURER.equalsIgnoreCase("samsung")){
+        if(!SoundLogic.isNoAlarmsOnSilentPolicy()){
             return;
         }
 
