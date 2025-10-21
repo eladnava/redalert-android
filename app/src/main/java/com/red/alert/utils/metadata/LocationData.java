@@ -712,6 +712,15 @@ public class LocationData {
 
         // Get localized instructions using known strings
         switch (instructions) {
+            case "חדירת מחבלים - החשש הוסר":
+                result = context.getString(R.string.terroristInfiltrationConcernLiftedInstructions);
+                break;
+            case "חדירת מחבלים -  החשש הוסר":
+                result = context.getString(R.string.terroristInfiltrationConcernLiftedInstructions);
+                break;
+            case "הסתיים אירוע חדירת מחבלים - ניתן לצאת מהבתים":
+                result = context.getString(R.string.terroristInfiltrationThreatEndInstructions);
+                break;
             case "חדירת כלי טיס עוין - האירוע הסתיים":
                 result = context.getString(R.string.hostileAircraftIntrusionThreatEndInstructions);
                 break;
@@ -729,6 +738,9 @@ public class LocationData {
                 break;
             case "שהייה בסמיכות למרחב מוגן":
                 result = context.getString(R.string.stayNearbyShelterInstructions);
+                break;
+            case "יש להמשיך לשהות במרחב המוגן":
+                result = context.getString(R.string.continueStayingInsideShelterInstructions);
                 break;
             case "סיום שהייה בסמיכות למרחב המוגן":
                 result = context.getString(R.string.endStayNearbyShelterInstructions);
