@@ -25,6 +25,10 @@ public class SoundLogic {
     // Use Collections.synchronizedList to avoid ConcurrentModificationException
     static List<Player> mPlayers = Collections.synchronizedList(new ArrayList());
 
+    static int previousRingerMode;
+
+    static boolean ringerModeChanged = false;
+
     public static boolean shouldPlayAlertSound(String alertType, Context context) {
         // No type?
         if (StringUtils.stringIsNullOrEmpty(alertType)) {
@@ -317,6 +321,38 @@ public class SoundLogic {
             // Add player to list of players
             mPlayers.add(player);
         }
+    }
+
+    public static void setRingerMode(String alertType, final Context context){
+        // is sound managed by the system?
+        if (!shouldPlayAlertSound(alertType, context)) {
+            return;
+        }
+
+        if(!isNoAlarmsOnSilentPolicy()){
+            return;
+        }
+
+        AudioManager am = (AudioManager) context.getSystemService(context.AUDIO_SERVICE);
+
+        // save current ringer mode
+        previousRingerMode = am.getRingerMode();
+
+        am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+        ringerModeChanged = true;
+    }
+
+    public static void restoreRingerMode(Context context){
+        // check if ringer mode was changed
+        if(!ringerModeChanged){
+            return;
+        }
+
+        AudioManager am = (AudioManager) context.getSystemService(context.AUDIO_SERVICE);
+
+        // restore previous ringer mode
+        am.setRingerMode(previousRingerMode);
+        ringerModeChanged = false;
     }
 
     public static boolean isNoAlarmsOnSilentPolicy() {

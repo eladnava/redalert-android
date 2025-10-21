@@ -141,6 +141,9 @@ public class Notifications {
         // Configure notification channel (if required)
         setNotificationChannel(alertType, threatType, overrideSound, builder, context);
 
+        // Set ringer mode to normal if needed.
+        SoundLogic.setRingerMode(alertType, context);
+
         try {
             // Issue the notification
             notificationManager.notify(notificationId, builder.build());
