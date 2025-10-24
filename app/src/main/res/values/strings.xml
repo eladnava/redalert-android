@@ -211,6 +211,7 @@
     <string name="apiRequestFailed">ארעה שגיאת תקשורת בטעינת נתונים מהשרת. בדוק את החיבור לאינטרנט ונסה שנית.</string>
     <string name="registrationFailed">ההרשמה לשירות העדכונים נכשלה. אנא נסה מאוחר יותר.</string>
     <string name="grantNotificationPermission">יש לאפשר קבלת התראות מהאפליקציה במסך הבא.</string>
+    <string name="grantByPassDNDPermission">יש לאפשר קבלת התראות במצב \"לא להפריע\" מהאפליקציה במסך הבא.</string>
     <string name="citySelectionLimitError">לא ניתן לבחור יותר מ-100 יישובים.</string>
 
     <!-- Success Messages -->

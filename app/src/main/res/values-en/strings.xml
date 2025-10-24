@@ -11,6 +11,7 @@
     <string name="apiRequestFailed">A request to retrieve information from our servers failed. Please check your Internet connection and try again.</string>
     <string name="registrationFailed">Registration failed, please try again later.</string>
     <string name="grantNotificationPermission">Please enable \"Notifications\" on the next screen to receive alerts in real time.</string>
+    <string name="grantByPassDNDPermission">Please enable \"Bypass Do Not Disturb\" on the next screen to receive in do not disturb and silent mode.</string>
     <string name="citySelectionLimitError">Please do not select more than 100 cities.</string>
     <string name="settings">Settings</string>
     <string name="advanced">Advanced</string>

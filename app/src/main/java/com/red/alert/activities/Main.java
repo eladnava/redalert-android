@@ -1,6 +1,7 @@
 package com.red.alert.activities;
 
 import android.app.AlarmManager;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -33,6 +34,7 @@ import androidx.core.view.MenuItemCompat;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.installations.FirebaseInstallations;
 import com.red.alert.R;
+import com.red.alert.logic.feedback.sound.SoundLogic;
 import com.red.alert.activities.settings.General;
 import com.red.alert.config.Integrations;
 import com.red.alert.config.Logging;
@@ -338,6 +340,9 @@ public class Main extends AppCompatActivity {
         // Ask user to grant app overlay permission if revoked
         showAlertPopupPermissionDialog();
 
+        // Ask user to grant DND access permission
+        requestDNDAccessPermission();
+
         // Check for app version updates
         showAppUpdateAvailableDialog();
 
@@ -572,6 +577,39 @@ public class Main extends AppCompatActivity {
                     // Bring user to relevant settings activity to grant the app overlay permission
                     startActivity(new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName())));
                 }
+            }
+        });
+    }
+
+    void requestDNDAccessPermission() {
+        // Check if device is Samsung and android R version or above.
+        if(!SoundLogic.isNoAlarmsOnSilentPolicy()){
+            return;
+        }
+
+        // Checks if ByPassDND permission already granted
+        NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        boolean isDNDAccessGranted = nm.isNotificationPolicyAccessGranted();
+
+        if(isDNDAccessGranted){
+           return;
+        }
+
+        // Already displayed a permission dialog for this activity?
+        if (mPermissionDialogDisplayed) {
+            return;
+        }
+
+        // Prevent other dialogs from being displayed
+        mPermissionDialogDisplayed = true;
+
+        // Show error with an on-click listener that opens the ByPassDND menu.
+        AlertDialogBuilder.showGenericDialog(getString(R.string.error), getString(R.string.grantByPassDNDPermission), getString(R.string.okay), null, false, Main.this, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Open DND permissions page
+                Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+                startActivity(intent);
             }
         });
     }
