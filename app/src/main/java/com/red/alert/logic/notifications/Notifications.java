@@ -141,8 +141,8 @@ public class Notifications {
         // Configure notification channel (if required)
         setNotificationChannel(alertType, threatType, overrideSound, builder, context);
 
-        // Set ringer mode to normal if needed.
-        SoundLogic.setRingerMode(alertType, context);
+        // Set ringer mode to normal (Samsung Android 11+ devices)
+        SoundLogic.overrideSilentRingerMode(alertType, context);
 
         try {
             // Issue the notification

@@ -1,10 +1,12 @@
 package com.red.alert.logic.feedback.sound;
 
+import android.app.NotificationManager;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.PowerManager;
 import android.util.Log;
 
@@ -25,9 +27,8 @@ public class SoundLogic {
     // Use Collections.synchronizedList to avoid ConcurrentModificationException
     static List<Player> mPlayers = Collections.synchronizedList(new ArrayList());
 
-    static int previousRingerMode;
-
-    static boolean ringerModeChanged = false;
+    static int mPreviousRingerMode;
+    static boolean mRingerModeChanged;
 
     public static boolean shouldPlayAlertSound(String alertType, Context context) {
         // No type?
@@ -278,6 +279,9 @@ public class SoundLogic {
 
         // Stop vibration
         VibrationLogic.stopVibration(context);
+
+        // Restore ringer mode if necessary
+        SoundLogic.restoreRingerModeIfOverridden(context);
     }
 
     static void playSoundURI(Uri alarmSoundUi, String soundType, Context context) {
@@ -323,40 +327,67 @@ public class SoundLogic {
         }
     }
 
-    public static void setRingerMode(String alertType, final Context context){
-        // is sound managed by the system?
+    public static void overrideSilentRingerMode(String alertType, final Context context){
+        // Check if sound needs to be played for this alert type
         if (!shouldPlayAlertSound(alertType, context)) {
             return;
         }
 
-        if(!isNoAlarmsOnSilentPolicy()){
+        // Check if device is Samsung and Android R or above
+        if (!isSamsungDeviceRequiringSilentModeOverride()){
             return;
         }
 
-        AudioManager am = (AudioManager) context.getSystemService(context.AUDIO_SERVICE);
-
-        // save current ringer mode
-        previousRingerMode = am.getRingerMode();
-
-        am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
-        ringerModeChanged = true;
-    }
-
-    public static void restoreRingerMode(Context context){
-        // check if ringer mode was changed
-        if(!ringerModeChanged){
+        // Android R (11) and up only
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
             return;
         }
 
-        AudioManager am = (AudioManager) context.getSystemService(context.AUDIO_SERVICE);
+        // Get instance of NotificationManager
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        // restore previous ringer mode
-        am.setRingerMode(previousRingerMode);
-        ringerModeChanged = false;
+        // Checks if notification policy access permission has not been granted (can't modify ringer mode otherwise)
+        if (!notificationManager.isNotificationPolicyAccessGranted()){
+            return;
+        }
+
+        // Get audio manager instance
+        AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+
+        // Ringer mode is already set to normal?
+        if (audioManager.getRingerMode() == AudioManager.RINGER_MODE_NORMAL) {
+            // Nothing to do here
+            return;
+        }
+
+        // Save current ringer mode (silent/vibrate) for later
+        mPreviousRingerMode = audioManager.getRingerMode();
+
+        // Set ringer mode to normal
+        audioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+
+        // Restore it later
+        mRingerModeChanged = true;
     }
 
-    public static boolean isNoAlarmsOnSilentPolicy() {
-        return android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R && android.os.Build.MANUFACTURER.equalsIgnoreCase("samsung");
+    public static void restoreRingerModeIfOverridden(Context context){
+        // Check if ringer mode was changed
+        if (!mRingerModeChanged){
+            return;
+        }
+
+        // Get instance of audio manager
+        AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+
+        // Restore previous ringer mode
+        audioManager.setRingerMode(mPreviousRingerMode);
+
+        // Reset flag
+        mRingerModeChanged = false;
+    }
+
+    public static boolean isSamsungDeviceRequiringSilentModeOverride() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && Build.MANUFACTURER.equalsIgnoreCase("samsung");
     }
 
     /* Declare custom MediaPlayer class to store alert sound type */

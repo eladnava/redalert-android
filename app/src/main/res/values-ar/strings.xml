@@ -195,6 +195,10 @@
     <string name="allowSettingExactAlarms">السماح بإعداد التنبيهات والتذكيرات</string>
     <string name="allowSettingExactAlarmsInstructions">لتلقي الإشعارات في الخلفية، يرجى السماح بتعيين التنبيهات والتذكيرات في الشاشة التالية.</string>
 
+    <!-- Grant Notification Policy Access Permission -->
+    <string name="notificationPolicyAccessPermission">استلام التنبيهات في وضع عدم الإزعاج</string>
+    <string name="notificationPolicyAccessPermissionInstructions">للحصول على التنبيهات أثناء وضع عدم الإزعاج، اضغط على "RedAlert" -> "السماح بالوصول إلى الأوضاع" في الشاشة التالية.</string>
+
     <!-- خدمة مقدمة انتهازية -->
     <string name="foregroundService">تحسين الموثوقية</string>
     <string name="foregroundServiceDesc">عرض إشعار مستمر يمنع ذكري المظهر من إنهاء التطبيق في الخلفية</string>

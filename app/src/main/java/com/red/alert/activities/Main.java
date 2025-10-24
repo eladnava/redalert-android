@@ -34,6 +34,7 @@ import androidx.core.view.MenuItemCompat;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.installations.FirebaseInstallations;
 import com.red.alert.R;
+import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.feedback.sound.SoundLogic;
 import com.red.alert.activities.settings.General;
 import com.red.alert.config.Integrations;
@@ -340,8 +341,9 @@ public class Main extends AppCompatActivity {
         // Ask user to grant app overlay permission if revoked
         showAlertPopupPermissionDialog();
 
-        // Ask user to grant DND access permission
-        requestDNDAccessPermission();
+        // Samsung, Android 11+
+        // Ask user to grant notification policy access permission
+        showNotificationPolicyAccessPermissionDialog();
 
         // Check for app version updates
         showAppUpdateAvailableDialog();
@@ -581,18 +583,38 @@ public class Main extends AppCompatActivity {
         });
     }
 
-    void requestDNDAccessPermission() {
-        // Check if device is Samsung and android R version or above.
-        if(!SoundLogic.isNoAlarmsOnSilentPolicy()){
+    void showNotificationPolicyAccessPermissionDialog() {
+        // Android R (11) and up only
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
             return;
         }
 
-        // Checks if ByPassDND permission already granted
-        NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        boolean isDNDAccessGranted = nm.isNotificationPolicyAccessGranted();
+        // Check if device is Samsung and Android R or above
+        if (!SoundLogic.isSamsungDeviceRequiringSilentModeOverride()) {
+            return;
+        }
 
-        if(isDNDAccessGranted){
-           return;
+        // Check if user wants us to override silent mode for either primary or secondary alerts
+        if (!SoundLogic.shouldOverrideSilentMode(AlertTypes.PRIMARY, this) && !SoundLogic.shouldOverrideSilentMode(AlertTypes.SECONDARY, this)) {
+            return;
+        }
+
+        // Haven't displayed tutorial?
+        if (!AppPreferences.getTutorialDisplayed(this)) {
+            return;
+        }
+
+        // Haven't registered for notifications?
+        if (!FCMRegistration.isRegistered(this) || !PushyRegistration.isRegistered(this)) {
+            return;
+        }
+
+        // Get instance of NotificationManager
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        // Checks if notification policy access permission already granted
+        if (notificationManager.isNotificationPolicyAccessGranted()){
+            return;
         }
 
         // Already displayed a permission dialog for this activity?
@@ -603,13 +625,15 @@ public class Main extends AppCompatActivity {
         // Prevent other dialogs from being displayed
         mPermissionDialogDisplayed = true;
 
-        // Show error with an on-click listener that opens the ByPassDND menu.
-        AlertDialogBuilder.showGenericDialog(getString(R.string.error), getString(R.string.grantByPassDNDPermission), getString(R.string.okay), null, false, Main.this, new DialogInterface.OnClickListener() {
+        // Show permission request dialog
+        AlertDialogBuilder.showGenericDialog(getString(R.string.notificationPolicyAccessPermission), getString(R.string.notificationPolicyAccessPermissionInstructions), getString(R.string.okay), getString(R.string.notNow), true, this, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // Open DND permissions page
-                Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
-                startActivity(intent);
+            public void onClick(DialogInterface dialogInterface, int which) {
+                // Clicked okay?
+                if (which == DialogInterface.BUTTON_POSITIVE) {
+                    // Bring user to relevant settings activity to grant the notification policy access permission
+                    startActivity(new Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS));
+                }
             }
         });
     }

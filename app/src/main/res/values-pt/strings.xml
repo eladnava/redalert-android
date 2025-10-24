@@ -195,6 +195,10 @@
     <string name="allowSettingExactAlarms">Alarmes e lembretes com configuração baixa</string>
     <string name="allowSettingExactAlarmsInstructions">Para receber notificações em segundo plano, permita a configuração de alarmes e lembretes no ecrã seguinte.</string>
 
+    <!-- Grant Notification Policy Access Permission -->
+    <string name="notificationPolicyAccessPermission">Receber alertas no modo Não Perturbe</string>
+    <string name="notificationPolicyAccessPermissionInstructions">Para receber alertas no modo Não Perturbe, toque em \"RedAlert\" -> \"Permitir acesso aos modos\" na próxima tela.</string>
+
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Melhorar confiabilidade</string>
     <string name="foregroundServiceDesc">Exibir uma notificação persistente que impedirá o Android de encerrar o aplicativo em segundo plano</string>

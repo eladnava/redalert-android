@@ -195,6 +195,10 @@
     <string name="allowSettingExactAlarms">Autoriser le réglage des alarmes et des rappels</string>
     <string name="allowSettingExactAlarmsInstructions">Pour recevoir des notifications en arrière-plan, veuillez autoriser le réglage des alarmes et des rappels dans l\'écran suivant.</string>
 
+    <!-- Grant Notification Policy Access Permission -->
+    <string name="notificationPolicyAccessPermission">Recevoir des alertes en mode Ne pas déranger</string>
+    <string name="notificationPolicyAccessPermissionInstructions">Pour recevoir des alertes en mode Ne pas déranger, touchez \"RedAlert\" -> \"Autoriser l\’accès aux modes\" sur l\’écran suivant.</string>
+
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Améliorer la fiabilité</string>
     <string name="foregroundServiceDesc">Affichez une notification en cours qui empêchera Android de supprimer l\'application en arrière-plan</string>

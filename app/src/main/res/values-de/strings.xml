@@ -195,6 +195,10 @@
     <string name="allowSettingExactAlarms">Erlaubt das Einstellen von Alarmen und Erinnerungen</string>
     <string name="allowSettingExactAlarmsInstructions">Um Benachrichtigungen im Hintergrund zu erhalten, erlauben Sie im nächsten Bildschirm bitte das Einstellen von Alarmen und Erinnerungen.</string>
 
+    <!-- Grant Notification Policy Access Permission -->
+    <string name="notificationPolicyAccessPermission">Benachrichtigungen im \"Nicht stören\"-Modus empfangen</string>
+    <string name="notificationPolicyAccessPermissionInstructions">Um im \"icht stören\"-Modus Benachrichtigungen zu erhalten, tippen Sie auf \"RedAlert\" -> \"Zugriff auf Modi erlauben\" auf dem nächsten Bildschirm.</string>
+
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Verbessern Sie die Zuverlässigkeit</string>
     <string name="foregroundServiceDesc">Zeigt eine fortlaufende Benachrichtigung an, die verhindert, dass Android die App im Hintergrund beendet</string>

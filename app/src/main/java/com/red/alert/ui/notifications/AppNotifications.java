@@ -15,8 +15,5 @@ public class AppNotifications {
 
         // Stop alert sound if playing
         SoundLogic.stopSound(context);
-
-        // restore ringer mode if necessary
-        SoundLogic.restoreRingerMode(context);
     }
 }

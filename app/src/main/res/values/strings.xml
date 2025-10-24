@@ -211,7 +211,6 @@
     <string name="apiRequestFailed">ארעה שגיאת תקשורת בטעינת נתונים מהשרת. בדוק את החיבור לאינטרנט ונסה שנית.</string>
     <string name="registrationFailed">ההרשמה לשירות העדכונים נכשלה. אנא נסה מאוחר יותר.</string>
     <string name="grantNotificationPermission">יש לאפשר קבלת התראות מהאפליקציה במסך הבא.</string>
-    <string name="grantByPassDNDPermission">יש לאפשר קבלת התראות במצב \"לא להפריע\" מהאפליקציה במסך הבא.</string>
     <string name="citySelectionLimitError">לא ניתן לבחור יותר מ-100 יישובים.</string>
 
     <!-- Success Messages -->
@@ -263,6 +262,10 @@
     <!-- Schedule Exact Alarms -->
     <string name="allowSettingExactAlarms">אשר הגדרת שעונים מעוררים ותזכורות</string>
     <string name="allowSettingExactAlarmsInstructions">כדי לקבל התרעות צבע אדום בזמן אמת, אשר/י ״הגדרת שעונים מעוררים ותזכורות״ במסך הבא.</string>
+
+    <!-- Grant Notification Policy Access Permission -->
+    <string name="notificationPolicyAccessPermission">קבלת התרעות במצב ״נא לא להפריע״</string>
+    <string name="notificationPolicyAccessPermissionInstructions">כדי לקבל התרעות במצב ״נא לא להפריע״, בחר/י ״צבע אדום״ -> ״מתן גישה למצבים״ במסך הבא.</string>
 
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">שפר אמינות</string>

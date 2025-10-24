@@ -242,6 +242,10 @@
     <string name="allowSettingExactAlarms">Permitir configurar alarmas y recordatorios</string>
     <string name="allowSettingExactAlarmsInstructions">Para recibir notificaciones en segundo plano, permita configurar alarmas y recordatorios en la siguiente pantalla.</string>
 
+    <!-- Grant Notification Policy Access Permission -->
+    <string name="notificationPolicyAccessPermission">Recibir alertas en modo No Molestar</string>
+    <string name="notificationPolicyAccessPermissionInstructions">Para recibir alertas en modo No Molestar, toque en \"RedAlert\" -> \"Permitir acceso a los modos\" en la siguiente pantalla.</string>
+
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Mejorar la confiabilidad</string>
     <string name="foregroundServiceDesc">Muestra una notificación continua que evitará que Android cierre la aplicación en segundo plano</string>
