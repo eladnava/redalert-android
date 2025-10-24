@@ -34,6 +34,7 @@ import androidx.core.view.MenuItemCompat;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.installations.FirebaseInstallations;
 import com.red.alert.R;
+import com.red.alert.config.Sound;
 import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.feedback.sound.SoundLogic;
 import com.red.alert.activities.settings.General;
@@ -343,6 +344,7 @@ public class Main extends AppCompatActivity {
 
         // Samsung, Android 11+
         // Ask user to grant notification policy access permission
+        // In case custom sound selected
         showNotificationPolicyAccessPermissionDialog();
 
         // Check for app version updates
@@ -596,6 +598,17 @@ public class Main extends AppCompatActivity {
 
         // Check if user wants us to override silent mode for either primary or secondary alerts
         if (!SoundLogic.shouldOverrideSilentMode(AlertTypes.PRIMARY, this) && !SoundLogic.shouldOverrideSilentMode(AlertTypes.SECONDARY, this)) {
+            return;
+        }
+
+        // Check if custom sound configured
+        String alertSoundName = SoundLogic.getAlertSoundName(AlertTypes.PRIMARY, ThreatTypes.MISSILES, null, this);
+        String earlyWarningSoundName = SoundLogic.getAlertSoundName(AlertTypes.PRIMARY, ThreatTypes.EARLY_WARNING, null, this);
+        String leaveShelterSoundName = SoundLogic.getAlertSoundName(AlertTypes.PRIMARY, ThreatTypes.LEAVE_SHELTER, null, this);
+        String secondarySoundName = SoundLogic.getAlertSoundName(AlertTypes.SECONDARY, ThreatTypes.MISSILES, null, this);
+
+        // No custom sound selected for any alert sound preference?
+        if (!alertSoundName.equals(Sound.CUSTOM_SOUND_NAME) && !earlyWarningSoundName.equals(Sound.CUSTOM_SOUND_NAME) && !leaveShelterSoundName.equals(Sound.CUSTOM_SOUND_NAME) && !secondarySoundName.equals(Sound.CUSTOM_SOUND_NAME)) {
             return;
         }
 
