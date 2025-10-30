@@ -217,7 +217,7 @@ public class Advanced extends AppCompatPreferenceActivity {
             public boolean onPreferenceChange(Preference preference, Object value) {
                 // Cached Apps Freezer compatibility
                 // Force foreground service for Google Pixel devices (Android 15+)
-                if (Build.MANUFACTURER.toLowerCase().contains("google") && Build.MODEL.toLowerCase().contains("pixel") && Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                if (Build.MANUFACTURER.toLowerCase().contains("google") && Build.MODEL.toLowerCase().contains("pixel") && Build.VERSION.SDK_INT >= 35) {
                     // Show foreground service dialog
                     showForegroundServiceDialog();
 

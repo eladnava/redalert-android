@@ -160,7 +160,7 @@ public class Main extends AppCompatActivity {
 
     void forceForegroundServiceOnPixelDevices() {
         // Only for Google Pixel devices (Android 15+)
-        if (!Build.MANUFACTURER.toLowerCase().contains("google") || !Build.MODEL.toLowerCase().contains("pixel") || Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+        if (!Build.MANUFACTURER.toLowerCase().contains("google") || !Build.MODEL.toLowerCase().contains("pixel") || Build.VERSION.SDK_INT < 35) {
             return;
         }
 
@@ -676,7 +676,7 @@ public class Main extends AppCompatActivity {
     }
     void showForcedForegroundServiceDialog() {
         // Only for Google Pixel devices (Android 15+)
-        if (!Build.MANUFACTURER.toLowerCase().contains("google") || !Build.MODEL.toLowerCase().contains("pixel") || Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+        if (!Build.MANUFACTURER.toLowerCase().contains("google") || !Build.MODEL.toLowerCase().contains("pixel") || Build.VERSION.SDK_INT < 35) {
             return;
         }
 
