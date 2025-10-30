@@ -215,6 +215,16 @@ public class Advanced extends AppCompatPreferenceActivity {
         mForegroundService.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object value) {
+                // Cached Apps Freezer compatibility
+                // Force foreground service for Google Pixel devices (Android 15+)
+                if (Build.MANUFACTURER.toLowerCase().contains("google") && Build.MODEL.toLowerCase().contains("pixel") && Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                    // Show foreground service dialog
+                    showForegroundServiceDialog();
+
+                    // Toggling off not allowed
+                    return false;
+                }
+
                 // Stop existing service
                 PushyServiceManager.stop(Advanced.this);
 
@@ -232,47 +242,8 @@ public class Advanced extends AppCompatPreferenceActivity {
 
                 // Enabled?
                 if ((boolean)value == true) {
-                    // Android O and newer required for notification channels
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        // Show dialog instructing user on how to hide the Pushy foreground service notification
-                        AlertDialogBuilder.showGenericDialog(getString(R.string.hidePushyForegroundNotification), getString(R.string.hidePushyForegroundNotificationInstructions), getString(R.string.okay), getString(R.string.notNow), true, Advanced.this, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int which) {
-                                // Clicked okay?
-                                if (which == DialogInterface.BUTTON_POSITIVE) {
-                                    // Background thread
-                                    new Thread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            // Get notification manager
-                                            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-
-                                            // Wait some time for notification channel to be created
-                                            while (notificationManager.getNotificationChannel(PushyForegroundService.FOREGROUND_NOTIFICATION_CHANNEL) == null) {
-                                                try {
-                                                    Thread.sleep(200);
-                                                }
-                                                catch (Exception exc) {
-                                                    // Ignore exceptions
-                                                }
-                                            }
-
-                                            // Activity destroyed?
-                                            if (isDestroyed() || isFinishing()) {
-                                                return;
-                                            }
-
-                                            // Open notification channel config to allow user to easily disable the notification channel
-                                            Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
-                                            intent.putExtra(Settings.EXTRA_CHANNEL_ID, PushyForegroundService.FOREGROUND_NOTIFICATION_CHANNEL);
-                                            intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
-                                            startActivity(intent);
-                                        }
-                                    }).start();
-                                }
-                            }
-                        });
-                    }
+                    // Show foreground service dialog
+                    showForegroundServiceDialog();
                 }
 
                 // Tell Android to persist new checkbox value
@@ -290,6 +261,50 @@ public class Advanced extends AppCompatPreferenceActivity {
         }
 
         return super.onOptionsItemSelected(Item);
+    }
+
+    void showForegroundServiceDialog() {
+        // Android O and newer required for notification channels
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Show dialog instructing user on how to hide the Pushy foreground service notification
+            AlertDialogBuilder.showGenericDialog(getString(R.string.hidePushyForegroundNotification), getString(R.string.hidePushyForegroundNotificationInstructions), getString(R.string.okay), getString(R.string.notNow), true, Advanced.this, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int which) {
+                    // Clicked okay?
+                    if (which == DialogInterface.BUTTON_POSITIVE) {
+                        // Background thread
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                // Get notification manager
+                                NotificationManager notificationManager = getSystemService(NotificationManager.class);
+
+                                // Wait some time for notification channel to be created
+                                while (notificationManager.getNotificationChannel(PushyForegroundService.FOREGROUND_NOTIFICATION_CHANNEL) == null) {
+                                    try {
+                                        Thread.sleep(200);
+                                    }
+                                    catch (Exception exc) {
+                                        // Ignore exceptions
+                                    }
+                                }
+
+                                // Activity destroyed?
+                                if (isDestroyed() || isFinishing()) {
+                                    return;
+                                }
+
+                                // Open notification channel config to allow user to easily disable the notification channel
+                                Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+                                intent.putExtra(Settings.EXTRA_CHANNEL_ID, PushyForegroundService.FOREGROUND_NOTIFICATION_CHANNEL);
+                                intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+                                startActivity(intent);
+                            }
+                        }).start();
+                    }
+                }
+            });
+        }
     }
 
     @Override

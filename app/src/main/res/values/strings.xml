@@ -415,6 +415,7 @@
     <string translatable="false" name="mainSettingsScreen">main_settings</string>
     <string translatable="false" name="mainCategoryPref">main_category</string>
     <string translatable="false" name="batteryOptimizationPref">battery_optimization</string>
+    <string translatable="false" name="forcedForegroundServiceDialogShown">forced_foreground_service_dialog_shown</string>
     <string translatable="false" name="batteryOptimizationCategory">battery_optimization_category</string>
     <string translatable="false" name="selectedCitiesPref">selected_cities</string>
     <string translatable="false" name="secondaryPref">secondary</string>

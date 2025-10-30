@@ -34,6 +34,7 @@ import androidx.core.view.MenuItemCompat;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.installations.FirebaseInstallations;
 import com.red.alert.R;
+import com.red.alert.activities.settings.Advanced;
 import com.red.alert.config.Sound;
 import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.feedback.sound.SoundLogic;
@@ -83,6 +84,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import me.pushy.sdk.Pushy;
+import me.pushy.sdk.config.PushyForegroundService;
 import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 import me.pushy.sdk.util.PushyAuthentication;
 
@@ -150,6 +152,23 @@ public class Main extends AppCompatActivity {
 
         // Handle notification click event (show alert popup)
         handleNotificationClick(getIntent());
+
+        // Cached Apps Freezer compatibility
+        // Force foreground service on Google Pixel devices (Android 15+)
+        forceForegroundServiceOnPixelDevices();
+    }
+
+    void forceForegroundServiceOnPixelDevices() {
+        // Only for Google Pixel devices (Android 15+)
+        if (!Build.MANUFACTURER.toLowerCase().contains("google") || !Build.MODEL.toLowerCase().contains("pixel") || Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            return;
+        }
+
+        // Foreground service not enabled yet?
+        if (!AppPreferences.getForegroundServiceEnabled(this)) {
+            // Force enable the foreground service
+            Singleton.getSharedPreferences(this).edit().putBoolean(getString(R.string.foregroundServicePref), true).commit();
+        }
     }
 
     void showAppUpdateAvailableDialog() {
@@ -346,6 +365,11 @@ public class Main extends AppCompatActivity {
         // Ask user to grant notification policy access permission
         // In case custom sound selected
         showNotificationPolicyAccessPermissionDialog();
+
+        // Google Pixel, Android 15+
+        // Cached Apps Freezer compatibility
+        // Notify user about forced foreground service
+        showForcedForegroundServiceDialog();
 
         // Check for app version updates
         showAppUpdateAvailableDialog();
@@ -649,6 +673,77 @@ public class Main extends AppCompatActivity {
                 }
             }
         });
+    }
+    void showForcedForegroundServiceDialog() {
+        // Only for Google Pixel devices (Android 15+)
+        if (!Build.MANUFACTURER.toLowerCase().contains("google") || !Build.MODEL.toLowerCase().contains("pixel") || Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            return;
+        }
+
+        // Haven't displayed tutorial?
+        if (!AppPreferences.getTutorialDisplayed(this)) {
+            return;
+        }
+
+        // Haven't registered for notifications?
+        if (!FCMRegistration.isRegistered(this) || !PushyRegistration.isRegistered(this)) {
+            return;
+        }
+
+        // Already displayed this exact dialog?
+        if (Singleton.getSharedPreferences(this).getBoolean(getString(R.string.forcedForegroundServiceDialogShown), false)) {
+            return;
+        }
+
+        // Already displayed a permission dialog for this activity?
+        if (mPermissionDialogDisplayed) {
+            return;
+        }
+
+        // Prevent other dialogs from being displayed
+        mPermissionDialogDisplayed = true;
+
+        // Show dialog instructing user on how to hide the Pushy foreground service notification
+        AlertDialogBuilder.showGenericDialog(getString(R.string.hidePushyForegroundNotification), getString(R.string.hidePushyForegroundNotificationInstructions), getString(R.string.okay), getString(R.string.notNow), true, this, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                // Clicked okay?
+                if (which == DialogInterface.BUTTON_POSITIVE) {
+                    // Background thread
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Get notification manager
+                            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+
+                            // Wait some time for notification channel to be created
+                            while (notificationManager.getNotificationChannel(PushyForegroundService.FOREGROUND_NOTIFICATION_CHANNEL) == null) {
+                                try {
+                                    Thread.sleep(200);
+                                }
+                                catch (Exception exc) {
+                                    // Ignore exceptions
+                                }
+                            }
+
+                            // Activity destroyed?
+                            if (isDestroyed() || isFinishing()) {
+                                return;
+                            }
+
+                            // Open notification channel config to allow user to easily disable the notification channel
+                            Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+                            intent.putExtra(Settings.EXTRA_CHANNEL_ID, PushyForegroundService.FOREGROUND_NOTIFICATION_CHANNEL);
+                            intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+                            startActivity(intent);
+                        }
+                    }).start();
+                }
+            }
+        });
+
+        // Dialog shown
+        Singleton.getSharedPreferences(this).edit().putBoolean(getString(R.string.forcedForegroundServiceDialogShown), true).commit();
     }
 
     void pollRecentAlerts() {
