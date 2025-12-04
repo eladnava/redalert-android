@@ -1,16 +1,18 @@
 package com.red.alert.ui.elements;
 
-import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
-import android.os.Bundle;
-import android.preference.ListPreference;
 import android.provider.Settings;
 import android.util.AttributeSet;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.preference.ListPreference;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import com.red.alert.R;
 import com.red.alert.activities.settings.alerts.SecondaryAlerts;
@@ -28,6 +30,7 @@ import java.util.Arrays;
 
 public class SoundListPreference extends ListPreference {
     static Context mContext;
+    private AlertDialog mDialog;
 
     int mSelectedItem;
     CharSequence[] mEntries;
@@ -41,25 +44,12 @@ public class SoundListPreference extends ListPreference {
     }
 
     @Override
-    public void onDismiss(DialogInterface dialog) {
-        super.onDismiss(dialog);
-
-        // Stop playing sounds
-        AppNotifications.clearAll(mContext);
+    protected void onClick() {
+        // Show custom dialog instead of default
+        showSoundDialog();
     }
 
-    @Override
-    protected void showDialog(Bundle state) {
-        super.showDialog(state);
-
-        // Support for RTL languages
-        RTLSupport.mirrorDialog(getDialog(), mContext);
-    }
-
-    @Override
-    protected void onPrepareDialogBuilder(AlertDialog.Builder builder) {
-        super.onPrepareDialogBuilder(builder);
-
+    private void showSoundDialog() {
         // Get sound names & resource values
         mEntries = getEntries();
         mEntryValues = getEntryValues();
@@ -72,21 +62,31 @@ public class SoundListPreference extends ListPreference {
         // Get currently selected item
         mSelectedItem = getSelectedSoundPosition();
 
+        // Use Material 3 dialog builder
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(mContext);
+
+        builder.setTitle(getTitle());
+
         // Populate dialog with items and set preselected item
         builder.setSingleChoiceItems(mEntries, mSelectedItem,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // Get notification manager
-                        final NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(mContext.NOTIFICATION_SERVICE);
+                        final NotificationManager notificationManager = (NotificationManager) mContext
+                                .getSystemService(mContext.NOTIFICATION_SERVICE);
 
                         // Get path to selected sound
                         final String path = mEntryValues[which].toString();
 
                         // Determine channel ID (primary/secondary)
-                        final String alertSoundType = getKey().equals(mContext.getString(R.string.secondarySoundPref)) ? AlertTypes.SECONDARY : AlertTypes.PRIMARY;
+                        final String alertSoundType = getKey().equals(mContext.getString(R.string.secondarySoundPref))
+                                ? AlertTypes.SECONDARY
+                                : AlertTypes.PRIMARY;
 
                         // Determine threat type (primary/seconcdary)
-                        String soundThreatType = (mContext.getClass().getName().equals(SecondaryAlerts.class.getName())) ? AlertTypes.TEST_SECONDARY_SOUND : AlertTypes.TEST_SOUND;
+                        String soundThreatType = (mContext.getClass().getName().equals(SecondaryAlerts.class.getName()))
+                                ? AlertTypes.TEST_SECONDARY_SOUND
+                                : AlertTypes.TEST_SOUND;
 
                         // Early Warning sound selection?
                         if (getKey().equals(mContext.getString(R.string.earlyWarningsSoundPref))) {
@@ -105,56 +105,67 @@ public class SoundListPreference extends ListPreference {
                         if (path.equals(Sound.CUSTOM_SOUND_NAME)) {
                             // Delete (hide) old notification channel
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                notificationManager.deleteNotificationChannel(Notifications.getNotificationChannelId(alertSoundType, alertThreatType, "alarm1", mContext));
+                                notificationManager.deleteNotificationChannel(Notifications
+                                        .getNotificationChannelId(alertSoundType, alertThreatType, "alarm1", mContext));
                             }
 
                             // Instruct user how to configure custom sound
-                            AlertDialogBuilder.showGenericDialog(mContext.getString(R.string.selectCustomSound), mContext.getString(R.string.selectCustomSoundDesc), mContext.getString(R.string.okay), mContext.getString(R.string.notNow), true, getDialog().getContext(), new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int which) {
-                                    // Clicked okay?
-                                    if (which == DialogInterface.BUTTON_POSITIVE) {
-                                        // Get channel ID by alert type
-                                        String channelId = Notifications.getNotificationChannelId(alertSoundType, alertThreatType, Sound.CUSTOM_SOUND_NAME, mContext);
+                            AlertDialogBuilder.showGenericDialog(mContext.getString(R.string.selectCustomSound),
+                                    mContext.getString(R.string.selectCustomSoundDesc),
+                                    mContext.getString(R.string.okay), mContext.getString(R.string.notNow), true,
+                                    mContext, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int which) {
+                                            // Clicked okay?
+                                            if (which == DialogInterface.BUTTON_POSITIVE) {
+                                                // Get channel ID by alert type
+                                                String channelId = Notifications.getNotificationChannelId(
+                                                        alertSoundType, alertThreatType, Sound.CUSTOM_SOUND_NAME,
+                                                        mContext);
 
-                                        // Ensure notification channel created
-                                        Notifications.setNotificationChannel(alertSoundType, alertThreatType, path, null, mContext);
+                                                // Ensure notification channel created
+                                                Notifications.setNotificationChannel(alertSoundType, alertThreatType,
+                                                        path, null, mContext);
 
-                                        // Open notification channel config to allow user to select custom sound
-                                        Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
-                                        intent.putExtra(Settings.EXTRA_CHANNEL_ID, channelId);
-                                        intent.putExtra(Settings.EXTRA_APP_PACKAGE, mContext.getPackageName());
+                                                // Open notification channel config to allow user to select custom sound
+                                                Intent intent = new Intent(
+                                                        Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+                                                intent.putExtra(Settings.EXTRA_CHANNEL_ID, channelId);
+                                                intent.putExtra(Settings.EXTRA_APP_PACKAGE, mContext.getPackageName());
 
-                                        try {
-                                            mContext.startActivity(intent);
+                                                try {
+                                                    mContext.startActivity(intent);
+                                                } catch (ActivityNotFoundException err) {
+                                                    // On Android 7 and below, there is no option to set custom sound
+                                                    // currently
+                                                    // As there is no notification channel support
+                                                    // Show error dialog
+                                                    AlertDialogBuilder.showGenericDialog(
+                                                            mContext.getString(R.string.error), err.getMessage(),
+                                                            mContext.getString(R.string.okay), null, false, mContext,
+                                                            null);
+                                                }
+
+                                                // Save custom sound selection
+                                                Singleton.getSharedPreferences(mContext).edit()
+                                                        .putString(getKey(), path).commit();
+
+                                                // Dismiss dialog if not null
+                                                if (mDialog != null) {
+                                                    mDialog.dismiss();
+                                                }
+                                            } else {
+                                                // Clicked not now, stop playing custom sound
+                                                AppNotifications.clearAll(mContext);
+                                            }
                                         }
-                                        catch (ActivityNotFoundException err) {
-                                            // On Android 7 and below, there is no option to set custom sound currently
-                                            // As there is no notification channel support
-                                            // Show error dialog
-                                            AlertDialogBuilder.showGenericDialog(mContext.getString(R.string.error), err.getMessage(), mContext.getString(R.string.okay), null, false, mContext, null);
-                                        }
-
-                                        // Save custom sound selection
-                                        Singleton.getSharedPreferences(mContext).edit().putString(getKey(), path).commit();
-
-                                        // Dismiss dialog if not null
-                                        if (getDialog() != null) {
-                                            getDialog().dismiss();
-                                        }
-                                    }
-                                    else {
-                                        // Clicked not now, stop playing custom sound
-                                        AppNotifications.clearAll(mContext);
-                                    }
-                                }
-                            });
-                        }
-                        else {
+                                    });
+                        } else {
                             // Selected built-in sound
                             // Delete (hide) custom notification channel
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                notificationManager.deleteNotificationChannel(Notifications.getNotificationChannelId(alertSoundType, alertThreatType, Sound.CUSTOM_SOUND_NAME, mContext));
+                                notificationManager.deleteNotificationChannel(Notifications.getNotificationChannelId(
+                                        alertSoundType, alertThreatType, Sound.CUSTOM_SOUND_NAME, mContext));
                             }
                         }
 
@@ -174,7 +185,9 @@ public class SoundListPreference extends ListPreference {
                         SoundLogic.stopSound(mContext);
 
                         // Dispatch test notification
-                        Notifications.notify(mContext, Arrays.asList(new String[]{mContext.getString(R.string.appName)}), testAlertType, alertThreatType, path, null);
+                        Notifications.notify(mContext,
+                                Arrays.asList(new String[] { mContext.getString(R.string.appName) }), testAlertType,
+                                alertThreatType, path, null);
                     }
                 });
 
@@ -191,7 +204,31 @@ public class SoundListPreference extends ListPreference {
         });
 
         // Cancel button
-        builder.setNegativeButton(android.R.string.cancel, this);
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Stop playing sounds
+                AppNotifications.clearAll(mContext);
+            }
+        });
+
+        // Set dismiss listener
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                // Stop playing sounds
+                AppNotifications.clearAll(mContext);
+            }
+        });
+
+        // Create dialog
+        mDialog = builder.create();
+
+        // Show it
+        mDialog.show();
+
+        // Support for RTL languages
+        RTLSupport.mirrorDialog(mDialog, mContext);
     }
 
     private int getSelectedSoundPosition() {

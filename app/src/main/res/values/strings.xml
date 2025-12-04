@@ -4,6 +4,8 @@
     <string name="appName">צבע אדום</string>
 
     <!-- Loading Dialog -->
+    <string name="alertLocation">מיקום ההתרעה</string>
+    <string name="alertAt">התרעה ב</string>
     <string name="loading">אנא המתן...</string>
 
     <!-- Registration Dialog -->
@@ -24,6 +26,7 @@
     <!-- Recent Alerts -->
     <string name="noAlerts">אין התרעות\nמהיום האחרון</string>
     <string name="recentAlerts">התרעות אחרונות</string>
+    <string name="map">מפה</string>
 
     <!-- Settings -->
     <string name="settings">הגדרות</string>

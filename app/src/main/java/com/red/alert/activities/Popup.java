@@ -45,6 +45,7 @@ import java.util.TimerTask;
 public class Popup extends AppCompatActivity {
     Timer mTimer;
 
+    TextView mTitle;
     TextView mCities;
     TextView mCounter;
     TextView mInstructions;
@@ -54,8 +55,10 @@ public class Popup extends AppCompatActivity {
 
     ImageView mThreatIcon;
 
-    public static void showAlertPopup(String alertType, List<String> cities, String threatType, String instructions, Context context) {
-        // Only display popup for primary/secondary alerts (no test/sound/system notifications)
+    public static void showAlertPopup(String alertType, List<String> cities, String threatType, String instructions,
+            Context context) {
+        // Only display popup for primary/secondary alerts (no test/sound/system
+        // notifications)
         if (!alertType.equals(AlertTypes.PRIMARY) && !alertType.equals(AlertTypes.SECONDARY)) {
             return;
         }
@@ -122,13 +125,15 @@ public class Popup extends AppCompatActivity {
 
     void initializeUI() {
         // RTL action bar hack
-        RTLSupport.mirrorActionBar(this);
+        // not needed as we have no action bar anymore
+        // RTLSupport.mirrorActionBar(this);
 
         // Set up UI
         setContentView(R.layout.popup);
 
         // Cache UI objects
         mClose = (Button) findViewById(R.id.close);
+        mTitle = (TextView) findViewById(R.id.title);
         mCities = (TextView) findViewById(R.id.cities);
         mSilence = (Button) findViewById(R.id.silence);
         mCounter = (TextView) findViewById(R.id.counter);
@@ -185,7 +190,7 @@ public class Popup extends AppCompatActivity {
         }
 
         // Set localized threat type as popup title
-        setTitle(LocationData.getLocalizedThreatType(threatType, this));
+        mTitle.setText(LocationData.getLocalizedThreatType(threatType, this));
 
         // Display threat icon, localized cities, safety instructions
         mThreatIcon.setImageResource(LocationData.getThreatDrawable(threatType));
@@ -193,7 +198,8 @@ public class Popup extends AppCompatActivity {
         mInstructions.setText(LocationData.getLocalizedThreatInstructions(threatType, this));
 
         // HFC update with instructions?
-        if ((threatType.equals(ThreatTypes.EARLY_WARNING) || threatType.equals(ThreatTypes.LEAVE_SHELTER)) && !StringUtils.stringIsNullOrEmpty(instructions)) {
+        if ((threatType.equals(ThreatTypes.EARLY_WARNING) || threatType.equals(ThreatTypes.LEAVE_SHELTER))
+                && !StringUtils.stringIsNullOrEmpty(instructions)) {
             mInstructions.setText(instructions);
         }
 
@@ -205,11 +211,11 @@ public class Popup extends AppCompatActivity {
 
         // Not a missile / hostile aircraft intrusion alert?
         // Hide countdown timer
-        if (!threatType.contains(ThreatTypes.MISSILES) && !threatType.contains(ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION) && !threatType.equals(ThreatTypes.EARLY_WARNING) && !threatType.equals(ThreatTypes.LEAVE_SHELTER)) {
+        if (!threatType.contains(ThreatTypes.MISSILES) && !threatType.contains(ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION)
+                && !threatType.equals(ThreatTypes.EARLY_WARNING) && !threatType.equals(ThreatTypes.LEAVE_SHELTER)) {
             // Countdown is only relevant for rocket fire
             mCounter.setVisibility(View.GONE);
-        }
-        else {
+        } else {
             // Fetch highest priority countdown in seconds for given alert cities list
             int countdown = LocationData.getPrioritizedCountdownForCities(cities, this);
 
@@ -280,8 +286,7 @@ public class Popup extends AppCompatActivity {
         if (currentTimestamp <= impactTimestamp) {
             // Convert it
             updateCountdownTimerText(seconds, R.color.colorCountdownPreImpact);
-        }
-        else if (currentTimestamp > impactTimestamp) {
+        } else if (currentTimestamp > impactTimestamp) {
             // Number of seconds to wait after impact
             int postImpactSeconds = (Safety.POST_IMPACT_WAIT_MINUTES * 60);
 
@@ -349,7 +354,8 @@ public class Popup extends AppCompatActivity {
         FrameLayout wrapLayout = new FrameLayout(this);
 
         // Set params to WRAP_CONTENT
-        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.WRAP_CONTENT);
 
         // Get 25 as PX value
         int dpToPixels = DensityUtil.convertDPToPixels(this, 25);
@@ -380,11 +386,11 @@ public class Popup extends AppCompatActivity {
         // Turn screen on, show when locked and keep screen on
         window.addFlags(
                 WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
-                        //| WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
+                        // | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
                         | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
                         | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        // Call parent
+        // Center popup in parent
         centerPopupInParent(window);
     }
 

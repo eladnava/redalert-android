@@ -1,18 +1,18 @@
 package com.red.alert.ui.dialogs.custom;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.widget.Toast;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.red.alert.R;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.utils.marketing.GooglePlay;
 
 public class UpdateDialogs {
     public static void showUpdateDialog(final Context context, String newVersion) {
-        // Use builder to create dialog
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        // Use Material 3 dialog builder
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
 
         // Insert version into message
         String message = String.format(context.getString(R.string.updateDesc), newVersion);
@@ -40,7 +40,7 @@ public class UpdateDialogs {
 
         try {
             // Create the dialog
-            AlertDialog dialog = builder.create();
+            androidx.appcompat.app.AlertDialog dialog = builder.create();
 
             // Show dialog
             dialog.show();
