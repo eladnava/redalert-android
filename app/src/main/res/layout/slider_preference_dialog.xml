@@ -5,6 +5,7 @@ Copyright 2012 Jay Weisskopf
 Licensed under the MIT License (see LICENSE.txt)
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:id="@+id/slider_preference_layout"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
@@ -20,10 +21,11 @@ Licensed under the MIT License (see LICENSE.txt)
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <SeekBar
+    <com.google.android.material.slider.Slider
         android:id="@+id/slider_preference_seekbar"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:labelBehavior="gone"
         android:paddingBottom="12dip"
         android:paddingTop="12dip" />
 

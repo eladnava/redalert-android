@@ -308,4 +308,9 @@
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">Aktuelle Benachrichtigungen löschen?</string>
     <string name="clearRecentAlertsDesc">Möchten Sie alle aktuellen Warnmeldungen löschen?</string>
+
+    <!-- New strings for map and alerts -->
+    <string name="map">Karte</string>
+    <string name="alertLocation">Alarmstandort</string>
+    <string name="alertAt">Alarm bei</string>
 </resources>

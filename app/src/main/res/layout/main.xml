@@ -1,68 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/colorBackground"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/md3_surface"
+    android:fitsSystemWindows="true">
 
-    <ListView
-        android:id="@+id/alerts"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/collapsingToolbarLayoutLargeSize"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:titleCollapseMode="scale"
+            app:title="@string/recentAlerts"
+            style="?attr/collapsingToolbarLayoutLargeStyle">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:elevation="0dp"
+                app:layout_collapseMode="pin" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottomContainer"
-        android:cacheColorHint="@android:color/transparent"/>
+        android:background="@color/md3_surface"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <ProgressBar
-        android:id="@+id/loading"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:indeterminate="true"
-        android:layout_centerInParent="true"/>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/bottom_nav" />
 
-    <LinearLayout
-        android:gravity="center"
-        android:visibility="gone"
-        android:id="@+id/noAlerts"
-        android:orientation="vertical"
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/safe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="96dp"
+        android:text="@string/safe"
+        android:textColor="@android:color/white"
+        app:icon="@drawable/ic_check"
+        app:iconTint="@android:color/white"
+        app:backgroundTint="?attr/colorPrimary"
+        android:visibility="gone" />
 
-        <ImageView
-            android:src="@drawable/ic_redalert"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-
-        <TextView
-            android:textSize="17sp"
-            android:gravity="center"
-            android:layout_margin="10dp"
-            android:lineSpacingExtra="1dp"
-            android:text="@string/noAlerts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/bottomContainer"
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true">
-
-        <Button
-            android:id="@+id/safe"
-            android:textColor="#fff"
-            android:textSize="18sp"
-            android:text="@string/safe"
-            android:background="@color/colorAccent"
-            android:layout_height="50dp"
-            android:layout_width="fill_parent"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"/>
-    </LinearLayout>
-</RelativeLayout>
-
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

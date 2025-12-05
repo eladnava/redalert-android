@@ -53,8 +53,8 @@ public class Localization {
     }
 
     public static void applyThemeSelection(Context context) {
-        // Load selected theme from SharedPreferences
-        String selectedTheme = Singleton.getSharedPreferences(context).getString(context.getString(R.string.themePref), context.getString(R.string.lightThemeCode));
+        // Load selected theme from SharedPreferences (default to automatic)
+        String selectedTheme = Singleton.getSharedPreferences(context).getString(context.getString(R.string.themePref), context.getString(R.string.automaticThemeCode));
 
         // Automatic selected?
         if (selectedTheme.equals(context.getString(R.string.automaticThemeCode))) {
