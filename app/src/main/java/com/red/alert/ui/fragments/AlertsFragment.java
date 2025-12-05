@@ -496,7 +496,15 @@ public class AlertsFragment extends Fragment {
         }
 
         if (mDisplayAlerts.size() == 0) {
-            mNoAlerts.setVisibility(View.VISIBLE);
+            // Fade in the no alerts message smoothly
+            if (mNoAlerts.getVisibility() != View.VISIBLE) {
+                mNoAlerts.setAlpha(0f);
+                mNoAlerts.setVisibility(View.VISIBLE);
+                mNoAlerts.animate()
+                        .alpha(1f)
+                        .setDuration(200)
+                        .start();
+            }
         } else {
             mNoAlerts.setVisibility(View.GONE);
         }

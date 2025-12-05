@@ -14,8 +14,8 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import com.google.android.material.checkbox.MaterialCheckBox;
 import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.LinearLayout;
@@ -177,7 +177,8 @@ public class SearchableMultiSelectPreference extends ListPreference {
                 v.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        viewHolder.checkbox.setChecked(!viewHolder.checkbox.isChecked());
+                        // Use performClick to trigger animation
+                        viewHolder.checkbox.performClick();
                     }
                 });
 
@@ -185,21 +186,22 @@ public class SearchableMultiSelectPreference extends ListPreference {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean val) {
                         if (mClickedDialogEntryIndices[0]) {
-                            ((ListView) parent).setItemChecked(0, false);
                             mClickedDialogEntryIndices[0] = false;
                         }
 
                         int realPosition = getRealPosition(name);
-                        if (isCheckAllValue(realPosition)) {
+                        boolean isSelectAll = isCheckAllValue(realPosition);
+                        if (isSelectAll) {
                             checkAll(mDialog, val);
                         }
 
                         mClickedDialogEntryIndices[realPosition] = val;
-                        viewHolder.checkbox.setChecked(val);
                         item.checked = val;
                         canCheckAll();
 
-                        if (mDialog != null) {
+                        // Only invalidate views for Select All (needs to update all checkboxes)
+                        // Don't invalidate for individual items - allows animation to complete
+                        if (isSelectAll && mDialog != null) {
                             ListView lv = mDialog.findViewById(R.id.searchListView);
                             if (lv != null) lv.invalidateViews();
                         }
@@ -333,7 +335,6 @@ public class SearchableMultiSelectPreference extends ListPreference {
         if (lv == null) return;
         int size = lv.getCount();
         for (int i = 0; i < size; i++) {
-            lv.setItemChecked(i, val);
             mClickedDialogEntryIndices[i] = val;
         }
     }
@@ -398,7 +399,7 @@ public class SearchableMultiSelectPreference extends ListPreference {
     public static class ViewHolder {
         public TextView label;
         public TextView subLabel;
-        public CheckBox checkbox;
+        public MaterialCheckBox checkbox;
     }
 
     private static final class ListItemWithIndex implements Comparable {

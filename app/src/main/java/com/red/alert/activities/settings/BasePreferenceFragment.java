@@ -24,27 +24,7 @@ public class BasePreferenceFragment extends PreferenceFragmentCompat
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Set up native AndroidX transitions for predictive back support
-        // Enter: slide in from right when navigating forward
-        androidx.transition.Slide slideEnter = new androidx.transition.Slide(android.view.Gravity.END);
-        slideEnter.setDuration(300);
-        setEnterTransition(slideEnter);
-
-        // Return: slide out to right when going back
-        androidx.transition.Slide slideReturn = new androidx.transition.Slide(android.view.Gravity.END);
-        slideReturn.setDuration(300);
-        setReturnTransition(slideReturn);
-
-        // Exit: fade out when navigating forward (subtle)
-        androidx.transition.Fade fadeExit = new androidx.transition.Fade();
-        fadeExit.setDuration(300);
-        setExitTransition(fadeExit);
-
-        // Reenter: fade in when coming back (subtle)
-        androidx.transition.Fade fadeReenter = new androidx.transition.Fade();
-        fadeReenter.setDuration(300);
-        setReenterTransition(fadeReenter);
+        // Transitions are handled by FragmentTransaction animations in Main.navigateToFragment
     }
 
     @Override

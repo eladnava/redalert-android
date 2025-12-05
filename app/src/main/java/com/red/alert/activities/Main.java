@@ -97,6 +97,8 @@ public class Main extends AppCompatActivity {
     MaterialToolbar mToolbar;
     BottomNavigationView mBottomNav;
     CollapsingToolbarLayout mCollapsingToolbar;
+    com.google.android.material.appbar.AppBarLayout mAppBarLayout;
+    boolean mForceAppBarLifted = false;
     OnBackPressedCallback mTabBackCallback;
     OnBackPressedCallback mInnerNavCallback;
 
@@ -182,38 +184,43 @@ public class Main extends AppCompatActivity {
         mInnerNavCallback = new OnBackPressedCallback(false) {
             @Override
             public void handleOnBackPressed() {
-                if (!mNavigationStack.isEmpty()) {
-                    // Pop the previous entry
-                    NavigationEntry entry = mNavigationStack.pop();
-
-                    // Navigate back to the previous fragment
-                    try {
-                        Fragment previousFragment = entry.fragmentClass.newInstance();
+                // Use popBackStack to trigger the proper pop animations
+                if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                    getSupportFragmentManager().popBackStack();
+                    
+                    // Pop our navigation stack too to keep track of titles
+                    if (!mNavigationStack.isEmpty()) {
+                        NavigationEntry entry = mNavigationStack.pop();
                         updateTitle(entry.title);
+                    }
+                    // Collapse and keep AppBarLayout lifted (grey) during back navigation
+                    if (mAppBarLayout != null) {
+                        mAppBarLayout.setExpanded(false, true);  // Collapse with animation
+                        mAppBarLayout.setLiftOnScroll(false);
+                        mAppBarLayout.setLifted(true);
+                    }
 
-                        getSupportFragmentManager().beginTransaction()
-                                .setReorderingAllowed(true)
-                                .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-                                .replace(R.id.fragment_container, previousFragment)
-                                .commit();
-
-                        // If stack is now empty, we're at root - disable this callback
-                        // and update UI to hide back button
-                        if (mNavigationStack.isEmpty()) {
-                            setEnabled(false);
-                            if (mToolbar != null) {
-                                mToolbar.setNavigationIcon(null);
-                                mToolbar.setNavigationOnClickListener(null);
+                    // If back stack is now empty, we're at root - update UI
+                    if (getSupportFragmentManager().getBackStackEntryCount() <= 1) {
+                        // Use a small delay to let the pop complete
+                        new android.os.Handler(android.os.Looper.getMainLooper()).postDelayed(() -> {
+                            if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+                                // Re-enable automatic lift-on-scroll at root
+                                mForceAppBarLifted = false;
+                                if (mAppBarLayout != null) {
+                                    mAppBarLayout.setLiftOnScroll(true);
+                                }
+                                setEnabled(false);
+                                if (mToolbar != null) {
+                                    mToolbar.setNavigationIcon(null);
+                                    mToolbar.setNavigationOnClickListener(null);
+                                }
+                                // Re-enable tab back callback since we are at root
+                                if (mBottomNav != null) {
+                                    updateTabBackCallbackState(mBottomNav.getSelectedItemId());
+                                }
                             }
-                            // Re-enable tab back callback since we are at root
-                            if (mBottomNav != null) {
-                                updateTabBackCallbackState(mBottomNav.getSelectedItemId());
-                            }
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        // Fallback: just disable and let other callbacks handle it
-                        setEnabled(false);
+                        }, 50);
                     }
                 } else {
                     // Stack is empty, disable and let other callbacks handle it
@@ -281,12 +288,26 @@ public class Main extends AppCompatActivity {
             mInnerNavCallback.setEnabled(true);
         }
 
-        // Replace fragment WITHOUT adding to back stack
+        // Replace fragment with slide animations
+        // Parameters: enter, exit, popEnter, popExit
         getSupportFragmentManager().beginTransaction()
                 .setReorderingAllowed(true)
-                .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                .setCustomAnimations(
+                    R.anim.slide_in_right,   // New fragment slides in from right
+                    R.anim.slide_out_left,   // Old fragment slides out to left
+                    R.anim.slide_in_left,    // When popping: old fragment slides in from left
+                    R.anim.slide_out_right   // When popping: current fragment slides out to right
+                )
                 .replace(R.id.fragment_container, fragment)
+                .addToBackStack(null)
                 .commit();
+        // Collapse toolbar and force lifted (grey) state during inner navigation
+        mForceAppBarLifted = true;
+        if (mAppBarLayout != null) {
+            mAppBarLayout.setExpanded(false, true);  // Collapse with animation
+            mAppBarLayout.setLiftOnScroll(false);
+            mAppBarLayout.setLifted(true);
+        }
     }
 
     public void resetToRoot(String title, boolean showImSafe) {
@@ -325,6 +346,9 @@ public class Main extends AppCompatActivity {
 
         mImSafe = findViewById(R.id.safe);
         mBottomNav = findViewById(R.id.bottom_navigation);
+        
+        // Get AppBarLayout reference for controlling lifted state during navigation
+        mAppBarLayout = findViewById(R.id.app_bar);
 
         mBottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
