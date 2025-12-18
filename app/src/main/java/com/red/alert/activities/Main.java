@@ -1255,7 +1255,7 @@ public class Main extends AppCompatActivity {
         String desc = getString(R.string.pushRegistrationSuccessDesc);
 
         // Check if upgrading from previous version
-        if (Singleton.getSharedPreferences(this).getBoolean("tutorial_1_0_22", false)) {
+        if (Singleton.getSharedPreferences(this).getBoolean("tutorial_1_0_23", false)) {
             // Ask user to reselect
             desc = getString(R.string.pushRegistrationReselectDesc);
         }

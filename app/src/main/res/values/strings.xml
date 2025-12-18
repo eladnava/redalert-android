@@ -387,7 +387,7 @@
     <string translatable="false" name="websitePref">website</string>
     <string translatable="false" name="fcmTokenPref">gcm_registration_token</string>
     <string translatable="false" name="pushyTokenPref">pushy_registration_token_v2</string>
-    <string translatable="false" name="tutorialPref">tutorial_1_0_23</string>
+    <string translatable="false" name="tutorialPref">tutorial_1_0_24</string>
     <string translatable="false" name="donatePref">donate</string>
     <string translatable="false" name="ratePref">rating</string>
     <string translatable="false" name="lifeshieldPref">lifeshield</string>
