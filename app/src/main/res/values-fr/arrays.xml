@@ -3,34 +3,38 @@
     <string-array name="zoneNames">
         <item>Tout Sélectionner</item>
         <item>Eilat</item>
+        <item>Beit Shemesh</item>
         <item>Bika\'a</item>
         <item>Vallée de Beit She\'an</item>
-        <item>Sud du Golan</item>
-        <item>Nord du Golan</item>
+        <item>Golan</item>
         <item>Haute Galilée</item>
         <item>Basse Galilée</item>
         <item>Dan</item>
-        <item>Sud du Néguev</item>
-        <item>HaCarmel</item>
+        <item>Néguev Sud</item>
+        <item>Drom Hashfela</item>
         <item>HaMifratz</item>
-        <item>HaAmakim</item>
         <item>HaShfela</item>
         <item>Wadi Ara</item>
+        <item>Hof HaCarmel</item>
+        <item>Haïfa</item>
+        <item>Hefer</item>
         <item>Yehuda</item>
         <item>Mer Morte</item>
+        <item>Yearot HaCarmel</item>
         <item>Jérusalem</item>
         <item>Yarkon</item>
         <item>Lachish</item>
         <item>Menashe</item>
-        <item>Ouest du Néguev</item>
-        <item>Ouest de Lakish</item>
-        <item>Centre de la Galilée</item>
-        <item>Centre du Néguev</item>
-        <item>Enveloppe de Gaza</item>
+        <item>Néguev Ouest</item>
+        <item>Lachish Ouest</item>
+        <item>Néguev Central</item>
+        <item>Enclave de Gaza</item>
         <item>Arava</item>
-        <item>Ligne de Confrontation</item>
+        <item>Ligne de confrontation</item>
+        <item>Katzrin</item>
+        <item>Krayot</item>
         <item>Shomron</item>
-        <item>Shfelat Yehuda</item>
         <item>Sharon</item>
+        <item>Tavor</item>
     </string-array>
 </resources>

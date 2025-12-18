@@ -3,34 +3,39 @@
     <string-array name="zoneNames">
         <item>Выбрать все</item>
         <item>Эйлат</item>
-        <item>Бикъа</item>
-        <item>Бикъат Бейт Шеан</item>
-        <item>Южный Голан</item>
-        <item>Северный Голан</item>
+        <item>Бейт-Шемеш</item>
+        <item>Бикаа</item>
+        <item>Долина Бейт-Шеан</item>
+        <item>Голаны</item>
         <item>Верхняя Галилея</item>
         <item>Нижняя Галилея</item>
         <item>Дан</item>
         <item>Южный Негев</item>
-        <item>Ха-Кармель</item>
+        <item>Дром Хашфела</item>
         <item>Ха-Мифрац</item>
-        <item>Ха-Амаким</item>
         <item>Ха-Шфела</item>
         <item>Вади Ара</item>
-        <item>Йегуда</item>
-        <item>Мёртвое море</item>
+        <item>Хоф Ха-Кармель</item>
+        <item>Хайфа</item>
+        <item>Хефер</item>
+        <item>Иудея</item>
+        <item>Мертвое море</item>
+        <item>Йеарот Ха-Кармель</item>
         <item>Иерусалим</item>
         <item>Яркон</item>
         <item>Лахиш</item>
         <item>Менаше</item>
         <item>Западный Негев</item>
         <item>Западный Лахиш</item>
-        <item>Центральная Галилея</item>
         <item>Центральный Негев</item>
-        <item>Округ Газа</item>
+        <item>Приграничная зона Газы</item>
         <item>Арава</item>
-        <item>Кав Ха-Имут</item>
-        <item>Самария</item>
-        <item>Шфелат Йегуда</item>
+        <item>Линия противостояния</item>
+        <item>Кацрин</item>
+        <item>Голаны Кацрин</item>
+        <item>Крайот</item>
+        <item>Шомрон</item>
         <item>Шарон</item>
+        <item>Тавор</item>
     </string-array>
 </resources>
