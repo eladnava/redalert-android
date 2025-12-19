@@ -26,6 +26,7 @@ import com.red.alert.ui.elements.SliderPreference;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.utils.feedback.Volume;
 import com.red.alert.utils.localization.Localization;
+import com.red.alert.utils.ui.NavbarUtil;
 
 import me.pushy.sdk.Pushy;
 import me.pushy.sdk.config.PushyForegroundService;
@@ -85,6 +86,9 @@ public class Advanced extends AppCompatPreferenceActivity {
 
         // Load settings from XML (there is no non-deprecated way to do it on API level 7)
         addPreferencesFromResource(R.xml.settings_advanced);
+
+        // Fix nav bar color and styling
+        NavbarUtil.fixPreferenceActivityNavbarColor(this);
 
         // Cache resource IDs
         mLocationAlerts = findPreference(getString(R.string.locationPref));

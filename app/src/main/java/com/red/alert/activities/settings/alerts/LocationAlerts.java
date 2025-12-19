@@ -26,7 +26,6 @@ import com.red.alert.config.Logging;
 import com.red.alert.config.NotificationChannels;
 import com.red.alert.config.ThreatTypes;
 import com.red.alert.logic.communication.broadcasts.LocationAlertsEvents;
-import com.red.alert.logic.communication.intents.AlertViewParameters;
 import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.logic.push.PushManager;
 import com.red.alert.logic.services.ServiceManager;
@@ -48,11 +47,10 @@ import com.red.alert.utils.localization.DateTime;
 import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
+import com.red.alert.utils.ui.NavbarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import me.pushy.sdk.lib.jackson.core.JsonProcessingException;
 
 public class LocationAlerts extends AppCompatPreferenceActivity {
     Preference mNearbyCities;
@@ -157,6 +155,9 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
 
         // Load settings from XML (there is no non-deprecated way to do it on API level 7)
         addPreferencesFromResource(R.xml.settings_location_alerts);
+
+        // Fix nav bar color and styling
+        NavbarUtil.fixPreferenceActivityNavbarColor(this);
 
         // Cache resource IDs
         mLocationAlerts = (CheckBoxPreference) findPreference(getString(R.string.locationAlertsPref));

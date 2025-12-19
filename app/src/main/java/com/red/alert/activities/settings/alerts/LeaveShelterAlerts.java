@@ -10,6 +10,7 @@ import com.red.alert.ui.activities.AppCompatPreferenceActivity;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.utils.feedback.Volume;
 import com.red.alert.utils.localization.Localization;
+import com.red.alert.utils.ui.NavbarUtil;
 
 public class LeaveShelterAlerts extends AppCompatPreferenceActivity {
     @Override
@@ -55,6 +56,9 @@ public class LeaveShelterAlerts extends AppCompatPreferenceActivity {
 
         // Load settings from XML (there is no non-deprecated way to do it on API level 7)
         addPreferencesFromResource(R.xml.settings_leave_shelter_alerts);
+
+        // Fix nav bar color and styling
+        NavbarUtil.fixPreferenceActivityNavbarColor(this);
     }
 
     public boolean onOptionsItemSelected(final MenuItem Item) {

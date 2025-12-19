@@ -33,6 +33,7 @@ import com.red.alert.utils.feedback.Volume;
 import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
+import com.red.alert.utils.ui.NavbarUtil;
 
 public class SecondaryAlerts extends AppCompatPreferenceActivity {
     String mPreviousSecondaryCities;
@@ -111,6 +112,9 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
 
         // Load settings from XML (there is no non-deprecated way to do it on API level 7)
         addPreferencesFromResource(R.xml.settings_secondary_alerts);
+
+        // Fix nav bar color and styling
+        NavbarUtil.fixPreferenceActivityNavbarColor(this);
 
         // Cache resource IDs
         mSecondaryVolume = ((SliderPreference) findPreference(getString(R.string.secondaryVolumePref)));

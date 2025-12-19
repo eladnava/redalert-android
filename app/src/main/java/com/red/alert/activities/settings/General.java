@@ -42,7 +42,6 @@ import com.android.billingclient.api.Purchase;
 import com.android.billingclient.api.PurchasesUpdatedListener;
 import com.android.billingclient.api.QueryProductDetailsParams;
 import com.red.alert.R;
-import com.red.alert.activities.settings.alerts.LocationAlerts;
 import com.red.alert.config.API;
 import com.red.alert.config.Donations;
 import com.red.alert.config.Logging;
@@ -78,6 +77,7 @@ import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.networking.HTTP;
 import com.red.alert.utils.os.AndroidSettings;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
+import com.red.alert.utils.ui.NavbarUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -267,6 +267,9 @@ public class General extends AppCompatPreferenceActivity {
 
         // Load settings from XML (there is no non-deprecated way to do it on API level 7)
         addPreferencesFromResource(R.xml.settings);
+
+        // Fix nav bar color and styling
+        NavbarUtil.fixPreferenceActivityNavbarColor(this);
 
         // Cache resource IDs
         mRate = findPreference(getString(R.string.ratePref));
