@@ -313,4 +313,9 @@
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">Cancellare gli avvisi recenti?</string>
     <string name="clearRecentAlertsDesc">Vuoi cancellare tutti gli avvisi recenti?</string>
+
+    <!-- New strings for map and alerts -->
+    <string name="map">Mappa</string>
+    <string name="alertLocation">Posizione dell\'allerta</string>
+    <string name="alertAt">Allerta a</string>
 </resources>

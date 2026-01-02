@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Icon when switch is checked (ON) - show checkmark -->
+    <item android:drawable="@drawable/ic_check" android:state_checked="true" />
+    <!-- Icon when switch is unchecked (OFF) - show X -->
+    <item android:drawable="@drawable/ic_close_outline" />
+</selector>

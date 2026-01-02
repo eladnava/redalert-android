@@ -20,9 +20,9 @@ Licensed under the MIT License (see LICENSE.txt)
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <SeekBar
+    <com.google.android.material.slider.Slider
         android:id="@+id/slider_preference_seekbar"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="12dip"
         android:paddingTop="12dip" />

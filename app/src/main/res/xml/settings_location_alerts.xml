@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:title="@string/locationAlerts">
     <PreferenceCategory
+        app:iconSpaceReserved="false"
         android:title="@string/settings">
-        <CheckBoxPreference
-            android:textDirection="rtl"
+        <SwitchPreferenceCompat
             android:key="@string/locationAlertsPref"
             android:title="@string/gpsEnabled"
             android:summary="@string/gpsEnabledDesc"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_my_location"
+            app:widgetLayout="@layout/preference_widget_switch_material3"
+            android:widgetLayout="@layout/preference_widget_switch_material3"
             android:defaultValue="false"/>
         <com.red.alert.ui.elements.SliderPreference
             android:key="@string/gpsFrequencyPref"
@@ -17,6 +22,8 @@
             android:min="@string/minGPSPollingFrequency"
             android:defaultValue="@string/defaultGPSPollingFrequency"
             android:dialogMessage="@string/gpsFrequencyDesc"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_timer"
             android:dependency="@string/locationAlertsPref"/>
         <com.red.alert.ui.elements.SliderPreference
             android:key="@string/maxDistancePref"
@@ -25,12 +32,17 @@
             android:min="@string/minGPSDistance"
             android:defaultValue="@string/defaultGPSMaxDistance"
             android:dialogMessage="@string/maxDistanceDesc"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_straighten"
             android:dependency="@string/locationAlertsPref"/>
     </PreferenceCategory>
     <PreferenceCategory
+        app:iconSpaceReserved="false"
         android:title="@string/reliability">
         <Preference
             android:key="@string/nearbyCitiesPref"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_location_city"
             android:title="@string/nearbyCities" />
     </PreferenceCategory>
 </PreferenceScreen>

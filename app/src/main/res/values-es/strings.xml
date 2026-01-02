@@ -355,4 +355,9 @@
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">¿Borrar alertas recientes?</string>
     <string name="clearRecentAlertsDesc">¿Le gustaría borrar todas las alertas recientes?</string>
+
+    <!-- New strings for map and alerts -->
+    <string name="map">Mapa</string>
+    <string name="alertLocation">Ubicación de alerta</string>
+    <string name="alertAt">Alerta en</string>
 </resources>

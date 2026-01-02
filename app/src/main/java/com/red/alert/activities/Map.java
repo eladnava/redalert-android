@@ -23,6 +23,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.text.HtmlCompat;
 import androidx.core.view.MenuItemCompat;
 
+import com.google.android.material.appbar.MaterialToolbar;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapsInitializer;
@@ -83,16 +85,31 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
     MenuItem mLoadingItem;
     RelativeLayout mMapCover;
     MenuItem mClearRecentAlertsItem;
+    MaterialToolbar mToolbar;
 
     // Singleton alerts
     public static List<Alert> mAlerts = new ArrayList<Alert>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        // Enable window content transitions for smooth shared element transition
+        // MUST be done BEFORE super.onCreate()
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().requestFeature(android.view.Window.FEATURE_ACTIVITY_TRANSITIONS);
 
-        // Support for RTL languages
-        RTLSupport.mirrorActionBar(this);
+            // Create transition set with Slide, ChangeBounds, and ChangeTransform
+            android.transition.TransitionSet transitionSet = new android.transition.TransitionSet();
+            transitionSet.addTransition(new android.transition.Slide(android.view.Gravity.BOTTOM));
+            transitionSet.addTransition(new android.transition.ChangeBounds());
+            transitionSet.addTransition(new android.transition.ChangeTransform());
+            transitionSet.setDuration(350);
+            transitionSet.setInterpolator(new android.view.animation.DecelerateInterpolator());
+
+            getWindow().setSharedElementEnterTransition(transitionSet);
+            getWindow().setSharedElementReturnTransition(transitionSet);
+        }
+
+        super.onCreate(savedInstanceState);
 
         // Use legacy maps renderer to fix blank map bug for 1% of users
         useLegacyRenderer();
@@ -102,8 +119,10 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
 
         // Initialize UI
         initializeUI();
-    }
 
+        // Support for RTL languages (after toolbar is set up)
+        RTLSupport.mirrorActionBar(this);
+    }
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -140,7 +159,8 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                 mMap.setInfoWindowAdapter(new RTLMarkerInfoWindowAdapter(getLayoutInflater()));
 
                 // Show my location button
-                if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.checkSelfPermission(getApplicationContext(),
+                        Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     mMap.setMyLocationEnabled(true);
                 }
 
@@ -180,10 +200,10 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
 
             // Display special title for nearby cities display
             if (firstAlert.threat.equals(ThreatTypes.NEARBY_CITIES_DISPLAY)) {
-                setTitle(getString(R.string.nearbyCities) + ": " + LocationLogic.getMaxDistanceKilometers(this, -1) + " " + getString(R.string.kilometer));
+                setTitle(getString(R.string.nearbyCities) + ": " + LocationLogic.getMaxDistanceKilometers(this, -1)
+                        + " " + getString(R.string.kilometer));
             }
-        }
-        else {
+        } else {
             // Nearby cities display and no nearby cities
             setTitle(getString(R.string.noNearbyCities));
         }
@@ -307,7 +327,8 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
             // Does this city have a geolocation?
             if (city.latitude != 0) {
                 // Get localized city and zone names
-                String localizedName = LocationData.getLocalizedCityName(city.name, this) + " (" + LocationData.getLocalizedZoneByCityName(city.name, this) + ")";
+                String localizedName = LocationData.getLocalizedCityName(city.name, this) + " ("
+                        + LocationData.getLocalizedZoneByCityName(city.name, this) + ")";
 
                 // Create LatLng location object
                 LatLng location = new LatLng(city.latitude, city.longitude);
@@ -386,17 +407,18 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
             public void run() {
                 try {
                     // Animate nicely
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding), 1500, new GoogleMap.CancelableCallback() {
-                        @Override
-                        public void onFinish() {
-                            // Allow user to zoom in freely
-                            mMap.resetMinMaxZoomPreference();
-                        }
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding), 1500,
+                            new GoogleMap.CancelableCallback() {
+                                @Override
+                                public void onFinish() {
+                                    // Allow user to zoom in freely
+                                    mMap.resetMinMaxZoomPreference();
+                                }
 
-                        @Override
-                        public void onCancel() {
-                        }
-                    });
+                                @Override
+                                public void onCancel() {
+                                }
+                            });
                 } catch (Exception exc) {
                     // Ignore rare exception "View size is too small after padding is applied"
                 }
@@ -426,10 +448,11 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
         }
 
         // Add clear item
-        mClearRecentAlertsItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.clearRecentAlerts));
+        mClearRecentAlertsItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE,
+                getString(R.string.clearRecentAlerts));
 
         // Set default icon
-        mClearRecentAlertsItem.setIcon(R.drawable.ic_clear);
+        mClearRecentAlertsItem.setIcon(R.drawable.ic_close_outline);
 
         // Specify the show flags
         MenuItemCompat.setShowAsAction(mClearRecentAlertsItem, MenuItem.SHOW_AS_ACTION_ALWAYS);
@@ -441,24 +464,26 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                 // Clear currently displayed alerts
                 if (mDisplayAlerts.size() > 0) {
                     // Show a dialog to the user
-                    AlertDialogBuilder.showGenericDialog(getString(R.string.clearRecentAlerts), getString(R.string.clearRecentAlertsDesc), getString(R.string.yes), getString(R.string.no), true, Map.this, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int which) {
-                            // Clicked okay?
-                            if (which == DialogInterface.BUTTON_POSITIVE) {
-                                // Set recent alerts cutoff timestamp to now
-                                AppPreferences.updateRecentAlertsCutoffTimestamp(DateTime.getUnixTimestamp(), Map.this);
+                    AlertDialogBuilder.showGenericDialog(getString(R.string.clearRecentAlerts),
+                            getString(R.string.clearRecentAlertsDesc), getString(R.string.yes), getString(R.string.no),
+                            true, Map.this, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int which) {
+                                    // Clicked okay?
+                                    if (which == DialogInterface.BUTTON_POSITIVE) {
+                                        // Set recent alerts cutoff timestamp to now
+                                        AppPreferences.updateRecentAlertsCutoffTimestamp(DateTime.getUnixTimestamp(),
+                                                Map.this);
 
-                                // Redraw map overlays
-                                redrawOverlays();
+                                        // Redraw map overlays
+                                        redrawOverlays();
 
-                                // Clear app notifications
-                                AppNotifications.clearAll(Map.this);
-                            }
-                        }
-                    });
-                }
-                else {
+                                        // Clear app notifications
+                                        AppNotifications.clearAll(Map.this);
+                                    }
+                                }
+                            });
+                } else {
                     // No alerts displayed, so display all of them
                     AppPreferences.updateRecentAlertsCutoffTimestamp(0, Map.this);
 
@@ -498,7 +523,8 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
         cities = HtmlCompat.fromHtml(cities, HtmlCompat.FROM_HTML_MODE_LEGACY).toString();
 
         // Construct share message
-        return mAlerts.get(0).localizedThreat + " " + getString(R.string.alertSoundedAt) + cities + "\n" + mAlerts.get(0).dateString + "\n\n" + getString(R.string.alertSentVia);
+        return mAlerts.get(0).localizedThreat + " " + getString(R.string.alertSoundedAt) + cities + "\n"
+                + mAlerts.get(0).dateString + "\n\n" + getString(R.string.alertSentVia);
     }
 
     void initializeShareButton(Menu OptionsMenu) {
@@ -506,7 +532,7 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
         mShareItem = OptionsMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, getString(R.string.shareAlert));
 
         // Set share icon
-        mShareItem.setIcon(R.drawable.ic_share);
+        mShareItem.setIcon(R.drawable.ic_share_outline);
 
         // Hide by default
         mShareItem.setVisible(false);
@@ -576,19 +602,27 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
     public void onConfigurationChanged(android.content.res.Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
-        // Support for RTL languages
-        RTLSupport.mirrorActionBar(this);
+        // Support for RTL languages (after toolbar is set up)
+        if (mToolbar != null) {
+            RTLSupport.mirrorActionBar(this);
+        }
     }
 
     void initializeUI() {
         // Initialize display alerts list
         mDisplayAlerts = new ArrayList<>();
 
-        // Allow click on home button
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         // Set up UI
         setContentView(R.layout.alert_view);
+
+        // Set up Material Toolbar
+        mToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+
+        // Allow click on home button
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         // Store reference to app icon & map cover for later
         mAppIcon = (ImageView) findViewById(R.id.appIcon);
@@ -596,22 +630,24 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
 
         // Align app icon based on whether language is RTL to avoid hiding Google logo
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mAppIcon.getLayoutParams();
-        params.addRule(Localization.isRTLLocale(this) ? RelativeLayout.ALIGN_PARENT_LEFT : RelativeLayout.ALIGN_PARENT_RIGHT);
+        params.addRule(
+                Localization.isRTLLocale(this) ? RelativeLayout.ALIGN_PARENT_LEFT : RelativeLayout.ALIGN_PARENT_RIGHT);
         mAppIcon.setLayoutParams(params);
 
         // Get map instance
-        ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(GoogleMap googleMap) {
-                mMap = googleMap;
+        ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
+                .getMapAsync(new OnMapReadyCallback() {
+                    @Override
+                    public void onMapReady(GoogleMap googleMap) {
+                        mMap = googleMap;
 
-                // Map ready flag
-                mIsMapReady = true;
+                        // Map ready flag
+                        mIsMapReady = true;
 
-                // Initialize map
-                initializeMap();
-            }
-        });
+                        // Initialize map
+                        initializeMap();
+                    }
+                });
     }
 
     void initializeLoadingIndicator(Menu OptionsMenu) {
@@ -721,7 +757,8 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                     }
                 });
             }
-        }, 1000 * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC, 1000 * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC);
+        }, 1000 * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC,
+                1000 * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC);
     }
 
     void reloadRecentAlerts() {
@@ -779,8 +816,7 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
 
                 // Prevent white flicker as map loads in dark mode
                 mMapCover.setVisibility(View.GONE);
-            }
-            else {
+            } else {
                 // Show error toast
                 Toast.makeText(Map.this, getString(errorStringResource), Toast.LENGTH_LONG).show();
             }
@@ -797,8 +833,7 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
         try {
             // Get it from /alerts
             alertsJSON = HTTP.get("/alerts");
-        }
-        catch (Exception exc) {
+        } catch (Exception exc) {
             // Log it
             Log.e(Logging.TAG, "Get recent alerts request failed", exc);
 
@@ -811,9 +846,9 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
 
         try {
             // Convert JSON to object
-            recentAlerts = Singleton.getJackson().readValue(alertsJSON, new TypeReference<List<Alert>>() {});
-        }
-        catch (Exception exc) {
+            recentAlerts = Singleton.getJackson().readValue(alertsJSON, new TypeReference<List<Alert>>() {
+            });
+        } catch (Exception exc) {
             // Log it
             Log.e(Logging.TAG, "Get recent alerts request failed", exc);
 
@@ -861,16 +896,15 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
         // In case no alerts are being displayed but alerts were returned
         if (cutoffTimestamp > 0 && mAlerts.size() > 0 && mDisplayAlerts.size() == 0) {
             // Show restore icon to allow user to restore all recent alerts
-            mClearRecentAlertsItem.setIcon(R.drawable.ic_restore);
+            mClearRecentAlertsItem.setIcon(R.drawable.ic_restore_outline);
         }
         // In case there are no alerts in the past 24 hours
         else if (mAlerts.size() == 0) {
             // Hide clear button
             mClearRecentAlertsItem.setVisible(false);
-        }
-        else {
+        } else {
             // There are alerts, show default clear icon
-            mClearRecentAlertsItem.setIcon(R.drawable.ic_clear);
+            mClearRecentAlertsItem.setIcon(R.drawable.ic_close_outline);
         }
     }
 }

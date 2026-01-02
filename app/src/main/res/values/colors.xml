@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Legacy colors (kept for backward compatibility) -->
     <color name="colorPrimary">#222222</color>
     <color name="colorPrimaryDark">#000</color>
     <color name="colorAccent">#ff4032</color>
@@ -12,4 +13,49 @@
     <color name="colorCountdownPostImpact">#464646</color>
     <color name="colorCountdownPostImpactSafe">#ff00a737</color>
     <color name="pushy_foreground_service_color">#ff4032</color>
+
+    <!-- Material Design 3 Color Tokens -->
+    <!-- Primary colors -->
+    <color name="md3_primary">#ff4032</color>
+    <color name="md3_onPrimary">#FFFFFF</color>
+    <color name="md3_primaryContainer">#ffdad6</color>
+    <color name="md3_onPrimaryContainer">#410002</color>
+    
+    <!-- Secondary colors -->
+    <color name="md3_secondary">#775652</color>
+    <color name="md3_onSecondary">#FFFFFF</color>
+    <color name="md3_secondaryContainer">#ffdad6</color>
+    <color name="md3_onSecondaryContainer">#2c1512</color>
+    
+    <!-- Tertiary colors -->
+    <color name="md3_tertiary">#6b5d2e</color>
+    <color name="md3_onTertiary">#FFFFFF</color>
+    <color name="md3_tertiaryContainer">#f4dfa6</color>
+    <color name="md3_onTertiaryContainer">#231b00</color>
+    
+    <!-- Error colors -->
+    <color name="md3_error">#ba1a1a</color>
+    <color name="md3_onError">#FFFFFF</color>
+    <color name="md3_errorContainer">#ffdad6</color>
+    <color name="md3_onErrorContainer">#410002</color>
+    
+    <!-- Surface colors -->
+    <color name="md3_surface">#fffbf9</color>
+    <color name="md3_onSurface">#201a19</color>
+    <color name="md3_surfaceVariant">#f5ded9</color>
+    <color name="md3_onSurfaceVariant">#534341</color>
+    <color name="md3_surfaceContainerHighest">#e7ddd9</color>
+    <color name="md3_surfaceContainerHigh">#ede3df</color>
+    <color name="md3_surfaceContainer">#f3e9e5</color>
+    <color name="md3_surfaceContainerLow">#f9efeb</color>
+    <color name="md3_surfaceContainerLowest">#FFFFFF</color>
+    
+    <!-- Outline colors -->
+    <color name="md3_outline">#857370</color>
+    <color name="md3_outlineVariant">#d8c2bd</color>
+    
+    <!-- Inverse colors -->
+    <color name="md3_inverseSurface">#362f2d</color>
+    <color name="md3_inverseOnSurface">#faf0ed</color>
+    <color name="md3_inversePrimary">#ffb4a8</color>
 </resources>

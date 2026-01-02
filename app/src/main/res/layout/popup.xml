@@ -1,85 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:background="@color/colorBackground"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="24dp"
+    android:minWidth="320dp"
+    app:cardCornerRadius="28dp"
+    app:cardBackgroundColor="?attr/colorSurface"
+    app:strokeWidth="0dp"
+    app:cardElevation="0dp">
 
     <LinearLayout
-        android:id="@+id/info"
-        android:gravity="center"
-        android:layout_margin="25dp"
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:minHeight="130dp">
-
-        <ImageView
-            android:id="@+id/threatIcon"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:gravity="center"
-            android:scaleType="centerCrop"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/ic_missiles" />
-
-        <TextView
-            android:id="@+id/counter"
-            android:textSize="32sp"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:id="@+id/cities"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:maxLines="5"
-            android:scrollbars="vertical"
-            android:scrollbarDefaultDelayBeforeFade="1000"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:id="@+id/instructions"
-            android:textSize="16sp"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layoutDirection="ltr"
-        android:id="@+id/bottomContainer"
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/info">
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="24dp"
+        android:paddingBottom="0dp">
 
-        <Button
-            android:id="@+id/close"
-            android:textColor="#464646"
-            android:text="@string/close"
-            android:background="#dcdcdc"
-            android:layout_height="50dp"
-            android:layout_width="0dp"
-            android:layout_weight="0.5"/>
+        <!-- Content Container (Spacious: 16dp root + 8dp inner = 24dp visual) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="0dp">
 
-        <Button
-            android:id="@+id/silence"
-            android:textColor="#fff"
-            android:text="@string/silence"
-            android:background="@color/colorAccent"
-            android:layout_height="50dp"
-            android:layout_width="0dp"
-            android:layout_weight="0.5"/>
+            <ImageView
+                android:id="@+id/threatIcon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_missiles"
+                android:contentDescription="@null" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Rocket Fire"
+                android:textAppearance="?attr/textAppearanceHeadlineSmall"
+                android:textColor="?attr/colorOnSurface"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/counter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="00:15"
+                android:textSize="45sp"
+                android:textColor="?attr/colorOnSurface"
+                android:fontFamily="sans-serif-medium" />
+
+            <!-- Cities List -->
+            <TextView
+                android:id="@+id/cities"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:maxLines="5"
+                android:scrollbars="vertical"
+                android:text="Tel Aviv, Givatayim"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:textColor="?attr/colorOnSurface"
+                android:textStyle="bold" />
+            
+             <TextView
+                android:id="@+id/instructions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/missilesInstructions"
+                android:gravity="center"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+
+        </LinearLayout>
+
+        <!-- Buttons Container (Wide: 16dp root padding) -->
+        <LinearLayout
+            android:id="@+id/bottomContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="24dp">
+
+            <Button
+                android:id="@+id/close"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:minWidth="0dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:text="@string/close"
+                android:textColor="?attr/colorOnSurface" />
+
+            <Button
+                android:id="@+id/silence"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:minWidth="0dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:text="@string/silence"
+                android:textColor="?attr/colorOnSecondaryContainer"
+                android:backgroundTint="?attr/colorSecondaryContainer" />
+        </LinearLayout>
+
     </LinearLayout>
-</RelativeLayout>
 
+</com.google.android.material.card.MaterialCardView>

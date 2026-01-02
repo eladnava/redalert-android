@@ -10,8 +10,8 @@ android {
         applicationId "com.red.alert"
         minSdkVersion 21
         targetSdkVersion 35
-        versionCode 10960
-        versionName "1.0.96"
+        versionCode 10970
+        versionName "1.0.97"
     }
     buildTypes {
         release {
@@ -29,6 +29,23 @@ dependencies {
 
     // AppCompat v7 Dependency
     implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.fragment:fragment:1.8.1'
+    implementation 'androidx.activity:activity:1.9.0'
+
+    // Material Design 3
+    implementation 'com.google.android.material:material:1.12.0'
+
+    // AndroidX Preference Library
+    implementation 'androidx.preference:preference:1.2.1'
+
+    // RecyclerView
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+
+    // CardView
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+    // Swipe to Refresh
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
     // Firebase Cloud Messaging
     implementation "com.google.firebase:firebase-messaging:24.1.1"

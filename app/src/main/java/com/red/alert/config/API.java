@@ -1,7 +1,7 @@
 package com.red.alert.config;
 
 public class API {
-    // RedAlert API Endpoint(s)
+    // RedAlert API Endpoint(s) - PRODUCTION
     public static String[] ENDPOINTS = {"https://redalert.me", "https://api.redalert.me", "https://api.tzevaadom.app", "https://tzevaadom.app"};
 
     // Define platform to be sent by our API

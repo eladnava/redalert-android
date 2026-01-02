@@ -1,70 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/colorPrimaryDark"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/md3_surface">
 
-    <ListView
-        android:id="@+id/alerts"
-        android:background="@color/colorBackground"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bottomContainer"
-        android:cacheColorHint="@android:color/transparent"/>
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <ProgressBar
-        android:id="@+id/loading"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:indeterminate="true"
-        android:layout_centerInParent="true"/>
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:elevation="0dp"
+            app:title="@string/recentAlerts" />
 
-    <LinearLayout
-        android:gravity="center"
-        android:visibility="gone"
-        android:id="@+id/noAlerts"
-        android:orientation="vertical"
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Fragment container constrained between app bar and bottom nav -->
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/md3_surface"
+        app:layout_constraintTop_toBottomOf="@id/app_bar"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:elevation="8dp"
+        app:menu="@menu/bottom_nav"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/safe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/safe"
+        android:textColor="@android:color/white"
+        app:icon="@drawable/ic_check"
+        app:iconTint="@android:color/white"
+        app:backgroundTint="?attr/colorPrimary"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation" />
 
-        <ImageView
-            android:src="@drawable/ic_redalert"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-
-        <TextView
-            android:textSize="17sp"
-            android:gravity="center"
-            android:layout_margin="10dp"
-            android:lineSpacingExtra="1dp"
-            android:text="@string/noAlerts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/bottomContainer"
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true">
-
-        <Button
-            android:id="@+id/safe"
-            android:textColor="#fff"
-            android:textSize="18sp"
-            android:text="@string/safe"
-            android:background="@color/colorAccent"
-            android:layout_height="50dp"
-            android:layout_width="fill_parent"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"/>
-    </LinearLayout>
-</RelativeLayout>
-
+</androidx.constraintlayout.widget.ConstraintLayout>

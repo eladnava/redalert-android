@@ -1,14 +1,15 @@
 package com.red.alert.ui.adapters;
 
 import android.app.Activity;
-import android.content.Context;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.red.alert.R;
 import com.red.alert.config.ThreatTypes;
@@ -17,56 +18,43 @@ import com.red.alert.utils.metadata.LocationData;
 
 import java.util.List;
 
-public class AlertAdapter extends ArrayAdapter<Alert> {
+public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.ViewHolder> {
     Activity mActivity;
     List<Alert> mAlerts;
+    OnItemClickListener mOnItemClickListener;
+
+    public interface OnItemClickListener {
+        void onItemClick(Alert alert, int position, View cardView);
+    }
 
     public AlertAdapter(Activity activity, List<Alert> alerts) {
-        // Call super function with the item layout and initial alerts
-        super(activity, R.layout.alert, alerts);
-
         // Set data members
         this.mAlerts = alerts;
         this.mActivity = activity;
     }
 
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.mOnItemClickListener = listener;
+    }
+
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        // Prepare view holder
-        ViewHolder viewHolder;
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // Inflate the alert card layout
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.alert_card, parent, false);
+        return new ViewHolder(view);
+    }
 
-        // Don't have a cached view?
-        if (convertView == null) {
-            // Get inflater service
-            LayoutInflater layoutInflater = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            // Inflate the alert layout
-            convertView = layoutInflater.inflate(R.layout.alert, null);
-
-            // Create a new view holder
-            viewHolder = new ViewHolder();
-
-            // Cache the view resources
-            viewHolder.time = (TextView) convertView.findViewById(R.id.time);
-            viewHolder.title = (TextView) convertView.findViewById(R.id.alertTitle);
-            viewHolder.desc = (TextView) convertView.findViewById(R.id.alertDesc);
-            viewHolder.image = (ImageView) convertView.findViewById(R.id.image);
-
-            // Store it in tag
-            convertView.setTag(viewHolder);
-        }
-        else {
-            // Get cached convert view
-            viewHolder = (ViewHolder) convertView.getTag();
-        }
-
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // Retrieve the alert
         Alert alert = mAlerts.get(position);
 
         // Got an alert?
         if (alert != null) {
             // Set localized city name (HTML for using <b> tag for selected cities)
-            viewHolder.title.setText(Html.fromHtml(alert.localizedCity));
+            holder.title.setText(Html.fromHtml(alert.localizedCity));
 
             // System alert?
             if (alert.threat.equals(ThreatTypes.SYSTEM)) {
@@ -74,36 +62,59 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
                 alert.desc = alert.localizedThreat;
 
                 // Hide time
-                viewHolder.time.setVisibility(View.GONE);
-            }
-            else {
+                holder.time.setVisibility(View.GONE);
+            } else {
                 // Show time
-                viewHolder.time.setVisibility(View.VISIBLE);
+                holder.time.setVisibility(View.VISIBLE);
             }
 
             // Set area names
-            viewHolder.desc.setText(alert.desc);
+            holder.desc.setText(alert.desc);
 
             // Show alert type & user-friendly time
-            viewHolder.time.setText(alert.localizedThreat + " • " + alert.dateString);
+            holder.time.setText(alert.localizedThreat + " • " + alert.dateString);
 
             // Custom threat icons
-            viewHolder.image.setImageResource(LocationData.getThreatDrawable(alert.threat));
+            holder.image.setImageResource(LocationData.getThreatDrawable(alert.threat));
+
+            // Set unique transition name for the card view
+            holder.itemView.setTransitionName("alert_card_transition_" + position);
+
+            // Set click listener
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mOnItemClickListener != null) {
+                        mOnItemClickListener.onItemClick(alert, holder.getAdapterPosition(), v);
+                    }
+                }
+            });
         }
-
-        // Return the view
-        return convertView;
     }
 
-    public boolean hasStableIds() {
-        // IDs are unique
-        return true;
+    @Override
+    public int getItemCount() {
+        return mAlerts != null ? mAlerts.size() : 0;
     }
 
-    public static class ViewHolder {
+    @Override
+    public long getItemId(int position) {
+        // IDs are unique based on position
+        return position;
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView time;
         public TextView title;
         public TextView desc;
         public ImageView image;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            time = itemView.findViewById(R.id.time);
+            title = itemView.findViewById(R.id.alertTitle);
+            desc = itemView.findViewById(R.id.alertDesc);
+            image = itemView.findViewById(R.id.image);
+        }
     }
 }

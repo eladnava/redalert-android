@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Disabled States - use colors that stand out from track -->
+    <item android:color="@color/md3_outline" android:state_enabled="false" android:state_checked="true"/>
+    <item android:color="@color/md3_surfaceContainerLowest" android:state_enabled="false" android:state_checked="false"/>
+    
+    <!-- Checked State -->
+    <item android:color="@color/md3_onPrimary" android:state_checked="true" android:state_pressed="true"/>
+    <item android:color="@color/md3_onPrimary" android:state_checked="true"/>
+    
+    <!-- Unchecked State -->
+    <item android:color="@color/md3_outline" android:state_checked="false" android:state_pressed="true"/>
+    <item android:color="@color/md3_outline" android:state_checked="false"/>
+</selector>

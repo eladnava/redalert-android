@@ -38,10 +38,10 @@ public class LocationData {
     private static HashMap<String, ArrayList<ArrayList<Double>>> mPolygons;
 
     /*
-    // Zone = דן 161
-    // Zone Code = 161
-    // City Name = תל אביב
-    // City Countdown = 15 שניות
+     * // Zone = דן 161
+     * // Zone Code = 161
+     * // City Name = תל אביב
+     * // City Countdown = 15 שניות
      */
 
     public static String[] getAllCityNames(Context context) {
@@ -67,8 +67,7 @@ public class LocationData {
             else if (Localization.isArabic(context)) {
                 // Add Arabic name to list
                 names.add(city.nameArabic);
-            }
-            else {
+            } else {
                 // Add English name to list
                 names.add(city.nameEnglish);
             }
@@ -104,7 +103,7 @@ public class LocationData {
 
         // Get localized zone names and Hebrew values
         List<String> zoneNames = Arrays.asList(context.getResources().getStringArray(R.array.zoneNames));
-        List<String> zoneValues =  Arrays.asList(context.getResources().getStringArray(R.array.zoneValues));
+        List<String> zoneValues = Arrays.asList(context.getResources().getStringArray(R.array.zoneValues));
 
         // Loop over cities
         for (City city : cities) {
@@ -127,8 +126,7 @@ public class LocationData {
             else if (Localization.isArabic(context)) {
                 // Add Arabic name to list
                 values.add(city.zoneArabic);
-            }
-            else {
+            } else {
                 // Add English name to list
                 values.add(city.zoneEnglish);
             }
@@ -182,12 +180,10 @@ public class LocationData {
             // Convert to city objects
             mCities = Singleton.getJackson().readValue(json, new TypeReference<List<City>>() {
             });
-        }
-        catch (Exception exc) {
+        } catch (Exception exc) {
             // Log it
             Log.e(Logging.TAG, "Failed to load cities.json", exc);
-        }
-        finally {
+        } finally {
             // No longer fetching cities
             mFetchingCities = false;
         }
@@ -225,9 +221,10 @@ public class LocationData {
             String json = builder.toString();
 
             // Convert to HashMap object
-            mPolygons = Singleton.getJackson().readValue(json, new TypeReference<HashMap<String,ArrayList<ArrayList<Double>>>>() {});
-        }
-        catch (Exception exc) {
+            mPolygons = Singleton.getJackson().readValue(json,
+                    new TypeReference<HashMap<String, ArrayList<ArrayList<Double>>>>() {
+                    });
+        } catch (Exception exc) {
             // Log it
             Log.e(Logging.TAG, "Failed to load polygons.json", exc);
         }
@@ -236,14 +233,16 @@ public class LocationData {
         return mPolygons;
     }
 
-    public static String getSelectedCityNamesByValues(Context context, String selection, CharSequence[] names, CharSequence[] values) {
+    public static String getSelectedCityNamesByValues(Context context, String selection, CharSequence[] names,
+            CharSequence[] values) {
         // No value? All cities are selected
         if (StringUtils.stringIsNullOrEmpty(selection) || selection.equals(context.getString(R.string.all))) {
             return context.getString(R.string.allString);
         }
 
         // Value equals none | null?
-        else if (selection.equals(context.getString(R.string.none)) || selection.equals(context.getString(R.string.nullString))) {
+        else if (selection.equals(context.getString(R.string.none))
+                || selection.equals(context.getString(R.string.nullString))) {
             return context.getString(R.string.noneString);
         }
 
@@ -289,7 +288,7 @@ public class LocationData {
 
         // Get localized zone names and Hebrew values
         List<String> zoneNames = Arrays.asList(context.getResources().getStringArray(R.array.zoneNames));
-        List<String> zoneValues =  Arrays.asList(context.getResources().getStringArray(R.array.zoneValues));
+        List<String> zoneValues = Arrays.asList(context.getResources().getStringArray(R.array.zoneValues));
 
         // Loop over cities
         for (City city : cities) {
@@ -307,18 +306,15 @@ public class LocationData {
                 else if (Localization.isHebrew(context)) {
                     // Return zone + countdown in Hebrew
                     return city.zone + " (" + localizedCountdown + ")";
-                }
-                else if (Localization.isRussian(context)) {
+                } else if (Localization.isRussian(context)) {
                     // Return zone + countdown in Russian
-                    return city.zoneRussian  + " (" + localizedCountdown + ")";
-                }
-                else if (Localization.isArabic(context)) {
+                    return city.zoneRussian + " (" + localizedCountdown + ")";
+                } else if (Localization.isArabic(context)) {
                     // Return zone + countdown in Arabic
-                    return city.zoneArabic  + " (" + localizedCountdown + ")";
-                }
-                else {
+                    return city.zoneArabic + " (" + localizedCountdown + ")";
+                } else {
                     // Return zone + countdown in English
-                    return city.zoneEnglish  + " (" + localizedCountdown + ")";
+                    return city.zoneEnglish + " (" + localizedCountdown + ")";
                 }
             }
         }
@@ -328,8 +324,10 @@ public class LocationData {
     }
 
     public static String getLocalizedCountdown(int countdown, String threatType, Context context) {
-        // Return "Immediately" for threats which aren't missile or hostile aircaft intrustion
-        if (threatType != null && !threatType.equals(ThreatTypes.MISSILES) && !threatType.equals(ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION)) {
+        // Return "Immediately" for threats which aren't missile or hostile aircaft
+        // intrustion
+        if (threatType != null && !threatType.equals(ThreatTypes.MISSILES)
+                && !threatType.equals(ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION)) {
             return context.getString(R.string.immediately);
         }
 
@@ -379,7 +377,8 @@ public class LocationData {
         // Keep track of whether an alert exists for a primarily-selected city
         boolean primaryFound = false;
 
-        // Traverse current alert cities to find primarily-selected / nearby city countdown, or default to shortest countdown
+        // Traverse current alert cities to find primarily-selected / nearby city
+        // countdown, or default to shortest countdown
         for (String city : cities) {
             // Get countdown for current city in seconds
             int countdown = LocationData.getCityCountdown(city, context);
@@ -393,8 +392,7 @@ public class LocationData {
 
                 // Mark primary found
                 primaryFound = true;
-            }
-            else if (!primaryFound) {
+            } else if (!primaryFound) {
                 // Current city's countdown is lower than current minimum?
                 if (countdown < minCountdown) {
                     minCountdown = countdown;
@@ -455,7 +453,8 @@ public class LocationData {
         return TextUtils.join(", ", localizedCityNames);
     }
 
-    public static String getLocalizedCityZonesWithCountdownCSV(List<String> cities, String threatType, Context context) {
+    public static String getLocalizedCityZonesWithCountdownCSV(List<String> cities, String threatType,
+            Context context) {
         // Prepare list of localized zones
         List<String> localizedZones = new ArrayList<>();
 
@@ -600,7 +599,7 @@ public class LocationData {
         // Convert to string
         return context.getString(result);
     }
-    
+
     public static int getThreatDrawable(String threat) {
         // Null fallback
         if (threat == null) {
@@ -610,26 +609,19 @@ public class LocationData {
         // Return drawable resource by threat type
         if (threat.contains(ThreatTypes.RADIOLOGICAL_EVENT)) {
             return R.drawable.ic_radiological_event;
-        }
-        else if (threat.contains(ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION)) {
+        } else if (threat.contains(ThreatTypes.HOSTILE_AIRCRAFT_INTRUSION)) {
             return R.drawable.ic_hostile_aircraft_intrusion;
-        }
-        else if (threat.contains(ThreatTypes.HAZARDOUS_MATERIALS)) {
+        } else if (threat.contains(ThreatTypes.HAZARDOUS_MATERIALS)) {
             return R.drawable.ic_hazardous_materials;
-        }
-        else if (threat.contains(ThreatTypes.TSUNAMI)) {
+        } else if (threat.contains(ThreatTypes.TSUNAMI)) {
             return R.drawable.ic_tsunami;
-        }
-        else if (threat.contains(ThreatTypes.MISSILES)) {
-            return R.drawable.ic_launcher;
-        }
-        else if (threat.contains(ThreatTypes.TERRORIST_INFILTRATION)) {
+        } else if (threat.contains(ThreatTypes.MISSILES)) {
+            return R.drawable.ic_missiles;
+        } else if (threat.contains(ThreatTypes.TERRORIST_INFILTRATION)) {
             return R.drawable.ic_terrorist_infiltration;
-        }
-        else if (threat.contains(ThreatTypes.EARTHQUAKE)) {
+        } else if (threat.contains(ThreatTypes.EARTHQUAKE)) {
             return R.drawable.ic_earthquake;
-        }
-        else {
+        } else {
             return R.drawable.ic_launcher;
         }
     }
@@ -808,8 +800,7 @@ public class LocationData {
                 // Arabic?
                 else if (Localization.isArabic(context)) {
                     cityNames.add(city.nameArabic);
-                }
-                else {
+                } else {
                     // Revert to English
                     cityNames.add(city.nameEnglish);
                 }
@@ -909,7 +900,8 @@ public class LocationData {
         // Loop over items
         for (String item : psvList) {
             // Not already added?
-            if (!StringUtils.stringIsNullOrEmpty(item) && !uniqueList.contains(item) && !item.equals("none") && !item.equals("null")) {
+            if (!StringUtils.stringIsNullOrEmpty(item) && !uniqueList.contains(item) && !item.equals("none")
+                    && !item.equals("null")) {
                 // Add it
                 uniqueList.add(item);
             }
@@ -941,7 +933,7 @@ public class LocationData {
 
         // Get localized zone names and Hebrew values
         List<String> zoneNames = Arrays.asList(context.getResources().getStringArray(R.array.zoneNames));
-        List<String> zoneValues =  Arrays.asList(context.getResources().getStringArray(R.array.zoneValues));
+        List<String> zoneValues = Arrays.asList(context.getResources().getStringArray(R.array.zoneValues));
 
         // Loop over cities
         for (City city : cities) {
@@ -963,8 +955,7 @@ public class LocationData {
                 // Arabic?
                 else if (Localization.isArabic(context)) {
                     return city.zoneArabic;
-                }
-                else {
+                } else {
                     return city.zoneEnglish;
                 }
             }
@@ -1025,10 +1016,11 @@ public class LocationData {
             // Convert unix timestamp of first grouped alert to Date object
             Date firstAlertDate = new Date(firstAlertTimestamp * 1000);
 
-            // Prepare string with relative time ago and fixed HH:mm:ss with both the first and last alert times
-            dateString = getAlertRelativeTimeAgo(timestamp, context) + " (" + dateFormat.format(firstAlertDate) + " - " + dateFormat.format(date) + ")";
-        }
-        else {
+            // Prepare string with relative time ago and fixed HH:mm:ss with both the first
+            // and last alert times
+            dateString = getAlertRelativeTimeAgo(timestamp, context) + " (" + dateFormat.format(firstAlertDate) + " - "
+                    + dateFormat.format(date) + ")";
+        } else {
             // Prepare string with relative time ago and fixed HH:mm:ss
             dateString = getAlertRelativeTimeAgo(timestamp, context) + " (" + dateFormat.format(date) + ")";
         }

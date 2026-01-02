@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/skeleton_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/md3_surfaceContainerHighest">
+
+    <RelativeLayout
+        android:padding="16dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Skeleton for image -->
+        <View
+            android:id="@+id/skeleton_image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/skeleton_shape"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"/>
+
+        <LinearLayout
+            android:gravity="start"
+            android:paddingEnd="16dp"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/skeleton_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Skeleton for title -->
+            <View
+                android:id="@+id/skeleton_title"
+                android:layout_width="180dp"
+                android:layout_height="18dp"
+                android:background="@drawable/skeleton_shape"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Skeleton for description -->
+            <View
+                android:id="@+id/skeleton_desc"
+                android:layout_width="240dp"
+                android:layout_height="14dp"
+                android:background="@drawable/skeleton_shape"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Skeleton for time -->
+            <View
+                android:id="@+id/skeleton_time"
+                android:layout_width="100dp"
+                android:layout_height="12dp"
+                android:background="@drawable/skeleton_shape"/>
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
