@@ -9,22 +9,26 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
-import android.preference.Preference;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.MenuItem;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.preference.Preference;
+import androidx.preference.SwitchPreferenceCompat;
+
+import com.google.android.material.appbar.MaterialToolbar;
 import com.red.alert.R;
 import com.red.alert.config.Logging;
 import com.red.alert.logic.communication.broadcasts.LocationSelectionEvents;
 import com.red.alert.logic.push.PushManager;
 import com.red.alert.logic.settings.AppPreferences;
-import com.red.alert.ui.activities.AppCompatPreferenceActivity;
-import com.red.alert.ui.compatibility.ProgressDialogCompat;
+import com.red.alert.ui.elements.MaterialProgressDialog;
 import com.red.alert.ui.dialogs.AlertDialogBuilder;
 import com.red.alert.ui.elements.SearchableMultiSelectPreference;
 import com.red.alert.ui.elements.SliderPreference;
+
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.utils.backend.RedAlertAPI;
 import com.red.alert.utils.caching.Singleton;
@@ -33,13 +37,14 @@ import com.red.alert.utils.feedback.Volume;
 import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
-import com.red.alert.utils.ui.NavbarUtil;
 
-public class SecondaryAlerts extends AppCompatPreferenceActivity {
+public class SecondaryAlerts extends AppCompatActivity {
+    SecondaryAlertsPreferenceFragment mFragment;
+
     String mPreviousSecondaryCities;
     SliderPreference mSecondaryVolume;
-    CheckBoxPreference mSecondaryAlertPopup;
-    CheckBoxPreference mSecondaryNotificationsEnabled;
+    SwitchPreferenceCompat mSecondaryAlertPopup;
+    SwitchPreferenceCompat mSecondaryNotificationsEnabled;
     SearchableMultiSelectPreference mSecondaryCitySelection;
 
     static final int ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE = 1001;
@@ -107,26 +112,52 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
     }
 
     void initializeUI() {
+        // Set up layout with toolbar
+        setContentView(R.layout.preference_activity);
+
+        // Set up Material Toolbar
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         // Allow click on home button
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
-        // Load settings from XML (there is no non-deprecated way to do it on API level 7)
-        addPreferencesFromResource(R.xml.settings_secondary_alerts);
+        // Support for RTL languages
+        RTLSupport.mirrorActionBar(this);
 
-        // Fix nav bar color and styling
-        NavbarUtil.fixPreferenceActivityNavbarColor(this);
+        // Load preference fragment
+        mFragment = new SecondaryAlertsPreferenceFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.preference_container, mFragment);
+        transaction.commit();
+    }
 
-        // Cache resource IDs
-        mSecondaryVolume = ((SliderPreference) findPreference(getString(R.string.secondaryVolumePref)));
-        mSecondaryAlertPopup = (CheckBoxPreference)findPreference(getString(R.string.secondaryAlertPopupPref));
-        mSecondaryCitySelection = ((SearchableMultiSelectPreference) findPreference(getString(R.string.selectedSecondaryCitiesPref)));
-        mSecondaryNotificationsEnabled = (CheckBoxPreference)findPreference(getString(R.string.secondaryEnabledPref));
+    public void onFragmentPreferencesReady() {
+        // Fragment has loaded preferences, now we can access them
+        if (mFragment != null) {
+            mSecondaryVolume = mFragment.getSecondaryVolume();
+            mSecondaryAlertPopup = mFragment.getSecondaryAlertPopup();
+            mSecondaryCitySelection = mFragment.getSecondaryCitySelection();
+            mSecondaryNotificationsEnabled = mFragment.getSecondaryNotificationsEnabled();
 
-        // Populate setting values
-        initializeSettings();
+            // Populate setting values
+            initializeSettings();
 
-        // Set up listeners
-        initializeListeners();
+            // Set up listeners
+            initializeListeners();
+        }
+    }
+
+    public void onPreferenceChanged(String key) {
+        // Handle preference changes - delegate to existing broadcast listener
+        if (mBroadcastListener != null) {
+            SharedPreferences prefs = mFragment != null && mFragment.getPreferenceScreen() != null
+                    ? mFragment.getPreferenceScreen().getSharedPreferences()
+                    : Singleton.getSharedPreferences(this);
+            mBroadcastListener.onSharedPreferenceChanged(prefs, key);
+        }
     }
 
     void initializeSettings() {
@@ -145,10 +176,16 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
 
     void refreshAreaValues() {
         // Get secondary cities
-        String secondaryCities = Singleton.getSharedPreferences(this).getString(getString(R.string.selectedSecondaryCitiesPref), getString(R.string.none));
+        String secondaryCities = Singleton.getSharedPreferences(this)
+                .getString(getString(R.string.selectedSecondaryCitiesPref), getString(R.string.none));
 
         // Update summary text
-        mSecondaryCitySelection.setSummary(getString(R.string.selectedSecondaryCitiesDesc) + "\r\n(" + LocationData.getSelectedCityNamesByValues(this, secondaryCities, mSecondaryCitySelection.getEntries(), mSecondaryCitySelection.getEntryValues()) + ")");
+        mSecondaryCitySelection
+                .setSummary(
+                        getString(R.string.selectedSecondaryCitiesDesc) + "\r\n("
+                                + LocationData.getSelectedCityNamesByValues(this, secondaryCities,
+                                        mSecondaryCitySelection.getEntries(), mSecondaryCitySelection.getEntryValues())
+                                + ")");
 
         // Save in case the update subscriptions request fails
         if (mPreviousSecondaryCities == null) {
@@ -157,17 +194,6 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
     }
 
     void initializeListeners() {
-        // Volume selection
-        mSecondaryVolume.setSeekBarChangedListener(new SliderPreference.onSeekBarChangedListener() {
-            @Override
-            public String getDialogMessage(float Value) {
-                // Get slider percent
-                int percent = (int) (AppPreferences.getSecondaryAlertVolume(SecondaryAlerts.this, Value) * 100);
-
-                // Generate summary
-                return getString(R.string.secondaryVolumeDesc) + "\r\n(" + percent + "%)";
-            }
-        });
 
         // Secondary notifications toggle listener
         mSecondaryNotificationsEnabled.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -186,18 +212,25 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 // Android M+: Check if we have permission to draw over other apps
-                if ((boolean)newValue == true && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(SecondaryAlerts.this)) {
+                if ((boolean) newValue == true && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                        && !Settings.canDrawOverlays(SecondaryAlerts.this)) {
                     // Show permission request dialog
-                    AlertDialogBuilder.showGenericDialog(getString(R.string.grantOverlayPermission), getString(R.string.grantOverlayPermissionInstructions), getString(R.string.okay), getString(R.string.notNow), true, SecondaryAlerts.this, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int which) {
-                            // Clicked okay?
-                            if (which == DialogInterface.BUTTON_POSITIVE) {
-                                // Bring user to relevant settings activity to grant the app overlay permission
-                                startActivityForResult(new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName())), ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE);
-                            }
-                        }
-                    });
+                    AlertDialogBuilder.showGenericDialog(getString(R.string.grantOverlayPermission),
+                            getString(R.string.grantOverlayPermissionInstructions), getString(R.string.okay),
+                            getString(R.string.notNow), true, SecondaryAlerts.this,
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int which) {
+                                    // Clicked okay?
+                                    if (which == DialogInterface.BUTTON_POSITIVE) {
+                                        // Bring user to relevant settings activity to grant the app overlay permission
+                                        startActivityForResult(
+                                                new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                                                        Uri.parse("package:" + getPackageName())),
+                                                ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE);
+                                    }
+                                }
+                            });
 
                     // Tell Android *not* to persist new checkbox value
                     return false;
@@ -234,11 +267,11 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
     }
 
     public class UpdateSubscriptionsAsync extends AsyncTaskAdapter<Integer, String, Exception> {
-        ProgressDialog mLoading;
+        MaterialProgressDialog mLoading;
 
         public UpdateSubscriptionsAsync() {
             // Fix progress dialog appearance on old devices
-            mLoading = ProgressDialogCompat.getStyledProgressDialog(SecondaryAlerts.this);
+            mLoading = new MaterialProgressDialog(SecondaryAlerts.this);
 
             // Prevent cancel
             mLoading.setCancelable(false);
@@ -258,8 +291,7 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
 
                 // Update alert subscriptions
                 RedAlertAPI.subscribe(SecondaryAlerts.this);
-            }
-            catch (Exception exc) {
+            } catch (Exception exc) {
                 // Return exception to onPostExecute
                 return exc;
             }
@@ -298,12 +330,13 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
             // Show error if failed
             if (exc != null) {
                 // Build an error message
-                String errorMessage = getString(R.string.apiRequestFailed) + "\n\n" + exc.getMessage() + (exc.getCause() != null ? "\n\n" + exc.getCause() : "");
+                String errorMessage = getString(R.string.apiRequestFailed) + "\n\n" + exc.getMessage()
+                        + (exc.getCause() != null ? "\n\n" + exc.getCause() : "");
 
                 // Build the dialog
-                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, getString(R.string.okay), null, false, SecondaryAlerts.this, null);
-            }
-            else {
+                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, getString(R.string.okay),
+                        null, false, SecondaryAlerts.this, null);
+            } else {
                 // Clear previously cached values
                 mPreviousSecondaryCities = null;
             }
@@ -312,13 +345,13 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
             refreshAreaValues();
         }
     }
-    
+
     public class UpdateNotificationsAsync extends AsyncTaskAdapter<Integer, String, Exception> {
-        ProgressDialog mLoading;
+        MaterialProgressDialog mLoading;
 
         public UpdateNotificationsAsync() {
             // Fix progress dialog appearance on old devices
-            mLoading = ProgressDialogCompat.getStyledProgressDialog(SecondaryAlerts.this);
+            mLoading = new MaterialProgressDialog(SecondaryAlerts.this);
 
             // Prevent cancel
             mLoading.setCancelable(false);
@@ -338,8 +371,7 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
 
                 // Update notification preferences
                 RedAlertAPI.updateNotificationPreferences(SecondaryAlerts.this);
-            }
-            catch (Exception exc) {
+            } catch (Exception exc) {
                 // Return exception to onPostExecute
                 return exc;
             }
@@ -359,7 +391,8 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
                 SharedPreferences.Editor editor = Singleton.getSharedPreferences(SecondaryAlerts.this).edit();
 
                 // Restore original values
-                editor.putBoolean(getString(R.string.secondaryEnabledPref), ! AppPreferences.getSecondaryNotificationsEnabled(SecondaryAlerts.this));
+                editor.putBoolean(getString(R.string.secondaryEnabledPref),
+                        !AppPreferences.getSecondaryNotificationsEnabled(SecondaryAlerts.this));
 
                 // Save and flush to disk
                 editor.commit();
@@ -378,14 +411,17 @@ public class SecondaryAlerts extends AppCompatPreferenceActivity {
             // Show error if failed
             if (exc != null) {
                 // Build an error message
-                String errorMessage = getString(R.string.apiRequestFailed) + "\n\n" + exc.getMessage() + (exc.getCause() != null ? "\n\n" + exc.getCause() : "");
+                String errorMessage = getString(R.string.apiRequestFailed) + "\n\n" + exc.getMessage()
+                        + (exc.getCause() != null ? "\n\n" + exc.getCause() : "");
 
                 // Build the dialog
-                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, getString(R.string.okay), null, false, SecondaryAlerts.this, null);
+                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, getString(R.string.okay),
+                        null, false, SecondaryAlerts.this, null);
             }
 
             // Refresh checkbox with new value
-            mSecondaryNotificationsEnabled.setChecked(AppPreferences.getSecondaryNotificationsEnabled(SecondaryAlerts.this));
+            mSecondaryNotificationsEnabled
+                    .setChecked(AppPreferences.getSecondaryNotificationsEnabled(SecondaryAlerts.this));
         }
     }
 }

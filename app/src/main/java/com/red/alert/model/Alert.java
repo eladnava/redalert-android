@@ -15,11 +15,21 @@ public class Alert {
     @JsonProperty("threat")
     public String threat;
 
+    // These fields are computed client-side but need to be serialized
+    // when passing alerts between fragments
+    @JsonProperty("localizedCity")
     public String localizedCity;
+    
+    @JsonProperty("localizedZone")
     public String localizedZone;
+    
+    @JsonProperty("localizedThreat")
     public String localizedThreat;
 
+    @JsonProperty("desc")
     public String desc;
+    
+    @JsonProperty("dateString")
     public String dateString;
 
     @JsonIgnore

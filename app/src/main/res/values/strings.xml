@@ -4,6 +4,8 @@
     <string name="appName">צבע אדום</string>
 
     <!-- Loading Dialog -->
+    <string name="alertLocation">מיקום ההתרעה</string>
+    <string name="alertAt">התרעה ב</string>
     <string name="loading">אנא המתן...</string>
 
     <!-- Registration Dialog -->
@@ -24,6 +26,7 @@
     <!-- Recent Alerts -->
     <string name="noAlerts">אין התרעות\nמהיום האחרון</string>
     <string name="recentAlerts">התרעות אחרונות</string>
+    <string name="map">מפה</string>
 
     <!-- Settings -->
     <string name="settings">הגדרות</string>
@@ -344,6 +347,7 @@
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">מחק התרעות אחרונות?</string>
     <string name="clearRecentAlertsDesc">האם תרצה למחוק את כל ההתרעות האחרונות?</string>
+    <string name="restoreRecentAlerts">שחזר התרעות אחרונות</string>
 
     <!-- Operation Lifeshield -->
     <string name="lifeshieldShelters">מקלטי לייפשילד:</string>
@@ -387,7 +391,7 @@
     <string translatable="false" name="websitePref">website</string>
     <string translatable="false" name="fcmTokenPref">gcm_registration_token</string>
     <string translatable="false" name="pushyTokenPref">pushy_registration_token_v2</string>
-    <string translatable="false" name="tutorialPref">tutorial_1_0_24</string>
+    <string translatable="false" name="tutorialPref">tutorial_1_0_23</string>
     <string translatable="false" name="donatePref">donate</string>
     <string translatable="false" name="ratePref">rating</string>
     <string translatable="false" name="lifeshieldPref">lifeshield</string>

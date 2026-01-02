@@ -2,6 +2,9 @@
 <resources>
     <string name="appName">RedAlert</string>
     <string name="signing_up">Signing up for push notifications...</string>
+    <string name="loading">Loading...</string>
+    <string name="alertLocation">Alert Location</string>
+    <string name="alertAt">Alert at</string>
     <string name="okay">OK</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
@@ -42,6 +45,7 @@
     <string name="reliability">Reliability</string>
     <string name="noAlerts">No alerts\nin the past day</string>
     <string name="recentAlerts">Recent Alerts</string>
+    <string name="map">Map</string>
     <string name="testSound">Sound test</string>
     <string name="siren1">Siren 1</string>
     <string name="siren2">Siren 2</string>
@@ -208,7 +212,6 @@
     <string name="pushy_foreground_service_disconnected">Not connected to the notification service</string>
 
     <!-- Miscellaneous -->
-    <string name="loading">Loading...</string>
     <string name="testingFCM">Testing push gateway... (1/2)</string>
     <string name="testingPushy">Testing push gateway... (2/2)</string>
     <string name="fcmTestFailed">The self-test failed partially. No alert was received from Google\'s push gateway, but an alert was successfully received via the secondary push gateway. Please try again later.</string>
@@ -308,4 +311,5 @@
     <!-- Clear Recent Alerts Dialog -->
     <string name="clearRecentAlerts">Clear recent alerts?</string>
     <string name="clearRecentAlertsDesc">Would you like to clear all recent alerts?</string>
+    <string name="restoreRecentAlerts">Restore recent alerts</string>
 </resources>

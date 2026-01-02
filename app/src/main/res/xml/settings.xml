@@ -2,31 +2,42 @@
 <PreferenceScreen
     android:key="@string/mainSettingsScreen"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:redalert="http://schemas.android.com/apk/res-auto"
     android:title="@string/settings">
     <PreferenceCategory
         android:key="@string/mainCategoryPref"
+        app:iconSpaceReserved="false"
         android:title="@string/appName">
-        <CheckBoxPreference
-            android:textDirection="rtl"
+        <SwitchPreferenceCompat
             android:key="@string/enabledPref"
             android:title="@string/notifications"
             android:summary="@string/notificationsDesc"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_notifications_settings"
+            app:widgetLayout="@layout/preference_widget_switch_material3"
+            android:widgetLayout="@layout/preference_widget_switch_material3"
             android:defaultValue="true"/>
         <Preference
             android:key="@string/selfTestPref"
             android:title="@string/test"
             android:summary="@string/testDesc"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_test"
             android:dependency="@string/enabledPref"/>
     </PreferenceCategory>
     <PreferenceCategory
         android:key="@string/batteryOptimizationCategory"
+        app:iconSpaceReserved="false"
         android:title="@string/disableBatteryOptimizationsReminder">
         <Preference
             android:key="@string/batteryOptimizationPref"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_battery_alert"
             android:summary="@string/disableBatteryOptimizationsReminderDesc"/>
     </PreferenceCategory>
     <PreferenceCategory
+        app:iconSpaceReserved="false"
         android:title="@string/alertRegions">
         <com.red.alert.ui.elements.SearchableMultiSelectPreference
             redalert:checkAll="@string/all"
@@ -36,6 +47,8 @@
             android:dialogTitle="@string/selectedCities"
             android:title="@string/selectedCities"
             android:dependency="@string/enabledPref"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_location_city"
             android:summary="@string/selectedCitiesDesc"/>
         <com.red.alert.ui.elements.SearchableMultiSelectPreference
             redalert:checkAll="@string/all"
@@ -45,9 +58,12 @@
             android:dialogTitle="@string/selectedZones"
             android:title="@string/selectedZones"
             android:summary="@string/selectedZonesDesc"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_map_m3"
             android:dependency="@string/enabledPref"/>
     </PreferenceCategory>
     <PreferenceCategory
+        app:iconSpaceReserved="false"
         android:title="@string/sounds">
         <com.red.alert.ui.elements.SoundListPreference
             android:title="@string/soundSelection"
@@ -58,52 +74,69 @@
             android:ringtoneType="all"
             android:entryValues="@array/soundValues"
             android:defaultValue="@string/defaultSound"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_volume_up"
             android:dependency="@string/enabledPref"/>
     </PreferenceCategory>
     <PreferenceCategory
+        app:iconSpaceReserved="false"
         android:title="@string/advanced">
         <Preference
             android:key="@string/advancedPref"
-            android:title="@string/advancedSettings"
+            android:title="@string/advancedSettingsTitle"
             android:dependency="@string/enabledPref"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_settings_advanced"
             android:summary="@string/advancedSettingsDesc"/>
     </PreferenceCategory>
     <PreferenceCategory
+        app:iconSpaceReserved="false"
         android:title="@string/contact">
         <Preference
             android:key="@string/ratePref"
             android:title="@string/rateApp"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_star"
             android:summary="@string/rateAppDesc"/>
         <Preference
             android:key="@string/websitePref"
             android:title="@string/website"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_public"
             android:summary="@string/websiteDesc"/>
         <Preference
             android:key="@string/contactPref"
             android:title="@string/reportProblem"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_email"
             android:summary="@string/contactDesc"/>
         <Preference
             android:key="@string/donatePref"
             android:title="@string/donate"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_favorite"
             android:summary="@string/donateDesc"/>
     </PreferenceCategory>
     <PreferenceCategory
+        app:iconSpaceReserved="false"
         android:title="@string/languageAndTheme">
         <ListPreference
-            android:textDirection="ltr"
             android:title="@string/themeSelection"
             android:key="@string/themePref"
             android:summary="@string/themeSelectionDesc"
             android:entries="@array/themeNames"
             android:entryValues="@array/themeValues"
-            android:defaultValue="@string/lightThemeCode"/>
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_palette"
+            android:defaultValue="@string/automaticThemeCode"/>
         <ListPreference
-            android:textDirection="ltr"
             android:title="@string/langSelection"
             android:key="@string/langPref"
             android:summary="@string/langSelectionDesc"
             android:entries="@array/langNames"
             android:entryValues="@array/langValues"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_translate"
             android:defaultValue=""/>
     </PreferenceCategory>
 </PreferenceScreen>

@@ -1,32 +1,47 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<RelativeLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:background="@color/colorPrimaryDark"
-    android:fitsSystemWindows="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    android:transitionName="alert_card_transition"
+    android:transitionGroup="true"
+    android:background="?android:attr/colorBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <fragment
-        xmlns:map="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        map:cameraTargetLat="@string/defaultLatitude"
-        map:cameraTargetLng="@string/defaultLongitude"
-        map:cameraZoom="@string/defaultZoom" />
-    <RelativeLayout
-        android:id="@+id/mapCover"
-        android:background="@color/colorMapBackground"
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
-    <ImageView
-        android:id="@+id/appIcon"
-        android:visibility="gone"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:src="@drawable/ic_launcher"
-        android:layout_margin="10dp"
-        android:layout_alignParentBottom="true"/>
-</RelativeLayout>
+        android:layout_marginTop="0dp"
+        android:background="?android:attr/colorBackground"
+        android:orientation="vertical">
+        
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            map:cameraTargetLat="@string/defaultLatitude"
+            map:cameraTargetLng="@string/defaultLongitude"
+            map:cameraZoom="@string/defaultZoom" />
+            
+        <RelativeLayout
+            android:id="@+id/mapCover"
+            android:background="@color/colorMapBackground"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+            
+        <ImageView
+            android:id="@+id/appIcon"
+            android:visibility="gone"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@drawable/ic_launcher"
+            android:layout_margin="10dp"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

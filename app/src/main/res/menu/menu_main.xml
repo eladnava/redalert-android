@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <!-- Clear/Restore Recent Alerts button - shown on Alerts tab -->
+    <item
+        android:id="@+id/action_clear_restore"
+        android:icon="@drawable/ic_clear_all"
+        android:title="@string/clearRecentAlerts"
+        android:visible="false"
+        app:showAsAction="always" />
+    
+    <!-- Loading indicator - shown on Map tab during reload (appears LEFT of share) -->
+    <item
+        android:id="@+id/action_loading"
+        android:title="@string/loading"
+        android:visible="false"
+        app:showAsAction="always"
+        app:actionLayout="@layout/loading" />
+    
+    <!-- Share button - shown on Map tab (rightmost position) -->
+    <item
+        android:id="@+id/action_share"
+        android:icon="@drawable/ic_share_outline"
+        android:title="@string/shareAlert"
+        android:visible="false"
+        app:showAsAction="always" />
+</menu>

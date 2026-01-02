@@ -5,9 +5,10 @@
         <attr format="string" name="separator"/>
     </declare-styleable>
 
-    <!-- Copyright 2012 Jay Weisskopf Licensed under the MIT License (see LICENSE.txt) -->
     <declare-styleable name="SliderPreference">
-        <attr name="android:summary" />
-        <attr name="android:min" />
+        <attr format="integer" name="min"/>
+        <attr format="integer" name="max"/>
+        <attr format="integer" name="sliderDefaultValue"/>
+        <attr format="string" name="units"/>
     </declare-styleable>
 </resources>

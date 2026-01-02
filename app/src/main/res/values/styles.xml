@@ -18,26 +18,77 @@
         <item name="colorAccent">#fff0f0f0</item>
     </style>
 
-    <style name="AppTheme" parent="@style/Theme.AppCompat.DayNight.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
+    <!-- Material Design 3 Theme -->
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Enable Window Transitions -->
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowContentTransitions">true</item>
+
+        <!-- Material 3 Color Tokens -->
+        <item name="colorPrimary">@color/md3_primary</item>
+        <item name="colorOnPrimary">@color/md3_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md3_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md3_onPrimaryContainer</item>
+        
+        <item name="colorSecondary">@color/md3_secondary</item>
+        <item name="colorOnSecondary">@color/md3_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md3_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md3_onSecondaryContainer</item>
+        
+        <item name="colorTertiary">@color/md3_tertiary</item>
+        <item name="colorOnTertiary">@color/md3_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md3_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md3_onTertiaryContainer</item>
+        
+        <item name="colorError">@color/md3_error</item>
+        <item name="colorOnError">@color/md3_onError</item>
+        <item name="colorErrorContainer">@color/md3_errorContainer</item>
+        <item name="colorOnErrorContainer">@color/md3_onErrorContainer</item>
+        
+        <item name="colorSurface">@color/md3_surface</item>
+        <item name="colorOnSurface">@color/md3_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md3_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md3_onSurfaceVariant</item>
+        
+        <item name="colorOutline">@color/md3_outline</item>
+        <item name="colorOutlineVariant">@color/md3_outlineVariant</item>
+        
+        <!-- Legacy color support (for backward compatibility) -->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        
+        <!-- Window background -->
+        <item name="android:windowBackground">@color/md3_surface</item>
+
+        <!-- Preferences -->
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+
+        <!-- Edge-to-Edge -->
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <!-- Material 3 Switch Style -->
+        <!-- <item name="switchStyle">@style/Widget.App.CompoundButton.Switch</item> -->
+        <!-- <item name="materialSwitchStyle">@style/Widget.App.CompoundButton.Switch</item> -->
+
+        <!-- Dialogs -->
+        <item name="alertDialogTheme">@style/AlertDialog</item>
+        <item name="materialAlertDialogTheme">@style/AlertDialog</item>
     </style>
 
-    <style name="PopupDialog" parent="@style/Theme.AppCompat.DayNight.DarkActionBar">
+    <style name="PopupDialog" parent="AppTheme">
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:background">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowAnimationStyle">@null</item>
         <item name="android:backgroundDimAmount">0.7</item>
         <item name="android:backgroundDimEnabled">true</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
     </style>
 
-    <style name="AlertDialog" parent="@style/Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:colorBackgroundCacheHint">@null</item>
-        <item name="android:windowIsTranslucent">true</item>
+    <style name="AlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <!-- Note that we use the base animation style here (that is no
              animations) because we really have no idea how this kind of
              activity will be used. -->
@@ -49,5 +100,50 @@
         <item name="android:textColor">#fff</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsFloating">true</item>
+    </style>
+
+    <!-- Preference Theme Overlay -->
+    <style name="PreferenceThemeOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:background">@color/md3_surface</item>
+        <item name="android:windowBackground">@color/md3_surface</item>
+        <item name="preferenceCategoryStyle">@style/Preference.Category.Material3</item>
+        <item name="preferenceStyle">@style/Preference.Material3</item>
+        <item name="switchPreferenceCompatStyle">@style/Preference.Switch.Material3</item>
+        <!-- <item name="switchStyle">@style/Widget.App.CompoundButton.Switch</item> -->
+        <!-- <item name="materialSwitchStyle">@style/Widget.App.CompoundButton.Switch</item> -->
+    </style>
+
+    <!-- Material 3 Switch Style with Icon -->
+    <style name="Widget.App.CompoundButton.Switch" parent="Widget.Material3.CompoundButton.Switch">
+        <item name="thumbIcon">@drawable/ic_check</item>
+        <item name="thumbIconTint">@color/switch_thumb_icon_tint</item>
+        <item name="trackDecorationTint">@color/switch_track_decoration_tint</item>
+    </style>
+
+    <!-- Material 3 Preference Category Style -->
+    <style name="Preference.Category.Material3" parent="Preference.Category">
+        <item name="android:layout_marginBottom">@dimen/preference_category_padding_bottom</item>
+        <item name="android:layout_marginTop">@dimen/preference_category_padding_top</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="iconSpaceReserved">false</item>
+    </style>
+
+    <!-- Material 3 Preference Style -->
+    <style name="Preference.Material3" parent="Preference">
+        <item name="android:minHeight">56dp</item>
+        <item name="iconSpaceReserved">false</item>
+        <item name="singleLineTitle">false</item>
+    </style>
+
+    <!-- Material 3 Switch Preference Style -->
+    <style name="Preference.Switch.Material3" parent="Preference.SwitchPreferenceCompat">
+        <item name="android:minHeight">56dp</item>
+        <item name="iconSpaceReserved">false</item>
+        <item name="singleLineTitle">false</item>
+        <item name="widgetLayout">@layout/preference_widget_switch_material3</item>
+        <item name="android:widgetLayout">@layout/preference_widget_switch_material3</item>
     </style>
 </resources>

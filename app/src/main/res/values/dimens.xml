@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="preference_category_padding_bottom">8dp</dimen>
+    <dimen name="preference_category_padding_top">24dp</dimen>
+    <dimen name="preference_item_padding_vertical">16dp</dimen>
+    <dimen name="preference_icon_min_width">56dp</dimen>
+    <dimen name="card_corner_radius">16dp</dimen>
+</resources>

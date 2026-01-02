@@ -1,72 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:title="@string/advancedSettingsTitle">
     <PreferenceCategory
+        app:iconSpaceReserved="false"
         android:title="@string/alerts">
         <com.red.alert.ui.elements.SliderPreference
             android:key="@string/volumePref"
             android:title="@string/volume"
             android:summary="@string/volumeDesc"
             android:defaultValue="@string/defaultAlertVolume"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_volume_up"
             android:dialogMessage="@string/volumeDesc"/>
-        <CheckBoxPreference
-            android:textDirection="rtl"
+        <SwitchPreferenceCompat
             android:key="@string/vibratePref"
             android:title="@string/vibrate"
             android:summary="@string/vibrateDesc"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_vibration"
+            app:widgetLayout="@layout/preference_widget_switch_material3"
+            android:widgetLayout="@layout/preference_widget_switch_material3"
             android:defaultValue="true"/>
-        <CheckBoxPreference
-            android:textDirection="rtl"
+        <SwitchPreferenceCompat
             android:key="@string/silentOverridePref"
             android:title="@string/silentOverride"
             android:summary="@string/silentOverrideDesc"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_do_not_disturb_off"
+            app:widgetLayout="@layout/preference_widget_switch_material3"
+            android:widgetLayout="@layout/preference_widget_switch_material3"
             android:defaultValue="true"/>
-        <CheckBoxPreference
-            android:textDirection="rtl"
+        <SwitchPreferenceCompat
             android:key="@string/wakeScreenPref"
             android:title="@string/wakeScreen"
             android:summary="@string/wakeScreenDesc"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_smartphone"
+            app:widgetLayout="@layout/preference_widget_switch_material3"
+            android:widgetLayout="@layout/preference_widget_switch_material3"
             android:defaultValue="true"/>
-        <CheckBoxPreference
-            android:textDirection="rtl"
+        <SwitchPreferenceCompat
             android:key="@string/alertPopupPref"
             android:title="@string/showPopup"
             android:summary="@string/showPopupDesc"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_open_in_new"
+            app:widgetLayout="@layout/preference_widget_switch_material3"
+            android:widgetLayout="@layout/preference_widget_switch_material3"
             android:defaultValue="false"/>
-        <CheckBoxPreference
-            android:textDirection="rtl"
+        <SwitchPreferenceCompat
             android:key="@string/foregroundServicePref"
             android:title="@string/foregroundService"
             android:summary="@string/foregroundServiceDesc"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_layers"
+            app:widgetLayout="@layout/preference_widget_switch_material3"
+            android:widgetLayout="@layout/preference_widget_switch_material3"
             android:defaultValue="false"/>
     </PreferenceCategory>
     <PreferenceCategory
+        app:iconSpaceReserved="false"
         android:title="@string/advancedAlerts">
         <Preference
             android:key="@string/secondaryPref"
-            android:title="@string/secondaryAlerts"
+            android:title="@string/secondaryAlertsTitle"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_notifications_none"
             android:summary="@string/secondaryAlertsDesc"/>
         <Preference
             android:key="@string/earlyWarningsPref"
             android:title="@string/earlyWarnings"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_access_time"
             android:summary="@string/earlyWarningsDesc"/>
         <Preference
             android:key="@string/leaveShelterAlertsPref"
             android:title="@string/leaveShelterAlerts"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_exit_to_app"
             android:summary="@string/leaveShelterDesc"/>
         <Preference
             android:key="@string/locationPref"
             android:title="@string/locationAlerts"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_my_location"
             android:summary="@string/locationAlertsDesc"/>
     </PreferenceCategory>
     <PreferenceCategory
+        app:iconSpaceReserved="false"
         android:title="@string/safeCategory">
-        <CheckBoxPreference
-            android:textDirection="rtl"
+        <SwitchPreferenceCompat
             android:key="@string/imSafeWhatsAppPref"
             android:title="@string/safeWhatsApp"
             android:summary="@string/safeWhatsAppDesc"
+            app:iconSpaceReserved="false"
+            android:icon="@drawable/ic_chat"
+            app:widgetLayout="@layout/preference_widget_switch_material3"
+            android:widgetLayout="@layout/preference_widget_switch_material3"
             android:defaultValue="false"/>
     </PreferenceCategory>
 </PreferenceScreen>

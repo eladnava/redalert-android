@@ -20,22 +20,26 @@ public class AppPreferences {
 
     public static boolean getLocationAlertsEnabled(Context context) {
         // Get saved preference
-        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.locationAlertsPref), false);
+        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.locationAlertsPref),
+                false);
     }
 
     public static boolean getSecondaryNotificationsEnabled(Context context) {
         // Get saved preference
-        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.secondaryEnabledPref), false);
+        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.secondaryEnabledPref),
+                false);
     }
 
     public static boolean getEarlyWarningNotificationsEnabled(Context context) {
         // Get saved preference
-        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.earlyWarningsEnabledPref), true);
+        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.earlyWarningsEnabledPref),
+                true);
     }
 
     public static boolean getLeaveShelterNotificationsEnabled(Context context) {
         // Get saved preference
-        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.leaveShelterAlertsEnabledPref), true);
+        return Singleton.getSharedPreferences(context)
+                .getBoolean(context.getString(R.string.leaveShelterAlertsEnabledPref), true);
     }
 
     public static boolean getTutorialDisplayed(Context context) {
@@ -55,12 +59,14 @@ public class AppPreferences {
 
     public static boolean getSecondaryPopupEnabled(Context context) {
         // Get saved preference
-        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.secondaryAlertPopupPref), false);
+        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.secondaryAlertPopupPref),
+                false);
     }
 
     public static boolean getForegroundServiceEnabled(Context context) {
         // Get saved preference
-        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.foregroundServicePref), false);
+        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.foregroundServicePref),
+                false);
     }
 
     public static boolean getWakeScreenEnabled(Context context) {
@@ -70,7 +76,8 @@ public class AppPreferences {
 
     public static void setTutorialDisplayed(Context context) {
         // Update stored value
-        Singleton.getSharedPreferences(context).edit().putBoolean(context.getString(R.string.tutorialPref), true).commit();
+        Singleton.getSharedPreferences(context).edit().putBoolean(context.getString(R.string.tutorialPref), true)
+                .commit();
     }
 
     public static long getLastSubscribedTimestamp(Context context) {
@@ -80,7 +87,8 @@ public class AppPreferences {
 
     public static void updateLastSubscribedTimestamp(long timestamp, Context context) {
         // Update last subscribed timestamp
-        Singleton.getSharedPreferences(context).edit().putLong(context.getString(R.string.lastSubscribed), timestamp).commit();
+        Singleton.getSharedPreferences(context).edit().putLong(context.getString(R.string.lastSubscribed), timestamp)
+                .commit();
     }
 
     public static long getRecentAlertsCutoffTimestamp(Context context) {
@@ -90,7 +98,8 @@ public class AppPreferences {
 
     public static void updateRecentAlertsCutoffTimestamp(long timestamp, Context context) {
         // Update recent alerts cutoff timestamp
-        Singleton.getSharedPreferences(context).edit().putLong(context.getString(R.string.recentAlertsCutoff), timestamp).commit();
+        Singleton.getSharedPreferences(context).edit()
+                .putLong(context.getString(R.string.recentAlertsCutoff), timestamp).commit();
     }
 
     public static void setCityLastAlertTime(String city, long timestamp, Context context) {
@@ -109,8 +118,14 @@ public class AppPreferences {
             return overrideValue;
         }
 
-        // Get stored value
-        return Singleton.getSharedPreferences(context).getFloat(context.getString(R.string.volumePref), 1.0f);
+        try {
+            // Get stored value
+            return Singleton.getSharedPreferences(context).getFloat(context.getString(R.string.volumePref), 1.0f);
+        } catch (ClassCastException e) {
+            // Fallback to integer (0-100) and convert to float (0.0-1.0)
+            int volumeInt = Singleton.getSharedPreferences(context).getInt(context.getString(R.string.volumePref), 100);
+            return volumeInt / 100.0f;
+        }
     }
 
     public static float getSecondaryAlertVolume(Context context, float overrideValue) {
@@ -119,8 +134,16 @@ public class AppPreferences {
             return overrideValue;
         }
 
-        // Get stored value
-        return Singleton.getSharedPreferences(context).getFloat(context.getString(R.string.secondaryVolumePref), 1.0f);
+        try {
+            // Get stored value
+            return Singleton.getSharedPreferences(context).getFloat(context.getString(R.string.secondaryVolumePref),
+                    1.0f);
+        } catch (ClassCastException e) {
+            // Fallback to integer (0-100) and convert to float (0.0-1.0)
+            int volumeInt = Singleton.getSharedPreferences(context)
+                    .getInt(context.getString(R.string.secondaryVolumePref), 100);
+            return volumeInt / 100.0f;
+        }
     }
 
     public static List<String> getSubscriptions(Context context) {
@@ -139,24 +162,28 @@ public class AppPreferences {
         }
 
         // Get user's selected primary zones
-        String selectedZones = Singleton.getSharedPreferences(context).getString(context.getString(R.string.selectedZonesPref), context.getString(R.string.none));
+        String selectedZones = Singleton.getSharedPreferences(context)
+                .getString(context.getString(R.string.selectedZonesPref), context.getString(R.string.none));
 
         // Anything selected?
         if (!StringUtils.stringIsNullOrEmpty(selectedZones)) {
             // Explode selected zones into array and push into primarySubs
-            subscriptions.addAll(LocationData.getEnglishZoneTopicNames(LocationData.explodePSV(selectedZones), context));
+            subscriptions
+                    .addAll(LocationData.getEnglishZoneTopicNames(LocationData.explodePSV(selectedZones), context));
         } else {
             // Empty value means all regions
             subscriptions.add("all");
         }
 
         // Get user's selected cities
-        String selectedCities = Singleton.getSharedPreferences(context).getString(context.getString(R.string.selectedCitiesPref), context.getString(R.string.none));
+        String selectedCities = Singleton.getSharedPreferences(context)
+                .getString(context.getString(R.string.selectedCitiesPref), context.getString(R.string.none));
 
         // Anything selected?
         if (!StringUtils.stringIsNullOrEmpty(selectedCities)) {
             // Explode selected cities into array and push into primarySubs
-            subscriptions.addAll(LocationData.getEnglishCityTopicNames(LocationData.explodePSV(selectedCities), context));
+            subscriptions
+                    .addAll(LocationData.getEnglishCityTopicNames(LocationData.explodePSV(selectedCities), context));
 
         } else {
             // Empty value means all cities
@@ -166,12 +193,14 @@ public class AppPreferences {
         // Check if secondary notifications enabled
         if (getSecondaryNotificationsEnabled(context)) {
             // Get user's secondary cities
-            String secondaryCities = Singleton.getSharedPreferences(context).getString(context.getString(R.string.selectedSecondaryCitiesPref), context.getString(R.string.none));
+            String secondaryCities = Singleton.getSharedPreferences(context).getString(
+                    context.getString(R.string.selectedSecondaryCitiesPref), context.getString(R.string.none));
 
             // Anything selected?
             if (!StringUtils.stringIsNullOrEmpty(secondaryCities)) {
                 // Explode selected cities into array and push into primarySubs
-                subscriptions.addAll(LocationData.getEnglishCityTopicNames(LocationData.explodePSV(secondaryCities), context));
+                subscriptions.addAll(
+                        LocationData.getEnglishCityTopicNames(LocationData.explodePSV(secondaryCities), context));
             } else {
                 // Empty value means all cities
                 subscriptions.add("all");

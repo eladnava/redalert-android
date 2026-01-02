@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Map container - SupportMapFragment will be added here programmatically -->
+    <FrameLayout
+        android:id="@+id/mapContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Map loading cover with shimmer effect (for initial load) -->
+    <View
+        android:id="@+id/mapCover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shimmer_gradient" />
+
+    <ImageView
+        android:id="@+id/appIcon"
+        android:visibility="gone"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@drawable/ic_launcher"
+        android:layout_margin="10dp"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

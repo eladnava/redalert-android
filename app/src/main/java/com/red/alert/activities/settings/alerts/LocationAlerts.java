@@ -14,12 +14,16 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
-import android.preference.CheckBoxPreference;
-import android.preference.Preference;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.MenuItem;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.preference.Preference;
+import androidx.preference.SwitchPreferenceCompat;
+
+import com.google.android.material.appbar.MaterialToolbar;
 import com.red.alert.R;
 import com.red.alert.activities.Map;
 import com.red.alert.config.Logging;
@@ -32,8 +36,7 @@ import com.red.alert.logic.services.ServiceManager;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.model.Alert;
 import com.red.alert.services.location.LocationService;
-import com.red.alert.ui.activities.AppCompatPreferenceActivity;
-import com.red.alert.ui.compatibility.ProgressDialogCompat;
+import com.red.alert.ui.elements.MaterialProgressDialog;
 import com.red.alert.ui.dialogs.AlertDialogBuilder;
 import com.red.alert.ui.elements.SliderPreference;
 import com.red.alert.ui.localization.rtl.RTLSupport;
@@ -47,16 +50,17 @@ import com.red.alert.utils.localization.DateTime;
 import com.red.alert.utils.localization.Localization;
 import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
-import com.red.alert.utils.ui.NavbarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LocationAlerts extends AppCompatPreferenceActivity {
+public class LocationAlerts extends AppCompatActivity {
+    LocationAlertsPreferenceFragment mFragment;
+
     Preference mNearbyCities;
     SliderPreference mFrequency;
     SliderPreference mMaxDistance;
-    CheckBoxPreference mLocationAlerts;
+    SwitchPreferenceCompat mLocationAlerts;
 
     private SharedPreferences.OnSharedPreferenceChangeListener mBroadcastListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
         @Override
@@ -90,13 +94,14 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
         // Show dialog
         if (!GooglePlayServices.isAvailable(this)) {
             // Show error
-            AlertDialogBuilder.showGenericDialog(getString(R.string.error), getString(R.string.noGooglePlayServices), getString(R.string.okay), null, false, LocationAlerts.this, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    // No go
-                    finish();
-                }
-            });
+            AlertDialogBuilder.showGenericDialog(getString(R.string.error), getString(R.string.noGooglePlayServices),
+                    getString(R.string.okay), null, false, LocationAlerts.this, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // No go
+                            finish();
+                        }
+                    });
         }
     }
 
@@ -116,7 +121,7 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
         RTLSupport.mirrorActionBar(this);
 
         // Location alerts enabled and permission not granted?
-        if (mLocationAlerts.isChecked() && !LocationLogic.isLocationAccessGranted(this)) {
+        if (mLocationAlerts != null && mLocationAlerts.isChecked() && !LocationLogic.isLocationAccessGranted(this)) {
             // Disable location alerts
             mLocationAlerts.setChecked(false);
 
@@ -131,7 +136,9 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
         Broadcasts.subscribe(this, mBroadcastListener);
 
         // Refresh nearby cities display
-        refreshSummaries();
+        if (mLocationAlerts != null) {
+            refreshSummaries();
+        }
     }
 
     @Override
@@ -150,26 +157,52 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
     }
 
     private void initializeUI() {
+        // Set up layout with toolbar
+        setContentView(R.layout.preference_activity);
+
+        // Set up Material Toolbar
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         // Allow click on home button
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
-        // Load settings from XML (there is no non-deprecated way to do it on API level 7)
-        addPreferencesFromResource(R.xml.settings_location_alerts);
+        // Support for RTL languages
+        RTLSupport.mirrorActionBar(this);
 
-        // Fix nav bar color and styling
-        NavbarUtil.fixPreferenceActivityNavbarColor(this);
+        // Load preference fragment
+        mFragment = new LocationAlertsPreferenceFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.preference_container, mFragment);
+        transaction.commit();
+    }
 
-        // Cache resource IDs
-        mLocationAlerts = (CheckBoxPreference) findPreference(getString(R.string.locationAlertsPref));
-        mFrequency = (SliderPreference) findPreference(getString(R.string.gpsFrequencyPref));
-        mMaxDistance = (SliderPreference) findPreference(getString(R.string.maxDistancePref));
-        mNearbyCities = findPreference(getString(R.string.nearbyCitiesPref));
+    public void onFragmentPreferencesReady() {
+        // Fragment has loaded preferences, now we can access them
+        if (mFragment != null) {
+            mLocationAlerts = mFragment.getLocationAlerts();
+            mFrequency = mFragment.getFrequency();
+            mMaxDistance = mFragment.getMaxDistance();
+            mNearbyCities = mFragment.getNearbyCities();
 
-        // Set initial value
-        refreshSummaries();
+            // Set initial value
+            refreshSummaries();
 
-        // Set up listeners
-        initializeListeners();
+            // Set up listeners
+            initializeListeners();
+        }
+    }
+
+    public void onPreferenceChanged(String key) {
+        // Handle preference changes - delegate to existing broadcast listener
+        if (mBroadcastListener != null) {
+            SharedPreferences prefs = mFragment != null && mFragment.getPreferenceScreen() != null
+                    ? mFragment.getPreferenceScreen().getSharedPreferences()
+                    : Singleton.getSharedPreferences(this);
+            mBroadcastListener.onSharedPreferenceChanged(prefs, key);
+        }
     }
 
     private void initializeListeners() {
@@ -199,7 +232,7 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 // Trying to enable location-based alerts?
-                if ((boolean)newValue == true) {
+                if ((boolean) newValue == true) {
                     // Can we access the user's location?
                     if (!LocationLogic.isLocationAccessGranted(LocationAlerts.this)) {
                         // Request permission via dialog
@@ -211,8 +244,7 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
 
                     // Start the location service
                     ServiceManager.startLocationService(LocationAlerts.this);
-                }
-                else {
+                } else {
                     // Stop the location service
                     ServiceManager.stopLocationService(LocationAlerts.this);
                 }
@@ -222,24 +254,6 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
 
                 // Save new value
                 return true;
-            }
-        });
-
-        // Max distance changed
-        mMaxDistance.setSeekBarChangedListener(new SliderPreference.onSeekBarChangedListener() {
-            @Override
-            public String getDialogMessage(float currentValue) {
-                // Generate a new summary with the selected value
-                return getMaxDistanceSummary(currentValue);
-            }
-        });
-
-        // Frequency changed - update dialog text
-        mFrequency.setSeekBarChangedListener(new SliderPreference.onSeekBarChangedListener() {
-            @Override
-            public String getDialogMessage(float value) {
-                // Generate a new summary with the selected value
-                return getFrequencySummary(value);
             }
         });
 
@@ -341,12 +355,15 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
 
     private String getFrequencySummary(float OverrideValue) {
         // Construct summary text
-        return getString(R.string.gpsFrequencyDesc) + "\r\n(" + getString(R.string.every) + " " + LocationLogic.getUpdateIntervalMinutes(this, OverrideValue) + " " + getString(R.string.minutes) + ")";
+        return getString(R.string.gpsFrequencyDesc) + "\r\n(" + getString(R.string.every) + " "
+                + LocationLogic.getUpdateIntervalMinutes(this, OverrideValue) + " " + getString(R.string.minutes) + ")";
     }
 
     private String getMaxDistanceSummary(float OverrideValue) {
         // Construct summary text
-        return getString(R.string.maxDistanceDesc) + "\r\n(" + LocationLogic.getMaxDistanceKilometers(this, OverrideValue) + " " + getString(R.string.kilometer) + ")";
+        return getString(R.string.maxDistanceDesc) + "\r\n("
+                + LocationLogic.getMaxDistanceKilometers(this, OverrideValue) + " " + getString(R.string.kilometer)
+                + ")";
     }
 
     private void refreshSummaries() {
@@ -370,8 +387,7 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
         else if (location == null) {
             // Show error
             nearby = getString(R.string.noLocation);
-        }
-        else {
+        } else {
             // Get nearby cities
             nearby = LocationData.getNearbyCityNames(location, this);
 
@@ -401,11 +417,11 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
     }
 
     public class UpdateSubscriptionsAsync extends AsyncTaskAdapter<Integer, String, Exception> {
-        ProgressDialog mLoading;
+        MaterialProgressDialog mLoading;
 
         public UpdateSubscriptionsAsync() {
             // Fix progress dialog appearance on old devices
-            mLoading = ProgressDialogCompat.getStyledProgressDialog(LocationAlerts.this);
+            mLoading = new MaterialProgressDialog(LocationAlerts.this);
 
             // Prevent cancel
             mLoading.setCancelable(false);
@@ -445,7 +461,8 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
                 SharedPreferences.Editor editor = Singleton.getSharedPreferences(LocationAlerts.this).edit();
 
                 // Restore original values
-                editor.putBoolean(getString(R.string.locationAlertsPref), !AppPreferences.getLocationAlertsEnabled(LocationAlerts.this));
+                editor.putBoolean(getString(R.string.locationAlertsPref),
+                        !AppPreferences.getLocationAlertsEnabled(LocationAlerts.this));
 
                 // Save and flush to disk
                 editor.commit();
@@ -467,30 +484,37 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
             // Show error if failed
             if (exc != null) {
                 // Build an error message
-                String errorMessage = getString(R.string.apiRequestFailed) + "\n\n" + exc.getMessage() + "\n\n" + exc.getCause();
+                String errorMessage = getString(R.string.apiRequestFailed) + "\n\n" + exc.getMessage() + "\n\n"
+                        + exc.getCause();
 
                 // Build the dialog
-                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, getString(R.string.okay), null, false, LocationAlerts.this, null);
-            }
-            else {
+                AlertDialogBuilder.showGenericDialog(getString(R.string.error), errorMessage, getString(R.string.okay),
+                        null, false, LocationAlerts.this, null);
+            } else {
                 // Location alerts enabled?
                 if (mLocationAlerts.isChecked()) {
                     // Android O and newer required for notification channels
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        // Show dialog instructing user on how to hide the location alerts foreground service notification
-                        AlertDialogBuilder.showGenericDialog(getString(R.string.hideGPSForegroundNotification), getString(R.string.hideGPSForegroundNotificationInstructions), getString(R.string.okay), getString(R.string.notNow), true, LocationAlerts.this, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int which) {
-                                // Clicked okay?
-                                if (which == DialogInterface.BUTTON_POSITIVE) {
-                                    // Open notification channel config to allow user to easily disable the notification channel
-                                    Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
-                                    intent.putExtra(Settings.EXTRA_CHANNEL_ID, NotificationChannels.LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_ID);
-                                    intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
-                                    startActivity(intent);
-                                }
-                                }
-                        });
+                        // Show dialog instructing user on how to hide the location alerts foreground
+                        // service notification
+                        AlertDialogBuilder.showGenericDialog(getString(R.string.hideGPSForegroundNotification),
+                                getString(R.string.hideGPSForegroundNotificationInstructions), getString(R.string.okay),
+                                getString(R.string.notNow), true, LocationAlerts.this,
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                        // Clicked okay?
+                                        if (which == DialogInterface.BUTTON_POSITIVE) {
+                                            // Open notification channel config to allow user to easily disable the
+                                            // notification channel
+                                            Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+                                            intent.putExtra(Settings.EXTRA_CHANNEL_ID,
+                                                    NotificationChannels.LOCATION_SERVICE_FOREGROUND_NOTIFICATION_CHANNEL_ID);
+                                            intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+                                            startActivity(intent);
+                                        }
+                                    }
+                                });
                     }
                 }
             }
@@ -502,7 +526,9 @@ public class LocationAlerts extends AppCompatPreferenceActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         // Just granted location permission?
-        if (requestCode == LocationLogic.LOCATION_PERMISSION_REQUEST_CODE && grantResults.length > 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+        if (requestCode == LocationLogic.LOCATION_PERMISSION_REQUEST_CODE && grantResults.length > 1
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
             // Enable location alerts
             mLocationAlerts.setChecked(true);
             mLocationAlerts.getOnPreferenceChangeListener().onPreferenceChange(null, true);

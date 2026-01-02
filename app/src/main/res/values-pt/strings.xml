@@ -309,4 +309,8 @@
     <string name="clearRecentAlerts">Limpar alertas recentes?</string>
     <string name="clearRecentAlertsDesc">Deseja limpar todos os alertas recentes?</string>
 
+    <!-- New strings for map and alerts -->
+    <string name="map">Mapa</string>
+    <string name="alertLocation">Local do alerta</string>
+    <string name="alertAt">Alerta em</string>
 </resources>
