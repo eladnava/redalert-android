@@ -277,6 +277,7 @@
     <string name="continueStayingInsideShelterInstructions">استمر في البقاء داخل المأوى المحمي</string>
     <string name="endStayNearbyShelterInstructions">إنهاء البقاء بالقرب من الملجأ</string>
     <string name="missileThreatEndInstructions">إطلاق صاروخ - انتهى الحدث</string>
+    <string name="earthQuakeThreatEndInstructions">زلزال - انتهى الحدث - يمكنك الآن العودة إلى المباني</string>
     <string name="terroristInfiltrationThreatEndInstructions">تسلل إرهابي – انتهى الحدث – يمكنكم الآن مغادرة المأوى</string>
     <string name="terroristInfiltrationConcernLiftedInstructions">تسلل إرهابي - تم رفع القلق</string>
     <string name="hostileAircraftIntrusionThreatEndInstructions">انتهاء الحدث باقتحام طائرة معادية</string>

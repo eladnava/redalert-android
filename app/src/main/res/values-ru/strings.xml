@@ -324,6 +324,7 @@
     <string name="continueStayingInsideShelterInstructions">Продолжайте оставаться внутри защитного укрытия</string>
     <string name="endStayNearbyShelterInstructions">Завершаем пребывание возле убежища</string>
     <string name="missileThreatEndInstructions">Ракетный обстрел - событие завершено</string>
+    <string name="earthQuakeThreatEndInstructions">Землетрясение — событие завершено — теперь вы можете вернуться в здания</string>
     <string name="terroristInfiltrationThreatEndInstructions">Террористическое проникновение – инцидент завершён – теперь можно покинуть укрытие</string>
     <string name="terroristInfiltrationConcernLiftedInstructions">Террористическое проникновение — тревога снята</string>
     <string name="hostileAircraftIntrusionThreatEndInstructions">Вторжение вражеского воздушного судна — событие завершено</string>

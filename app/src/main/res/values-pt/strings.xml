@@ -277,6 +277,7 @@
     <string name="continueStayingInsideShelterInstructions">Continue permanecendo dentro do abrigo de proteção</string>
     <string name="endStayNearbyShelterInstructions">Encerrando a permanência perto do abrigo</string>
     <string name="missileThreatEndInstructions">Disparo de foguete - evento encerrado</string>
+    <string name="earthQuakeThreatEndInstructions">Terremoto - evento encerrado - agora você pode retornar aos edifícios</string>
     <string name="terroristInfiltrationThreatEndInstructions">Infiltração terrorista – evento encerrado – vocês já podem deixar o abrigo</string>
     <string name="terroristInfiltrationConcernLiftedInstructions">Infiltração terrorista - preocupação suspensa</string>
     <string name="hostileAircraftIntrusionThreatEndInstructions">Intrusão de aeronave hostil - evento encerrado</string>

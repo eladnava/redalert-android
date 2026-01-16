@@ -313,6 +313,7 @@
     <string name="continueStayingInsideShelterInstructions">יש להמשיך לשהות במרחב המוגן</string>
     <string name="endStayNearbyShelterInstructions">סיום שהייה בסמיכות למרחב מוגן</string>
     <string name="missileThreatEndInstructions">ירי רקטות וטילים - האירוע הסתיים</string>
+    <string name="earthQuakeThreatEndInstructions">בעקבות רעידת האדמה - הנחיות לחזרה למבנים</string>
     <string name="terroristInfiltrationThreatEndInstructions">הסתיים אירוע חדירת מחבלים - ניתן לצאת מהבתים</string>
     <string name="terroristInfiltrationConcernLiftedInstructions">חדירת מחבלים - החשש הוסר</string>
     <string name="hostileAircraftIntrusionThreatEndInstructions">חדירת כלי טיס עוין - האירוע הסתיים</string>

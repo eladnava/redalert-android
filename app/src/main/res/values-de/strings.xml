@@ -277,6 +277,7 @@
     <string name="continueStayingInsideShelterInstructions">Bleiben Sie weiterhin im Schutzraum</string>
     <string name="endStayNearbyShelterInstructions">In der Nähe des Schutzraums bleiben</string>
     <string name="missileThreatEndInstructions">Raketenfeuer – Ereignis beendet</string>
+    <string name="earthQuakeThreatEndInstructions">Erdbeben – Ereignis beendet – Sie können jetzt in die Gebäude zurückkehren</string>
     <string name="terroristInfiltrationThreatEndInstructions">Terroristische Infiltration – Ereignis beendet – Sie können jetzt den Schutzraum verlassen</string>
     <string name="terroristInfiltrationConcernLiftedInstructions">Terroristische Infiltration – Sorge aufgehoben</string>
     <string name="hostileAircraftIntrusionThreatEndInstructions">Eindringen in feindliche Flugzeuge – Ereignis beendet</string>

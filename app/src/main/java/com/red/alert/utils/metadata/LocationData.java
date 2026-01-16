@@ -730,6 +730,9 @@ public class LocationData {
             case "ירי רקטות וטילים - האירוע הסתיים":
                 result = context.getString(R.string.missileThreatEndInstructions);
                 break;
+            case "בעקבות רעידת האדמה - הנחיות לחזרה למבנים":
+                result = context.getString(R.string.earthQuakeThreatEndInstructions);
+                break;
             case "בדקות הקרובות צפויות להתקבל התרעות באזורך":
                 result = context.getString(R.string.earlyWarningInstructions);
                 break;

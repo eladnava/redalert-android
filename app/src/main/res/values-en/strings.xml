@@ -277,6 +277,7 @@
     <string name="continueStayingInsideShelterInstructions">Continue staying inside protective shelter</string>
     <string name="endStayNearbyShelterInstructions">End of stay near protective shelter</string>
     <string name="missileThreatEndInstructions">Rocket fire - event ended</string>
+    <string name="earthQuakeThreatEndInstructions">Earthquake - event ended - you may now safely re-enter buildings</string>
     <string name="terroristInfiltrationThreatEndInstructions">Terrorist infiltration - event ended - you may now leave the shelter</string>
     <string name="terroristInfiltrationConcernLiftedInstructions">Terrorist infiltration - concern lifted</string>
     <string name="hostileAircraftIntrusionThreatEndInstructions">Hostile aircraft intrusion - event ended</string>
