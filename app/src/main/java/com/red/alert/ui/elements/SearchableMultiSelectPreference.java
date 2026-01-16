@@ -43,6 +43,7 @@ public class SearchableMultiSelectPreference extends ListPreference {
     private static final String DEFAULT_SEPARATOR = "OV=I=XseparatorX=I=VO";
     private String separator;
     private String checkAllKey = null;
+    private String mCurrentSearchText = null;
     private boolean[] mClickedDialogEntryIndices;
 
     // Constructor
@@ -325,6 +326,7 @@ public class SearchableMultiSelectPreference extends ListPreference {
 
             @Override
             public void afterTextChanged(final Editable arg0) {
+                mCurrentSearchText = searchEditText.getText().toString();
                 objectsAdapter.getFilter().filter(searchEditText.getText());
             }
         });
@@ -372,6 +374,35 @@ public class SearchableMultiSelectPreference extends ListPreference {
                                     if (mClickedDialogEntryIndices[0] != true) {
                                         // Show error dialog
                                         AlertDialogBuilder.showGenericDialog(getContext().getString(R.string.error), getContext().getString(R.string.citySelectionLimitError), getContext().getString(R.string.okay), null, false, getContext(), null);
+                                        return;
+                                    }
+                                }
+
+                                // User entered a search term?
+                                if (mCurrentSearchText != null && !mCurrentSearchText.trim().isEmpty()) {
+                                    // No results
+                                    if (filteredItems.isEmpty()) {
+                                        // Show error dialog
+                                        AlertDialogBuilder.showGenericDialog(getContext().getString(R.string.error), getContext().getString(R.string.multiSelectionSearchNoResults), getContext().getString(R.string.okay), null, false, getContext(), null);
+                                        return;
+                                    }
+
+                                    // Check if at least one search result is ticked
+                                    boolean resultSelected = false;
+
+                                    // Traverse filtered items
+                                    for (ListItemWithIndex item : filteredItems) {
+                                        // Item checked?
+                                        if (item.checked) {
+                                            resultSelected = true;
+                                            break;
+                                        }
+                                    }
+
+                                    // No result selected?
+                                    if (!resultSelected) {
+                                        // Show error dialog
+                                        AlertDialogBuilder.showGenericDialog(getContext().getString(R.string.error), getContext().getString(R.string.multiSelectionSearchNoResultSelected), getContext().getString(R.string.okay), null, false, getContext(), null);
                                         return;
                                     }
                                 }

@@ -212,6 +212,8 @@
     <string name="registrationFailed">ההרשמה לשירות העדכונים נכשלה. אנא נסה מאוחר יותר.</string>
     <string name="grantNotificationPermission">יש לאפשר קבלת התראות מהאפליקציה במסך הבא.</string>
     <string name="citySelectionLimitError">לא ניתן לבחור יותר מ-100 יישובים.</string>
+    <string name="multiSelectionSearchNoResults">לא נמצאו תוצאות שתואמות את מילות החיפוש שהקלדת.</string>
+    <string name="multiSelectionSearchNoResultSelected">לא בחרת יישוב או מרחב, יש לבחור לפחות תוצאה אחת ולנסות שוב.</string>
 
     <!-- Success Messages -->
     <string name="registrationID">קוד הרשמה</string>

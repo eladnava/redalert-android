@@ -192,6 +192,8 @@
     <string name="registrationFailed">Регистрация на автоматические уведомления не прошла. Пожалуйста, повторите попытку позже.</string>
     <string name="grantNotificationPermission">Включите «Уведомления» на следующем экране, чтобы получать оповещения в режиме реального времени.</string>
     <string name="citySelectionLimitError">Пожалуйста не выбирайте более 100 городов.</string>
+    <string name="multiSelectionSearchNoResults">По введённым поисковым запросам результатов не найдено.</string>
+    <string name="multiSelectionSearchNoResultSelected">Вы не выбрали город или зону. Пожалуйста, выберите хотя бы один результат и попробуйте снова.</string>
 
     <!-- Success Messages -->
     <string name="pushRegistrationSuccess">Выберите свой город</string>

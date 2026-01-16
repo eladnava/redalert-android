@@ -12,6 +12,8 @@
     <string name="registrationFailed">Die anmeldung ist Fehlgeschlagen, versuches es zu einem Späteren zeitpung noch einmal.</string>
     <string name="grantNotificationPermission">Bitte aktivieren Sie \"Benachrichtigungen\" auf dem nächsten Bildschirm, um Benachrichtigungen in Echtzeit zu erhalten.</string>
     <string name="citySelectionLimitError">Bitte wählen Sie nicht mehr als 100 Städte aus.</string>
+    <string name="multiSelectionSearchNoResults">Es wurden keine Ergebnisse gefunden, die den eingegebenen Suchbegriffen entsprechen.</string>
+    <string name="multiSelectionSearchNoResultSelected">Sie haben keine Stadt oder Zone ausgewählt. Bitte wählen Sie mindestens ein Ergebnis aus und versuchen Sie es erneut.</string>
     <string name="settings">Einstellungen</string>
     <string name="advanced">Erweiterungen</string>
     <string name="advancedSettings">Erweiterte Einstellungen</string>

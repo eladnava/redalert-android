@@ -12,6 +12,8 @@
     <string name="registrationFailed"> L\'enregistrement a échoué, réessayez ultérieurement.</string>
     <string name="grantNotificationPermission">Veuillez activer \"Notifications" sur l\'écran suivant pour recevoir des alertes en temps réel.</string>
     <string name="citySelectionLimitError">Veuillez ne pas sélectionner plus de 100 villes.</string>
+    <string name="multiSelectionSearchNoResults">Aucun résultat ne correspond aux termes de recherche que vous avez saisis.</string>
+    <string name="multiSelectionSearchNoResultSelected">Vous n’avez pas sélectionné de ville ou de zone. Veuillez sélectionner au moins un résultat et réessayer.</string>
     <string name="settings">Paramètres</string>
     <string name="advanced">Options</string>
     <string name="advancedSettings">Paramètres avancés</string>

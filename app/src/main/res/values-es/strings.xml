@@ -191,6 +191,8 @@
     <string name="registrationFailed">El registro al servicio de notificaciones no tuvo éxito. Por favor, intente más tarde.</string>
     <string name="grantNotificationPermission">Habilite \"Notificaciones\" en la siguiente pantalla para recibir alertas en tiempo real.</string>
     <string name="citySelectionLimitError">Por favor no seleccione más de 100 ciudades.</string>
+    <string name="multiSelectionSearchNoResults">No se encontraron resultados que coincidan con los términos de búsqueda ingresados.</string>
+    <string name="multiSelectionSearchNoResultSelected">No seleccionaste una ciudad o zona. Por favor, selecciona al menos un resultado e inténtalo de nuevo.</string>
 
     <!-- Success Messages -->
     <string name="registrationID">Código de registro</string>

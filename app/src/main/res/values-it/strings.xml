@@ -12,6 +12,8 @@
     <string name="registrationFailed">Registrazione fallita, prova nuovamente più tardi.</string>
     <string name="grantNotificationPermission">Abilita \"Notifiche\" nella schermata successiva per ricevere avvisi in tempo reale.</string>
     <string name="citySelectionLimitError">Per favore non selezionare più di 100 città.</string>
+    <string name="multiSelectionSearchNoResults">Nessun risultato corrisponde ai termini di ricerca inseriti.</string>
+    <string name="multiSelectionSearchNoResultSelected">Non hai selezionato una città o una zona. Seleziona almeno un risultato e riprova.</string>
     <string name="settings">Impostazioni</string>
     <string name="advanced">Avanzate</string>
     <string name="advancedSettings">Impostazioni Avanzate</string>
