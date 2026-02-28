@@ -275,6 +275,7 @@
     <!-- Instruções de Notícias Localizadas -->
     <string name="stayNearbyShelterInstructions">Permanecendo perto do abrigo</string>
     <string name="continueStayingInsideShelterInstructions">Continue permanecendo dentro do abrigo de proteção</string>
+    <string name="checkPikudHaorefInstructions">Verifique o site oficial ou o aplicativo do Pikud Haoref para instruções</string>
     <string name="endStayNearbyShelterInstructions">Encerrando a permanência perto do abrigo</string>
     <string name="missileThreatEndInstructions">Disparo de foguete - evento encerrado</string>
     <string name="earthQuakeThreatEndInstructions">Terremoto - evento encerrado - agora você pode retornar aos edifícios</string>

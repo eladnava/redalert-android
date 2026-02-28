@@ -322,6 +322,7 @@
     <!-- Instrucciones de noticias locales -->
     <string name="stayNearbyShelterInstructions">Permanecer cerca del refugio</string>
     <string name="continueStayingInsideShelterInstructions">Continúe permaneciendo dentro del refugio protector</string>
+    <string name="checkPikudHaorefInstructions">Consulta el sitio web o la app oficial de Pikud Haoref para obtener instrucciones</string>
     <string name="endStayNearbyShelterInstructions">Fin de la permanencia cerca del refugio</string>
     <string name="missileThreatEndInstructions">Misiles - evento finalizado</string>
     <string name="earthQuakeThreatEndInstructions">Terremoto - evento finalizado - ahora puede regresar a los edificios</string>

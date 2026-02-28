@@ -275,6 +275,7 @@
     <!-- Localized News Flash Instructions -->
     <string name="stayNearbyShelterInstructions">Stay near protective shelter</string>
     <string name="continueStayingInsideShelterInstructions">Continue staying inside protective shelter</string>
+    <string name="checkPikudHaorefInstructions">Check Pikud Haoref official website or app for instructions</string>
     <string name="endStayNearbyShelterInstructions">End of stay near protective shelter</string>
     <string name="missileThreatEndInstructions">Rocket fire - event ended</string>
     <string name="earthQuakeThreatEndInstructions">Earthquake - event ended - you may now safely re-enter buildings</string>

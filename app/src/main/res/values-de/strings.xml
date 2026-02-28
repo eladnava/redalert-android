@@ -275,6 +275,7 @@
     <!-- Lokalisierte Kurzmeldungen -->
     <string name="stayNearbyShelterInstructions">In der Nähe des Schutzraums bleiben</string>
     <string name="continueStayingInsideShelterInstructions">Bleiben Sie weiterhin im Schutzraum</string>
+    <string name="checkPikudHaorefInstructions">Überprüfe die offizielle Website oder App von Pikud Haoref für Anweisungen</string>
     <string name="endStayNearbyShelterInstructions">In der Nähe des Schutzraums bleiben</string>
     <string name="missileThreatEndInstructions">Raketenfeuer – Ereignis beendet</string>
     <string name="earthQuakeThreatEndInstructions">Erdbeben – Ereignis beendet – Sie können jetzt in die Gebäude zurückkehren</string>

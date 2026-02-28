@@ -311,6 +311,7 @@
     <!-- Localized News Flash Instructions -->
     <string name="stayNearbyShelterInstructions">שהייה בסמיכות למרחב מוגן</string>
     <string name="continueStayingInsideShelterInstructions">יש להמשיך לשהות במרחב המוגן</string>
+    <string name="checkPikudHaorefInstructions">הישמעו להנחיות פיקוד העורף</string>
     <string name="endStayNearbyShelterInstructions">סיום שהייה בסמיכות למרחב מוגן</string>
     <string name="missileThreatEndInstructions">ירי רקטות וטילים - האירוע הסתיים</string>
     <string name="earthQuakeThreatEndInstructions">בעקבות רעידת האדמה - הנחיות לחזרה למבנים</string>

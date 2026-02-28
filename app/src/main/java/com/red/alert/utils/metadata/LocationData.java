@@ -745,6 +745,9 @@ public class LocationData {
             case "יש להמשיך לשהות במרחב המוגן":
                 result = context.getString(R.string.continueStayingInsideShelterInstructions);
                 break;
+            case "הישמעו להנחיות פיקוד העורף":
+                result = context.getString(R.string.checkPikudHaorefInstructions);
+                break;
             case "סיום שהייה בסמיכות למרחב המוגן":
                 result = context.getString(R.string.endStayNearbyShelterInstructions);
                 break;

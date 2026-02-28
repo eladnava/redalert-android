@@ -275,6 +275,7 @@
     <!-- تعليمات عاجلة محلية -->
     <string name="stayNearbyShelterInstructions">البقاء بالقرب من الملجأ</string>
     <string name="continueStayingInsideShelterInstructions">استمر في البقاء داخل المأوى المحمي</string>
+    <string name="checkPikudHaorefInstructions">تحقق من الموقع الرسمي أو التطبيق لقيادة الجبهة الداخلية للحصول على التعليمات</string>
     <string name="endStayNearbyShelterInstructions">إنهاء البقاء بالقرب من الملجأ</string>
     <string name="missileThreatEndInstructions">إطلاق صاروخ - انتهى الحدث</string>
     <string name="earthQuakeThreatEndInstructions">زلزال - انتهى الحدث - يمكنك الآن العودة إلى المباني</string>
