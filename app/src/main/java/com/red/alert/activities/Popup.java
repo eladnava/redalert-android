@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.Settings;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Gravity;
@@ -43,7 +45,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Popup extends AppCompatActivity {
-    Timer mTimer;
+    Handler mHandler;
+    Runnable mRunnable;
 
     TextView mCities;
     TextView mCounter;
@@ -236,8 +239,8 @@ public class Popup extends AppCompatActivity {
 
     void scheduleRocketCountdown(long timestamp, int seconds) {
         // Cancel previous timer if set
-        if (mTimer != null) {
-            mTimer.cancel();
+        if (mHandler != null && mRunnable != null) {
+            mHandler.removeCallbacks(mRunnable);
         }
 
         // Offset impact to account for delivery delay
@@ -247,26 +250,27 @@ public class Popup extends AppCompatActivity {
         final long impactTimestamp = (timestamp * 1000) + (seconds * 1000);
 
         // Schedule a new timer
-        mTimer = new Timer();
+        mHandler = new Handler(Looper.getMainLooper());
 
         // Run every 100ms
-        mTimer.scheduleAtFixedRate(new TimerTask() {
+        mRunnable = new Runnable() {
             @Override
             public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Activity died?
-                        if (isFinishing() || isDestroyed()) {
-                            return;
-                        }
+                // Activity died?
+                if (isFinishing() || isDestroyed()) {
+                    return;
+                }
 
-                        // Update countdown
-                        updateCountdownTimer(impactTimestamp);
-                    }
-                });
+                // Update countdown
+                updateCountdownTimer(impactTimestamp);
+
+                // Schedule for future execution
+                mHandler.postDelayed(this, 100);
             }
-        }, 0, 100);
+        };
+
+        // Start running
+        mHandler.post(mRunnable);
     }
 
     void updateCountdownTimer(long impactTimestamp) {

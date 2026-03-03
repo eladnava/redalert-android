@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.PowerManager;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -34,7 +35,6 @@ import androidx.core.view.MenuItemCompat;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.installations.FirebaseInstallations;
 import com.red.alert.R;
-import com.red.alert.activities.settings.Advanced;
 import com.red.alert.config.Sound;
 import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.feedback.sound.SoundLogic;
@@ -748,21 +748,27 @@ public class Main extends AppCompatActivity {
 
     void pollRecentAlerts() {
         // Schedule a new timer
-        new Timer().scheduleAtFixedRate(new TimerTask() {
+        Handler handler = new Handler(Looper.getMainLooper());
+
+        // Schedule a new timer
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        // App is running?
-                        if (mIsResumed) {
-                            // Reload every X seconds
-                            reloadRecentAlerts();
-                        }
-                    }
-                });
+                // Activity died?
+                if (isFinishing() || isDestroyed()) {
+                    return;
+                }
+
+                // App is running?
+                if (mIsResumed) {
+                    // Reload every X seconds
+                    reloadRecentAlerts();
+                }
+
+                // Schedule for future execution
+                handler.postDelayed(this, 1000L * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC);
             }
-        }, 0, 1000 * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC);
+        }, 1000L * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC);
     }
 
     void reloadRecentAlerts() {

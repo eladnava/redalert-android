@@ -10,6 +10,7 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -704,21 +705,27 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
 
     void pollRecentAlerts() {
         // Schedule a new timer
-        new Timer().scheduleAtFixedRate(new TimerTask() {
+        Handler handler = new Handler(Looper.getMainLooper());
+
+        // Schedule a new timer
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        // App is running?
-                        if (mIsResumed) {
-                            // Reload every X seconds
-                            reloadRecentAlerts();
-                        }
-                    }
-                });
+                // Activity died?
+                if (isFinishing() || isDestroyed()) {
+                    return;
+                }
+
+                // App is running?
+                if (mIsResumed) {
+                    // Reload every X seconds
+                    reloadRecentAlerts();
+                }
+
+                // Schedule for future execution
+                handler.postDelayed(this, 1000L * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC);
             }
-        }, 1000 * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC, 1000 * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC);
+        }, 1000L * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC);
     }
 
     void reloadRecentAlerts() {
