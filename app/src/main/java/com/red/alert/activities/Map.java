@@ -190,6 +190,9 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
             return;
         }
 
+        // Disable toolbar buttons (navigation / etc)
+        mMap.getUiSettings().setMapToolbarEnabled(false);
+
         // Check if night mode is enabled
         if ((getResources().getConfiguration().uiMode &
                 Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES) {
