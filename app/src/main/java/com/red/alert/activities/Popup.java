@@ -41,8 +41,6 @@ import com.red.alert.utils.ui.DensityUtil;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Popup extends AppCompatActivity {
     Handler mHandler;

@@ -95,7 +95,7 @@ public class AppPreferences {
 
     public static void setCityLastAlertTime(String city, long timestamp, Context context) {
         // Update last alert timestamp for this city
-        Singleton.getSharedPreferences(context).edit().putLong(city, timestamp).commit();
+        Singleton.getSharedPreferences(context).edit().putLong(city, timestamp).apply();
     }
 
     public static long getCityLastAlert(String city, Context context) {

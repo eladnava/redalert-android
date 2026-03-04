@@ -136,7 +136,7 @@ public class AlertLogic {
         }
 
         // Store as already processed
-        Singleton.getSharedPreferences(context).edit().putBoolean(key, true).commit();
+        Singleton.getSharedPreferences(context).edit().putBoolean(key, true).apply();
 
         // First time encountering this city & alert ID combo
         return false;
