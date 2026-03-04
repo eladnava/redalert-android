@@ -5,6 +5,7 @@ import android.location.Location;
 import android.util.Log;
 
 import com.red.alert.R;
+import com.red.alert.activities.Main;
 import com.red.alert.config.Alerts;
 import com.red.alert.config.Logging;
 import com.red.alert.config.ThreatTypes;
@@ -135,8 +136,14 @@ public class AlertLogic {
             return true;
         }
 
-        // Store as already processed
-        Singleton.getSharedPreferences(context).edit().putBoolean(key, true).apply();
+        try {
+            // Store as already processed
+            Singleton.getSharedPreferences(context).edit().putBoolean(key, true).apply();
+        }
+        catch (OutOfMemoryError exc) {
+            // Log for debug
+            Log.e(Logging.TAG, "Failed to save alert ID as processed", exc);
+        }
 
         // First time encountering this city & alert ID combo
         return false;

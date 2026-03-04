@@ -155,8 +155,14 @@ public class Main extends AppCompatActivity {
         // Force foreground service on Google Pixel devices (Android 15+)
         forceForegroundServiceOnPixelDevices();
 
-        // Clean up old preferences (used for alert de-duping)
-        deleteOldSharedPreferences();
+        // Delay by 5 seconds
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Clean up old preferences
+                AppPreferences.deleteOldSharedPreferences(Main.this);
+            }
+        }, 5 * 1000);
     }
 
     void forceForegroundServiceOnPixelDevices() {
@@ -391,115 +397,6 @@ public class Main extends AppCompatActivity {
             // Refresh alerts relative time
             invalidateAlertList();
         }
-    }
-
-    void deleteOldSharedPreferences() {
-        // Delay by 5 seconds
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // Get shared preferences
-                SharedPreferences prefs = Singleton.getSharedPreferences(Main.this);
-
-                // Get all preferences as a Map
-                java.util.Map<String, ?> all = prefs.getAll();
-
-                // Create editor
-                SharedPreferences.Editor editor = prefs.edit();
-
-                // Get current time
-                long nowSeconds = System.currentTimeMillis() / 1000L;
-
-                // Calculate 1 day in seconds
-                long twentyFourHoursSeconds = 24 * 60 * 60;
-
-                // Count deletions
-                int deletedCount = 0;
-
-                // Traverse all
-                for (java.util.Map.Entry<String, ?> entry : all.entrySet()) {
-                    // Get key & value
-                    String key = entry.getKey();
-                    Object value = entry.getValue();
-
-                    // Case 1: Timestamp inside key (after last dash)
-                    int dashIndex = key.lastIndexOf("-");
-
-                    // Found a dash?
-                    if (dashIndex != -1) {
-                        // Get timestamp
-                        String timestampPart = key.substring(dashIndex + 1);
-
-                        try {
-                            // Parse into long
-                            long keyTimestamp = Long.parseLong(timestampPart);
-
-                            // Get seconds ago
-                            long age = nowSeconds - keyTimestamp;
-
-                            // More than 24 hours passed?
-                            if (age > twentyFourHoursSeconds) {
-                                // Delete old preference
-                                editor.remove(key);
-                                deletedCount++;
-                            }
-                        } catch (NumberFormatException ignored) {
-                            // Not a timestamp in key → ignore
-                        }
-                    }
-
-                    // Case 2: Key contains Hebrew AND value is Unix timestamp
-                    else if (containsHebrew(key)) {
-                        // Get value timestamp
-                        long valueTimestamp;
-
-                        try {
-                            // Should be a Long
-                            if (value instanceof Long) {
-                                valueTimestamp = (Long) value;
-                            } else {
-                                continue;
-                            }
-
-                            // Get seconds ago
-                            long age = nowSeconds - valueTimestamp;
-
-                            // 10 digits and more than 24 hours passed?
-                            if (String.valueOf(valueTimestamp).length() == 10 &&
-                                    age > twentyFourHoursSeconds) {
-                                // Delete old preference
-                                editor.remove(key);
-                                deletedCount++;
-                            }
-                        } catch (NumberFormatException ignored) {
-                            // Not a timestamp in key → ignore
-                        }
-                    }
-                }
-
-                // Save changes (async)
-                editor.apply();
-
-                // Log for debug
-                Log.d(Logging.TAG, "Old SharedPreference keys deleted: " + deletedCount);
-            }
-        }, 5 * 1000);
-    }
-
-    private boolean containsHebrew(String text) {
-        // Traverse string
-        for (int i = 0; i < text.length(); i++) {
-            // Get current char
-            char c = text.charAt(i);
-
-            // Hebrew Unicode block
-            if (c >= 0x0590 && c <= 0x05FF) {
-                return true;
-            }
-        }
-
-        // No Hebrew found
-        return false;
     }
 
     void requestNotificationPermission() {
