@@ -16,6 +16,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
 import android.provider.Settings;
+import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -1122,6 +1123,9 @@ public class Main extends AppCompatActivity {
             // Join lists into CSV strings
             alert.desc = TextUtils.join(", ", alert.groupedDescriptions);
             alert.localizedCity = TextUtils.join(", ", alert.groupedLocalizedCities);
+
+            // Set localized city name HTML for using <b> tag for selected cities
+            alert.localizedCityHtml = Html.fromHtml(alert.localizedCity);
         }
 
         // Hooray

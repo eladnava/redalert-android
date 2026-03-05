@@ -1,5 +1,7 @@
 package com.red.alert.model;
 
+import android.text.Spanned;
+
 import java.util.List;
 
 import me.pushy.sdk.lib.jackson.annotation.JsonIgnore;
@@ -18,6 +20,7 @@ public class Alert {
     public String localizedCity;
     public String localizedZone;
     public String localizedThreat;
+    public Spanned localizedCityHtml;
 
     public String desc;
     public String dateString;
