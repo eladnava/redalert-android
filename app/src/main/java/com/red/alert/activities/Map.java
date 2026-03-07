@@ -322,12 +322,6 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                     tooltip = LocationData.getDistanceFromCity(city, this) + " " + getString(R.string.kilometer);
                 }
 
-                // Add marker to map
-                mMap.addMarker(new MarkerOptions()
-                        .position(location)
-                        .title(localizedName)
-                        .snippet(tooltip));
-
                 // Include location in zoom boundaries
                 builder.include(location);
 
