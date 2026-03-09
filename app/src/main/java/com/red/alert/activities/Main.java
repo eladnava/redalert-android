@@ -1122,7 +1122,16 @@ public class Main extends AppCompatActivity {
 
             // Join lists into CSV strings
             alert.desc = TextUtils.join(", ", alert.groupedDescriptions);
-            alert.localizedCity = TextUtils.join(", ", alert.groupedLocalizedCities);
+
+            // Format city display: list all if <5, otherwise show count with range
+            if (alert.groupedLocalizedCities.size() < 5) {
+                alert.localizedCity = TextUtils.join(", ", alert.groupedLocalizedCities);
+            } else {
+                alert.localizedCity = alert.groupedLocalizedCities.size() + " "
+                    + getString(R.string.selectedCities) + ": "
+                    + alert.groupedLocalizedCities.get(0) + "&ndash;"
+                    + alert.groupedLocalizedCities.get(alert.groupedLocalizedCities.size() - 1);
+            }
 
             // Set localized city name HTML for using <b> tag for selected cities
             alert.localizedCityHtml = Html.fromHtml(alert.localizedCity);
