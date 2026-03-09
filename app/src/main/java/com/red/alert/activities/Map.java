@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -19,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.text.HtmlCompat;
@@ -34,7 +34,9 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.red.alert.R;
 import com.red.alert.config.Logging;
@@ -46,6 +48,7 @@ import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.model.Alert;
 import com.red.alert.model.metadata.City;
+import com.red.alert.model.metadata.PolygonTooltipData;
 import com.red.alert.ui.dialogs.AlertDialogBuilder;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.ui.localization.rtl.adapters.RTLMarkerInfoWindowAdapter;
@@ -82,6 +85,8 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
     MenuItem mLoadingItem;
     RelativeLayout mMapCover;
     MenuItem mClearRecentAlertsItem;
+
+    Marker mTooltipMarker;
 
     // Singleton alerts
     public static List<Alert> mAlerts = new ArrayList<Alert>();
@@ -202,6 +207,45 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
 
         // Wait for map to load
         mapLoadedListener();
+
+        // Map click listener
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(@NonNull LatLng latLng) {
+                // Remove previous tooltip
+                if (mTooltipMarker != null) {
+                    mTooltipMarker.remove();
+                    mTooltipMarker = null;
+                }
+            }
+        });
+
+        // Listen for polygon click event
+        mMap.setOnPolygonClickListener(new GoogleMap.OnPolygonClickListener() {
+            @Override
+            public void onPolygonClick(@NonNull Polygon polygon) {
+                // Have tag?
+                if (polygon.getTag() != null) {
+                    // Remove previous tooltip
+                    if (mTooltipMarker != null) {
+                        mTooltipMarker.remove();
+                    }
+
+                    // Get polygon data from tag
+                    PolygonTooltipData data = (PolygonTooltipData) polygon.getTag();
+
+                    // Create a new tooltip marker
+                    mTooltipMarker = mMap.addMarker(new MarkerOptions()
+                            .position(data.location)
+                            .title(data.localizedName)
+                            .snippet(data.tooltip)
+                    );
+
+                    // Show tooltip (info window)
+                    mTooltipMarker.showInfoWindow();
+                }
+            }
+        });
     }
 
     void redrawOverlays() {
@@ -258,6 +302,9 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
             // Keep track of city name to avoid duplicates
             cityNames.add(alert.city);
 
+            // Store polygon object
+            Polygon polygon = null;
+
             // Check if we have polygon data for this city
             if (polygons.containsKey(String.valueOf(city.id))) {
                 // Get polygons for city
@@ -282,7 +329,7 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                 }
 
                 // Add city polygon to map with custom styling
-                mMap.addPolygon(new PolygonOptions()
+                polygon = mMap.addPolygon(new PolygonOptions()
                         .clickable(true)
                         .strokeWidth(4)
                         .strokeColor(0xffe40000)
@@ -320,6 +367,18 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                 if (alert.threat.equals(ThreatTypes.NEARBY_CITIES_DISPLAY)) {
                     // Display current distance from city center
                     tooltip = LocationData.getDistanceFromCity(city, this) + " " + getString(R.string.kilometer);
+                }
+
+                // Add marker to map (if less than X alert cities)
+                if (cityNames.size() < 10) {
+                    mMap.addMarker(new MarkerOptions()
+                            .position(location)
+                            .title(localizedName)
+                            .snippet(tooltip));
+                }
+                else if (polygon != null) {
+                    // Pass tooltip info to polygon to show marker only on polygon click
+                    polygon.setTag(new PolygonTooltipData(location, localizedName, tooltip));
                 }
 
                 // Include location in zoom boundaries
@@ -563,7 +622,7 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
     }
 
     @Override
-    public void onConfigurationChanged(android.content.res.Configuration newConfig) {
+    public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
         // Support for RTL languages
