@@ -424,18 +424,18 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
         final LatLngBounds bounds = builder.build();
 
         // Set padding/offset from the edges of the screen (px)
-        final int padding = 200;
+        final int padding = 50;
 
         // Set max zoom for animation to 13
         mMap.setMaxZoomPreference(13);
 
-        // Delay animation by 500ms
+        // Delay animation slightly
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 try {
                     // Animate nicely
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding), 1500, new GoogleMap.CancelableCallback() {
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding), 600, new GoogleMap.CancelableCallback() {
                         @Override
                         public void onFinish() {
                             // Allow user to zoom in freely
@@ -450,7 +450,7 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                     // Ignore rare exception "View size is too small after padding is applied"
                 }
             }
-        }, 500);
+        }, 350);
     }
 
     @Override
