@@ -370,7 +370,7 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                 }
 
                 // Add marker to map (if less than X alert cities)
-                if (cityNames.size() < 10) {
+                if (mAlerts.size() < 10) {
                     mMap.addMarker(new MarkerOptions()
                             .position(location)
                             .title(localizedName)
