@@ -318,7 +318,11 @@ public class Popup extends AppCompatActivity {
         mCounter.setTextColor(getResources().getColor(color));
 
         // Set countdown text
-        mCounter.setText(String.format("%02d:%02d", minutes, seconds));
+        mCounter.setText(
+                (minutes < 10 ? "0" : "") + minutes +
+                        ":" +
+                        (seconds < 10 ? "0" : "") + seconds
+        );
     }
 
     @Override
