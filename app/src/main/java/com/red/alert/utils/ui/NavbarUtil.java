@@ -19,18 +19,18 @@ public class NavbarUtil {
         // Set fits system window & background color (so it appears below navbar)
         root.setFitsSystemWindows(true);
 
-        // Fix Android 15 navbar overlay bug
-        if (Build.VERSION.SDK_INT == 35) {
+        // Fix navbar overlay in landscape mode
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             // Wait for insets
             ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
                 // Get system bar insets
                 Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
 
-                // Apply top & bottom padding
+                // Apply padding for all sides (handles landscape mode)
                 v.setPadding(
-                        v.getPaddingLeft(),
+                        bars.left,
                         bars.top,
-                        v.getPaddingRight(),
+                        bars.right,
                         bars.bottom
                 );
 
