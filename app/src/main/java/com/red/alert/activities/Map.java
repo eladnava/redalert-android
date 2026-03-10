@@ -425,7 +425,7 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
         final LatLngBounds bounds = builder.build();
 
         // Set padding/offset from the edges of the screen (px)
-        final int padding = 50;
+        final int padding = 200;
 
         // Set max zoom for animation to 13
         mMap.setMaxZoomPreference(13);
