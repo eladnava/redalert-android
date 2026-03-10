@@ -1093,6 +1093,9 @@ public class Main extends AppCompatActivity {
         // Keep track of last alert item added to list
         Alert lastAlert = null;
 
+        // Alert grouping date cutoff threshold (seconds)
+        int dateGroupingThreshold = 3 * 60;
+
         // Traverse elements
         for (int i = 0; i < alerts.size(); i++) {
             // Current element
@@ -1115,8 +1118,8 @@ public class Main extends AppCompatActivity {
             currentAlert.groupedLocalizedCities.add(currentAlert.localizedCity);
 
             // Check whether this new alert can be grouped with the previous one
-            // (Same region + 15 second cutoff threshold in either direction)
-            if (lastAlert != null && currentAlert.date >= lastAlert.date - 15 && currentAlert.date <= lastAlert.date + 15) {
+            // (Same region + X second date cutoff threshold in either direction)
+            if (lastAlert != null && currentAlert.date >= lastAlert.date - dateGroupingThreshold && currentAlert.date <= lastAlert.date + dateGroupingThreshold) {
                 // Group with previous alert list item
                 lastAlert.groupedLocalizedCities.add(currentAlert.localizedCity);
 
