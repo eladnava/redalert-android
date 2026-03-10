@@ -78,7 +78,6 @@ import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.networking.HTTP;
 import com.red.alert.utils.os.AndroidSettings;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
-import com.red.alert.utils.ui.TextViewUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -280,7 +279,7 @@ public class Main extends AppCompatActivity {
                 TextView textView = view.findViewById(R.id.alertDesc);
 
                 // Check if description is ellipsized (more than 3 lines of alert cities)
-                if (TextViewUtil.isEllipsized(textView)) {
+                if (alert.isExpandableAlert && !alert.isExpanded) {
                     // Disable ellipsis (show all cities)
                     textView.setMaxLines(Integer.MAX_VALUE);
                     textView.setEllipsize(null);
@@ -1175,6 +1174,9 @@ public class Main extends AppCompatActivity {
             if (groupedCityCount < 10) {
                 alert.localizedCity = localizedCities;
             } else {
+                // Mark as expandable
+                alert.isExpandableAlert = true;
+
                 // Display {threat} • {count} Cities instead of entire list of cities
                 alert.localizedCity = alert.localizedThreat + " • " + groupedCityCount + " " + getString(R.string.selectedCities);
 

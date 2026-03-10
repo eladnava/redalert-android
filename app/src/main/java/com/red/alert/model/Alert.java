@@ -37,6 +37,7 @@ public class Alert {
     public List<String> groupedLocalizedCities;
 
     public boolean isExpanded;
+    public boolean isExpandableAlert;
 
     @Override
     public String toString() {
