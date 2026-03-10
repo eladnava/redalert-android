@@ -66,7 +66,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import me.pushy.sdk.lib.jackson.core.JsonFactory;
+import me.pushy.sdk.lib.jackson.core.JsonParser;
+import me.pushy.sdk.lib.jackson.core.JsonToken;
 import me.pushy.sdk.lib.jackson.core.type.TypeReference;
+import me.pushy.sdk.lib.jackson.databind.ObjectMapper;
 
 public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallback {
     GoogleMap mMap;
@@ -872,14 +876,34 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
             return R.string.apiRequestFailed;
         }
 
-        // Prepare tmp object list
-        List<Alert> recentAlerts;
+        // Prepare list of recent alerts
+        List<Alert> recentAlerts = new ArrayList<>();
 
         try {
-            // Convert JSON to object
-            recentAlerts = Singleton.getJackson().readValue(alertsJSON, new TypeReference<List<Alert>>() {});
-        }
-        catch (Exception exc) {
+            // Create a JsonParser over your JSON string
+            JsonFactory factory = new JsonFactory();
+            JsonParser parser = factory.createParser(alertsJSON);
+
+            // Make sure it starts with an array
+            if (parser.nextToken() != JsonToken.START_ARRAY) {
+                throw new IllegalStateException("Expected JSON array");
+            }
+
+            // Get Jackson mapper
+            ObjectMapper mapper = Singleton.getJackson();
+
+            // Iterate over each element in the array
+            while (parser.nextToken() == JsonToken.START_OBJECT) {
+                // Deserialize a single Alert
+                Alert alert = mapper.readValue(parser, Alert.class);
+
+                // Add to list
+                recentAlerts.add(alert);
+            }
+
+            // Close parser
+            parser.close();
+        } catch (Exception exc) {
             // Log it
             Log.e(Logging.TAG, "Get recent alerts request failed", exc);
 
