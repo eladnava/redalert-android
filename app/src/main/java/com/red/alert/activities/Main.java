@@ -1627,6 +1627,14 @@ public class Main extends AppCompatActivity {
                     startActivity(popupIntent);
                 }
             }, 300);
+
+            // Get intent extras
+            Bundle extras = intent.getExtras();
+
+            // Clear intent extras to avoid showing same popup again on re-entering activity
+            if (extras != null) {
+                extras.clear();
+            }
         }
     }
 
