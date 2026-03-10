@@ -21,9 +21,13 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
+import android.text.InputType;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -481,32 +485,8 @@ public class General extends AppCompatPreferenceActivity {
         mContact.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                // Add debug flags
-                String body = getContactEmailBody();
-
-                // Set up contact click listener
-                Intent selectorIntent = new Intent(Intent.ACTION_SENDTO);
-                selectorIntent.setData(Uri.parse("mailto:"));
-
-                // Prepare e-mail intent
-                final Intent emailIntent = new Intent(Intent.ACTION_SEND);
-
-                // Add e-mail, subject & debug body
-                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{Support.CONTACT_EMAIL});
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.appName));
-                emailIntent.putExtra(Intent.EXTRA_TEXT, body);
-
-                // Limit to mail apps only
-                emailIntent.setSelector(selectorIntent);
-
-                try {
-                    // Try to open user's e-mail app
-                    startActivity(Intent.createChooser(emailIntent, getString(R.string.contact)));
-                }
-                catch (ActivityNotFoundException exc) {
-                    // Show a toast instead
-                    Toast.makeText(General.this, R.string.manualContact, Toast.LENGTH_LONG).show();
-                }
+                // Show contact us dialog
+                contactUs();
 
                 // Consume event
                 return true;
@@ -532,9 +512,112 @@ public class General extends AppCompatPreferenceActivity {
         });
     }
 
-    String getContactEmailBody() {
+    void contactUs() {
+        // Create input for user to describe the problem
+        EditText input = new EditText(General.this);
+
+        // Add hint text
+        input.setHint(R.string.problemDesc);
+
+        // 3 lines
+        input.setMinLines(3);
+
+        // RTL support
+        if (Localization.isRTLLocale(General.this)) {
+            input.setTextDirection(View.TEXT_DIRECTION_RTL);
+            input.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            input.setGravity(Gravity.RIGHT | Gravity.TOP);
+        }
+
+        // Calculate 20dp in pixels
+        int margin = (int)(25 * getResources().getDisplayMetrics().density);
+
+        // Set margin & gravity
+        input.setPadding(margin, margin, margin, margin);
+        input.setGravity(Gravity.TOP | Gravity.START);
+
+        // Set multi line capability
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+
+        // Prepare dialog
+        AlertDialog dialog = new AlertDialog.Builder(General.this)
+                .setTitle(R.string.contact)
+                .setMessage(R.string.contactDesc)
+                .setView(input)
+                .setCancelable(false)
+                .setPositiveButton(R.string.okay, null)
+                .setNegativeButton(android.R.string.cancel, null)
+                .create();
+
+        // Show dialog
+        dialog.show();
+
+        // Set positive button click listener
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
+            // Get problem description text
+            String problemDesc = input.getText().toString().trim();
+
+            // Empty?
+            if (problemDesc.isEmpty() || problemDesc.length() < 10) {
+                // Show error
+                input.setError(getString(R.string.contactUsError));
+                return;
+            }
+
+            // Forward to mail app
+            sendMessage(problemDesc);
+
+            // Dismiss dialog
+            dialog.dismiss();
+        });
+
+        // Support for RTL languages
+        RTLSupport.mirrorDialog(dialog, General.this);
+    }
+    void sendMessage(String text) {
+        // Add debug flags
+        String body = getContactEmailBody(text);
+
+        // Set up contact click listener
+        Intent selectorIntent = new Intent(Intent.ACTION_SENDTO);
+        selectorIntent.setData(Uri.parse("mailto:"));
+
+        // Prepare e-mail intent
+        final Intent emailIntent = new Intent(Intent.ACTION_SEND);
+
+        // Add e-mail, subject & debug body
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{Support.CONTACT_EMAIL});
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.appName));
+        emailIntent.putExtra(Intent.EXTRA_TEXT, body);
+
+        // Limit to mail apps only
+        emailIntent.setSelector(selectorIntent);
+
+        try {
+            // Try to open user's e-mail app
+            startActivity(Intent.createChooser(emailIntent, getString(R.string.contact)));
+        }
+        catch (ActivityNotFoundException exc) {
+            // Show a toast instead
+            Toast.makeText(General.this, R.string.manualContact, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    String getContactEmailBody(String text) {
+        // Add default problem description text
+        String body = getString(R.string.problemDesc);
+
+        // Break 2 lines
+        body += "\r\n\r\n";
+
+        // Add user-inputted text
+        body += text;
+
+        // Break 2 lines
+        body += "\r\n\r\n";
+
         // Add sent via and app version
-        String body = getString(R.string.sentVia) + " " + getString(R.string.appName) + " " + AppVersion.getVersionName(General.this);
+        body += getString(R.string.sentVia) + " " + getString(R.string.appName) + " " + AppVersion.getVersionName(General.this);
 
         // Break 2 lines
         body += "\r\n\r\n";
@@ -624,15 +707,6 @@ public class General extends AppCompatPreferenceActivity {
 
         body += "phone.manufacturer=" + Build.MANUFACTURER + ", ";
         body += "phone.model=" + Build.MODEL;
-
-        // Break 2 lines
-        body += "\r\n\r\n";
-
-        // Add default problem description text
-        body += getString(R.string.problemDesc);
-
-        // Break a few lines
-        body += "\r\n";
 
         // Return body
         return body;

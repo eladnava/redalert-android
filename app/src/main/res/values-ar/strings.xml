@@ -27,6 +27,7 @@
     <string name="manualContact">اتصل بي عبر البريد الإلكتروني على support@redalert.me</string>
     <string name="jsonFailed">حدث خطأ أثناء تحميل البيانات من الخادم.</string>
     <string name="notifyError">حدث خطأ أثناء عرض الإشعار، يرجى إعادة تشغيل هاتفك.</string>
+    <string name="contactUsError">يرجى إدخال رسالة أطول من 10 أحرف.</string>
     <string name="safeCategory">\"أنا آمن\"</string>
     <string name="safe">أرسل \"أنا آمن\"</string>
     <string name="imSafeMessage">أنا آمن - تم الإرسال عبر أحمر اللون لنظام ذكري المظهر - https://redalert.me</string>

@@ -204,6 +204,7 @@
     <string name="pushyTestFailed">הבדיקה העצמית נכשלה חלקית. לא התקבלה התרעה דרך שרת ההתרעות המשני, אך כן התקבלה התרעה דרך שרת ההתרעות של גוגל. נסה שוב מאוחר יותר.</string>
 
     <!-- Error Messages -->
+    <string name="contactUsError">אנא הזן הודעה באורך של יותר מ‑10 תווים.</string>
     <string name="notifyError">ארעה שגיאה בהצגת ההתרעה, מומלץ להפעיל מחדש את הטלפון.</string>
     <string name="jsonFailed">ארעה שגיאה בטעינת נתונים מהשרת.</string>
     <string name="noGooglePlayServices">הטלפון שלך אינו מכיל גרסה עדכנית של Google Play Services.</string>

@@ -185,6 +185,7 @@
 
     <!-- Error Messages -->
     <string name="notifyError">Был ошибка отображения предупреждение, вы можете перезагрузить телефон.</string>
+    <string name="contactUsError">Пожалуйста, введите сообщение длиной более 10 символов.</string>
     <string name="jsonFailed">Был ошибка при загрузке данных с сервера.</string>
     <string name="noGooglePlayServices">Ваш телефон не имеет обновленную версию игры Услуги Google установлены.</string>
     <string name="pushRegistrationFailed">Произошла ошибка при подписании вас на уведомления ракеты толчок. Мы постараемся, чтобы подписать вас снова в будущем.</string>

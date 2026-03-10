@@ -26,6 +26,7 @@
     <string name="reportProblem">Relatar um problema</string>
     <string name="manualContact">Contate-me via e-mail em support@redalert.me</string>
     <string name="jsonFailed">Ocorreu um erro ao carregar dados do servidor.</string>
+    <string name="contactUsError">Por favor, insira uma mensagem com mais de 10 caracteres.</string>
     <string name="notifyError">Ocorreu um erro ao exibir a notificação, reinicie seu celular.</string>
     <string name="safeCategory">\"Estou seguro\"</string>
     <string name="safe">Enviar \"Estou seguro\"</string>

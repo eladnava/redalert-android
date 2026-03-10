@@ -27,6 +27,7 @@
     <string name="manualContact">Contact me via e-mail at support@redalert.me</string>
     <string name="jsonFailed">An error occurred while loading data from the server.</string>
     <string name="notifyError">An error occurred while displaying the notification, please restart your phone.</string>
+    <string name="contactUsError">Please enter a message longer than 10 characters.</string>
     <string name="safeCategory">\"I\'m safe\"</string>
     <string name="safe">Send \"I\'m safe\"</string>
     <string name="imSafeMessage">I\'m safe - sent via RedAlert for Android - https://redalert.me</string>
