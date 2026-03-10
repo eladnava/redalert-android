@@ -1,6 +1,9 @@
 package com.red.alert.ui.adapters;
 
 import android.content.Context;
+import android.text.Html;
+import android.text.Spanned;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,12 +63,12 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
             viewHolder.title.setText(alert.localizedCityHtml);
 
             // Get alert desc
-            String desc = alert.desc;
+            Spanned desc = alert.descHtml;
 
             // System alert?
             if (ThreatTypes.SYSTEM.equals(alert.threat)) {
                 // Set desc to "system message"
-                desc = alert.localizedThreat;
+                desc = Html.fromHtml(alert.localizedThreat);
 
                 // Hide time
                 viewHolder.time.setVisibility(View.GONE);
@@ -83,6 +86,18 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
 
             // Custom threat icons
             viewHolder.image.setImageResource(LocationData.getThreatDrawable(alert.threat));
+
+            // Check if expanded
+            if (alert.isExpanded) {
+                // Disable ellipsis (show all)
+                viewHolder.desc.setMaxLines(Integer.MAX_VALUE);
+                viewHolder.desc.setEllipsize(null);
+            }
+            else {
+                // Max 3 lines with ellipsis (...)
+                viewHolder.desc.setMaxLines(3);
+                viewHolder.desc.setEllipsize(TextUtils.TruncateAt.END);
+            }
         }
 
         // Return the view

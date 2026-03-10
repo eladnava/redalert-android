@@ -20,6 +20,8 @@ public class Alert {
     public String localizedCity;
     public String localizedZone;
     public String localizedThreat;
+
+    public Spanned descHtml;
     public Spanned localizedCityHtml;
 
     public String desc;
@@ -33,6 +35,8 @@ public class Alert {
 
     @JsonIgnore
     public List<String> groupedLocalizedCities;
+
+    public boolean isExpanded;
 
     @Override
     public String toString() {

@@ -89,6 +89,7 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
     Marker mTooltipMarker;
 
     // Singleton alerts
+    public static boolean mIsExpandedAlert;
     public static List<Alert> mAlerts = new ArrayList<Alert>();
 
     @Override
@@ -546,8 +547,18 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
         // Remove HTML entities (<b>)
         cities = HtmlCompat.fromHtml(cities, HtmlCompat.FROM_HTML_MODE_LEGACY).toString();
 
-        // Construct share message
-        return mAlerts.get(0).localizedThreat + " " + getString(R.string.alertSoundedAt) + cities + "\n" + mAlerts.get(0).dateString + "\n\n" + getString(R.string.alertSentVia);
+        // Expanded alert?
+        if (mIsExpandedAlert) {
+            // Remove HTML entities from city names (<b>)
+            String expandedCities = HtmlCompat.fromHtml(mAlerts.get(0).desc, HtmlCompat.FROM_HTML_MODE_LEGACY).toString();
+
+            // Construct share message
+            return cities + "\r\n" + mAlerts.get(0).dateString + "\n\n" + expandedCities + "\n\n" + getString(R.string.alertSentVia);
+        }
+        else {
+            // Construct share message
+            return mAlerts.get(0).localizedThreat + " " + getString(R.string.alertSoundedAt) + cities + "\n" + mAlerts.get(0).dateString + "\n\n" + getString(R.string.alertSentVia);
+        }
     }
 
     void initializeShareButton(Menu OptionsMenu) {

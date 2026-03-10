@@ -27,6 +27,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -77,6 +78,7 @@ import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.networking.HTTP;
 import com.red.alert.utils.os.AndroidSettings;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
+import com.red.alert.utils.ui.TextViewUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -274,6 +276,22 @@ public class Main extends AppCompatActivity {
                     return;
                 }
 
+                // Get alert description TextView handle
+                TextView textView = view.findViewById(R.id.alertDesc);
+
+                // Check if description is ellipsized (more than 3 lines of alert cities)
+                if (TextViewUtil.isEllipsized(textView)) {
+                    // Disable ellipsis (show all cities)
+                    textView.setMaxLines(Integer.MAX_VALUE);
+                    textView.setEllipsize(null);
+
+                    // Set alert as expanded to survive automatic reload
+                    alert.isExpanded = true;
+
+                    // Avoid opening the Map activity (requires another tap)
+                    return;
+                }
+
                 // Create new intent
                 Intent alertView = new Intent();
 
@@ -282,6 +300,9 @@ public class Main extends AppCompatActivity {
 
                 // Pass alerts directly to map activity
                 Map.mAlerts = alert.groupedAlerts;
+
+                // Set expanded alert flag (for determining share message format)
+                Map.mIsExpandedAlert = alert.isExpanded;
 
                 // Show it
                 startActivity(alertView);
@@ -1037,6 +1058,24 @@ public class Main extends AppCompatActivity {
         // Group alerts with same timestamp
         recentAlerts = groupAlerts(recentAlerts);
 
+        // Alert count hasn't changed between reloads?
+        if (recentAlerts.size() == mDisplayAlerts.size()) {
+            // Loop over old alerts
+            for (int i = 0; i < mDisplayAlerts.size(); i++) {
+                // Get current alert
+                Alert alert = mDisplayAlerts.get(i);
+
+                // User tapped to expand?
+                if (alert.isExpanded) {
+                    // Check if new alert at same position has the same date (safeguard)
+                    if (recentAlerts.get(i).date == alert.date) {
+                        // Set alert expanded flag to avoid collapsing it after refresh
+                        recentAlerts.get(i).isExpanded = true;
+                    }
+                }
+            }
+        }
+
         // Clear global list
         mNewAlerts.clear();
 
@@ -1122,9 +1161,26 @@ public class Main extends AppCompatActivity {
 
             // Join lists into CSV strings
             alert.desc = TextUtils.join(", ", alert.groupedDescriptions);
-            alert.localizedCity = TextUtils.join(", ", alert.groupedLocalizedCities);
+
+            // Prepare list of localized cities
+            String localizedCities = TextUtils.join(", ", alert.groupedLocalizedCities);
+
+            // Get grouped city count
+            int groupedCityCount = alert.groupedLocalizedCities.size();
+
+            // If less than 10 cities, display all city names in large font
+            if (groupedCityCount < 10) {
+                alert.localizedCity = localizedCities;
+            } else {
+                // Display {threat} • {count} Cities instead of entire list of cities
+                alert.localizedCity = alert.localizedThreat + " • " + groupedCityCount + " " + getString(R.string.selectedCities);
+
+                // Move all city names to the alert desc TextView (smaller font) with max 3 lines (ellipsis) and expand on tap
+                alert.desc = localizedCities + "<br /><br />" + alert.desc;
+            }
 
             // Set localized city name HTML for using <b> tag for selected cities
+            alert.descHtml = Html.fromHtml(alert.desc);
             alert.localizedCityHtml = Html.fromHtml(alert.localizedCity);
         }
 
