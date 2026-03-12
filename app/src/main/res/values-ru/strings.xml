@@ -5,7 +5,7 @@
     <string name="appName">Цева Адом</string>
 
     <!-- Registration Dialog -->
-    <string name="signing_up">Зарегистрируйтесь для получения регулярных сообщений Цева Адом ...</string>
+    <string name="signing_up">Регистрация для получения мгновенных уведомлений Цева Адом...</string>
 
     <!-- Dialog Buttons -->
     <string name="okay">ОК</string>
@@ -21,7 +21,7 @@
 
     <!-- Recent Alerts -->
     <string name="noAlerts">Нет сигналов тревоги\nтекущий день</string>
-    <string name="recentAlerts">Последние Оповещения</string>
+    <string name="recentAlerts">Последние оповещения</string>
 
     <!-- Settings -->
     <string name="settings">Настройки</string>
@@ -36,7 +36,7 @@
 
     <!-- Area Selection -->
     <string name="alertRegions">Области</string>
-    <string name="search">Введите слово...</string>
+    <string name="search">Поиск...</string>
     <string name="allString">Все</string>
     <string name="noneString">Выкл</string>
 
@@ -45,8 +45,8 @@
     <string name="receiveSecondaryAlertsDesc">Получать вторичные оповещения в режиме реального времени</string>
 
     <!-- Secondary Alerts -->
-    <string name="secondaryAlerts">Вторичные Оповещения</string>
-    <string name="secondaryAlertsTitle">Вторичные Оповещения</string>
+    <string name="secondaryAlerts">Вторичные оповещения</string>
+    <string name="secondaryAlertsTitle">Вторичные оповещения</string>
     <string name="secondaryAlertsDesc">Щелкните здесь, чтобы настроить вторичные оповещения о других областях</string>
 
     <!-- Secondary Cities -->
@@ -69,7 +69,7 @@
     <string name="testSuccessfulLong">Самодиагностика успешно завершила!</string>
 
     <!-- Volume -->
-    <string name="volume">уровень громкости</string>
+    <string name="volume">Уровень громкости</string>
     <string name="volumeDesc">Настройте нужный уровень громкости сигнала для оповещений</string>
 
     <!-- Secondary Volume -->
@@ -86,20 +86,20 @@
     <string name="siren3">Сирена 3</string>
     <string name="siren4">Сирена 4</string>
     <string name="siren5">Сирена 5</string>
-    <string name="tiny">короткий 1</string>
-    <string name="calm">спокойный 1</string>
+    <string name="tiny">Короткий 1</string>
+    <string name="calm">Спокойный 1</string>
     <string name="tzevaAdom">Цева Адом</string>
     <string name="funny">Забавный</string>
-    <string name="calm2">спокойный 2</string>
-    <string name="calm3">успокоить 3</string>
-    <string name="calm4">успокоить 4</string>
-    <string name="calm5">спокойный 5</string>
-    <string name="tiny2">короткие 2</string>
-    <string name="tiny3">короткая 3</string>
-    <string name="tiny4">короткая 4</string>
-    <string name="tiny5">короткие 5</string>
-    <string name="tiny6">короткие 6</string>
-    <string name="noSound">​​тихий</string>
+    <string name="calm2">Спокойный 2</string>
+    <string name="calm3">Спокойный 3</string>
+    <string name="calm4">Спокойный 4</string>
+    <string name="calm5">Спокойный 5</string>
+    <string name="tiny2">Короткий 2</string>
+    <string name="tiny3">Короткий 3</string>
+    <string name="tiny4">Короткий 4</string>
+    <string name="tiny5">Короткий 5</string>
+    <string name="tiny6">Короткий 6</string>
+    <string name="noSound">​​Без звука</string>
 
     <!-- Secondary Sound -->
     <string name="secondarySoundSelection">Вторичный звук</string>
@@ -150,19 +150,19 @@
     <string name="safeWhatsAppDesc">При нажатии кнопки \"Сообщить\" напрямую выбрать контакты</string>
 
     <!-- Language & Theme Selection -->
-    <string name="automatic">Automatic</string>
+    <string name="automatic">Автоматическая/string>
     <string name="languageAndTheme">Язык и внешний вид</string>
-    <string name="langSelection">App language</string>
-    <string name="langSelectionDesc">Change the application language</string>
+    <string name="langSelection">Язык приложения</string>
+    <string name="langSelectionDesc">Изменить язык приложения</string>
     <string name="themeSelection">Тема приложения</string>
     <string name="themeSelectionDesc">Настроить тему приложения</string>
 
     <!-- Theme Name Identifiers -->
-    <string name="lightTheme">Свет</string>
+    <string name="lightTheme">Светлый</string>
     <string name="darkTheme">Темный</string>
 
     <!-- Contact -->
-    <string name="contact">Для Связи</string>
+    <string name="contact">Для связи</string>
     <string name="problemDesc">Описание ошибки: </string>
     <string name="sentVia">Отправлено через</string>
     <string name="registrationID">Регистрационный код</string>
@@ -187,8 +187,8 @@
     <string name="notifyError">Был ошибка отображения предупреждение, вы можете перезагрузить телефон.</string>
     <string name="contactUsError">Пожалуйста, введите сообщение длиной более 10 символов.</string>
     <string name="jsonFailed">Был ошибка при загрузке данных с сервера.</string>
-    <string name="noGooglePlayServices">Ваш телефон не имеет обновленную версию игры Услуги Google установлены.</string>
-    <string name="pushRegistrationFailed">Произошла ошибка при подписании вас на уведомления ракеты толчок. Мы постараемся, чтобы подписать вас снова в будущем.</string>
+    <string name="noGooglePlayServices">На вашем телефоне не установлены Сервисы Google Play.</string>
+    <string name="pushRegistrationFailed">Не удалось зарегистрироваться для получения мгновенных уведомлений. Повторная попытка будет выполнена автоматически.</string>
     <string name="apiRequestFailed">Запрос для получения информации из наших серверов не удалось. Пожалуйста, проверьте подключение к Интернету и повторите попытку.</string>
     <string name="registrationFailed">Регистрация на автоматические уведомления не прошла. Пожалуйста, повторите попытку позже.</string>
     <string name="grantNotificationPermission">Включите «Уведомления» на следующем экране, чтобы получать оповещения в режиме реального времени.</string>
@@ -230,7 +230,7 @@
 
     <!-- Wake Screen -->
     <string name="wakeScreen">Включить экран</string>
-    <string name="wakeScreenDesc">Оповещения о ракетах разбудят экран вашего телефона</string>
+    <string name="wakeScreenDesc">Оповещения о ракетах включат экран вашего телефона</string>
 
     <!-- Alert Popup -->
     <string name="close">Закрыть</string>
