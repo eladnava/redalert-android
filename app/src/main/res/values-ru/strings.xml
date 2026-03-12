@@ -150,7 +150,7 @@
     <string name="safeWhatsAppDesc">При нажатии кнопки \"Сообщить\" напрямую выбрать контакты</string>
 
     <!-- Language & Theme Selection -->
-    <string name="automatic">Автоматическая/string>
+    <string name="automatic">Автоматическая</string>
     <string name="languageAndTheme">Язык и внешний вид</string>
     <string name="langSelection">Язык приложения</string>
     <string name="langSelectionDesc">Изменить язык приложения</string>
