@@ -51,6 +51,7 @@ import com.red.alert.config.Donations;
 import com.red.alert.config.Logging;
 import com.red.alert.config.Support;
 import com.red.alert.config.Testing;
+import com.red.alert.config.ThreatTypes;
 import com.red.alert.logic.alerts.AlertLogic;
 import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.communication.broadcasts.LocationSelectionEvents;
@@ -665,6 +666,12 @@ public class General extends AppCompatPreferenceActivity {
             body += "location.maxDistance=" + LocationLogic.getMaxDistanceKilometers(this, -1) + "km, ";
             body += "location.updateInterval=every " + LocationLogic.getUpdateIntervalMilliseconds(this) / 1000 / 60 + " minute(s), ";
         }
+
+        // Early warning & leave shelter alerts
+        body += "earlyWarnings.enabled=" + AppPreferences.getEarlyWarningNotificationsEnabled(this) + ", ";
+        body += "earlyWarnings.sound=" + SoundLogic.getAlertSoundName(AlertTypes.PRIMARY, ThreatTypes.EARLY_WARNING, null, this) + ", ";
+        body += "leaveShelterAlerts.enabled=" + AppPreferences.getLeaveShelterNotificationsEnabled(this) + ", ";
+        body += "leaveShelterAlerts.sound=" + SoundLogic.getAlertSoundName(AlertTypes.PRIMARY, ThreatTypes.LEAVE_SHELTER, null, this) + ", ";
 
         // Add other params
         body += "volume.primary=" + AppPreferences.getPrimaryAlertVolume(this, -1) + ", ";
