@@ -78,6 +78,7 @@ import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.networking.HTTP;
 import com.red.alert.utils.os.AndroidSettings;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
+import com.red.alert.utils.ui.TextViewUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -280,10 +281,10 @@ public class Main extends AppCompatActivity {
                 }
 
                 // Get alert description TextView handle
-                TextView textView = view.findViewById(R.id.alertDesc);
+                TextView textView = view.findViewById(R.id.alertTitle);
 
                 // Check if description is ellipsized (more than 3 lines of alert cities)
-                if (alert.isExpandableAlert && !alert.isExpanded) {
+                if (alert.isExpandableAlert && TextViewUtil.isEllipsized(textView)) {
                     // Disable ellipsis (show all cities)
                     textView.setMaxLines(Integer.MAX_VALUE);
                     textView.setEllipsize(null);
@@ -1201,14 +1202,10 @@ public class Main extends AppCompatActivity {
                 alert.isExpandableAlert = true;
 
                 // Display {threat} • {count} Cities instead of entire list of cities
-                alert.localizedCity = alert.localizedThreat + " • " + groupedCityCount + " " + getString(R.string.selectedCities);
-
-                // Move all city names to the alert desc TextView (smaller font) with max 3 lines (ellipsis) and expand on tap
-                alert.desc = localizedCities + "<br /><br />" + alert.desc;
+                alert.localizedCity = alert.localizedThreat + " • " + groupedCityCount + " " + getString(R.string.selectedCities) + "<br /><br />" + localizedCities;
             }
 
             // Set localized city name HTML for using <b> tag for selected cities
-            alert.descHtml = Html.fromHtml(alert.desc);
             alert.localizedCityHtml = Html.fromHtml(alert.localizedCity);
         }
 

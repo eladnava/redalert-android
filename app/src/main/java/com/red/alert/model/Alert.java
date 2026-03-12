@@ -21,7 +21,6 @@ public class Alert {
     public String localizedZone;
     public String localizedThreat;
 
-    public Spanned descHtml;
     public Spanned localizedCityHtml;
 
     public String desc;

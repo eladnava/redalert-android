@@ -63,12 +63,12 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
             viewHolder.title.setText(alert.localizedCityHtml);
 
             // Get alert desc
-            Spanned desc = alert.descHtml;
+            String desc = alert.desc;
 
             // System alert?
             if (ThreatTypes.SYSTEM.equals(alert.threat)) {
                 // Set desc to "system message"
-                desc = Html.fromHtml(alert.localizedThreat);
+                desc = alert.localizedThreat;
 
                 // Hide time
                 viewHolder.time.setVisibility(View.GONE);
@@ -96,13 +96,13 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
             // Check if expanded
             if (alert.isExpanded) {
                 // Disable ellipsis (show all)
-                viewHolder.desc.setMaxLines(Integer.MAX_VALUE);
-                viewHolder.desc.setEllipsize(null);
+                viewHolder.title.setMaxLines(Integer.MAX_VALUE);
+                viewHolder.title.setEllipsize(null);
             }
             else {
-                // Max 3 lines with ellipsis (...)
-                viewHolder.desc.setMaxLines(3);
-                viewHolder.desc.setEllipsize(TextUtils.TruncateAt.END);
+                // Max 5 lines with ellipsis (...)
+                viewHolder.title.setMaxLines(5);
+                viewHolder.title.setEllipsize(TextUtils.TruncateAt.END);
             }
         }
 
