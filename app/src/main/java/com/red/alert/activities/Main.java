@@ -1194,8 +1194,8 @@ public class Main extends AppCompatActivity {
             // Get grouped city count
             int groupedCityCount = alert.groupedLocalizedCities.size();
 
-            // If less than 10 cities, display all city names in large font
-            if (groupedCityCount < 10) {
+            // If less than 15 cities, display all city names in large font
+            if (groupedCityCount < 15) {
                 alert.localizedCity = localizedCities;
             } else {
                 // Mark as expandable
