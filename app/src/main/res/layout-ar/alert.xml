@@ -22,13 +22,22 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
         <TextView
-                android:id="@+id/alertTitle"
-                android:textColor="@color/colorTextPrimary"
-                android:textSize="18sp"
-                android:layout_marginBottom="5sp"
-                android:text="@string/placeHolder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            android:id="@+id/alertTitle"
+            android:textSize="18sp"
+            android:layout_marginBottom="5sp"
+            android:text="@string/placeHolder"
+            android:textColor="@color/colorTextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/alertCities"
+            android:textSize="18sp"
+            android:layout_marginBottom="5sp"
+            android:text="@string/placeHolder"
+            android:textColor="@color/colorTextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
         <TextView
                 android:id="@+id/alertDesc"
                 android:textColor="@color/colorTextAccent"

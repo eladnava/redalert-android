@@ -1,20 +1,20 @@
 package com.red.alert.ui.adapters;
 
 import android.content.Context;
-import android.text.Html;
-import android.text.Spanned;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.red.alert.R;
 import com.red.alert.config.ThreatTypes;
 import com.red.alert.model.Alert;
 import com.red.alert.utils.metadata.LocationData;
+import com.red.alert.utils.ui.TextViewUtil;
 
 import java.util.List;
 
@@ -43,6 +43,7 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
             // Cache the view resources
             viewHolder.time = convertView.findViewById(R.id.time);
             viewHolder.title = convertView.findViewById(R.id.alertTitle);
+            viewHolder.cities = convertView.findViewById(R.id.alertCities);
             viewHolder.desc = convertView.findViewById(R.id.alertDesc);
             viewHolder.image = convertView.findViewById(R.id.image);
 
@@ -60,7 +61,7 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
         // Got an alert?
         if (alert != null) {
             // Set localized city name (HTML for using <b> tag for selected cities)
-            viewHolder.title.setText(alert.localizedCityHtml);
+            viewHolder.cities.setText(alert.localizedCityHtml);
 
             // Get alert desc
             String desc = alert.desc;
@@ -83,9 +84,16 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
 
             // Expandable alert?
             if (alert.isExpandableAlert) {
+                // Set title
+                viewHolder.title.setText(alert.localizedTitle);
+                viewHolder.title.setVisibility(View.VISIBLE);
+
                 // Show user-friendly time (don't include threat as it's already included in the localized city)
                 viewHolder.time.setText(alert.dateString);
             } else {
+                // Hide title
+                viewHolder.title.setVisibility(View.GONE);
+
                 // Show threat type & user-friendly time
                 viewHolder.time.setText(alert.localizedThreat + " • " + alert.dateString);
             }
@@ -96,14 +104,50 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
             // Check if expanded
             if (alert.isExpanded) {
                 // Disable ellipsis (show all)
-                viewHolder.title.setMaxLines(Integer.MAX_VALUE);
-                viewHolder.title.setEllipsize(null);
+                viewHolder.cities.setMaxLines(Integer.MAX_VALUE);
+                viewHolder.cities.setEllipsize(null);
             }
             else {
-                // Max 5 lines with ellipsis (...)
-                viewHolder.title.setMaxLines(5);
-                viewHolder.title.setEllipsize(TextUtils.TruncateAt.END);
+                // Max 3 lines with ellipsis (...)
+                viewHolder.cities.setMaxLines(3);
+                viewHolder.cities.setEllipsize(TextUtils.TruncateAt.END);
             }
+
+            // Title click event
+            viewHolder.cities.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Check if title is ellipsized (more than 3 lines of alert cities)
+                    if (alert.isExpandableAlert) {
+                        if (TextViewUtil.isEllipsized(viewHolder.cities)) {
+                            // Disable ellipsis (show all cities)
+                            viewHolder.cities.animate().alpha(0f).setDuration(120).withEndAction(() -> {
+                                viewHolder.cities.setMaxLines(Integer.MAX_VALUE);
+                                viewHolder.cities.setEllipsize(null);
+
+                                viewHolder.cities.animate().alpha(1f).setDuration(200).start();
+                            }).start();
+                        } else {
+                            // Disable ellipsis (show all cities)
+                            viewHolder.cities.animate().alpha(0f).setDuration(120).withEndAction(() -> {
+                                // Max 3 lines with ellipsis (...)
+                                viewHolder.cities.setMaxLines(3);
+                                viewHolder.cities.setEllipsize(TextUtils.TruncateAt.END);
+
+                                viewHolder.cities.animate().alpha(1f).setDuration(200).start();
+                            }).start();
+
+                        }
+
+                        // Toggle expanded flag
+                        alert.isExpanded = !alert.isExpanded;
+                    }
+                    else {
+                        // Open map
+                        ((ListView) parent).performItemClick(view, position, getItemId(position));
+                    }
+                }
+            });
         }
 
         // Return the view
@@ -113,6 +157,7 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
     public static class ViewHolder {
         public TextView time;
         public TextView title;
+        public TextView cities;
         public TextView desc;
         public ImageView image;
     }

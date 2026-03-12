@@ -17,6 +17,7 @@ public class Alert {
     @JsonProperty("threat")
     public String threat;
 
+    public String localizedTitle;
     public String localizedCity;
     public String localizedZone;
     public String localizedThreat;

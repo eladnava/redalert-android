@@ -27,7 +27,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -78,7 +77,6 @@ import com.red.alert.utils.metadata.LocationData;
 import com.red.alert.utils.networking.HTTP;
 import com.red.alert.utils.os.AndroidSettings;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
-import com.red.alert.utils.ui.TextViewUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -89,7 +87,6 @@ import me.pushy.sdk.config.PushyForegroundService;
 import me.pushy.sdk.lib.jackson.core.JsonFactory;
 import me.pushy.sdk.lib.jackson.core.JsonParser;
 import me.pushy.sdk.lib.jackson.core.JsonToken;
-import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 import me.pushy.sdk.lib.jackson.databind.ObjectMapper;
 import me.pushy.sdk.util.PushyAuthentication;
 
@@ -277,22 +274,6 @@ public class Main extends AppCompatActivity {
 
                 // No map view for system alerts
                 if (alert.threat.equals(ThreatTypes.SYSTEM)) {
-                    return;
-                }
-
-                // Get alert description TextView handle
-                TextView textView = view.findViewById(R.id.alertTitle);
-
-                // Check if description is ellipsized (more than 3 lines of alert cities)
-                if (alert.isExpandableAlert && TextViewUtil.isEllipsized(textView)) {
-                    // Disable ellipsis (show all cities)
-                    textView.setMaxLines(Integer.MAX_VALUE);
-                    textView.setEllipsize(null);
-
-                    // Set alert as expanded to survive automatic reload
-                    alert.isExpanded = true;
-
-                    // Avoid opening the Map activity (requires another tap)
                     return;
                 }
 
@@ -1194,19 +1175,20 @@ public class Main extends AppCompatActivity {
             // Get grouped city count
             int groupedCityCount = alert.groupedLocalizedCities.size();
 
+            // Pass on localized cities list
+            alert.localizedCity = localizedCities;
+
+            // Set localized city name HTML for using <b> tag for selected cities
+            alert.localizedCityHtml = Html.fromHtml(alert.localizedCity);
+
             // If less than 15 cities, display all city names in large font
-            if (groupedCityCount < 15) {
-                alert.localizedCity = localizedCities;
-            } else {
+            if (groupedCityCount >= 15) {
                 // Mark as expandable
                 alert.isExpandableAlert = true;
 
                 // Display {threat} • {count} Cities instead of entire list of cities
-                alert.localizedCity = alert.localizedThreat + " • " + groupedCityCount + " " + getString(R.string.selectedCities) + "<br /><br />" + localizedCities;
+                alert.localizedTitle = alert.localizedThreat + " • " + groupedCityCount + " " + getString(R.string.selectedCities);
             }
-
-            // Set localized city name HTML for using <b> tag for selected cities
-            alert.localizedCityHtml = Html.fromHtml(alert.localizedCity);
         }
 
         // Hooray
