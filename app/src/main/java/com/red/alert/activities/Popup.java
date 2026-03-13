@@ -225,16 +225,6 @@ public class Popup extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onUserLeaveHint() {
-        super.onUserLeaveHint();
-
-        // End activity
-        if (!isFinishing()) {
-            finish();
-        }
-    }
-
     void scheduleRocketCountdown(long timestamp, int seconds) {
         // Cancel previous timer if set
         if (mHandler != null && mRunnable != null) {
