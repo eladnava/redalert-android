@@ -32,10 +32,9 @@
         android:layout_centerInParent="true">
 
         <ImageView
-            android:src="@drawable/ic_redalert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:src="@drawable/ic_redalert" />
 
         <TextView
             android:textSize="17sp"

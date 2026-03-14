@@ -69,7 +69,6 @@ import java.util.List;
 import me.pushy.sdk.lib.jackson.core.JsonFactory;
 import me.pushy.sdk.lib.jackson.core.JsonParser;
 import me.pushy.sdk.lib.jackson.core.JsonToken;
-import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 import me.pushy.sdk.lib.jackson.databind.ObjectMapper;
 
 public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallback {
