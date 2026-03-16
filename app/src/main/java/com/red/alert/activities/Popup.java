@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.red.alert.R;
 import com.red.alert.config.Alerts;
@@ -43,7 +44,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Popup extends AppCompatActivity {
-    Handler mHandler;
+    private final Handler mHandler = new Handler(Looper.getMainLooper());
+
     Runnable mRunnable;
 
     TextView mCities;
@@ -93,7 +95,7 @@ public class Popup extends AppCompatActivity {
         // Clear top, set as new task
         popupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         popupIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        popupIntent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+        popupIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
         // Display popup activity
         context.startActivity(popupIntent);
@@ -225,9 +227,20 @@ public class Popup extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        // Countdown timer running?
+        if (mRunnable != null) {
+            mHandler.removeCallbacks(mRunnable);
+        }
+
+        // Destroy activity
+        super.onDestroy();
+    }
+
     void scheduleRocketCountdown(long timestamp, int seconds) {
         // Cancel previous timer if set
-        if (mHandler != null && mRunnable != null) {
+        if (mRunnable != null) {
             mHandler.removeCallbacks(mRunnable);
         }
 
@@ -237,10 +250,7 @@ public class Popup extends AppCompatActivity {
         // Calculate time to impact
         final long impactTimestamp = (timestamp * 1000) + (seconds * 1000);
 
-        // Schedule a new timer
-        mHandler = new Handler(Looper.getMainLooper());
-
-        // Run every 100ms
+        // Run every 1000ms
         mRunnable = new Runnable() {
             @Override
             public void run() {
@@ -253,7 +263,7 @@ public class Popup extends AppCompatActivity {
                 updateCountdownTimer(impactTimestamp);
 
                 // Schedule for future execution
-                mHandler.postDelayed(this, 100);
+                mHandler.postDelayed(this, 1000);
             }
         };
 
@@ -305,7 +315,7 @@ public class Popup extends AppCompatActivity {
         seconds = seconds % 60;
 
         // Set text color
-        mCounter.setTextColor(getResources().getColor(color));
+        mCounter.setTextColor(ContextCompat.getColor(this, color));
 
         // Set countdown text
         mCounter.setText(

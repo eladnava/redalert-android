@@ -99,6 +99,7 @@ public class Main extends AppCompatActivity {
     boolean mPermissionDialogDisplayed;
 
     Button mImSafe;
+    Runnable mRunnable;
     ListView mAlertsList;
     ProgressBar mLoading;
     MenuItem mLoadingItem;
@@ -108,6 +109,9 @@ public class Main extends AppCompatActivity {
 
     List<Alert> mNewAlerts;
     List<Alert> mDisplayAlerts;
+
+    private final Handler mHandler = new Handler(Looper.getMainLooper());
+
     SharedPreferences.OnSharedPreferenceChangeListener mBroadcastListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
         @Override
         public void onSharedPreferenceChanged(SharedPreferences Preferences, String Key) {
@@ -160,7 +164,7 @@ public class Main extends AppCompatActivity {
         forceForegroundServiceOnPixelDevices();
 
         // Delay by 5 seconds
-        new Handler().postDelayed(new Runnable() {
+        mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 // Clean up old preferences
@@ -762,10 +766,7 @@ public class Main extends AppCompatActivity {
 
     void pollRecentAlerts() {
         // Schedule a new timer
-        Handler handler = new Handler(Looper.getMainLooper());
-
-        // Schedule a new timer
-        handler.postDelayed(new Runnable() {
+        mRunnable = new Runnable() {
             @Override
             public void run() {
                 // Activity died?
@@ -780,9 +781,12 @@ public class Main extends AppCompatActivity {
                 }
 
                 // Schedule for future execution
-                handler.postDelayed(this, 1000L * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC);
+                mHandler.postDelayed(this, 1000L * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC);
             }
-        }, 1000L * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC);
+        };
+
+        // Schedule for future invocation
+        mHandler.postDelayed(mRunnable, 1000L * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC);
     }
 
     void reloadRecentAlerts() {
@@ -1250,10 +1254,16 @@ public class Main extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+        // Countdown timer running?
+        if (mRunnable != null) {
+            mHandler.removeCallbacks(mRunnable);
+        }
 
         // Unregister for broadcasts
         Broadcasts.unsubscribe(this, mBroadcastListener);
+
+        // Destroy activity
+        super.onDestroy();
     }
 
     void invalidateAlertList() {
@@ -1599,7 +1609,7 @@ public class Main extends AppCompatActivity {
             popupIntent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
 
             // Delay popup by 300ms to allow main activity UI to finish rendering
-            new Handler().postDelayed(new Runnable() {
+            mHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     // Display popup activity
