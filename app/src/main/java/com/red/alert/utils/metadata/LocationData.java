@@ -633,7 +633,7 @@ public class LocationData {
     public static int getThreatDrawable(String threat) {
         // Null fallback
         if (threat == null) {
-            return R.drawable.ic_launcher;
+            return R.drawable.ic_redalert;
         }
 
         // Return drawable resource by threat type
@@ -650,7 +650,7 @@ public class LocationData {
             return R.drawable.ic_tsunami;
         }
         else if (threat.contains(ThreatTypes.MISSILES)) {
-            return R.drawable.ic_launcher;
+            return R.drawable.ic_redalert;
         }
         else if (threat.contains(ThreatTypes.TERRORIST_INFILTRATION)) {
             return R.drawable.ic_terrorist_infiltration;
@@ -659,7 +659,7 @@ public class LocationData {
             return R.drawable.ic_earthquake;
         }
         else {
-            return R.drawable.ic_launcher;
+            return R.drawable.ic_redalert;
         }
     }
 

@@ -5,14 +5,15 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
     <ImageView
-            android:id="@+id/image"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true" />
+        android:id="@+id/image"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_redalert" />
     <LinearLayout
             android:gravity="right"
             android:paddingLeft="15dp"

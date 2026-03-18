@@ -10,10 +10,10 @@
         android:id="@+id/image"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_launcher"
+        android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_redalert" />
 
     <LinearLayout
         android:gravity="left"
