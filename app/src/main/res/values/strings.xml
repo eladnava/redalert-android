@@ -121,8 +121,8 @@
 
     <!-- Early Warnings -->
     <string name="earlyWarnings">התרעות מקדימות</string>
-    <string name="earlyWarningsDesc">הגדרת ההתרעות המקדימות שיתקבלו 3–5 דקות לפני התרעות האמת</string>
-    <string name="receiveEarlyWarningsDesc">קבלת ההתרעות המקדימות 3–5 דקות לפני התרעות האמת</string>
+    <string name="earlyWarningsDesc">הגדרת ההתרעות המקדימות שיתקבלו כ-5 דקות לפני התרעות האמת</string>
+    <string name="receiveEarlyWarningsDesc">קבלת ההתרעות המקדימות כ-5 דקות לפני התרעות האמת</string>
 
     <!-- Early Warning Sound -->
     <string name="earlyWarningsSoundSelection">צליל ההתרעות המקדימות</string>
@@ -170,7 +170,7 @@
 
     <!-- Donate -->
     <string name="donate">תרומות יתקבלו בברכה</string>
-    <string name="donateInstructions">בחירת הסכום לתרומה בשקלים:</string>
+    <string name="donateInstructions">סכום לתרומה בשקלים:</string>
     <string name="donateDesc">כל תרומה תעזור בכיסוי עלויות הפיתוח והשרתים</string>
     <string name="donateSuccess">תודה רבה על תרומתך!</string>
     <string name="donateSuccessDesc">תרומתך מוערכת מאוד ותעזור בכיסוי עלויות הפיתוח והשרתים.</string>
@@ -188,7 +188,7 @@
     <string name="secondaryVolumeDesc">בחירת עוצמת הצליל להתרעות המשנה</string>
 
     <!-- Website -->
-    <string name="website">בקרו באתר שלנו</string>
+    <string name="website">ביקור באתר שלנו</string>
     <string name="websiteDesc">ביקור באתר הרשמי של היישומון</string>
 
     <!-- Share the Application -->
