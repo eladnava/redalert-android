@@ -213,6 +213,9 @@ public class Popup extends AppCompatActivity {
             mCounter.setVisibility(View.GONE);
         }
         else {
+            // Show countdown
+            mCounter.setVisibility(View.VISIBLE);
+
             // Fetch highest priority countdown in seconds for given alert cities list
             int countdown = LocationData.getPrioritizedCountdownForCities(cities, this);
 
