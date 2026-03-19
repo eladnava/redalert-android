@@ -121,8 +121,8 @@
 
     <!-- Early Warnings -->
     <string name="earlyWarnings">התרעות מקדימות</string>
-    <string name="earlyWarningsDesc">הגדרת ההתרעות המקדימות שיתקבלו כ-5 דקות לפני התרעות האמת</string>
-    <string name="receiveEarlyWarningsDesc">קבלת ההתרעות המקדימות כ-5 דקות לפני התרעות האמת</string>
+    <string name="earlyWarningsDesc">הגדרת ההתרעות המקדימות שיתקבלו כ־5 דקות לפני התרעות האמת</string>
+    <string name="receiveEarlyWarningsDesc">קבלת ההתרעות המקדימות כ־5 דקות לפני התרעות האמת</string>
 
     <!-- Early Warning Sound -->
     <string name="earlyWarningsSoundSelection">צליל ההתרעות המקדימות</string>
