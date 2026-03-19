@@ -93,6 +93,7 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
 
     // Singleton alerts
     public static boolean mIsExpandedAlert;
+    public static long mNewestDisplayedAlertDate;
     public static List<Alert> mAlerts = new ArrayList<Alert>();
 
     @Override
@@ -849,6 +850,11 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                 // Prevent white flicker as map loads in dark mode
                 mMapCover.setVisibility(View.GONE);
             }
+            // No new alerts?
+            else if (errorStringResource == R.string.noNewAlerts) {
+                // Show share button
+                mShareItem.setVisible(true);
+            }
             else {
                 // Show error toast
                 Toast.makeText(Map.this, getString(errorStringResource), Toast.LENGTH_LONG).show();
@@ -891,10 +897,31 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
             // Get Jackson mapper
             ObjectMapper mapper = Singleton.getJackson();
 
+            // Keep track of whether the alert being parsed is the first alert in the list
+            boolean firstAlert = true;
+
             // Iterate over each element in the array
             while (parser.nextToken() == JsonToken.START_OBJECT) {
                 // Deserialize a single Alert
                 Alert alert = mapper.readValue(parser, Alert.class);
+
+                // Is this the first alert? (most recent)
+                if (firstAlert) {
+                    // Same date as the currently displayed first alert?
+                    if (alert.date == mNewestDisplayedAlertDate) {
+                        // Stop parsing (no new alerts)
+                        parser.close();
+
+                        // No new alerts, do nothing
+                        return R.string.noNewAlerts;
+                    }
+
+                    // Save most recent result date
+                    mNewestDisplayedAlertDate = alert.date;
+                }
+
+                // No longer the first alert
+                firstAlert = false;
 
                 // Add to list
                 recentAlerts.add(alert);

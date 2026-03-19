@@ -440,6 +440,7 @@
     <string translatable="false" name="isSubscribedPref">is_subscribed_1_0_33</string>
     <string translatable="false" name="lastSubscribed">last_subscribed</string>
     <string translatable="false" name="recentAlertsCutoff">recent_alerts_cutoff</string>
+    <string translatable="false" name="noNewAlerts">no_new_alerts</string>
 
     <!-- Default Volume -->
     <string name="defaultAlertVolume" translatable="false">1.0</string>

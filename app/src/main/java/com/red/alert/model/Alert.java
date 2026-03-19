@@ -39,6 +39,8 @@ public class Alert {
     public boolean isExpanded;
     public boolean isExpandableAlert;
 
+    public long firstGroupedAlertTimestamp;
+
     @Override
     public String toString() {
         return city;

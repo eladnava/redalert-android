@@ -98,6 +98,8 @@ public class Main extends AppCompatActivity {
     boolean mPushTokensRefreshed;
     boolean mPermissionDialogDisplayed;
 
+    long mNewestDisplayedAlertDate;
+
     Button mImSafe;
     Runnable mRunnable;
     ListView mAlertsList;
@@ -879,6 +881,9 @@ public class Main extends AppCompatActivity {
         // Pass all currently-displayed alerts to map activity
         Map.mAlerts = mAllAlerts;
 
+        // Pass newest displayed alert date
+        Map.mNewestDisplayedAlertDate = mNewestDisplayedAlertDate;
+
         // Start map activity
         startActivity(mapIntent);
     }
@@ -1015,10 +1020,37 @@ public class Main extends AppCompatActivity {
             // Get Jackson mapper
             ObjectMapper mapper = Singleton.getJackson();
 
+            // Keep track of whether the alert being parsed is the first alert in the list
+            boolean firstAlert = true;
+
             // Iterate over each element in the array
             while (parser.nextToken() == JsonToken.START_OBJECT) {
                 // Deserialize a single Alert
                 Alert alert = mapper.readValue(parser, Alert.class);
+
+                // Is this the first alert? (most recent)
+                if (firstAlert) {
+                    // Same date as the currently displayed first alert?
+                    if (alert.date == mNewestDisplayedAlertDate) {
+                        // Stop parsing (no new alerts)
+                        parser.close();
+
+                        // Loop over currently displayed alerts
+                        for (Alert displayedAlert : mDisplayAlerts) {
+                            // Update relative time ago
+                            displayedAlert.dateString = LocationData.getAlertDateTimeString(displayedAlert.date, displayedAlert.firstGroupedAlertTimestamp, this);
+                        }
+
+                        // No new alerts, just refresh relative time ago
+                        return R.string.noNewAlerts;
+                    }
+
+                    // Save most recent result date
+                    mNewestDisplayedAlertDate = alert.date;
+                }
+
+                // No longer the first alert
+                firstAlert = false;
 
                 // Add to list
                 recentAlerts.add(alert);
@@ -1155,6 +1187,9 @@ public class Main extends AppCompatActivity {
                 if (lastAlert.date != currentAlert.date) {
                     // Display first & last alert times
                     lastAlert.dateString = LocationData.getAlertDateTimeString(lastAlert.date, currentAlert.date, this);
+
+                    // Save first grouped alert timestamp for later use (alert refresh)
+                    lastAlert.firstGroupedAlertTimestamp = currentAlert.date;
                 }
             }
             else {
@@ -1398,6 +1433,11 @@ public class Main extends AppCompatActivity {
             if (errorStringResource == 0) {
                 // Invalidate the list
                 invalidateAlertList();
+            }
+            // No new alerts?
+            else if (errorStringResource == R.string.noNewAlerts) {
+                // Invalidate the list (for relative time ago to be refreshed)
+                mAlertsAdapter.notifyDataSetChanged();
             }
             else {
                 // Show error toast
