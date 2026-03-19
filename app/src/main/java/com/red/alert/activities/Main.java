@@ -1098,19 +1098,19 @@ public class Main extends AppCompatActivity {
         // Group alerts with same timestamp
         recentAlerts = groupAlerts(recentAlerts);
 
-        // Alert count hasn't changed between reloads?
-        if (recentAlerts.size() == mDisplayAlerts.size()) {
-            // Loop over old alerts
-            for (int i = 0; i < mDisplayAlerts.size(); i++) {
-                // Get current alert
-                Alert alert = mDisplayAlerts.get(i);
+        // Preserve expanded state based on date
+        for (Alert displayAlert : mDisplayAlerts) {
+            // Expanded?
+            if (displayAlert.isExpanded) {
+                // Check for this alert in the new list
+                for (Alert newAlert : recentAlerts) {
+                    // Same date?
+                    if (newAlert.date == displayAlert.date) {
+                        // Set as expanded
+                        newAlert.isExpanded = true;
 
-                // User tapped to expand?
-                if (alert.isExpanded) {
-                    // Check if new alert at same position has the same date (safeguard)
-                    if (recentAlerts.get(i).date == alert.date) {
-                        // Set alert expanded flag to avoid collapsing it after refresh
-                        recentAlerts.get(i).isExpanded = true;
+                        // Stop after finding the first match
+                        break;
                     }
                 }
             }
