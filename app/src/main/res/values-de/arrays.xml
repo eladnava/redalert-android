@@ -3,38 +3,34 @@
     <string-array name="zoneNames">
         <item>Alle Auswählen</item>
         <item>Eilat</item>
-        <item>Beit Shemesh</item>
-        <item>Bika\'a</item>
-        <item>Beit She\'an-Tal</item>
-        <item>Golan</item>
-        <item>Obergaliläa</item>
-        <item>Untergaliläa</item>
+        <item>Baka</item>
+        <item>Beit She\'an Valley</item>
+        <item>Southern Golan</item>
+        <item>Northern Golan</item>
+        <item>Upper Galilee</item>
+        <item>Lower Galilee</item>
         <item>Dan</item>
-        <item>Süd-Negev</item>
-        <item>Drom Hashfela</item>
-        <item>HaMifratz</item>
+        <item>Southern Negev</item>
+        <item>HaCarmel</item>
+        <item>HaMifratz (The Bay)</item>
+        <item>HaAmakim</item>
         <item>HaShfela</item>
         <item>Wadi Ara</item>
-        <item>Hof HaCarmel</item>
-        <item>Haifa</item>
-        <item>Hefer</item>
         <item>Yehuda</item>
-        <item>Totes Meer</item>
-        <item>Yearot HaCarmel</item>
+        <item>Dead Sea</item>
         <item>Jerusalem</item>
         <item>Yarkon</item>
         <item>Lachish</item>
         <item>Menashe</item>
-        <item>West-Negev</item>
-        <item>West-Lachish</item>
-        <item>Zentral-Negev</item>
-        <item>Gaza-Streifen</item>
-        <item>Arava</item>
-        <item>Konfrontationslinie</item>
-        <item>Katzrin</item>
-        <item>Krayot</item>
+        <item>West Negev</item>
+        <item>West Lachish</item>
+        <item>Center Galilee</item>
+        <item>Center Negev</item>
+        <item>Gaza Envelope</item>
+        <item>Aravah</item>
+        <item>Confrontation Line</item>
         <item>Shomron</item>
+        <item>Judea Foothills</item>
         <item>Sharon</item>
-        <item>Tavor</item>
     </string-array>
 </resources>

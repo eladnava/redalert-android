@@ -3,38 +3,34 @@
     <string-array name="zoneNames">
         <item>اختر الكل</item>
         <item>إيلات</item>
-        <item>بيت شيمش</item>
-        <item>بيكا</item>
-        <item>وادي بيت شان</item>
-        <item>الجولان</item>
+        <item>الأغوار</item>
+        <item>غور بيت شان</item>
+        <item>جنوب الجولان</item>
+        <item>شمال الجولان</item>
         <item>الجليل الأعلى</item>
         <item>الجليل الأسفل</item>
         <item>دان</item>
         <item>جنوب النقب</item>
-        <item>دروم هشفيلة</item>
-        <item>حيفا والميناء</item>
-        <item>هشفيلة</item>
+        <item>الكرمل</item>
+        <item>المفراتس</item>
+        <item>هعماكيم</item>
+        <item>هشفيلاه</item>
         <item>وادي عارة</item>
-        <item>ساحل الكرمل</item>
-        <item>حيفا</item>
-        <item>حيفر</item>
         <item>يهودا</item>
         <item>البحر الميت</item>
-        <item>ياروت هاكرمل</item>
-        <item>القدس</item>
-        <item>ياركون</item>
-        <item>لاخيش</item>
+        <item>أورشليم القدس</item>
+        <item>اليركون</item>
+        <item>لخيش</item>
         <item>مناشيه</item>
         <item>غرب النقب</item>
-        <item>غرب لاخيش</item>
-        <item>وسط النقب</item>
+        <item>غرب لخيش</item>
+        <item>الجليل المركزي</item>
+        <item>النقب المركزي</item>
         <item>غلاف غزة</item>
-        <item>عرافا</item>
+        <item>العرباه</item>
         <item>خط المواجهة</item>
-        <item>كاتزرين</item>
-        <item>كريوت</item>
-        <item>السامرة</item>
-        <item>شارون</item>
-        <item>طابور</item>
+        <item>شومرون</item>
+        <item>شفلات يهودا</item>
+        <item>الشارون</item>
     </string-array>
 </resources>

@@ -3,38 +3,34 @@
     <string-array name="zoneNames">
         <item>Seleccionar Todo</item>
         <item>Eilat</item>
-        <item>Beit Shemesh</item>
-        <item>Bika\'a</item>
-        <item>Valle de Beit She\'an</item>
-        <item>Golan</item>
-        <item>Alta Galilea</item>
-        <item>Baja Galilea</item>
+        <item>Baka</item>
+        <item>Beit She\'an Valley</item>
+        <item>Southern Golan</item>
+        <item>Northern Golan</item>
+        <item>Upper Galilee</item>
+        <item>Lower Galilee</item>
         <item>Dan</item>
-        <item>Sur del Néguev</item>
-        <item>Drom Hashfela</item>
-        <item>HaMifratz</item>
+        <item>Southern Negev</item>
+        <item>HaCarmel</item>
+        <item>HaMifratz (The Bay)</item>
+        <item>HaAmakim</item>
         <item>HaShfela</item>
         <item>Wadi Ara</item>
-        <item>Hof HaCarmel</item>
-        <item>Haifa</item>
-        <item>Hefer</item>
         <item>Yehuda</item>
-        <item>Mar Muerto</item>
-        <item>Yearot HaCarmel</item>
-        <item>Jerusalén</item>
+        <item>Dead Sea</item>
+        <item>Jerusalem</item>
         <item>Yarkon</item>
         <item>Lachish</item>
         <item>Menashe</item>
-        <item>Oeste del Néguev</item>
-        <item>Oeste de Lachish</item>
-        <item>Centro del Néguev</item>
-        <item>Franja de Gaza</item>
-        <item>Arava</item>
-        <item>Línea de confrontación</item>
-        <item>Katzrin</item>
-        <item>Krayot</item>
+        <item>West Negev</item>
+        <item>West Lachish</item>
+        <item>Center Galilee</item>
+        <item>Center Negev</item>
+        <item>Gaza Envelope</item>
+        <item>Aravah</item>
+        <item>Confrontation Line</item>
         <item>Shomron</item>
+        <item>Judea Foothills</item>
         <item>Sharon</item>
-        <item>Tavor</item>
     </string-array>
 </resources>
