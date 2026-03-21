@@ -84,7 +84,7 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
             viewHolder.desc.setText(desc);
 
             // Expandable alert?
-            if (alert.isExpandableAlert) {
+            if (alert.hasTitle) {
                 // Set title
                 viewHolder.title.setText(alert.localizedTitle);
                 viewHolder.title.setVisibility(View.VISIBLE);
@@ -119,16 +119,20 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
                 @Override
                 public void onClick(View view) {
                     // Check if title is ellipsized (more than 3 lines of alert cities)
-                    if (alert.isExpandableAlert) {
-                        if (TextViewUtil.isEllipsized(viewHolder.cities)) {
-                            // Disable ellipsis (show all cities)
-                            viewHolder.cities.animate().alpha(0f).setDuration(120).withEndAction(() -> {
-                                viewHolder.cities.setMaxLines(Integer.MAX_VALUE);
-                                viewHolder.cities.setEllipsize(null);
+                    if (TextViewUtil.isEllipsized(viewHolder.cities)) {
+                        // Disable ellipsis (show all cities)
+                        viewHolder.cities.animate().alpha(0f).setDuration(120).withEndAction(() -> {
+                            viewHolder.cities.setMaxLines(Integer.MAX_VALUE);
+                            viewHolder.cities.setEllipsize(null);
 
-                                viewHolder.cities.animate().alpha(1f).setDuration(200).start();
-                            }).start();
-                        } else {
+                            viewHolder.cities.animate().alpha(1f).setDuration(200).start();
+                        }).start();
+
+                        // Toggle expanded flag
+                        alert.isExpanded = true;
+                    } else {
+                        // Already expanded?
+                        if (alert.isExpanded) {
                             // Disable ellipsis (show all cities)
                             viewHolder.cities.animate().alpha(0f).setDuration(120).withEndAction(() -> {
                                 // Max 3 lines with ellipsis (...)
@@ -138,14 +142,12 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
                                 viewHolder.cities.animate().alpha(1f).setDuration(200).start();
                             }).start();
 
+                            // Toggle expanded flag
+                            alert.isExpanded = false;
+                        } else {
+                            // Open map
+                            ((ListView) parent).performItemClick(view, position, getItemId(position));
                         }
-
-                        // Toggle expanded flag
-                        alert.isExpanded = !alert.isExpanded;
-                    }
-                    else {
-                        // Open map
-                        ((ListView) parent).performItemClick(view, position, getItemId(position));
                     }
                 }
             });

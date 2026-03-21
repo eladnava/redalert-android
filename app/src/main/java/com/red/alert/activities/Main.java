@@ -1209,7 +1209,7 @@ public class Main extends AppCompatActivity {
             // If less than 15 cities, display all city names in large font
             if (groupedCityCount >= 15) {
                 // Mark as expandable
-                alert.isExpandableAlert = true;
+                alert.hasTitle = true;
 
                 // Display {threat} • {count} Cities instead of entire list of cities
                 alert.localizedTitle = alert.localizedThreat + " • " + groupedCityCount + " " + getString(R.string.selectedCities);

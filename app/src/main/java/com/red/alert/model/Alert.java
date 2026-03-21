@@ -1,7 +1,5 @@
 package com.red.alert.model;
 
-import android.text.Spanned;
-
 import java.util.List;
 
 import me.pushy.sdk.lib.jackson.annotation.JsonIgnore;
@@ -38,7 +36,7 @@ public class Alert {
     public List<String> groupedCities;
 
     public boolean isExpanded;
-    public boolean isExpandableAlert;
+    public boolean hasTitle;
 
     public long firstGroupedAlertTimestamp;
 
