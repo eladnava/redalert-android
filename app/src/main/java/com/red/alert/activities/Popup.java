@@ -57,6 +57,8 @@ public class Popup extends AppCompatActivity {
 
     ImageView mThreatIcon;
 
+    private final char[] timeBuffer = {'0','0',':','0','0'};
+
     public static void showAlertPopup(String alertType, List<String> cities, String threatType, String instructions, Context context) {
         // Only display popup for primary/secondary alerts (no test/sound/system notifications)
         if (!alertType.equals(AlertTypes.PRIMARY) && !alertType.equals(AlertTypes.SECONDARY)) {
@@ -320,12 +322,14 @@ public class Popup extends AppCompatActivity {
         // Set text color
         mCounter.setTextColor(ContextCompat.getColor(this, color));
 
+        // Use timeBuffer to work around rare OutOfMemoryError
+        timeBuffer[0] = (char) ('0' + minutes / 10);
+        timeBuffer[1] = (char) ('0' + minutes % 10);
+        timeBuffer[3] = (char) ('0' + seconds / 10);
+        timeBuffer[4] = (char) ('0' + seconds % 10);
+
         // Set countdown text
-        mCounter.setText(
-                (minutes < 10 ? "0" : "") + minutes +
-                        ":" +
-                        (seconds < 10 ? "0" : "") + seconds
-        );
+        mCounter.setText(timeBuffer, 0, 5);
     }
 
     @Override
