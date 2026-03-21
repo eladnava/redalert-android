@@ -42,6 +42,12 @@ public class AlertLogic {
         // Ensure the right language is displayed
         Localization.overridePhoneLocale(context);
 
+        // Realtime alerts paused for a duration (settings)?
+        if (AppPreferences.isAlertsPausedNow(context)) {
+            Log.i(Logging.TAG, "Alerts paused by user until later, ignoring alert");
+            return;
+        }
+
         // Log the cities
         Log.i(Logging.TAG, "Received alert (" + threatType + "): " + citiesPSVString);
 
