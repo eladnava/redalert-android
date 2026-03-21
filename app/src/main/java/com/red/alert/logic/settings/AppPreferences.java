@@ -1,8 +1,13 @@
 package com.red.alert.logic.settings;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Handler;
+import android.util.Log;
 
 import com.red.alert.R;
+import com.red.alert.activities.Main;
+import com.red.alert.config.Logging;
 import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.metadata.LocationData;
@@ -95,8 +100,14 @@ public class AppPreferences {
     }
 
     public static void setCityLastAlertTime(String city, long timestamp, Context context) {
-        // Update last alert timestamp for this city
-        Singleton.getSharedPreferences(context).edit().putLong(city, timestamp).commit();
+        try {
+            // Update last alert timestamp for this city
+            Singleton.getSharedPreferences(context).edit().putLong(city, timestamp).apply();
+        }
+        catch (OutOfMemoryError exc) {
+            // Log for debug
+            Log.e(Logging.TAG, "Failed to set city last alert time", exc);
+        }
     }
 
     public static long getCityLastAlert(String city, Context context) {
@@ -251,5 +262,114 @@ public class AppPreferences {
             c.add(Calendar.DAY_OF_MONTH, 1);
         }
         return c.getTimeInMillis();
+    }
+
+    public static void deleteOldSharedPreferences(Context context) {
+        try {
+            // Get shared preferences
+            SharedPreferences prefs = Singleton.getSharedPreferences(context);
+
+            // Get all preferences as a Map
+            java.util.Map<String, ?> all = prefs.getAll();
+
+            // Create editor
+            SharedPreferences.Editor editor = prefs.edit();
+
+            // Get current time
+            long nowSeconds = System.currentTimeMillis() / 1000L;
+
+            // Calculate 1 day in seconds
+            long twentyFourHoursSeconds = 24 * 60 * 60;
+
+            // Count deletions
+            int deletedCount = 0;
+
+            // Traverse all
+            for (java.util.Map.Entry<String, ?> entry : all.entrySet()) {
+                // Get key & value
+                String key = entry.getKey();
+                Object value = entry.getValue();
+
+                // Case 1: Timestamp inside key (after last dash)
+                int dashIndex = key.lastIndexOf("-");
+
+                // Found a dash?
+                if (dashIndex != -1) {
+                    // Get timestamp
+                    String timestampPart = key.substring(dashIndex + 1);
+
+                    try {
+                        // Parse into long
+                        long keyTimestamp = Long.parseLong(timestampPart);
+
+                        // Get seconds ago
+                        long age = nowSeconds - keyTimestamp;
+
+                        // More than 24 hours passed?
+                        if (age > twentyFourHoursSeconds) {
+                            // Delete old preference
+                            editor.remove(key);
+                            deletedCount++;
+                        }
+                    } catch (NumberFormatException ignored) {
+                        // Not a timestamp in key → ignore
+                    }
+                }
+
+                // Case 2: Key contains Hebrew AND value is Unix timestamp
+                else if (containsHebrew(key)) {
+                    // Get value timestamp
+                    long valueTimestamp;
+
+                    try {
+                        // Should be a Long
+                        if (value instanceof Long) {
+                            valueTimestamp = (Long) value;
+                        } else {
+                            continue;
+                        }
+
+                        // Get seconds ago
+                        long age = nowSeconds - valueTimestamp;
+
+                        // 10 digits and more than 24 hours passed?
+                        if (String.valueOf(valueTimestamp).length() == 10 &&
+                                age > twentyFourHoursSeconds) {
+                            // Delete old preference
+                            editor.remove(key);
+                            deletedCount++;
+                        }
+                    } catch (NumberFormatException ignored) {
+                        // Not a timestamp in key → ignore
+                    }
+                }
+            }
+
+            // Save changes (async)
+            editor.apply();
+
+            // Log for debug
+            Log.d(Logging.TAG, "Old SharedPreference keys deleted: " + deletedCount);
+        }
+        catch (Exception exc) {
+            // Log for debug
+            Log.e(Logging.TAG, "Failed to delete old SharedPreferences", exc);
+        }
+    }
+
+    private static boolean containsHebrew(String text) {
+        // Traverse string
+        for (int i = 0; i < text.length(); i++) {
+            // Get current char
+            char c = text.charAt(i);
+
+            // Hebrew Unicode block
+            if (c >= 0x0590 && c <= 0x05FF) {
+                return true;
+            }
+        }
+
+        // No Hebrew found
+        return false;
     }
 }

@@ -6,6 +6,9 @@ import me.pushy.sdk.lib.jackson.annotation.JsonIgnore;
 import me.pushy.sdk.lib.jackson.annotation.JsonProperty;
 
 public class Alert {
+    @JsonProperty("id")
+    public int id;
+
     @JsonProperty("date")
     public long date;
 
@@ -15,6 +18,7 @@ public class Alert {
     @JsonProperty("threat")
     public String threat;
 
+    public String localizedTitle;
     public String localizedCity;
     public String localizedZone;
     public String localizedThreat;
@@ -29,7 +33,12 @@ public class Alert {
     public List<String> groupedDescriptions;
 
     @JsonIgnore
-    public List<String> groupedLocalizedCities;
+    public List<String> groupedCities;
+
+    public boolean isExpanded;
+    public boolean hasTitle;
+
+    public long firstGroupedAlertTimestamp;
 
     @Override
     public String toString() {

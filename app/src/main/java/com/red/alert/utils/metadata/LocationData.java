@@ -29,6 +29,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import me.pushy.sdk.lib.jackson.core.JsonFactory;
+import me.pushy.sdk.lib.jackson.core.JsonParser;
+import me.pushy.sdk.lib.jackson.core.JsonToken;
 import me.pushy.sdk.lib.jackson.core.type.TypeReference;
 
 public class LocationData {
@@ -202,33 +205,59 @@ public class LocationData {
             return mPolygons;
         }
 
-        try {
-            // Open polygons.json for reading
-            InputStream stream = context.getResources().openRawResource(R.raw.polygons);
+        // Create new HashMap
+        mPolygons = new HashMap<>();
 
-            // Create a buffered reader
-            BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+        // Try reading polygons JSON file from resources
+        try (InputStream stream = context.getResources().openRawResource(R.raw.polygons)) {
+            // Create new JSON factory & parser
+            JsonFactory factory = new JsonFactory();
+            JsonParser parser = factory.createParser(stream);
 
-            // StringBuilder for efficiency
-            StringBuilder builder = new StringBuilder();
-
-            // A temporary variable to store current line
-            String currentLine;
-
-            // Read all lines
-            while ((currentLine = reader.readLine()) != null) {
-                // Append to builder
-                builder.append(currentLine);
+            // Start reading object
+            if (parser.nextToken() != JsonToken.START_OBJECT) {
+                throw new IllegalStateException("Expected JSON object");
             }
 
-            // Convert to string
-            String json = builder.toString();
+            // Iterate over all fields (polygon names)
+            while (parser.nextToken() == JsonToken.FIELD_NAME) {
+                // Get polygon name
+                String polygonName = parser.getCurrentName();
 
-            // Convert to HashMap object
-            mPolygons = Singleton.getJackson().readValue(json, new TypeReference<HashMap<String,ArrayList<ArrayList<Double>>>>() {});
-        }
-        catch (Exception exc) {
-            // Log it
+                // Move to polygon array
+                parser.nextToken();
+
+                // Get points
+                ArrayList<ArrayList<Double>> points = new ArrayList<>();
+
+                // Each polygon is an array of points
+                if (parser.getCurrentToken() == JsonToken.START_ARRAY) {
+                    // Continue until reaching end of array
+                    while (parser.nextToken() != JsonToken.END_ARRAY) {
+                        // Each point is an array of doubles
+                        if (parser.getCurrentToken() == JsonToken.START_ARRAY) {
+                            // Create new point
+                            ArrayList<Double> point = new ArrayList<>();
+
+                            // Wait for end of array
+                            while (parser.nextToken() != JsonToken.END_ARRAY) {
+                                point.add(parser.getDoubleValue());
+                            }
+
+                            // Add point
+                            points.add(point);
+                        }
+                    }
+                }
+
+                // Add the city into the map with its points
+                mPolygons.put(polygonName, points);
+            }
+
+            // Close file
+            parser.close();
+        } catch (Exception exc) {
+            // Log error
             Log.e(Logging.TAG, "Failed to load polygons.json", exc);
         }
 
@@ -604,7 +633,7 @@ public class LocationData {
     public static int getThreatDrawable(String threat) {
         // Null fallback
         if (threat == null) {
-            return R.drawable.ic_launcher;
+            return R.drawable.ic_redalert;
         }
 
         // Return drawable resource by threat type
@@ -621,7 +650,7 @@ public class LocationData {
             return R.drawable.ic_tsunami;
         }
         else if (threat.contains(ThreatTypes.MISSILES)) {
-            return R.drawable.ic_launcher;
+            return R.drawable.ic_redalert;
         }
         else if (threat.contains(ThreatTypes.TERRORIST_INFILTRATION)) {
             return R.drawable.ic_terrorist_infiltration;
@@ -630,7 +659,7 @@ public class LocationData {
             return R.drawable.ic_earthquake;
         }
         else {
-            return R.drawable.ic_launcher;
+            return R.drawable.ic_redalert;
         }
     }
 

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.Settings;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Gravity;
@@ -18,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.red.alert.R;
 import com.red.alert.config.Alerts;
@@ -39,11 +42,11 @@ import com.red.alert.utils.ui.DensityUtil;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Popup extends AppCompatActivity {
-    Timer mTimer;
+    private final Handler mHandler = new Handler(Looper.getMainLooper());
+
+    Runnable mRunnable;
 
     TextView mCities;
     TextView mCounter;
@@ -53,6 +56,8 @@ public class Popup extends AppCompatActivity {
     Button mSilence;
 
     ImageView mThreatIcon;
+
+    private final char[] timeBuffer = {'0','0',':','0','0'};
 
     public static void showAlertPopup(String alertType, List<String> cities, String threatType, String instructions, Context context) {
         // Only display popup for primary/secondary alerts (no test/sound/system notifications)
@@ -92,7 +97,7 @@ public class Popup extends AppCompatActivity {
         // Clear top, set as new task
         popupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         popupIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        popupIntent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+        popupIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
         // Display popup activity
         context.startActivity(popupIntent);
@@ -210,6 +215,9 @@ public class Popup extends AppCompatActivity {
             mCounter.setVisibility(View.GONE);
         }
         else {
+            // Show countdown
+            mCounter.setVisibility(View.VISIBLE);
+
             // Fetch highest priority countdown in seconds for given alert cities list
             int countdown = LocationData.getPrioritizedCountdownForCities(cities, this);
 
@@ -225,19 +233,20 @@ public class Popup extends AppCompatActivity {
     }
 
     @Override
-    protected void onUserLeaveHint() {
-        super.onUserLeaveHint();
-
-        // End activity
-        if (!isFinishing()) {
-            finish();
+    protected void onDestroy() {
+        // Countdown timer running?
+        if (mRunnable != null) {
+            mHandler.removeCallbacks(mRunnable);
         }
+
+        // Destroy activity
+        super.onDestroy();
     }
 
     void scheduleRocketCountdown(long timestamp, int seconds) {
         // Cancel previous timer if set
-        if (mTimer != null) {
-            mTimer.cancel();
+        if (mRunnable != null) {
+            mHandler.removeCallbacks(mRunnable);
         }
 
         // Offset impact to account for delivery delay
@@ -246,27 +255,25 @@ public class Popup extends AppCompatActivity {
         // Calculate time to impact
         final long impactTimestamp = (timestamp * 1000) + (seconds * 1000);
 
-        // Schedule a new timer
-        mTimer = new Timer();
-
-        // Run every 100ms
-        mTimer.scheduleAtFixedRate(new TimerTask() {
+        // Run every 1000ms
+        mRunnable = new Runnable() {
             @Override
             public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Activity died?
-                        if (isFinishing() || isDestroyed()) {
-                            return;
-                        }
+                // Activity died?
+                if (isFinishing() || isDestroyed()) {
+                    return;
+                }
 
-                        // Update countdown
-                        updateCountdownTimer(impactTimestamp);
-                    }
-                });
+                // Update countdown
+                updateCountdownTimer(impactTimestamp);
+
+                // Schedule for future execution
+                mHandler.postDelayed(this, 1000);
             }
-        }, 0, 100);
+        };
+
+        // Start running
+        mHandler.post(mRunnable);
     }
 
     void updateCountdownTimer(long impactTimestamp) {
@@ -313,10 +320,16 @@ public class Popup extends AppCompatActivity {
         seconds = seconds % 60;
 
         // Set text color
-        mCounter.setTextColor(getResources().getColor(color));
+        mCounter.setTextColor(ContextCompat.getColor(this, color));
+
+        // Use timeBuffer to work around rare OutOfMemoryError
+        timeBuffer[0] = (char) ('0' + minutes / 10);
+        timeBuffer[1] = (char) ('0' + minutes % 10);
+        timeBuffer[3] = (char) ('0' + seconds / 10);
+        timeBuffer[4] = (char) ('0' + seconds % 10);
 
         // Set countdown text
-        mCounter.setText(String.format("%02d:%02d", minutes, seconds));
+        mCounter.setText(timeBuffer, 0, 5);
     }
 
     @Override

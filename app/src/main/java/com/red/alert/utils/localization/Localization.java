@@ -34,7 +34,7 @@ public class Localization {
 
         // Get new locale code
         String overrideLocale = Singleton.getSharedPreferences(context).getString(context.getString(R.string.langPref), "");
-
+        
         // Chosen a new locale?
         if (!StringUtils.stringIsNullOrEmpty(overrideLocale)) {
             // Set it

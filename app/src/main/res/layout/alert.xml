@@ -10,10 +10,10 @@
         android:id="@+id/image"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_launcher"
+        android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_redalert" />
 
     <LinearLayout
         android:gravity="left"
@@ -26,12 +26,21 @@
 
         <TextView
             android:id="@+id/alertTitle"
-            android:textColor="@color/colorTextPrimary"
             android:textSize="18sp"
             android:layout_marginBottom="5sp"
             android:text="@string/placeHolder"
+            android:textColor="@color/colorTextPrimary"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/alertCities"
+            android:textSize="18sp"
+            android:layout_marginBottom="5sp"
+            android:text="@string/placeHolder"
+            android:textColor="@color/colorTextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/alertDesc"

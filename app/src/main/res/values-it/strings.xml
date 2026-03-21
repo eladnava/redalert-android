@@ -26,6 +26,7 @@
     <string name="reportProblem">Riporta un problema</string>
     <string name="manualContact">Contattami tramite e-mail a support@redalert.me</string>
     <string name="jsonFailed">L\'applicazione ha riscontrato un errore nel tentativo di ricevere dati dal nostro server.</string>
+    <string name="contactUsError">Si prega di inserire un messaggio più lungo di 10 caratteri.</string>
     <string name="notifyError">L\'applicazione ha riscontrato un errore nel tentativo di mostrare una notifica, per risolvere prova a riavviare il dispositivo.</string>
     <string name="safeCategory">\"Sono salvo\"</string>
     <string name="safe">Invia \"Sono salvo\"</string>

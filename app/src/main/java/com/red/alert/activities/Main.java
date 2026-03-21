@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.PowerManager;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -34,7 +35,6 @@ import androidx.core.view.MenuItemCompat;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.installations.FirebaseInstallations;
 import com.red.alert.R;
-import com.red.alert.activities.settings.Advanced;
 import com.red.alert.config.Sound;
 import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.feedback.sound.SoundLogic;
@@ -79,13 +79,15 @@ import com.red.alert.utils.threading.AsyncTaskAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import me.pushy.sdk.Pushy;
 import me.pushy.sdk.config.PushyForegroundService;
-import me.pushy.sdk.lib.jackson.core.type.TypeReference;
+import me.pushy.sdk.lib.jackson.core.JsonFactory;
+import me.pushy.sdk.lib.jackson.core.JsonParser;
+import me.pushy.sdk.lib.jackson.core.JsonToken;
+import me.pushy.sdk.lib.jackson.databind.ObjectMapper;
 import me.pushy.sdk.util.PushyAuthentication;
 
 public class Main extends AppCompatActivity {
@@ -96,7 +98,10 @@ public class Main extends AppCompatActivity {
     boolean mPushTokensRefreshed;
     boolean mPermissionDialogDisplayed;
 
+    long mNewestAlertId;
+
     Button mImSafe;
+    Runnable mRunnable;
     ListView mAlertsList;
     ProgressBar mLoading;
     MenuItem mLoadingItem;
@@ -106,11 +111,18 @@ public class Main extends AppCompatActivity {
 
     List<Alert> mNewAlerts;
     List<Alert> mDisplayAlerts;
+
+    private final Handler mHandler = new Handler(Looper.getMainLooper());
+
     SharedPreferences.OnSharedPreferenceChangeListener mBroadcastListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
         @Override
         public void onSharedPreferenceChanged(SharedPreferences Preferences, String Key) {
             // Asked for reload?
             if (Key.equalsIgnoreCase(MainActivityParameters.RELOAD_RECENT_ALERTS)) {
+                // Force full reload (disable caching)
+                mNewestAlertId = 0;
+
+                // Reload alerts
                 reloadRecentAlerts();
             }
 
@@ -156,6 +168,15 @@ public class Main extends AppCompatActivity {
         // Cached Apps Freezer compatibility
         // Force foreground service on Google Pixel devices (Android 15+)
         forceForegroundServiceOnPixelDevices();
+
+        // Delay by 5 seconds
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Clean up old preferences
+                AppPreferences.deleteOldSharedPreferences(Main.this);
+            }
+        }, 5 * 1000);
     }
 
     void forceForegroundServiceOnPixelDevices() {
@@ -274,6 +295,9 @@ public class Main extends AppCompatActivity {
 
                 // Pass alerts directly to map activity
                 Map.mAlerts = alert.groupedAlerts;
+
+                // Set expanded alert flag (for determining share message format)
+                Map.mIsExpandedAlert = alert.isExpanded;
 
                 // Show it
                 startActivity(alertView);
@@ -748,21 +772,27 @@ public class Main extends AppCompatActivity {
 
     void pollRecentAlerts() {
         // Schedule a new timer
-        new Timer().scheduleAtFixedRate(new TimerTask() {
+        mRunnable = new Runnable() {
             @Override
             public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        // App is running?
-                        if (mIsResumed) {
-                            // Reload every X seconds
-                            reloadRecentAlerts();
-                        }
-                    }
-                });
+                // Activity died?
+                if (isFinishing() || isDestroyed()) {
+                    return;
+                }
+
+                // App is running?
+                if (mIsResumed) {
+                    // Reload every X seconds
+                    reloadRecentAlerts();
+                }
+
+                // Schedule for future execution
+                mHandler.postDelayed(this, 1000L * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC);
             }
-        }, 0, 1000 * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC);
+        };
+
+        // Schedule for future invocation
+        mHandler.postDelayed(mRunnable, 1000L * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC);
     }
 
     void reloadRecentAlerts() {
@@ -854,6 +884,9 @@ public class Main extends AppCompatActivity {
 
         // Pass all currently-displayed alerts to map activity
         Map.mAlerts = mAllAlerts;
+
+        // Pass newest alert ID
+        Map.mNewestAlertId = mNewestAlertId;
 
         // Start map activity
         startActivity(mapIntent);
@@ -975,15 +1008,61 @@ public class Main extends AppCompatActivity {
             return R.string.apiRequestFailed;
         }
 
-        // Prepare tmp object list
-        List<Alert> recentAlerts;
+        // Prepare list of recent alerts
+        List<Alert> recentAlerts = new ArrayList<>();
 
         try {
-            // Convert JSON to object
-            recentAlerts = Singleton.getJackson().readValue(alertsJSON, new TypeReference<List<Alert>>() {
-            });
-        }
-        catch (Exception exc) {
+            // Create a JsonParser over your JSON string
+            JsonFactory factory = new JsonFactory();
+            JsonParser parser = factory.createParser(alertsJSON);
+
+            // Make sure it starts with an array
+            if (parser.nextToken() != JsonToken.START_ARRAY) {
+                throw new IllegalStateException("Expected JSON array");
+            }
+
+            // Get Jackson mapper
+            ObjectMapper mapper = Singleton.getJackson();
+
+            // Keep track of whether the alert being parsed is the first alert in the list
+            boolean firstAlert = true;
+
+            // Iterate over each element in the array
+            while (parser.nextToken() == JsonToken.START_OBJECT) {
+                // Deserialize a single Alert
+                Alert alert = mapper.readValue(parser, Alert.class);
+
+                // Is this the first alert? (most recent)
+                if (firstAlert) {
+                    // Same ID as the currently displayed first alert?
+                    if (alert.id == mNewestAlertId) {
+                        // Stop parsing (no new alerts)
+                        parser.close();
+
+                        // Loop over currently displayed alerts
+                        for (Alert displayedAlert : mDisplayAlerts) {
+                            // Update relative time ago
+                            displayedAlert.dateString = LocationData.getAlertDateTimeString(displayedAlert.date, displayedAlert.firstGroupedAlertTimestamp, this);
+                        }
+
+                        // No new alerts, just refresh relative time ago
+                        return R.string.noNewAlerts;
+                    }
+
+                    // Save newest alert ID
+                    mNewestAlertId = alert.id;
+                }
+
+                // No longer the first alert
+                firstAlert = false;
+
+                // Add to list
+                recentAlerts.add(alert);
+            }
+
+            // Close parser
+            parser.close();
+        } catch (Exception exc) {
             // Log it
             Log.e(Logging.TAG, "Get recent alerts request failed", exc);
 
@@ -999,29 +1078,11 @@ public class Main extends AppCompatActivity {
 
         // recentAlerts.add(fake);
 
-        // Loop over alerts
-        for (Alert alert : recentAlerts) {
-            // Prepare string with relative time ago and fixed HH:mm:ss
-            alert.dateString = LocationData.getAlertDateTimeString(alert.date, 0, this);
-
-            // Prepare localized zone & countdown for display
-            alert.desc = LocationData.getLocalizedZoneWithCountdown(alert.city, alert.threat, this);
-
-            // Localize it
-            alert.localizedCity = LocationData.getLocalizedCityName(alert.city, this);
-            alert.localizedZone = LocationData.getLocalizedZoneByCityName(alert.city, this);
-            alert.localizedThreat = LocationData.getLocalizedThreatType(alert.threat, this);
-
-            // If selected, make it bold
-            if (AlertLogic.isCitySelectedPrimarily(alert.city, true, this)
-                    || AlertLogic.isNearby(alert.city, this)
-                    || AlertLogic.isSecondaryCitySelected(alert.city, true, this)) {
-                alert.localizedCity = "<b>" + alert.localizedCity + "</b>";
-            }
-        }
-
-        // Group alerts with same timestamp
+        // Group alerts within 3-minute range and same threat type
         recentAlerts = groupAlerts(recentAlerts);
+
+        // Localize only grouped alerts
+        localizeGroupedAlerts(recentAlerts);
 
         // Clear global list
         mNewAlerts.clear();
@@ -1040,79 +1101,138 @@ public class Main extends AppCompatActivity {
         // Keep track of last alert item added to list
         Alert lastAlert = null;
 
+        // Alert grouping date cutoff threshold (seconds)
+        int dateGroupingThreshold = 3 * 60;
+
         // Traverse elements
         for (int i = 0; i < alerts.size(); i++) {
             // Current element
-            Alert currentAlert = alerts.get(i);
+            Alert current = alerts.get(i);
 
-            // Initialize grouped alerts lists
-            currentAlert.groupedDescriptions = new ArrayList<>();
-            currentAlert.groupedAlerts = new ArrayList<>();
-            currentAlert.groupedLocalizedCities = new ArrayList<>();
-
-            // Add current alert object to grouped alerts list
-            currentAlert.groupedAlerts.add(currentAlert);
-
-            // If current alert desc is not empty, add it to grouped desc list
-            if (!StringUtils.stringIsNullOrEmpty(currentAlert.desc)) {
-                currentAlert.groupedDescriptions.add(currentAlert.desc);
-            }
-
-            // Add current localized city name to grouped cities list
-            currentAlert.groupedLocalizedCities.add(currentAlert.localizedCity);
-
-            // Check whether this new alert can be grouped with the previous one
-            // (Same region + 15 second cutoff threshold in either direction)
-            if (lastAlert != null && currentAlert.date >= lastAlert.date - 15 && currentAlert.date <= lastAlert.date + 15) {
-                // Group with previous alert list item
-                lastAlert.groupedLocalizedCities.add(currentAlert.localizedCity);
-
-                // Add current alert zone if new
-                if (!lastAlert.desc.contains(currentAlert.localizedZone)) {
-                    // Support for unknown city (no prefixing with comma)
-                    if (StringUtils.stringIsNullOrEmpty(lastAlert.desc) && !StringUtils.stringIsNullOrEmpty(currentAlert.desc)) {
-                        lastAlert.desc = currentAlert.desc;
-                        lastAlert.groupedDescriptions.add(currentAlert.desc);
-                    }
-                    else if (StringUtils.stringIsNullOrEmpty(currentAlert.desc)) {
-                        // Do nothing
-                    }
-                    else {
-                        // Comma-separated zones and countdowns
-                        lastAlert.desc += ", " + currentAlert.desc;
-                        lastAlert.groupedDescriptions.add(currentAlert.desc);
-                    }
+            // Check if can group the current and the last alert
+            if (lastAlert != null &&
+                    current.date >= lastAlert.date - dateGroupingThreshold && current.date <= lastAlert.date + dateGroupingThreshold &&
+                    current.threat.equals(lastAlert.threat)) {
+                // Lazily allocate lists
+                if (lastAlert.groupedAlerts == null) {
+                    lastAlert.groupedAlerts = new ArrayList<>(4);
+                    lastAlert.groupedCities = new ArrayList<>(4);
                 }
 
-                // Add current alert to last alert's group
-                lastAlert.groupedAlerts.add(currentAlert);
+                // Add current alert object to grouped alerts list
+                lastAlert.groupedAlerts.add(current);
+                lastAlert.groupedCities.add(current.city);
 
-                // Different timestamps?
-                if (lastAlert.date != currentAlert.date) {
-                    // Display first & last alert times
-                    lastAlert.dateString = LocationData.getAlertDateTimeString(lastAlert.date, currentAlert.date, this);
+                // Save first grouped alert timestamp for later use (alert refresh)
+                if (current.date != lastAlert.date) {
+                    lastAlert.firstGroupedAlertTimestamp = current.date;
                 }
-            }
-            else {
+            } else {
                 // New alert (not grouped with previous item)
-                groupedAlerts.add(currentAlert);
-                lastAlert = currentAlert;
+                current.groupedAlerts = new ArrayList<>(4);
+                current.groupedCities = new ArrayList<>(4);
+
+                // Add itself as the only "grouped" alert
+                current.groupedAlerts.add(current);
+                current.groupedCities.add(current.city);
+
+                // Add to final result list
+                groupedAlerts.add(current);
+
+                // Set last as current
+                lastAlert = current;
             }
         }
 
-        // Sort all grouped alerts
-        for (Alert alert : groupedAlerts) {
+        // Return grouped alerts
+        return groupedAlerts;
+    }
+
+    private void localizeGroupedAlerts(List<Alert> alerts) {
+        // Traverse alerts
+        for (Alert alert : alerts) {
+            // Get relative date string for this alert
+            alert.dateString = LocationData.getAlertDateTimeString(alert.date, alert.firstGroupedAlertTimestamp, this);
+
+            // Localize threat once
+            alert.localizedThreat = LocationData.getLocalizedThreatType(alert.threat, this);
+
+            // Prepare unique hash maps of cities and descriptions
+            LinkedHashMap<String, String> uniqueCities = new LinkedHashMap<>();
+            LinkedHashMap<String, String> uniqueDescriptions = new LinkedHashMap<>();
+
+            // Traverse grouped cities
+            for (String city : alert.groupedCities) {
+                // Localize city name
+                String localizedCity = LocationData.getLocalizedCityName(city, this);
+
+                // Localize zone and countdown
+                String desc = LocationData.getLocalizedZoneWithCountdown(city, alert.threat, this);
+
+                // Check whether city should be highlighted in bold
+                if (AlertLogic.isCitySelectedPrimarily(city, true, this)
+                        || AlertLogic.isNearby(city, this)
+                        || AlertLogic.isSecondaryCitySelected(city, true, this)) {
+                    localizedCity = "<b>" + localizedCity + "</b>";
+                }
+
+                // Ensure each city only appears once
+                uniqueCities.put(city, localizedCity);
+
+                // Description exists?
+                if (!StringUtils.stringIsNullOrEmpty(desc)) {
+                    // Get zone name by city
+                    String zoneName = LocationData.getLocalizedZoneByCityName(city, this);
+
+                    // Only add description if this zone name hasn't been added yet
+                    if (!uniqueDescriptions.containsKey(zoneName)) {
+                        uniqueDescriptions.put(zoneName, desc);
+                    }
+                }
+            }
+
+            // Convert hash maps to lists
+            List<String> localizedCities = new ArrayList<>(uniqueCities.values());
+            List<String> descriptionsList = new ArrayList<>(uniqueDescriptions.values());
+
             // Sort city & zone names alphabetically
-            Collections.sort(alert.groupedDescriptions);
-            Collections.sort(alert.groupedLocalizedCities);
+            Collections.sort(localizedCities);
+            Collections.sort(descriptionsList);
 
             // Join lists into CSV strings
-            alert.desc = TextUtils.join(", ", alert.groupedDescriptions);
-            alert.localizedCity = TextUtils.join(", ", alert.groupedLocalizedCities);
+            alert.localizedCity = TextUtils.join(", ", localizedCities);
+            alert.desc = TextUtils.join(", ", descriptionsList);
+
+            // Get grouped city count
+            int groupedCityCount = localizedCities.size();
+
+            // If less than 15 cities, display all city names in large font
+            if (groupedCityCount >= 15) {
+                // Mark as expandable
+                alert.hasTitle = true;
+
+                // Display {threat} • {count} Cities instead of entire list of cities
+                alert.localizedTitle = alert.localizedThreat + " • " + groupedCityCount + " " + getString(R.string.selectedCities);
+            }
         }
 
-        // Hooray
-        return groupedAlerts;
+        // Preserve expanded state based on date
+        for (Alert displayAlert : mDisplayAlerts) {
+            // Expanded?
+            if (displayAlert.isExpanded) {
+                // Check for this alert in the new list
+                for (Alert newAlert : alerts) {
+                    // Same date?
+                    if (newAlert.date == displayAlert.date) {
+                        // Set as expanded
+                        newAlert.isExpanded = true;
+
+                        // Stop after finding the first match
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     private String checkForUpdates() {
@@ -1170,10 +1290,16 @@ public class Main extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+        // Countdown timer running?
+        if (mRunnable != null) {
+            mHandler.removeCallbacks(mRunnable);
+        }
 
         // Unregister for broadcasts
         Broadcasts.unsubscribe(this, mBroadcastListener);
+
+        // Destroy activity
+        super.onDestroy();
     }
 
     void invalidateAlertList() {
@@ -1308,6 +1434,11 @@ public class Main extends AppCompatActivity {
             if (errorStringResource == 0) {
                 // Invalidate the list
                 invalidateAlertList();
+            }
+            // No new alerts?
+            else if (errorStringResource == R.string.noNewAlerts) {
+                // Invalidate the list (for relative time ago to be refreshed)
+                mAlertsAdapter.notifyDataSetChanged();
             }
             else {
                 // Show error toast
@@ -1519,13 +1650,21 @@ public class Main extends AppCompatActivity {
             popupIntent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
 
             // Delay popup by 300ms to allow main activity UI to finish rendering
-            new Handler().postDelayed(new Runnable() {
+            mHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     // Display popup activity
                     startActivity(popupIntent);
                 }
             }, 300);
+
+            // Get intent extras
+            Bundle extras = intent.getExtras();
+
+            // Clear intent extras to avoid showing same popup again on re-entering activity
+            if (extras != null) {
+                extras.clear();
+            }
         }
     }
 

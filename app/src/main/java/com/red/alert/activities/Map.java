@@ -7,9 +7,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.text.HtmlCompat;
@@ -33,7 +34,9 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.red.alert.R;
 import com.red.alert.config.Logging;
@@ -45,6 +48,7 @@ import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.model.Alert;
 import com.red.alert.model.metadata.City;
+import com.red.alert.model.metadata.PolygonTooltipData;
 import com.red.alert.ui.dialogs.AlertDialogBuilder;
 import com.red.alert.ui.localization.rtl.RTLSupport;
 import com.red.alert.ui.localization.rtl.adapters.RTLMarkerInfoWindowAdapter;
@@ -61,10 +65,11 @@ import com.red.alert.utils.threading.AsyncTaskAdapter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
-import me.pushy.sdk.lib.jackson.core.type.TypeReference;
+import me.pushy.sdk.lib.jackson.core.JsonFactory;
+import me.pushy.sdk.lib.jackson.core.JsonParser;
+import me.pushy.sdk.lib.jackson.core.JsonToken;
+import me.pushy.sdk.lib.jackson.databind.ObjectMapper;
 
 public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallback {
     GoogleMap mMap;
@@ -84,7 +89,11 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
     RelativeLayout mMapCover;
     MenuItem mClearRecentAlertsItem;
 
+    Marker mTooltipMarker;
+
     // Singleton alerts
+    public static boolean mIsExpandedAlert;
+    public static long mNewestAlertId;
     public static List<Alert> mAlerts = new ArrayList<Alert>();
 
     @Override
@@ -113,14 +122,8 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
     }
 
     void useLegacyRenderer() {
-        // Use background thread to avoid ANR
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // Use legacy maps renderer
-                MapsInitializer.initialize(Map.this, MapsInitializer.Renderer.LEGACY, Map.this);
-            }
-        }).start();
+        // Use legacy maps renderer
+        MapsInitializer.initialize(Map.this, MapsInitializer.Renderer.LEGACY, Map.this);
     }
 
     void unpackExtras() {
@@ -196,6 +199,9 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
             return;
         }
 
+        // Disable toolbar buttons (navigation / etc)
+        mMap.getUiSettings().setMapToolbarEnabled(false);
+
         // Check if night mode is enabled
         if ((getResources().getConfiguration().uiMode &
                 Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES) {
@@ -206,6 +212,45 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
 
         // Wait for map to load
         mapLoadedListener();
+
+        // Map click listener
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(@NonNull LatLng latLng) {
+                // Remove previous tooltip
+                if (mTooltipMarker != null) {
+                    mTooltipMarker.remove();
+                    mTooltipMarker = null;
+                }
+            }
+        });
+
+        // Listen for polygon click event
+        mMap.setOnPolygonClickListener(new GoogleMap.OnPolygonClickListener() {
+            @Override
+            public void onPolygonClick(@NonNull Polygon polygon) {
+                // Have tag?
+                if (polygon.getTag() != null) {
+                    // Remove previous tooltip
+                    if (mTooltipMarker != null) {
+                        mTooltipMarker.remove();
+                    }
+
+                    // Get polygon data from tag
+                    PolygonTooltipData data = (PolygonTooltipData) polygon.getTag();
+
+                    // Create a new tooltip marker
+                    mTooltipMarker = mMap.addMarker(new MarkerOptions()
+                            .position(data.location)
+                            .title(data.localizedName)
+                            .snippet(data.tooltip)
+                    );
+
+                    // Show tooltip (info window)
+                    mTooltipMarker.showInfoWindow();
+                }
+            }
+        });
     }
 
     void redrawOverlays() {
@@ -262,6 +307,9 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
             // Keep track of city name to avoid duplicates
             cityNames.add(alert.city);
 
+            // Store polygon object
+            Polygon polygon = null;
+
             // Check if we have polygon data for this city
             if (polygons.containsKey(String.valueOf(city.id))) {
                 // Get polygons for city
@@ -286,7 +334,7 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                 }
 
                 // Add city polygon to map with custom styling
-                mMap.addPolygon(new PolygonOptions()
+                polygon = mMap.addPolygon(new PolygonOptions()
                         .clickable(true)
                         .strokeWidth(4)
                         .strokeColor(0xffe40000)
@@ -326,11 +374,17 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                     tooltip = LocationData.getDistanceFromCity(city, this) + " " + getString(R.string.kilometer);
                 }
 
-                // Add marker to map
-                mMap.addMarker(new MarkerOptions()
-                        .position(location)
-                        .title(localizedName)
-                        .snippet(tooltip));
+                // Add marker to map (if less than X alert cities)
+                if (mAlerts.size() < 10) {
+                    mMap.addMarker(new MarkerOptions()
+                            .position(location)
+                            .title(localizedName)
+                            .snippet(tooltip));
+                }
+                else if (polygon != null) {
+                    // Pass tooltip info to polygon to show marker only on polygon click
+                    polygon.setTag(new PolygonTooltipData(location, localizedName, tooltip));
+                }
 
                 // Include location in zoom boundaries
                 builder.include(location);
@@ -380,13 +434,13 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
         // Set max zoom for animation to 13
         mMap.setMaxZoomPreference(13);
 
-        // Delay animation by 500ms
+        // Delay animation slightly
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 try {
                     // Animate nicely
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding), 1500, new GoogleMap.CancelableCallback() {
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding), 600, new GoogleMap.CancelableCallback() {
                         @Override
                         public void onFinish() {
                             // Allow user to zoom in freely
@@ -401,7 +455,7 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                     // Ignore rare exception "View size is too small after padding is applied"
                 }
             }
-        }, 500);
+        }, 350);
     }
 
     @Override
@@ -497,8 +551,18 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
         // Remove HTML entities (<b>)
         cities = HtmlCompat.fromHtml(cities, HtmlCompat.FROM_HTML_MODE_LEGACY).toString();
 
-        // Construct share message
-        return mAlerts.get(0).localizedThreat + " " + getString(R.string.alertSoundedAt) + cities + "\n" + mAlerts.get(0).dateString + "\n\n" + getString(R.string.alertSentVia);
+        // Expanded alert?
+        if (mIsExpandedAlert) {
+            // Remove HTML entities from city names (<b>)
+            String expandedCities = HtmlCompat.fromHtml(mAlerts.get(0).desc, HtmlCompat.FROM_HTML_MODE_LEGACY).toString();
+
+            // Construct share message
+            return cities + "\r\n" + mAlerts.get(0).dateString + "\n\n" + expandedCities + "\n\n" + getString(R.string.alertSentVia);
+        }
+        else {
+            // Construct share message
+            return mAlerts.get(0).localizedThreat + " " + getString(R.string.alertSoundedAt) + cities + "\n" + mAlerts.get(0).dateString + "\n\n" + getString(R.string.alertSentVia);
+        }
     }
 
     void initializeShareButton(Menu OptionsMenu) {
@@ -573,7 +637,7 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
     }
 
     @Override
-    public void onConfigurationChanged(android.content.res.Configuration newConfig) {
+    public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
         // Support for RTL languages
@@ -707,21 +771,27 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
 
     void pollRecentAlerts() {
         // Schedule a new timer
-        new Timer().scheduleAtFixedRate(new TimerTask() {
+        Handler handler = new Handler(Looper.getMainLooper());
+
+        // Schedule a new timer
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        // App is running?
-                        if (mIsResumed) {
-                            // Reload every X seconds
-                            reloadRecentAlerts();
-                        }
-                    }
-                });
+                // Activity died?
+                if (isFinishing() || isDestroyed()) {
+                    return;
+                }
+
+                // App is running?
+                if (mIsResumed) {
+                    // Reload every X seconds
+                    reloadRecentAlerts();
+                }
+
+                // Schedule for future execution
+                handler.postDelayed(this, 1000L * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC);
             }
-        }, 1000 * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC, 1000 * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC);
+        }, 1000L * RecentAlerts.RECENT_ALERTS_POLLING_INTERVAL_SEC);
     }
 
     void reloadRecentAlerts() {
@@ -780,6 +850,11 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                 // Prevent white flicker as map loads in dark mode
                 mMapCover.setVisibility(View.GONE);
             }
+            // No new alerts?
+            else if (errorStringResource == R.string.noNewAlerts) {
+                // Show share button
+                mShareItem.setVisible(true);
+            }
             else {
                 // Show error toast
                 Toast.makeText(Map.this, getString(errorStringResource), Toast.LENGTH_LONG).show();
@@ -806,14 +881,55 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
             return R.string.apiRequestFailed;
         }
 
-        // Prepare tmp object list
-        List<Alert> recentAlerts;
+        // Prepare list of recent alerts
+        List<Alert> recentAlerts = new ArrayList<>();
 
         try {
-            // Convert JSON to object
-            recentAlerts = Singleton.getJackson().readValue(alertsJSON, new TypeReference<List<Alert>>() {});
-        }
-        catch (Exception exc) {
+            // Create a JsonParser over your JSON string
+            JsonFactory factory = new JsonFactory();
+            JsonParser parser = factory.createParser(alertsJSON);
+
+            // Make sure it starts with an array
+            if (parser.nextToken() != JsonToken.START_ARRAY) {
+                throw new IllegalStateException("Expected JSON array");
+            }
+
+            // Get Jackson mapper
+            ObjectMapper mapper = Singleton.getJackson();
+
+            // Keep track of whether the alert being parsed is the first alert in the list
+            boolean firstAlert = true;
+
+            // Iterate over each element in the array
+            while (parser.nextToken() == JsonToken.START_OBJECT) {
+                // Deserialize a single Alert
+                Alert alert = mapper.readValue(parser, Alert.class);
+
+                // Is this the first alert? (most recent)
+                if (firstAlert) {
+                    // Same ID as the currently displayed first alert?
+                    if (alert.id == mNewestAlertId) {
+                        // Stop parsing (no new alerts)
+                        parser.close();
+
+                        // No new alerts, do nothing
+                        return R.string.noNewAlerts;
+                    }
+
+                    // Save newest alert ID
+                    mNewestAlertId = alert.id;
+                }
+
+                // No longer the first alert
+                firstAlert = false;
+
+                // Add to list
+                recentAlerts.add(alert);
+            }
+
+            // Close parser
+            parser.close();
+        } catch (Exception exc) {
             // Log it
             Log.e(Logging.TAG, "Get recent alerts request failed", exc);
 

@@ -185,6 +185,7 @@
     <!-- Error Messages -->
     <string name="notifyError">Se ha producido un error al mostrar la alerta, es posible que desee para reiniciar el teléfono.</string>
     <string name="jsonFailed">Se produjo un error al intentar cargar los datos del servidor.</string>
+    <string name="contactUsError">Por favor, ingrese un mensaje de más de 10 caracteres.</string>
     <string name="noGooglePlayServices">El teléfono no tiene una versión actualizada de Google Play Servicios instalados.</string>
     <string name="pushRegistrationFailed">Se produjo un error al firmar para arriba para las notificaciones de empuje. Vamos a tratar de firmar para arriba de nuevo en el futuro.</string>
     <string name="apiRequestFailed">Una solicitud para recuperar información de nuestros servidores fallaron. Por favor, compruebe su conexión a Internet y vuelva a intentarlo.</string>
