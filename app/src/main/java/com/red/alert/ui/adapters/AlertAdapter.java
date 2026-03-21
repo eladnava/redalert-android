@@ -1,6 +1,7 @@
 package com.red.alert.ui.adapters;
 
 import android.content.Context;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,7 +62,7 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
         // Got an alert?
         if (alert != null) {
             // Set localized city name (HTML for using <b> tag for selected cities)
-            viewHolder.cities.setText(alert.localizedCityHtml);
+            viewHolder.cities.setText(Html.fromHtml(alert.localizedCity));
 
             // Get alert desc
             String desc = alert.desc;

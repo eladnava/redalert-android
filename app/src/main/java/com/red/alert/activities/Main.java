@@ -16,7 +16,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
 import android.provider.Settings;
-import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -80,6 +79,7 @@ import com.red.alert.utils.threading.AsyncTaskAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import me.pushy.sdk.Pushy;
@@ -119,6 +119,10 @@ public class Main extends AppCompatActivity {
         public void onSharedPreferenceChanged(SharedPreferences Preferences, String Key) {
             // Asked for reload?
             if (Key.equalsIgnoreCase(MainActivityParameters.RELOAD_RECENT_ALERTS)) {
+                // Force full reload (disable caching)
+                mNewestAlertId = 0;
+
+                // Reload alerts
                 reloadRecentAlerts();
             }
 
@@ -1074,47 +1078,11 @@ public class Main extends AppCompatActivity {
 
         // recentAlerts.add(fake);
 
-        // Loop over alerts
-        for (Alert alert : recentAlerts) {
-            // Prepare string with relative time ago and fixed HH:mm:ss
-            alert.dateString = LocationData.getAlertDateTimeString(alert.date, 0, this);
-
-            // Prepare localized zone & countdown for display
-            alert.desc = LocationData.getLocalizedZoneWithCountdown(alert.city, alert.threat, this);
-
-            // Localize it
-            alert.localizedCity = LocationData.getLocalizedCityName(alert.city, this);
-            alert.localizedZone = LocationData.getLocalizedZoneByCityName(alert.city, this);
-            alert.localizedThreat = LocationData.getLocalizedThreatType(alert.threat, this);
-
-            // If selected, make it bold
-            if (AlertLogic.isCitySelectedPrimarily(alert.city, true, this)
-                    || AlertLogic.isNearby(alert.city, this)
-                    || AlertLogic.isSecondaryCitySelected(alert.city, true, this)) {
-                alert.localizedCity = "<b>" + alert.localizedCity + "</b>";
-            }
-        }
-
-        // Group alerts with same timestamp
+        // Group alerts within 3-minute range and same threat type
         recentAlerts = groupAlerts(recentAlerts);
 
-        // Preserve expanded state based on date
-        for (Alert displayAlert : mDisplayAlerts) {
-            // Expanded?
-            if (displayAlert.isExpanded) {
-                // Check for this alert in the new list
-                for (Alert newAlert : recentAlerts) {
-                    // Same date?
-                    if (newAlert.date == displayAlert.date) {
-                        // Set as expanded
-                        newAlert.isExpanded = true;
-
-                        // Stop after finding the first match
-                        break;
-                    }
-                }
-            }
-        }
+        // Localize only grouped alerts
+        localizeGroupedAlerts(recentAlerts);
 
         // Clear global list
         mNewAlerts.clear();
@@ -1139,86 +1107,104 @@ public class Main extends AppCompatActivity {
         // Traverse elements
         for (int i = 0; i < alerts.size(); i++) {
             // Current element
-            Alert currentAlert = alerts.get(i);
+            Alert current = alerts.get(i);
 
-            // Initialize grouped alerts lists
-            currentAlert.groupedDescriptions = new ArrayList<>();
-            currentAlert.groupedAlerts = new ArrayList<>();
-            currentAlert.groupedLocalizedCities = new ArrayList<>();
-
-            // Add current alert object to grouped alerts list
-            currentAlert.groupedAlerts.add(currentAlert);
-
-            // If current alert desc is not empty, add it to grouped desc list
-            if (!StringUtils.stringIsNullOrEmpty(currentAlert.desc)) {
-                currentAlert.groupedDescriptions.add(currentAlert.desc);
-            }
-
-            // Add current localized city name to grouped cities list
-            currentAlert.groupedLocalizedCities.add(currentAlert.localizedCity);
-
-            // Check whether this new alert can be grouped with the previous one
-            // (Same region + X second date cutoff threshold in either direction)
-            if (lastAlert != null && currentAlert.date >= lastAlert.date - dateGroupingThreshold && currentAlert.date <= lastAlert.date + dateGroupingThreshold) {
-                // Group with previous alert list item
-                lastAlert.groupedLocalizedCities.add(currentAlert.localizedCity);
-
-                // Add current alert zone if new
-                if (!lastAlert.desc.contains(currentAlert.localizedZone)) {
-                    // Support for unknown city (no prefixing with comma)
-                    if (StringUtils.stringIsNullOrEmpty(lastAlert.desc) && !StringUtils.stringIsNullOrEmpty(currentAlert.desc)) {
-                        lastAlert.desc = currentAlert.desc;
-                        lastAlert.groupedDescriptions.add(currentAlert.desc);
-                    }
-                    else if (StringUtils.stringIsNullOrEmpty(currentAlert.desc)) {
-                        // Do nothing
-                    }
-                    else {
-                        // Comma-separated zones and countdowns
-                        lastAlert.desc += ", " + currentAlert.desc;
-                        lastAlert.groupedDescriptions.add(currentAlert.desc);
-                    }
+            // Check if can group the current and the last alert
+            if (lastAlert != null &&
+                    current.date >= lastAlert.date - dateGroupingThreshold && current.date <= lastAlert.date + dateGroupingThreshold &&
+                    current.threat.equals(lastAlert.threat)) {
+                // Lazily allocate lists
+                if (lastAlert.groupedAlerts == null) {
+                    lastAlert.groupedAlerts = new ArrayList<>(4);
+                    lastAlert.groupedCities = new ArrayList<>(4);
                 }
 
-                // Add current alert to last alert's group
-                lastAlert.groupedAlerts.add(currentAlert);
+                // Add current alert object to grouped alerts list
+                lastAlert.groupedAlerts.add(current);
+                lastAlert.groupedCities.add(current.city);
 
-                // Different timestamps?
-                if (lastAlert.date != currentAlert.date) {
-                    // Display first & last alert times
-                    lastAlert.dateString = LocationData.getAlertDateTimeString(lastAlert.date, currentAlert.date, this);
-
-                    // Save first grouped alert timestamp for later use (alert refresh)
-                    lastAlert.firstGroupedAlertTimestamp = currentAlert.date;
+                // Save first grouped alert timestamp for later use (alert refresh)
+                if (current.date != lastAlert.date) {
+                    lastAlert.firstGroupedAlertTimestamp = current.date;
                 }
-            }
-            else {
+            } else {
                 // New alert (not grouped with previous item)
-                groupedAlerts.add(currentAlert);
-                lastAlert = currentAlert;
+                current.groupedAlerts = new ArrayList<>(4);
+                current.groupedCities = new ArrayList<>(4);
+
+                // Add itself as the only "grouped" alert
+                current.groupedAlerts.add(current);
+                current.groupedCities.add(current.city);
+
+                // Add to final result list
+                groupedAlerts.add(current);
+
+                // Set last as current
+                lastAlert = current;
             }
         }
 
-        // Sort all grouped alerts
-        for (Alert alert : groupedAlerts) {
+        // Return grouped alerts
+        return groupedAlerts;
+    }
+
+    private void localizeGroupedAlerts(List<Alert> alerts) {
+        // Traverse alerts
+        for (Alert alert : alerts) {
+            // Get relative date string for this alert
+            alert.dateString = LocationData.getAlertDateTimeString(alert.date, alert.firstGroupedAlertTimestamp, this);
+
+            // Localize threat once
+            alert.localizedThreat = LocationData.getLocalizedThreatType(alert.threat, this);
+
+            // Prepare unique hash maps of cities and descriptions
+            LinkedHashMap<String, String> uniqueCities = new LinkedHashMap<>();
+            LinkedHashMap<String, String> uniqueDescriptions = new LinkedHashMap<>();
+
+            // Traverse grouped cities
+            for (String city : alert.groupedCities) {
+                // Localize city name
+                String localizedCity = LocationData.getLocalizedCityName(city, this);
+
+                // Localize zone and countdown
+                String desc = LocationData.getLocalizedZoneWithCountdown(city, alert.threat, this);
+
+                // Check whether city should be highlighted in bold
+                if (AlertLogic.isCitySelectedPrimarily(city, true, this)
+                        || AlertLogic.isNearby(city, this)
+                        || AlertLogic.isSecondaryCitySelected(city, true, this)) {
+                    localizedCity = "<b>" + localizedCity + "</b>";
+                }
+
+                // Ensure each city only appears once
+                uniqueCities.put(city, localizedCity);
+
+                // Description exists?
+                if (!StringUtils.stringIsNullOrEmpty(desc)) {
+                    // Get zone name by city
+                    String zoneName = LocationData.getLocalizedZoneByCityName(city, this);
+
+                    // Only add description if this zone name hasn't been added yet
+                    if (!uniqueDescriptions.containsKey(zoneName)) {
+                        uniqueDescriptions.put(zoneName, desc);
+                    }
+                }
+            }
+
+            // Convert hash maps to lists
+            List<String> localizedCities = new ArrayList<>(uniqueCities.values());
+            List<String> descriptionsList = new ArrayList<>(uniqueDescriptions.values());
+
             // Sort city & zone names alphabetically
-            Collections.sort(alert.groupedDescriptions);
-            Collections.sort(alert.groupedLocalizedCities);
+            Collections.sort(localizedCities);
+            Collections.sort(descriptionsList);
 
             // Join lists into CSV strings
-            alert.desc = TextUtils.join(", ", alert.groupedDescriptions);
-
-            // Prepare list of localized cities
-            String localizedCities = TextUtils.join(", ", alert.groupedLocalizedCities);
+            alert.localizedCity = TextUtils.join(", ", localizedCities);
+            alert.desc = TextUtils.join(", ", descriptionsList);
 
             // Get grouped city count
-            int groupedCityCount = alert.groupedLocalizedCities.size();
-
-            // Pass on localized cities list
-            alert.localizedCity = localizedCities;
-
-            // Set localized city name HTML for using <b> tag for selected cities
-            alert.localizedCityHtml = Html.fromHtml(alert.localizedCity);
+            int groupedCityCount = localizedCities.size();
 
             // If less than 15 cities, display all city names in large font
             if (groupedCityCount >= 15) {
@@ -1230,8 +1216,23 @@ public class Main extends AppCompatActivity {
             }
         }
 
-        // Hooray
-        return groupedAlerts;
+        // Preserve expanded state based on date
+        for (Alert displayAlert : mDisplayAlerts) {
+            // Expanded?
+            if (displayAlert.isExpanded) {
+                // Check for this alert in the new list
+                for (Alert newAlert : alerts) {
+                    // Same date?
+                    if (newAlert.date == displayAlert.date) {
+                        // Set as expanded
+                        newAlert.isExpanded = true;
+
+                        // Stop after finding the first match
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     private String checkForUpdates() {

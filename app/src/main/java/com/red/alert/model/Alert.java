@@ -25,8 +25,6 @@ public class Alert {
     public String localizedZone;
     public String localizedThreat;
 
-    public Spanned localizedCityHtml;
-
     public String desc;
     public String dateString;
 
@@ -37,7 +35,7 @@ public class Alert {
     public List<String> groupedDescriptions;
 
     @JsonIgnore
-    public List<String> groupedLocalizedCities;
+    public List<String> groupedCities;
 
     public boolean isExpanded;
     public boolean isExpandableAlert;

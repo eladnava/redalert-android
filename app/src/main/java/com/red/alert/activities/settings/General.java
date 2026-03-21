@@ -46,6 +46,7 @@ import com.android.billingclient.api.Purchase;
 import com.android.billingclient.api.PurchasesUpdatedListener;
 import com.android.billingclient.api.QueryProductDetailsParams;
 import com.red.alert.R;
+import com.red.alert.activities.Main;
 import com.red.alert.config.API;
 import com.red.alert.config.Donations;
 import com.red.alert.config.Logging;
@@ -57,6 +58,7 @@ import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.communication.broadcasts.LocationSelectionEvents;
 import com.red.alert.logic.communication.broadcasts.SelfTestEvents;
 import com.red.alert.logic.communication.broadcasts.SettingsEvents;
+import com.red.alert.logic.communication.intents.MainActivityParameters;
 import com.red.alert.logic.feedback.sound.SoundLogic;
 import com.red.alert.logic.location.LocationLogic;
 import com.red.alert.logic.push.FCMRegistration;
@@ -1060,6 +1062,9 @@ public class General extends AppCompatPreferenceActivity {
                 // Clear previously cached values
                 mPreviousZones = null;
                 mPreviousCities = null;
+
+                // Reload recent alerts (if main activity is open)
+                Broadcasts.publish(General.this, MainActivityParameters.RELOAD_RECENT_ALERTS);
             }
 
             // Refresh city/region setting values
@@ -1139,6 +1144,9 @@ public class General extends AppCompatPreferenceActivity {
 
             // Refresh checkbox with new value
             mNotificationsEnabled.setChecked(AppPreferences.getNotificationsEnabled(General.this));
+
+            // Reload recent alerts (if main activity is open)
+            Broadcasts.publish(General.this, MainActivityParameters.RELOAD_RECENT_ALERTS);
         }
     }
 
