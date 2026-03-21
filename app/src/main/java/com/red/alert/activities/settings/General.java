@@ -86,9 +86,12 @@ import com.red.alert.utils.os.AndroidSettings;
 import com.red.alert.utils.threading.AsyncTaskAdapter;
 import com.red.alert.utils.ui.NavbarUtil;
 
+import java.text.DateFormat;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -203,6 +206,9 @@ public class General extends AppCompatPreferenceActivity {
 
         // Clear notifications and stop any playing sounds
         AppNotifications.clearAll(this);
+
+        // Pause-until may have expired while away
+        refreshNotificationsSummary();
 
         // Register for broadcasts
         Broadcasts.subscribe(this, mBroadcastListener);
@@ -432,33 +438,30 @@ public class General extends AppCompatPreferenceActivity {
             }
         });
 
-        // Notification toggle listener
+        // Notification toggle listener (pause vs turn off via modal when disabling)
         mNotificationsEnabled.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                // Update notification preferences on the server-side
-                new UpdateNotificationsAsync().execute();
+                boolean enabled = (boolean)newValue;
 
-                // Enable/disable Pushy service according to new value
-                Pushy.toggleNotifications((boolean)newValue, General.this);
-
-                // Enable/disable location service according to new value
-                if (AppPreferences.getLocationAlertsEnabled(General.this)) {
-                    // Enabled alerts?
-                    if ((boolean)newValue) {
-                        // Start the location service
-                        ServiceManager.startLocationService(General.this);
-                    }
-                    else {
-                        // Stop the location service
-                        ServiceManager.stopLocationService(General.this);
-                    }
+                if (enabled) {
+                    AppPreferences.clearAlertsPause(General.this);
+                    refreshNotificationsSummary();
+                    applyNotificationsEnabledState(true);
+                    return true;
                 }
 
-                // Tell Android to persist new checkbox value
-                return true;
+                if (AppPreferences.isAlertsPausedNow(General.this)) {
+                    showResumePausedDialog();
+                    return false;
+                }
+
+                showPauseOrTurnOffDialog();
+                return false;
             }
         });
+
+        refreshNotificationsSummary();
 
         // Rate button
         mRate.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -652,6 +655,7 @@ public class General extends AppCompatPreferenceActivity {
         body += "primary.enabled=" + AppPreferences.getNotificationsEnabled(this) + ", ";
         body += "secondary.enabled=" + AppPreferences.getSecondaryNotificationsEnabled(this) + ", ";
         body += "location.enabled=" + AppPreferences.getLocationAlertsEnabled(this) + ", ";
+        body += "alerts.pauseUntilEpochMs=" + AppPreferences.getAlertsPauseUntil(this) + ", ";
 
         // Check if location alerts enabled
         if (AppPreferences.getLocationAlertsEnabled(this)) {
@@ -859,6 +863,157 @@ public class General extends AppCompatPreferenceActivity {
         }
 
         return super.onOptionsItemSelected(Item);
+    }
+
+    void refreshNotificationsSummary() {
+        if (AppPreferences.isAlertsPausedNow(this)) {
+            long until = AppPreferences.getAlertsPauseUntil(this);
+            DateFormat fmt = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
+            mNotificationsEnabled.setSummary(getString(R.string.notificationsPausedSummary, fmt.format(new Date(until))));
+        }
+        else {
+            mNotificationsEnabled.setSummary(getString(R.string.notificationsDesc));
+        }
+    }
+
+    void applyNotificationsEnabledState(boolean enabled) {
+        new UpdateNotificationsAsync().execute();
+        Pushy.toggleNotifications(enabled, General.this);
+        if (AppPreferences.getLocationAlertsEnabled(General.this)) {
+            if (enabled) {
+                ServiceManager.startLocationService(General.this);
+            }
+            else {
+                ServiceManager.stopLocationService(General.this);
+            }
+        }
+    }
+
+    void applyDisableNotifications() {
+        AppPreferences.clearAlertsPause(this);
+        Singleton.getSharedPreferences(this).edit().putBoolean(getString(R.string.enabledPref), false).commit();
+        mNotificationsEnabled.setChecked(false);
+        refreshNotificationsSummary();
+        applyNotificationsEnabledState(false);
+    }
+
+    void applyPauseUntil(long pauseUntilEpochMs) {
+        AppPreferences.setAlertsPauseUntil(this, pauseUntilEpochMs);
+        Singleton.getSharedPreferences(this).edit().putBoolean(getString(R.string.enabledPref), true).commit();
+        mNotificationsEnabled.setChecked(true);
+        refreshNotificationsSummary();
+    }
+
+    void showResumePausedDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.resumeNotificationsTitle);
+        builder.setMessage(R.string.resumeNotificationsMessage);
+        builder.setPositiveButton(R.string.resumeNotificationsYes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                AppPreferences.clearAlertsPause(General.this);
+                refreshNotificationsSummary();
+            }
+        });
+        builder.setNegativeButton(R.string.resumeNotificationsNo, null);
+        try {
+            Dialog dialog = builder.create();
+            dialog.show();
+            RTLSupport.mirrorDialog(dialog, this);
+        }
+        catch (Exception exc) {
+            // Ignore
+        }
+    }
+
+    void showPauseOrTurnOffDialog() {
+        final CharSequence[] items = new CharSequence[]{
+                getString(R.string.turnOffNotificationsCompletely),
+                getString(R.string.pauseAlertsOneHour),
+                getString(R.string.pauseAlertsTwoHours),
+                getString(R.string.pauseAlertsFourHours),
+                getString(R.string.pauseAlertsEightHours),
+                getString(R.string.pauseAlertsUntilMorning),
+                getString(R.string.pauseAlertsCustomHours)
+        };
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.pauseOrTurnOffTitle);
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case 0:
+                        applyDisableNotifications();
+                        break;
+                    case 1:
+                        applyPauseUntil(AppPreferences.computePauseUntilAfterHours(1));
+                        break;
+                    case 2:
+                        applyPauseUntil(AppPreferences.computePauseUntilAfterHours(2));
+                        break;
+                    case 3:
+                        applyPauseUntil(AppPreferences.computePauseUntilAfterHours(4));
+                        break;
+                    case 4:
+                        applyPauseUntil(AppPreferences.computePauseUntilAfterHours(8));
+                        break;
+                    case 5:
+                        applyPauseUntil(AppPreferences.computePauseUntilMorning());
+                        break;
+                    case 6:
+                        showCustomPauseHoursDialog();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+        builder.setNegativeButton(R.string.notNow, null);
+        try {
+            Dialog dialog = builder.create();
+            dialog.show();
+            RTLSupport.mirrorDialog(dialog, this);
+        }
+        catch (Exception exc) {
+            // Ignore
+        }
+    }
+
+    void showCustomPauseHoursDialog() {
+        final EditText input = new EditText(this);
+        input.setInputType(InputType.TYPE_CLASS_NUMBER);
+        input.setHint(R.string.customPauseHoursHint);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.customPauseHoursTitle);
+        builder.setView(input);
+        builder.setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String s = input.getText().toString().trim();
+                int hours;
+                try {
+                    hours = Integer.parseInt(s);
+                }
+                catch (NumberFormatException exc) {
+                    Toast.makeText(General.this, R.string.customPauseHoursInvalid, Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (hours < 1 || hours > 72) {
+                    Toast.makeText(General.this, R.string.customPauseHoursInvalid, Toast.LENGTH_LONG).show();
+                    return;
+                }
+                applyPauseUntil(AppPreferences.computePauseUntilAfterHours(hours));
+            }
+        });
+        builder.setNegativeButton(R.string.notNow, null);
+        try {
+            Dialog dialog = builder.create();
+            dialog.show();
+            RTLSupport.mirrorDialog(dialog, this);
+        }
+        catch (Exception exc) {
+            // Ignore
+        }
     }
 
     public class PerformSelfTestAsync extends AsyncTaskAdapter<Integer, String, Integer> {
