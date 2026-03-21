@@ -98,7 +98,7 @@ public class Main extends AppCompatActivity {
     boolean mPushTokensRefreshed;
     boolean mPermissionDialogDisplayed;
 
-    long mNewestDisplayedAlertDate;
+    long mNewestAlertId;
 
     Button mImSafe;
     Runnable mRunnable;
@@ -881,8 +881,8 @@ public class Main extends AppCompatActivity {
         // Pass all currently-displayed alerts to map activity
         Map.mAlerts = mAllAlerts;
 
-        // Pass newest displayed alert date
-        Map.mNewestDisplayedAlertDate = mNewestDisplayedAlertDate;
+        // Pass newest alert ID
+        Map.mNewestAlertId = mNewestAlertId;
 
         // Start map activity
         startActivity(mapIntent);
@@ -1030,8 +1030,8 @@ public class Main extends AppCompatActivity {
 
                 // Is this the first alert? (most recent)
                 if (firstAlert) {
-                    // Same date as the currently displayed first alert?
-                    if (alert.date == mNewestDisplayedAlertDate) {
+                    // Same ID as the currently displayed first alert?
+                    if (alert.id == mNewestAlertId) {
                         // Stop parsing (no new alerts)
                         parser.close();
 
@@ -1045,8 +1045,8 @@ public class Main extends AppCompatActivity {
                         return R.string.noNewAlerts;
                     }
 
-                    // Save most recent result date
-                    mNewestDisplayedAlertDate = alert.date;
+                    // Save newest alert ID
+                    mNewestAlertId = alert.id;
                 }
 
                 // No longer the first alert

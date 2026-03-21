@@ -8,6 +8,9 @@ import me.pushy.sdk.lib.jackson.annotation.JsonIgnore;
 import me.pushy.sdk.lib.jackson.annotation.JsonProperty;
 
 public class Alert {
+    @JsonProperty("id")
+    public int id;
+
     @JsonProperty("date")
     public long date;
 

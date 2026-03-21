@@ -93,7 +93,7 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
 
     // Singleton alerts
     public static boolean mIsExpandedAlert;
-    public static long mNewestDisplayedAlertDate;
+    public static long mNewestAlertId;
     public static List<Alert> mAlerts = new ArrayList<Alert>();
 
     @Override
@@ -907,8 +907,8 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
 
                 // Is this the first alert? (most recent)
                 if (firstAlert) {
-                    // Same date as the currently displayed first alert?
-                    if (alert.date == mNewestDisplayedAlertDate) {
+                    // Same ID as the currently displayed first alert?
+                    if (alert.id == mNewestAlertId) {
                         // Stop parsing (no new alerts)
                         parser.close();
 
@@ -916,8 +916,8 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                         return R.string.noNewAlerts;
                     }
 
-                    // Save most recent result date
-                    mNewestDisplayedAlertDate = alert.date;
+                    // Save newest alert ID
+                    mNewestAlertId = alert.id;
                 }
 
                 // No longer the first alert
