@@ -16,11 +16,11 @@
     <!-- Update Dialog -->
     <string name="notNow">не сейчас</string>
     <string name="update">Обновить версию</string>
-    <string name="updatePositive">обновление</string>
-    <string name="updateDesc">Существует новый вариант этого приложения доступны (%s), пожалуйста, обновите.</string>
+    <string name="updatePositive">Обновить</string>
+    <string name="updateDesc">Доступна новая версия приложения (%s), пожалуйста, обновите.</string>
 
     <!-- Recent Alerts -->
-    <string name="noAlerts">Нет сигналов тревоги\nтекущий день</string>
+    <string name="noAlerts">Нет оповещений\nза последние сутки</string>
     <string name="recentAlerts">Последние оповещения</string>
 
     <!-- Settings -->
@@ -28,7 +28,7 @@
     <string name="advanced">Расширенные</string>
     <string name="advancedSettings">Расширенные настройки</string>
     <string name="advancedSettingsTitle">Дополнительные настройки</string>
-    <string name="advancedSettingsDesc">Нажмите здесь, чтобы изменить дополнительные настройки</string>
+    <string name="advancedSettingsDesc">Изменить дополнительные настройки</string>
 
     <!-- Enable/Disable Notifications -->
     <string name="notifications">Оповещения в режиме реального времени</string>
@@ -41,13 +41,13 @@
     <string name="noneString">Выкл</string>
 
     <!-- Secondary Alerts -->
-    <string name="receiveSecondaryAlerts">Вторичные Оповещения</string>
+    <string name="receiveSecondaryAlerts">Вторичные оповещения</string>
     <string name="receiveSecondaryAlertsDesc">Получать вторичные оповещения в режиме реального времени</string>
 
     <!-- Secondary Alerts -->
     <string name="secondaryAlerts">Вторичные оповещения</string>
     <string name="secondaryAlertsTitle">Вторичные оповещения</string>
-    <string name="secondaryAlertsDesc">Щелкните здесь, чтобы настроить вторичные оповещения о других областях</string>
+    <string name="secondaryAlertsDesc">Настроить оповещения о других областях</string>
 
     <!-- Secondary Cities -->
     <string name="selectedSecondaryCities">Вторичные населенные пункты</string>
@@ -64,23 +64,23 @@
     <!-- Self-test -->
     <string name="test">Проверка</string>
     <string name="testDesc">Отправить мне уведомление, имитирующее Цева Адом</string>
-    <string name="testFailed">Самодиагностика удалось полностью. Оповещение не было получено от любого толчка шлюза. Проверьте подключение к Интернету и повторите попытку позже, и, свяжитесь с нами, если проблема все еще существует.</string>
+    <string name="testFailed">Самодиагностика не удалась. Оповещение не было получено ни через один шлюз push-уведомлений. Проверьте подключение к Интернету и повторите попытку позже. Свяжитесь с нами, если проблема сохраняется.</string>
     <string name="reliability">Проверка</string>
-    <string name="testSuccessfulLong">Самодиагностика успешно завершила!</string>
+    <string name="testSuccessfulLong">Самодиагностика успешно завершилась!</string>
 
     <!-- Volume -->
     <string name="volume">Уровень громкости</string>
     <string name="volumeDesc">Настройте нужный уровень громкости сигнала для оповещений</string>
 
     <!-- Secondary Volume -->
-    <string name="secondaryVolume">уровень громкости</string>
+    <string name="secondaryVolume">Уровень громкости</string>
     <string name="secondaryVolumeDesc">Настройте уровень громкости сигнала для вторичных оповещений</string>
 
     <!-- Sound Selection -->
     <string name="sounds">Звуки</string>
     <string name="soundSelection">Звук сигнала</string>
-    <string name="soundSelectionDesc">Выбрать звук  при тревоге</string>
-    <string name="testSound">​​Проверка Звука</string>
+    <string name="soundSelectionDesc">Выбрать звук при тревоге</string>
+    <string name="testSound">Проверка звука</string>
     <string name="siren1">Сирена 1</string>
     <string name="siren2">Сирена 2</string>
     <string name="siren3">Сирена 3</string>
@@ -99,27 +99,27 @@
     <string name="tiny4">Короткий 4</string>
     <string name="tiny5">Короткий 5</string>
     <string name="tiny6">Короткий 6</string>
-    <string name="noSound">​​Без звука</string>
+    <string name="noSound">Без звука</string>
 
     <!-- Secondary Sound -->
     <string name="secondarySoundSelection">Вторичный звук</string>
-    <string name="secondarySoundSelectionDesc">Выбрать звук  при  тревоге вторичные</string>
+    <string name="secondarySoundSelectionDesc">Выбрать звук для вторичных оповещений</string>
 
     <!-- Vibration Mode -->
     <string name="vibrate">Вибрация</string>
     <string name="vibrateDesc">При сигнале тревоги, устройство будет вибрировать</string>
 
     <!-- Silent Mode Override -->
-    <string name="silentOverride">Выключите бесшумный режим</string>
-    <string name="silentOverrideDesc">При сигнале тревоги, тихий режим будет отменен</string>
+    <string name="silentOverride">Отключение бесшумного режима</string>
+    <string name="silentOverrideDesc">При сигнале тревоги бесшумный режим будет отменён</string>
 
     <!-- Secondary Vibration Mode -->
     <string name="secondaryVibrate">Вибрация</string>
-    <string name="secondaryVibrateDesc">При вторичный сигнале тревоги, устройство будет вибрировать</string>
+    <string name="secondaryVibrateDesc">При вторичном сигнале тревоги устройство будет вибрировать</string>
 
     <!-- Secondary Silent Mode Override -->
-    <string name="secondarySilentOverride">Выключите бесшумный режим</string>
-    <string name="secondarySilentOverrideDesc">При вторичный сигнале тревоги, тихий режим будет отменен</string>
+    <string name="secondarySilentOverride">Отключение бесшумного режима</string>
+    <string name="secondarySilentOverrideDesc">При вторичном сигнале тревоги бесшумный режим будет отменён</string>
 
     <!-- Ранние предупреждения -->
     <string name="earlyWarnings">Ранние предупреждения</string>
@@ -140,14 +140,14 @@
     <string name="leaveShelterAlertsSoundSelectionDesc">Выбрать звук, который будет воспроизводиться, когда придет время покидать убежище</string>
 
     <!-- I'm Safe -->
-    <string name="safe">Отправить\"Я в убежище\"</string>
-    <string name="safeCategory">\"Я в убежище\"</string>
-    <string name="imSafeMessage">"Я в убежище" - Отправлено через Цева Адом Android - https://redalert.me</string>
-    <string name="imSafeDesc">Отправить \"Я в убежище\"</string>
+    <string name="safe">Отправить \"Я в безопасности\"</string>
+    <string name="safeCategory">\"Я в безопасности\"</string>
+    <string name="imSafeMessage">"Я в безопасности" - Отправлено через Цева Адом Android - https://redalert.me</string>
+    <string name="imSafeDesc">Отправить \"Я в безопасности\"</string>
 
     <!-- I'm Safe - WhatsApp Integration -->
-    <string name="safeWhatsApp">Отправлено через WhatsApp</string>
-    <string name="safeWhatsAppDesc">При нажатии кнопки \"Сообщить\" напрямую выбрать контакты</string>
+    <string name="safeWhatsApp">Отправить через WhatsApp</string>
+    <string name="safeWhatsAppDesc">При нажатии кнопки \"Я в безопасности\" откроется выбор контактов WhatsApp</string>
 
     <!-- Language & Theme Selection -->
     <string name="automatic">Автоматическая</string>
@@ -166,30 +166,30 @@
     <string name="problemDesc">Описание ошибки: </string>
     <string name="sentVia">Отправлено через</string>
     <string name="registrationID">Регистрационный код</string>
-    <string name="contactDesc">Нажмите здесь, чтобы отправить письмо разработчику приложения</string>
+    <string name="contactDesc">Связаться с разработчиком приложения</string>
     <string name="reportProblem">Пожаловаться</string>
     <string name="manualContact">Свяжитесь со мной в support@redalert.me</string>
 
     <!-- Rate the App -->
     <string name="rateApp">Оценить приложение</string>
-    <string name="rateAppDesc">Нажмите сюда, чтобы оценить приложение на Google Play</string>
+    <string name="rateAppDesc">Оценить приложение на Google Play</string>
 
     <!-- Website -->
     <string name="website">Посетите наш веб-сайт</string>
-    <string name="websiteDesc">Нажмите здесь, чтобы посетить наш официальный сайт</string>
+    <string name="websiteDesc">Посетить наш официальный сайт</string>
 
     <!-- Share the Application -->
     <string name="share">Поделиться</string>
     <string name="shareDesc">Поделиться приложением</string>
-    <string name="shareMessage">Я использую приложение \"Цева Адом \" Android для получения оповещений в состоянии повышенной готовности - https://redalert.me</string>
+    <string name="shareMessage">Я использую приложение \"Цева Адом\" для Android для получения оповещений в реальном времени - https://redalert.me</string>
 
     <!-- Error Messages -->
-    <string name="notifyError">Был ошибка отображения предупреждение, вы можете перезагрузить телефон.</string>
+    <string name="notifyError">Произошла ошибка при отображении уведомления, перезагрузите телефон.</string>
     <string name="contactUsError">Пожалуйста, введите сообщение длиной более 10 символов.</string>
-    <string name="jsonFailed">Был ошибка при загрузке данных с сервера.</string>
+    <string name="jsonFailed">Произошла ошибка при загрузке данных с сервера.</string>
     <string name="noGooglePlayServices">На вашем телефоне не установлены Сервисы Google Play.</string>
     <string name="pushRegistrationFailed">Не удалось зарегистрироваться для получения мгновенных уведомлений. Повторная попытка будет выполнена автоматически.</string>
-    <string name="apiRequestFailed">Запрос для получения информации из наших серверов не удалось. Пожалуйста, проверьте подключение к Интернету и повторите попытку.</string>
+    <string name="apiRequestFailed">Не удалось получить информацию с сервера. Пожалуйста, проверьте подключение к Интернету и повторите попытку.</string>
     <string name="registrationFailed">Регистрация на автоматические уведомления не прошла. Пожалуйста, повторите попытку позже.</string>
     <string name="grantNotificationPermission">Включите «Уведомления» на следующем экране, чтобы получать оповещения в режиме реального времени.</string>
     <string name="citySelectionLimitError">Пожалуйста не выбирайте более 100 городов.</string>
@@ -203,20 +203,20 @@
 
     <!-- GPS -->
     <string name="locationAlerts">Оповещения о местоположениях</string>
-    <string name="locationAlertsDesc">Настрой оповещения основанные на местоположении, чтоб получать предупреждения во время движения</string>
+    <string name="locationAlertsDesc">Настройте оповещения на основе местоположения, чтобы получать предупреждения в пути</string>
     <string name="gpsEnabled">Оповещения о местоположениях</string>
     <string name="gpsEnabledDesc">Получение уведомлений на основе определения местоположения в режиме реального времени</string>
     <string name="maxDistance">Максимальное расстояние</string>
-    <string name="maxDistanceDesc">Авто, чтобы выбрать максимальное расстояние от каждого города, который получает предупреждение ракетного</string>
+    <string name="maxDistanceDesc">Выберите максимальное расстояние от каждого города, получающего оповещение</string>
     <string name="kilometer">km</string>
     <string name="nearbyCities">Близлежащие города</string>
-    <string name="noLocation">Не удалось определить ваш последнего известного местоположения</string>
-    <string name="noNearbyCities">Нет близлежащих городов, не попытаться изменить максимальное расстояние</string>
+    <string name="noLocation">Не удалось определить ваше последнее известное местоположение</string>
+    <string name="noNearbyCities">Нет близлежащих городов, попробуйте увеличить максимальное расстояние</string>
 
     <!-- GPS Frequency -->
-    <string name="gpsFrequency">интервал обновления</string>
-    <string name="gpsFrequencyDesc">Авто для выбора интервала, в течение нескольких минут, для обновления местоположения</string>
-    <string name="every">каждый</string>
+    <string name="gpsFrequency">Интервал обновления</string>
+    <string name="gpsFrequencyDesc">Выберите интервал обновления местоположения в минутах</string>
+    <string name="every">каждые</string>
     <string name="minutes">минут</string>
 
     <!-- GPS Notification -->
@@ -224,7 +224,7 @@
     <string name="enable">Включить</string>
 
     <!-- Alert Share -->
-    <string name="shareAlert">Дайте предупреждение</string>
+    <string name="shareAlert">Поделиться оповещением</string>
     <string name="alertSoundedAt">в&#160;</string>
     <string name="alertSentVia">Отправлено через Цева Адом Android (https://redalert.me)</string>
 
@@ -235,8 +235,8 @@
     <!-- Alert Popup -->
     <string name="close">Закрыть</string>
     <string name="silence">Тишина</string>
-    <string name="showPopup">Показать всплывающее</string>
-    <string name="showPopupDesc">Оповещения будет отображаться в всплывающем окне</string>
+    <string name="showPopup">Показать всплывающее окно</string>
+    <string name="showPopupDesc">Оповещения будут отображаться во всплывающем окне</string>
     <string name="grantOverlayPermission">Разрешить отображение поверх других приложений</string>
     <string name="grantOverlayPermissionInstructions">Пожалуйста, выберите «RedAlert» -> «Разрешить отображение поверх других приложений» на следующем экране.</string>
     <string name="showSecondaryAlertPopupDesc">Вторичные оповещения будут отображаться во всплывающем окне</string>
@@ -251,22 +251,22 @@
 
     <!-- Pushy Foreground Service -->
     <string name="foregroundService">Повышение надежности</string>
-    <string name="foregroundServiceDesc">Отобразите постоянное уведомление, которое не позволит Android завершить работу приложения в фоновом режиме</string>
+    <string name="foregroundServiceDesc">Отображать постоянное уведомление, которое не позволит Android завершить работу приложения в фоновом режиме</string>
     <string name="pushy_foreground_service_title">@string/appName</string>
     <string name="pushy_foreground_service_connected">Подключено к сервису уведомлений</string>
     <string name="pushy_foreground_service_connecting">Подключение...</string>
     <string name="pushy_foreground_service_disconnected">Не подключен к сервису уведомлений</string>
 
     <!-- Miscellaneous -->
-    <string name="loading">загрузка...</string>
-    <string name="testingFCM">Тестирование толчок шлюз... (1/2)</string>
-    <string name="testingPushy">Тестирование толчок шлюз... (2/2)</string>
-    <string name="fcmTestFailed">Самодиагностика удалось частично. Оповещение не было получено от нажимной шлюза Google, но тревога была успешно получил через вторичный толчок шлюза. Пожалуйста, повторите попытку позже.</string>
-    <string name="pushyTestFailed">Самодиагностика удалось частично. Оповещение не было получено из вторичного толчок шлюза, но тревога была успешно получены через Google, толчок шлюза. Пожалуйста, повторите попытку позже.</string>
+    <string name="loading">Загрузка...</string>
+    <string name="testingFCM">Тестирование шлюза push-уведомлений... (1/2)</string>
+    <string name="testingPushy">Тестирование шлюза push-уведомлений... (2/2)</string>
+    <string name="fcmTestFailed">Самодиагностика частично не удалась. Оповещение не было получено через шлюз Google, но успешно получено через вторичный шлюз. Пожалуйста, повторите попытку позже.</string>
+    <string name="pushyTestFailed">Самодиагностика частично не удалась. Оповещение не было получено через вторичный шлюз, но успешно получено через шлюз Google. Пожалуйста, повторите попытку позже.</string>
     <string name="debugInfo">Дополнительная информация</string>
-    <string name="testSuccessful">Самодиагностика успешно завершила!</string>
+    <string name="testSuccessful">Самодиагностика успешно завершилась!</string>
     <string name="alerts">Оповещения</string>
-    <string name="advancedAlerts">Расширенный агент</string>
+    <string name="advancedAlerts">Расширенные оповещения</string>
 
     <!-- Пожертвовать -->
     <string name="donate">Поддержите наше дело</string>
@@ -276,7 +276,7 @@
     <string name="donateSuccessDesc">Ваше пожертвование будет высоко оценено и поможет покрыть расходы на сервер и разработку.</string>
 
     <!-- Operation Lifeshield -->
-    <string name="lifeshieldShelters">Приюты Lifeshield:</string>
+    <string name="lifeshieldShelters">Убежища Lifeshield:</string>
     <string name="learnAboutLifeshield">Узнать о Lifeshield</string>
     <string name="learnAboutLifeshieldDesc">Нажмите здесь, чтобы узнать больше об Операции Lifeshield, некоммерческой организации, которая развертывает убежища для воздушных налетов в Израиле.</string>
 
@@ -290,7 +290,7 @@
     <string name="threeMinutes">3 минуты</string>
 
     <!-- Threat Types -->
-    <string name="missiles">Pакетный обстрел</string>
+    <string name="missiles">Ракетный обстрел</string>
     <string name="radiologicalEvent">Радиологическое событие</string>
     <string name="earthQuake">Землетрясение</string>
     <string name="earlyWarning">Раннее предупреждение</string>
@@ -299,14 +299,14 @@
     <string name="hostileAircraftIntrusion">Нарушение воздушного пространства</string>
     <string name="hazardousMaterials">Опасные материалы</string>
     <string name="terroristInfiltration">Террористическое проникновение</string>
-    <string name="missilesDrill">Упражнение: Pакетный обстрел</string>
-    <string name="earthQuakeDrill">Упражнение: Землетрясение</string>
-    <string name="radiologicalEventDrill">Упражнение: радиационное событие</string>
-    <string name="tsunamiDrill">Упражнение: предупреждение о цунами</string>
-    <string name="hostileAircraftIntrusionDrill">Упражнение: Нарушение воздушного пространства</string>
-    <string name="hazardousMaterialsDrill">Упражнение: опасные материалы</string>
-    <string name="terroristInfiltrationDrill">Упражнение: проникновение террористов</string>
-    <string name="unknown">Оповещен</string>
+    <string name="missilesDrill">Учебная тревога: Ракетный обстрел</string>
+    <string name="earthQuakeDrill">Учебная тревога: Землетрясение</string>
+    <string name="radiologicalEventDrill">Учебная тревога: Радиологическое событие</string>
+    <string name="tsunamiDrill">Учебная тревога: Предупреждение о цунами</string>
+    <string name="hostileAircraftIntrusionDrill">Учебная тревога: Нарушение воздушного пространства</string>
+    <string name="hazardousMaterialsDrill">Учебная тревога: Опасные материалы</string>
+    <string name="terroristInfiltrationDrill">Учебная тревога: Террористическое проникновение</string>
+    <string name="unknown">Оповещение</string>
     <string name="system">Системное оповещение</string>
 
     <!-- Threat Instructions -->
@@ -354,7 +354,7 @@
     <string name="hideGPSForegroundNotificationInstructions">RedAlert необходимо отображать постоянное уведомление, чтобы иметь доступ к вашему местоположению, пока приложение работает в фоновом режиме.\n\nВы можете скрыть его, отключив параметр «Показывать уведомления» на следующем экране. Приложение по-прежнему сможет получать доступ к вашему местоположению в фоновом режиме.</string>
 
     <!-- Hide Pushy Foreground Notification Dialog -->
-    <string name="hidePushyForegroundNotification">Скрыть текущее уведомление</string>
+    <string name="hidePushyForegroundNotification">Скрыть постоянное уведомление</string>
     <string name="hidePushyForegroundNotificationInstructions">RedAlert необходимо отображать постоянное уведомление, чтобы оно могло продолжать работать, пока приложение находится в фоновом режиме.\n\nВы можете скрыть его, отключив параметр «Показывать уведомления» на следующем экране. Приложение по-прежнему сможет работать в фоновом режиме.</string>
 
     <!-- Clear Recent Alerts Dialog -->
