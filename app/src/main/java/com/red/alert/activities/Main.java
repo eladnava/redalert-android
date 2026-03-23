@@ -1213,6 +1213,9 @@ public class Main extends AppCompatActivity {
 
                 // Display {threat} • {count} Cities instead of entire list of cities
                 alert.localizedTitle = alert.localizedThreat + " • " + groupedCityCount + " " + getString(R.string.selectedCities);
+
+                // Convert Arabic numerals to digits if needed
+                alert.localizedTitle = Localization.localizeDigits(alert.localizedTitle, this);
             }
         }
 
