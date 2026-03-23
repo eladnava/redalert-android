@@ -80,24 +80,14 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
                 viewHolder.time.setVisibility(View.VISIBLE);
             }
 
-            // Set area names
+            // Set zone names
             viewHolder.desc.setText(desc);
 
-            // Expandable alert?
-            if (alert.hasTitle) {
-                // Set title
-                viewHolder.title.setText(alert.localizedTitle);
-                viewHolder.title.setVisibility(View.VISIBLE);
+            // Set title
+            viewHolder.title.setText(alert.localizedTitle);
 
-                // Show user-friendly time (don't include threat as it's already included in the localized city)
-                viewHolder.time.setText(alert.dateString);
-            } else {
-                // Hide title
-                viewHolder.title.setVisibility(View.GONE);
-
-                // Show threat type & user-friendly time
-                viewHolder.time.setText(alert.localizedThreat + " • " + alert.dateString);
-            }
+            // Show user-friendly time
+            viewHolder.time.setText(alert.dateString);
 
             // Custom threat icons
             viewHolder.image.setImageResource(LocationData.getThreatDrawable(alert.threat));

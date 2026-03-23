@@ -31,6 +31,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.view.MenuItemCompat;
+import androidx.core.view.WindowCompat;
 
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.installations.FirebaseInstallations;
@@ -997,8 +998,8 @@ public class Main extends AppCompatActivity {
         String alertsJSON;
 
         try {
-            // Get it from /alerts
-            alertsJSON = HTTP.get("/alerts");
+            // Get it from /alerts/all (includes early warnings & leave shelter alerts)
+            alertsJSON = HTTP.get("/alerts/all");
         }
         catch (Exception exc) {
             // Log it
@@ -1149,13 +1150,16 @@ public class Main extends AppCompatActivity {
     }
 
     private void localizeGroupedAlerts(List<Alert> alerts) {
+        // Cache locale
+        boolean isArabic = Localization.isArabic(this);
+
         // Traverse alerts
         for (Alert alert : alerts) {
             // Get relative date string for this alert
             alert.dateString = LocationData.getAlertDateTimeString(alert.date, alert.firstGroupedAlertTimestamp, this);
 
             // Localize threat once
-            alert.localizedThreat = LocationData.getLocalizedThreatType(alert.threat, this);
+            alert.localizedThreat = StringUtils.capitalizeAllWords(LocationData.getLocalizedThreatType(alert.threat, this));
 
             // Prepare unique hash maps of cities and descriptions
             LinkedHashMap<String, String> uniqueCities = new LinkedHashMap<>();
@@ -1166,8 +1170,8 @@ public class Main extends AppCompatActivity {
                 // Localize city name
                 String localizedCity = LocationData.getLocalizedCityName(city, this);
 
-                // Localize zone and countdown
-                String desc = LocationData.getLocalizedZoneWithCountdown(city, alert.threat, this);
+                // Localize zone
+                String desc = LocationData.getLocalizedZoneByCityName(city, this);
 
                 // Check whether city should be highlighted in bold
                 if (AlertLogic.isCitySelectedPrimarily(city, true, this)
@@ -1206,16 +1210,18 @@ public class Main extends AppCompatActivity {
             // Get grouped city count
             int groupedCityCount = localizedCities.size();
 
+            // Display {threat} • {count} Cities instead of entire list of cities
+            alert.localizedTitle = alert.localizedThreat;
+
             // If less than 15 cities, display all city names in large font
             if (groupedCityCount >= 15) {
-                // Mark as expandable
-                alert.hasTitle = true;
-
                 // Display {threat} • {count} Cities instead of entire list of cities
                 alert.localizedTitle = alert.localizedThreat + " • " + groupedCityCount + " " + getString(R.string.selectedCities);
 
                 // Convert Arabic numerals to digits if needed
-                alert.localizedTitle = Localization.localizeDigits(alert.localizedTitle, this);
+                if (isArabic) {
+                    alert.localizedTitle = Localization.localizeDigits(alert.localizedTitle, this);
+                }
             }
         }
 

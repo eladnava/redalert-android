@@ -36,7 +36,6 @@ public class Alert {
     public List<String> groupedCities;
 
     public boolean isExpanded;
-    public boolean hasTitle;
 
     public long firstGroupedAlertTimestamp;
 

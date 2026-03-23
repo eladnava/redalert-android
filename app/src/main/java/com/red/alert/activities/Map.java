@@ -291,6 +291,11 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                 continue;
             }
 
+            // Skip alerts that are leave shelter alerts (in live map mode)
+            if (mLiveMap && alert.threat.equals(ThreatTypes.LEAVE_SHELTER)) {
+                continue;
+            }
+
             // Get city object
             City city = LocationData.getCityByName(alert.city, this);
 
@@ -333,12 +338,23 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                     polygonCenter.include(point);
                 }
 
+                // Default polygon colors
+                int strokeColor = getResources().getColor(R.color.colorPolygonStroke);
+                int fillColor = getResources().getColor(R.color.colorPolygonFill);
+
+                // Leave shelter alert?
+                if (alert.threat.equals(ThreatTypes.LEAVE_SHELTER)) {
+                    // Show green polygons
+                    strokeColor = getResources().getColor(R.color.colorPolygonStrokeEventEnd);
+                    fillColor = getResources().getColor(R.color.colorPolygonFillEventEnd);
+                }
+
                 // Add city polygon to map with custom styling
                 polygon = mMap.addPolygon(new PolygonOptions()
                         .clickable(true)
                         .strokeWidth(4)
-                        .strokeColor(0xffe40000)
-                        .fillColor(0xb3ffafaf)
+                        .strokeColor(strokeColor)
+                        .fillColor(fillColor)
                         .addAll(polygonPoints));
 
                 // Get polygon center point
@@ -374,8 +390,8 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                     tooltip = LocationData.getDistanceFromCity(city, this) + " " + getString(R.string.kilometer);
                 }
 
-                // Add marker to map (if less than X alert cities)
-                if (mAlerts.size() < 10) {
+                // Add marker to map (if less than X alert cities and not a leave shelter alert)
+                if (mAlerts.size() < 10 && !alert.threat.equals(ThreatTypes.LEAVE_SHELTER)) {
                     mMap.addMarker(new MarkerOptions()
                             .position(location)
                             .title(localizedName)
@@ -870,8 +886,8 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
         String alertsJSON;
 
         try {
-            // Get it from /alerts
-            alertsJSON = HTTP.get("/alerts");
+            // Get it from /alerts/all (includes early warnings & leave shelter alerts)
+            alertsJSON = HTTP.get("/alerts/all");
         }
         catch (Exception exc) {
             // Log it

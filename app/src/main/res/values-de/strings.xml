@@ -247,7 +247,7 @@
     <string name="radiologicalEvent">Radiologisches ereignis</string>
     <string name="earthQuake">Erdbeben</string>
     <string name="earlyWarning">Vorwarnung</string>
-    <string name="leaveShelter">Schutzraum verlassen</string>
+    <string name="leaveShelter">Ereignis beendet</string>
     <string name="tsunami">Tsunami warnung</string>
     <string name="hostileAircraftIntrusion">Eindringen feindlicher flugzeuge</string>
     <string name="hazardousMaterials">Veranstaltung zu gefährlichen stoffen</string>

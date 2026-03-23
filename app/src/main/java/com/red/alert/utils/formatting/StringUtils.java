@@ -30,6 +30,33 @@ public class StringUtils {
         return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
 
+    public static String capitalizeAllWords(String string) {
+        // Convert the input string to lowercase and then to a char array so it can be modified
+        char[] chars = string.toLowerCase().toCharArray();
+
+        // Boolean flag indicating whether we have already found the first letter of the current word
+        boolean found = false;
+
+        // Loop through each character in the array
+        for (int i = 0; i < chars.length; i++) {
+            // If we are not currently inside a word and the character is a letter
+            if (!found && Character.isLetter(chars[i])) {
+                // Capitalize the current character (first letter of the word)
+                chars[i] = Character.toUpperCase(chars[i]);
+
+                // Mark that we are now inside a word
+                found = true;
+            } else if (Character.isWhitespace(chars[i])) {
+                // The current character is whitespace (space, tab, etc.)
+                // Reset the flag so the next letter will be capitalized
+                found = false;
+            }
+        }
+
+        // Convert the modified character array back into a String and return it
+        return String.valueOf(chars);
+    }
+
     public static String implode(String separator, List<String> data) {
         // No data?
         if (data.size() == 0) {

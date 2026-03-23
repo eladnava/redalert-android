@@ -14,7 +14,6 @@
         android:layout_centerVertical="true"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_redalert" />
-
     <LinearLayout
         android:gravity="left"
         android:paddingRight="15dp"
@@ -23,43 +22,37 @@
         android:layout_toLeftOf="@id/image"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
-
         <TextView
             android:id="@+id/alertTitle"
             android:textSize="18sp"
-            android:layout_marginBottom="5sp"
             android:text="@string/placeHolder"
             android:textColor="@color/colorTextPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-
+        <TextView
+            android:id="@+id/time"
+            android:textSize="12sp"
+            android:paddingTop="2dp"
+            android:text="@string/placeHolder"
+            android:textColor="@color/colorTextAccent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
         <TextView
             android:id="@+id/alertCities"
             android:textSize="18sp"
-            android:layout_marginBottom="5sp"
+            android:layout_marginTop="3sp"
+            android:layout_marginBottom="3sp"
             android:text="@string/placeHolder"
             android:textColor="@color/colorTextPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-
         <TextView
             android:id="@+id/alertDesc"
-            android:textColor="@color/colorTextAccent"
             android:textSize="14sp"
             android:text="@string/placeHolder"
+            android:textColor="@color/colorTextAccent"
             android:gravity="left"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:id="@+id/time"
-            android:textColor="@color/colorTextAccent"
-            android:ellipsize="end"
-            android:textSize="12sp"
-            android:paddingTop="2dp"
-            android:singleLine="true"
-            android:text="@string/placeHolder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </RelativeLayout>

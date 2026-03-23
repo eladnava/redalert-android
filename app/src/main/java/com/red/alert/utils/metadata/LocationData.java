@@ -655,6 +655,12 @@ public class LocationData {
         else if (threat.contains(ThreatTypes.TERRORIST_INFILTRATION)) {
             return R.drawable.ic_terrorist_infiltration;
         }
+        else if (threat.contains(ThreatTypes.EARLY_WARNING)) {
+            return R.drawable.ic_early_warning;
+        }
+        else if (threat.contains(ThreatTypes.LEAVE_SHELTER)) {
+            return R.drawable.ic_leave_shelter;
+        }
         else if (threat.contains(ThreatTypes.EARTHQUAKE)) {
             return R.drawable.ic_earthquake;
         }

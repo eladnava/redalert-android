@@ -252,7 +252,7 @@
     <string name="radiologicalEvent">Evento radiologico</string>
     <string name="earthQuake">Terremoto</string>
     <string name="earlyWarning">Preavviso</string>
-    <string name="leaveShelter">Lascia il rifugio</string>
+    <string name="leaveShelter">Evento terminato</string>
     <string name="tsunami">Allarme tsunami</string>
     <string name="hostileAircraftIntrusion">Intrusione di aerei ostili</string>
     <string name="hazardousMaterials">Materiali pericolosi</string>

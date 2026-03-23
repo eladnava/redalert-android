@@ -247,7 +247,7 @@
     <string name="radiologicalEvent">حدث إشعاعي</string>
     <string name="earthQuake">زلزال</string>
     <string name="earlyWarning">تحذير مسبق</string>
-    <string name="leaveShelter">مغادرة المأوى</string>
+    <string name="leaveShelter">انتهى الحدث</string>
     <string name="tsunami">تحذير من تسونامي</string>
     <string name="hostileAircraftIntrusion">اختراق طائرة معادية</string>
     <string name="hazardousMaterials">حدث المواد الخطرة</string>
