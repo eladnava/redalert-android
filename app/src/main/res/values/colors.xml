@@ -12,8 +12,8 @@
     <color name="colorCountdownPostImpact">#464646</color>
     <color name="colorCountdownPostImpactSafe">#ff00a737</color>
     <color name="pushy_foreground_service_color">#ff4032</color>
-    <color name="colorPolygonStroke">#ffe40000</color>
-    <color name="colorPolygonFill">#33FFAFAF</color>
-    <color name="colorPolygonStrokeEventEnd">#00E400</color>
+    <color name="colorPolygonStroke">#99E40000</color>
+    <color name="colorPolygonFill">#66FFAFAF</color>
+    <color name="colorPolygonStrokeEventEnd">#009900</color>
     <color name="colorPolygonFillEventEnd">#3300FF00</color>
 </resources>
