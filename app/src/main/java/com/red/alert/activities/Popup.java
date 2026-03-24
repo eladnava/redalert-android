@@ -328,8 +328,13 @@ public class Popup extends AppCompatActivity {
         timeBuffer[3] = (char) ('0' + seconds / 10);
         timeBuffer[4] = (char) ('0' + seconds % 10);
 
-        // Set countdown text
-        mCounter.setText(timeBuffer, 0, 5);
+        try {
+            // Set countdown text
+            mCounter.setText(timeBuffer, 0, 5);
+        }
+        catch (OutOfMemoryError error) {
+            // Ignore rare OOM (don't crash the app)
+        }
     }
 
     @Override
