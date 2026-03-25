@@ -17,6 +17,7 @@ import androidx.core.app.NotificationCompat;
 import com.red.alert.R;
 import com.red.alert.activities.Main;
 import com.red.alert.activities.Popup;
+import com.red.alert.config.Alerts;
 import com.red.alert.config.Logging;
 import com.red.alert.config.NotificationChannels;
 import com.red.alert.config.Sound;
@@ -29,6 +30,7 @@ import com.red.alert.logic.communication.intents.RocketNotificationParameters;
 import com.red.alert.logic.feedback.VibrationLogic;
 import com.red.alert.logic.feedback.sound.SoundLogic;
 import com.red.alert.logic.phone.PowerManagement;
+import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.receivers.NotificationDeletedReceiver;
 import com.red.alert.utils.communication.Broadcasts;
 import com.red.alert.utils.formatting.StringUtils;
@@ -153,17 +155,43 @@ public class Notifications {
             Log.e(Logging.TAG, "Failed to create and display notification", exc);
         }
 
-        // Vibrate (if applicable)
-        VibrationLogic.issueVibration(alertType, context);
+        // Play sound by default
+        boolean silentLeaveShelterAlert = false, leaveShelterCityAlertedRecently = false;
 
-        // Play alert sound (if applicable)
-        SoundLogic.playSound(alertType, threatType, overrideSound, context);
+        // Leave Shelter alert?
+        if (threatType.equals(ThreatTypes.LEAVE_SHELTER)) {
+            // Max time after a go-to-shelter alert that the app should play a sound for Leave Shelter alerts (to avoid waking up sleeping civilians)
+            long recentlyAlertedCutoffTimestamp = DateTime.getUnixTimestamp() - Alerts.LEAVE_SHELTER_ALERTS_SOUND_MAX_CUTOFF_TIME;
 
-        // Wake up phone screen (if enabled)
-        PowerManagement.wakeUpScreen(alertType, context);
+            // Traverse alert cities
+            for (String city : cities) {
+                // Did we have any alert for this city in the past 30 minutes?
+                if (AppPreferences.getCityLastAlert(city, context) > recentlyAlertedCutoffTimestamp) {
+                    leaveShelterCityAlertedRecently = true;
+                    break;
+                }
+            }
 
-        // Show alert popup (if applicable)
-        Popup.showAlertPopup(alertType, cities, threatType, instructions, context);
+            // No sound if no city alerted recently
+            if (!leaveShelterCityAlertedRecently) {
+                silentLeaveShelterAlert = true;
+            }
+        }
+
+        // Should play sound & vibrate?
+        if (!silentLeaveShelterAlert) {
+            // Play alert sound (if applicable)
+            SoundLogic.playSound(alertType, threatType, overrideSound, context);
+
+            // Vibrate (if applicable)
+            VibrationLogic.issueVibration(alertType, context);
+
+            // Wake up phone screen (if enabled)
+            PowerManagement.wakeUpScreen(alertType, context);
+
+            // Show alert popup (if applicable)
+            Popup.showAlertPopup(alertType, cities, threatType, instructions, context);
+        }
 
         // Reload recent alerts (if main activity is open)
         Broadcasts.publish(context, MainActivityParameters.RELOAD_RECENT_ALERTS);
