@@ -159,7 +159,7 @@ public class Notifications {
         boolean silentLeaveShelterAlert = false, leaveShelterCityAlertedRecently = false;
 
         // Leave Shelter alert?
-        if (threatType.equals(ThreatTypes.LEAVE_SHELTER)) {
+        if (alertType.equals(AlertTypes.PRIMARY) && threatType.equals(ThreatTypes.LEAVE_SHELTER)) {
             // Max time after a go-to-shelter alert that the app should play a sound for Leave Shelter alerts (to avoid waking up sleeping civilians)
             long recentlyAlertedCutoffTimestamp = DateTime.getUnixTimestamp() - Alerts.LEAVE_SHELTER_ALERTS_SOUND_MAX_CUTOFF_TIME;
 
