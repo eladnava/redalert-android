@@ -40,6 +40,10 @@
         android:label="@string/appName"
         android:icon="@drawable/ic_redalert">
 
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
         <!-- Google Maps v2 Public API Key -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
