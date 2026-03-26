@@ -379,8 +379,14 @@ public class SoundLogic {
         // Get instance of audio manager
         AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
 
-        // Restore previous ringer mode
-        audioManager.setRingerMode(mPreviousRingerMode);
+        try {
+            // Restore previous ringer mode
+            audioManager.setRingerMode(mPreviousRingerMode);
+        }
+        catch (SecurityException exc) {
+            // Log it
+            Log.e(Logging.TAG, "Restoring ringer mode failed", exc);
+        }
 
         // Reset flag
         mRingerModeChanged = false;
