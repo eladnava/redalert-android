@@ -12,6 +12,7 @@ import com.red.alert.utils.caching.Singleton;
 import com.red.alert.utils.formatting.StringUtils;
 import com.red.alert.utils.metadata.LocationData;
 
+import java.util.Calendar;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -214,6 +215,53 @@ public class AppPreferences {
 
         // Return original list
         return subscriptions;
+    }
+
+    /** Local hour (0–23) for "pause until morning". */
+    private static final int PAUSE_UNTIL_MORNING_HOUR = 8;
+
+    public static long getAlertsPauseUntil(Context context) {
+        return Singleton.getSharedPreferences(context).getLong(context.getString(R.string.alertsPauseUntilPref), 0L);
+    }
+
+    public static void setAlertsPauseUntil(Context context, long pauseUntilEpochMs) {
+        Singleton.getSharedPreferences(context).edit().putLong(context.getString(R.string.alertsPauseUntilPref), pauseUntilEpochMs).commit();
+    }
+
+    public static void clearAlertsPause(Context context) {
+        Singleton.getSharedPreferences(context).edit().remove(context.getString(R.string.alertsPauseUntilPref)).commit();
+    }
+
+    public static boolean isAlertsPausedNow(Context context) {
+        long until = getAlertsPauseUntil(context);
+        if (until <= 0L) {
+            return false;
+        }
+        long now = System.currentTimeMillis();
+        if (now >= until) {
+            clearAlertsPause(context);
+            return false;
+        }
+        return true;
+    }
+
+    public static long computePauseUntilAfterHours(int hours) {
+        if (hours < 1) {
+            hours = 1;
+        }
+        return System.currentTimeMillis() + (hours * 60L * 60L * 1000L);
+    }
+
+    public static long computePauseUntilMorning() {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.HOUR_OF_DAY, PAUSE_UNTIL_MORNING_HOUR);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        c.set(Calendar.MILLISECOND, 0);
+        if (c.getTimeInMillis() <= System.currentTimeMillis()) {
+            c.add(Calendar.DAY_OF_MONTH, 1);
+        }
+        return c.getTimeInMillis();
     }
 
     public static void deleteOldSharedPreferences(Context context) {
