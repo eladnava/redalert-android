@@ -291,8 +291,8 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
                 continue;
             }
 
-            // Skip alerts that are leave shelter alerts (in live map mode)
-            if (mLiveMap && alert.threat.equals(ThreatTypes.LEAVE_SHELTER)) {
+            // Live map: Skip alerts that are early warnings / leave shelter alerts
+            if (mLiveMap && (alert.threat.equals(ThreatTypes.EARLY_WARNING) || alert.threat.equals(ThreatTypes.LEAVE_SHELTER))) {
                 continue;
             }
 
