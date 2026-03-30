@@ -137,6 +137,10 @@
     <string name="leaveShelterAlertsSoundSelection">צליל התרעות סיום ההתגוננות</string>
     <string name="leaveShelterAlertsSoundSelectionDesc">בחירת הצליל שיושמע כשתתקבל התרעת סיום ההתגוננות</string>
 
+    <!-- Smart Leave Shelter Alerts -->
+    <string name="smartLeaveShelterAlerts">התרעות סיום התגוננות חכמות</string>
+    <string name="smartLeaveShelterAlertsDesc">השתקת התרעת סיום ההתגוננות כאשר לא התקבלה התרעת אמת עבור היישוב שלך</string>
+
     <!-- I'm Safe -->   
     <string name="safe">שליחת ”אני במרחב מוגן“ </string>
     <string name="safeCategory">”אני במרחב מוגן“</string>
@@ -432,6 +436,7 @@
     <string translatable="false" name="leaveShelterAlertsEnabledPref">leave_shelter_alerts</string>
     <string translatable="false" name="earlyWarningsSoundPref">early_warning_sound</string>
     <string translatable="false" name="leaveShelterAlertsSoundPref">leave_shelter_sound</string>
+    <string translatable="false" name="smartLeaveShelterAlertsEnabledPref">smart_leave_shelter_alerts</string>
     <string translatable="false" name="secondaryEnabledPref">secondary_alerts</string>
     <string translatable="false" name="secondarySoundPref">secondary_sound</string>
     <string translatable="false" name="selectedSecondaryCitiesPref">selected_secondary_cities</string>

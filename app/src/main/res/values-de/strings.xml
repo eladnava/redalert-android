@@ -133,6 +133,11 @@
     <string name="leaveShelterAlertsSoundSelection">Ton für Alarm beim Verlassen der Unterkunft</string>
     <string name="leaveShelterAlertsSoundSelectionDesc">Wählen Sie einen Ton aus, der abgespielt werden soll, wenn die Unterkunft verlassen werden soll</string>
 
+    <!-- Intelligente Entwarnungsalarme -->
+    <string name="smartLeaveShelterAlerts">Intelligente Entwarnungsalarme</string>
+    <string name="smartLeaveShelterAlertsDesc">Unterdrückt Entwarnungsalarme, wenn keine echte Warnung für deine Stadt eingegangen ist</string>
+
+
     <!-- Rate the App -->
     <string name="rateApp">Bewerte die App</string>
     <string name="rateAppDesc">Klick hier zum Bewerten der App in Google Play</string>

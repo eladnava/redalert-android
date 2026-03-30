@@ -133,6 +133,10 @@
     <string name="leaveShelterAlertsSoundSelection">Som de alerta de saída do abrigo</string>
     <string name="leaveShelterAlertsSoundSelectionDesc">Selecione um som para tocar quando for a hora de sair do abrigo</string>
 
+    <!-- Alertas inteligentes para sair do abrigo -->
+    <string name="smartLeaveShelterAlerts">Alertas inteligentes de saída do abrigo</string>
+    <string name="smartLeaveShelterAlertsDesc">Silencia os alertas de saída do abrigo quando nenhum alerta para ir ao abrigo foi recebido para a sua cidade</string>
+
     <!-- Rate the App -->
     <string name="rateApp">Avalie o aplicativo</string>
     <string name="rateAppDesc">Avalie o aplicativo no Google Play</string>

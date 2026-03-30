@@ -20,5 +20,12 @@
             android:showSilent="true"
             android:ringtoneType="all"
             android:dependency="@string/leaveShelterAlertsEnabledPref"/>
+        <CheckBoxPreference
+            android:textDirection="rtl"
+            android:key="@string/smartLeaveShelterAlertsEnabledPref"
+            android:title="@string/smartLeaveShelterAlerts"
+            android:summary="@string/smartLeaveShelterAlertsDesc"
+            android:defaultValue="true"
+            android:dependency="@string/leaveShelterAlertsEnabledPref"/>
     </PreferenceCategory>
 </PreferenceScreen>

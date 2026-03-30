@@ -133,6 +133,10 @@
     <string name="leaveShelterAlertsSoundSelection">Leave shelter alert sound</string>
     <string name="leaveShelterAlertsSoundSelectionDesc">Select a sound to play when it\'s time to leave the shelter</string>
 
+    <!-- Smart Leave Shelter Alerts -->
+    <string name="smartLeaveShelterAlerts">Smart leave shelter alerts</string>
+    <string name="smartLeaveShelterAlertsDesc">Silence the leave shelter alerts when no go-to-shelter alert was received for your city</string>
+
     <!-- Rate the App -->
     <string name="rateApp">Rate the app</string>
     <string name="rateAppDesc">Rate the app on Google Play</string>

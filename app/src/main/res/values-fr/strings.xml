@@ -133,6 +133,10 @@
     <string name="leaveShelterAlertsSoundSelection">Son d\'alerte de sortie du refuge</string>
     <string name="leaveShelterAlertsSoundSelectionDesc">Sélectionner un son à diffuser lorsqu\'il est temps de quitter le refuge</string>
 
+    <!-- Alertes intelligentes de sortie du refuge -->
+    <string name="smartLeaveShelterAlerts">Alertes intelligentes de sortie du refuge</string>
+    <string name="smartLeaveShelterAlertsDesc">Désactive les alertes de sortie du refuge lorsqu’aucune alerte « aller à l’abri » n’a été reçue pour votre ville</string>
+
     <!-- Rate the App -->
     <string name="rateApp">Notez l\'application</string>
     <string name="rateAppDesc">Evaluer l\'application sur Google Play</string>

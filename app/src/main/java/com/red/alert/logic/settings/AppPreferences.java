@@ -43,6 +43,11 @@ public class AppPreferences {
         return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.leaveShelterAlertsEnabledPref), true);
     }
 
+    public static boolean getSmartLeaveShelterAlertsEnabled(Context context) {
+        // Get saved preference
+        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.smartLeaveShelterAlertsEnabledPref), true);
+    }
+
     public static boolean getTutorialDisplayed(Context context) {
         // No regions/cities selected?
         if (AppPreferences.getNotificationsEnabled(context) && AppPreferences.getSubscriptions(context).size() == 0) {

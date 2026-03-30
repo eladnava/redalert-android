@@ -139,6 +139,10 @@
     <string name="leaveShelterAlertsSoundSelection">Звук оповещения о выходе из убежища</string>
     <string name="leaveShelterAlertsSoundSelectionDesc">Выбрать звук, который будет воспроизводиться, когда придет время покидать убежище</string>
 
+    <!-- Умные уведомления о выходе из укрытия -->
+    <string name="smartLeaveShelterAlerts">Умные уведомления о выходе из укрытия</string>
+    <string name="smartLeaveShelterAlertsDesc">Отключает уведомления о выходе из укрытия, если для вашего города не было получено оповещение «идти в укрытие»</string>
+
     <!-- I'm Safe -->
     <string name="safe">Отправить \"Я в безопасности\"</string>
     <string name="safeCategory">\"Я в безопасности\"</string>

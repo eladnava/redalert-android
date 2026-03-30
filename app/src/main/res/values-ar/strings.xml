@@ -133,6 +133,10 @@
     <string name="leaveShelterAlertsSoundSelection">صوت تنبيه مغادرة المأوى</string>
     <string name="leaveShelterAlertsSoundSelectionDesc">اختر صوتًا لتشغيله عند حلول وقت مغادرة المأوى</string>
 
+    <!-- تنبيهات ذكية لانتهاء الحماية -->
+    <string name="smartLeaveShelterAlerts">تنبيهات ذكية لمغادرة المأوى</string>
+    <string name="smartLeaveShelterAlertsDesc">كتم تنبيهات مغادرة المأوى عندما لم يتم تلقي تنبيه بالذهاب إلى المأوى لمدينتك</string>
+
     <!-- تقييم التطبيق -->
     <string name="rateApp">تقييم التطبيق</string>
     <string name="rateAppDesc">تقييم التطبيق على تطبيقات جوجل</string>

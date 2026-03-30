@@ -131,6 +131,10 @@
     <string name="leaveShelterAlertsSoundSelection">Sonido de alerta de salida del refugio</string>
     <string name="leaveShelterAlertsSoundSelectionDesc">Seleccionar un sonido para que suene cuando sea hora de salir del refugio</string>
 
+    <!-- Alertas inteligentes para salir del refugio -->
+    <string name="smartLeaveShelterAlerts">Alertas inteligentes para salir del refugio</string>
+    <string name="smartLeaveShelterAlertsDesc">Silencia las alertas de salida del refugio cuando no se recibió una alerta de ir al refugio para tu ciudad</string>
+
     <!-- I'm Safe -->
     <string name="safe">Enviar  \"Estoy en el área protegida\"</string>
     <string name="safeCategory">\"Estoy en el área protegida\"</string>

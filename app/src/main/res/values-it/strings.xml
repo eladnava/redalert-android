@@ -226,6 +226,10 @@
     <string name="leaveShelterAlertsSoundSelection">Suono di avviso di uscita dal rifugio</string>
     <string name="leaveShelterAlertsSoundSelectionDesc">Seleziona un suono da riprodurre quando è il momento di uscire dal rifugio</string>
 
+    <!-- Avvisi intelligenti per uscire dal rifugio -->
+    <string name="smartLeaveShelterAlerts">Avvisi intelligenti di uscita dal rifugio</string>
+    <string name="smartLeaveShelterAlertsDesc">Silenzia gli avvisi di uscita dal rifugio quando non è stato ricevuto un avviso di andare al rifugio per la tua città</string>
+
     <!-- Dona -->
     <string name="donate">Sostieni la nostra causa</string>
     <string name="donateInstructions">Seleziona l\'importo desiderato per la donazione (in ILS):</string>
