@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+
 import com.red.alert.R;
 import com.red.alert.config.ThreatTypes;
 import com.red.alert.model.Alert;
@@ -55,6 +57,12 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
             // Get cached convert view
             viewHolder = (ViewHolder) convertView.getTag();
         }
+
+        // Workaround for rare bug (white text when viewing in Light mode)
+        viewHolder.time.setTextColor(ContextCompat.getColor(parent.getContext(), R.color.colorTextAccent));
+        viewHolder.title.setTextColor(ContextCompat.getColor(parent.getContext(), R.color.colorTextPrimary));
+        viewHolder.cities.setTextColor(ContextCompat.getColor(parent.getContext(), R.color.colorTextPrimary));
+        viewHolder.desc.setTextColor(ContextCompat.getColor(parent.getContext(), R.color.colorTextAccent));
 
         // Retrieve the alert
         Alert alert = getItem(position);
