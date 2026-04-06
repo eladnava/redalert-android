@@ -333,6 +333,11 @@ public class SoundLogic {
             return;
         }
 
+        // Shouldn't override silent mode?
+        if (!SoundLogic.shouldOverrideSilentMode(alertType, context)) {
+            return;
+        }
+
         // Check if device is Samsung and Android R or above
         if (!isSamsungDeviceRequiringSilentModeOverride()){
             return;
