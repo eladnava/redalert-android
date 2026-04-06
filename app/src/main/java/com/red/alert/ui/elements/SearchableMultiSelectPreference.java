@@ -279,14 +279,46 @@ public class SearchableMultiSelectPreference extends ListPreference {
                         final FilterResults results = new FilterResults();
 
                         final String filterString = constraint.toString().toLowerCase();
+                        final String normalizedFilterString = normalizeSearchText(filterString);
                         final ArrayList<ListItemWithIndex> list = new ArrayList<ListItemWithIndex>();
+                        
+                        // Split search input into words for AND condition
+                        final String[] searchWords = normalizedFilterString.split("\\s+");
+                        
                         for (final ListItemWithIndex obj : allItems) {
+                            // Normalize items (remove punctuation and dashes)
                             final String objStr = obj.toString().toLowerCase();
-                            if (StringUtils.stringIsNullOrEmpty(filterString)
-                                    || objStr.contains(filterString)
-                                    || (obj.zone != null && obj.zone.toLowerCase().contains(filterString))
-                                    ) {
+                            final String normalizedObjStr = normalizeSearchText(objStr);
+                            final String normalizedZone = obj.zone != null ? normalizeSearchText(obj.zone.toLowerCase()) : "";
+
+                            // Empty search field?
+                            if (StringUtils.stringIsNullOrEmpty(filterString)) {
                                 list.add(obj);
+                            } else if (objStr.contains(filterString)) {
+                                // Exact match takes priority
+                                list.add(obj);
+                            } else if ((obj.zone != null && obj.zone.toLowerCase().contains(filterString))) {
+                                // Exact zone match takes priority
+                                list.add(obj);
+                            } else {
+                                // Check if all search words match (AND condition)
+                                boolean allWordsMatch = true;
+
+                                // Traverse search keywords
+                                for (final String word : searchWords) {
+                                    // Word exists and present in current item?
+                                    if (!word.isEmpty() &&
+                                            !normalizedObjStr.contains(word) &&
+                                            !normalizedZone.contains(word)) {
+                                        allWordsMatch = false;
+                                        break;
+                                    }
+                                }
+
+                                // Ensure all words are present (AND condition)
+                                if (allWordsMatch) {
+                                    list.add(obj);
+                                }
                             }
                         }
 
@@ -438,6 +470,16 @@ public class SearchableMultiSelectPreference extends ListPreference {
             return entryValues[which].equals(checkAllKey);
         }
         return false;
+    }
+
+    private String normalizeSearchText(String text) {
+        // Normalizes a string by removing hyphens, dashes, and other common punctuation
+        if (text == null) {
+            return "";
+        }
+        
+        // Remove hyphens, dashes, parentheses, and other common punctuation
+        return text.replaceAll("[\\-–—()\\[\\]{}]", " ").trim();
     }
 
     private void checkAll(DialogInterface dialog, boolean val) {
