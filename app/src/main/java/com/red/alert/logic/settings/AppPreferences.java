@@ -45,7 +45,7 @@ public class AppPreferences {
 
     public static boolean getSmartLeaveShelterAlertsEnabled(Context context) {
         // Get saved preference
-        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.smartLeaveShelterAlertsEnabledPref), true);
+        return Singleton.getSharedPreferences(context).getBoolean(context.getString(R.string.smartLeaveShelterAlertsEnabledPref), false);
     }
 
     public static boolean getTutorialDisplayed(Context context) {
