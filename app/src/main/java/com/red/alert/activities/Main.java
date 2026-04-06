@@ -705,6 +705,11 @@ public class Main extends AppCompatActivity {
             return;
         }
 
+        // Master switch is enabled?
+        if (!AppPreferences.getNotificationsEnabled(this)) {
+            return;
+        }
+
         // Haven't displayed tutorial?
         if (!AppPreferences.getTutorialDisplayed(this)) {
             return;
