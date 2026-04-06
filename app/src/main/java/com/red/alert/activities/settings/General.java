@@ -15,6 +15,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.PowerManager;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
@@ -365,11 +366,17 @@ public class General extends AppCompatPreferenceActivity {
         mThemeSelection.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, final Object value) {
-                // Close settings activity
-                finish();
+                // Delay popup by 300ms so that preference change gets applied
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Close settings activity
+                        finish();
 
-                // Notify theme changed
-                Broadcasts.publish(General.this, SettingsEvents.THEME_OR_LANGUAGE_CHANGED);
+                        // Notify theme changed
+                        Broadcasts.publish(General.this, SettingsEvents.THEME_OR_LANGUAGE_CHANGED);
+                    }
+                }, 300);
 
                 // Update the preference
                 return true;

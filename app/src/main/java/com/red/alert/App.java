@@ -12,6 +12,9 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
+        // Apply custom theme selection
+        Localization.applyThemeSelection(this);
+
         // Reapply locale
         Localization.overridePhoneLocale(this);
 

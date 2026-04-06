@@ -58,12 +58,6 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        // Workaround for rare bug (white text when viewing in Light mode)
-        viewHolder.time.setTextColor(ContextCompat.getColor(parent.getContext(), R.color.colorTextAccent));
-        viewHolder.title.setTextColor(ContextCompat.getColor(parent.getContext(), R.color.colorTextPrimary));
-        viewHolder.cities.setTextColor(ContextCompat.getColor(parent.getContext(), R.color.colorTextPrimary));
-        viewHolder.desc.setTextColor(ContextCompat.getColor(parent.getContext(), R.color.colorTextAccent));
-
         // Retrieve the alert
         Alert alert = getItem(position);
 

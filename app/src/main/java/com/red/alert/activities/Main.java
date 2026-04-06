@@ -127,8 +127,11 @@ public class Main extends AppCompatActivity {
                 reloadRecentAlerts();
             }
 
-            // Language changed?
+            // Theme or language changed?
             if (Key.equalsIgnoreCase(SettingsEvents.THEME_OR_LANGUAGE_CHANGED)) {
+                // Apply custom theme selection
+                Localization.applyThemeSelection(getApplicationContext());
+
                 // Reload activity
                 finish();
                 startActivity(new Intent(Main.this, Main.class));
@@ -145,9 +148,6 @@ public class Main extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        // Apply custom theme selection (make sure to invoke this before super.onCreate())
-        Localization.applyThemeSelection(this);
-
         // Call parent method
         super.onCreate(savedInstanceState);
 
