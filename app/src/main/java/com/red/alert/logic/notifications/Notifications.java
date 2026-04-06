@@ -143,18 +143,6 @@ public class Notifications {
         // Configure notification channel (if required)
         setNotificationChannel(alertType, threatType, overrideSound, builder, context);
 
-        // Set ringer mode to normal (Samsung Android 11+ devices)
-        SoundLogic.overrideSilentRingerMode(alertType, context);
-
-        try {
-            // Issue the notification
-            notificationManager.notify(notificationId, builder.build());
-        }
-        catch (Exception exc) {
-            // Log error
-            Log.e(Logging.TAG, "Failed to create and display notification", exc);
-        }
-
         // Play sound by default
         boolean silentLeaveShelterAlert = false, leaveShelterCityAlertedRecently = false;
 
@@ -176,6 +164,21 @@ public class Notifications {
             if (!leaveShelterCityAlertedRecently) {
                 silentLeaveShelterAlert = true;
             }
+        }
+
+        // Should play sound & vibrate? (Samsung devices)
+        if (!silentLeaveShelterAlert) {
+            // Set ringer mode to normal (Samsung Android 11+ devices)
+            SoundLogic.overrideSilentRingerMode(alertType, context);
+        }
+
+        try {
+            // Issue the notification
+            notificationManager.notify(notificationId, builder.build());
+        }
+        catch (Exception exc) {
+            // Log error
+            Log.e(Logging.TAG, "Failed to create and display notification", exc);
         }
 
         // Should play sound & vibrate?
