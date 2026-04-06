@@ -436,7 +436,7 @@
     <string translatable="false" name="leaveShelterAlertsEnabledPref">leave_shelter_alerts</string>
     <string translatable="false" name="earlyWarningsSoundPref">early_warning_sound</string>
     <string translatable="false" name="leaveShelterAlertsSoundPref">leave_shelter_sound</string>
-    <string translatable="false" name="smartLeaveShelterAlertsEnabledPref">smart_leave_shelter_alerts</string>
+    <string translatable="false" name="smartLeaveShelterAlertsEnabledPref">smart_leave_shelter_alerts_v2</string>
     <string translatable="false" name="secondaryEnabledPref">secondary_alerts</string>
     <string translatable="false" name="secondarySoundPref">secondary_sound</string>
     <string translatable="false" name="selectedSecondaryCitiesPref">selected_secondary_cities</string>
