@@ -189,7 +189,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.03959,
     "lng": 35.28822,
     "value": "אבירים"
@@ -234,7 +234,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.07479,
     "lng": 35.29266,
     "value": "אבן מנחם"
@@ -279,7 +279,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 0,
+    "countdown": 30,
     "lat": 32.82269,
     "lng": 35.76613,
     "value": "אבני איתן"
@@ -369,7 +369,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.07944,
     "lng": 35.20884,
     "value": "אדמית"
@@ -414,7 +414,7 @@
     "zone_en": "Northern Golan",
     "zone_ru": "Северные Голаны",
     "zone_ar": "شمال الجولان",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.1942,
     "lng": 35.74914,
     "value": "אודם"
@@ -579,7 +579,7 @@
     "zone_en": "Northern Golan",
     "zone_ru": "Северные Голаны",
     "zone_ar": "شمال الجولان",
-    "countdown": 0,
+    "countdown": 30,
     "lat": 33.08481,
     "lng": 35.76076,
     "value": "אורטל"
@@ -729,7 +729,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 0,
+    "countdown": 30,
     "lat": 32.80274,
     "lng": 35.71711,
     "value": "אזור תעשייה בני יהודה"
@@ -1224,7 +1224,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.02652,
     "lng": 35.47969,
     "value": "אזור תעשייה רמת דלתון"
@@ -1239,7 +1239,7 @@
     "zone_en": "Eilat",
     "zone_ru": "Эйлат",
     "zone_ar": "ايلات",
-    "countdown": 30,
+    "countdown": 90,
     "lat": 29.59891,
     "lng": 34.97192,
     "value": "אזור תעשייה שחורת"
@@ -1480,7 +1480,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.06686,
     "lng": 35.10866,
     "value": "איזור תעשייה מילואות צפון"
@@ -1540,7 +1540,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.06241,
     "lng": 35.21834,
     "value": "אילון"
@@ -1555,7 +1555,7 @@
     "zone_en": "Eilat",
     "zone_ru": "Эйлат",
     "zone_ar": "إيلات",
-    "countdown": 30,
+    "countdown": 90,
     "lat": 29.58068,
     "lng": 34.96375,
     "value": "אילות"
@@ -1585,7 +1585,7 @@
     "zone_en": "Eilat",
     "zone_ru": "Эйлат",
     "zone_ar": "إيلات",
-    "countdown": 30,
+    "countdown": 90,
     "lat": 29.53716,
     "lng": 34.93683,
     "value": "אילת"
@@ -1735,7 +1735,7 @@
     "zone_en": "Northern Golan",
     "zone_ru": "Северные Голаны",
     "zone_ar": "شمال الجولان",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.18052,
     "lng": 35.77074,
     "value": "אל רום"
@@ -1855,7 +1855,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.04267,
     "lng": 35.83775,
     "value": "אלוני הבשן"
@@ -1900,7 +1900,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 0,
+    "countdown": 30,
     "lat": 32.80556,
     "lng": 35.73501,
     "value": "אלי עד"
@@ -2020,7 +2020,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.91211,
     "lng": 35.60205,
     "value": "אלמגור"
@@ -2095,7 +2095,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.03443,
     "lng": 35.32429,
     "value": "אלקוש"
@@ -2185,7 +2185,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 15,
+    "countdown": 30,
     "lat": 32.95786,
     "lng": 35.74255,
     "value": "אניעם"
@@ -2230,7 +2230,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 0,
+    "countdown": 30,
     "lat": 32.77856,
     "lng": 35.70195,
     "value": "אפיק"
@@ -2910,7 +2910,7 @@
     "zone_en": "Northern Golan",
     "zone_ru": "Северные Голаны",
     "zone_ar": "شمال الجولان",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.20487,
     "lng": 35.78103,
     "value": "בוקעתא"
@@ -3255,7 +3255,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.20743,
     "lng": 35.60452,
     "value": "בית הלל"
@@ -3690,7 +3690,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.00955,
     "lng": 35.39346,
     "value": "בית ספר שדה מירון"
@@ -3975,7 +3975,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 30,
     "lat": 33.0063,
     "lng": 35.12453,
     "value": "בן עמי"
@@ -4080,7 +4080,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 15,
+    "countdown": 30,
     "lat": 32.79884,
     "lng": 35.68438,
     "value": "בני יהודה וגבעת יואב"
@@ -4245,7 +4245,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.07109,
     "lng": 35.13027,
     "value": "בצת"
@@ -4413,7 +4413,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.05684,
     "lng": 35.43476,
     "value": "ברעם"
@@ -4654,7 +4654,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.024,
     "lng": 35.44554,
     "value": "ג'ש - גוש חלב"
@@ -5314,7 +5314,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.05777,
     "lng": 35.23934,
     "value": "גורן"
@@ -5329,7 +5329,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.0599,
     "lng": 35.24932,
     "value": "גורנות הגליל"
@@ -5839,7 +5839,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 15,
+    "countdown": 30,
     "lat": 33.00615,
     "lng": 35.21375,
     "value": "געתון"
@@ -5884,7 +5884,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 15,
+    "countdown": 30,
     "lat": 32.81724,
     "lng": 35.7171,
     "value": "גשור"
@@ -5914,7 +5914,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 30,
     "lat": 33.03965,
     "lng": 35.11183,
     "value": "גשר הזיו"
@@ -6034,7 +6034,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.05438,
     "lng": 35.40958,
     "value": "דוב'ב"
@@ -6169,7 +6169,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.08157,
     "lng": 35.51824,
     "value": "דישון"
@@ -6214,7 +6214,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.01652,
     "lng": 35.49042,
     "value": "דלתון"
@@ -6244,7 +6244,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.22937,
     "lng": 35.63764,
     "value": "דפנה"
@@ -6274,7 +6274,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.72532,
     "lng": 35.62215,
     "value": "האון"
@@ -6319,7 +6319,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.22157,
     "lng": 35.62339,
     "value": "הגושרים"
@@ -6545,7 +6545,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.03592,
     "lng": 35.24428,
     "value": "הילה"
@@ -6733,7 +6733,7 @@
   {
     "id": 824,
     "name": "הרצליה - מרכז וגליל ים",
-    "name_en": "Herzeliya - Center And Glil Yam",
+    "name_en": "Herzliya - Center And Glil Yam",
     "name_ru": "Герцлия - центр и Глиль Ям",
     "name_ar": "هرتسليا - المركز وجليل يام",
     "zone": "דן",
@@ -6785,7 +6785,7 @@
     "zone_en": "Southern Negev",
     "zone_ru": "Южный Негев",
     "zone_ar": "جنوب النقب",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 31.13499,
     "lng": 34.82485,
     "value": "ואדי אל נעם דרום"
@@ -7012,7 +7012,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.09898,
     "lng": 35.28449,
     "value": "זרעית"
@@ -7087,7 +7087,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 15,
+    "countdown": 45,
     "lat": 32.93207,
     "lng": 35.64242,
     "value": "חד נס"
@@ -7687,7 +7687,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 31.70001,
     "lng": 35.141,
     "value": "חוות עדן"
@@ -7972,7 +7972,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.05264,
     "lng": 35.10334,
     "value": "חוף אכזיב"
@@ -7987,7 +7987,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.08018,
     "lng": 35.10662,
     "value": "חוף בצת"
@@ -8077,7 +8077,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.02181,
     "lng": 35.34455,
     "value": "חורפיש"
@@ -8347,7 +8347,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 15,
+    "countdown": 45,
     "lat": 32.68444,
     "lng": 35.66629,
     "value": "חמת גדר"
@@ -8392,7 +8392,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.08744,
     "lng": 35.17433,
     "value": "חניתה"
@@ -8422,7 +8422,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 32.84557,
     "lng": 35.79284,
     "value": "חספין"
@@ -8514,7 +8514,7 @@
     "zone_ar": "النقب المركزي",
     "countdown": 60,
     "lat": 31.23938,
-    "lng": 34.71383,
+    "lng": 34.71219,
     "value": "חצרים"
   },
   {
@@ -9172,7 +9172,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 0,
+    "countdown": 30,
     "lat": 32.93673,
     "lng": 35.7943,
     "value": "יונתן"
@@ -9218,7 +9218,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 15,
+    "countdown": 30,
     "lat": 32.99729,
     "lng": 35.22041,
     "value": "יחיעם"
@@ -9400,7 +9400,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.06768,
     "lng": 35.18477,
     "value": "יערה"
@@ -9460,7 +9460,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.12609,
     "lng": 35.55033,
     "value": "יפתח"
@@ -9565,7 +9565,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.07745,
     "lng": 35.454,
     "value": "יראון"
@@ -9865,7 +9865,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 30,
     "lat": 33.01758,
     "lng": 35.14682,
     "value": "כברי"
@@ -10120,7 +10120,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 15,
+    "countdown": 45,
     "lat": 32.87056,
     "lng": 35.7,
     "value": "כנף"
@@ -10300,7 +10300,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.173,
     "lng": 35.61069,
     "value": "כפר בלום"
@@ -10405,7 +10405,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.243,
     "lng": 35.57661,
     "value": "כפר גלעדי"
@@ -10630,7 +10630,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 15,
+    "countdown": 30,
     "lat": 32.99868,
     "lng": 35.26838,
     "value": "כפר ורדים"
@@ -10765,7 +10765,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 15,
+    "countdown": 30,
     "lat": 32.76216,
     "lng": 35.66285,
     "value": "כפר חרוב"
@@ -10840,7 +10840,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.24642,
     "lng": 35.59624,
     "value": "כפר יובל"
@@ -11397,7 +11397,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.03759,
     "lng": 35.46696,
     "value": "כרם בן זמרה"
@@ -11579,7 +11579,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.11033,
     "lng": 35.58197,
     "value": "לב החולה"
@@ -11789,7 +11789,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.05949,
     "lng": 35.11282,
     "value": "לימן"
@@ -11939,7 +11939,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 15,
+    "countdown": 30,
     "lat": 32.73744,
     "lng": 35.65571,
     "value": "מבוא חמה"
@@ -12060,7 +12060,7 @@
     "zone_en": "Northern Golan",
     "zone_ru": "Северные Голаны",
     "zone_ar": "شمال الجولان",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.26162,
     "lng": 35.76868,
     "value": "מג'דל שמס"
@@ -12540,7 +12540,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.2779,
     "lng": 35.57954,
     "value": "מטולה"
@@ -12630,7 +12630,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 0,
+    "countdown": 30,
     "lat": 32.76689,
     "lng": 35.73608,
     "value": "מיצר"
@@ -12810,7 +12810,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.09824,
     "lng": 35.5102,
     "value": "מלכיה"
@@ -12855,7 +12855,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 30,
     "lat": 33.03839,
     "lng": 35.19515,
     "value": "מנות"
@@ -12900,7 +12900,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.19743,
     "lng": 35.54409,
     "value": "מנרה"
@@ -12945,7 +12945,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.68317,
     "lng": 35.5986,
     "value": "מסדה"
@@ -13020,7 +13020,7 @@
     "zone_en": "Northern Golan",
     "zone_ru": "Северные Голаны",
     "zone_ar": "شمال الجولان",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.23223,
     "lng": 35.76458,
     "value": "מסעדה"
@@ -13080,7 +13080,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.70645,
     "lng": 35.59975,
     "value": "מעגן"
@@ -13155,7 +13155,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 30,
     "lat": 33.01705,
     "lng": 35.26158,
     "value": "מעונה"
@@ -13170,7 +13170,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.24021,
     "lng": 35.60726,
     "value": "מעיין ברוך"
@@ -13200,7 +13200,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.02719,
     "lng": 35.25665,
     "value": "מעיליא"
@@ -13260,7 +13260,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 15,
+    "countdown": 45,
     "lat": 32.88797,
     "lng": 35.68325,
     "value": "מעלה גמלא"
@@ -13395,7 +13395,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 30,
     "lat": 33.01428,
     "lng": 35.27977,
     "value": "מעלות תרשיחא"
@@ -13471,7 +13471,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.06392,
     "lng": 35.15686,
     "value": "מצובה"
@@ -13741,7 +13741,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.21358,
     "lng": 35.54586,
     "value": "מרגליות"
@@ -13756,7 +13756,7 @@
     "zone_en": "Northern Golan",
     "zone_ru": "Северные Голаны",
     "zone_ar": "شمال الجولان",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.13455,
     "lng": 35.7768,
     "value": "מרום גולן"
@@ -13846,7 +13846,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.12093,
     "lng": 35.57,
     "value": "מרכז אזורי מבואות חרמון"
@@ -14011,7 +14011,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.24674,
     "lng": 35.54928,
     "value": "משגב עם"
@@ -14237,7 +14237,7 @@
     "zone_en": "Lachish",
     "zone_ru": "Лахиш",
     "zone_ar": "لخيش",
-    "countdown": 45,
+    "countdown": 60,
     "lat": 31.82166,
     "lng": 34.70221,
     "value": "מתחם בני דרום"
@@ -14327,7 +14327,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.04044,
     "lng": 35.3577,
     "value": "מתת"
@@ -14357,7 +14357,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 15,
+    "countdown": 30,
     "lat": 32.78648,
     "lng": 35.69257,
     "value": "נאות גולן"
@@ -14387,7 +14387,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.16009,
     "lng": 35.59814,
     "value": "נאות מרדכי"
@@ -14537,7 +14537,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 15,
+    "countdown": 30,
     "lat": 33.01525,
     "lng": 35.10256,
     "value": "נהריה"
@@ -14552,7 +14552,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 32.8325,
     "lng": 35.78323,
     "value": "נוב"
@@ -14627,7 +14627,7 @@
     "zone_en": "Northern Golan",
     "zone_ru": "Северные Голаны",
     "zone_ar": "شمال الجولان",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.26197,
     "lng": 35.7416,
     "value": "נווה אטי'ב"
@@ -14702,7 +14702,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 30,
     "lat": 33.0279,
     "lng": 35.17924,
     "value": "נווה זיו"
@@ -15137,7 +15137,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.06487,
     "lng": 35.32497,
     "value": "נטועה"
@@ -15152,7 +15152,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 0,
+    "countdown": 30,
     "lat": 32.85373,
     "lng": 35.74984,
     "value": "נטור"
@@ -15546,7 +15546,7 @@
     "zone_en": "Northern Golan",
     "zone_ru": "Северные Голаны",
     "zone_ar": "شمال الجولان",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.24572,
     "lng": 35.75158,
     "value": "נמרוד"
@@ -15878,7 +15878,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.02748,
     "lng": 35.39609,
     "value": "סאסא"
@@ -16119,7 +16119,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 30,
     "lat": 33.03065,
     "lng": 35.10938,
     "value": "סער"
@@ -16179,7 +16179,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.27221,
     "lng": 35.62443,
     "value": "ע'ג'ר"
@@ -16194,7 +16194,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.04856,
     "lng": 35.17974,
     "value": "עבדון"
@@ -16209,7 +16209,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 15,
+    "countdown": 30,
     "lat": 32.99144,
     "lng": 35.10154,
     "value": "עברון"
@@ -16614,7 +16614,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 15,
+    "countdown": 45,
     "lat": 32.77671,
     "lng": 35.63991,
     "value": "עין גב"
@@ -16795,7 +16795,7 @@
     "zone_en": "Northern Golan",
     "zone_ru": "Северные Голаны",
     "zone_ar": "شمال الجولان",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.09665,
     "lng": 35.79654,
     "value": "עין זיוון"
@@ -16870,7 +16870,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 15,
+    "countdown": 30,
     "lat": 33.0112,
     "lng": 35.23275,
     "value": "עין יעקב"
@@ -16960,7 +16960,7 @@
     "zone_en": "Northern Golan",
     "zone_ru": "Северные Голаны",
     "zone_ar": "شمال الجولان",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.23664,
     "lng": 35.7281,
     "value": "עין קנייא"
@@ -17156,7 +17156,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.05148,
     "lng": 35.50042,
     "value": "עלמה",
@@ -17427,7 +17427,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.09095,
     "lng": 35.2262,
     "value": "ערב אל עראמשה"
@@ -17443,8 +17443,8 @@
     "zone_ru": "Южный Негев",
     "zone_ar": "جنوب النقب",
     "countdown": 90,
-    "lat": 31.2569,
-    "lng": 35.2126,
+    "lat": 31.25763,
+    "lng": 35.21314,
     "value": "ערד"
   },
   {
@@ -17847,7 +17847,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.04856,
     "lng": 35.30953,
     "value": "פסוטה"
@@ -17907,7 +17907,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 32.98827,
     "lng": 35.31584,
     "value": "פקיעין החדשה"
@@ -18028,7 +18028,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.02508,
     "lng": 35.41683,
     "value": "צבעון"
@@ -18223,7 +18223,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.00624,
     "lng": 35.3146,
     "value": "צוריאל"
@@ -18283,7 +18283,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.70273,
     "lng": 35.5861,
     "value": "צמח"
@@ -18508,7 +18508,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 15,
+    "countdown": 45,
     "lat": 33.02708,
     "lng": 35.69722,
     "value": "קדמת צבי"
@@ -18643,7 +18643,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.24011,
     "lng": 35.65264,
     "value": "קיבוץ דן"
@@ -18793,7 +18793,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.99141,
     "lng": 35.68934,
     "value": "קצרין"
@@ -18808,7 +18808,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.99048,
     "lng": 35.71098,
     "value": "קצרין - אזור תעשייה"
@@ -19018,7 +19018,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.20934,
     "lng": 35.57251,
     "value": "קריית שמונה"
@@ -19063,7 +19063,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 0,
+    "countdown": 30,
     "lat": 32.97893,
     "lng": 35.80894,
     "value": "קשת"
@@ -19123,7 +19123,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.08607,
     "lng": 35.11582,
     "value": "ראש הנקרה"
@@ -19470,7 +19470,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.04769,
     "lng": 35.48907,
     "value": "ריחאנייה"
@@ -19517,7 +19517,7 @@
     "zone_ar": "شومرون",
     "countdown": 90,
     "lat": 31.92233,
-    "lng": 35.33498,
+    "lng": 35.33566,
     "value": "רימונים"
   },
   {
@@ -19575,7 +19575,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 15,
+    "countdown": 45,
     "lat": 32.84912,
     "lng": 35.66624,
     "value": "רמות"
@@ -19635,7 +19635,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.09729,
     "lng": 35.5515,
     "value": "רמות נפתלי"
@@ -19815,7 +19815,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 32.84709,
     "lng": 35.80831,
     "value": "רמת מגשימים"
@@ -19980,7 +19980,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.22451,
     "lng": 35.64879,
     "value": "שאר ישוב"
@@ -20281,7 +20281,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.18658,
     "lng": 35.62311,
     "value": "שדה נחמיה"
@@ -20521,7 +20521,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.08463,
     "lng": 35.28565,
     "value": "שומרה"
@@ -20777,7 +20777,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.07465,
     "lng": 35.15006,
     "value": "שלומי"
@@ -20897,7 +20897,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.24003,
     "lng": 35.67783,
     "value": "שניר"
@@ -20957,7 +20957,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.68715,
     "lng": 35.60414,
     "value": "שער הגולן"
@@ -21168,7 +21168,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.08526,
     "lng": 35.31524,
     "value": "שתולה"
@@ -21423,7 +21423,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 0,
+    "countdown": 15,
     "lat": 33.23347,
     "lng": 35.58177,
     "value": "תל חי"
@@ -21513,7 +21513,7 @@
     "zone_en": "Southern Golan",
     "zone_ru": "Южные Голаны",
     "zone_ar": "جنوب الجولان",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.70578,
     "lng": 35.61795,
     "value": "תל קציר"
