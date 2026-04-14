@@ -84,10 +84,14 @@ public class Localization {
         context.getResources().updateConfiguration(configuration, context.getResources().getDisplayMetrics());
         context.getApplicationContext().getResources().updateConfiguration(appConfiguration, context.getResources().getDisplayMetrics());
     }
-
     public static boolean isRussian(Context context) {
         // Check for russian locale
         return context.getResources().getConfiguration().locale.getLanguage().startsWith(context.getString(R.string.russianCode));
+    }
+
+    public static boolean isGerman(Context context) {
+        // Check for German locale
+        return context.getResources().getConfiguration().locale.getLanguage().startsWith(context.getString(R.string.germanCode));
     }
 
     public static boolean isArabic(Context context) {
