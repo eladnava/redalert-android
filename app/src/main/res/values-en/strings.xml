@@ -242,26 +242,26 @@
     <string name="fifteenSeconds">15 seconds</string>
     <string name="thirtySeconds">30 seconds</string>
     <string name="fortyFiveSeconds">45 seconds</string>
-    <string name="oneMinute">A ​​minute</string>
+    <string name="oneMinute">A minute</string>
     <string name="oneMinuteAndAHalf">A minute and a half</string>
     <string name="threeMinutes">3 minutes</string>
 
     <!-- Threat Types -->
     <string name="missiles">Rocket fire</string>
-    <string name="radiologicalEvent">Radiological event</string>
+    <string name="radiologicalEvent">Radiological incident</string>
     <string name="earthQuake">Earthquake</string>
     <string name="earlyWarning">Early warning</string>
-    <string name="leaveShelter">Event ended</string>
+    <string name="leaveShelter">Incident ended</string>
     <string name="tsunami">Tsunami warning</string>
     <string name="hostileAircraftIntrusion">Hostile aircraft intrusion</string>
-    <string name="hazardousMaterials">Hazardous materials event</string>
+    <string name="hazardousMaterials">Hazardous materials incident</string>
     <string name="terroristInfiltration">Terrorist infiltration</string>
     <string name="missilesDrill">Drill: Rocket fire</string>
     <string name="earthQuakeDrill">Drill: Earthquake</string>
-    <string name="radiologicalEventDrill">Drill: Radiological event</string>
+    <string name="radiologicalEventDrill">Drill: Radiological incident</string>
     <string name="tsunamiDrill">Drill: Tsunami warning</string>
     <string name="hostileAircraftIntrusionDrill">Drill: Hostile aircraft intrusion</string>
-    <string name="hazardousMaterialsDrill">Drill: Hazardous materials event</string>
+    <string name="hazardousMaterialsDrill">Drill: Hazardous materials incident</string>
     <string name="terroristInfiltrationDrill">Drill: Terrorist infiltration</string>
     <string name="unknown">Alert</string>
     <string name="system">System Alert</string>
@@ -282,11 +282,11 @@
     <string name="continueStayingInsideShelterInstructions">Continue staying inside protective shelter</string>
     <string name="checkPikudHaorefInstructions">Check Pikud Haoref official website or app for instructions</string>
     <string name="endStayNearbyShelterInstructions">End of stay near protective shelter</string>
-    <string name="missileThreatEndInstructions">Rocket fire - event ended</string>
-    <string name="earthQuakeThreatEndInstructions">Earthquake - event ended - you may now safely re-enter buildings</string>
-    <string name="terroristInfiltrationThreatEndInstructions">Terrorist infiltration - event ended - you may now leave the shelter</string>
+    <string name="missileThreatEndInstructions">Rocket fire - incident ended</string>
+    <string name="earthQuakeThreatEndInstructions">Earthquake - incident ended - you may now safely re-enter buildings</string>
+    <string name="terroristInfiltrationThreatEndInstructions">Terrorist infiltration - incident ended - you may now leave the shelter</string>
     <string name="terroristInfiltrationConcernLiftedInstructions">Terrorist infiltration - concern lifted</string>
-    <string name="hostileAircraftIntrusionThreatEndInstructions">Hostile aircraft intrusion - event ended</string>
+    <string name="hostileAircraftIntrusionThreatEndInstructions">Hostile aircraft intrusion - incident ended</string>
     <string name="leaveShelterButStayNearbyInstructions">You can leave the shelter but you must stay nearby</string>
 
     <!-- Country-Wide Alert -->
