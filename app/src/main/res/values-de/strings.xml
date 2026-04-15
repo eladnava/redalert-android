@@ -1,203 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="appName">RedAlert</string>
-    <string name="signing_up">Für Push-Benachrichtigungen Melde dich an...</string>
+    <string name="signing_up">Für Push-Benachrichtigungen melden Sie sich an</string>
     <string name="okay">OK</string>
     <string name="yes">Ja</string>
     <string name="no">Nein</string>
     <string name="error">Fehler</string>
-    <string name="noGooglePlayServices">Dein Telefon verfügt nicht über eine aktelle Version des Google Play Services.</string>
-    <string name="pushRegistrationFailed">Ein Fehler ist während der Anmeldung beim Push-service aufgetreten. bitte versuche es Später nocheinmal.</string>
-    <string name="apiRequestFailed">Eine Abfrage von Informationen bei unserem Server ist fehlgeschlagen, Bitte überprüfe Deine Internetverbindung und versuche es erneut.</string>
-    <string name="registrationFailed">Die anmeldung ist Fehlgeschlagen, versuches es zu einem Späteren zeitpung noch einmal.</string>
-    <string name="grantNotificationPermission">Bitte aktivieren Sie \"Benachrichtigungen\" auf dem nächsten Bildschirm, um Benachrichtigungen in Echtzeit zu erhalten.</string>
+    <string name="noGooglePlayServices">Ihr Gerät nutzt nicht die aktuellste Version des Google Play Services.</string>
+    <string name="pushRegistrationFailed">Während der Anmeldung beim Push-Service ist ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.</string>
+    <string name="apiRequestFailed">Eine Informationsabfrage bei unserem Server ist fehlgeschlagen. Bitte überprüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.</string>
+    <string name="registrationFailed">Die Anmeldung ist fehlgeschlagen. Versuchen Sie es zu einem späteren Zeitpung noch einmal.</string>
+    <string name="grantNotificationPermission">Bitte aktivieren Sie \"Benachrichtigungen\" auf dem nächsten Bildschirm, um Alarme in Echtzeit zu erhalten.</string>
     <string name="citySelectionLimitError">Bitte wählen Sie nicht mehr als 100 Städte aus.</string>
     <string name="multiSelectionSearchNoResults">Es wurden keine Ergebnisse gefunden, die den eingegebenen Suchbegriffen entsprechen.</string>
-    <string name="multiSelectionSearchNoResultSelected">Sie haben keine Stadt oder Zone ausgewählt. Bitte wählen Sie mindestens ein Ergebnis aus und versuchen Sie es erneut.</string>
+    <string name="multiSelectionSearchNoResultSelected">Sie haben keine Stadt oder Region ausgewählt. Bitte wählen Sie mindestens ein Element aus und versuchen Sie es erneut.</string>
     <string name="settings">Einstellungen</string>
-    <string name="advanced">Erweiterungen</string>
+    <string name="advanced">Weitere Optionen</string>
     <string name="advancedSettings">Erweiterte Einstellungen</string>
     <string name="advancedSettingsTitle">Erweiterte Einstellungen</string>
-    <string name="advancedSettingsDesc">Klick hier für die Erweiterten Einstellungen</string>
-    <string name="notifications">Erhalte Alamierungen</string>
-    <string name="notificationsDesc">Erhalte Meldungen der Raketenangriffe in Echtzeit</string>
+    <string name="advancedSettingsDesc">Hier klicken für erweiterte Einstellungen</string>
+    <string name="notifications">Alarme erhalten</string>
+    <string name="notificationsDesc">Benachrichtigungen über Raketenalarme in Echtzeit erhalten</string>
     <string name="contact">Kontakt</string>
-    <string name="contactDesc">Klick hier um den App-Entwickler zu kontaktieren</string>
-    <string name="reportProblem">Melde ein Problem</string>
-    <string name="manualContact">Kontaktiere mich per E-Mail: support@redalert.me</string>
+    <string name="contactDesc">Hier klicken, um den App-Entwickler zu kontaktieren</string>
+    <string name="reportProblem">Problem melden</string>
+    <string name="manualContact">Kontaktieren Sie mich per E-Mail: support@redalert.me</string>
     <string name="jsonFailed">Beim Laden der Daten vom Server ist ein Problem aufgetreten.</string>
     <string name="contactUsError">Bitte geben Sie eine Nachricht mit mehr als 10 Zeichen ein.</string>
-    <string name="notifyError">Bei der Anzeige der Benachrichtigung ist ein Fehler aufgetreten. Bitte starten Dein Telefon neu.</string>
-    <string name="safeCategory">\"ich bin in Sicherheit\"</string>
-    <string name="safe">Sende \"ich bin in Sicherheit\"</string>
-    <string name="imSafeMessage">ich"bin in Sicherheit - Gesendet mit RedAlert für Android - https://redalert.me</string>
-    <string name="imSafeDesc">Sende \"ich bin in Sicherheit\"</string>
+    <string name="notifyError">Beim Anzeigen der Benachrichtigung ist ein Fehler aufgetreten. Bitte starten Sie Ihr Handy neu.</string>
+    <string name="safeCategory">\"Ich bin in Sicherheit\"</string>
+    <string name="safe">\"Ich bin in Sicherheit\" Senden</string>
+    <string name="imSafeMessage">Ich bin in Sicherheit - Gesendet mit RedAlert für Android - https://redalert.me</string>
+    <string name="imSafeDesc">Sende \"Ich bin in Sicherheit\"</string>
     <string name="pushRegistrationSuccess">Wählen Sie Ihre Stadt aus</string>
-    <string name="pushRegistrationSuccessDesc">Bitte wählen Sie Ihre Stadt oder Gemeinde aus, um Echtzeitbenachrichtigungen zu erhalten.</string>
-    <string name="pushRegistrationReselectDesc">Bitte erneut auswählen Sie Ihre Stadt oder Gemeinde aus, um Echtzeitbenachrichtigungen zu erhalten.</string>
-    <string name="safeWhatsApp">Senden über WhatsApp</string>
-    <string name="safeWhatsAppDesc">Drücke auf den \"ich bin in Sicherheit\" Button, dann wird eine Automatische Nachricht über WhatsApp verschickt</string>
-    <string name="soundSelection">Raketen Alarmierungston</string>
-    <string name="soundSelectionDesc">Suche dir einen Ton für eingebende Raketenwarnungen aus</string>
-    <string name="test">Selbst-test</string>
-    <string name="testDesc">Erhalte eine test Alarmierung um die Verbindung zu testen</string>
-    <string name="testFailed">Der Selbsttest ist vollständig scheitert. Es wurde kein Alamierung von dem Push Service Gateway empfangen. Überprüfe deine Internetverbindung und versuchen Sie es später erneut kontaktiere uns, wenn das Problem weiterhin besteht.</string>
+    <string name="pushRegistrationSuccessDesc">Bitte wählen Sie Ihre Stadt oder Region aus, um Echtzeitbenachrichtigungen zu erhalten.</string>
+    <string name="pushRegistrationReselectDesc">Bitte wählen Sie erneut Ihre Stadt oder Region aus, um Echtzeitbenachrichtigungen zu erhalten.</string>
+    <string name="safeWhatsApp">Über WhatsApp senden</string>
+    <string name="safeWhatsAppDesc">Wenn Sie den \"Ich bin in Sicherheit\"-Button klicken, wird eine automatische Nachricht über WhatsApp verschickt</string>
+    <string name="soundSelection">Alarmton</string>
+    <string name="soundSelectionDesc">Ton für eingehende Raketenalarme auswählen</string>
+    <string name="test">Testalarm senden</string>
+    <string name="testDesc">Testalarm senden, um die Verbindung zu prüfen</string>
+    <string name="testFailed">Der Testalarm ist fehlgeschlagen. Es wurde kein Alarm vom Push Service Gateway empfangen. Überprüfen Sie Ihre Internetverbindung und versuchen Sie es später erneut. Kontaktieren Sie uns, wenn das Problem weiterhin besteht.</string>
     <string name="reliability">Zuverlässigkeit</string>
-    <string name="noAlerts">Keine Alarmierung\nin den Vergangenen tagen</string>
-    <string name="recentAlerts">Kürzliche Alarmierungen</string>
-    <string name="testSound">Sound test</string>
+    <string name="noAlerts">Keine Alarme\nin den vergangenen Tagen</string>
+    <string name="recentAlerts">Letzte Alarme</string>
+    <string name="testSound">Alarmton test</string>
     <string name="siren1">Sirene 1</string>
     <string name="siren2">Sirene 2</string>
     <string name="siren3">Sirene 3</string>
     <string name="siren4">Sirene 4</string>
     <string name="siren5">Sirene 5</string>
-    <string name="tiny">Short 1</string>
+    <string name="tiny">Kurz 1</string>
     <string name="calm">Relaxing 1</string>
     <string name="tzevaAdom">Tzeva Adom</string>
     <string name="funny">Lustig</string>
-    <string name="automatic">Automatic</string>
-    <string name="languageAndTheme">Sprache und aussehen</string>
+    <string name="automatic">Automatisch</string>
+    <string name="languageAndTheme">Sprache und Design</string>
     <string name="langSelection">App language</string>
     <string name="langSelectionDesc">Change the application language</string>
-    <string name="themeSelection">App theme</string>
-    <string name="themeSelectionDesc">App design anpassen</string>
-    <string name="lightTheme">Licht</string>
+    <string name="themeSelection">App-Design</string>
+    <string name="themeSelectionDesc">App-Design auswählen</string>
+    <string name="lightTheme">Hell</string>
     <string name="darkTheme">Dunkel</string>
     <string name="selectedZones">Weitere Regionen</string>
-    <string name="selectedZonesDesc">Erhalten Sie Benachrichtigungen über ganze Regionen (zusätzlich zu Städten)</string>
-    <string name="silentOverride">Überschreibe den \"Bitte nicht stören modus\"</string>
-    <string name="silentOverrideDesc">Raketenwarnungen deaktivieren kurzzeitig den nicht stören Modus</string>
+    <string name="selectedZonesDesc">Alarme zu ganzen Regionen erhalten (zusätzlich zu Städten)</string>
+    <string name="silentOverride">\"Bitte-nicht-stören-Modus\" überschreiben</string>
+    <string name="silentOverrideDesc">Raketenalarme deaktivieren kurzzeitig den Bitte-nicht-stören-Modus</string>
     <string name="selectedCities">Städte</string>
-    <string name="testSuccessfulLong">Der Selbsttest ist erfolgreich abgeschlossen!</string>
-    <string name="selectedCitiesDesc">Erhalten Sie Benachrichtigungen über bestimmte Städte und Gemeinden</string>
-    <string name="website">Besuche unsere Website</string>
-    <string name="websiteDesc">Klick hier zum Besuchen der offiziellen Webseite</string>
+    <string name="testSuccessfulLong">Der Testalarm ist erfolgreich abgeschlossen!</string>
+    <string name="selectedCitiesDesc">Alarme zu ausgewählten Städten und Regionen erhalten</string>
+    <string name="website">Website besuchen</string>
+    <string name="websiteDesc">Hier klicken, um die offizielle Webseite zu besuchen</string>
     <string name="alertRegions">Bereiche</string>
-    <string name="receiveSecondaryAlerts">Sekundärwarnungen</string>
-    <string name="receiveSecondaryAlertsDesc">Benachrichtigungen erhalten für Sekundärwarnungen</string>
+    <string name="receiveSecondaryAlerts">Sekundäralarme</string>
+    <string name="receiveSecondaryAlertsDesc">Benachrichtigungen für Sekundäralarme erhalten</string>
     <string name="sounds">Töne</string>
-    <string name="share">Teile</string>
-    <string name="shareDesc">Teile die App</string>
-    <string name="shareMessage">Ich verwende Red Alert für Android, um Echtzeit-Raketenwarnungen zu erhalten - https://redalert.me</string>
-    <string name="vibrate">Schalte die vibration ein</string>
-    <string name="vibrateDesc">Raketen Alarmierungen lassen Dein Handy vibrieren</string>
+    <string name="share">Teilen</string>
+    <string name="shareDesc">App teilen</string>
+    <string name="shareMessage">Ich verwende Red Alert für Android, um Raketenalarme in Echtzeit zu erhalten - https://redalert.me</string>
+    <string name="vibrate">Vibration einschalten</string>
+    <string name="vibrateDesc">Vibration für eingehende Raketenalarme einschalten</string>
     <string name="sentVia">Gesendet mit</string>
-    <string name="problemDesc">Problem Beschreibung: </string>
+    <string name="problemDesc">Problembeschreibung: </string>
     <string name="noSound">Kein Ton</string>
     <string name="search">Suchbegriff eingeben ...</string>
     <string name="allString">Alle</string>
-    <string name="noneString">Keiner</string>
+    <string name="noneString">Keine ausgewählt</string>
     <string name="registrationID">Registration ID</string>
     <string name="calm2">Relaxing 2</string>
     <string name="calm3">Relaxing 3</string>
     <string name="calm4">Relaxing 4</string>
     <string name="calm5">Relaxing 5</string>
-    <string name="tiny2">Short 2</string>
-    <string name="tiny3">Short 3</string>
-    <string name="tiny4">Short 4</string>
-    <string name="tiny5">Short 5</string>
-    <string name="tiny6">Short 6</string>
+    <string name="tiny2">Kurz 2</string>
+    <string name="tiny3">Kurz 3</string>
+    <string name="tiny4">Kurz 4</string>
+    <string name="tiny5">Kurz 5</string>
+    <string name="tiny6">Kurz 6</string>
 
     <!-- Secondary Alerts -->
     <string name="secondaryAlerts">Sekundärwarnungen</string>
     <string name="secondaryAlertsTitle">Sekundärwarnungen</string>
-    <string name="secondaryAlertsDesc">Klick hier, um sekundäre Alarmierungen zu konfigurieren, um Warnungen aus anderen Orten zu erhalten</string>
+    <string name="secondaryAlertsDesc">Hier klicken, um Sekundäralarme einzustellen und Alarme zu anderen Orten zu erhalten</string>
 
     <!-- Secondary Sound -->
-    <string name="secondarySoundSelection">Sekundär ton</string>
-    <string name="secondarySoundSelectionDesc">Wähle einen Ton für sekundäre Raketenwarnungen aus</string>
+    <string name="secondarySoundSelection">Ton für Sekundäralarme</string>
+    <string name="secondarySoundSelectionDesc">Ton für Sekundäralarme auswählen</string>
 
     <!-- Secondary Vibration Mode -->
-    <string name="secondaryVibrate">Aktiviere die vibration</string>
-    <string name="secondaryVibrateDesc">Sekundäre Raketenwarnungen lassen das Handy vibrieren</string>
+    <string name="secondaryVibrate">Vibration einschalten</string>
+    <string name="secondaryVibrateDesc">Vibration für eingehende Sekundäralarme einschalten</string>
 
     <!-- Secondary Silent Mode Override -->
-    <string name="secondarySilentOverride">Überschreibe den bitte nicht stören Modus</string>
-    <string name="secondarySilentOverrideDesc">Sekundäre Raketenwarnungen überschreiben kurtzeitig den bitte nicht Stören Modus</string>
+    <string name="secondarySilentOverride">Bitte-nicht-stören-Modus überschreiben</string>
+    <string name="secondarySilentOverrideDesc">Zulassen, dass Sekundäralarme kurzeitig den Bitte-nicht-stören-Modus überschreiben</string>
 
     <!-- Frühwarnungen -->
     <string name="earlyWarnings">Frühwarnungen</string>
-    <string name="earlyWarningsDesc">Frühwarnungen 3–5 Minuten im Voraus konfigurieren</string>
+    <string name="earlyWarningsDesc">Frühwarnungen 3–5 Minuten im Voraus einstellen</string>
     <string name="receiveEarlyWarningsDesc">Frühwarnungen 3–5 Minuten im Voraus erhalten</string>
 
     <!-- Frühwarnton -->
     <string name="earlyWarningsSoundSelection">Frühwarnton</string>
-    <string name="earlyWarningsSoundSelectionDesc">Ton auswählen, der bei einer Frühwarnung abgespielt werden soll</string>
+    <string name="earlyWarningsSoundSelectionDesc">Ton für Frühwarnungen auswählen</string>
 
-    <!-- Alarme beim Verlassen der Unterkunft -->
-    <string name="leaveShelterAlerts">Alarme beim Verlassen der Unterkunft</string>
-    <string name="leaveShelterDesc">Alarme beim Verlassen der Unterkunft konfigurieren</string>
-    <string name="receiveLeaveShelterAlertsDesc">Alarme beim Verlassen der Unterkunft erhalten</string>
+    <!-- Entwarnungs-Benachrichtigungen -->
+    <string name="leaveShelterAlerts">Entwarnungs-Benachrichtigungen</string>
+    <string name="leaveShelterDesc">Entwarnungs-Benachrichtigungen einstellen</string>
+    <string name="receiveLeaveShelterAlertsDesc">Entwarnungs-Benachrichtigungen erhalten</string>
 
-    <!-- Ton für Alarme beim Verlassen der Unterkunft -->
-    <string name="leaveShelterAlertsSoundSelection">Ton für Alarm beim Verlassen der Unterkunft</string>
-    <string name="leaveShelterAlertsSoundSelectionDesc">Wählen Sie einen Ton aus, der abgespielt werden soll, wenn die Unterkunft verlassen werden soll</string>
+    <!-- Ton für Entwarnungs-Benachrichtigungen -->
+    <string name="leaveShelterAlertsSoundSelection">Ton für Entwarnungs-Benachrichtigungen</string>
+    <string name="leaveShelterAlertsSoundSelectionDesc">Ton auswählen, der abgespielt werden soll, wenn der Schutzraum verlassen werden kann</string>
 
-    <!-- Intelligente Entwarnungsalarme -->
-    <string name="smartLeaveShelterAlerts">Intelligente Entwarnungsalarme</string>
-    <string name="smartLeaveShelterAlertsDesc">Unterdrückt Entwarnungsalarme, wenn keine echte Warnung für deine Stadt eingegangen ist</string>
+    <!-- Intelligente Entwarnungs-Benachrichtigungen -->
+    <string name="smartLeaveShelterAlerts">Intelligente Entwarnungs-Benachrichtigungen</string>
+    <string name="smartLeaveShelterAlertsDesc">Unterdrückt Entwarnungs-Benachrichtigungen, wenn kein echter Alarm für ausgewählte Städte oder Regionen eingegangen ist</string>
 
 
     <!-- Rate the App -->
-    <string name="rateApp">Bewerte die App</string>
-    <string name="rateAppDesc">Klick hier zum Bewerten der App in Google Play</string>
+    <string name="rateApp">App bewerten</string>
+    <string name="rateAppDesc">Hier klicken, um die App in Google Play zu bewerten</string>
 
     <string name="update">Update Vorhanden</string>
-    <string name="updateDesc">Eine neue Version dieser application ist vorhanden (%s), Bitte update sie.</string>
+    <string name="updateDesc">Eine neue Version dieser App ist verfügbar (%s), bitte aktualisieren.</string>
     <string name="updatePositive">Update</string>
     <string name="notNow">nicht jetzt</string>
 
     <!-- Volume -->
     <string name="volume">Lautstärke</string>
-    <string name="volumeDesc">Stelle die gewünschte Lautstärke der Alarmierung ein</string>
+    <string name="volumeDesc">Alarm-Lautstärke einstellen</string>
 
     <!-- Secondary Volume -->
     <string name="secondaryVolume">Lautstärke</string>
-    <string name="secondaryVolumeDesc">Stelle die gewünschte Lautstärke für sekundäre Alarmierung ein</string>
+    <string name="secondaryVolumeDesc">Lautstärke für Sekundäralarme einstellen</string>
 
     <!-- Secondary Cities -->
     <string name="selectedSecondaryCities">Sekundärstädte</string>
-    <string name="selectedSecondaryCitiesDesc">Wählen Sie Städte aus, um aktuelle Alerts zu erhalten</string>
+    <string name="selectedSecondaryCitiesDesc">Städte auswählen, für die Sekundäralarme erhalten werden sollen</string>
 
     <!-- GPS -->
-    <string name="locationAlerts">Standortbasierte Alarmierungen</string>
-    <string name="locationAlertsDesc">Konfigurieren Sie standortbasierte Benachrichtigungen und erhalten Sie Notfallbenachrichtigungen auf dem Laufenden</string>
-    <string name="gpsEnabled">Standortbasierte Alarmierungen</string>
-    <string name="gpsEnabledDesc">Empfangen von standortbasierten Alarmierungen in Echtzeit</string>
-    <string name="maxDistance">Maximale entfernung</string>
-    <string name="maxDistanceDesc">Schieben den Regler, um die maximale Entfernung von jeder Stadt auszuwählen, die eine Raketenwarnung empfängt</string>
+    <string name="locationAlerts">Standortbasierte Alarme</string>
+    <string name="locationAlertsDesc">Benachrichtigungen über standortbasierte Alarme in Echtzeit einstellen</string>
+    <string name="gpsEnabled">Standortbasierte Alarme</string>
+    <string name="gpsEnabledDesc">Standortbasierte Alarme in Echtzeit erhalten</string>
+    <string name="maxDistance">Maximale Entfernung</string>
+    <string name="maxDistanceDesc">Regler schieben, um festzulegen, bis zu welcher Entfernung von ausgewählten Städten Raketenalarme erhalten werden</string>
     <string name="kilometer">km</string>
-    <string name="nearbyCities">in der nähe liegende Städte</string>
-    <string name="noLocation">Dein Standort konnte nicht ermittelt werden</string>
-    <string name="noNearbyCities">Keine in der nähe liegenden Stäte, ändere die maximale Distance</string>
+    <string name="nearbyCities">Nahegelegene Städte</string>
+    <string name="noLocation">Ihr Standort konnte nicht ermittelt werden</string>
+    <string name="noNearbyCities">Keine Stäte in der Nähe gefunden, bitte maximale Distanz vergrößern</string>
 
     <!-- GPS Frequency -->
-    <string name="gpsFrequency">Update intervall</string>
-    <string name="gpsFrequencyDesc">Schieben den Regler, um das Minuten Intervall für Standortaktualisierungen auszuwählen</string>
+    <string name="gpsFrequency">Häufigkeit der Standort-Aktualisierung</string>
+    <string name="gpsFrequencyDesc">Regler schieben, um auszuwählen, wie häufig der aktuelle Standort aktualisiert wird</string>
     <string name="every">alle</string>
-    <string name="minutes">minuten</string>
+    <string name="minutes">Minuten</string>
 
     <!-- GPS Notification -->
     <string name="enableGPSDesc">Bitte Aktiviere dein GPS Um standortbezogene Alarme zu erhalten.</string>
     <string name="enable">Einschalten</string>
 
     <!-- Alert Share -->
-    <string name="shareAlert">Teile die Meldung</string>
+    <string name="shareAlert">Teile die Benachrichtigung</string>
     <string name="alertSoundedAt">in&#160;</string>
     <string name="alertSentVia">Gesendet mit  RedAlert für Android (https://redalert.me)</string>
 
     <!-- Wake Screen -->
-    <string name="wakeScreen">Bildschirm einschalten</string>
-    <string name="wakeScreenDesc">Raketenwarnungen wecken den Bildschirm Ihres Telefons</string>
+    <string name="wakeScreen">Display einschalten</string>
+    <string name="wakeScreenDesc">Raketenalarme schalten das Display Ihres Telefons ein</string>
 
     <!-- Alert Popup -->
     <string name="close">Schließen</string>
     <string name="silence">Stumm</string>
-    <string name="showPopup">Meldungen werden als Popup Anzeigen</string>
-    <string name="showPopupDesc">Alamirungen werden in einem pop-up fenster Angezeigt</string>
+    <string name="showPopup">Benachrichtigungen werden als Pop-up angezeigt</string>
+    <string name="showPopupDesc">Benachrichtigungen werden in einem Pop-up-Fenster angezeigt</string>
     <string name="grantOverlayPermission">Anzeige über anderen Apps zulassen</string>
-    <string name="grantOverlayPermissionInstructions">Bitte wählen Sie im nächsten Bildschirm \"RedAlert\" -> \"Anzeige über anderen Apps zulassen\".</string>
-    <string name="showSecondaryAlertPopupDesc">Sekundäre alamirungen werden in einem pop-up fenster Angezeigt</string>
+    <string name="grantOverlayPermissionInstructions">Bitte wählen Sie im nächsten Bildschirm \"RedAlert\" -> \"Anzeige über andere Apps zulassen\".</string>
+    <string name="showSecondaryAlertPopupDesc">Sekundäralarme werden in einem Pop-up-Fenster angezeigt</string>
 
     <!-- Schedule Exact Alarms -->
     <string name="allowSettingExactAlarms">Erlaubt das Einstellen von Alarmen und Erinnerungen</string>
@@ -208,30 +208,30 @@
     <string name="notificationPolicyAccessPermissionInstructions">Um im \"icht stören\"-Modus Benachrichtigungen zu erhalten, tippen Sie auf \"RedAlert\" -> \"Zugriff auf Modi erlauben\" auf dem nächsten Bildschirm.</string>
 
     <!-- Pushy Foreground Service -->
-    <string name="foregroundService">Verbessern Sie die Zuverlässigkeit</string>
-    <string name="foregroundServiceDesc">Zeigt eine fortlaufende Benachrichtigung an, die verhindert, dass Android die App im Hintergrund beendet</string>
+    <string name="foregroundService">Zuverlässigkeit verbessern</string>
+    <string name="foregroundServiceDesc">Zeigt durchgehend eine Benachrichtigung an, die verhindert, dass Android die App im Hintergrund beendet</string>
     <string name="pushy_foreground_service_title">@string/appName</string>
-    <string name="pushy_foreground_service_connected">Verbunden mit dem Benachrichtigungsdienst</string>
-    <string name="pushy_foreground_service_connecting">Verbinden...</string>
+    <string name="pushy_foreground_service_connected">Mit Benachrichtigungsdienst verbunden</string>
+    <string name="pushy_foreground_service_connecting">Verbinde...</string>
     <string name="pushy_foreground_service_disconnected">Keine Verbindung zum Benachrichtigungsdienst</string>
 
     <!-- Miscellaneous -->
     <string name="loading">Lade...</string>
-    <string name="testingFCM">Push Gateway wird Getestet... (1/2)</string>
-    <string name="testingPushy">Push Gateway wird Getestet... (2/2)</string>
-    <string name="fcmTestFailed">Der Selbsttest scheiterte teilweise. Es wurde keine Warnung vom Google-Push-Gateway empfangen, aber eine Warnung wurde erfolgreich über das sekundäre Push-Gateway empfangen. Bitte versuchen Sie es später noch einmal.</string>
-    <string name="pushyTestFailed">Der Selbsttest scheiterte teilweise. Es wurde kein Alarm vom sekundären Push-Gateway empfangen, aber eine Warnung wurde erfolgreich über das Google-Push-Gateway empfangen. Bitte versuchen Sie es später noch einmal.</string>
+    <string name="testingFCM">Push Gateway wird getestet... (1/2)</string>
+    <string name="testingPushy">Push Gateway wird getestet... (2/2)</string>
+    <string name="fcmTestFailed">Der Testalarm ist teilweise gescheitert. Vom Google-Push-Gateway konnte kein Alarm empfangen werden, dafür aber erfolgreich über das Sekundär-Push-Gateway. Bitte versuchen Sie es später noch einmal.</string>
+    <string name="pushyTestFailed">Der Testalarm ist teilweise gescheitert. Vom Sekundär-Push-Gateway konnte kein Alarm empfangen werden, dafür aber erfolgreich über das Google-Push-Gateway. Bitte versuchen Sie es später noch einmal.</string>
     <string name="debugInfo">Zusätzliche Informationen</string>
     <string name="testSuccessful">Der Test wurde erfolgreich abgeschlossen!</string>
-    <string name="alerts">Alarmierungen</string>
-    <string name="advancedAlerts">Erweiterte Alarmierung</string>
+    <string name="alerts">Alarme</string>
+    <string name="advancedAlerts">Erweiterte Alarme</string>
 
     <!-- Spenden -->
-    <string name="donate">Unterstützen Sie unsere Sache</string>
-    <string name="donateInstructions">Wählen Sie den gewünschten Spendenbetrag (in ILS):</string>
+    <string name="donate">Unterstützen Sie uns</string>
+    <string name="donateInstructions">Gewünschten Spendenbetrag wählen (in ILS):</string>
     <string name="donateDesc">Ihre Spende trägt zur Deckung der Server- und Entwicklungskosten bei</string>
     <string name="donateSuccess">Vielen Dank für Ihre Spende!</string>
-    <string name="donateSuccessDesc">Wir freuen uns sehr über Ihre Spende und helfen Ihnen, die Server- und Entwicklungskosten zu decken.</string>
+    <string name="donateSuccessDesc">Wir freuen uns sehr über Ihre Spende, mit der Sie uns helfen, die Server- und Entwicklungskosten zu decken.</string>
 
     <!-- Operation Lifeshield -->
     <string name="lifeshieldShelters">Lifeshield Unterstände:</string>
@@ -240,82 +240,82 @@
 
     <!-- Time to Shelter -->
     <string name="immediately">Sofort</string>
-    <string name="fifteenSeconds">15 sekunden</string>
-    <string name="thirtySeconds">30 sekunden</string>
-    <string name="fortyFiveSeconds">45 sekunden</string>
-    <string name="oneMinute">Eine minute</string>
-    <string name="oneMinuteAndAHalf">Eineinhalb minuten</string>
-    <string name="threeMinutes">3 minuten</string>
+    <string name="fifteenSeconds">15 Sekunden</string>
+    <string name="thirtySeconds">30 Sekunden</string>
+    <string name="fortyFiveSeconds">45 Sekunden</string>
+    <string name="oneMinute">Eine Minute</string>
+    <string name="oneMinuteAndAHalf">Eineinhalb Minuten</string>
+    <string name="threeMinutes">3 Minuten</string>
 
     <!-- Threat Types -->
     <string name="missiles">Raketenfeuer</string>
-    <string name="radiologicalEvent">Radiologisches ereignis</string>
+    <string name="radiologicalEvent">Radiologisches Ereignis</string>
     <string name="earthQuake">Erdbeben</string>
-    <string name="earlyWarning">Vorwarnung</string>
+    <string name="earlyWarning">Frühwarnung</string>
     <string name="leaveShelter">Ereignis beendet</string>
-    <string name="tsunami">Tsunami warnung</string>
-    <string name="hostileAircraftIntrusion">Eindringen feindlicher flugzeuge</string>
+    <string name="tsunami">Tsunamiwarnung</string>
+    <string name="hostileAircraftIntrusion">Eindringen feindlicher Flugzeuge</string>
     <string name="hazardousMaterials">Veranstaltung zu gefährlichen stoffen</string>
-    <string name="terroristInfiltration">Terroristische infiltration</string>
+    <string name="terroristInfiltration">Terroristeninfiltration</string>
     <string name="missilesDrill">Übung: Raketenfeuer</string>
     <string name="earthQuakeDrill">Übung: Erdbeben</string>
-    <string name="radiologicalEventDrill">Übung: Radiologisches ereignis</string>
+    <string name="radiologicalEventDrill">Übung: Radiologisches Ereignis</string>
     <string name="tsunamiDrill">Übung: Tsunami warnung</string>
-    <string name="hostileAircraftIntrusionDrill">Übung: Eindringen feindlicher flugzeuge</string>
-    <string name="hazardousMaterialsDrill">Übung: Gefährliche materialien</string>
-    <string name="terroristInfiltrationDrill">Übung: Terroristische unterwanderung</string>
+    <string name="hostileAircraftIntrusionDrill">Übung: Eindringen feindlicher Flugzeuge</string>
+    <string name="hazardousMaterialsDrill">Übung: Gefährliche Materialien</string>
+    <string name="terroristInfiltrationDrill">Übung: Terroristeninfiltration</string>
     <string name="unknown">Alarm</string>
     <string name="system">Systemhinweis</string>
 
     <!-- Threat Instructions -->
-    <string name="missilesInstructions">Betreten Sie den geschützten Bereich und bleiben Sie dort bis auf Weiteres.</string>
-    <string name="hostileAircraftIntrusionInstructions">Betreten Sie den geschützten Bereich und bleiben Sie dort bis auf Weiteres.</string>
-    <string name="earthQuakeInstructions">Begeben Sie sich sofort in einen offenen Bereich. Sollte dies nicht möglich sein, betreten Sie das MMD oder ein Treppenhaus.</string>
-    <string name="earlyWarningInstructions">In den nächsten Minuten wird ein Alarm erwartet. Sie müssen einen geschützten Bereich finden, der Ihnen in Ihrer Gegend den besten Schutz bietet. Betreten Sie im Falle eines Alarms den geschützten Bereich und bleiben Sie dort bis auf Weiteres.</string>
+    <string name="missilesInstructions">Suchen Sie sofort einen Schutzraum auf und bleiben Sie dort bis auf Weiteres.</string>
+    <string name="hostileAircraftIntrusionInstructions">Suchen Sie sofort einen Schutzraum auf und bleiben Sie dort bis auf Weiteres.</string>
+    <string name="earthQuakeInstructions">Begeben Sie sich sofort in einen offenen Bereich. Sollte dies nicht möglich sein, suchen Sie einen Schutzraum oder ein Treppenhaus auf.</string>
+    <string name="earlyWarningInstructions">In den nächsten Minuten wird ein Alarm erwartet. Suchen Sie einen geschützten Bereich, der Ihnen in Ihrer Nähe den besten Schutz bietet. Betreten Sie im Falle eines Alarms den geschützten Bereich und bleiben Sie dort bis auf Weiteres.</string>
     <string name="leaveShelterInstructions">Sie können den Schutzraum nun verlassen.</string>
-    <string name="radiologicalEventInstructions">Betreten Sie das Gebäude und schließen Sie die Türen und Fenster.</string>
-    <string name="terroristInfiltrationInstructions">Betreten Sie sofort das Gebäude und schließen Sie die Türen und Fenster.</string>
+    <string name="radiologicalEventInstructions">Begeben Sie sich in ein Gebäude und schließen Sie alle Türen und Fenster.</string>
+    <string name="terroristInfiltrationInstructions">Begeben Sie sich in ein Gebäude und schließen Sie alle Türen und Fenster.</string>
     <string name="tsunamiInstructions">Entfernen Sie sich sofort mindestens einen Kilometer vom Strand oder begeben Sie sich in die vierte Etage oder höher.</string>
-    <string name="hazardousMaterialsInstructions">Betreten Sie sofort das Gebäude und schließen Sie die Türen und Fenster.</string>
+    <string name="hazardousMaterialsInstructions">Begeben Sie sich in ein Gebäude und schließen Sie alle Türen und Fenster.</string>
 
     <!-- Lokalisierte Kurzmeldungen -->
-    <string name="stayNearbyShelterInstructions">In der Nähe des Schutzraums bleiben</string>
+    <string name="stayNearbyShelterInstructions">Bleiben Sie in der Nähe des Schutzraums</string>
     <string name="continueStayingInsideShelterInstructions">Bleiben Sie weiterhin im Schutzraum</string>
-    <string name="checkPikudHaorefInstructions">Überprüfe die offizielle Website oder App von Pikud Haoref für Anweisungen</string>
-    <string name="endStayNearbyShelterInstructions">In der Nähe des Schutzraums bleiben</string>
+    <string name="checkPikudHaorefInstructions">Überprüfen Sie die offizielle Website oder App von Pikud Haoref für Anweisungen</string>
+    <string name="endStayNearbyShelterInstructions">Bleiben Sie ider Nähe des Schutzraums</string>
     <string name="missileThreatEndInstructions">Raketenfeuer – Ereignis beendet</string>
     <string name="earthQuakeThreatEndInstructions">Erdbeben – Ereignis beendet – Sie können jetzt in die Gebäude zurückkehren</string>
-    <string name="terroristInfiltrationThreatEndInstructions">Terroristische Infiltration – Ereignis beendet – Sie können jetzt den Schutzraum verlassen</string>
-    <string name="terroristInfiltrationConcernLiftedInstructions">Terroristische Infiltration – Sorge aufgehoben</string>
-    <string name="hostileAircraftIntrusionThreatEndInstructions">Eindringen in feindliche Flugzeuge – Ereignis beendet</string>
-    <string name="leaveShelterButStayNearbyInstructions">Sie können die Unterkunft verlassen, müssen aber in der Nähe bleiben</string>
+    <string name="terroristInfiltrationThreatEndInstructions">Terroristeninfiltration – Ereignis beendet – Sie können jetzt den Schutzraum verlassen</string>
+    <string name="terroristInfiltrationConcernLiftedInstructions">Terroristeninfiltration – Ereignis beendet</string>
+    <string name="hostileAircraftIntrusionThreatEndInstructions">Eindringen feindlicher Flugzeuge – Ereignis beendet</string>
+    <string name="leaveShelterButStayNearbyInstructions">Sie können den Schutzraum verlassen, müssen aber in der Nähe bleiben</string>
 
     <!-- Landesweite Warnung -->
     <string name="countryWideAlert">Ganz Israel</string>
 
     <!-- Custom Sound Selection Dialog -->
-    <string name="selectCustomSound">Wählen Sie benutzerdefinierten Sound</string>
-    <string name="selectCustomSoundDesc">Wählen Sie Ihren eigenen Sound, indem Sie im nächsten Bildschirm auf \"Sound\" -> \"Meine Sounds\" -> \"+\" -> \"Speichern\" klicken.</string>
+    <string name="selectCustomSound">Benutzerdefinierten Ton wählen</string>
+    <string name="selectCustomSoundDesc">Wählen Sie Ihren eigenen Ton aus, indem Sie im nächsten Bildschirm auf \"Ton\" -> \"Meine Töne\" -> \"+\" -> \"Speichern\" klicken.</string>
 
     <!-- Battery Optimization Dialog -->
     <string name="disableBatteryOptimizations">Deaktivieren Sie die Batterieoptimierungen</string>
     <string name="disableBatteryOptimizationsInstructions">Um Benachrichtigungen im Hintergrund zu erhalten, stellen Sie bitte im nächsten Bildschirm \"Akku\" auf \"Uneingeschränkt\" ein.</string>
-    <string name="disableBatteryOptimizationsInstructionsAndroid15">Um Warnmeldungen im Hintergrund zu erhalten, gehen Sie bitte zu \"App-Akkunutzung\" -> \"Hintergrundnutzung zulassen\" -> wählen Sie im nächsten Bildschirm \"Uneingeschränkt\".</string>
+    <string name="disableBatteryOptimizationsInstructionsAndroid15">Um Banchrichtigungen im Hintergrund zu erhalten, gehen Sie bitte zu \"App-Akkunutzung\" -> \"Hintergrundnutzung zulassen\" -> wählen Sie im nächsten Bildschirm \"Uneingeschränkt\".</string>
     <string name="disableBatteryOptimizationsSamsungInstructions">Um Benachrichtigungen im Hintergrund zu erhalten, wählen Sie im nächsten Bildschirm \"Akku\" -> \"Akkuverbrauch optimieren\" -> \"Apps nicht optimiert\" -> \"Alle\" -> \"RedAlert\" -> Optimierung für die App deaktivieren.</string>
 
     <!-- Hide GPS Foreground Notification Dialog -->
-    <string name="hideGPSForegroundNotification">Hintergrundstandortzugriff</string>
-    <string name="hideGPSForegroundNotificationInstructions">RedAlert muss eine laufende Benachrichtigung anzeigen, damit es weiterhin auf Ihren Standort zugreifen kann, während die App im Hintergrund läuft.\n\nSie können es ausblenden, indem Sie \"Benachrichtigungen anzeigen\" auf dem nächsten Bildschirm deaktivieren. Die App kann weiterhin im Hintergrund auf Ihren Standort zugreifen.</string>
+    <string name="hideGPSForegroundNotification">Standort-Zugriff im Hintergrund</string>
+    <string name="hideGPSForegroundNotificationInstructions">RedAlert ruft regelmäßig Ihren Standort ab, während die App im Hintergrund läuft. Dies wird Ihnen durchgehend durch eine Benachrichtigung angezeigt werden.\n\nSie können diese Benachrichtigung ausblenden, indem Sie \"Benachrichtigungen anzeigen\" auf dem nächsten Bildschirm deaktivieren. Die App kann weiterhin im Hintergrund ausgeführt werden.</string>
 
     <!-- Hide Pushy Foreground Notification Dialog -->
-    <string name="hidePushyForegroundNotification">Blenden Sie die laufende Benachrichtigung aus</string>
-    <string name="hidePushyForegroundNotificationInstructions">RedAlert muss eine laufende Benachrichtigung anzeigen, damit sie weiter ausgeführt werden kann, während die App im Hintergrund läuft.\n\nSie können sie ausblenden, indem Sie \"Benachrichtigungen anzeigen\" auf dem nächsten Bildschirm deaktivieren. Die App kann weiterhin im Hintergrund ausgeführt werden.</string>
+    <string name="hidePushyForegroundNotification">Benachrichtigung über Standort-Zugriff ausblenden</string>
+    <string name="hidePushyForegroundNotificationInstructions">RedAlert ruft regelmäßig Ihren Standort ab, während die App im Hintergrund läuft. Dies wird Ihnen durchgehend durch eine Benachrichtigung angezeigt werden.\n\nSie können diese Benachrichtigung ausblenden, indem Sie \"Benachrichtigungen anzeigen\" auf dem nächsten Bildschirm deaktivieren. Die App kann weiterhin im Hintergrund ausgeführt werden.</string>
 
     <!-- Battery Optimization Reminder Setting -->
-    <string name="disableBatteryOptimizationsReminder">Wichtig: Deaktivieren Sie die Batterieoptimierungen</string>
-    <string name="disableBatteryOptimizationsReminderDesc">Wir haben festgestellt, dass Sie die Batterieoptimierungen für RedAlert noch nicht deaktiviert haben. Um Benachrichtigungen in Echtzeit zu erhalten, während die App im Hintergrund läuft, müssen Sie die Batterieoptimierungen deaktivieren. Tippen Sie hier, um Anweisungen zu erhalten.</string>
+    <string name="disableBatteryOptimizationsReminder">Wichtig: Deaktivieren Sie die Batterieoptimierung</string>
+    <string name="disableBatteryOptimizationsReminderDesc">Wir haben festgestellt, dass Sie die Batterieoptimierung für RedAlert noch nicht deaktiviert haben. Um Benachrichtigungen in Echtzeit zu erhalten, während die App im Hintergrund läuft, muss die Batterieoptimierung deaktiviert sein. Für weitere Anweiseungen hier klicken.</string>
 
     <!-- Clear Recent Alerts Dialog -->
-    <string name="clearRecentAlerts">Aktuelle Benachrichtigungen löschen?</string>
-    <string name="clearRecentAlertsDesc">Möchten Sie alle aktuellen Warnmeldungen löschen?</string>
+    <string name="clearRecentAlerts">Aktuelle Benachrichtigungen löschen</string>
+    <string name="clearRecentAlertsDesc">Möchten Sie alle aktuellen Benachrichtigungen löschen?</string>
 </resources>
