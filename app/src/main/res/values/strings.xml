@@ -39,6 +39,22 @@
     <!-- Enable/Disable Notifications -->
     <string name="notifications">התרעות בזמן אמת</string>
     <string name="notificationsDesc">קבלת התרעות צבע אדום בזמן אמת</string>
+    <string name="pauseOrTurnOffTitle">להשהות או לכבות?</string>
+    <string name="turnOffNotificationsCompletely">לכבות התרעות לחלוטין</string>
+    <string name="pauseAlertsOneHour">להשהות שעה</string>
+    <string name="pauseAlertsTwoHours">להשהות שעתיים</string>
+    <string name="pauseAlertsFourHours">להשהות 4 שעות</string>
+    <string name="pauseAlertsEightHours">להשהות 8 שעות</string>
+    <string name="pauseAlertsUntilMorning">להשהות עד הבוקר (08:00)</string>
+    <string name="pauseAlertsCustomHours">משך מותאם (שעות)…</string>
+    <string name="resumeNotificationsTitle">להפעיל מחדש התרעות?</string>
+    <string name="resumeNotificationsMessage">ההתרעות מושהות כרגע. להפעיל מחדש עכשיו?</string>
+    <string name="resumeNotificationsYes">הפעלה מחדש</string>
+    <string name="resumeNotificationsNo">להשאיר מושהה</string>
+    <string name="notificationsPausedSummary">מושהה עד %1$s</string>
+    <string name="customPauseHoursTitle">משך השהיה (שעות)</string>
+    <string name="customPauseHoursHint">הזן מספר בין 1 ל־72</string>
+    <string name="customPauseHoursInvalid">הזן מספר בין 1 ל־72</string>
 
     <!-- Area Selection -->
     <string name="alertRegions">אזורי התרעה</string>
@@ -403,6 +419,7 @@
     <string translatable="false" name="contactPref">contact</string>
     <string translatable="false" name="advancedPref">advanced</string>
     <string translatable="false" name="enabledPref">enabled</string>
+    <string translatable="false" name="alertsPauseUntilPref">alerts_pause_until_epoch_ms</string>
     <string translatable="false" name="vibratePref">vibrate</string>
     <string translatable="false" name="batteryOptimizationWarningDisplayedCountPref">battery_optimization_warning_displayed_counter_v2</string>
     <string translatable="false" name="locationAlertsPref">location_alerts_v2</string>
