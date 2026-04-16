@@ -89,11 +89,6 @@ public class Localization {
         return context.getResources().getConfiguration().locale.getLanguage().startsWith(context.getString(R.string.russianCode));
     }
 
-    public static boolean isGerman(Context context) {
-        // Check for German locale
-        return context.getResources().getConfiguration().locale.getLanguage().startsWith(context.getString(R.string.germanCode));
-    }
-
     public static boolean isArabic(Context context) {
         // Check for Arabic locale
         return context.getResources().getConfiguration().locale.getLanguage().startsWith(context.getString(R.string.arabicCode));

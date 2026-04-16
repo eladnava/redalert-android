@@ -1157,7 +1157,6 @@ public class Main extends AppCompatActivity {
     private void localizeGroupedAlerts(List<Alert> alerts) {
         // Cache locale
         boolean isArabic = Localization.isArabic(this);
-        boolean isGerman = Localization.isGerman(this);
 
         // Traverse alerts
         for (Alert alert : alerts) {
@@ -1166,11 +1165,6 @@ public class Main extends AppCompatActivity {
 
             // Localize threat once
             alert.localizedThreat = LocationData.getLocalizedThreatType(alert.threat, this);
-
-            // Capitalize threat wording (if not German)
-            if (!isGerman) {
-                alert.localizedThreat = StringUtils.capitalizeAllWords(alert.localizedThreat);
-            }
 
             // Prepare unique hash maps of cities and descriptions
             LinkedHashMap<String, String> uniqueCities = new LinkedHashMap<>();
