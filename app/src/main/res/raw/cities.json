@@ -39,7 +39,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.96225,
     "lng": 35.16781,
     "value": "אבו סנאן"
@@ -924,7 +924,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.92386,
     "lng": 35.3247,
     "value": "אזור תעשייה כרמיאל"
@@ -1089,7 +1089,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.97111,
     "lng": 35.56753,
     "value": "אזור תעשייה צ.ח.ר"
@@ -1960,7 +1960,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.94762,
     "lng": 35.54931,
     "value": "אליפלט"
@@ -2155,7 +2155,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.90455,
     "lng": 35.57218,
     "value": "אמנון"
@@ -2607,7 +2607,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.97156,
     "lng": 35.15686,
     "value": "אשרת",
@@ -2879,7 +2879,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.951,
     "lng": 35.08195,
     "value": "בוסתן הגליל",
@@ -3285,7 +3285,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.91468,
     "lng": 35.13587,
     "value": "בית העלמין החדש עכו"
@@ -3300,7 +3300,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.97023,
     "lng": 35.14471,
     "value": "בית העמק"
@@ -4215,7 +4215,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.92792,
     "lng": 35.2732,
     "value": "בענה"
@@ -4594,7 +4594,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.92695,
     "lng": 35.13745,
     "value": "ג'דידה מכר"
@@ -4609,7 +4609,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.94271,
     "lng": 35.18373,
     "value": "ג'וליס"
@@ -6139,7 +6139,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.93912,
     "lng": 35.25979,
     "value": "דיר אל-אסד"
@@ -8497,7 +8497,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.98418,
     "lng": 35.54792,
     "value": "חצור הגלילית"
@@ -8677,7 +8677,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.96533,
     "lng": 35.59214,
     "value": "טובא זנגריה"
@@ -8797,7 +8797,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.92622,
     "lng": 35.17859,
     "value": "טל - אל"
@@ -9730,7 +9730,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.95433,
     "lng": 35.20566,
     "value": "ירכא"
@@ -9955,7 +9955,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.90889,
     "lng": 35.55191,
     "value": "כורזים ורד הגליל"
@@ -10030,7 +10030,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.94615,
     "lng": 35.24959,
     "value": "כישור"
@@ -10045,7 +10045,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.98365,
     "lng": 35.19216,
     "value": "כליל"
@@ -10090,7 +10090,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.91248,
     "lng": 35.35426,
     "value": "כמון - כמאנה מזרחית"
@@ -10540,7 +10540,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.97561,
     "lng": 35.60186,
     "value": "כפר הנשיא"
@@ -10795,7 +10795,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.95314,
     "lng": 35.16119,
     "value": "כפר יאסיף"
@@ -10990,7 +10990,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 60,
     "lat": 32.89142,
     "lng": 35.09856,
     "value": "כפר מסריק"
@@ -11367,7 +11367,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.92953,
     "lng": 35.60793,
     "value": "כרכום"
@@ -11502,7 +11502,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.91052,
     "lng": 35.28502,
     "value": "כרמיאל",
@@ -11594,7 +11594,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.94379,
     "lng": 35.28599,
     "value": "לבון"
@@ -11729,7 +11729,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.96213,
     "lng": 35.09864,
     "value": "לוחמי הגטאות"
@@ -12045,7 +12045,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.92015,
     "lng": 35.25302,
     "value": "מג'דל כרום"
@@ -12465,7 +12465,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.98347,
     "lng": 35.10248,
     "value": "מזרעה"
@@ -12495,7 +12495,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.98892,
     "lng": 35.57192,
     "value": "מחניים"
@@ -12765,7 +12765,7 @@
     "zone_en": "Confrontation Line",
     "zone_ru": "Кав Ха-Имут",
     "zone_ar": "خط المواجهة",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.90752,
     "lng": 35.32945,
     "value": "מכמנים - כמאנה מערבית"
@@ -12885,7 +12885,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.98145,
     "lng": 35.57239,
     "value": "מנחת מחניים"
@@ -13906,7 +13906,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.93984,
     "lng": 35.5506,
     "value": "מרכז אזורי רמת כורזים"
@@ -15092,7 +15092,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.93523,
     "lng": 35.31921,
     "value": "נחף"
@@ -15576,7 +15576,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.96595,
     "lng": 35.12086,
     "value": "נס עמים"
@@ -15801,7 +15801,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.99444,
     "lng": 35.13567,
     "value": "נתיב השיירה",
@@ -15863,7 +15863,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.9385,
     "lng": 35.34422,
     "value": "סאג'ור"
@@ -16705,7 +16705,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 60,
     "lat": 32.90368,
     "lng": 35.09645,
     "value": "עין המפרץ"
@@ -17065,7 +17065,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.93073,
     "lng": 35.08349,
     "value": "עכו"
@@ -17080,7 +17080,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.89886,
     "lng": 35.08908,
     "value": "עכו - אזור תעשייה"
@@ -17095,7 +17095,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.92757,
     "lng": 35.10441,
     "value": "עכו - רמות ים"
@@ -17232,7 +17232,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.92819,
     "lng": 35.54084,
     "value": "עמיעד"
@@ -17292,7 +17292,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.97963,
     "lng": 35.16146,
     "value": "עמקה"
@@ -17412,7 +17412,7 @@
     "zone_en": "Center Galilee",
     "zone_ru": "Центральная Галилея",
     "zone_ar": "الجليل المركزي",
-    "countdown": 30,
+    "countdown": 60,
     "lat": 32.88752,
     "lng": 35.29099,
     "value": "ערב אל נעים"
@@ -17772,7 +17772,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.93286,
     "lng": 35.23206,
     "value": "פלך"
@@ -18238,7 +18238,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.90381,
     "lng": 35.24882,
     "value": "צורית גילון"
@@ -19078,7 +19078,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.93891,
     "lng": 35.36406,
     "value": "ראמה"
@@ -19153,7 +19153,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.96545,
     "lng": 35.54188,
     "value": "ראש פינה"
@@ -19273,7 +19273,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.97335,
     "lng": 35.09747,
     "value": "רגבה",
@@ -20025,7 +20025,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.97993,
     "lng": 35.0837,
     "value": "שבי ציון",
@@ -20611,7 +20611,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.93216,
     "lng": 35.35231,
     "value": "שזור"
@@ -20702,7 +20702,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.99319,
     "lng": 35.14853,
     "value": "שייח' דנון"
@@ -20852,7 +20852,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.95174,
     "lng": 35.09585,
     "value": "שמרת"
@@ -21243,7 +21243,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 30,
+    "countdown": 45,
     "lat": 32.9294,
     "lng": 35.2453,
     "value": "תובל"
