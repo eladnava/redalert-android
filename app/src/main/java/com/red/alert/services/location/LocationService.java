@@ -47,6 +47,7 @@ public class LocationService extends Service implements
     IBinder mServiceBinder;
     GoogleApiClient mClient;
     LocationRequest mLocationRequest;
+    private boolean mForegroundStarted;
 
     @Override
     public void onCreate() {
@@ -62,7 +63,11 @@ public class LocationService extends Service implements
         // API level 34 support
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             try {
+                // Promote to foreground with location FGS type on Android 14+
                 startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification(), ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION);
+
+                // Record foreground so onDestroy can remove notification and detach
+                mForegroundStarted = true;
             }
             catch (Exception exc) {
                 // Android 14 may still occasionally throw a
@@ -73,7 +78,11 @@ public class LocationService extends Service implements
                 return;
             }
         } else {
+            // Promote to foreground on older API levels
             startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification());
+
+            // Record foreground so onDestroy can remove notification and detach
+            mForegroundStarted = true;
         }
 
         // Initialize location polling
@@ -154,7 +163,11 @@ public class LocationService extends Service implements
         // API level 34 support
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             try {
+                // Ensure foreground notification is current when onStartCommand runs again
                 startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification(), ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION);
+
+                // Mark foreground in case onCreate took an early stopSelf path without startForeground
+                mForegroundStarted = true;
             }
             catch (Exception exc) {
                 // Android 14 may still occasionally throw a
@@ -165,7 +178,11 @@ public class LocationService extends Service implements
                 return START_NOT_STICKY;
             }
         } else {
+            // Ensure foreground notification is current when onStartCommand runs again
             startForeground(PushyForegroundService.FOREGROUND_NOTIFICATION_ID, getForegroundNotification());
+
+            // Mark foreground in case onCreate took an early stopSelf path without startForeground
+            mForegroundStarted = true;
         }
 
         // Try connecting
@@ -210,6 +227,21 @@ public class LocationService extends Service implements
     public void onDestroy() {
         // Got a client?
         disconnectClient();
+
+        // Remove foreground notification and detach if we ever entered foreground
+        if (mForegroundStarted) {
+            // API 24+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                // Remove notification and exit foreground (replaces deprecated stopForeground(true))
+                stopForeground(STOP_FOREGROUND_REMOVE);
+            } else {
+                // Older APIs: remove notification when leaving foreground
+                stopForeground(true);
+            }
+
+            // Clear so a hypothetical re-create does not double-stopForeground
+            mForegroundStarted = false;
+        }
 
         // Write to log
         Log.d(Logging.TAG, "LocationService stopped");
