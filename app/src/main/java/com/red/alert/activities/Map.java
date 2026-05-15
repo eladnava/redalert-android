@@ -24,6 +24,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.text.HtmlCompat;
 import androidx.core.view.MenuItemCompat;
 
+import com.red.alert.databinding.AlertViewBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapsInitializer;
@@ -73,6 +74,9 @@ import me.pushy.sdk.lib.jackson.databind.ObjectMapper;
 
 public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallback {
     GoogleMap mMap;
+
+    // Inflated layout binding for alert_view.xml (replaces findViewById)
+    AlertViewBinding binding;
 
     List<Alert> mDisplayAlerts;
 
@@ -667,12 +671,15 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
         // Allow click on home button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // Set up UI
-        setContentView(R.layout.alert_view);
+        // Inflate layout with view binding
+        binding = AlertViewBinding.inflate(getLayoutInflater());
+
+        // Attach root to this activity
+        setContentView(binding.getRoot());
 
         // Store reference to app icon & map cover for later
-        mAppIcon = (ImageView) findViewById(R.id.appIcon);
-        mMapCover = (RelativeLayout) findViewById(R.id.mapCover);
+        mAppIcon = binding.appIcon;
+        mMapCover = binding.mapCover;
 
         // Align app icon based on whether language is RTL to avoid hiding Google logo
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mAppIcon.getLayoutParams();
@@ -783,6 +790,9 @@ public class Map extends AppCompatActivity implements OnMapsSdkInitializedCallba
 
         // Unregister for broadcasts
         Broadcasts.unsubscribe(this, mBroadcastListener);
+
+        // Drop view binding reference after teardown
+        binding = null;
     }
 
     void pollRecentAlerts() {

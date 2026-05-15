@@ -23,12 +23,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.red.alert.R;
+import com.red.alert.databinding.PopupBinding;
 import com.red.alert.config.Alerts;
 import com.red.alert.config.Safety;
 import com.red.alert.config.ThreatTypes;
 import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.communication.intents.AlertPopupParameters;
-import com.red.alert.logic.feedback.sound.SoundLogic;
 import com.red.alert.logic.phone.PowerManagement;
 import com.red.alert.logic.settings.AppPreferences;
 import com.red.alert.ui.localization.rtl.RTLSupport;
@@ -45,6 +45,9 @@ import java.util.List;
 
 public class Popup extends AppCompatActivity {
     private final Handler mHandler = new Handler(Looper.getMainLooper());
+
+    // Inflated layout binding for popup.xml (replaces findViewById)
+    PopupBinding binding;
 
     Runnable mRunnable;
 
@@ -129,16 +132,19 @@ public class Popup extends AppCompatActivity {
         // RTL action bar hack
         RTLSupport.mirrorActionBar(this);
 
-        // Set up UI
-        setContentView(R.layout.popup);
+        // Inflate layout with view binding
+        binding = PopupBinding.inflate(getLayoutInflater());
 
-        // Cache UI objects
-        mClose = (Button) findViewById(R.id.close);
-        mCities = (TextView) findViewById(R.id.cities);
-        mSilence = (Button) findViewById(R.id.silence);
-        mCounter = (TextView) findViewById(R.id.counter);
-        mThreatIcon = (ImageView) findViewById(R.id.threatIcon);
-        mInstructions = (TextView) findViewById(R.id.instructions);
+        // Attach root to this activity
+        setContentView(binding.getRoot());
+
+        // Cache UI objects from binding
+        mClose = binding.close;
+        mCities = binding.cities;
+        mSilence = binding.silence;
+        mCounter = binding.counter;
+        mThreatIcon = binding.threatIcon;
+        mInstructions = binding.instructions;
 
         // Allow scrolling on cities list
         mCities.setMovementMethod(new ScrollingMovementMethod());
@@ -238,6 +244,9 @@ public class Popup extends AppCompatActivity {
         if (mRunnable != null) {
             mHandler.removeCallbacks(mRunnable);
         }
+
+        // Drop view binding reference before activity teardown
+        binding = null;
 
         // Destroy activity
         super.onDestroy();

@@ -31,11 +31,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.view.MenuItemCompat;
-import androidx.core.view.WindowCompat;
 
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.installations.FirebaseInstallations;
 import com.red.alert.R;
+import com.red.alert.databinding.MainBinding;
 import com.red.alert.config.Sound;
 import com.red.alert.logic.alerts.AlertTypes;
 import com.red.alert.logic.feedback.sound.SoundLogic;
@@ -92,6 +92,9 @@ import me.pushy.sdk.lib.jackson.databind.ObjectMapper;
 import me.pushy.sdk.util.PushyAuthentication;
 
 public class Main extends AppCompatActivity {
+    // Inflated layout binding for main.xml (replaces findViewById)
+    MainBinding binding;
+
     boolean mIsResumed;
     boolean mIsReloading;
     boolean mIsRegistering;
@@ -247,14 +250,17 @@ public class Main extends AppCompatActivity {
         // Set title manually (for override locale to work)
         setTitle(R.string.recentAlerts);
 
-        // Set up UI
-        setContentView(R.layout.main);
+        // Inflate layout with view binding
+        binding = MainBinding.inflate(getLayoutInflater());
 
-        // Get views by IDs
-        mImSafe = (Button) findViewById(R.id.safe);
-        mAlertsList = (ListView) findViewById(R.id.alerts);
-        mLoading = (ProgressBar) findViewById(R.id.loading);
-        mNoAlerts = (LinearLayout) findViewById(R.id.noAlerts);
+        // Attach root to this activity
+        setContentView(binding.getRoot());
+
+        // Get views from binding
+        mImSafe = binding.safe;
+        mAlertsList = binding.alerts;
+        mLoading = binding.loading;
+        mNoAlerts = binding.noAlerts;
 
         // Initialize alert lists
         mNewAlerts = new ArrayList<>();
@@ -1311,6 +1317,9 @@ public class Main extends AppCompatActivity {
 
         // Unregister for broadcasts
         Broadcasts.unsubscribe(this, mBroadcastListener);
+
+        // Drop view binding reference before activity teardown
+        binding = null;
 
         // Destroy activity
         super.onDestroy();
