@@ -609,7 +609,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.7127,
     "lng": 35.10832,
     "value": "אורנים"
@@ -639,7 +639,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.79629,
     "lng": 35.11356,
     "value": "אושה"
@@ -669,7 +669,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.63534,
     "lng": 35.36067,
     "value": "אזור תעשייה אלון התבור"
@@ -954,7 +954,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.56808,
     "lng": 35.26696,
     "value": "אזור תעשייה מבואות הגלבוע"
@@ -1014,7 +1014,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.70378,
     "lng": 34.97156,
     "value": "אזור תעשייה ניר עציון"
@@ -1104,7 +1104,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.75891,
     "lng": 35.31658,
     "value": "אזור תעשייה ציפורית"
@@ -1164,7 +1164,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.86718,
     "lng": 35.0992,
     "value": "אזור תעשייה קריית ביאליק"
@@ -1285,7 +1285,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.8805,
     "lng": 35.09761,
     "value": "אזור תעשייה שער נעמן"
@@ -1360,7 +1360,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.64324,
     "lng": 35.33818,
     "value": "אחוזת ברק"
@@ -1450,7 +1450,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.76131,
     "lng": 35.11365,
     "value": "איבטין"
@@ -1570,7 +1570,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.75618,
     "lng": 35.40773,
     "value": "אילניה"
@@ -1645,7 +1645,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.67828,
     "lng": 35.31978,
     "value": "אכסאל"
@@ -1840,7 +1840,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.72972,
     "lng": 35.17071,
     "value": "אלוני אבא"
@@ -1885,7 +1885,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.71629,
     "lng": 35.14834,
     "value": "אלונים"
@@ -2260,7 +2260,7 @@
     "zone_en": "Upper Galilee",
     "zone_ru": "Верхняя Галилея",
     "zone_ar": "الجليل الأعلى",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.83893,
     "lng": 35.12596,
     "value": "אפק"
@@ -3060,7 +3060,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.73168,
     "lng": 35.00498,
     "value": "בית אורן"
@@ -3105,7 +3105,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.51226,
     "lng": 35.43704,
     "value": "בית אלפא וחפציבה"
@@ -3330,7 +3330,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.55017,
     "lng": 35.4384,
     "value": "בית השיטה"
@@ -3510,7 +3510,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.55964,
     "lng": 35.55354,
     "value": "בית יוסף"
@@ -3585,7 +3585,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.73438,
     "lng": 35.19026,
     "value": "בית לחם הגלילית"
@@ -3675,7 +3675,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.72679,
     "lng": 35.09173,
     "value": "בית סוהר קישון"
@@ -3765,7 +3765,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.76879,
     "lng": 35.12516,
     "value": "בית עלמין תל רגב"
@@ -3795,7 +3795,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.71816,
     "lng": 34.9697,
     "value": "בית צבי"
@@ -3825,7 +3825,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.71802,
     "lng": 35.3955,
     "value": "בית קשת"
@@ -3840,7 +3840,7 @@
     "zone_en": "Center Galilee",
     "zone_ru": "Центральная Галилея",
     "zone_ar": "الجليل المركزي",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.78127,
     "lng": 35.32707,
     "value": "בית רימון"
@@ -3855,7 +3855,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.49944,
     "lng": 35.50057,
     "value": "בית שאן"
@@ -3885,7 +3885,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.69461,
     "lng": 35.17708,
     "value": "בית שערים"
@@ -3945,7 +3945,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.62972,
     "lng": 35.29693,
     "value": "בלפוריה"
@@ -4200,7 +4200,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.74536,
     "lng": 35.1492,
     "value": "בסמת טבעון"
@@ -4549,7 +4549,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.60052,
     "lng": 35.00201,
     "value": "בת שלמה"
@@ -4774,7 +4774,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.66288,
     "lng": 34.9547,
     "value": "גבע כרמל"
@@ -4864,7 +4864,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.72099,
     "lng": 35.24556,
     "value": "גבעת אלה"
@@ -4954,7 +4954,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.72066,
     "lng": 35.01601,
     "value": "גבעת וולפסון"
@@ -5224,7 +5224,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.67413,
     "lng": 35.2128,
     "value": "גבת"
@@ -5254,7 +5254,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.54932,
     "lng": 35.35859,
     "value": "גדעונה"
@@ -5344,7 +5344,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.63806,
     "lng": 35.44694,
     "value": "גזית"
@@ -5629,7 +5629,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.53107,
     "lng": 35.33383,
     "value": "גן נר"
@@ -5734,7 +5734,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.51739,
     "lng": 35.53924,
     "value": "גני חוגה"
@@ -5809,7 +5809,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.6638,
     "lng": 35.25947,
     "value": "גניגר"
@@ -5899,7 +5899,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.62,
     "lng": 35.55206,
     "value": "גשר"
@@ -5959,7 +5959,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.68757,
     "lng": 35.37295,
     "value": "דבוריה"
@@ -5989,7 +5989,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.64677,
     "lng": 35.34982,
     "value": "דברת"
@@ -6064,7 +6064,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.61201,
     "lng": 34.92061,
     "value": "דור, נחשולים"
@@ -6109,7 +6109,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.6211,
     "lng": 35.34503,
     "value": "דחי"
@@ -6199,7 +6199,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.69462,
     "lng": 35.05013,
     "value": "דלית אל כרמל"
@@ -6289,7 +6289,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.63801,
     "lng": 34.93321,
     "value": "הבונים"
@@ -6395,7 +6395,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.75833,
     "lng": 35.29205,
     "value": "הושעיה"
@@ -6500,7 +6500,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.75304,
     "lng": 34.95495,
     "value": "החותרים"
@@ -6515,7 +6515,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.61055,
     "lng": 35.20662,
     "value": "היוגב"
@@ -6590,7 +6590,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.75084,
     "lng": 35.23877,
     "value": "הסוללים"
@@ -6982,7 +6982,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.72267,
     "lng": 35.21925,
     "value": "זרזיר"
@@ -7042,7 +7042,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.74087,
     "lng": 35.20483,
     "value": "חג'אג'רה"
@@ -8152,7 +8152,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.82775,
     "lng": 34.98012,
     "value": "חיפה - בת גלים ק.אליעזר"
@@ -8167,7 +8167,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.80682,
     "lng": 34.98813,
     "value": "חיפה - כרמל, הדר ועיר תחתית"
@@ -8182,7 +8182,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.80208,
     "lng": 34.96264,
     "value": "חיפה - מערב"
@@ -8197,7 +8197,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.80496,
     "lng": 35.05211,
     "value": "חיפה - מפרץ"
@@ -8212,7 +8212,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.78076,
     "lng": 35.00212,
     "value": "חיפה - נווה שאנן ורמות כרמל"
@@ -8227,7 +8227,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.82839,
     "lng": 35.06482,
     "value": "חיפה - קריית חיים ושמואל"
@@ -8287,7 +8287,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.52061,
     "lng": 35.5207,
     "value": "חמדיה"
@@ -8722,7 +8722,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.60309,
     "lng": 35.44406,
     "value": "טייבה בגלבוע"
@@ -8767,7 +8767,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.76113,
     "lng": 34.97161,
     "value": "טירת כרמל"
@@ -8782,7 +8782,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.4221,
     "lng": 35.52738,
     "value": "טירת צבי"
@@ -8887,7 +8887,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.63134,
     "lng": 35.40188,
     "value": "טמרה בגלבוע"
@@ -8992,7 +8992,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.74315,
     "lng": 35.07707,
     "value": "יגור"
@@ -9203,7 +9203,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.56302,
     "lng": 35.32102,
     "value": "יזרעאל"
@@ -9415,7 +9415,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.68404,
     "lng": 35.27295,
     "value": "יפיע"
@@ -9445,7 +9445,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.67764,
     "lng": 35.2232,
     "value": "יפעת"
@@ -9580,7 +9580,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.56613,
     "lng": 35.56396,
     "value": "ירדנה"
@@ -9760,7 +9760,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.56551,
     "lng": 35.24374,
     "value": "ישובי אומן"
@@ -9775,7 +9775,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.54987,
     "lng": 35.30746,
     "value": "ישובי יעל"
@@ -9880,7 +9880,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.70327,
     "lng": 35.40818,
     "value": "כדורי"
@@ -10180,7 +10180,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.75438,
     "lng": 35.18745,
     "value": "כעביה טבאש"
@@ -10270,7 +10270,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.82,
     "lng": 35.0899,
     "value": "כפר ביאליק"
@@ -10345,7 +10345,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.64576,
     "lng": 35.19046,
     "value": "כפר ברוך"
@@ -10360,7 +10360,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.64341,
     "lng": 35.29166,
     "value": "כפר גדעון"
@@ -10375,7 +10375,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.76678,
     "lng": 34.957,
     "value": "כפר גלים"
@@ -10420,7 +10420,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.43754,
     "lng": 35.41585,
     "value": "כפר גמילה מלכישוע"
@@ -10465,7 +10465,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.70166,
     "lng": 35.27033,
     "value": "כפר החורש"
@@ -10480,7 +10480,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.79021,
     "lng": 35.11424,
     "value": "כפר המכבי"
@@ -10675,7 +10675,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.77009,
     "lng": 35.13634,
     "value": "כפר ח'וואלד"
@@ -10750,7 +10750,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.74784,
     "lng": 35.08904,
     "value": "כפר חסידים"
@@ -10825,7 +10825,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.68195,
     "lng": 35.15332,
     "value": "כפר יהושע"
@@ -10870,7 +10870,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.56794,
     "lng": 35.35867,
     "value": "כפר יחזקאל"
@@ -10900,7 +10900,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.74799,
     "lng": 35.34273,
     "value": "כפר כנא"
@@ -11005,7 +11005,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.64537,
     "lng": 35.42235,
     "value": "כפר מצר"
@@ -11217,7 +11217,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.66506,
     "lng": 35.44916,
     "value": "כפר קיש"
@@ -11247,7 +11247,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.45802,
     "lng": 35.55665,
     "value": "כפר רופין"
@@ -11322,7 +11322,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.68879,
     "lng": 35.42329,
     "value": "כפר תבור"
@@ -11352,7 +11352,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.70135,
     "lng": 35.11599,
     "value": "כפר תקווה"
@@ -11412,7 +11412,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.6454,
     "lng": 34.99059,
     "value": "כרם מהר'ל"
@@ -11879,7 +11879,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.59081,
     "lng": 34.97085,
     "value": "מאיר שפיה"
@@ -12075,7 +12075,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.72905,
     "lng": 34.96176,
     "value": "מגדים"
@@ -12105,7 +12105,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.67325,
     "lng": 35.24396,
     "value": "מגדל העמק"
@@ -12195,7 +12195,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.5202,
     "lng": 35.30667,
     "value": "מגן שאול"
@@ -12330,7 +12330,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.58587,
     "lng": 35.4415,
     "value": "מולדת"
@@ -12375,7 +12375,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.51515,
     "lng": 35.29484,
     "value": "מוקיבלה"
@@ -12450,7 +12450,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.65205,
     "lng": 35.28748,
     "value": "מזרע"
@@ -12645,7 +12645,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.45259,
     "lng": 35.42169,
     "value": "מירב"
@@ -12915,7 +12915,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.70908,
     "lng": 35.19454,
     "value": "מנשית זבדה"
@@ -12975,7 +12975,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.49483,
     "lng": 35.47448,
     "value": "מסילות"
@@ -13110,7 +13110,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.49258,
     "lng": 35.55132,
     "value": "מעוז חיים"
@@ -13245,7 +13245,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.47449,
     "lng": 35.42227,
     "value": "מעלה גלבוע"
@@ -13786,7 +13786,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.60485,
     "lng": 35.31541,
     "value": "מרחביה מושב"
@@ -13801,7 +13801,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.60504,
     "lng": 35.3072,
     "value": "מרחביה קיבוץ"
@@ -13921,7 +13921,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.54737,
     "lng": 35.26681,
     "value": "מרכז חבר"
@@ -13936,7 +13936,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.64675,
     "lng": 34.96489,
     "value": "מרכז מיר'ב"
@@ -14026,7 +14026,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.74021,
     "lng": 35.32121,
     "value": "משהד"
@@ -14267,7 +14267,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.55289,
     "lng": 35.33522,
     "value": "מתחם סקי גלבוע"
@@ -14432,7 +14432,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.60795,
     "lng": 35.39029,
     "value": "נאעורה"
@@ -14522,7 +14522,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.68905,
     "lng": 35.19373,
     "value": "נהלל"
@@ -14582,7 +14582,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.49124,
     "lng": 35.53234,
     "value": "נוה איתן"
@@ -14612,7 +14612,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.58821,
     "lng": 35.55359,
     "value": "נווה אור"
@@ -14732,7 +14732,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.67888,
     "lng": 34.93109,
     "value": "נווה ים"
@@ -14867,7 +14867,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.7101,
     "lng": 35.32282,
     "value": "נוף הגליל"
@@ -14927,7 +14927,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.75974,
     "lng": 35.1467,
     "value": "נופית"
@@ -14987,7 +14987,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.53932,
     "lng": 35.3574,
     "value": "נורית"
@@ -15227,7 +15227,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.63311,
     "lng": 35.35057,
     "value": "נין"
@@ -15348,7 +15348,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.50446,
     "lng": 35.45595,
     "value": "ניר דוד"
@@ -15455,7 +15455,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.70022,
     "lng": 34.99142,
     "value": "ניר עציון, ימין אורד"
@@ -15711,7 +15711,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.69925,
     "lng": 35.29565,
     "value": "נצרת"
@@ -15741,7 +15741,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.7679,
     "lng": 35.04214,
     "value": "נשר"
@@ -15938,7 +15938,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.60661,
     "lng": 35.33603,
     "value": "סולם"
@@ -16058,7 +16058,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.52143,
     "lng": 35.32305,
     "value": "סנדלה"
@@ -16314,7 +16314,7 @@
     "zone_en": "Center Galilee",
     "zone_ru": "Центральная Галилея",
     "zone_ar": "الجليل المركزي",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.7892,
     "lng": 35.31765,
     "value": "עוזייר, רומאנה"
@@ -16359,7 +16359,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.62277,
     "lng": 34.98193,
     "value": "עופר"
@@ -16539,7 +16539,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.71902,
     "lng": 35.26149,
     "value": "עילוט"
@@ -16554,7 +16554,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.62875,
     "lng": 34.94618,
     "value": "עין איילה"
@@ -16644,7 +16644,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.65699,
     "lng": 35.418,
     "value": "עין דור"
@@ -16675,7 +16675,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.69974,
     "lng": 34.98262,
     "value": "עין הוד"
@@ -16720,7 +16720,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.47007,
     "lng": 35.50149,
     "value": "עין הנצי'ב"
@@ -16810,7 +16810,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.69146,
     "lng": 34.99957,
     "value": "עין חוד"
@@ -16840,7 +16840,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.55857,
     "lng": 35.39419,
     "value": "עין חרוד, תל יוסף"
@@ -16885,7 +16885,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.67673,
     "lng": 34.95464,
     "value": "עין כרמל"
@@ -16900,7 +16900,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.72191,
     "lng": 35.35251,
     "value": "עין מאהל"
@@ -17322,7 +17322,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.71331,
     "lng": 35.06689,
     "value": "עספיא"
@@ -17337,7 +17337,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.61542,
     "lng": 35.29702,
     "value": "עפולה"
@@ -17532,7 +17532,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.69775,
     "lng": 34.94636,
     "value": "עתלית"
@@ -17727,7 +17727,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.59673,
     "lng": 34.956,
     "value": "פוריידיס"
@@ -18253,7 +18253,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.7472,
     "lng": 35.27886,
     "value": "ציפורי"
@@ -18373,7 +18373,7 @@
     "zone_en": "HaCarmel",
     "zone_ru": "Кармель",
     "zone_ar": "الكرمل",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.64865,
     "lng": 34.94772,
     "value": "צרופה"
@@ -18403,7 +18403,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.56576,
     "lng": 35.37284,
     "value": "קבוצת גבע"
@@ -18838,7 +18838,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.805,
     "lng": 35.09135,
     "value": "קריית אתא"
@@ -18853,7 +18853,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.83566,
     "lng": 35.09537,
     "value": "קריית ביאליק"
@@ -18898,7 +18898,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.71324,
     "lng": 35.12263,
     "value": "קריית טבעון - בית זייד"
@@ -18913,7 +18913,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.8477,
     "lng": 35.07044,
     "value": "קריית ים"
@@ -18943,7 +18943,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.84168,
     "lng": 35.0822,
     "value": "קריית מוצקין"
@@ -19108,7 +19108,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.77135,
     "lng": 35.15456,
     "value": "ראס עלי"
@@ -19334,7 +19334,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.44749,
     "lng": 35.47126,
     "value": "רוויה"
@@ -19365,7 +19365,7 @@
     "zone_en": "Center Galilee",
     "zone_ru": "Центральная Галилея",
     "zone_ar": "الجليل المركزي",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.77891,
     "lng": 35.30415,
     "value": "רומת אל הייב"
@@ -19410,7 +19410,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.45011,
     "lng": 35.48918,
     "value": "רחוב"
@@ -19500,7 +19500,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.72331,
     "lng": 35.30576,
     "value": "ריינה"
@@ -19545,7 +19545,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.75122,
     "lng": 35.10746,
     "value": "רכסים"
@@ -19560,7 +19560,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.52679,
     "lng": 35.2594,
     "value": "רם און"
@@ -19695,7 +19695,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.67841,
     "lng": 35.20266,
     "value": "רמת דוד"
@@ -19770,7 +19770,7 @@
     "zone_en": "HaMifratz (The Bay)",
     "zone_ru": "Мифрац (Хайфский залив)",
     "zone_ar": "المفراتس",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.79303,
     "lng": 35.12272,
     "value": "רמת יוחנן"
@@ -19785,7 +19785,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.70304,
     "lng": 35.16505,
     "value": "רמת ישי"
@@ -19830,7 +19830,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.59073,
     "lng": 35.41456,
     "value": "רמת צבי"
@@ -19935,7 +19935,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.47723,
     "lng": 35.47636,
     "value": "רשפים, שלוחות, שלפים"
@@ -20086,7 +20086,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.44082,
     "lng": 35.5143,
     "value": "שדה אליהו"
@@ -20221,7 +20221,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.69687,
     "lng": 35.14225,
     "value": "שדה יעקב"
@@ -20266,7 +20266,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.52637,
     "lng": 35.48174,
     "value": "שדה נחום"
@@ -20401,7 +20401,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.43896,
     "lng": 35.48564,
     "value": "שדי תרומות"
@@ -20431,7 +20431,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.69664,
     "lng": 35.43702,
     "value": "שדמות דבורה"
@@ -20672,7 +20672,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.68608,
     "lng": 35.39995,
     "value": "שיבלי אום אלג'נם"
@@ -20867,7 +20867,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.73278,
     "lng": 35.24595,
     "value": "שמשית"
@@ -20972,7 +20972,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.72288,
     "lng": 35.11311,
     "value": "שער העמקים"
@@ -21137,7 +21137,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.66233,
     "lng": 35.22661,
     "value": "שריד"
@@ -21273,7 +21273,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.6477,
     "lng": 35.20867,
     "value": "תחנת רכבת כפר ברוך"
@@ -21288,7 +21288,7 @@
     "zone_en": "Menashe",
     "zone_ru": "Менаше",
     "zone_ar": "مناشيه",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.68149,
     "lng": 35.125,
     "value": "תחנת רכבת כפר יהושוע"
@@ -21468,7 +21468,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.65362,
     "lng": 35.29963,
     "value": "תל עדשים"
@@ -21543,7 +21543,7 @@
     "zone_en": "Beit She'an Valley",
     "zone_ru": "Долина Бейт-Шеан",
     "zone_ar": "غور بيت شان",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.44183,
     "lng": 35.49622,
     "value": "תל תאומים"
@@ -21680,7 +21680,7 @@
     "zone_en": "HaAmakim",
     "zone_ru": "ха-Амаким (Изреэльская долина)",
     "zone_ar": "هعماكيم",
-    "countdown": 60,
+    "countdown": 90,
     "lat": 32.70367,
     "lng": 35.23022,
     "value": "תמרת"
