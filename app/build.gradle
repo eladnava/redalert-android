@@ -9,7 +9,7 @@ android {
     defaultConfig {
         applicationId "com.red.alert"
         minSdkVersion 23
-        targetSdkVersion 35
+        targetSdkVersion 36
         versionCode 11170
         versionName "1.0.117"
     }
