@@ -4,7 +4,7 @@ apply plugin: 'com.google.gms.google-services'
 android {
     namespace 'com.red.alert'
 
-    compileSdkVersion 34
+    compileSdkVersion 35
 
     defaultConfig {
         applicationId "com.red.alert"
