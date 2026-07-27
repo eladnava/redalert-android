@@ -1264,9 +1264,13 @@ public class General extends AppCompatPreferenceActivity {
                 .build();
 
         // Query product details asynchronously
-        mBillingClient.queryProductDetailsAsync(params, (billingResult, prodDetailsList) -> {
+        mBillingClient.queryProductDetailsAsync(params, (billingResult, queryProductDetailsResult) -> {
             // Success?
             if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                // Extract list of fetched products from result object (PBL 8+ wraps the list in QueryProductDetailsResult),
+                // copying into a mutable list since the returned list may be immutable
+                List<ProductDetails> prodDetailsList = new ArrayList<>(queryProductDetailsResult.getProductDetailsList());
+
                 // Sort list of products by price ASC
                 Collections.sort(prodDetailsList, new Comparator<ProductDetails>() {
                     @Override

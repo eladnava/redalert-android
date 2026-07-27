@@ -42,7 +42,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:21.3.0'
 
     // Google Play Billing Library
-    implementation "com.android.billingclient:billing:7.1.1"
+    implementation "com.android.billingclient:billing:9.1.0"
 
     // All .jar files in ./libs
     implementation fileTree(dir: 'libs', include: ['*.jar'])
